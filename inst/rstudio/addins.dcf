@@ -1,0 +1,4 @@
+Name: Connect to BrAPI database
+Description: Connect to BrAPI database
+Binding: brapiConnectAddin
+Interactive: true

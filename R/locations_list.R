@@ -11,6 +11,8 @@
 locations_list <- function(){
   locs = brapi_GET("locations?pageSize=10000&page=1&")
   req = httr::content(locs)$result$data
+  if (is.null(req)) stop("No data retrieved.\n Probably time out.\n Try reconnect.")
+  #print(req)
   n = length(req)
   rdf = data.frame(
     locationDbId = integer(n),
