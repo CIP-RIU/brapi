@@ -10,15 +10,14 @@ locationsAddin <- function(){
       miniTabPanel("Data", icon = icon("table"),
         miniContentPanel(
           #locationsUI("locations")
+          p(class = 'text-center', downloadButton('locsDL', 'Download Filtered Data')),
           DT::dataTableOutput("table")
+
         )
       ),
       miniTabPanel("Map", icon = icon("map-o"),
                    miniContentPanel(padding = 0,
                                     leafletOutput("map", height = "100%")
-                   ),
-                   miniButtonBlock(
-                     actionButton("resetMap", "Reset")
                    )
       )
     )
@@ -57,11 +56,11 @@ locationsAddin <- function(){
        stopApp("Bye!")
     })
 
-    eventReactive(input$resetMap, {
-      leafletProxy("map", data = dat()) %>% fitBounds(
-        ~min(longitude), ~min(latitude),
-        ~max(longitude), ~max(latitude)
-      )
+
+    # download the filtered data
+    output$locsDL = downloadHandler('BRAPI-locs-filtered.csv', content = function(file) {
+      s = input$table_rows_all
+      write.csv(dat()[s, , drop = FALSE], file)
     })
 
   }
