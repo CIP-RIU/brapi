@@ -1,4 +1,9 @@
-Name: Connect to BrAPI database
+Name: BrAPI database
 Description: Connect to BrAPI database
 Binding: brapiConnectAddin
+Interactive: true
+
+Name: BrAPI locations
+Description: Inspect breeding locations
+Binding: locationsAddin
 Interactive: true
