@@ -23,7 +23,10 @@ assign_item <- function(avar, from, type = "character") {
       to = val %>% as.integer()
     }
     if(type == "numeric") {
-      to = val %>% as.integer()
+      to = val %>% as.numeric()
+    }
+    if(type == "double") {
+      to = val %>% as.numeric()
     }
   }
   to
