@@ -13,9 +13,6 @@ locations(input, output, session)
 
 \item{session}{shiny}
 }
-\value{
-data.frame
-}
 \description{
 locations
 }
