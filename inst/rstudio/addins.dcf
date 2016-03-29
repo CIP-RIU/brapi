@@ -1,9 +1,9 @@
-Name: BrAPI database
-Description: Connect to BrAPI database
+Name: HIDAP database
+Description: Connect to database via HIDAP
 Binding: brapiConnectAddin
 Interactive: true
 
-Name: BrAPI locations
+Name: HIDAP locations
 Description: Inspect breeding locations
 Binding: locationsAddin
 Interactive: true

@@ -9,9 +9,12 @@
 #' @return data.frame
 #' @export
 locations <- function(input, output, session){
-  dataframe <- reactive({
+  datf <- reactive({
     brapi::locations_list()
   })
+  dat = datf()
 
-  return(dataframe)
+  dat = dat[!is.na(dat$latitude), ]
+
+  return(dat)
 }

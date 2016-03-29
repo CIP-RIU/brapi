@@ -17,37 +17,63 @@ locationsAddin <- function(){
       ),
       miniTabPanel("Map", icon = icon("map-o"),
                    miniContentPanel(padding = 0,
-                                    leafletOutput("map", height = "100%")
+                                    leaflet::leafletOutput("map", height = "100%")
+                   )
+      ),
+      miniTabPanel("Histogram", icon = icon("bar-chart"),
+                   miniContentPanel(padding = 0,
+                                    plotOutput("histogram")
+                   )
+      ),
+      miniTabPanel("Single site info", icon = icon("info"),
+                   miniContentPanel(padding = 0,
+                                    htmlOutput("siteInfo")
+                   )
+      ),
+      miniTabPanel("Site group report", icon = icon("book"),
+                   miniContentPanel(padding = 0,
+                                    uiOutput("sitesReport")
+                   )
+      ),
+      miniTabPanel("Site scatter chart", icon = icon("line-chart"),
+                   miniContentPanel(padding = 0,
+                                    uiOutput("sitesScatter")
                    )
       )
     )
 
   )
 
+  ##################################
+
   server <- function(input, output, session) {
 
     dat <- reactive({
-      dataFrame <- callModule(locations, "locationsData")
-      dat = dataFrame()
-      dat = dat[!is.na(dat$latitude), ]
-      dat
+      callModule(locations, "locationsData")
     })
 
-    output$table <- DT::renderDataTable(dat(), server = FALSE)
-
-    output$map <- renderLeaflet({
+    dat_sel <- reactive({
       sel = input$table_rows_all
       if(is.null(sel)){
         pts = dat()
       } else {
         pts = dat()[sel, ]
       }
+      pts
+    })
+
+    output$table <- DT::renderDataTable(dat(), server = FALSE)
+
+    output$map <- renderLeaflet({
+      pts <- dat_sel()
 
       leaflet(pts, height = "100%") %>% addTiles() %>%
-        addMarkers(clusterOptions = markerClusterOptions()) %>% fitBounds(
+        addMarkers(clusterOptions = markerClusterOptions(clickable = T)) %>% fitBounds(
           ~min(longitude), ~min(latitude),
           ~max(longitude), ~max(latitude)
         )
+
+
     })
 
     observeEvent(input$done, {
@@ -59,9 +85,58 @@ locationsAddin <- function(){
 
     # download the filtered data
     output$locsDL = downloadHandler('BRAPI-locs-filtered.csv', content = function(file) {
-      s = input$table_rows_all
-      write.csv(dat()[s, , drop = FALSE], file)
+      write.csv(dat_zel(), file)
     })
+
+
+    output$histogram <- renderPlot({
+      hist(dat()$altitude, main = "Frequency of altitude of breeding locations.",
+           xlab = "altitude [m]", sub = "Selected location frequencies are in red.")
+      hist(dat_sel()$altitude, add = T, col = "red")
+      if(length(mrks()) > 0){
+        # print("abline")
+        # print(mrks()$altitude)
+        abline(v = mrks()$altitude, col="blue", lwd = 5)
+      }
+    })
+
+    ##################################
+
+    mrks <- reactive({
+      x = input$map_marker_click
+      subset(dat_sel(), latitude == as.numeric(x$lat) & longitude == as.numeric(x$lng))
+    })
+
+    rec2info <- function(rec){
+      #rec %>% as.data.frame
+      nms = names(rec)
+      dat = t(rec)
+      dat = cbind(nms, dat)
+      #rint(str(dat))
+      # print(nrow(dat))
+      row.names(dat) = 1:nrow(dat)
+      colnames(dat) = c("Attribute", "Value")
+      dat = dat[c(1, 5, 9, 4, 3, 2, 6, 7, 8, 10, 12, 13, 14, 11), ]
+      x = htmlTable::htmlTable(dat)
+      paste0("<center>", x, "</center>") %>% HTML
+    }
+
+    observe({
+      rec = mrks()
+      if (nrow(rec)==1) {
+        output$siteInfo <- renderUI({
+          #str(rec) %>% paste %>% print
+          rec2info(rec)
+        })
+      } else {
+        output$siteInfo = renderPrint({
+          ""
+        })
+      }
+
+    })
+
+
 
   }
 
