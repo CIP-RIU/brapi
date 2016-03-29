@@ -35,6 +35,11 @@ locationsAddin <- function(){
                                     htmlOutput("rep_loc")
                    )
       ),
+      miniTabPanel("Trial per site", icon = icon("info"),
+                   miniContentPanel(padding = 0,
+                                    htmlOutput("site_fieldtrials")
+                   )
+      ),
       miniTabPanel("Site scatter chart", icon = icon("line-chart"),
                    miniContentPanel(padding = 0,
                                     uiOutput("sitesScatter")

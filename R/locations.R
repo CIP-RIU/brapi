@@ -14,6 +14,10 @@ locations <- function(input, output, session){
     dat[!is.na(dat$latitude), ]
   })
 
+  #vls <- reactiveValues()
+
+  #vls$dat_sel <- dat()
+
   dat_sel <- reactive({
     sel = input$table_rows_all
     if(is.null(sel)){
@@ -24,7 +28,8 @@ locations <- function(input, output, session){
     pts
   })
 
-  output$table <- DT::renderDataTable(dat(), server = FALSE,
+  output$table <- DT::renderDataTable( dat()
+                                      , server = FALSE,
                                        options = list(scrollX = TRUE))
 
   output$map <- renderLeaflet({
@@ -43,7 +48,7 @@ locations <- function(input, output, session){
 
   # download the filtered data
   output$locsDL = downloadHandler('BRAPI-locs-filtered.csv', content = function(file) {
-    write.csv(dat_zel(), file)
+    write.csv(dat_sel(), file)
   })
 
 
@@ -94,6 +99,14 @@ locations <- function(input, output, session){
 
   })
 
+  observeEvent(input$map_bounds, {
+    #print("change view area!")
+    mb = input$map_bounds
+    #print(mb)
+
+
+  })
+
   ############### report #########
 
   output$rep_loc <- renderUI({
@@ -126,6 +139,59 @@ locations <- function(input, output, session){
     HTML(html)
   })
 
+
+  output$site_fieldtrials <- renderUI({
+
+    stds = brapi::studies()
+    #print(studies)
+    locs = mrks()
+    #print(locs)
+    out = "No trials found for this location!"
+
+    # 1st try to find via id if not use unique name
+    sid = stds[stds$locationDbId == locs$locationDbId, "studyDbID"]
+    if (length(sid) == 0) {
+      sid = stds[stringr::str_detect(toupper(stds$name), locs$Uniquename), "studyDbId"]
+
+    }
+    if(length(sid) != 0){
+      host = stringr::str_split(Sys.getenv("BRAPI_DB") , "/")[[1]][1]
+      path = "/breeders/trial/"
+
+      out = paste0("<br><a href='http://",host, path, sid, "' target='_blank'>", stds[stds$studyDbId==sid, "name"], "</a>") %>%
+        paste(collapse = ", ")
+    }
+
+    HTML(out)
+  })
+
+  output$site_genotypes <- renderUI({
+
+    stds = brapi::studies()
+    #print(studies)
+    locs = mrks()
+    #print(locs)
+    out = "No trials found for this location!"
+
+    # 1st try to find via id if not use unique name
+    sid = stds[stds$locationDbId == locs$locationDbId, "studyDbID"]
+    if (length(sid) == 0) {
+      sid = stds[stringr::str_detect(toupper(stds$name), locs$Uniquename), "studyDbId"]
+
+    }
+    if(length(sid) != 0){
+
+      #TODO implement BRAPI call to study table!
+
+      host = stringr::str_split(Sys.getenv("BRAPI_DB") , "/")[[1]][1]
+      path = "/breeders/trial/"
+
+      #TODO change for genotypes
+      out = paste0("<a href='http://",host, path, sid, "' target='_blank'>", stds[stds$studyDbId==sid, "name"], "</a>")
+    }
+
+    HTML(out)
+  })
 
 
   #dat()

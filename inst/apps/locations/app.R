@@ -36,7 +36,7 @@ ui <- dashboardPage(skin = "yellow",
                               tabPanel("Info",
                                        htmlOutput("siteInfo")
                               ), tabPanel("Fieldtrials",
-                                          htmlOutput("site_fieldtrials")
+                                       htmlOutput("site_fieldtrials")
                               ),
                               tabPanel("Genotypes",
                                        htmlOutput("site_genotypes")
