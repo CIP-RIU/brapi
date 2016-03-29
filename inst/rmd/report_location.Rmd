@@ -1,0 +1,36 @@
+---
+title: "Location report"
+author: "Reinhard Simon"
+date: "March 26, 2016"
+output: 
+  html_document:
+    theme: united
+  pdf_document:
+    toc: true
+    highlight: zenburn
+  word_document:
+    highlight: "tango"
+params: 
+  locs: "no data"
+---
+
+
+
+```{r, echo=FALSE}
+locs = params$locs
+n = nrow(locs)
+```
+
+There are a total of **`r n`** locations in your view. 
+Latitude range is **`r min(locs$lat)` to `r max(locs$lat)`**.
+
+
+You can also embed plots, for example:
+
+```{r, echo=FALSE}
+data <- locs$altitude
+    n = length(data)
+    data <- as.numeric(data)
+    if(n < 1) return("no data")
+    hist(data, main = "Elevation", xlim = c(0,3600))
+```

@@ -21,7 +21,10 @@ ui <- dashboardPage(skin = "yellow",
                        tabBox(width = NULL,
                            tabPanel("Map",
                              leafletOutput("map")
-                             )
+                             ),
+                           tabPanel("Report",
+                              htmlOutput("rep_loc")
+                            )
                          )
                 )
                 ,

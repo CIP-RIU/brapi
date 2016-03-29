@@ -32,7 +32,7 @@ locationsAddin <- function(){
       ),
       miniTabPanel("Site group report", icon = icon("book"),
                    miniContentPanel(padding = 0,
-                                    uiOutput("sitesReport")
+                                    htmlOutput("rep_loc")
                    )
       ),
       miniTabPanel("Site scatter chart", icon = icon("line-chart"),

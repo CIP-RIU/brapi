@@ -25,7 +25,7 @@ locations <- function(input, output, session){
   })
 
   output$table <- DT::renderDataTable(dat(), server = FALSE,
-                                      , options = list(scrollX = TRUE))
+                                       options = list(scrollX = TRUE))
 
   output$map <- renderLeaflet({
     pts <- dat_sel()
@@ -92,6 +92,38 @@ locations <- function(input, output, session){
       })
     }
 
+  })
+
+  ############### report #########
+
+  output$rep_loc <- renderUI({
+
+    withProgress(message = 'Making report', value = 0, max = 10, {
+
+    locs <- dat_sel()
+    n = nrow(locs)
+    if(n<1) return("no locations in view!")
+    report = paste0("report_location.Rmd")
+    #report = file.path("inst", "rmd", "report_location.Rmd")
+    report = file.path(system.file("rmd", package = "brapi"), "report_location.Rmd")
+    rep_dir <- "www/reports/"
+    if(!file.exists(rep_dir)){
+      rep_dir = tempdir()
+    }
+
+    setProgress(5)
+
+    fn <- rmarkdown::render(report,
+                            #output_format = "all",
+                            output_dir = rep_dir,
+                            params = list(
+                              locs = locs))
+    setProgress(8)
+
+    html <- readLines(file.path(rep_dir, "report_location.html"))
+    }) # progress
+
+    HTML(html)
   })
 
 
