@@ -23,13 +23,20 @@ ui <- dashboardPage(skin = "yellow",
                         tabItem(tabName = "phn_dashboard",
                                 fluidRow(
                                   column(width = 8,
-                                         tabBox(width = NULL,
+                                         tabBox(width = NULL, selected = "fieldbook_heatmap",
+                                                tabPanel("Correlation",
+                                                         qtlcharts::iplotCorr_output('vcor_output', height = 400)
+                                                ),
                                                 tabPanel("Fieldbook Map",
-                                                         d3heatmap::d3heatmapOutput("fieldbook_map")
+                                                         d3heatmap::d3heatmapOutput("fieldbook_heatmap")
                                                 ),
                                                 tabPanel("Report",
                                                          htmlOutput("rep_loc")
+
                                                 )
+
+
+
                                          )
                                   )
                                   ,
