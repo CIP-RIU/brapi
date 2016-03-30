@@ -31,8 +31,5 @@ brapiConnectInput <- function(id, label = "Connect to BrAPI database"){
     shiny::numericInput(ns("port"), "Port", prt, 0, 9999),
     shiny::textInput(ns("user"), "User", value = usr, placeholder = "User name"),
     shiny::passwordInput(ns("password"), "Password", value = pwd)
-
-    # shiny::textOutput(ns("status")),
-    #shiny::actionButton(ns("connect"), "Connect!")
   )
 }
