@@ -10,6 +10,7 @@ locationsUI <- function(id){
   ns <- NS(id)
 
   tagList(
+
     DT::dataTableOutput(ns("table"))
   )
 

@@ -49,7 +49,9 @@ ui <- dashboardPage(skin = "yellow",
                 column(width = 12,
                   box(width = NULL,
                     title = "Location table",
+                    #p(class = 'text-center', downloadButton('locsDL', 'Download Filtered Data')),
                     DT::dataTableOutput("table")
+                    #locationsUI("location")
                   )
                 )
               )

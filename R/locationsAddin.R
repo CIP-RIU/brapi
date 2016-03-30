@@ -12,7 +12,6 @@ locationsAddin <- function(){
           #locationsUI("locations")
           p(class = 'text-center', downloadButton('locsDL', 'Download Filtered Data')),
           DT::dataTableOutput("table")
-
         )
       ),
       miniTabPanel("Map", icon = icon("map-o"),

@@ -111,7 +111,7 @@ locations <- function(input, output, session){
 
   output$rep_loc <- renderUI({
 
-    withProgress(message = 'Making report', value = 0, max = 10, {
+    withProgress(message = 'Updating report', value = 0, max = 10, {
 
     locs <- dat_sel()
     n = nrow(locs)
@@ -141,7 +141,7 @@ locations <- function(input, output, session){
 
 
   output$site_fieldtrials <- renderUI({
-
+    withProgress(message = 'Getting trial list ...', value = 0, max = 10, {
     stds = brapi::studies()
     #print(studies)
     locs = mrks()
@@ -154,6 +154,9 @@ locations <- function(input, output, session){
       sid = stds[stringr::str_detect(toupper(stds$name), locs$Uniquename), "studyDbId"]
 
     }
+
+    setProgress(5)
+
     if(length(sid) != 0){
       host = stringr::str_split(Sys.getenv("BRAPI_DB") , "/")[[1]][1]
       path = "/breeders/trial/"
@@ -162,7 +165,10 @@ locations <- function(input, output, session){
         paste(collapse = ", ")
     }
 
+    setProgress(8)
+
     HTML(out)
+    })
   })
 
   output$site_genotypes <- renderUI({
