@@ -28,4 +28,17 @@
 
 
 
+# TODOS
+
+# Location view:
+# field trial list either based on selection or last click; if too many (more than 50) show only for current year
+# genotype list: make it also respond to current selection as above;
+# use cache for already downloaded files: location list or field trials!
+#     Check if there is a way to check on latest updates from sweetpotatobase
+# location report: also make it better respond to selection and add other features; add report parameter widget
+
+
+
+
+
 

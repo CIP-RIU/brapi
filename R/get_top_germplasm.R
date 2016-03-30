@@ -1,3 +1,25 @@
+averages_germplasm <- function(study, has_trait){
+  #summarize by germplasm
+  by_germplasm <- study %>% group_by(germplasmName)
+  options(warn=-1)
+  dat = by_germplasm %>% dplyr::summarise_each(dplyr::funs(mean))
+  options(warn=0)
+  dat <- dat[!is.na(dat[, has_trait]), ]
+  dat$germplasmName <- as.character(dat$germplasmName)
+  dgp =dat$germplasmName
+
+  # the above omits all germplasm with missing values
+  # add back germplasm with at least one value in trait
+  study$germplasmName = as.character(study$germplasmName)
+  agp = study[!is.na(study[, has_trait]), "germplasmName"]
+  agp = agp[!agp %in% dgp]
+  x=study[!is.na(study[, has_trait]) & study$germplasmName %in% agp, ]
+
+  dat <- rbind(dat, x)
+  # summarize by germplasm
+  dat
+}
+
 
 #' get_top_germplasm
 #'
@@ -20,23 +42,7 @@ get_top_germplasm <- function(study = NULL, frac = .1, max_g = 20, trait = "Harv
   has_trait <- stringr::str_detect(names(study), trait) %>% which
   #stopifnot(length(has_trait) == 0)
 
-  # summarize by replication
-  by_germplasm <- study %>% group_by(germplasmName)
-  options(warn=-1)
-  dat = by_germplasm %>% dplyr::summarise_each(dplyr::funs(mean))
-  options(warn=0)
-  dat <- dat[!is.na(dat[, has_trait]), ]
-  dat$germplasmName <- as.character(dat$germplasmName)
-  dgp =dat$germplasmName
-
-  # the above omits all germplasm with missing values
-  # add back germplasm with at least one value in trait
-  study$germplasmName = as.character(study$germplasmName)
-  agp = study[!is.na(study[, has_trait]), "germplasmName"]
-  agp = agp[!agp %in% dgp]
-  x=study[!is.na(study[, has_trait]) & study$germplasmName %in% agp, ]
-
-  dat <- rbind(dat, x)
+  dat <- averages_germplasm(study, has_trait)
 
   nf <- round(nrow(dat) * frac, 0)
   ng = min(nf, max_g)

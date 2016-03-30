@@ -210,7 +210,4 @@ locations <- function(input, output, session){
     })
   })
 
-
-  #dat()
-
 }
