@@ -39,6 +39,11 @@ locationsAddin <- function(){
                                     htmlOutput("site_fieldtrials")
                    )
       ),
+      miniTabPanel("Genotypes per site", icon = icon("info"),
+                   miniContentPanel(padding = 0,
+                                    htmlOutput("site_genotypes")
+                   )
+      ),
       miniTabPanel("Site scatter chart", icon = icon("line-chart"),
                    miniContentPanel(padding = 0,
                                     uiOutput("sitesScatter")

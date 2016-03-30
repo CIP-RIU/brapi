@@ -172,12 +172,13 @@ locations <- function(input, output, session){
   })
 
   output$site_genotypes <- renderUI({
-
+    withProgress(message = 'Getting trial list ...', value = 0, max = 10, {
     stds = brapi::studies()
     #print(studies)
     locs = mrks()
     #print(locs)
     out = "No trials found for this location!"
+    setProgress(4)
 
     # 1st try to find via id if not use unique name
     sid = stds[stds$locationDbId == locs$locationDbId, "studyDbID"]
@@ -188,15 +189,25 @@ locations <- function(input, output, session){
     if(length(sid) != 0){
 
       #TODO implement BRAPI call to study table!
+      study = study_table(sid[1])
+      topgp = get_top_germplasm(study)
+
+      gid = topgp$germplasmDbId
+      gnm = topgp$germplasmName
+      hid = topgp$`Harvest index computing percent`
 
       host = stringr::str_split(Sys.getenv("BRAPI_DB") , "/")[[1]][1]
-      path = "/breeders/trial/"
+      path = "/stock/"
 
       #TODO change for genotypes
-      out = paste0("<a href='http://",host, path, sid, "' target='_blank'>", stds[stds$studyDbId==sid, "name"], "</a>")
+      out = paste0("<a href='http://",host, path, gid,"/view' target='_blank'>", gnm, " (",hid,  ")</a>")
+      txt = paste0("Top genotypes for trait (", "Harvest index" ,"):</br>") # TODO make trait choosable
+      out = paste( out, collapse = ", ")
+      out = paste(txt, out)
     }
-
+    setProgress(8)
     HTML(out)
+    })
   })
 
 

@@ -12,7 +12,7 @@ study_plot(studyId = NULL, observationVariableId = NULL)
 \item{observationVariableId}{integer}
 }
 \value{
-list of study attributes
+list
 }
 \description{
 Gets metadata about a study plot

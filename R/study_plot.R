@@ -2,11 +2,12 @@
 #'
 #' Gets metadata about a study plot
 #'
+#'
 #' @param studyId integer
 #' @param observationVariableId integer
 #' @import httr
 #' @author Reinhard Simon
-#' @return list of study attributes
+#' @return list
 #' @references \url{http://docs.brapi.apiary.io/#reference/study/plot/retrieve-plot-details?console=1}
 #' @export
 study_plot <- function(studyId = NULL, observationVariableId=NULL) {
