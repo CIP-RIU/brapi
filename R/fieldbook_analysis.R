@@ -114,12 +114,14 @@ output$fieldbook_heatmap <- d3heatmap::renderD3heatmap({
 
 #####################
 
-observeEvent(input$butDoPhAnalysis, ({
+#observeEvent(input$butDoPhAnalysis, ({
+output$fbRep <- renderUI({
     DF <- fbInput()
     #y <- input$def_variables
     yn = names(DF)[c(7:ncol(DF))]
     report =  "report_anova.Rmd"
     report_dir = system.file("rmd", package = "brapi")
+    #report_dir <- file.path(getwd(),"inst", "rmd") # for quicker testing
     wd = getwd()
     #result_dir  = file.path(wd, "www", "reports")
     #result_dir  =  system.file("app/www/reports", package = "hidap")
@@ -130,8 +132,9 @@ observeEvent(input$butDoPhAnalysis, ({
 
     rps = "REP" # input$def_rep
     gtp = "germplasmName" #input$def_genotype
-    xmt = attr(DF, "meta")
-    xmt = list(xmt, title = xmt$studyName)
+    # xmt = attr(DF, "meta")
+    # xmt = list(xmt, title = xmt$studyName)
+    xmt = list(title = attr(DF, "meta")$studyName, contact = "x y", site = attr(DF, "meta")$locationName, country = "Z", year = 2016 )
 
     withProgress(message = "Creating report ...",
                  detail = "This may take a while ...", value = 0,{
@@ -162,15 +165,21 @@ observeEvent(input$butDoPhAnalysis, ({
                    output$fb_report <- renderUI("")
                    report = file.path(wd, "www", report_html)
                    print(report)
-                   html <- readLines(report)
+
                    incProgress(3/3)
                  })
-    output$fb_report <- renderUI(HTML(html))
-
+    #output$fb_report <- renderUI(HTML(html))
+    html <- readLines(report)
+    HTML(html)
 
 })
 
-)
+
+# output$fbRep <- renderUI({
+#   html <- readLines("/Users/reinhardsimon/Documents/packages/brapi/inst/apps/fieldbook_analysis/www/report_anova.html")
+#   HTML(html)
+# })
+#)
 
 
 

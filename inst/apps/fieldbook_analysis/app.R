@@ -3,7 +3,7 @@ library(brapi)
 library(shinydashboard)
 library(d3heatmap)
 library(rhandsontable)
-library("shinyURL")
+library(shinyURL)
 
 ui <- dashboardPage(skin = "yellow",
                     dashboardHeader(title = "HIDAP"),
@@ -65,7 +65,8 @@ ui <- dashboardPage(skin = "yellow",
                                                          d3heatmap::d3heatmapOutput("fieldbook_heatmap")
                                                 ),
                                                 tabPanel(title = "Report",
-                                                         htmlOutput("fb_report")
+                                                         #htmlOutput("fb_report")
+                                                         htmlOutput("fbRep")
 
                                                 )
 

@@ -5,6 +5,7 @@ date: '`r format(Sys.time(), "%B %d, %Y, %H:%Mh")`'
 output: 
   html_document:
     toc: true
+    toc_depth: 4
   pdf_document:
     toc: true
   word_document:
@@ -34,9 +35,11 @@ maxp <- params$maxp
 meta <- params$meta
 
 ```
+<!--
 Author affiliations:
 
 Citation: `r meta$contact` (`r meta$year`). *`r meta$title`*. Dataset version: 1. Dataset fingerprint (UNF): ASDFHSJKDF525423. Url: http://dataverse.cipotato.org/123456.
+-->
 
 ```{r}
 # This is an automatedly created report.
@@ -59,6 +62,7 @@ Alternate formats:
 </a>
 
 # Abstract
+
 ```{r , echo = FALSE, results='hide'}
  phs_lbl = "Advanced Trial"
  ttl <- stringr::str_sub(meta$title, 1, 2)
@@ -68,6 +72,7 @@ Alternate formats:
 ```
 
 This trial has the identifier `r meta$title`. It was conducted under the supervision of `r meta$contact`  as a `r phs_lbl` as part of a `r brp_lbl` in `r meta$site`, `r meta$country` in `r meta$year`. A total of `r length(unique(data[, treat]))` clones (including reference clones) were evaluated for `r length(params$trait)` traits.
+
 
 # Materials and Methods
 ## Location characterization
@@ -153,8 +158,18 @@ This report was created using `r s$R.version` on a `r s$platform` running `r s$r
     m = nrow(data)
     off = round(mval * m, 0)
     mval = logical(n)
+    mvan = numeric(n)
+    
+    # Remove all complete NA first
+    # for(i in 1:n) {
+    #   #mvan[i] = nrow(data[is.na(data[, i]), ])
+    #   mval[i] = nrow(data[is.na(data[, i]), ]) == nrow(data)
+    # }
+    
+    
     for(i in 1:n) {
-      mval[i] = nrow(data[!is.na(data[, i]), ]) >= off
+      mvan[i] = nrow(data[is.na(data[, i]), ])
+      mval[i] = nrow(data[is.na(data[, i]), ]) / m  * 100 <= off
     }
     mvnm = names(data)[!mval]
     dat = data
@@ -169,21 +184,24 @@ This report was created using `r s$R.version` on a `r s$platform` running `r s$r
     trts = names(dat)[-c(1,2)]
     dat[, treat] <- as.character(dat[, treat])
     #lc <- st4gi::checkdata01(trts, treat, rep, dat)
+    tbl = dat
     
 ```
-Valid traits: `r paste(names(dat)[-c(1,2)])`
+
 
 The following traits were not analyzed since they had too many missing values (>= 10%): `r paste(mvnm)`. For the remaining traits missing values were imputed using all available information.
+
+Valid traits: **`r paste(names(dat)[-c(1,2)])`**.
 
 ```{r, include = FALSE}
 out <- NULL
 for (k in 1:length(trts)) {
-  # lc <- st4gi::checkdata01(trts[i], treat, rep, dat)
-  # out <- c(out, knit_expand('child_rcbd2.Rmd'))
+   lc <- st4gi::checkdata01(trts[k], treat, rep, tbl)
+   out <- c(out, knit_expand('child_rcbd2.Rmd'))
 }
 ```
 
-`r #paste(knit(text = out), collapse = '\n')`
+`r paste(knit(text = out), collapse = '\n')`
 
 ## Trait correlations
 

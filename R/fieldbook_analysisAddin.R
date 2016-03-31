@@ -40,8 +40,8 @@ fieldbook_analysisAddin <- function(){
 
                        miniTabPanel("Fieldbook report", icon = icon("book"),
                                     miniContentPanel(padding = 0
-                                                     # ,
-                                                     # htmlOutput("rep_loc")
+                                                     ,
+                                                     uiOutput("fbRep")
                                     )
                        )
     )

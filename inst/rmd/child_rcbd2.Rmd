@@ -2,12 +2,12 @@
 i = {{k}}
 ```
 
-###  Analysis for trait `r traits[i]`
+###  Analysis of **`r trts[i]`**
 
 ```{r , echo = FALSE, message=FALSE, warning=FALSE, error=FALSE}
-  at <- suppressWarnings(st4gi::rcbd(traits[i], treat, rep, data, maxp))  
+  at <- suppressWarnings(st4gi::rcbd(trts[i], treat, rep, tbl, maxp))  
   
-  model <- aov(data[, traits[i]] ~ data[, treat] + data[, rep])
+  model <- aov(tbl[, trts[i]] ~ tbl[, treat] + tbl[, rep])
 
 ```
 
@@ -35,10 +35,10 @@ if (at[1, 5] < 0.05 ) {
 The means of your treatments are:
 ```{r, echo=FALSE, comment = NA, results = 'asis'}
 
-x <- tapply(data[, traits[i]], data[, treat], mean)
+x <- tapply(tbl[, trts[i]], tbl[, treat], mean)
 x <- as.data.frame(x)
 x <- cbind(row.names(x), x)
-names(x) <- c(treat, traits[i])
+names(x) <- c(treat, trts[i])
 row.names(x) = 1:nrow(x)
 x[, 2] <- format(x[, 2], digits = 3)
 x[, 2] <- as.numeric(x[, 2])
@@ -57,7 +57,7 @@ pander::pandoc.table(x, digits = 3, justify = "lr")
 `r if(lc$nt < 10 ) {"It is always good to have some visualization of the data. Because the number of treatments in your experiment is not so big, we can plot the data for each treatment:"}`
 
 ```{r, echo = FALSE}
-if (lc$nt < 10 ) msdplot(traits[i], treat, data, conf = 1)
+if (lc$nt < 10 ) msdplot(trts[i], treat, tbl, conf = 1)
 ```
 
 
