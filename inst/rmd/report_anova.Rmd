@@ -49,14 +49,17 @@ Citation: `r meta$contact` (`r meta$year`). *`r meta$title`*. Dataset version: 1
 
 Alternate formats: 
 
+
+<a href="report_anova.pdf" target="_blank">PDF
 <!--
-<a href="report_anova.pdf" target="_blank">
 <img src="PDF.jpg" width = "32" height = "32" alt = "PDF"/>
-</a>
-<a href="report_anova.docx" target="_blank">
-<img src="word.png" width = "32" height = "32" alt = "Word"/>
-</a>
 -->
+</a>
+<a href="report_anova.docx" target="_blank">DOCX
+<!--
+<img src="word.png" width = "32" height = "32" alt = "Word"/>
+-->
+</a>
 
 # Abstract
 ```{r , echo = FALSE, results='hide'}
@@ -97,7 +100,21 @@ In this model we assume that the errors are independent and have a normal distri
 
 The following traits are analyzed: **`r paste(params$trait, collapse = ", ")`**.
 
-The following germplasm was analyzed: **`r paste(unique(data[, params$treat]), collapse = ", ")`**.
+```{r stocklink, echo=TRUE, results="hide"}
+gid = unique(data$germplasmDbId)
+gnm = unique(data$germplasmName)
+
+host = stringr::str_split(Sys.getenv("BRAPI_DB") , "/")[[1]][1]
+      path = "/stock/"
+
+      #TODO change for genotypes
+      out = paste0("<a href='http://",host, path, gid,"/view' target='_blank'>",gnm,"</a>")
+      txt = paste0("") # TODO make trait choosable
+      out = paste( out, collapse = ", ")
+      gidOut = paste(txt, out)
+```
+
+The following germplasm was analyzed: `r paste(gidOut)`.
 
 ## Computational tools
 ```{r, results = 'hide', echo=FALSE}
