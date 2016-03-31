@@ -3,6 +3,7 @@ library(brapi)
 library(shinydashboard)
 library(d3heatmap)
 library(rhandsontable)
+library("shinyURL")
 
 ui <- dashboardPage(skin = "yellow",
                     dashboardHeader(title = "HIDAP"),
@@ -13,6 +14,11 @@ ui <- dashboardPage(skin = "yellow",
                                  tabName = "phn_dashboard", icon = icon("map-o"))
                                  ,
                                  numericInput("fbaInput", "Fieldbook ID", 142, 1, 9999)
+                          ,
+                          HTML("<div style='display:none'>"),
+                          shinyURL.ui(label = "",width=0, copyURL = F, tinyURL = F),
+                          #shinyURL.ui("URL", tinyURL = F)
+                          HTML("</div>")
 
 
                         )
@@ -23,11 +29,11 @@ ui <- dashboardPage(skin = "yellow",
                         tabItem(tabName = "phn_dashboard",
                                 fluidRow(
                                   column(width = 8,
-                                         tabBox(width = NULL, selected = "fieldbook_heatmap",
+                                         tabBox(width = NULL, selected = "Map", id = "tabAnalysis",
                                                 tabPanel("Correlation",
                                                          qtlcharts::iplotCorr_output('vcor_output', height = 400)
                                                 ),
-                                                tabPanel("Fieldbook Map",
+                                                tabPanel("Map",
                                                          d3heatmap::d3heatmapOutput("fieldbook_heatmap")
                                                 ),
                                                 tabPanel(title = "Report",
@@ -77,6 +83,7 @@ ui <- dashboardPage(skin = "yellow",
 ############################################################
 
 sv <- function(input, output, session) ({
+  shinyURL.server()
   brapi::fieldbook_analysis(input, output, session)
 })
 
