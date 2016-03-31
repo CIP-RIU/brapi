@@ -1,7 +1,7 @@
 library(shiny)
-library(miniUI)
-library(leaflet)
-library(ggplot2)
+require(miniUI)
+require(ggplot2)
+require(leaflet)
 
 locationsAddin <- function(){
   ui <- miniPage(
