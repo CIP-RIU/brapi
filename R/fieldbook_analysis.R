@@ -102,14 +102,8 @@ output$fieldbook_heatmap <- d3heatmap::renderD3heatmap({
                                  # blk = input[["def_block"]],
                                  plt = "PLOT"  #input[["def_plot"]]
     )
-    #print(head(fm))
     amap = fm[["map"]]
     anot = fm[["notes"]]
-    #print(getwd())
-    # saveRDS(amap, file = file.path(getwd(), "inst", "amap.rds"))
-    # saveRDS(anot, file = file.path(getwd(), "inst", "anot.rds"))
-    #
-    #print(head(amap))
     d3heatmap(x = amap,
              cellnote = anot,
              colors = "Blues",
@@ -118,6 +112,63 @@ output$fieldbook_heatmap <- d3heatmap::renderD3heatmap({
 })
 
 
+#####################
+
+observeEvent(input$butDoPhAnalysis, ({
+    DF <- fbInput()
+    #y <- input$def_variables
+    y = names(DF)[c(7:ncol(DF))]
+    report =  "report_anova.Rmd"
+    report_dir = system.file("rmd", package = "brapi")
+    wd = getwd()
+    #result_dir  = file.path(wd, "www", "reports")
+    #result_dir  =  system.file("app/www/reports", package = "hidap")
+    result_dir = tempdir()
+    usr = Sys.getenv("USERNAME")
+    if (usr=="") usr = Sys.getenv("USER")
+    author =  paste0(usr, " using HIDAP")
+
+    rps = "REP" # input$def_rep
+    gtp = "germplasmName" #input$def_genotype
+
+    withProgress(message = "Creating report ...",
+                 detail = "This may take a while ...", value = 0,{
+                   try({
+                     devtools::in_dir(report_dir, {
+                       #print("X")
+                       rmarkdown::render(report,
+                                         output_format = c("pdf_document", "word_document",
+                                                           "html_document" )
+                                         ,
+                                         output_dir = file.path(wd, "www"),
+                                         params = list(
+                                           meta = attr(DF, "meta"),
+                                           trait = y,
+                                           treat = gtp,
+                                           rep  = rps,
+                                           data = DF,
+                                           maxp = 0.1,
+                                           author = author))
+                       #print("Y")
+                     }) # in_dir
+                     incProgress(1/3)
+                   }) # try
+
+                   try({
+                     report_html = stringr::str_replace(report, ".Rmd", ".html")
+                   })
+                   output$fb_report <- renderUI("")
+                   report = file.path(wd, "www", report_html)
+                   print(report)
+                   html <- readLines(report)
+                   incProgress(3/3)
+                 })
+    output$fb_report <- renderUI(HTML(html))
+
+
+})
+
+)
 
 
 

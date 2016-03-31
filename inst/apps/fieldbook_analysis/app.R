@@ -30,8 +30,8 @@ ui <- dashboardPage(skin = "yellow",
                                                 tabPanel("Fieldbook Map",
                                                          d3heatmap::d3heatmapOutput("fieldbook_heatmap")
                                                 ),
-                                                tabPanel("Report",
-                                                         htmlOutput("rep_loc")
+                                                tabPanel(title = "Report",
+                                                         htmlOutput("fb_report")
 
                                                 )
 

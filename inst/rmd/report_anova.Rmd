@@ -1,0 +1,165 @@
+---
+title: "ANOVA for a RCBD trial: `r params$meta$title`"
+author: '`r params$author`'
+date: '`r format(Sys.time(), "%B %d, %Y, %H:%Mh")`'
+output: 
+  html_document:
+    rmdformats::html_clean:
+      highlight: kate
+  pdf_document:
+    toc: true
+    toc_depth: 3
+    highlight: zenburn
+  word_document:
+    toc: true
+    highlight: "tango"
+params: 
+  meta: "no data"
+  trait: "no data"
+  treat: "no data"
+  rep: "no data"
+  data: "no data"
+  maxp: "no data"
+  author: "no data"
+  formats: TRUE
+---
+
+```{r, echo = FALSE}
+library(knitr)
+library(rmdformats)
+
+
+traits <- params$trait
+treat <- params$treat
+rep <- params$rep
+data <- params$data
+maxp <- params$maxp
+meta <- params$meta
+
+```
+Author affiliations:
+
+Citation: `r meta$contact` (`r meta$year`). *`r meta$title`*. Dataset version: 1. Dataset fingerprint (UNF): ASDFHSJKDF525423. Url: http://dataverse.cipotato.org/123456.
+
+```{r}
+# This is an automatedly created report.
+
+# See more details in section on materials.
+```
+
+Alternate formats: 
+
+<!--
+<a href="report_anova.pdf" target="_blank">
+<img src="PDF.jpg" width = "32" height = "32" alt = "PDF"/>
+</a>
+<a href="report_anova.docx" target="_blank">
+<img src="word.png" width = "32" height = "32" alt = "Word"/>
+</a>
+-->
+
+# Abstract
+```{r , echo = FALSE, results='hide'}
+ phs_lbl = "Advanced Trial"
+ ttl <- stringr::str_sub(meta$title, 1, 2)
+ # if (stringr::str_detect(ttl, "PT")) {phs_lbl = "Preliminary Trial"}
+ # if (stringr::str_detect(ttl, "OT")) {phs_lbl = "Observation Trial"}
+ brp_lbl = "Yield Breeding Program"
+```
+
+This trial has the identifier `r meta$title`. It was conducted under the supervision of `r meta$contact`  as a `r phs_lbl` as part of a `r brp_lbl` in `r meta$site`, `r meta$country` in `r meta$year`. A total of `r length(unique(data[, treat]))` clones (including reference clones) were evaluated for `r length(params$trait)` traits.
+
+# Materials and Methods
+## Location characterization
+### Installation
+### Geographic and climate characterization
+### Weather during planting season
+### Soil
+### Field management
+### Observations on special events
+## Materials
+## Trait descriptions (from ontology)
+## Model specification and data description
+
+There is data from `r length(unique(data[, treat]))` treatments, evaluated using a randomize complete block design with `r unique(data[, rep])` blocks. The statistical model is
+$$
+y_{ij} = \mu + \tau_i + \beta_j + \epsilon_{ij}
+$$
+where
+
+* $y_{ij}$ is the observed response with treatment $i$ and block $j$.
+* $\mu$ is the mean response over all treatments and blocks.
+* $\tau_i$ is the effect for treatment $i$.
+* $\beta_j$ is the effect for block $j$.
+* $\epsilon_{ij}$ is the error term.
+
+In this model we assume that the errors are independent and have a normal distribution with common variance, that is, $\epsilon_{ij} \sim N(0,\sigma_{\epsilon}^2)$.
+
+The following traits are analyzed: **`r paste(params$trait, collapse = ", ")`**.
+
+The following germplasm was analyzed: **`r paste(unique(data[, params$treat]), collapse = ", ")`**.
+
+## Computational tools
+```{r, results = 'hide', echo=FALSE}
+s <- sessionInfo()
+```
+
+This report was created using `r s$R.version` on a `r s$platform` running `r s$running` in `r s$locacel`. The following base packages were loaded: 
+**`r paste(unlist(s$basePkgs), collapse = ", ")`** and the following additional packages: 
+**`r paste(names(s$otherPkgs), collapse = ", ")`**.
+
+# Results
+## Raw data
+## Trait summaries
+## Trait analyses
+
+```{r traits, echo=TRUE, results='hide'}
+    
+    # data = data[, c(treat, "REP", params$trait)]
+    # 
+    # data[, treat] <- as.factor(data[, treat])
+
+# exclude the response variable and empty variable for RF imputation
+    #datas <- names(data)[!names(data) %in% c(treat, "PED1")] # TODO replace "PED1" by a search
+    #datas <- names(data)[!names(data) %in% c(treat)]
+    
+    #x <- data[, datas]
+    
+    # x <- data[, trait]
+    # for(i in 1:ncol(x)){
+    #   x[, i] <- as.numeric(x[, i])
+    # }
+    # 
+    # y <- data[, treat]
+    # if (any(is.na(x))){
+    #   dat <- randomForest::rfImpute(x = x, y = y )
+    #   data <- cbind(data[,"REP"], dat)
+    #   
+    # }
+    #   names(data)[1] <- "REP"
+    #   names(data)[2] <- treat
+      #lc <- st4gi::checkdata01(traits, treat, rep, data)    
+    
+```
+  
+
+```{r, include = FALSE}
+out <- NULL
+for (k in 1:length(traits)) {
+  #out <- c(out, knit_expand('child_rcbd2.Rmd'))
+}
+```
+
+`r #paste(knit(text = out), collapse = '\n')`
+
+## Trait correlations
+
+## Variety candidate selection
+
+# Summary
+
+# References
+
+## Data sources
+
+## Literature
