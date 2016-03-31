@@ -4,12 +4,9 @@ author: '`r params$author`'
 date: '`r format(Sys.time(), "%B %d, %Y, %H:%Mh")`'
 output: 
   html_document:
-    rmdformats::html_clean:
-      highlight: kate
+    toc: true
   pdf_document:
     toc: true
-    toc_depth: 3
-    highlight: zenburn
   word_document:
     toc: true
     highlight: "tango"
@@ -65,8 +62,8 @@ Alternate formats:
 ```{r , echo = FALSE, results='hide'}
  phs_lbl = "Advanced Trial"
  ttl <- stringr::str_sub(meta$title, 1, 2)
- # if (stringr::str_detect(ttl, "PT")) {phs_lbl = "Preliminary Trial"}
- # if (stringr::str_detect(ttl, "OT")) {phs_lbl = "Observation Trial"}
+ if (stringr::str_detect(ttl, "PT")) {phs_lbl = "Preliminary Trial"}
+ if (stringr::str_detect(ttl, "OT")) {phs_lbl = "Observation Trial"}
  brp_lbl = "Yield Breeding Program"
 ```
 
@@ -100,7 +97,7 @@ In this model we assume that the errors are independent and have a normal distri
 
 The following traits are analyzed: **`r paste(params$trait, collapse = ", ")`**.
 
-```{r stocklink, echo=TRUE, results="hide"}
+```{r , echo = FALSE, results='hide'}
 gid = unique(data$germplasmDbId)
 gnm = unique(data$germplasmName)
 
@@ -130,40 +127,59 @@ This report was created using `r s$R.version` on a `r s$platform` running `r s$r
 ## Trait summaries
 ## Trait analyses
 
-```{r traits, echo=TRUE, results='hide'}
+```{r , echo = FALSE, results='hide'}
     
-    # data = data[, c(treat, "REP", params$trait)]
+    data = data[, c(treat, "REP", traits)]
     # 
-    # data[, treat] <- as.factor(data[, treat])
+    data[, treat] <- as.factor(data[, treat])
 
 # exclude the response variable and empty variable for RF imputation
-    #datas <- names(data)[!names(data) %in% c(treat, "PED1")] # TODO replace "PED1" by a search
+    datas <- names(data)[!names(data) %in% c(treat, "PED1")] # TODO replace "PED1" by a search
     #datas <- names(data)[!names(data) %in% c(treat)]
     
-    #x <- data[, datas]
+    x <- data[, datas]
     
     # x <- data[, trait]
-    # for(i in 1:ncol(x)){
-    #   x[, i] <- as.numeric(x[, i])
-    # }
+    for(i in 1:ncol(x)){
+      x[, i] <- as.numeric(x[, i])
+    }
     # 
-    # y <- data[, treat]
-    # if (any(is.na(x))){
-    #   dat <- randomForest::rfImpute(x = x, y = y )
-    #   data <- cbind(data[,"REP"], dat)
-    #   
-    # }
-    #   names(data)[1] <- "REP"
-    #   names(data)[2] <- treat
-      #lc <- st4gi::checkdata01(traits, treat, rep, data)    
+    y <- data[, treat]
+    
+    # determine which traits are having more than 10% missing values
+    
+    mval = 0.1
+    n = ncol(data)
+    m = nrow(data)
+    off = round(mval * m, 0)
+    mval = logical(n)
+    for(i in 1:n) {
+      mval[i] = nrow(data[!is.na(data[, i]), ]) >= off
+    }
+    mvnm = names(data)[!mval]
+    dat = data
+    if (any(is.na(x))){
+      #capture.output({
+      dat <- randomForest::rfImpute(x = x, y = y )
+      names(dat)[1] <- treat
+      dat = dat[, mval]
+    }
+      #names(data)[1] <- "REP"
+     #  xnm = names(dat)
+    trts = names(dat)[-c(1,2)]
+    dat[, treat] <- as.character(dat[, treat])
+    #lc <- st4gi::checkdata01(trts, treat, rep, dat)
     
 ```
-  
+Valid traits: `r paste(names(dat)[-c(1,2)])`
+
+The following traits were not analyzed since they had too many missing values (>= 10%): `r paste(mvnm)`. For the remaining traits missing values were imputed using all available information.
 
 ```{r, include = FALSE}
 out <- NULL
-for (k in 1:length(traits)) {
-  #out <- c(out, knit_expand('child_rcbd2.Rmd'))
+for (k in 1:length(trts)) {
+  # lc <- st4gi::checkdata01(trts[i], treat, rep, dat)
+  # out <- c(out, knit_expand('child_rcbd2.Rmd'))
 }
 ```
 

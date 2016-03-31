@@ -117,7 +117,7 @@ output$fieldbook_heatmap <- d3heatmap::renderD3heatmap({
 observeEvent(input$butDoPhAnalysis, ({
     DF <- fbInput()
     #y <- input$def_variables
-    y = names(DF)[c(7:ncol(DF))]
+    yn = names(DF)[c(7:ncol(DF))]
     report =  "report_anova.Rmd"
     report_dir = system.file("rmd", package = "brapi")
     wd = getwd()
@@ -130,6 +130,8 @@ observeEvent(input$butDoPhAnalysis, ({
 
     rps = "REP" # input$def_rep
     gtp = "germplasmName" #input$def_genotype
+    xmt = attr(DF, "meta")
+    xmt = list(xmt, title = xmt$studyName)
 
     withProgress(message = "Creating report ...",
                  detail = "This may take a while ...", value = 0,{
@@ -142,8 +144,8 @@ observeEvent(input$butDoPhAnalysis, ({
                                          ,
                                          output_dir = file.path(wd, "www"),
                                          params = list(
-                                           meta = attr(DF, "meta"),
-                                           trait = y,
+                                           meta = xmt,
+                                           trait = yn,
                                            treat = gtp,
                                            rep  = rps,
                                            data = DF,
