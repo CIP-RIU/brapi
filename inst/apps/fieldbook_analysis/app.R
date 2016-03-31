@@ -29,20 +29,11 @@ ui <- dashboardPage(skin = "yellow",
                         tabItem(tabName = "phn_dashboard",
                                 fluidRow(
                                   column(width = 8,
-                                         tabBox(width = NULL, selected = "Map", id = "tabAnalysis",
-                                                tabPanel("Correlation",
-                                                         qtlcharts::iplotCorr_output('vcor_output', height = 400)
-                                                ),
-                                                tabPanel("Map",
-                                                         d3heatmap::d3heatmapOutput("fieldbook_heatmap")
-                                                ),
-                                                tabPanel(title = "Report",
-                                                         htmlOutput("fb_report")
-
-                                                )
-
-
-
+                                         box(width = NULL,
+                                             title = "Fieldbook",
+                                             #p(class = 'text-center', downloadButton('locsDL', 'Download Filtered Data')),
+                                             rHandsontableOutput("hotFieldbook", height = 400)
+                                             #locationsUI("location")
                                          )
                                   )
                                   ,
@@ -66,13 +57,23 @@ ui <- dashboardPage(skin = "yellow",
                                 ,
                                 fluidRow(
                                   column(width = 12,
-                                         box(width = NULL,
-                                             title = "Fieldbook",
-                                             #p(class = 'text-center', downloadButton('locsDL', 'Download Filtered Data')),
-                                             rHandsontableOutput("hotFieldbook", height = 400)
-                                             #locationsUI("location")
+                                         tabBox(width = NULL, selected = "Map", id = "tabAnalysis",
+                                                tabPanel("Correlation",
+                                                         qtlcharts::iplotCorr_output('vcor_output', height = 400)
+                                                ),
+                                                tabPanel("Map",
+                                                         d3heatmap::d3heatmapOutput("fieldbook_heatmap")
+                                                ),
+                                                tabPanel(title = "Report",
+                                                         htmlOutput("fb_report")
+
+                                                )
+
+
+
                                          )
                                   )
+
                                 )
                         )
 
