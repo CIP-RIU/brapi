@@ -136,6 +136,8 @@ output$fbRep <- renderUI({
     # xmt = list(xmt, title = xmt$studyName)
     xmt = list(title = attr(DF, "meta")$studyName, contact = "x y", site = attr(DF, "meta")$locationName, country = "Z", year = 2016 )
 
+    writeLines(file.path(wd, "www"), con="log.txt")
+
     withProgress(message = "Creating report ...",
                  detail = "This may take a while ...", value = 0,{
                    try({
@@ -164,7 +166,7 @@ output$fbRep <- renderUI({
                    })
                    output$fb_report <- renderUI("")
                    report = file.path(wd, "www", report_html)
-                   print(report)
+
 
                    incProgress(3/3)
                  })
