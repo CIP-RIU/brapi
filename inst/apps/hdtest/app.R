@@ -12,7 +12,7 @@ library(dplyr)
 set_brapi("http://sgn:eggplant@sweetpotatobase-test.sgn.cornell.edu", 80)
 brapi_auth("rsimon16", "sweetpotato")
 
-brapi_host = ("http://sgn:eggplant@sweetpotatobase-test.sgn.cornell.edu")
+brapi_host = "sgn:eggplant@sweetpotatobase-test.sgn.cornell.edu"
 
 mycss <- "
 #plot-container {
@@ -36,16 +36,16 @@ ui <- dashboardPage(skin = "yellow",
                     dashboardHeader(title = "HIDAP"),
                     dashboardSidebar(
                       sidebarMenu(
-                        menuItem("Phenotype",
+                        menuItem("Phenotype", icon = icon("leaf"),
                                  menuSubItem("Analysis",
-                                             tabName = "phe_dashboard", icon = icon("map-o"))
+                                             tabName = "phe_dashboard", icon = icon("calculator"))
                                  ,
                                  numericInput("fbaInput", "Fieldbook ID", 142, 1, 9999)
 
 
                         ),
 
-                        menuItem("Environment", tabName = "env_dashboard", icon = icon("map-o")
+                        menuItem("Environment", tabName = "env_dashboard", icon = icon("globe")
 
 
                         )
@@ -62,7 +62,8 @@ ui <- dashboardPage(skin = "yellow",
                                                          leafletOutput("mapLocs")
                                                 ),
                                                 tabPanel("ReportOfLocations",
-                                                         htmlOutput("rep_loc")
+                                                         #htmlOutput("rep_loc")
+                                                         HTML("<h1>Under development!</h1>")
                                                 )
                                          )
                                   )
@@ -99,7 +100,7 @@ ui <- dashboardPage(skin = "yellow",
                         ),
                         tabItem(tabName = "phe_dashboard",
                                 fluidRow(
-                                  column(width = 8,
+                                  column(width = 12,
                                          box(width = NULL,
                                              title = "Fieldbook",
                                              #p(class = 'text-center', downloadButton('locsDL', 'Download Filtered Data')),
@@ -111,7 +112,7 @@ ui <- dashboardPage(skin = "yellow",
                                 )
                                 ,
                                 fluidRow(
-                                  column(width = 8,
+                                  column(width = 12,
                                          tabBox(width = NULL, selected = "Map", id = "tabAnalysis",
                                                 tabPanel("Correlation",
                                                          div(id = "plot-container",
