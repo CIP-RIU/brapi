@@ -12,6 +12,8 @@ library(dplyr)
 set_brapi("http://sgn:eggplant@sweetpotatobase-test.sgn.cornell.edu", 80)
 brapi_auth("rsimon16", "sweetpotato")
 
+brapi_host = ("http://sgn:eggplant@sweetpotatobase-test.sgn.cornell.edu")
+
 mycss <- "
 #plot-container {
 position: relative;
@@ -492,6 +494,7 @@ locations <- function(input, output, session){
 
       if(length(sid) != 0){
         host = stringr::str_split(Sys.getenv("BRAPI_DB") , "/")[[1]][1]
+        host = brapi_host
         path = "/breeders/trial/"
 
         out = paste0("<br><a href='http://",host, path, sid, "' target='_blank'>", stds[stds$studyDbId==sid, "name"], "</a>") %>%
@@ -530,6 +533,7 @@ locations <- function(input, output, session){
         hid = topgp$`Harvest index computing percent`
 
         host = stringr::str_split(Sys.getenv("BRAPI_DB") , "/")[[1]][1]
+        host = brapi_host
         path = "/stock/"
 
         #TODO change for genotypes
