@@ -5,11 +5,7 @@ date: "March 26, 2016"
 output: 
   html_document:
     theme: united
-  pdf_document:
-    toc: true
-    highlight: zenburn
-  word_document:
-    highlight: "tango"
+runtime: shiny
 params: 
   locs: "no data"
 ---
