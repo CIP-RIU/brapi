@@ -475,7 +475,7 @@ locations <- function(input, output, session){
         html <- readLines(fn)
         })
 
-      }, finally = message("Finished running report!"))
+      }, finally = message(paste("Finished running report!", fn)))
       message = paste("Report should be in:", fn)
 
     }) # progress
