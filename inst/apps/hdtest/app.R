@@ -462,7 +462,8 @@ locations <- function(input, output, session){
       if(file.exists(html_file)){
         unlink(html_file)
       }
-      try({
+      fn = report_dir
+      tryCatch({
         devtools::in_dir(report_dir, {
         fn <- rmarkdown::render(report,
                                 output_dir = report_dir,
@@ -474,8 +475,8 @@ locations <- function(input, output, session){
         html <- readLines(fn)
         })
 
-      })
-
+      }, finally = message("Finished running report!"))
+      message = paste("Report should be in:", fn)
 
     }) # progress
 
