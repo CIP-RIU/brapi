@@ -463,10 +463,12 @@ locations <- function(input, output, session){
         unlink(html_file)
       }
       try({
+        devtools::in_dir(report_dir, {
         fn <- rmarkdown::render(report,
                                 output_dir = report_dir,
                                 params = list(
                                   locs = locs))
+        })
 
       })
       setProgress(8)
