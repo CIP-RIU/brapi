@@ -8,6 +8,7 @@ library(shinyURL)
 library(qtlcharts)
 library(leaflet)
 library(dplyr)
+library(withr)
 
 set_brapi("http://sgn:eggplant@sweetpotatobase-test.sgn.cornell.edu", 80)
 brapi_auth("rsimon16", "sweetpotato")
@@ -464,7 +465,7 @@ locations <- function(input, output, session){
       }
       fn = report_dir
       tryCatch({
-        devtools::in_dir(report_dir, {
+        withr::with_dir(report_dir, {
         fn <- rmarkdown::render(report,
                                 output_dir = report_dir,
                                 run_pandoc = TRUE,
