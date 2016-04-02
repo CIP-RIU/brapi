@@ -458,6 +458,10 @@ locations <- function(input, output, session){
       report_dir <- file.path(getwd(), "www", "reports")
 
       setProgress(5)
+      html_file = file.path(report_dir, "report_location.html")
+      if(file.exists(html_file)){
+        unlink(html_file)
+      }
       try({
         fn <- rmarkdown::render(report,
                                 output_dir = report_dir,
@@ -467,8 +471,8 @@ locations <- function(input, output, session){
       })
       setProgress(8)
 
-      #html <- readLines(file.path(rep_dir, "report_location.html"))
-      html = fn
+      html <- readLines(html_file)
+
     }) # progress
 
     HTML(html)
