@@ -466,14 +466,16 @@ locations <- function(input, output, session){
         devtools::in_dir(report_dir, {
         fn <- rmarkdown::render(report,
                                 output_dir = report_dir,
+                                run_pandoc = TRUE,
                                 params = list(
                                   locs = locs))
+        setProgress(8)
+
+        html <- readLines(fn)
         })
 
       })
-      setProgress(8)
 
-      html <- readLines(html_file)
 
     }) # progress
 
