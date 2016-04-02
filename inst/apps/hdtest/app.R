@@ -58,13 +58,13 @@ ui <- dashboardPage(skin = "yellow",
                         tabItem(tabName = "env_dashboard",
                                 fluidRow(
                                   column(width = 8,
-                                         tabBox(width = NULL,
+                                         tabBox(width = NULL, id = "tabLocation",
                                                 tabPanel("Map",
                                                          leafletOutput("mapLocs")
                                                 ),
                                                 tabPanel("Report",
-                                                         htmlOutput("rep_loc")
-                                                         #HTML("<h1>Under development!</h1>")
+                                                         #htmlOutput("rep_loc")
+                                                         HTML("<h1>Under development!</h1>")
                                                 )
                                          )
                                   )
