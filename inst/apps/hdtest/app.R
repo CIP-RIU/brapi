@@ -58,12 +58,12 @@ ui <- dashboardPage(skin = "yellow",
                                 fluidRow(
                                   column(width = 8,
                                          tabBox(width = NULL,
-                                                tabPanel("MapOfTrials",
+                                                tabPanel("Map",
                                                          leafletOutput("mapLocs")
                                                 ),
-                                                tabPanel("ReportOfLocations",
-                                                         #htmlOutput("rep_loc")
-                                                         HTML("<h1>Under development!</h1>")
+                                                tabPanel("Report",
+                                                         htmlOutput("rep_loc")
+                                                         #HTML("<h1>Under development!</h1>")
                                                 )
                                          )
                                   )
@@ -455,21 +455,20 @@ locations <- function(input, output, session){
       report = paste0("report_location.Rmd")
       #report = file.path("inst", "rmd", "report_location.Rmd")
       report = file.path(system.file("rmd", package = "brapi"), "report_location.Rmd")
-      rep_dir <- "www/reports/"
-      if(!file.exists(rep_dir)){
-        rep_dir = tempdir()
-      }
+      report_dir <- file.path(getwd(), "www", "reports")
 
       setProgress(5)
+      try({
+        fn <- rmarkdown::render(report,
+                                output_dir = report_dir,
+                                params = list(
+                                  locs = locs))
 
-      fn <- rmarkdown::render(report,
-                              #output_format = "all",
-                              output_dir = rep_dir,
-                              params = list(
-                                locs = locs))
+      })
       setProgress(8)
 
-      html <- readLines(file.path(rep_dir, "report_location.html"))
+      #html <- readLines(file.path(rep_dir, "report_location.html"))
+      html = fn
     }) # progress
 
     HTML(html)

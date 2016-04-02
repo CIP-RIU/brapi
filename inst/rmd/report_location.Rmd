@@ -5,7 +5,6 @@ date: "March 26, 2016"
 output: 
   html_document:
     theme: united
-runtime: shiny
 params: 
   locs: "no data"
 ---
