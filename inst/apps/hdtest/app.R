@@ -10,10 +10,6 @@ library(leaflet)
 library(dplyr)
 library(withr)
 
-set_brapi("http://sgn:eggplant@sweetpotatobase-test.sgn.cornell.edu", 80)
-brapi_auth("rsimon16", "sweetpotato")
-
-brapi_host = "sgn:eggplant@sweetpotatobase-test.sgn.cornell.edu"
 
 mycss <- "
 #plot-container {
@@ -298,11 +294,12 @@ fieldbook_analysis <- function(input, output, session){
                    try({
                      devtools::in_dir(report_dir, {
                        #print("X")
-                       rmarkdown::render(report_src,
-                                         output_format = c("pdf_document", "word_document",
+                       fn = rmarkdown::render(report_src,
+                                         output_format = c(#"pdf_document", "word_document",
                                                            "html_document" )
                                          ,
                                          output_dir = result_dir,
+                                         run_pandoc = TRUE,
                                          params = list(
                                            meta = xmt,
                                            trait = yn,
@@ -564,6 +561,11 @@ locations <- function(input, output, session){
 ############################################################
 
 sv <- function(input, output, session) ({
+  set_brapi("http://sgn:eggplant@sweetpotatobase-test.sgn.cornell.edu", 80)
+  brapi_auth("rsimon16", "sweetpotato")
+
+  brapi_host = "sgn:eggplant@sweetpotatobase-test.sgn.cornell.edu"
+
   shinyURL.server()
   fieldbook_analysis(input, output, session)
   locations(input, output, session)
