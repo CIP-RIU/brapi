@@ -45,8 +45,8 @@ ui <- dashboardPage(skin = "yellow",
                                                          leafletOutput("mapLocs")
                                                 ),
                                                 tabPanel("Report",
-                                                         #htmlOutput("rep_loc")
-                                                         HTML("<h1>Under development!</h1>")
+                                                         htmlOutput("rep_loc")
+                                                         #HTML("<h1>Under development!</h1>")
                                                 )
                                          )
                                   )
@@ -459,9 +459,10 @@ locations <- function(input, output, session){
         })
 
       }, finally = message(paste("Finished running report!", fn)))
-      message = paste("Report should be in:", fn)
+
 
     }) # progress
+    message = paste("Report should be in:", fn)
 
     HTML(html)
   })
