@@ -435,17 +435,19 @@ locations <- function(input, output, session){
       locs <- dat_sel()
       n = nrow(locs)
       if(n<1) return("no locations in view!")
-      report = paste0(getwd(), "/reports/","report_location.Rmd")
+      report = paste0("report_location.Rmd")
+      message(report)
       #report = file.path("inst", "rmd", "report_location.Rmd")
       #report = file.path(getwd(), "reports", "report_location.Rmd")
-      report_dir <- paste0( "www/", "reports")
+      report_dir <- paste0( "reports")
 
       setProgress(5)
-      html_file = file.path(report_dir, "report_location.html")
-      if(file.exists(html_file)){
-        unlink(html_file)
-      }
-      fn = report_dir
+      #html_file = file.path(report_dir, "report_location.html")
+      # if(file.exists(html_file)){
+      #   unlink(html_file)
+      # }
+      #fn = report_dir
+      fn=""
       tryCatch({
         withr::with_dir(report_dir, {
         fn <- rmarkdown::render(report,
