@@ -113,7 +113,7 @@ ui <- dashboardPage(skin = "yellow",
                                          tabBox(width = NULL, selected = "Map", id = "tabAnalysis",
                                                 tabPanel("Correlation",
                                                          div(id = "plot-container",
-                                                             tags$img(src = "http://www.ajaxload.info/images/exemples/35.gif",
+                                                             tags$img(src = "/www/35.gif",
                                                                       id = "loading-spinner"),
                                                              qtlcharts::iplotCorr_output('vcor_output', height = 400)
                                                          )
@@ -452,8 +452,8 @@ locations <- function(input, output, session){
       if(n<1) return("no locations in view!")
       report = paste0("report_location.Rmd")
       #report = file.path("inst", "rmd", "report_location.Rmd")
-      report = file.path(system.file("rmd", package = "brapi"), "report_location.Rmd")
-      report_dir <- file.path(getwd(), "www", "reports")
+      report = file.path("reports", "report_location.Rmd")
+      report_dir <- file.path( "www", "reports")
 
       setProgress(5)
       html_file = file.path(report_dir, "report_location.html")

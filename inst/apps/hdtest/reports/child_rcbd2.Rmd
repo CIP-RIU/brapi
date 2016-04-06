@@ -1,0 +1,74 @@
+```{r, echo = FALSE}
+i = {{k}}
+```
+
+###  Analysis of **`r trts[i]`**
+
+```{r , echo = FALSE, message=FALSE, warning=FALSE, error=FALSE}
+  at <- suppressWarnings(st4gi::rcbd(trts[i], treat, rep, tbl, maxp))  
+  
+  model <- aov(tbl[, trts[i]] ~ tbl[, treat] + tbl[, rep])
+
+```
+
+`r if(lc$c1 == 1 & lc$c2 == 1 ) {"You have fitted a linear model for a RCBD. The ANOVA table for your model is:"}`
+
+```{r, echo=FALSE, comment = NA, results = 'asis',message=FALSE, warning=FALSE, error=FALSE}
+pander::pandoc.table(at, justify = "lrrrrr", digits = 6)
+```
+
+`r if(lc$c3 == 0)  paste("You have some missing values (", format(lc$pmis * 100, digits = 3), "%) and they have been estimated before running ANOVA.")`
+
+```{r , echo = FALSE}
+if (at[1, 5] < 0.05 ) {
+ txt = paste("The p-value for treatments is",
+             format(at[1, 5], digits = 6, scientific = FALSE),
+             "which is significant at the 5% level.")  
+} else {
+  txt = ""
+}
+
+```
+
+`r txt`
+
+The means of your treatments are:
+```{r, echo=FALSE, comment = NA, results = 'asis'}
+
+x <- tapply(tbl[, trts[i]], tbl[, treat], mean)
+x <- as.data.frame(x)
+x <- cbind(row.names(x), x)
+names(x) <- c(treat, trts[i])
+row.names(x) = 1:nrow(x)
+x[, 2] <- format(x[, 2], digits = 3)
+x[, 2] <- as.numeric(x[, 2])
+pander::pandoc.table(x, digits = 3, justify = "lr")
+
+```
+
+```{r, echo = FALSE, fig.height = 8, fig.width = 10}
+
+  #z=x[order(x[traits[i]]), ]
+  z=x[order(x[2]), ]
+  dotchart(z[,2], labels = z[,1])
+
+```
+
+`r if(lc$nt < 10 ) {"It is always good to have some visualization of the data. Because the number of treatments in your experiment is not so big, we can plot the data for each treatment:"}`
+
+```{r, echo = FALSE}
+if (lc$nt < 10 ) msdplot(trts[i], treat, tbl, conf = 1)
+```
+
+
+Do not forget the assumptions of the model. It is supposed that the error has a normal distribution with the same variance for all the treatments. The following plots must help you evaluate this:
+
+```{r, echo = FALSE, fig.height = 5, fig.width = 10}
+
+  par(mfrow = c(1, 2))
+  plot(model, which = 1)
+  plot(model, which = 2)
+
+```
+
+Funnel shapes for the first plot may suggest heterogeneity of variances while departures from the theoretical normal line are symptoms of lack of normality.
