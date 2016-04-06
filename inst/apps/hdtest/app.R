@@ -35,7 +35,7 @@ ui <- dashboardPage(skin = "yellow",
                       )
                     ),
                     dashboardBody(
-                      tags$head(tags$style(HTML(mycss))),
+
                       tabItems(
                         tabItem(tabName = "env_dashboard",
                                 fluidRow(
