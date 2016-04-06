@@ -10,6 +10,7 @@ library(leaflet)
 library(dplyr)
 library(withr)
 
+brapi_host = "sgn:eggplant@sweetpotatobase-test.sgn.cornell.edu"
 
 mycss <- "
 #plot-container {
@@ -59,8 +60,8 @@ ui <- dashboardPage(skin = "yellow",
                                                          leafletOutput("mapLocs")
                                                 ),
                                                 tabPanel("Report",
-                                                         #htmlOutput("rep_loc")
-                                                         HTML("<h1>Under development!</h1>")
+                                                         htmlOutput("rep_loc")
+                                                         #HTML("<h1>Under development!</h1>")
                                                 )
                                          )
                                   )
@@ -452,11 +453,11 @@ locations <- function(input, output, session){
       if(n<1) return("no locations in view!")
       report = paste0("report_location.Rmd")
       #report = file.path("inst", "rmd", "report_location.Rmd")
-      report = file.path("reports", "report_location.Rmd")
-      report_dir <- file.path( "www", "reports")
+      report = file.path(getwd(), "reports", "report_location.Rmd")
+      report_dir <- file.path( getwd(), "www", "reports")
 
       setProgress(5)
-      html_file = file.path(report_dir, "report_location.html")
+      html_file = file.path(getwd(), "www","reports", "report_location.html")
       if(file.exists(html_file)){
         unlink(html_file)
       }
@@ -470,7 +471,7 @@ locations <- function(input, output, session){
                                   locs = locs))
         setProgress(8)
 
-        html <- readLines(fn)
+        html <- readLines(html_file)
         })
 
       }, finally = message(paste("Finished running report!", fn)))
@@ -561,10 +562,11 @@ locations <- function(input, output, session){
 ############################################################
 
 sv <- function(input, output, session) ({
+
   set_brapi("http://sgn:eggplant@sweetpotatobase-test.sgn.cornell.edu", 80)
   brapi_auth("rsimon16", "sweetpotato")
 
-  brapi_host = "sgn:eggplant@sweetpotatobase-test.sgn.cornell.edu"
+
 
   shinyURL.server()
   fieldbook_analysis(input, output, session)
