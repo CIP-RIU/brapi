@@ -7,8 +7,10 @@ output:
     toc: true
     toc_depth: 4
   pdf_document:
+    toc_depth: 4
     toc: true
   word_document:
+    toc_depth: 4
     toc: true
     highlight: "tango"
 params: 
@@ -195,13 +197,13 @@ Valid traits: **`r paste(names(dat)[-c(1,2)])`**.
 
 ```{r, include = FALSE}
 out <- NULL
-#for (k in 1:length(trts)) {
-#   lc <- st4gi::checkdata01(trts[k], treat, rep, tbl)
-#   out <- c(out, knit_expand('child_rcbd2.Rmd'))
-#}
+for (k in 1:length(trts)) {
+   lc <- st4gi::checkdata01(trts[k], treat, rep, tbl)
+   out <- c(out, knit_expand('child_rcbd2.Rmd'))
+}
 ```
 
-`r #paste(knit(text = out), collapse = '\n')`
+`r paste(knit(text = out), collapse = '\n')`
 
 ## Trait correlations
 

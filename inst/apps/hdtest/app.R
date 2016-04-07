@@ -13,8 +13,8 @@ library(withr)
 brapi_host = "sgn:eggplant@sweetpotatobase-test.sgn.cornell.edu"
 
 
-
 ui <- dashboardPage(skin = "yellow",
+
 
                     dashboardHeader(title = "HIDAP"),
                     dashboardSidebar(
@@ -35,7 +35,7 @@ ui <- dashboardPage(skin = "yellow",
                       )
                     ),
                     dashboardBody(
-
+                      #tags$head(tags$style(HTML(mycss))),
                       tabItems(
                         tabItem(tabName = "env_dashboard",
                                 fluidRow(
@@ -87,7 +87,8 @@ ui <- dashboardPage(skin = "yellow",
                                          box(width = NULL,
                                              title = "Fieldbook",
                                              #p(class = 'text-center', downloadButton('locsDL', 'Download Filtered Data')),
-                                             rHandsontableOutput("hotFieldbook", height = 400)
+                                             #rHandsontableOutput("hotFieldbook", height = 400)
+                                             div(DT::dataTableOutput("hotFieldbook", height = 400), style = "font-size:80%")
                                              #locationsUI("location")
                                          )
                                   )
@@ -98,7 +99,9 @@ ui <- dashboardPage(skin = "yellow",
                                   column(width = 12,
                                          tabBox(width = NULL, selected = "Map", id = "tabAnalysis",
                                                 tabPanel("Correlation",
+                                                         #tags$img(src = "www/35.gif"),
                                                          div(id = "plot-container",
+                                                             #tags$img(src = "www/35.gif"),
 
                                                              qtlcharts::iplotCorr_output('vcor_output', height = 400)
                                                          )
@@ -107,15 +110,24 @@ ui <- dashboardPage(skin = "yellow",
                                                          d3heatmap::d3heatmapOutput("fieldbook_heatmap")
                                                 ),
                                                 tabPanel(title = "Report",
-                                                         #htmlOutput("fb_report")
-                                                         #htmlOutput("fbRep"),
-                                                         HTML("<h1>Under development!</h1>"),
+                                                    tabBox(id = "tabAnalaysisReports", width = NULL,
+                                                      tabPanel("HTML report",
+                                                               htmlOutput("fbRepHtml")
+                                                               )
+                                                      ,
+                                                      # tabPanel("DOCX report",
+                                                      #          htmlOutput("fbRepDocx")
+                                                      # ),
+                                                      # tabPanel("PDF report",
+                                                      #          htmlOutput("fbRepPdf")
+                                                      # ),
+                                                      HTML("<div style='display:none'>"),
+                                                      shinyURL.ui(label = "",width=0, copyURL = F, tinyURL = F),
+                                                      #shinyURL.ui("URL", tinyURL = F)
+                                                      HTML("</div>")
 
+                                                      )
 
-                                                         HTML("<div style='display:none'>"),
-                                                         shinyURL.ui(label = "",width=0, copyURL = F, tinyURL = F),
-                                                         #shinyURL.ui("URL", tinyURL = F)
-                                                         HTML("</div>")
 
                                                 )
 
@@ -147,20 +159,34 @@ fieldbook_analysis <- function(input, output, session){
   })
 
 
-  output$hotFieldbook <- renderRHandsontable({
+  output$hotFieldbook <- DT::renderDataTable({
+    #renderRHandsontable({
+    withProgress(message = "Loading fieldbook ...",
+                 detail = "This may take a while ...", value = 1, max = 4, {
     try({
-      DF <- fbInput()
-      if(!is.null(DF)){
+      x <- fbInput()
+      attr(x, "meta") = NULL
 
-        rh = rhandsontable::rhandsontable(DF,
-                                          selectCallback = TRUE,
-                                          readOnly = FALSE,useTypes = TRUE) %>%
-          hot_table(highlightCol = TRUE, highlightRow = TRUE) %>%
-          hot_cols( fixedColumnsLeft = 6)
-        rh
+      if(is.data.frame(x)){
+        # message(class(x))
+        # print(head(x))
+        # rh = rhandsontable::rhandsontable(DF,
+        #                                   selectCallback = TRUE,
+        #                                   readOnly = FALSE,useTypes = TRUE) %>%
+          #rh = DT::datatable(x)
+          #hot_table(highlightCol = TRUE, highlightRow = TRUE) %>%
+          #hot_cols( fixedColumnsLeft = 6)
+        #rh
       }
     })
+
   })
+    x
+  },  server = FALSE,  extensions = 'FixedColumns',
+      options = list(scrollX = TRUE,
+                     fixedColumns = list(leftColumns = 6)),
+      selection = list(target = 'column', mode = "single")
+  )
 
   output$vcor_output = qtlcharts::iplotCorr_render({
 
@@ -213,7 +239,8 @@ fieldbook_analysis <- function(input, output, session){
   output$fieldbook_heatmap <- d3heatmap::renderD3heatmap({
     DF = fbInput()
     #if (!is.null(DF)) {
-    ci = input$hotFieldbook_select$select$c
+    #ci = input$hotFieldbook_select$select$c
+    ci = input$hotFieldbook_columns_selected
     #print(ci)
     trt = names(DF)[ncol(DF)]
     if (!is.null(ci)) trt = names(DF)[ci]
@@ -237,24 +264,11 @@ fieldbook_analysis <- function(input, output, session){
   #####################
 
   #observeEvent(input$butDoPhAnalysis, ({
-  output$fbRep <- renderUI({
+
+  do_report <- function(fmt = "html_document"){
     DF <- fbInput()
-    #y <- input$def_variables
     yn = names(DF)[c(7:ncol(DF))]
-    report =  "report_anova.Rmd"
-
-    report_dir = system.file("rmd", package = "brapi")
-    report_src = file.path(report_dir, report)
-
-    #report_dir <- file.path(getwd(),"inst", "rmd") # for quicker testing
-    #wd = getwd()
-    #result_dir  = file.path(wd, "www", "reports")
-    #result_dir  =  system.file("app/www/reports", package = "hidap")
-
-
-    result_dir = tempdir()
-    result_html = "report_anova.html"
-    report_html = file.path(result_dir, "report_anova.html")
+    report = paste0("reports/report_anova.Rmd")
 
     usr = Sys.getenv("USERNAME")
     if (usr=="") usr = Sys.getenv("USER")
@@ -264,60 +278,37 @@ fieldbook_analysis <- function(input, output, session){
     gtp = "germplasmName" #input$def_genotype
     xmt = list(title = attr(DF, "meta")$studyName, contact = "x y", site = attr(DF, "meta")$locationName, country = "Z", year = 2016 )
 
-    #xfp = file.path(wd, "www")
-    #cat(xfp)
-    #print(xfp)
-    message(result_dir)
-    message(report)
-    message(result_html)
-
-
-    writeLines(paste(result_dir, result_html, report, collapse="\n"), con=file.path(result_dir, 'log.txt'))
-
-    withProgress(message = "Creating report ...",
-                 detail = "This may take a while ...", value = 0,{
+    withProgress(message = "Creating reports ...",
+                 detail = "This may take a while ...", value = 1, max = 4, {
                    try({
-                     devtools::in_dir(report_dir, {
-                       #print("X")
-                       fn = rmarkdown::render(report_src,
-                                         output_format = c(#"pdf_document", "word_document",
-                                                           "html_document" )
-                                         ,
-                                         output_dir = result_dir,
-                                         run_pandoc = TRUE,
-                                         params = list(
-                                           meta = xmt,
-                                           trait = yn,
-                                           treat = gtp,
-                                           rep  = rps,
-                                           data = DF,
-                                           maxp = 0.1,
-                                           author = author))
-                       #print("Y")
-                     }) # in_dir
-                     incProgress(1/3)
+                     incProgress(1, message = "HTML version")
+                     fn = rmarkdown::render(report,
+                                            output_format = fmt,
+                                            run_pandoc = TRUE,
+                                            params = list(
+                                              meta = xmt,
+                                              trait = yn,
+                                              treat = gtp,
+                                              rep  = rps,
+                                              data = DF,
+                                              maxp = 0.1,
+                                              author = author))
+                     incProgress(1, message = "Loading")
 
                    }) # try
 
-                   #try({
-                   #report_html = stringr::str_replace(report, ".Rmd", ".html")
-                   #})
-                   output$fb_report <- renderUI("")
-                   #report = file.path(result_dir, report_html)
+  })
+    fn
+  }
 
 
-                   incProgress(3/3)
-                 })
-    #output$fb_report <- renderUI(HTML(html))
-    message("Finished running report")
-    message(report_html)
-    html = "Report created but cannot be read."
+  output$fbRepHtml <- renderUI({
+    out = "Report created but cannot be read."
+    fn = do_report()
     try({
-      html <- readLines(report_html)
-      message("Seems ok till here")
-      message(html[10])
+      out <- readLines(fn)
     })
-    HTML(html)
+    HTML(out)
 
   })
 
