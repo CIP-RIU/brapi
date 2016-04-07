@@ -281,7 +281,7 @@ fieldbook_analysis <- function(input, output, session){
     withProgress(message = "Creating reports ...",
                  detail = "This may take a while ...", value = 1, max = 4, {
                    try({
-                     incProgress(1, message = "HTML version")
+                     incProgress(1, message = fmt)
                      fn = rmarkdown::render(report,
                                             output_format = fmt,
                                             run_pandoc = TRUE,
@@ -311,6 +311,19 @@ fieldbook_analysis <- function(input, output, session){
     HTML(out)
 
   })
+
+  output$fbRepPdf <- renderUI({
+    out = "Report created but cannot be read."
+    fn = do_report("pdf_document")
+    print(fn)
+    message(fn)
+    try({
+      out <- paste0("<a href='", fn, "'>PDF</a>")
+    })
+    HTML(out)
+
+  })
+
 
 }
 
