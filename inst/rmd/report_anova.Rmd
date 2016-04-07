@@ -24,7 +24,7 @@ params:
 
 ```{r, echo = FALSE}
 library(knitr)
-library(rmdformats)
+#library(rmdformats)
 
 
 traits <- params$trait
