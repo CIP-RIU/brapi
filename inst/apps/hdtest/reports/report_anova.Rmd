@@ -49,20 +49,6 @@ Citation: `r meta$contact` (`r meta$year`). *`r meta$title`*. Dataset version: 1
 # See more details in section on materials.
 ```
 
-Alternate formats: 
-
-
-<a href="report_anova.pdf" target="_blank">PDF
-<!--
-<img src="PDF.jpg" width = "32" height = "32" alt = "PDF"/>
--->
-</a>
-<a href="report_anova.docx" target="_blank">DOCX
-<!--
-<img src="word.png" width = "32" height = "32" alt = "Word"/>
--->
-</a>
-
 # Abstract
 
 ```{r , echo = FALSE, results='hide'}
@@ -132,7 +118,7 @@ This report was created using `r s$R.version` on a `r s$platform` running `r s$r
 # Results
 ## Raw data
 ## Trait summaries
-## Trait analyses
+## Trait analyses {.tabset}
 
 ```{r , echo = FALSE, results='hide'}
     

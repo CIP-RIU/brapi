@@ -115,12 +115,12 @@ ui <- dashboardPage(skin = "yellow",
                                                                htmlOutput("fbRepHtml")
                                                                )
                                                       ,
-                                                      # tabPanel("DOCX report",
-                                                      #          htmlOutput("fbRepDocx")
-                                                      # ),
-                                                      # tabPanel("PDF report",
-                                                      #          htmlOutput("fbRepPdf")
-                                                      # ),
+                                                      tabPanel("Word report",
+                                                               htmlOutput("fbRepWord")
+                                                      ),
+                                                      tabPanel("PDF report",
+                                                               htmlOutput("fbRepPdf")
+                                                      ),
                                                       HTML("<div style='display:none'>"),
                                                       shinyURL.ui(label = "",width=0, copyURL = F, tinyURL = F),
                                                       #shinyURL.ui("URL", tinyURL = F)
@@ -285,6 +285,7 @@ fieldbook_analysis <- function(input, output, session){
                      fn = rmarkdown::render(report,
                                             output_format = fmt,
                                             run_pandoc = TRUE,
+                                            output_dir = "www/reports",
                                             params = list(
                                               meta = xmt,
                                               trait = yn,
@@ -318,11 +319,30 @@ fieldbook_analysis <- function(input, output, session){
     print(fn)
     message(fn)
     try({
-      out <- paste0("<a href='", fn, "'>PDF</a>")
+      #out <- paste0("<iframe src='http://localhost/reports/report_anova.pdf&embedded=true' style='width:718px; height:700px;' frameborder='0'></iframe>")
+      out <- paste0("<a href='reports/report_anova.pdf' target='_new'>PDF</a>")
+
+      #out <- paste0("<a href='", fn, "'>PDF</a>")
     })
     HTML(out)
 
   })
+
+  output$fbRepWord <- renderUI({
+    out = "Report created but cannot be read."
+    fn = do_report("word_document")
+    print(fn)
+    message(fn)
+    try({
+      #out <- paste0("<iframe src='http://localhost/reports/report_anova.pdf&embedded=true' style='width:718px; height:700px;' frameborder='0'></iframe>")
+      out <- paste0("<a href='reports/report_anova.docx' target='_new'>Word</a>")
+
+      #out <- paste0("<a href='", fn, "'>PDF</a>")
+    })
+    HTML(out)
+
+  })
+
 
 
 }
