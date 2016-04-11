@@ -165,23 +165,10 @@ fieldbook_analysis <- function(input, output, session){
                  detail = "This may take a while ...", value = 1, max = 4, {
     try({
       x <- fbInput()
-      attr(x, "meta") = NULL
 
-      if(is.data.frame(x)){
-        # message(class(x))
-        # print(head(x))
-        # rh = rhandsontable::rhandsontable(DF,
-        #                                   selectCallback = TRUE,
-        #                                   readOnly = FALSE,useTypes = TRUE) %>%
-          #rh = DT::datatable(x)
-          #hot_table(highlightCol = TRUE, highlightRow = TRUE) %>%
-          #hot_cols( fixedColumnsLeft = 6)
-        #rh
-      }
     })
-
-  })
     x
+    })
   },  server = FALSE,  extensions = 'FixedColumns',
       options = list(scrollX = TRUE
                      # ,
