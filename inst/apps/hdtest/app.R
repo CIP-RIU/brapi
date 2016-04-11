@@ -88,7 +88,7 @@ ui <- dashboardPage(skin = "yellow",
                                              title = "Fieldbook",
                                              #p(class = 'text-center', downloadButton('locsDL', 'Download Filtered Data')),
                                              #rHandsontableOutput("hotFieldbook", height = 400)
-                                             div(DT::dataTableOutput("hotFieldbook", height = 400), style = "font-size:80%")
+                                             tags$div(DT::dataTableOutput("hotFieldbook", height = 400), style = "font-size:80%")
                                              #locationsUI("location")
                                          )
                                   )
