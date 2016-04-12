@@ -181,7 +181,7 @@ fieldbook_analysis <- function(input, output, session){
     })
     DF
   } , server = FALSE
-    , filter = 'top'
+    # , filter = 'bottom'
     , selection = list(mode = 'single', target='column')
    , options = list(scrollX = TRUE)
 
