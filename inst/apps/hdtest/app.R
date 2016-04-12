@@ -19,6 +19,7 @@ ui <- dashboardPage(skin = "yellow",
                     dashboardHeader(title = "HIDAP"),
                     dashboardSidebar(
                       sidebarMenu(
+                        menuItem("About", tabName = "inf_dashboard", icon = icon("info"), selected = TRUE),
                         menuItem("Phenotype", icon = icon("leaf"),
                                  menuSubItem("Analysis",
                                              tabName = "phe_dashboard", icon = icon("calculator"))
@@ -37,6 +38,15 @@ ui <- dashboardPage(skin = "yellow",
                     dashboardBody(
                       #tags$head(tags$style(HTML(mycss))),
                       tabItems(
+                        tabItem(tabName = "inf_dashboard",
+                                column(width =12,
+                                       tabBox(width=NULL, id="tabInfo",
+                                              tabPanel("About",
+                                                       htmlOutput("about")
+                                                       )
+                                              )
+                                       )
+                                ),
                         tabItem(tabName = "env_dashboard",
                                 fluidRow(
                                   column(width = 8,
@@ -58,16 +68,17 @@ ui <- dashboardPage(skin = "yellow",
                                                 ),
                                                 tabPanel("Info",
                                                          htmlOutput("siteInfo")
-                                                ), tabPanel("Fieldtrials",
+                                                ),
+                                                tabPanel("Fieldtrials",
                                                             htmlOutput("site_fieldtrials")
                                                 ),
                                                 tabPanel("Genotypes",
                                                          htmlOutput("site_genotypes")
                                                 )
 
-                                         )
-                                  )
-                                ),
+                                         ) #tabbox
+                                  )# column
+                                ), #fluidRow
 
 
                                 fluidRow(
@@ -154,28 +165,24 @@ fieldbook_analysis <- function(input, output, session){
   })
 
   fbInput <- reactive({
-    fbId = dataInput()
-    brapi::study_table(fbId)
+    #fbId = dataInput()
+    brapi::study_table(dataInput())
   })
 
 
   output$hotFieldbook <- DT::renderDataTable({
-    #renderRHandsontable({
-    withProgress(message = "Loading fieldbook ...",
-                 detail = "This may take a while ...", value = 1, max = 4, {
-    try({
-      x <- fbInput()
+    DF <- NULL
+    shiny::withProgress(message = 'Importing fieldbook', {
+      DF <- fbInput()
+    })
+    DF
+  } , server = FALSE
+    , filter = 'top'
+    , selection = list(mode = 'single', target='column')
+   , options = list(scrollX = TRUE)
 
-    })
-    x
-    })
-  },  server = FALSE,  extensions = 'FixedColumns',
-      options = list(scrollX = TRUE
-                     # ,
-                     # fixedColumns = list(leftColumns = 6)
-                     ),
-      selection = list(target = 'column', mode = "single")
-  )
+)
+
 
   output$vcor_output = qtlcharts::iplotCorr_render({
 
