@@ -3,12 +3,13 @@ library(shiny)
 library(brapi)
 library(shinydashboard)
 library(d3heatmap)
-library(rhandsontable)
+#library(rhandsontable)
 library(shinyURL)
 library(qtlcharts)
 library(leaflet)
 library(dplyr)
 library(withr)
+library(DT)
 
 brapi_host = "sgn:eggplant@sweetpotatobase-test.sgn.cornell.edu"
 
@@ -41,8 +42,8 @@ ui <- dashboardPage(skin = "yellow",
                         tabItem(tabName = "inf_dashboard",
                                 column(width =12,
                                        tabBox(width=NULL, id="tabInfo",
-                                              tabPanel("About",
-                                                       htmlOutput("about")
+                                              tabPanel("Session",
+                                                       verbatimTextOutput("sessionInfo")
                                                        )
                                               )
                                        )
@@ -156,6 +157,8 @@ ui <- dashboardPage(skin = "yellow",
 
 
 fieldbook_analysis <- function(input, output, session){
+
+  output$sessionInfo = renderPrint("")
 
   dataInput <- reactive({
     fbId = input$fbaInput
