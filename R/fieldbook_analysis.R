@@ -12,7 +12,10 @@
 #' @author Reinhard Simon
 # @return data.frame
 #' @export
+
 fieldbook_analysis <- function(input, output, session){
+
+  output$sessionInfo = renderPrint("Highly Interactive Data Analysis Platform for Root and Tuber Crop breeding.")
 
   dataInput <- reactive({
     fbId = input$fbaInput
@@ -22,76 +25,78 @@ fieldbook_analysis <- function(input, output, session){
   })
 
   fbInput <- reactive({
-    fbId = dataInput()
-    brapi::study_table(fbId)
+    #fbId = dataInput()
+    brapi::study_table(dataInput())
   })
 
 
-output$hotFieldbook <- renderRHandsontable({
-  try({
+  output$hotFieldbook <- DT::renderDataTable({
+    DF <- NULL
+    shiny::withProgress(message = 'Importing fieldbook', {
+      DF <- fbInput()
+    })
+    DF
+  } , server = FALSE
+  # , filter = 'bottom'
+  , selection = list(mode = 'single', target='column')
+  , options = list(scrollX = TRUE)
+
+  )
+
+
+  output$vcor_output = qtlcharts::iplotCorr_render({
+
     DF <- fbInput()
-    if(!is.null(DF)){
+    shiny::withProgress(message = 'Imputing missing values', {
+      options(warn = -1)
 
-      rh = rhandsontable::rhandsontable(DF,
-                         selectCallback = TRUE,
-                         readOnly = FALSE,useTypes = TRUE) %>%
-        hot_table(highlightCol = TRUE, highlightRow = TRUE) %>%
-        hot_cols( fixedColumnsLeft = 6)
-      rh
-    }
+
+      treat <- "germplasmName" #input$def_genotype
+      trait <- names(DF)[c(7:ncol(DF))]  #input$def_variables
+      DF = DF[, c(treat, trait)]
+
+      DF[, treat] <- as.factor(DF[, treat])
+
+      # exclude the response variable and empty variable for RF imputation
+      datas <- names(DF)[!names(DF) %in% c(treat, "PED1")] # TODO replace "PED1" by a search
+      x <- DF[, datas]
+
+      for(i in 1:ncol(x)){
+        x[, i] <- as.numeric(x[, i])
+      }
+      y <- DF[, treat]
+      if (any(is.na(x))){
+        capture.output(
+          DF <- randomForest::rfImpute(x = x, y = y )
+        )
+        #data <- cbind(y, data)
+
+      }
+      names(DF)[1] <- treat
+
+      DF = agricolae::tapply.stat(DF, DF[, treat])
+      DF = DF[, -c(2)]
+      names(DF)[1] = "Genotype"
+      row.names(DF) = DF$Genotype
+      DF = DF[, -c(1)]
+
+      # iplotCorr(DF,  reorder=TRUE,
+      #           chartOpts=list(cortitle="Correlation matrix",
+      #                          scattitle="Scatterplot"))
+
+      options(warn = 0)
+
+    })
+    iplotCorr(DF)
   })
-})
-
-output$vcor_output = qtlcharts::iplotCorr_render({
-
-  DF <- fbInput()
-  shiny::withProgress(message = 'Imputing missing values', {
-    options(warn = -1)
 
 
-    treat <- "germplasmName" #input$def_genotype
-    trait <- names(DF)[c(7:ncol(DF))]  #input$def_variables
-    DF = DF[, c(treat, trait)]
-
-    DF[, treat] <- as.factor(DF[, treat])
-
-    # exclude the response variable and empty variable for RF imputation
-    datas <- names(DF)[!names(DF) %in% c(treat, "PED1")] # TODO replace "PED1" by a search
-    x <- DF[, datas]
-    for(i in 1:ncol(x)){
-      x[, i] <- as.numeric(x[, i])
-    }
-    y <- DF[, treat]
-    if (any(is.na(x))){
-      capture.output(
-        DF <- randomForest::rfImpute(x = x, y = y )
-      )
-      #data <- cbind(y, data)
-
-    }
-    names(DF)[1] <- treat
-
-    DF = agricolae::tapply.stat(DF, DF[, treat])
-    DF = DF[, -c(2)]
-    names(DF)[1] = "Genotype"
-    row.names(DF) = DF$Genotype
-    DF = DF[, -c(1)]
-
-    # iplotCorr(DF,  reorder=TRUE,
-    #           chartOpts=list(cortitle="Correlation matrix",
-    #                          scattitle="Scatterplot"))
-    options(warn = 0)
-
-  })
-  iplotCorr(DF)
-})
-
-
-# TODO BUG?: somehow this section needs to go last!
-output$fieldbook_heatmap <- d3heatmap::renderD3heatmap({
-   DF = fbInput()
-   #if (!is.null(DF)) {
-     ci = input$hotFieldbook_select$select$c
+  # TODO BUG?: somehow this section needs to go last!
+  output$fieldbook_heatmap <- d3heatmap::renderD3heatmap({
+    DF = fbInput()
+    #if (!is.null(DF)) {
+    #ci = input$hotFieldbook_select$select$c
+    ci = input$hotFieldbook_columns_selected
     #print(ci)
     trt = names(DF)[ncol(DF)]
     if (!is.null(ci)) trt = names(DF)[ci]
@@ -105,85 +110,85 @@ output$fieldbook_heatmap <- d3heatmap::renderD3heatmap({
     amap = fm[["map"]]
     anot = fm[["notes"]]
     d3heatmap(x = amap,
-             cellnote = anot,
-             colors = "Blues",
-             Rowv = FALSE, Colv = FALSE,
-             dendrogram = "none")
-})
+              cellnote = anot,
+              colors = "Blues",
+              Rowv = FALSE, Colv = FALSE,
+              dendrogram = "none")
+  })
 
 
-#####################
+  #####################
 
-#observeEvent(input$butDoPhAnalysis, ({
-output$fbRep <- renderUI({
+  #observeEvent(input$butDoPhAnalysis, ({
+
+  do_report <- function(fmt = "html_document"){
     DF <- fbInput()
-    #y <- input$def_variables
     yn = names(DF)[c(7:ncol(DF))]
-    report =  "report_anova.Rmd"
-    report_dir = system.file("rmd", package = "brapi")
-    #report_dir <- file.path(getwd(),"inst", "rmd") # for quicker testing
-    wd = getwd()
-    #result_dir  = file.path(wd, "www", "reports")
-    #result_dir  =  system.file("app/www/reports", package = "hidap")
-    result_dir = tempdir()
+    report = paste0("reports/report_anova.Rmd")
+
     usr = Sys.getenv("USERNAME")
     if (usr=="") usr = Sys.getenv("USER")
     author =  paste0(usr, " using HIDAP")
 
     rps = "REP" # input$def_rep
     gtp = "germplasmName" #input$def_genotype
-    # xmt = attr(DF, "meta")
-    # xmt = list(xmt, title = xmt$studyName)
     xmt = list(title = attr(DF, "meta")$studyName, contact = "x y", site = attr(DF, "meta")$locationName, country = "Z", year = 2016 )
-
-    writeLines(file.path(wd, "www"), con="log.txt")
-
-    withProgress(message = "Creating report ...",
-                 detail = "This may take a while ...", value = 0,{
+    fn = NULL
+    withProgress(message = "Creating reports ...",
+                 detail = "This may take a while ...", value = 1, max = 4, {
                    try({
-                     devtools::in_dir(report_dir, {
-                       #print("X")
-                       rmarkdown::render(report,
-                                         output_format = c("pdf_document", "word_document",
-                                                           "html_document" )
-                                         ,
-                                         output_dir = file.path(wd, "www"),
-                                         params = list(
-                                           meta = xmt,
-                                           trait = yn,
-                                           treat = gtp,
-                                           rep  = rps,
-                                           data = DF,
-                                           maxp = 0.1,
-                                           author = author))
-                       #print("Y")
-                     }) # in_dir
-                     incProgress(1/3)
+                     incProgress(1, message = fmt)
+                     fn = rmarkdown::render(report,
+                                            output_format = fmt,
+                                            run_pandoc = TRUE,
+                                            output_dir = "www/reports",
+                                            params = list(
+                                              meta = xmt,
+                                              trait = yn,
+                                              treat = gtp,
+                                              rep  = rps,
+                                              data = DF,
+                                              maxp = 0.1,
+                                              author = author))
+                     incProgress(1, message = "Loading")
+
                    }) # try
 
-                   try({
-                     report_html = stringr::str_replace(report, ".Rmd", ".html")
-                   })
-                   output$fb_report <- renderUI("")
-                   report = file.path(wd, "www", report_html)
-
-
-                   incProgress(3/3)
                  })
-    #output$fb_report <- renderUI(HTML(html))
-    html <- readLines(report)
-    HTML(html)
-
-})
+    fn
+  }
 
 
-# output$fbRep <- renderUI({
-#   html <- readLines("/Users/reinhardsimon/Documents/packages/brapi/inst/apps/fieldbook_analysis/www/report_anova.html")
-#   HTML(html)
-# })
-#)
+  output$fbRepHtml <- renderUI({
+    out = "Report created but cannot be read."
 
+    try({
+      fn = do_report()
+      out <- readLines(fn)
+    })
+    HTML(out)
 
+  })
+
+  output$fbRepPdf <- renderUI({
+    out = "Report created but cannot be read."
+    fn = do_report("pdf_document")
+    try({
+      out <- paste0("<a href='reports/report_anova.pdf' target='_new'>PDF</a>")
+    })
+    HTML(out)
+
+  })
+
+  output$fbRepWord <- renderUI({
+    out = "Report created but cannot be read."
+    fn = do_report("word_document")
+    try({
+      out <- paste0("<a href='reports/report_anova.docx' target='_new'>Word</a>")
+    })
+    HTML(out)
+
+  })
 
 
 

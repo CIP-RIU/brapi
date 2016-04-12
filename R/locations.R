@@ -19,7 +19,7 @@ locations <- function(input, output, session){
   #vls$dat_sel <- dat()
 
   dat_sel <- reactive({
-    sel = input$table_rows_all
+    sel = input$tableLocs_rows_all
     if(is.null(sel)){
       pts = dat()
     } else {
@@ -28,11 +28,11 @@ locations <- function(input, output, session){
     pts
   })
 
-  output$table <- DT::renderDataTable( dat()
-                                      , server = FALSE,
-                                       options = list(scrollX = TRUE))
+  output$tableLocs <- DT::renderDataTable( dat()
+                                           , server = FALSE,
+                                           options = list(scrollX = TRUE))
 
-  output$map <- renderLeaflet({
+  output$mapLocs <- renderLeaflet({
     pts <- dat_sel()
 
     leaflet(pts, height = "100%") %>% addTiles() %>%
@@ -66,7 +66,7 @@ locations <- function(input, output, session){
   ##################################
 
   mrks <- reactive({
-    x = input$map_marker_click
+    x = input$mapLocs_marker_click
     subset(dat_sel(), latitude == as.numeric(x$lat) & longitude == as.numeric(x$lng))
   })
 
@@ -99,9 +99,9 @@ locations <- function(input, output, session){
 
   })
 
-  observeEvent(input$map_bounds, {
+  observeEvent(input$mapLocs_bounds, {
     #print("change view area!")
-    mb = input$map_bounds
+    mb = input$mapLocs_bounds
     #print(mb)
 
 
@@ -113,28 +113,39 @@ locations <- function(input, output, session){
 
     withProgress(message = 'Updating report', value = 0, max = 10, {
 
-    locs <- dat_sel()
-    n = nrow(locs)
-    if(n<1) return("no locations in view!")
-    report = paste0("report_location.Rmd")
-    #report = file.path("inst", "rmd", "report_location.Rmd")
-    report = file.path(system.file("rmd", package = "brapi"), "report_location.Rmd")
-    rep_dir <- "www/reports/"
-    if(!file.exists(rep_dir)){
-      rep_dir = tempdir()
-    }
+      locs <- dat_sel()
+      n = nrow(locs)
+      if(n<1) return("no locations in view!")
+      report = paste0("reports/report_location.Rmd")
+      message(report)
+      #report = file.path("inst", "rmd", "report_location.Rmd")
+      #report = file.path(getwd(), "reports", "report_location.Rmd")
+      #report_dir <- paste0( "reports")
 
-    setProgress(5)
+      setProgress(5)
+      #html_file = file.path(report_dir, "report_location.html")
+      # if(file.exists(html_file)){
+      #   unlink(html_file)
+      # }
+      #fn = report_dir
+      fn=""
+      tryCatch({
+        #withr::with_dir(report_dir, {
+        fn <- rmarkdown::render(report,
+                                output_dir = "reports",
+                                run_pandoc = TRUE,
+                                params = list(
+                                  locs = locs))
+        setProgress(8)
 
-    fn <- rmarkdown::render(report,
-                            #output_format = "all",
-                            output_dir = rep_dir,
-                            params = list(
-                              locs = locs))
-    setProgress(8)
+        html <- readLines(fn)
+        #})
 
-    html <- readLines(file.path(rep_dir, "report_location.html"))
+      }, finally = message(paste("Finished running report!", fn)))
+
+
     }) # progress
+    message = paste("Report should be in:", fn)
 
     HTML(html)
   })
@@ -142,72 +153,75 @@ locations <- function(input, output, session){
 
   output$site_fieldtrials <- renderUI({
     withProgress(message = 'Getting trial list ...', value = 0, max = 10, {
-    stds = brapi::studies()
-    #print(studies)
-    locs = mrks()
-    #print(locs)
-    out = "No trials found for this location!"
+      stds = brapi::studies()
+      #print(studies)
+      locs = mrks()
+      #print(locs)
+      out = "No trials found for this location!"
 
-    # 1st try to find via id if not use unique name
-    sid = stds[stds$locationDbId == locs$locationDbId, "studyDbID"]
-    if (length(sid) == 0) {
-      sid = stds[stringr::str_detect(toupper(stds$name), locs$Uniquename), "studyDbId"]
+      # 1st try to find via id if not use unique name
+      sid = stds[stds$locationDbId == locs$locationDbId, "studyDbID"]
+      if (length(sid) == 0) {
+        sid = stds[stringr::str_detect(toupper(stds$name), locs$Uniquename), "studyDbId"]
 
-    }
+      }
 
-    setProgress(5)
+      setProgress(5)
 
-    if(length(sid) != 0){
-      host = stringr::str_split(Sys.getenv("BRAPI_DB") , "/")[[1]][1]
-      path = "/breeders/trial/"
+      if(length(sid) != 0){
+        host = stringr::str_split(Sys.getenv("BRAPI_DB") , "/")[[1]][1]
+        host = brapi_host
+        path = "/breeders/trial/"
 
-      out = paste0("<br><a href='http://",host, path, sid, "' target='_blank'>", stds[stds$studyDbId==sid, "name"], "</a>") %>%
-        paste(collapse = ", ")
-    }
+        out = paste0("<br><a href='http://",host, path, sid, "' target='_blank'>", stds[stds$studyDbId==sid, "name"], "</a>") %>%
+          paste(collapse = ", ")
+      }
 
-    setProgress(8)
+      setProgress(8)
 
-    HTML(out)
+      HTML(out)
     })
   })
 
   output$site_genotypes <- renderUI({
     withProgress(message = 'Getting trial list ...', value = 0, max = 10, {
-    stds = brapi::studies()
-    #print(studies)
-    locs = mrks()
-    #print(locs)
-    out = "No trials found for this location!"
-    setProgress(4)
+      stds = brapi::studies()
+      #print(studies)
+      locs = mrks()
+      #print(locs)
+      out = "No trials found for this location!"
+      setProgress(4)
 
-    # 1st try to find via id if not use unique name
-    sid = stds[stds$locationDbId == locs$locationDbId, "studyDbID"]
-    if (length(sid) == 0) {
-      sid = stds[stringr::str_detect(toupper(stds$name), locs$Uniquename), "studyDbId"]
+      # 1st try to find via id if not use unique name
+      sid = stds[stds$locationDbId == locs$locationDbId, "studyDbID"]
+      if (length(sid) == 0) {
+        sid = stds[stringr::str_detect(toupper(stds$name), locs$Uniquename), "studyDbId"]
 
-    }
-    if(length(sid) != 0){
+      }
+      if(length(sid) != 0){
 
-      #TODO implement BRAPI call to study table!
-      study = study_table(sid[1])
-      topgp = get_top_germplasm(study)
+        #TODO implement BRAPI call to study table!
+        study = study_table(sid[1])
+        topgp = get_top_germplasm(study)
 
-      gid = topgp$germplasmDbId
-      gnm = topgp$germplasmName
-      hid = topgp$`Harvest index computing percent`
+        gid = topgp$germplasmDbId
+        gnm = topgp$germplasmName
+        hid = topgp$`Harvest index computing percent`
 
-      host = stringr::str_split(Sys.getenv("BRAPI_DB") , "/")[[1]][1]
-      path = "/stock/"
+        host = stringr::str_split(Sys.getenv("BRAPI_DB") , "/")[[1]][1]
+        host = brapi_host
+        path = "/stock/"
 
-      #TODO change for genotypes
-      out = paste0("<a href='http://",host, path, gid,"/view' target='_blank'>", gnm, " (",hid,  ")</a>")
-      txt = paste0("Top genotypes for trait (", "Harvest index" ,"):</br>") # TODO make trait choosable
-      out = paste( out, collapse = ", ")
-      out = paste(txt, out)
-    }
-    setProgress(8)
-    HTML(out)
+        #TODO change for genotypes
+        out = paste0("<a href='http://",host, path, gid,"/view' target='_blank'>", gnm, " (",hid,  ")</a>")
+        txt = paste0("Top genotypes for trait (", "Harvest index" ,"):</br>") # TODO make trait choosable
+        out = paste( out, collapse = ", ")
+        out = paste(txt, out)
+      }
+      setProgress(8)
+      HTML(out)
     })
   })
 
 }
+
