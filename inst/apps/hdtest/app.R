@@ -3,7 +3,7 @@ library(shiny)
 library(brapi)
 library(shinydashboard)
 library(d3heatmap)
-#library(rhandsontable)
+
 library(shinyURL)
 library(qtlcharts)
 library(leaflet)
