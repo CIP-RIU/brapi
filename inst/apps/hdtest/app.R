@@ -11,10 +11,6 @@ library(dplyr)
 library(withr)
 library(DT)
 
-
-brapi_host = "sgn:eggplant@sweetpotatobase-test.sgn.cornell.edu"
-
-
 ui <- dashboardPage(skin = "yellow",
 
 
@@ -565,10 +561,7 @@ locations <- function(input, output, session){
 
 sv <- function(input, output, session) ({
 
-  set_brapi("http://sgn:eggplant@sweetpotatobase-test.sgn.cornell.edu", 80)
-  brapi_auth("rsimon16", "sweetpotato")
-
-
+  source("config.R")
 
   shinyURL.server()
   fieldbook_analysis(input, output, session)
