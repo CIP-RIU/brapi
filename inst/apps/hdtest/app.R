@@ -158,7 +158,7 @@ ui <- dashboardPage(skin = "yellow",
 
 fieldbook_analysis <- function(input, output, session){
 
-  output$sessionInfo = renderPrint("")
+  output$sessionInfo = renderPrint("Highly Interactive Data Analysis Platform for Root and Tuber Crop breeding.")
 
   dataInput <- reactive({
     fbId = input$fbaInput
@@ -465,7 +465,7 @@ locations <- function(input, output, session){
       tryCatch({
         #withr::with_dir(report_dir, {
         fn <- rmarkdown::render(report,
-                                #output_dir = report_dir,
+                                output_dir = "reports",
                                 run_pandoc = TRUE,
                                 params = list(
                                   locs = locs))
