@@ -276,7 +276,7 @@ fieldbook_analysis <- function(input, output, session){
     rps = "REP" # input$def_rep
     gtp = "germplasmName" #input$def_genotype
     xmt = list(title = attr(DF, "meta")$studyName, contact = "x y", site = attr(DF, "meta")$locationName, country = "Z", year = 2016 )
-
+    fn = NULL
     withProgress(message = "Creating reports ...",
                  detail = "This may take a while ...", value = 1, max = 4, {
                    try({
@@ -304,8 +304,9 @@ fieldbook_analysis <- function(input, output, session){
 
   output$fbRepHtml <- renderUI({
     out = "Report created but cannot be read."
-    fn = do_report()
+
     try({
+      fn = do_report()
       out <- readLines(fn)
     })
     HTML(out)
@@ -315,13 +316,8 @@ fieldbook_analysis <- function(input, output, session){
   output$fbRepPdf <- renderUI({
     out = "Report created but cannot be read."
     fn = do_report("pdf_document")
-    print(fn)
-    message(fn)
     try({
-      #out <- paste0("<iframe src='http://localhost/reports/report_anova.pdf&embedded=true' style='width:718px; height:700px;' frameborder='0'></iframe>")
       out <- paste0("<a href='reports/report_anova.pdf' target='_new'>PDF</a>")
-
-      #out <- paste0("<a href='", fn, "'>PDF</a>")
     })
     HTML(out)
 
@@ -330,13 +326,8 @@ fieldbook_analysis <- function(input, output, session){
   output$fbRepWord <- renderUI({
     out = "Report created but cannot be read."
     fn = do_report("word_document")
-    print(fn)
-    message(fn)
     try({
-      #out <- paste0("<iframe src='http://localhost/reports/report_anova.pdf&embedded=true' style='width:718px; height:700px;' frameborder='0'></iframe>")
       out <- paste0("<a href='reports/report_anova.docx' target='_new'>Word</a>")
-
-      #out <- paste0("<a href='", fn, "'>PDF</a>")
     })
     HTML(out)
 
