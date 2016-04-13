@@ -11,10 +11,20 @@ library(dplyr)
 library(withr)
 library(DT)
 
+# hidapHeader <- function( title = NULL, titleWidth = NULL, disable = FALSE) {
+#   out = dashboardHeader(title = title, titleWidth = titleWidth, disable = disable)
+#   out = stringr::str_replace(out, "</a><div ", "</a><center>Connected to database: sweetpotatobase.org</center><div ")
+#   out
+# }
+
 ui <- dashboardPage(skin = "yellow",
 
 
-                    dashboardHeader(title = "HIDAP"),
+                    dashboardHeader(title = "HIDAP",
+                                    # Dropdown menu for notifications
+                                    dropdownMenuOutput("notificationMenu")
+
+                                    ),
                     dashboardSidebar(
                       sidebarMenu(
                         menuItem("About", tabName = "inf_dashboard", icon = icon("info"), selected = TRUE),
@@ -163,6 +173,14 @@ ui <- dashboardPage(skin = "yellow",
 sv <- function(input, output, session) ({
 
   source("config.R")
+
+  output$notificationMenu <- renderMenu({
+    bh = stringr::str_split(brapi_host, "@")[[1]][2]
+    note = paste0("Connected to:", bh) #session$clientData$url_hostname)
+    nots <-list(notificationItem(note, status = "success"))
+    dropdownMenu(type = "notifications", .list = nots)
+    #nots
+  })
 
   shinyURL.server()
   brapi::fieldbook_analysis(input, output, session)
