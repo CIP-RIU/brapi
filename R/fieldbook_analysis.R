@@ -218,7 +218,7 @@ fieldbook_analysis <- function(input, output, session){
         hist(dt[s1], col = "red", add = T)
       }
       if (length(s2) > 0 && length(s2) < length(dt)) {
-        abline(v = dt[s2], col = 'blue', add = T)
+        abline(v = dt[s2], col = 'blue')
       }
     }
 
