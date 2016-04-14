@@ -94,8 +94,6 @@ fieldbook_analysis <- function(input, output, session){
   # TODO BUG?: somehow this section needs to go last!
   output$fieldbook_heatmap <- d3heatmap::renderD3heatmap({
     DF = fbInput()
-    #if (!is.null(DF)) {
-    #ci = input$hotFieldbook_select$select$c
     ci = input$hotFieldbook_columns_selected
     #print(ci)
     trt = names(DF)[ncol(DF)]
@@ -187,6 +185,85 @@ fieldbook_analysis <- function(input, output, session){
       out <- paste0("<a href='reports/report_anova.docx' target='_new'>Word</a>")
     })
     HTML(out)
+
+  })
+
+  output$fieldbook_histogram <- renderPlot({
+    DF = fbInput()
+    ci = input$hotFieldbook_columns_selected
+
+    s1 = input$hotFieldbook_rows_all  # rows on all pages (after being filtered)
+    s2 = input$hotFieldbook_rows_current
+
+
+    # message(paste(class(ci)))
+    # message(paste(str(ci)))
+    # message(paste("CI:", ci))
+    #
+    if(is.null(ci)) ci = ncol(DF)
+    dt = DF[, ci]
+
+    cnm = colnames(DF)[ci]
+    mnt = paste( cnm)
+    if(is.factor(DF[, ci])) {
+      dt <- dt %>% as.character() %>% as.integer()
+    }
+    message(paste(s2))
+
+    if(is.numeric(dt)){
+      hist(dt, main = mnt, xlab = "In red: values from selection by search; in blue: visible records", ylab = "Count" )
+      # solid dots (pch = 19) for current page
+      if (length(s1)) {
+        #message(paste(dt[s1], collapse = ", "))
+        hist(dt[s1], col = "red", add = T)
+      }
+      if (length(s2) > 0 && length(s2) < length(dt)) {
+        abline(v = dt[s2], col = 'blue', add = T)
+      }
+    }
+
+  })
+
+  output$fieldbook_scatter <- renderPlot({
+    DF = fbInput()
+    ci = input$hotFieldbook_columns_selected
+
+    s1 = input$hotFieldbook_rows_current  # rows on the current page
+    s2 = input$hotFieldbook_rows_all      # rows on all pages (after being filtered)
+
+    cx = which(stringr::str_detect(names(DF), "Harvest index"))
+    DT = DF
+
+    if(is.factor(DF[, ci])) {
+      DF[, ci] <- DF[, ci] %>% as.character() %>% as.integer()
+    }
+    DF = DF[, c(cx, ci)]
+
+    par(mar = c(4, 4, 1, .1))
+
+    plot(DF, pch = 21)
+
+    #solid dots (pch = 19) for current page
+    if (length(s1)) {
+      points(DF[s1, , drop = FALSE], pch = 19, cex = 2)
+    }
+
+    # show red circles when performing searching
+    if (length(s2) > 0 && length(s2) < nrow(DT)) {
+      points(DF[s2, , drop = FALSE], pch = 21, cex = 3, col = 'red')
+    }
+
+    # dynamically change the legend text
+    s = input$hotFieldbook_search
+    txt = if (is.null(s) || s == '') 'Filtered data' else {
+      sprintf('Data matching "%s"', s)
+    }
+
+    legend(
+      'topright', c('Original data', 'Data on current page', txt),
+      pch = c(21, 19, 21), pt.cex = c(1, 2, 3), col = c(1, 1, 2),
+      y.intersp = 2, bty = 'n'
+    )
 
   })
 

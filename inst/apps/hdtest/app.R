@@ -26,7 +26,7 @@ ui <- dashboardPage(skin = "yellow",
 
                                     ),
                     dashboardSidebar(
-                      sidebarMenu(
+                      sidebarMenu(id = "tabs",
                         menuItem("About", tabName = "inf_dashboard", icon = icon("info"), selected = TRUE),
                         menuItem("Phenotype", icon = icon("leaf"),
                                  menuSubItem("Analysis",
@@ -103,12 +103,20 @@ ui <- dashboardPage(skin = "yellow",
                         tabItem(tabName = "phe_dashboard",
                                 fluidRow(
                                   column(width = 12,
-                                         box(width = NULL,
+                                         box(width = 8,
                                              title = "Fieldbook",
                                              #p(class = 'text-center', downloadButton('locsDL', 'Download Filtered Data')),
                                              #rHandsontableOutput("hotFieldbook", height = 400)
                                              tags$div(DT::dataTableOutput("hotFieldbook", height = 400), style = "font-size:80%")
                                              #locationsUI("location")
+                                         ),
+                                         tabBox(width = 4,
+                                            tabPanel(title = "Histogram",
+                                             plotOutput("fieldbook_histogram")
+                                             ),
+                                            tabPanel(title = "Scatter",
+                                                     plotOutput("fieldbook_scatter")
+                                            )
                                          )
                                   )
 
@@ -129,7 +137,7 @@ ui <- dashboardPage(skin = "yellow",
                                                          d3heatmap::d3heatmapOutput("fieldbook_heatmap")
                                                 ),
                                                 tabPanel(title = "Report",
-                                                    tabBox(id = "tabAnalaysisReports", width = NULL,
+                                                    tabBox(id = "tabAnalaysis", width = NULL,
                                                       tabPanel("HTML report",
                                                                htmlOutput("fbRepHtml")
                                                                )
@@ -139,11 +147,7 @@ ui <- dashboardPage(skin = "yellow",
                                                       ),
                                                       tabPanel("PDF report",
                                                                htmlOutput("fbRepPdf")
-                                                      ),
-                                                      HTML("<div style='display:none'>"),
-                                                      shinyURL.ui(label = "",width=0, copyURL = F, tinyURL = F),
-                                                      #shinyURL.ui("URL", tinyURL = F)
-                                                      HTML("</div>")
+                                                      )
 
                                                       )
 
@@ -152,7 +156,11 @@ ui <- dashboardPage(skin = "yellow",
 
 
 
-                                         )
+                                         ),
+                                         HTML("<div style='display:none'>"),
+                                         shinyURL.ui(label = "",width=0, copyURL = F, tinyURL = F),
+                                         #shinyURL.ui("URL", tinyURL = F)
+                                         HTML("</div>")
                                   )
 
                                 )
@@ -176,7 +184,7 @@ sv <- function(input, output, session) ({
 
   output$notificationMenu <- renderMenu({
     bh = stringr::str_split(brapi_host, "@")[[1]][2]
-    note = paste0("Connected to:", bh) #session$clientData$url_hostname)
+    note = paste0("Connect: ", bh) #session$clientData$url_hostname)
     nots <-list(notificationItem(note, status = "success"))
     dropdownMenu(type = "notifications", .list = nots)
     #nots
