@@ -1,15 +1,15 @@
-library(nloptr)
-library(shiny)
-library(brapi)
-library(shinydashboard)
 library(d3heatmap)
 
 library(shinyURL)
 library(qtlcharts)
 library(leaflet)
-library(dplyr)
+#library(dplyr)
 library(withr)
 library(DT)
+library(brapi)
+library(shiny)
+library(shinydashboard)
+
 
 # hidapHeader <- function( title = NULL, titleWidth = NULL, disable = FALSE) {
 #   out = dashboardHeader(title = title, titleWidth = titleWidth, disable = disable)
