@@ -227,6 +227,7 @@ fieldbook_analysis <- function(input, output, session){
   output$fieldbook_scatter <- renderPlot({
     DF = fbInput()
     ci = input$hotFieldbook_columns_selected
+    if(is.null(ci)) ci = ncol(DF)
 
     s1 = input$hotFieldbook_rows_current  # rows on the current page
     s2 = input$hotFieldbook_rows_all      # rows on all pages (after being filtered)
