@@ -10,7 +10,6 @@
 #' @param page integer
 #' @author Reinhard Simon
 #' @import httr
-#' @import magrittr
 #' @import progress
 #' @references \url{http://docs.brapi.apiary.io/reference/germplasm/germplasm-search/search-names-to-retrieve-germplasm-records}
 #'

@@ -4,11 +4,6 @@
 #' @param input shiny
 #' @param output shiyn
 #' @param session shiny
-#' @import shiny
-#' @import rhandsontable
-#' @import d3heatmap
-#' @import qtlcharts
-#' @import agricolae
 #' @author Reinhard Simon
 # @return data.frame
 #' @export

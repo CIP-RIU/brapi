@@ -1,6 +1,6 @@
 library(shiny)
 library(miniUI)
-library(rhandsontable)
+#library(rhandsontable)
 library(ggplot2)
 library(d3heatmap)
 library(qtlcharts)
