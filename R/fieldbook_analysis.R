@@ -14,6 +14,7 @@ fieldbook_analysis <- function(input, output, session){
   message(msg)
 
   output$sessionInfo = renderPrint(msg)
+
   dataInput <- reactive({
     fbId = input$fbaInput
     # DF = brapi::study_table(fbId)
