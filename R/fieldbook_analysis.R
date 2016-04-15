@@ -10,10 +10,10 @@
 
 fieldbook_analysis <- function(input, output, session){
 
-  #library(ggvis)
+  msg = "Highly Interactive Data Analysis Platform for Root and Tuber Crop breeding."
+  message(msg)
 
-  output$sessionInfo = renderPrint("Highly Interactive Data Analysis Platform for Root and Tuber Crop breeding.")
-
+  output$sessionInfo = renderPrint(msg)
   dataInput <- reactive({
     fbId = input$fbaInput
     # DF = brapi::study_table(fbId)
