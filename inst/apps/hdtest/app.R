@@ -115,7 +115,13 @@ ui <- dashboardPage(skin = "yellow",
                                              plotOutput("fieldbook_histogram")
                                              ),
                                             tabPanel(title = "Scatter",
-                                                     plotOutput("fieldbook_scatter")
+                                                     div(style = "position:relative",
+                                                     plotOutput("fieldbook_scatter",
+                                                                hover = hoverOpts("plot_hover",
+                                                                                  delay = 100,
+                                                                                  delayType = "debounce")),
+                                                     uiOutput('scatterplotHover_info')
+                                                     )
                                             )
                                          )
                                   )
