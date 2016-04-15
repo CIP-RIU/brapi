@@ -31,6 +31,7 @@ averages_germplasm <- function(study, has_trait){
 #' @param frac numeric value between 0.01 and 1 inclusive
 #' @param max_g integer maximum number of germplasm
 #' @param trait character the trait to use for calculation of ranking
+#' @import dplyr
 #'
 #' @return data.frame
 #' @export
