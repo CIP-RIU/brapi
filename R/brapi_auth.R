@@ -44,8 +44,8 @@ get_brapi <- function() {
   fn = "brapi_db.R"
   BRAPI_DB = NULL
   if(file.exists(fn)){
-    x=readr::read_csv(fn, col_names = F)
-    BRAPI_DB = x[x$X1=="BRAPI_DB", 2][[1]]
+    x = read.csv(fn, header = F, stringsAsFactors = FALSE)
+    BRAPI_DB = x[x$V1=="BRAPI_DB", 2][[1]]
   }
   BRAPI_DB
 }
@@ -72,7 +72,7 @@ set_brapi <- function(url, port=3000) {
   }
 
   #Sys.setenv(BRAPI_DB = db)
-  writeLines(paste0("BRAPI_DB, ", db), con = "brapi_db.R")
+  writeLines(paste0("BRAPI_DB,", db), con = "brapi_db.R")
 }
 
 brapi_session <- function() {
@@ -80,8 +80,8 @@ brapi_session <- function() {
   fn = "brapi_session.R"
   BRAPI_SESSION = NULL
   if(file.exists(fn)){
-    x=readr::read_csv(fn, col_names = F)
-    BRAPI_SESSION = x[x$X1=="BRAPI_SESSION", 2][[1]]
+    x=read.csv(fn, header = F, stringsAsFactors = FALSE)
+    BRAPI_SESSION = x[x$V1=="BRAPI_SESSION", 2][[1]]
   }
   BRAPI_SESSION
 }
@@ -136,6 +136,6 @@ brapi_auth <- function(user, password){
     message("Authenticated!")
   }
   #Sys.setenv(BRAPI_SESSION = status)
-  writeLines(paste0("BRAPI_SESSION, ", status), con = "brapi_session.R")
+  writeLines(paste0("BRAPI_SESSION,", status), con = "brapi_session.R")
 }
 

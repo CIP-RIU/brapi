@@ -9,6 +9,6 @@ License: GPL-3
 LazyData: true
 RoxygenNote: 5.0.1
 Imports: httr, jsonlite,  stringr, progress, shiny, miniUI, qtlcharts, agricolae, d3heatmap,
-  DT, dplyr, fbmaterials, htmlTable, leaflet, readr,
+  DT, dplyr, fbmaterials, htmlTable, leaflet,
   randomForest, rmarkdown, ggplot2, st4gi, magrittr
 Remotes: rstudio/DT, c5sire/fbmaterials, rstudio/shiny, reyzaguirre/st4gi, hadley/ggplot2
