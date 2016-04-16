@@ -40,7 +40,14 @@ assign_item <- function(avar, from, type = "character") {
 #' @author Reinhard Simon
 #' @export
 get_brapi <- function() {
-  Sys.getenv('BRAPI_DB')
+  #Sys.getenv('BRAPI_DB')
+  fn = "brapi_db.R"
+  BRAPI_DB = NULL
+  if(file.exists(fn)){
+    x=readr::read_csv(fn, col_names = F)
+    BRAPI_DB = x[x$X1=="BRAPI_DB", 2][[1]]
+  }
+  BRAPI_DB
 }
 
 #' set BRAPI database
@@ -64,11 +71,19 @@ set_brapi <- function(url, port=3000) {
     db = paste0(db, "/brapi/v1/")
   }
 
-  Sys.setenv(BRAPI_DB = db)
+  #Sys.setenv(BRAPI_DB = db)
+  writeLines(paste0("BRAPI_DB, ", db), con = "brapi_db.R")
 }
 
 brapi_session <- function() {
-  Sys.getenv('BRAPI_SESSION')
+  #Sys.getenv('BRAPI_SESSION')
+  fn = "brapi_session.R"
+  BRAPI_SESSION = NULL
+  if(file.exists(fn)){
+    x=readr::read_csv(fn, col_names = F)
+    BRAPI_SESSION = x[x$X1=="BRAPI_SESSION", 2][[1]]
+  }
+  BRAPI_SESSION
 }
 
 brapi_parse <- function(req) {
@@ -120,6 +135,7 @@ brapi_auth <- function(user, password){
   if(status == "") stop("Authentication failed. Check your user name and password!") else {
     message("Authenticated!")
   }
-  Sys.setenv(BRAPI_SESSION = status)
+  #Sys.setenv(BRAPI_SESSION = status)
+  writeLines(paste0("BRAPI_SESSION, ", status), con = "brapi_session.R")
 }
 
