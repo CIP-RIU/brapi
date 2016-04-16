@@ -95,7 +95,7 @@ The following traits are analyzed: **`r paste(params$trait, collapse = ", ")`**.
 gid = unique(data$germplasmDbId)
 gnm = unique(data$germplasmName)
 
-host = stringr::str_split(Sys.getenv("BRAPI_DB") , "/")[[1]][1]
+host = stringr::str_split(brapi::get_brapi() , "/")[[1]][1]
       path = "/stock/"
 
       #TODO change for genotypes

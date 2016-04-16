@@ -208,12 +208,12 @@ locations <- function(input, output, session){
         gnm = topgp$germplasmName
         hid = topgp$`Harvest index computing percent`
 
-        host = stringr::str_split(Sys.getenv("BRAPI_DB") , "/")[[1]][1]
+        host = stringr::str_split(get_brapi() , "/")[[1]][1]
         host = brapi_host
         path = "/stock/"
 
         #TODO change for genotypes
-        out = paste0("<a href='http://",host, path, gid,"/view' target='_blank'>", gnm, " (",hid,  ")</a>")
+        out = paste0("<a href='http://", host, path, gid,"/view' target='_blank'>", gnm, " (",hid,  ")</a>")
         txt = paste0("Top genotypes for trait (", "Harvest index" ,"):</br>") # TODO make trait choosable
         out = paste( out, collapse = ", ")
         out = paste(txt, out)
