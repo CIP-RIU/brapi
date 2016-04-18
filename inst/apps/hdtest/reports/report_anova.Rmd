@@ -95,10 +95,12 @@ The following traits are analyzed: **`r paste(params$trait, collapse = ", ")`**.
 gid = unique(data$germplasmDbId)
 gnm = unique(data$germplasmName)
 
-host = stringr::str_split(brapi::get_brapi() , "/")[[1]][3]
-if(stringr::str_detect(host, "@")){
-  host = stringr::str_split(host, "@")[[1]][2]
-}
+# host = stringr::str_split(brapi::get_brapi() , "/")[[1]][3]
+# if(stringr::str_detect(host, "@")){
+#   host = stringr::str_split(host, "@")[[1]][2]
+# }
+
+      host = "x"
 
       path = "/stock/"
 
