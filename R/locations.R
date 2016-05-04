@@ -9,6 +9,16 @@
 # @return data.frame
 #' @export
 locations <- function(input, output, session){
+
+  get_plain_host <- function(){
+    host = stringr::str_split(Sys.getenv("BRAPI_DB") , ":80")[[1]][1]
+    if(stringr::str_detect(host, "@")){
+      host = stringr::str_replace(host, "http://[^.]{3,8}:[^.]{4,8}@", "")
+    }
+    host
+  }
+
+
   dat <- reactive({
     dat <- brapi::locations_list()
     dat[!is.na(dat$latitude), ]
@@ -151,6 +161,7 @@ locations <- function(input, output, session){
     # 1st try to find via id if not use unique name
     sid = stds[stds$locationDbId == locs$locationDbId, "studyDbID"]
     if (length(sid) == 0) {
+      # REDO! Use all locations; group by country (rev. order by year; highlight the marked one!)
       sid = stds[stringr::str_detect(toupper(stds$name), locs$Uniquename), "studyDbId"]
 
     }
@@ -158,7 +169,7 @@ locations <- function(input, output, session){
     setProgress(5)
 
     if(length(sid) != 0){
-      host = stringr::str_split(Sys.getenv("BRAPI_DB") , "/")[[1]][1]
+      host = get_plain_host()
       path = "/breeders/trial/"
 
       out = paste0("<br><a href='http://",host, path, sid, "' target='_blank'>", stds[stds$studyDbId==sid, "name"], "</a>") %>%
@@ -170,6 +181,7 @@ locations <- function(input, output, session){
     HTML(out)
     })
   })
+
 
   output$site_genotypes <- renderUI({
     withProgress(message = 'Getting trial list ...', value = 0, max = 10, {
@@ -196,7 +208,8 @@ locations <- function(input, output, session){
       gnm = topgp$germplasmName
       hid = topgp$`Harvest index computing percent`
 
-      host = stringr::str_split(Sys.getenv("BRAPI_DB") , "/")[[1]][1]
+      host = get_plain_host()
+
       path = "/stock/"
 
       #TODO change for genotypes

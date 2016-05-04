@@ -3,7 +3,7 @@ library(shiny)
 library(brapi)
 library(shinydashboard)
 library(d3heatmap)
-library(rhandsontable)
+#library(rhandsontable)
 library(shinyURL)
 library(qtlcharts)
 library(leaflet)
@@ -12,13 +12,26 @@ library(withr)
 
 brapi_host = "sgn:eggplant@sweetpotatobase-test.sgn.cornell.edu"
 
+get_plain_host <- function(){
+  host = stringr::str_split(Sys.getenv("BRAPI_DB") , ":80")[[1]][1]
+  if(host == "") host = brapi_host
+  if(stringr::str_detect(host, "@")){
+    if(stringr::str_detect(host, "http://")) {
+      host = stringr::str_replace(host, "http://", "")
+    }
+    host = stringr::str_replace(host, "[^.]{3,8}:[^.]{4,8}@", "")
+  }
+  host
+}
+
+host = get_plain_host()
 
 ui <- dashboardPage(skin = "yellow",
-
 
                     dashboardHeader(title = "HIDAP"),
                     dashboardSidebar(
                       sidebarMenu(
+                        menuItem("About", tabName = "inf_dashboard", selected = TRUE),
                         menuItem("Phenotype", icon = icon("leaf"),
                                  menuSubItem("Analysis",
                                              tabName = "phe_dashboard", icon = icon("calculator"))
@@ -29,11 +42,8 @@ ui <- dashboardPage(skin = "yellow",
                         ),
 
                         menuItem("Environment", tabName = "env_dashboard", icon = icon("globe")
-
-
-                        )
                       )
-                    ),
+                    )),
                     dashboardBody(
                       #tags$head(tags$style(HTML(mycss))),
                       tabItems(
@@ -86,9 +96,7 @@ ui <- dashboardPage(skin = "yellow",
                                   column(width = 12,
                                          box(width = NULL,
                                              title = "Fieldbook",
-                                             #p(class = 'text-center', downloadButton('locsDL', 'Download Filtered Data')),
-                                             #rHandsontableOutput("hotFieldbook", height = 400)
-                                             tags$div(DT::dataTableOutput("hotFieldbook", height = 400), style = "font-size:80%")
+                                             DT::dataTableOutput("hotFieldbook")
                                              #locationsUI("location")
                                          )
                                   )
@@ -118,9 +126,9 @@ ui <- dashboardPage(skin = "yellow",
                                                       tabPanel("Word report",
                                                                htmlOutput("fbRepWord")
                                                       ),
-                                                      tabPanel("PDF report",
-                                                               htmlOutput("fbRepPdf")
-                                                      ),
+                                                      # tabPanel("PDF report",
+                                                      #          htmlOutput("fbRepPdf")
+                                                      # ),
                                                       HTML("<div style='display:none'>"),
                                                       shinyURL.ui(label = "",width=0, copyURL = F, tinyURL = F),
                                                       #shinyURL.ui("URL", tinyURL = F)
@@ -161,14 +169,16 @@ fieldbook_analysis <- function(input, output, session){
 
   output$hotFieldbook <- DT::renderDataTable({
     #renderRHandsontable({
+    x = NULL
     withProgress(message = "Loading fieldbook ...",
                  detail = "This may take a while ...", value = 1, max = 4, {
     try({
       x <- fbInput()
 
     })
-    x
+
     })
+    x
   },  server = FALSE,  extensions = 'FixedColumns',
       options = list(scrollX = TRUE
                      # ,
@@ -282,7 +292,8 @@ fieldbook_analysis <- function(input, output, session){
                                               rep  = rps,
                                               data = DF,
                                               maxp = 0.1,
-                                              author = author))
+                                              author = author,
+                                              host = host))
                      incProgress(1, message = "Loading")
 
                    }) # try
@@ -361,8 +372,7 @@ locations <- function(input, output, session){
   })
 
   output$tableLocs <- DT::renderDataTable( dat()
-                                       , server = FALSE,
-                                       options = list(scrollX = TRUE))
+                                       , server = FALSE)
 
   output$mapLocs <- renderLeaflet({
     pts <- dat_sel()
@@ -379,9 +389,9 @@ locations <- function(input, output, session){
 
 
   # download the filtered data
-  output$locsDL = downloadHandler('BRAPI-locs-filtered.csv', content = function(file) {
-    write.csv(dat_sel(), file)
-  })
+  # output$locsDL = downloadHandler('BRAPI-locs-filtered.csv', content = function(file) {
+  #   write.csv(dat_sel(), file)
+  # })
 
 
   output$histogram <- renderPlot({
@@ -501,8 +511,8 @@ locations <- function(input, output, session){
       setProgress(5)
 
       if(length(sid) != 0){
-        host = stringr::str_split(Sys.getenv("BRAPI_DB") , "/")[[1]][1]
-        host = brapi_host
+        # host = stringr::str_split(Sys.getenv("BRAPI_DB") , "/")[[1]][1]
+        # host = brapi_host
         path = "/breeders/trial/"
 
         out = paste0("<br><a href='http://",host, path, sid, "' target='_blank'>", stds[stds$studyDbId==sid, "name"], "</a>") %>%
@@ -540,8 +550,8 @@ locations <- function(input, output, session){
         gnm = topgp$germplasmName
         hid = topgp$`Harvest index computing percent`
 
-        host = stringr::str_split(Sys.getenv("BRAPI_DB") , "/")[[1]][1]
-        host = brapi_host
+        # host = stringr::str_split(Sys.getenv("BRAPI_DB") , "/")[[1]][1]
+        # host = brapi_host
         path = "/stock/"
 
         #TODO change for genotypes

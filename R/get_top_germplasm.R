@@ -1,4 +1,5 @@
 averages_germplasm <- function(study, has_trait){
+  #library(dplyr)
   #summarize by germplasm
   by_germplasm <- study %>% group_by(germplasmName)
   options(warn=-1)
@@ -34,8 +35,6 @@ averages_germplasm <- function(study, has_trait){
 #'
 #' @return data.frame
 #' @export
-#'
-#' @examples
 get_top_germplasm <- function(study = NULL, frac = .1, max_g = 20, trait = "Harvest index") {
   stopifnot(!is.null(study))
   stopifnot(is.data.frame(study))

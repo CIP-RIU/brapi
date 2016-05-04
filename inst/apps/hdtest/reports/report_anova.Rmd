@@ -22,6 +22,7 @@ params:
   maxp: "no data"
   author: "no data"
   formats: TRUE
+  host: "unknown"
 ---
 
 ```{r, echo = FALSE}
@@ -35,6 +36,7 @@ rep <- params$rep
 data <- params$data
 maxp <- params$maxp
 meta <- params$meta
+host <- params$host
 
 ```
 <!--
@@ -94,7 +96,7 @@ The following traits are analyzed: **`r paste(params$trait, collapse = ", ")`**.
 gid = unique(data$germplasmDbId)
 gnm = unique(data$germplasmName)
 
-host = stringr::str_split(Sys.getenv("BRAPI_DB") , "/")[[1]][1]
+
       path = "/stock/"
 
       #TODO change for genotypes

@@ -1,5 +1,6 @@
-library(miniUI)
+
 library(shiny)
+library(miniUI)
 
 brapiConnectAddin <- function(){
 

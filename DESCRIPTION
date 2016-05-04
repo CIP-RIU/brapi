@@ -8,6 +8,7 @@ Depends:
 License: GPL-3
 LazyData: true
 RoxygenNote: 5.0.1
-Imports: httr, jsonlite, magrittr, stringr, progress, shiny, miniUI, qtlcharts, agricolae, rhandsontable, d3heatmap,
+Imports: httr, jsonlite, magrittr, stringr, progress, shiny, qtlcharts, agricolae, d3heatmap,
   DT, devtools, dplyr, fbmaterials, htmlTable, leaflet,
-  randomForest, rmarkdown, ggplot2
+  randomForest, rmarkdown, withr, miniUI, ggplot2, dplyr
+Remotes: rstudio/shiny

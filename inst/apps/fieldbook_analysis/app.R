@@ -2,7 +2,7 @@ library(shiny)
 library(brapi)
 library(shinydashboard)
 library(d3heatmap)
-library(rhandsontable)
+#library(rhandsontable)
 library(shinyURL)
 
 ui <- dashboardPage(skin = "yellow",
@@ -32,7 +32,7 @@ ui <- dashboardPage(skin = "yellow",
                                          box(width = NULL,
                                              title = "Fieldbook",
                                              #p(class = 'text-center', downloadButton('locsDL', 'Download Filtered Data')),
-                                             rHandsontableOutput("hotFieldbook", height = 400)
+                                             DT::dataTableOutput("hotFieldbook")
                                              #locationsUI("location")
                                          )
                                   )

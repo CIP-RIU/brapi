@@ -1,6 +1,7 @@
 library(shiny)
 library(miniUI)
-library(rhandsontable)
+#library(rhandsontable)
+library(DT)
 library(ggplot2)
 library(d3heatmap)
 library(qtlcharts)
@@ -19,7 +20,7 @@ fieldbook_analysisAddin <- function(){
                        ),
                        miniTabPanel("Data", icon = icon("table"),
                                     miniContentPanel(padding = 0,
-                                      rHandsontableOutput("hotFieldbook", height = 400)
+                                      DT::dataTableOutput("hotFieldbook")
                                     )
                        ),
                        miniTabPanel("Correlations", icon = icon("line-chart"),
@@ -55,7 +56,21 @@ fieldbook_analysisAddin <- function(){
     brapi::fieldbook_analysis(input, output, session)
 
     observeEvent(input$done, {
-      stopApp("Bye!")
+
+      fieldbook <- brapi::study_table(input$fbaInput)
+      attr(fieldbook, "fieldbookId") = input$fbaInput
+      hidap_fieldbook <<- fieldbook
+
+      msg = c("The fieldbook is available in your session",
+              "through the variable:",
+              "",
+             "'hidap_fieldbook'!",
+             "",
+             "Bye!"
+      )
+
+
+      stopApp(msg)
     })
 
   }

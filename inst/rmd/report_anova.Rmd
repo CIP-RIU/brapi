@@ -20,7 +20,10 @@ params:
   maxp: "no data"
   author: "no data"
   formats: TRUE
+  host: "unknown"
 ---
+
+
 
 ```{r, echo = FALSE}
 library(knitr)
@@ -33,6 +36,23 @@ rep <- params$rep
 data <- params$data
 maxp <- params$maxp
 meta <- params$meta
+host <- params$host
+
+library(magrittr)
+
+catt = attr(data, "meta")[[8]]
+catt = catt[12:length(catt)]
+ttbl = stringr::str_split(catt, "\\|") %>% 
+  unlist %>% matrix(ncol = 2, byrow=T) %>%
+  data.frame(stringsAsFactors = FALSE)
+names(ttbl) = c("name", "id")
+ttbl$name = as.character(ttbl$name)
+
+get_trait_links <- function(traits_sel){
+  
+}
+
+trait_links = traits
 
 ```
 <!--
@@ -100,13 +120,13 @@ where
 
 In this model we assume that the errors are independent and have a normal distribution with common variance, that is, $\epsilon_{ij} \sim N(0,\sigma_{\epsilon}^2)$.
 
-The following traits are analyzed: **`r paste(params$trait, collapse = ", ")`**.
+The following traits are analyzed: **`r paste(trait_links, collapse = ", ")`**.
 
 ```{r , echo = FALSE, results='hide'}
 gid = unique(data$germplasmDbId)
 gnm = unique(data$germplasmName)
 
-host = stringr::str_split(Sys.getenv("BRAPI_DB") , "/")[[1]][1]
+#host = stringr::str_split(Sys.getenv("BRAPI_DB") , "/")[[1]][1]
       path = "/stock/"
 
       #TODO change for genotypes
@@ -195,13 +215,13 @@ Valid traits: **`r paste(names(dat)[-c(1,2)])`**.
 
 ```{r, include = FALSE}
 out <- NULL
-#for (k in 1:length(trts)) {
-#   lc <- st4gi::checkdata01(trts[k], treat, rep, tbl)
-#   out <- c(out, knit_expand('child_rcbd2.Rmd'))
-#}
+for (k in 1:length(trts)) {
+   lc <- st4gi::checkdata01(trts[k], treat, rep, tbl)
+   out <- c(out, knit_expand('child_rcbd2.Rmd'))
+}
 ```
 
-`r #paste(knit(text = out), collapse = '\n')`
+`r paste(knit(text = out), collapse = '\n')`
 
 ## Trait correlations
 

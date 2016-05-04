@@ -5,7 +5,8 @@
 #' @param output shiyn
 #' @param session shiny
 #' @import shiny
-#' @import rhandsontable
+#' @import DT
+# @import rhandsontable
 #' @import d3heatmap
 #' @import qtlcharts
 #' @import agricolae
@@ -13,6 +14,19 @@
 # @return data.frame
 #' @export
 fieldbook_analysis <- function(input, output, session){
+
+  get_plain_host <- function(){
+    host = stringr::str_split(Sys.getenv("BRAPI_DB") , ":80")[[1]][1]
+    if(host == "") host = brapi_host
+    if(stringr::str_detect(host, "@")){
+      if(stringr::str_detect(host, "http://")) {
+        host = stringr::str_replace(host, "http://", "")
+      }
+      host = stringr::str_replace(host, "[^.]{3,8}:[^.]{4,8}@", "")
+    }
+    host
+  }
+
 
   dataInput <- reactive({
     fbId = input$fbaInput
@@ -27,20 +41,41 @@ fieldbook_analysis <- function(input, output, session){
   })
 
 
-output$hotFieldbook <- renderRHandsontable({
-  try({
-    DF <- fbInput()
-    if(!is.null(DF)){
+# output$hotFieldbook <- renderDataTable({
+#   try({
+#     DF <- fbInput()
+#     if(!is.null(DF)){
+#
+#       rh = rhandsontable::rhandsontable(DF,
+#                          selectCallback = TRUE,
+#                          readOnly = FALSE,useTypes = TRUE) %>%
+#         hot_table(highlightCol = TRUE, highlightRow = TRUE) %>%
+#         hot_cols( fixedColumnsLeft = 6)
+#       rh
+#     }
+#   })
+# })
 
-      rh = rhandsontable::rhandsontable(DF,
-                         selectCallback = TRUE,
-                         readOnly = FALSE,useTypes = TRUE) %>%
-        hot_table(highlightCol = TRUE, highlightRow = TRUE) %>%
-        hot_cols( fixedColumnsLeft = 6)
-      rh
-    }
-  })
-})
+  output$hotFieldbook <- DT::renderDataTable({
+    #renderRHandsontable({
+    x = NULL
+    withProgress(message = "Loading fieldbook ...",
+                 detail = "This may take a while ...", value = 1, max = 4, {
+                   try({
+                     x <- fbInput()
+
+                   })
+
+                 })
+    x
+  },  server = FALSE,  extensions = 'FixedColumns',
+  options = list(scrollX = TRUE
+                 # ,
+                 # fixedColumns = list(leftColumns = 6)
+  ),
+  selection = list(target = 'column', mode = "single")
+  )
+
 
 output$vcor_output = qtlcharts::iplotCorr_render({
 
@@ -88,28 +123,54 @@ output$vcor_output = qtlcharts::iplotCorr_render({
 
 
 # TODO BUG?: somehow this section needs to go last!
+# output$fieldbook_heatmap <- d3heatmap::renderD3heatmap({
+#    DF = fbInput()
+#    #if (!is.null(DF)) {
+#      ci = input$hotFieldbook_select$select$c
+#     #print(ci)
+#     trt = names(DF)[ncol(DF)]
+#     if (!is.null(ci)) trt = names(DF)[ci]
+#     #print(trt)
+#     fm <- fbmaterials::fb_to_map(DF, gt = "germplasmName", #input[["def_genotype"]],
+#                                  variable = trt,
+#                                  rep = "REP", #input[["def_rep"]],
+#                                  # blk = input[["def_block"]],
+#                                  plt = "PLOT"  #input[["def_plot"]]
+#     )
+#     amap = fm[["map"]]
+#     anot = fm[["notes"]]
+#     d3heatmap(x = amap,
+#              cellnote = anot,
+#              colors = "Blues",
+#              Rowv = FALSE, Colv = FALSE,
+#              dendrogram = "none")
+# })
+
 output$fieldbook_heatmap <- d3heatmap::renderD3heatmap({
-   DF = fbInput()
-   #if (!is.null(DF)) {
-     ci = input$hotFieldbook_select$select$c
-    #print(ci)
-    trt = names(DF)[ncol(DF)]
-    if (!is.null(ci)) trt = names(DF)[ci]
-    #print(trt)
-    fm <- fbmaterials::fb_to_map(DF, gt = "germplasmName", #input[["def_genotype"]],
-                                 variable = trt,
-                                 rep = "REP", #input[["def_rep"]],
-                                 # blk = input[["def_block"]],
-                                 plt = "PLOT"  #input[["def_plot"]]
-    )
-    amap = fm[["map"]]
-    anot = fm[["notes"]]
-    d3heatmap(x = amap,
-             cellnote = anot,
-             colors = "Blues",
-             Rowv = FALSE, Colv = FALSE,
-             dendrogram = "none")
+  DF = fbInput()
+  #if (!is.null(DF)) {
+  #ci = input$hotFieldbook_select$select$c
+  ci = input$hotFieldbook_columns_selected
+  #print(ci)
+  trt = names(DF)[ncol(DF)]
+  if (!is.null(ci)) trt = names(DF)[ci]
+  #print(trt)
+  fm <- fbmaterials::fb_to_map(DF, gt = "germplasmName", #input[["def_genotype"]],
+                               variable = trt,
+                               rep = "REP", #input[["def_rep"]],
+                               # blk = input[["def_block"]],
+                               plt = "PLOT"  #input[["def_plot"]]
+  )
+  amap = fm[["map"]]
+  anot = fm[["notes"]]
+  d3heatmap(x = amap,
+            cellnote = anot,
+            colors = "Blues",
+            Rowv = FALSE, Colv = FALSE,
+            dendrogram = "none")
 })
+
+
 
 
 #####################
@@ -141,7 +202,7 @@ output$fbRep <- renderUI({
     withProgress(message = "Creating report ...",
                  detail = "This may take a while ...", value = 0,{
                    try({
-                     devtools::in_dir(report_dir, {
+                     withr::with_dir(report_dir, {
                        #print("X")
                        rmarkdown::render(report,
                                          output_format = c("pdf_document", "word_document",
@@ -155,7 +216,8 @@ output$fbRep <- renderUI({
                                            rep  = rps,
                                            data = DF,
                                            maxp = 0.1,
-                                           author = author))
+                                           author = author,
+                                           host = get_plain_host()))
                        #print("Y")
                      }) # in_dir
                      incProgress(1/3)
@@ -182,8 +244,6 @@ output$fbRep <- renderUI({
 #   HTML(html)
 # })
 #)
-
-
 
 
 
