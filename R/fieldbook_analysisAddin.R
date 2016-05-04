@@ -8,7 +8,10 @@ library(qtlcharts)
 library(agricolae)
 
 
-fieldbook_analysisAddin <- function(){
+fieldbook_analysisAddin <- function(fieldbook = NULL){
+  if(is.null(fieldbook)){
+    print("no fieldbook passed in!")
+  }
   ui <- miniPage(
     gadgetTitleBar("Fieldbook Analysis"),
     miniTabstripPanel( selected = "Field Map",
@@ -57,14 +60,14 @@ fieldbook_analysisAddin <- function(){
 
     observeEvent(input$done, {
 
-      fieldbook <- brapi::study_table(input$fbaInput)
-      attr(fieldbook, "fieldbookId") = input$fbaInput
-      hidap_fieldbook <<- fieldbook
+      hidap_fieldbook <<- brapi::study_table(input$fbaInput)
 
       msg = c("The fieldbook is available in your session",
               "through the variable:",
               "",
-             "'hidap_fieldbook'!",
+             "'hidap_fieldbook' (see the metadata for details)!",
+             "",
+             attr(hidap_fieldbook, "meta")$studyName,
              "",
              "Bye!"
       )

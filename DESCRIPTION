@@ -10,5 +10,5 @@ LazyData: true
 RoxygenNote: 5.0.1
 Imports: httr, jsonlite, magrittr, stringr, progress, shiny, qtlcharts, agricolae, d3heatmap,
   DT, devtools, dplyr, fbmaterials, htmlTable, leaflet,
-  randomForest, rmarkdown, withr, miniUI, ggplot2, dplyr
-Remotes: rstudio/shiny
+  randomForest, rmarkdown, withr, miniUI, ggplot2, dplyr, st4gi
+Remotes: rstudio/shiny, reyzaguirre/st4gi

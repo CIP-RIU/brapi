@@ -31,9 +31,9 @@ ui <- dashboardPage(skin = "yellow",
                     dashboardHeader(title = "HIDAP"),
                     dashboardSidebar(
                       sidebarMenu(
-                        menuItem("About", tabName = "inf_dashboard", selected = TRUE),
+
                         menuItem("Phenotype", icon = icon("leaf"),
-                                 menuSubItem("Analysis",
+                                 menuSubItem("Analysis", selected = TRUE,
                                              tabName = "phe_dashboard", icon = icon("calculator"))
                                  ,
                                  numericInput("fbaInput", "Fieldbook ID", 142, 1, 9999)
@@ -42,7 +42,8 @@ ui <- dashboardPage(skin = "yellow",
                         ),
 
                         menuItem("Environment", tabName = "env_dashboard", icon = icon("globe")
-                      )
+                      ),
+                      menuItem("About", tabName = "inf_dashboard")
                     )),
                     dashboardBody(
                       #tags$head(tags$style(HTML(mycss))),
