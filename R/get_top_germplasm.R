@@ -1,7 +1,7 @@
 averages_germplasm <- function(study, has_trait){
   #library(dplyr)
   #summarize by germplasm
-  by_germplasm <- study %>% group_by(germplasmName)
+  by_germplasm <- study %>% dplyr::group_by(study$germplasmName)
   options(warn=-1)
   dat = by_germplasm %>% dplyr::summarise_each(dplyr::funs(mean))
   options(warn=0)

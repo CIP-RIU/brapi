@@ -9,7 +9,7 @@ fieldbook_analysis(input, output, session)
 \arguments{
 \item{input}{shiny}
 
-\item{output}{shiyn}
+\item{output}{shiny}
 
 \item{session}{shiny}
 }

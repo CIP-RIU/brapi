@@ -1,6 +1,6 @@
 # http://stackoverflow.com/questions/25306519/shiny-saving-url-state-subpages-and-tabs
 
-library(shiny)
+#library(shiny)
 
 hashProxy <- function(inputoutputID) {
   div(id=inputoutputID,class=inputoutputID,tag("div",""));

@@ -7,7 +7,6 @@
 #' @param page integer requested page number
 #' @param pageSize items per page
 #' @import httr
-#' @import magrittr
 #' @author Reinhard Simon
 #' @return data.frame
 #' @export

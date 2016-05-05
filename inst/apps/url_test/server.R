@@ -1,5 +1,5 @@
 # server.R
-library(shiny)
+#library(shiny)
 url_fields_to_sync <- c("beverage","milk","sugarLumps","customer");
 
 # Define server logic required to respond to d3 requests

@@ -5,6 +5,7 @@
 #' @param output shiyn
 #' @param session shiny
 #' @import shiny
+#' @importFrom magrittr '%>%'
 #' @author Reinhard Simon
 # @return data.frame
 #' @export
@@ -42,13 +43,15 @@ locations <- function(input, output, session){
                                       , server = FALSE,
                                        options = list(scrollX = TRUE))
 
-  output$map <- renderLeaflet({
+  output$map <- leaflet::renderLeaflet({
     pts <- dat_sel()
 
-    leaflet(pts, height = "100%") %>% addTiles() %>%
-      addMarkers(clusterOptions = markerClusterOptions(clickable = T)) %>% fitBounds(
-        ~min(longitude), ~min(latitude),
-        ~max(longitude), ~max(latitude)
+    leaflet::leaflet(pts, height = "100%") %>%
+      leaflet::addTiles() %>%
+      leaflet::addMarkers(clusterOptions = leaflet::markerClusterOptions(clickable = T)) %>%
+      leaflet::fitBounds(
+        ~min(pts$longitude), ~min(pts$latitude),
+        ~max(pts$longitude), ~max(pts$latitude)
       )
 
 
@@ -62,6 +65,12 @@ locations <- function(input, output, session){
   })
 
 
+  mrks <- reactive({
+    x = input$map_marker_click
+    subset(dat_sel(), dat_sel()$latitude == as.numeric(x$lat) &
+             dat_sel()$longitude == as.numeric(x$lng))
+  })
+
   output$histogram <- renderPlot({
     hist(dat()$altitude, main = "Frequency of altitude of breeding locations.",
          xlab = "altitude [m]", sub = "Selected location frequencies are in red.")
@@ -74,11 +83,6 @@ locations <- function(input, output, session){
   })
 
   ##################################
-
-  mrks <- reactive({
-    x = input$map_marker_click
-    subset(dat_sel(), latitude == as.numeric(x$lat) & longitude == as.numeric(x$lng))
-  })
 
   rec2info <- function(rec){
     #rec %>% as.data.frame

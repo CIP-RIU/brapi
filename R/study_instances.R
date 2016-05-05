@@ -6,6 +6,7 @@
 #' @param page integer requested page number
 #' @param pageSize items per page
 #' @import httr
+#' @importFrom magrittr '%>%'
 #' @author Reinhard Simon
 #' @return list of marker profile ids
 #' @references \url{http://docs.brapi.apiary.io/#reference/study/list-studies/list-of-study-summaries?console=1}

@@ -6,6 +6,7 @@
 #' @param studyId integer
 #' @param observationVariableId integer
 #' @import httr
+#' @importFrom magrittr '%>%'
 #' @author Reinhard Simon
 #' @return list
 #' @references \url{http://docs.brapi.apiary.io/#reference/study/plot/retrieve-plot-details?console=1}

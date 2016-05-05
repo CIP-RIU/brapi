@@ -2,10 +2,8 @@
 #' fieldbook_analysis
 #'
 #' @param input shiny
-#' @param output shiyn
+#' @param output shiny
 #' @param session shiny
-#' @import shiny
-#' @import DT
 # @import rhandsontable
 #' @import d3heatmap
 #' @import qtlcharts
@@ -14,6 +12,8 @@
 # @return data.frame
 #' @export
 fieldbook_analysis <- function(input, output, session){
+
+  brapi_host = "sgn:eggplant@sweetpotatobase-test.sgn.cornell.edu"
 
   get_plain_host <- function(){
     host = stringr::str_split(Sys.getenv("BRAPI_DB") , ":80")[[1]][1]
@@ -28,14 +28,14 @@ fieldbook_analysis <- function(input, output, session){
   }
 
 
-  dataInput <- reactive({
+  dataInput <- shiny::reactive({
     fbId = input$fbaInput
     # DF = brapi::study_table(fbId)
     # list(fbId, DF)
     fbId
   })
 
-  fbInput <- reactive({
+  fbInput <- shiny::reactive({
     fbId = dataInput()
     brapi::study_table(fbId)
   })
@@ -176,7 +176,7 @@ output$fieldbook_heatmap <- d3heatmap::renderD3heatmap({
 #####################
 
 #observeEvent(input$butDoPhAnalysis, ({
-output$fbRep <- renderUI({
+output$fbRep <- shiny::renderUI({
     DF <- fbInput()
     #y <- input$def_variables
     yn = names(DF)[c(7:ncol(DF))]
@@ -199,7 +199,7 @@ output$fbRep <- renderUI({
 
     writeLines(file.path(wd, "www"), con="log.txt")
 
-    withProgress(message = "Creating report ...",
+    shiny::withProgress(message = "Creating report ...",
                  detail = "This may take a while ...", value = 0,{
                    try({
                      withr::with_dir(report_dir, {
@@ -234,7 +234,7 @@ output$fbRep <- renderUI({
                  })
     #output$fb_report <- renderUI(HTML(html))
     html <- readLines(report)
-    HTML(html)
+    shiny::HTML(html)
 
 })
 
