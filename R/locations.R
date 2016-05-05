@@ -61,7 +61,7 @@ locations <- function(input, output, session){
 
   # download the filtered data
   output$locsDL = downloadHandler('BRAPI-locs-filtered.csv', content = function(file) {
-    write.csv(dat_sel(), file)
+    utils::write.csv(dat_sel(), file)
   })
 
 
@@ -72,13 +72,13 @@ locations <- function(input, output, session){
   })
 
   output$histogram <- renderPlot({
-    hist(dat()$altitude, main = "Frequency of altitude of breeding locations.",
+    graphics::hist(dat()$altitude, main = "Frequency of altitude of breeding locations.",
          xlab = "altitude [m]", sub = "Selected location frequencies are in red.")
-    hist(dat_sel()$altitude, add = T, col = "red")
+    graphics::hist(dat_sel()$altitude, add = T, col = "red")
     if(length(mrks()) > 0){
       # print("abline")
       # print(mrks()$altitude)
-      abline(v = mrks()$altitude, col="blue", lwd = 5)
+      graphics::abline(v = mrks()$altitude, col="blue", lwd = 5)
     }
   })
 

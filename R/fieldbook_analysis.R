@@ -98,7 +98,7 @@ output$vcor_output = qtlcharts::iplotCorr_render({
     }
     y <- DF[, treat]
     if (any(is.na(x))){
-      capture.output(
+      utils::capture.output(
         DF <- randomForest::rfImpute(x = x, y = y )
       )
       #data <- cbind(y, data)
