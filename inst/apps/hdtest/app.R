@@ -183,9 +183,9 @@ fieldbook_analysis <- function(input, output, session){
     x
    },  server = FALSE,  #extensions = 'FixedColumns',
 
-      #target = 'column',
-      options = list(scrollX = TRUE,
-                     selection = list(target = 'column', mode = 'single')
+      selection = list(mode = 'single', target = 'column'),
+      options = list(scrollX = TRUE#,
+                     #selection = list(target = 'column', mode = 'single')
       )
 
                      # ,selection = list(
