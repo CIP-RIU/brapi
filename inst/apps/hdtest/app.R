@@ -9,6 +9,7 @@ library(qtlcharts)
 library(leaflet)
 library(dplyr)
 library(withr)
+library(DT)
 
 brapi_host = "sgn:eggplant@sweetpotatobase-test.sgn.cornell.edu"
 
@@ -164,12 +165,13 @@ fieldbook_analysis <- function(input, output, session){
 
   fbInput <- reactive({
     fbId = dataInput()
+    #print(fbId)
     brapi::study_table(fbId)
   })
 
 
   output$hotFieldbook <- DT::renderDataTable({
-    #renderRHandsontable({
+
     x = NULL
     withProgress(message = "Loading fieldbook ...",
                  detail = "This may take a while ...", value = 1, max = 4, {
@@ -177,15 +179,19 @@ fieldbook_analysis <- function(input, output, session){
       x <- fbInput()
 
     })
-
     })
     x
-  },  server = FALSE,  extensions = 'FixedColumns',
-      options = list(scrollX = TRUE
-                     # ,
+   },  server = FALSE,  #extensions = 'FixedColumns',
+
+      #target = 'column',
+      options = list(scrollX = TRUE,
+                     selection = list(target = 'column', mode = 'single')
+      )
+
+                     # ,selection = list(
                      # fixedColumns = list(leftColumns = 6)
-                     ),
-      selection = list(target = 'column', mode = "single")
+                     #)#,
+  #    selection = list(target = 'column', mode = 'single')
   )
 
   output$vcor_output = qtlcharts::iplotCorr_render({
