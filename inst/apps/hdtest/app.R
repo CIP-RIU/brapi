@@ -44,7 +44,7 @@ ui <- dashboardPage(skin = "yellow",
 
                         menuItem("Environment", tabName = "env_dashboard", icon = icon("globe")
                       ),
-                      menuItem("About", tabName = "inf_dashboard")
+                      menuItem("About", tabName = "inf_dashboard", icon = icon("info"))
                     )),
                     dashboardBody(
                       #tags$head(tags$style(HTML(mycss))),
@@ -184,15 +184,7 @@ fieldbook_analysis <- function(input, output, session){
    },  server = FALSE,  #extensions = 'FixedColumns',
 
       selection = list(mode = 'single', target = 'column'),
-      options = list(scrollX = TRUE#,
-                     #selection = list(target = 'column', mode = 'single')
-      )
-
-                     # ,selection = list(
-                     # fixedColumns = list(leftColumns = 6)
-                     #)#,
-  #    selection = list(target = 'column', mode = 'single')
-  )
+      options = list(scrollX = TRUE ))
 
   output$vcor_output = qtlcharts::iplotCorr_render({
 
