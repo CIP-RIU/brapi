@@ -14,7 +14,7 @@ Imports: httr, jsonlite, stringr, progress, qtlcharts, agricolae,
   DT,  fbmaterials, htmlTable, leaflet,
   randomForest, rmarkdown, withr,  dplyr
 Suggests: devtools, ggplot2, st4gi
-Remotes: c5sire/st4gi, c5sire/materials
+Remotes: c5sire/st4gi, c5sire/fbmaterials
   rstudio/shiny, cran/agricolae, cran/qtlcharts, cran/sp,
   cran/miniUI, rstudio/DT, cran/ggplot2, cran/d3heatmap, cran/qtl, cran/qtlcharts,
   aoles/shinyURL, cran/lattice, cran/shinydashboard, cran/leaflet, cran/dplyr, cran/withr
