@@ -35,7 +35,8 @@ ui <- dashboardPage(skin = "yellow",
                                  menuSubItem("Analysis", selected = TRUE,
                                              tabName = "phe_dashboard", icon = icon("calculator"))
                                  ,
-                                 numericInput("fbaInput", "Fieldbook ID", 142, 1, 9999)
+                                 uiOutput("fbList")
+                                 #numericInput("fbaInput", "Fieldbook ID", 142, 1, 9999)
 
 
                         ),
@@ -156,6 +157,7 @@ fieldbook_analysis <- function(input, output, session){
 
   dataInput <- reactive({
     fbId = input$fbaInput
+    #print(fbId)
     # DF = brapi::study_table(fbId)
     # list(fbId, DF)
     fbId
@@ -167,14 +169,29 @@ fieldbook_analysis <- function(input, output, session){
     brapi::study_table(fbId)
   })
 
+  fbList <- reactive({
+    shiny::withProgress(message = 'Gathering info ...', {
+    sts = brapi::studies()
+    sts[sts$studyType != "", ]
+    })
+  })
 
+  output$fbList <- renderUI({
+    sts = fbList()
+    if(is.null(sts)) return()
+    sl = as.list(sts$studyDbId)
+    names(sl) = sts$name
+    selectInput("fbaInput", "Fieldbook", choices = sl)
+  })
+
+  observe({
   output$hotFieldbook <- DT::renderDataTable({
-
+    #print(input$fbaInput)
     x = NULL
     withProgress(message = "Loading fieldbook ...",
                  detail = "This may take a while ...", value = 1, max = 4, {
     try({
-      x <- fbInput()
+      x <- brapi::study_table(input$fbaInput)  #fbInput()
 
     })
     })
@@ -183,6 +200,9 @@ fieldbook_analysis <- function(input, output, session){
 
       selection = list(mode = 'single', target = 'column'),
       options = list(scrollX = TRUE ))
+
+
+  })
 
   output$vcor_output = qtlcharts::iplotCorr_render({
 
@@ -233,7 +253,10 @@ fieldbook_analysis <- function(input, output, session){
 
   # TODO BUG?: somehow this section needs to go last!
   output$fieldbook_heatmap <- d3heatmap::renderD3heatmap({
+    if(is.null(input$fbaInput)) return(NULL)
     DF = fbInput()
+    print(str(DF))
+    if(is.null(DF)) return(NULL)
     #if (!is.null(DF)) {
     #ci = input$hotFieldbook_select$select$c
     ci = input$hotFieldbook_columns_selected
