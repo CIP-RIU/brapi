@@ -1,6 +1,18 @@
+
+#' averages_germplasm
+#'
+#' calculates the average across repetitions for a certain trait from a fieldbook.
+#'
+#' @param study a dataframe
+#' @param has_trait a trait
+#' @importFrom magrittr '%>%'
+#'
+#' @return averges
+#' @export
 averages_germplasm <- function(study, has_trait){
+  #library(dplyr)
   #summarize by germplasm
-  by_germplasm <- study %>% group_by(germplasmName)
+  by_germplasm <- with(study, dplyr::group_by(study, germplasmName))
   options(warn=-1)
   dat = by_germplasm %>% dplyr::summarise_each(dplyr::funs(mean))
   options(warn=0)
@@ -31,7 +43,7 @@ averages_germplasm <- function(study, has_trait){
 #' @param frac numeric value between 0.01 and 1 inclusive
 #' @param max_g integer maximum number of germplasm
 #' @param trait character the trait to use for calculation of ranking
-#' @import dplyr
+#' @importFrom magrittr '%>%'
 #'
 #' @return data.frame
 #' @export
@@ -39,6 +51,9 @@ get_top_germplasm <- function(study = NULL, frac = .1, max_g = 20, trait = "Harv
   stopifnot(!is.null(study))
   stopifnot(is.data.frame(study))
   has_trait <- stringr::str_detect(names(study), trait) %>% which
+  if(length(has_trait) == 0) {
+    has_trait = ncol(study)
+  }
   #stopifnot(length(has_trait) == 0)
 
   dat <- averages_germplasm(study, has_trait)

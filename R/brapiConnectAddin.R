@@ -1,21 +1,22 @@
-library(miniUI)
-library(shiny)
+
+#library(shiny)
+#library(miniUI)
 
 brapiConnectAddin <- function(){
 
-  ui <- miniPage(
-    gadgetTitleBar("BrAPI"),
-    miniContentPanel(
+  ui <- miniUI::miniPage(
+    miniUI::gadgetTitleBar("BrAPI"),
+    miniUI::miniContentPanel(
       brapiConnectInput("brapi")
     )
 
   )
 
   server <- function(input, output, session) {
-    con <- callModule(brapiConnect, "brapi")
+    con <- shiny::callModule(brapiConnect, "brapi")
 
 
-    observeEvent(input$done, {
+    shiny::observeEvent(input$done, {
       dtl <- unlist(con())
       Sys.setenv(BRAPI_SESSION = "")
       #cat(str(dtl))
@@ -32,8 +33,8 @@ brapiConnectAddin <- function(){
 
   }
 
-  viewer <- paneViewer(300)
+  viewer <- shiny::paneViewer(300)
 
-  runGadget(ui, server, viewer = viewer)
+  shiny::runGadget(ui, server, viewer = viewer)
 
 }

@@ -1,7 +1,3 @@
-get_base <- function(){
-  file.path( "wwww")
-}
-
 check_id <- function(id) {
   stopifnot(!is.null(id), !is.na(id))
   id = as.integer(id)
@@ -45,13 +41,6 @@ assign_item <- function(avar, from, type = "character") {
 #' @export
 get_brapi <- function() {
   Sys.getenv('BRAPI_DB')
-  # fn = file.path(get_base(), "brapi_db.R")
-  # BRAPI_DB = NULL
-  # if(file.exists(fn)){
-  #   x = read.csv(fn, header = F, stringsAsFactors = FALSE)
-  #   BRAPI_DB = x[x$V1=="BRAPI_DB", 2][[1]]
-  # }
-  # BRAPI_DB
 }
 
 #' set BRAPI database
@@ -76,18 +65,10 @@ set_brapi <- function(url, port=3000) {
   }
 
   Sys.setenv(BRAPI_DB = db)
-  #writeLines(paste0("BRAPI_DB,", db), con = file.path("www","brapi_db.R"))
 }
 
 brapi_session <- function() {
   Sys.getenv('BRAPI_SESSION')
-  # fn = file.path(get_base(), "brapi_session.R")
-  # BRAPI_SESSION = NULL
-  # if(file.exists(fn)){
-  #   x=read.csv(fn, header = F, stringsAsFactors = FALSE)
-  #   BRAPI_SESSION = x[x$V1=="BRAPI_SESSION", 2][[1]]
-  # }
-  # BRAPI_SESSION
 }
 
 brapi_parse <- function(req) {
@@ -140,6 +121,5 @@ brapi_auth <- function(user, password){
     message("Authenticated!")
   }
   Sys.setenv(BRAPI_SESSION = status)
-  #writeLines(paste0("BRAPI_SESSION,", status), con = file.path(get_base(),"brapi_session.R"))
 }
 

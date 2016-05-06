@@ -7,6 +7,7 @@
 #'
 #' @param studyId integer
 #' @import httr
+#' @importFrom magrittr '%>%'
 #' @author Reinhard Simon
 #' @return fieldbook with attributes
 # @references \url{http://docs.brapi.apiary.io/#reference/study/plot/retrieve-plot-details?console=1}

@@ -17,16 +17,14 @@ brapiConnectInput <- function(id, label = "Connect to BrAPI database"){
   srv = bci[1]
   prt = stringr::str_split(bci[2], "/")[[1]][1]
 
-  # lgn = Sys.getenv(("BRAPI_LOGIN"))
-  # if(lgn != "") {
-  #   usr = stringr::str_split(lgn, ":")[[1]][1]
-  #   pwd = stringr::str_split(lgn, ":")[[1]][2]
-  # } else {
-  #   pwd = ""
-  #   usr = ""
-  # }
-  pwd = ""
-  usr = ""
+  lgn = Sys.getenv(("BRAPI_LOGIN"))
+  if(lgn != "") {
+    usr = stringr::str_split(lgn, ":")[[1]][1]
+    pwd = stringr::str_split(lgn, ":")[[1]][2]
+  } else {
+    pwd = ""
+    usr = ""
+  }
 
   tagList(
     shiny::textInput(ns("server"), label, value = srv),

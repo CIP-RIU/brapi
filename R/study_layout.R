@@ -4,6 +4,7 @@
 #'
 #' @param studyId integer
 #' @import httr
+#' @importFrom magrittr '%>%'
 #' @author Reinhard Simon
 #' @return list of study attributes
 #' @references \url{http://docs.brapi.apiary.io/#reference/study/layout/retrieve-study-details?console=1}

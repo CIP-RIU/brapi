@@ -22,6 +22,7 @@ params:
   maxp: "no data"
   author: "no data"
   formats: TRUE
+  host: "unknown"
 ---
 
 ```{r, echo = FALSE}
@@ -35,6 +36,7 @@ rep <- params$rep
 data <- params$data
 maxp <- params$maxp
 meta <- params$meta
+host <- params$host
 
 ```
 <!--
@@ -50,7 +52,6 @@ Citation: `r meta$contact` (`r meta$year`). *`r meta$title`*. Dataset version: 1
 ```
 
 # Abstract
-
 
 ```{r , echo = FALSE, results='hide'}
  phs_lbl = "Advanced Trial"
@@ -95,12 +96,6 @@ The following traits are analyzed: **`r paste(params$trait, collapse = ", ")`**.
 gid = unique(data$germplasmDbId)
 gnm = unique(data$germplasmName)
 
-# host = stringr::str_split(brapi::get_brapi() , "/")[[1]][3]
-# if(stringr::str_detect(host, "@")){
-#   host = stringr::str_split(host, "@")[[1]][2]
-# }
-
-      host = "x"
 
       path = "/stock/"
 
