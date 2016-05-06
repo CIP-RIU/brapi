@@ -351,7 +351,21 @@ fieldbook_analysis <- function(input, output, session){
 locations <- function(input, output, session){
   dat <- reactive({
     dat <- brapi::locations_list()
-    dat[!is.na(dat$latitude), ]
+    dat <- dat[!is.na(dat$latitude), ]
+    #dat[dat$Continent == "Africa", ]
+    #dat[dat$countryCode %in% c("Ghana", "Mozambique", "Uganda"), ]
+    sts <- brapi::studies()
+    nms <- sts$name
+    nms <- nms[stringr::str_detect(nms, "-")]
+    nms <- unlist(stringr::str_split(nms, "-"))
+    nms <- nms[seq(2, length(nms), 2)]
+    nms[7] = "Umbeluzi"
+    x = integer(length(nms))
+    for(i in 1:length(nms)){
+      dst = stringdist::stringdist(toupper(nms[i]), toupper(dat$Uniquename))
+      x[i] = which(min(dst) == dst)
+    }
+    dat[x, ]
   })
 
   #vls <- reactiveValues()
@@ -501,7 +515,7 @@ locations <- function(input, output, session){
       # 1st try to find via id if not use unique name
       sid = stds[stds$locationDbId == locs$locationDbId, "studyDbID"]
       if (length(sid) == 0) {
-        sid = stds[stringr::str_detect(toupper(stds$name), locs$Uniquename), "studyDbId"]
+        sid = stds[stringr::str_detect(toupper(stds$name), toupper(locs$Uniquename)), "studyDbId"]
 
       }
 
@@ -534,7 +548,7 @@ locations <- function(input, output, session){
       # 1st try to find via id if not use unique name
       sid = stds[stds$locationDbId == locs$locationDbId, "studyDbID"]
       if (length(sid) == 0) {
-        sid = stds[stringr::str_detect(toupper(stds$name), locs$Uniquename), "studyDbId"]
+        sid = stds[stringr::str_detect(toupper(stds$name), toupper(locs$Uniquename)), "studyDbId"]
 
       }
       if(length(sid) != 0){
