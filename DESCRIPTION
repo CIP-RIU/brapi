@@ -1,6 +1,6 @@
 Package: brapi
 Title: Provides a Client to Access Breeding Databases
-Version: 0.0.0.9023
+Version: 0.0.0.9024
 Authors@R: person("Reinhard", "Simon", email = "R.SIMON@CGIAR.ORG", role = c("aut", "cre"))
 Description: Implements the Breeding API.
 Depends:
@@ -11,10 +11,10 @@ RoxygenNote: 5.0.1
 Imports: httr, jsonlite, stringr, progress, qtlcharts, agricolae,
   curl, magrittr, miniUI,
   d3heatmap, shiny,
-  DT, htmlTable, leaflet,
+  DT, htmlTable,
   randomForest, rmarkdown, withr,  dplyr, fbmaterials
-Suggests: devtools, ggplot2, st4gi
+Suggests: devtools, ggplot2, st4gi, shinyURL, qtl, lattice, leaflet, shinydashboard
 Remotes: c5sire/st4gi, c5sire/fbmaterials
-  rstudio/shiny, cran/agricolae, cran/qtlcharts, cran/sp,
-  cran/miniUI, rstudio/DT, cran/ggplot2, cran/d3heatmap, cran/qtl, cran/qtlcharts,
+  rstudio/shiny, cran/agricolae, cran/qtlcharts,
+  cran/miniUI, rstudio/DT, cran/ggplot2, cran/d3heatmap,  cran/qtl, cran/qtlcharts,
   aoles/shinyURL, cran/lattice, cran/shinydashboard, cran/leaflet, cran/dplyr, cran/withr
