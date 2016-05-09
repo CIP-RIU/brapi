@@ -1,7 +1,12 @@
-
-#library(shiny)
-#library(miniUI)
-
+#' brapiConnectAddin
+#'
+#' Provides a form to connect to a BrAPI compatible database.
+#'
+#'
+#' @author Reinhard Simon
+#' @export
+#'
+#' @example /inst/examples/brapiConnectAddin.R
 brapiConnectAddin <- function(){
 
   ui <- miniUI::miniPage(

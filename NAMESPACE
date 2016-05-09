@@ -2,6 +2,7 @@
 
 export(averages_germplasm)
 export(brapiConnect)
+export(brapiConnectAddin)
 export(brapiConnectInput)
 export(brapi_auth)
 export(can_internet)
