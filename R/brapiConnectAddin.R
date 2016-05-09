@@ -4,6 +4,7 @@
 #'
 #'
 #' @author Reinhard Simon
+#' @family addins
 #' @export
 #'
 #' @example /inst/examples/brapiConnectAddin.R
