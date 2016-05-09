@@ -5,3 +5,5 @@ www
 ^README-.*\.png$
 ^appveyor\.yml$
 ^\.travis\.yml$
+^report-anova\.html$
+^report-anova\.pdf$
