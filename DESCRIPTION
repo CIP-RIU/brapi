@@ -8,13 +8,13 @@ Depends:
 License: GPL-3
 LazyData: true
 RoxygenNote: 5.0.1
-Imports: httr, jsonlite, stringr, progress, qtlcharts, agricolae,
+Imports: httr, jsonlite, stringr, progress, qtl, qtlcharts, agricolae,
   curl, magrittr, miniUI,
   d3heatmap, shiny,
   DT, htmlTable,
   randomForest, rmarkdown, withr,  dplyr, fbmaterials
-Suggests: devtools, ggplot2, st4gi, shinyURL, qtl, lattice, leaflet, shinydashboard
+Suggests: devtools, ggplot2, st4gi, shinyURL, lattice, leaflet, shinydashboard
 Remotes: c5sire/st4gi, c5sire/fbmaterials,
-  rstudio/shiny, cran/agricolae, cran/qtlcharts,
-  cran/miniUI, rstudio/DT, cran/ggplot2, cran/d3heatmap,  cran/qtl, cran/qtlcharts,
+  rstudio/shiny, cran/agricolae,
+  cran/miniUI, rstudio/DT, cran/ggplot2, cran/d3heatmap,
   aoles/shinyURL, cran/lattice, cran/shinydashboard, cran/leaflet, cran/dplyr, cran/withr
