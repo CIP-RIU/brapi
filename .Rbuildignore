@@ -1,6 +1,7 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
-www
+^www
+^\.Rhistory
 ^README\.md$
 ^README\.Rmd$
 ^README-.*\.png$
