@@ -7,6 +7,7 @@
 #' @param id text
 #' @param label text
 #' @import shiny
+#' @import stringr
 #' @author Reinhard Simon
 #' @export
 brapiConnectInput <- function(id, label = "Connect to BrAPI database"){
