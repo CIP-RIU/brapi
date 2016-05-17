@@ -10,4 +10,4 @@ LazyData: true
 RoxygenNote: 5.0.1
 Imports: httr, jsonlite, stringr, progress,
   curl, magrittr, miniUI, shiny, withr, dplyr
-Suggests: devtools, testthat
+
