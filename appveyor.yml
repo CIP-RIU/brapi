@@ -13,7 +13,7 @@ install:
 # Adapt as necessary starting from here
 environment:
   matrix:
-  - R_VERSION: 3.2.4
+  - R_VERSION: 3.2.5
     RTOOLS_VERSION: 33
     CRAN: http://cran.rstudio.com
 
