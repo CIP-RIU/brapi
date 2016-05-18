@@ -23,12 +23,12 @@ brapi_auth(user, password)
 
 # Successful connection prints this message into the console: 'Authenticated'.
 
-``
+```
 
 # Get info
 
 ```{r, eval=FALSE}
 
-locations_list()
+df <- locations_list()
 ```
 
