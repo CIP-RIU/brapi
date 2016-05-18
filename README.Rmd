@@ -16,7 +16,37 @@ knitr::opts_chunk$set(
 
 # README
 
-An R package to use the Breeding API (BrAPI) for accessing plant breeding data.
+An R package to use the [Breeding API (BrAPI)](http://docs.brapi.apiary.io) for accessing plant breeding data.
+
+It can be installed using:
+
+```{r, eval=FALSE}
+install.packages("devtools")
+devtools::install_github("c5sire/brapi")
+```
+
+The library implements currently mainly API calls to retrievie phenotypic field trial related data.
+
+## Implementation status
+
+API call | status
+---------|-------
+location |done
+germplasm search | done
+germplasm details|done
+germplasm MCPD | in progress
+germplasm pedigree |done
+germplasm markerprofiles|done
+program list |done
+study list|done
+study |done
+study details|done
+study layout|done
+studies table|done
+
+
+
+
 
 
 
