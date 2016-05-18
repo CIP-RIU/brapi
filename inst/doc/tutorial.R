@@ -9,12 +9,8 @@
 #  
 #  # Successful connection prints this message into the console: 'Authenticated'.
 #  
-#  ``
-#  
-#  # Get info
-#  
 
 ## ---- eval=FALSE---------------------------------------------------------
 #  
-#  locations_list()
+#  df <- locations_list()
 

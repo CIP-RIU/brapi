@@ -24,13 +24,19 @@ brapiConnectAddin <- function(){
 
     shiny::observeEvent(input$done, {
       dtl <- unlist(con())
-      Sys.setenv(BRAPI_SESSION = "")
+      #Sys.setenv(BRAPI_SESSION = "")
+      brapi$session <<- ""
       #cat(str(dtl))
       try({
-        Sys.setenv(BRAPI_LOGIN = paste0(dtl[["user"]],":", dtl[["password"]]))
+        #Sys.setenv(BRAPI_LOGIN = paste0(dtl[["user"]],":", dtl[["password"]]))
+        brapi$crop <<- dtl[["crop"]]
+        brapi$db <<- dtl[["server"]]
+        brapi$port <<- dtl[["port"]] %>% as.numeric
+        brapi$user <<- dtl[["user"]]
+        brapi$pwd <<- dtl[["password"]]
 
-        prt <- (dtl[["port"]] %>% as.integer)
-        brapi::set_brapi(dtl[["server"]], prt)
+        #prt <- (dtl[["port"]] %>% as.integer)
+        brapi::set_brapi(dtl[["server"]], brapi$port)
         brapi::brapi_auth(dtl[["user"]], dtl[["password"]])
         cat("Connection refreshed!")
        })

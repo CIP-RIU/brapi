@@ -12,6 +12,10 @@ vignette: >
 
 # Connection
 
+Within RStudio an Addin is available: HIDAP database which builds a form.
+
+Alternatively, you can use the command line as below.
+
 ```{r, eval=FALSE}
 library(brapi)
 
@@ -25,8 +29,11 @@ brapi_auth(user, password)
 
 ```
 
-# Get info
 
+
+# Get some info
+
+You may now use the API calls.
 ```{r, eval=FALSE}
 
 df <- locations_list()

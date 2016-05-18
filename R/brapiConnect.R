@@ -13,6 +13,7 @@ brapiConnect <- function(input, output, session) {
 
   con <- reactive({
     list(
+      crop = input$crop,
       server = input$server,
       port = input$port,
       user = input$user,

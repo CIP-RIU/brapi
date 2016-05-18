@@ -76,6 +76,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <div id="connection" class="section level1">
 <h1>Connection</h1>
+<p>Within RStudio an Addin is available: HIDAP database which builds a form.</p>
+<p>Alternatively, you can use the command line as below.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(brapi)
 
 <span class="co"># usr:pwd@  is optional in the url</span>
@@ -84,12 +86,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="co"># this user/pssword may be different from the former</span>
 <span class="kw">brapi_auth</span>(user, password)
 
-<span class="co"># Successful connection prints this message into the console: 'Authenticated'.</span>
-
-<span class="st">``</span>
-
-<span class="co"># Get info</span></code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">locations_list</span>()</code></pre></div>
+<span class="co"># Successful connection prints this message into the console: 'Authenticated'.</span></code></pre></div>
+</div>
+<div id="get-some-info" class="section level1">
+<h1>Get some info</h1>
+<p>You may now use the API calls.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">locations_list</span>()</code></pre></div>
 </div>
 
 
