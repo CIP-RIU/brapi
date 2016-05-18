@@ -11,11 +11,6 @@ install:
   ps: Bootstrap
 
 # Adapt as necessary starting from here
-environment:
-  matrix:
-  - R_VERSION: 3.2.3
-    RTOOLS_VERSION: 33
-    CRAN: http://cran.rstudio.com
 
 build_script:
   - travis-tool.sh install_deps
