@@ -33,3 +33,8 @@ Implementation status
 | study details            | done        |
 | study layout             | done        |
 | studies table            | done        |
+
+How to use
+----------
+
+See [tutorial](https://github.com/c5sire/brapi/blob/master/vignettes/tutorial.Rmd).
