@@ -38,9 +38,21 @@ brapiConnectAddin <- function(){
         #prt <- (dtl[["port"]] %>% as.integer)
         brapi::set_brapi(dtl[["server"]], brapi$port)
         brapi::brapi_auth(dtl[["user"]], dtl[["password"]])
+
+        if(dtl[["session_save"]]){
+          save(brapi, file = "brapi_session.rda")
+          cat("Session connection data saved to: 'brapi_session.rda'!\n\n")
+        }
+
+
         cat("Connection refreshed!")
        })
+
       stopApp()
+    })
+
+    shiny::observeEvent(input$cancel, {
+      stopApp("Addin cancelled. No changes made.\n\n")
     })
 
   }

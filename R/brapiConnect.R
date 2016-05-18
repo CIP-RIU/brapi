@@ -17,7 +17,8 @@ brapiConnect <- function(input, output, session) {
       server = input$server,
       port = input$port,
       user = input$user,
-      password = input$password
+      password = input$password,
+      session_save = input$session_save
     )
   })
 

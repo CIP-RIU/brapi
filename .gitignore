@@ -2,3 +2,4 @@
 .Rhistory
 .RData
 inst/doc
+brapi_session.rda
