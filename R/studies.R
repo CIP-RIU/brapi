@@ -91,7 +91,7 @@ studies <- function(programId = NULL, page = 1, pageSize = 100) {
     rdf
   }
   out=list2tbl(req$result$data, rdf)
-  print(pgs)
+  #print(pgs)
 
 
   #TODO revise parameters when no programID
