@@ -4,7 +4,10 @@
 \alias{can_internet}
 \title{can_internet}
 \usage{
-can_internet()
+can_internet(url = "www.google.org")
+}
+\arguments{
+\item{url}{a url to check; default is Google}
 }
 \value{
 logical TRUE or FALSE
