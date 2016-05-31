@@ -22,11 +22,11 @@ Implementation status
 | API call                 | status      |
 |--------------------------|-------------|
 | location                 | done        |
-| germplasm search         | done        |
-| germplasm details        | done        |
+| germplasm search         | in progress |
+| germplasm details        | in progress |
 | germplasm MCPD           | in progress |
-| germplasm pedigree       | done        |
-| germplasm markerprofiles | done        |
+| germplasm pedigree       | in progress |
+| germplasm markerprofiles | in progress |
 | program list             | done        |
 | study list               | done        |
 | study                    | done        |
