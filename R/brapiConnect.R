@@ -7,7 +7,6 @@
 #' @param input shiny input
 #' @param output shiny output
 #' @param session shiny session
-#' @import shiny
 #' @export
 brapiConnect <- function(input, output, session) {
 
