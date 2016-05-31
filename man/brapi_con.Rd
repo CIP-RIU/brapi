@@ -30,12 +30,6 @@ This can be used later to refresh credentials using a 'brapi_auth' function call
 
 # construct a sample object
 library(brapi)
-
-brapi = brapi_con("potato", "http://sample.com", 8080, "rs", "pwd")
-
-is.brapi(brapi)
-
-brapi
 }
 \author{
 Reinahard Simon
