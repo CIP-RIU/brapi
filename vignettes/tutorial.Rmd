@@ -9,9 +9,9 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
----------------------- -------------------------------------
-![Tip](warning.png)\   This package is under development. It has not yet been exhaustively tested for all calls neither. Usage may also still change. If you have suggestions please use the issue tracker.
----------------------------------------------------------
+------------------- -------------------------------------------
+![Tip](warning.png)  This package is under development. It has not yet been exhaustively tested for all calls neither. Usage may also still change. If you have suggestions please use the issue tracker.
+------------------- -------------------------------------------
 
 # Connection
 

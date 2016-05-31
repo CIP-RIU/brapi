@@ -46,7 +46,7 @@ studies table|done
 
 ## How to use
 
-See [tutorial](https://github.com/c5sire/brapi/blob/master/vignettes/tutorial.Rmd).
+See [tutorial](https://github.com/c5sire/brapi/blob/master/vignettes/tutorial.md).
 
 
 
