@@ -17,4 +17,8 @@ Caches a session token and informs of success or failure.
 \author{
 Reinhard Simon
 }
+\seealso{
+Other brapi_con: \code{\link{brapi_con}},
+  \code{\link{is.brapi}}, \code{\link{print.brapi_con}}
+}
 

@@ -29,7 +29,7 @@ brapi
 Reinahard Simon
 }
 \seealso{
-Other brapi_con: \code{\link{brapi_con}},
-  \code{\link{is.brapi}}
+Other brapi_con: \code{\link{brapi_auth}},
+  \code{\link{brapi_con}}, \code{\link{is.brapi}}
 }
 

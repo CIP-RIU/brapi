@@ -125,6 +125,7 @@ brapi_GET <- function(resource) {
 #' @param password characters
 #' @author Reinhard Simon
 #' @import httr
+#' @family brapi_con
 #' @export
 brapi_auth <- function(user, password){
   stopifnot(can_internet())
