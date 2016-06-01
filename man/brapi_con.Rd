@@ -23,24 +23,19 @@ brapi_con(crop, db, port, user, pwd, session = "")
 object of class 'brapi'
 }
 \description{
-S3 class constructor.
+S3 class constructor. It also places an object named 'brapi' in the parent environment.
+This can be used later to refresh credentials using a 'brapi_auth' function call.
 }
 \examples{
 
 # construct a sample object
 library(brapi)
-
-brapi = brapi_con("potato", "http://sample.com", 8080, "rs", "pwd")
-
-is.brapi(brapi)
-
-brapi
 }
 \author{
 Reinahard Simon
 }
 \seealso{
-Other brapi_con: \code{\link{is.brapi}},
-  \code{\link{print.brapi_con}}
+Other brapi_con: \code{\link{brapi_auth}},
+  \code{\link{is.brapi}}, \code{\link{print.brapi_con}}
 }
 

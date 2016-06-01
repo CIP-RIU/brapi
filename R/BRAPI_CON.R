@@ -1,6 +1,7 @@
 #' brapi_con
 #'
-#' S3 class constructor.
+#' S3 class constructor. It also places an object named 'brapi' in the parent environment.
+#' This can be used later to refresh credentials using a 'brapi_auth' function call.
 #'
 #' @param crop character string
 #' @param db character string (url)
@@ -30,6 +31,8 @@ brapi_con <- function(crop, db, port, user, pwd, session="") {
               pwd  = pwd,
               session = session)
   attr(obj, "class") = "brapi_con"
+  brapi <<- obj
+  brapi_auth(user, pwd)
   obj
 }
 

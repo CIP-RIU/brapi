@@ -4,6 +4,7 @@
 #'
 #'
 #' @author Reinhard Simon
+#' @import shiny
 #' @family addins
 #' @export
 #'
