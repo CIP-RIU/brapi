@@ -1,0 +1,9 @@
+name: hdtest
+account: cdcd
+server: shinyapps.io
+appId: 92826
+bundleId: 423029
+url: https://cdcd.shinyapps.io/hdtest/
+when: 1460962729.99187
+asMultiple: FALSE
+asStatic: FALSE
