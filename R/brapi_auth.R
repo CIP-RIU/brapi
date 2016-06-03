@@ -41,6 +41,7 @@ assign_item <- function(avar, from, type = "character") {
 #' @export
 get_brapi <- function() {
   #Sys.getenv('BRAPI_DB')
+  if(is.null(brapi)) return(NULL)
   if(brapi$port == 80 | brapi$port == 8080) {
     url = paste0(brapi$db, "/brapi/v1/")
   } else {
