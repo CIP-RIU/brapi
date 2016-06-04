@@ -2,7 +2,5 @@
   crops <<- c("cassava", "potato", "sweetpotato")
 
   brapi <<- NULL
-  #brapi <<- brapi_con("crop", "http://sample.com", 8080, "rs", "pwd")
 
-  #packageStartupMessage(paste("Hello, BrAPI!", brapi))
 }

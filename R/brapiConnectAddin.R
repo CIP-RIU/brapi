@@ -11,6 +11,8 @@
 #' @example /inst/examples/brapiConnectAddin.R
 brapiConnectAddin <- function(){
 
+
+
   ui <- miniUI::miniPage(
     miniUI::gadgetTitleBar("BrAPI"),
     miniUI::miniContentPanel(
@@ -20,6 +22,9 @@ brapiConnectAddin <- function(){
   )
 
   server <- function(input, output, session) {
+    if(!brapi::can_internet()){
+      stopApp("Can not connect to internet!")
+    }
     con <- shiny::callModule(brapiConnect, "brapi")
 
 

@@ -17,6 +17,11 @@
 #'
 #' @example inst/examples/brapi_con.R
 brapi_con <- function(crop, db, port, user, pwd, session="") {
+  if(!can_internet()) {
+    print("Can not connect to internet!")
+    return(NULL)
+  }
+
   stopifnot(is.numeric(port))
   stopifnot(all(is.character(crop),
                 is.character(db),
@@ -24,6 +29,7 @@ brapi_con <- function(crop, db, port, user, pwd, session="") {
                 is.character(pwd)),
                 is.character(session)
             )
+
   obj <- list(crop = crop,
                 db = db,
               port = port,
