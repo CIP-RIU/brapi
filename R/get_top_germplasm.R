@@ -52,7 +52,7 @@ get_top_germplasm <- function(study = NULL, frac = .1, max_g = 20, trait = "Harv
   stopifnot(is.data.frame(study))
   has_trait <- stringr::str_detect(names(study), trait) %>% which
   if(length(has_trait) == 0) {
-    has_trait = ncol(study)
+    return(NULL)
   }
   #stopifnot(length(has_trait) == 0)
 
@@ -64,5 +64,7 @@ get_top_germplasm <- function(study = NULL, frac = .1, max_g = 20, trait = "Harv
   cut_off = sst[length(sst) - ng +1]
   dat = dat[dat[[has_trait]] >= cut_off, ]
   dat = as.data.frame(dat)
+
   dat[with(dat, order(-dat[, has_trait])), ]
+
 }
