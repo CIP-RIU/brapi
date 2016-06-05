@@ -1,5 +1,5 @@
 get_brapi_session_file <- function(){
-  file.path(fbglobal::get_base_dir(), "brapi_session.rda")
+  file.path(fbglobal::get_base_dir("brapi"), "brapi_session.rda")
 }
 
 #' BrAPI Connect

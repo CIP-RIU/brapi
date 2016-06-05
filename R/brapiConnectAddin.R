@@ -46,11 +46,12 @@ brapiConnectAddin <- function(){
         brapi::brapi_auth(dtl[["user"]], dtl[["password"]])
 
         if(dtl[["session_save"]]){
-          fp = fbglobal::get_base_dir()
+          fp = fbglobal::get_base_dir("brapi")
           # if(!dir.exists(file.path(getwd(), "www"))) {
           #   dir.create(file.path(getwd(), "www"),recursive = TRUE)
           # }
           # saveRDS(brapi, file.path(getwd(), "www","brapi_session.rda"))
+
           if(!dir.exists(fp)) {
             dir.create(fp,recursive = TRUE)
           }
