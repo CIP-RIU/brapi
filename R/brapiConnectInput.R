@@ -1,4 +1,6 @@
-
+get_brapi_session_file <- function(){
+  file.path(getwd(), "www", "brapi_session.rda")
+}
 
 #' BrAPI Connect
 #'
@@ -13,9 +15,11 @@
 brapiConnectInput <- function(id, label = "Connect to BrAPI database"){
   ns <- NS(id)
 
+  fp = get_brapi_session_file()
+
   if (is.null(brapi)){#} | (brapi$user == "rs" & brapi$pwd == "pwd")) {
-    if(file.exists("brapi_session.rda")) {
-      load("brapi_session.rda")
+    if(file.exists(fp)) {
+      brapi <<- readRDS(fp)
     }
   }
 

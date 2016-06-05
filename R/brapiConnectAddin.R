@@ -46,7 +46,10 @@ brapiConnectAddin <- function(){
         brapi::brapi_auth(dtl[["user"]], dtl[["password"]])
 
         if(dtl[["session_save"]]){
-          save(brapi, file = "brapi_session.rda")
+          if(!dir.exists(file.path(getwd(), "www"))) {
+            dir.create(file.path(getwd(), "www"),recursive = TRUE)
+          }
+          saveRDS(brapi, file.path(getwd(), "www","brapi_session.rda"))
           cat("Session connection data saved to: 'brapi_session.rda'!\n\n")
         }
 
