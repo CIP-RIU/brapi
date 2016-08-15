@@ -9,7 +9,12 @@
 #' @import httr
 #' @export
 locations_list <- function(){
-  locs = brapi_GET("locations?pageSize=10000&page=1&")
+  #locs = brapi_GET("locations?pageSize=10000&page=1&")
+  base = get_brapi()
+  if(is.null(base)) stop("No host given.")
+  base_url = paste0("http://", get_brapi())
+  locs_lst = paste0(base_url, "locations")
+  locs = httr::GET(locs_lst)
   req = httr::content(locs)$result$data
   if (is.null(req)) stop("No data retrieved.\n Probably time out.\n Try reconnect.")
   #print(req)

@@ -8,7 +8,7 @@ check_id <- function(id) {
 
 
 get_page <- function(query, page, pageSize) {
-  rsp <- brapi_GET(paste0(query, "&pageSize=",pageSize,"&page=", page, "&"))
+  rsp <- brapi_POST(paste0(query, "&pageSize=",pageSize,"&page=", page, "&"))
   httr::content(rsp)
 }
 
@@ -102,7 +102,7 @@ brapi_check <- function(req) {
 }
 
 
-brapi_GET <- function(resource) {
+brapi_POST <- function(resource) {
   stopifnot(can_internet())
   url = get_brapi()
   auth <- brapi_session()
@@ -112,7 +112,7 @@ brapi_GET <- function(resource) {
     path = paste0(url, resource)
   }
 
-  req <- httr::GET(path)
+  req <- httr::POST(path)
   brapi_check(req)
 
   req
@@ -131,9 +131,14 @@ brapi_GET <- function(resource) {
 brapi_auth <- function(user, password){
   stopifnot(can_internet())
   #W TODO display error when not authenticated
-  url = paste0(get_brapi(), "token?username=", user, "&password=", password, "&grant_type=password")
-  x = httr::GET(url)
-  status  = httr::content(x)$session_token
+  #url = paste0(get_brapi(), "token?username=", user, "&password=", password, "&grant_type=password")
+  url = paste0("http://", get_brapi(), "token")
+  dat = list(grant_type = "password", username = user, password = password)
+  x = httr::POST(url = url, body = dat, encode = "form")
+  # print(url)
+  # status  = httr::content(x)
+  # print(status)
+  status  = httr::content(x)$access_token
   if(status == "") stop("Authentication failed. Check your user name and password!") else {
     brapi$user <<- user
     brapi$pwd <<- password
