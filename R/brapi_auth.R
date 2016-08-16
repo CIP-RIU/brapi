@@ -101,6 +101,22 @@ brapi_check <- function(req) {
   stop("HTTP failure: ", req$status_code, "\n", message, call. = FALSE)
 }
 
+brapi_GET <- function(resource) {
+  stopifnot(can_internet())
+  url = get_brapi()
+  auth <- brapi_session()
+  if(auth != ""){
+    path = paste0(url, resource, "session_token=", auth)
+  } else {
+    path = paste0(url, resource)
+  }
+
+  req <- httr::GET(path)
+  brapi_check(req)
+
+  req
+}
+
 
 brapi_POST <- function(resource) {
   stopifnot(can_internet())
