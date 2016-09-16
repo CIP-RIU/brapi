@@ -1,6 +1,6 @@
 Package: brapi
 Title: Provides a Client to Access Breeding Databases
-Version: 0.0.0.9049
+Version: 0.0.0.9050
 Authors@R: person("Reinhard", "Simon", email = "R.SIMON@CGIAR.ORG", role = c("aut", "cre"))
 Description: Implements the Breeding API.
 Depends:
@@ -8,7 +8,9 @@ Depends:
 License: GPL-3
 LazyData: true
 RoxygenNote: 5.0.1
-Imports: httr, jsonlite, stringr, progress, curl, magrittr, shiny, dplyr, fbglobal
+Imports: httr, jsonlite, stringr, progress, curl, magrittr,
+    shiny, dplyr, fbglobal, prettyunits, htmltools, httpuv, xtable,
+    stringi, stringr
 Remotes: c5sire/fbglobal
 Suggests: knitr, miniUI, rmarkdown
 VignetteBuilder: knitr
