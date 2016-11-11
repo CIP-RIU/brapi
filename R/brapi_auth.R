@@ -1,3 +1,5 @@
+ua <- httr::user_agent("R package: brapi")
+
 check_id <- function(id) {
   stopifnot(!is.null(id), !is.na(id))
   id = as.integer(id)
@@ -104,12 +106,12 @@ brapi_check <- function(req) {
 brapi_GET <- function(resource) {
   stopifnot(can_internet())
   url = get_brapi()
-  auth <- brapi_session()
-  if(auth != ""){
-    path = paste0(url, resource, "session_token=", auth)
-  } else {
+  # auth <- brapi_session()
+  # if(auth != ""){
+  #   path = paste0(url, resource, "session_token=", auth)
+  # } else {
     path = paste0(url, resource)
-  }
+  #}
 
   req <- httr::GET(path)
   brapi_check(req)
@@ -121,12 +123,12 @@ brapi_GET <- function(resource) {
 brapi_POST <- function(resource) {
   stopifnot(can_internet())
   url = get_brapi()
-  auth <- brapi_session()
-  if(auth != ""){
-    path = paste0(url, resource, "session_token=", auth)
-  } else {
+  # auth <- brapi_session()
+  # if(auth != ""){
+  #   path = paste0(url, resource, "session_token=", auth)
+  # } else {
     path = paste0(url, resource)
-  }
+  #}
 
   req <- httr::POST(path)
   brapi_check(req)
@@ -148,8 +150,9 @@ brapi_auth <- function(user, password){
   stopifnot(can_internet())
   #W TODO display error when not authenticated
   #url = paste0(get_brapi(), "token?username=", user, "&password=", password, "&grant_type=password")
-  url = paste0("http://", get_brapi(), "token")
-  dat = list(grant_type = "password", username = user, password = password)
+  url = paste0("https://", get_brapi(), "token")
+  dat = list(grant_type = "password", username = user, password = password,
+             client_id = "R package brapi")
   x = httr::POST(url = url, body = dat, encode = "form")
   # print(url)
   # status  = httr::content(x)

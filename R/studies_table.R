@@ -15,32 +15,43 @@
 study_table <- function(studyId = NULL) {
   check_id(studyId)
 
-    qry = paste0("studies/", studyId, "/table?pageSize=10000")
-  req <- brapi_GET(qry) %>% httr::content()
+  qry = paste0("studies/", studyId, "/table?pageSize=10000")
+  url <- brapi_GET(qry)
+  req <- httr::content(url)
   pgs = req$metadata$pagination$totalPages %>% as.integer()
-  if(length(pgs)==0) stop('Session expired!')
+  if(length(pgs)==0) stop('No data!')
   dat = req$result$data
   if (length(dat) == 0) return(NULL)  # No data!
 
-  ## return a minimal fieldbook table
-  dat <- req$result$data
-  n = length(dat)
-  tbl = data.frame(matrix(unlist(dat), nrow = n, byrow = T)) # %>% data.table::as.data.table()
+  hr <- unlist(req$result$headerRow)
   nms = stringr::str_split(req$result$observationVariableName, "\\|") %>% unlist
-  nms <- nms[!stringr::str_detect(nms,"CO_")]
+  nms <- nms[stringr::str_sub(nms,1, 3) != "CO_"]
+  nms <- unique(c(hr, nms))
+
+  ## return a minimal fieldbook table
+  #dat <- req$result$data
+  n = length(dat)
+  #tbl = data.frame(matrix(unlist(dat), nrow = n, byrow = T)) # %>% data.table::as.data.table()
+  tbl <- data.frame(matrix("NA", nrow = n, ncol = length(nms)), stringsAsFactors = FALSE)
+  for(i in 1:n){
+    tbl[i, ] = unlist(dat[[i]])
+  }
+
   names(tbl) <- nms
 
   #get original plot id, rep, block
-  tbl$plotName <- as.character(tbl$plotName)
+  tbl$observationUnitName <- as.character(tbl$observationUnitName)
 
   plotName2id <- function(s, type="block"){
-    stringr::str_extract(tbl$plotName, paste0("_",type,":([0-9]{1,9})_")) %>% stringr::str_replace_all("_","") %>%
+    stringr::str_extract(tbl$observationUnitName, paste0("_",type,":([0-9]{1,9})_")) %>% stringr::str_replace_all("_","") %>%
       stringr::str_replace(paste0(type, ":"), "") %>% as.integer
   }
 
-  rps <-plotName2id(tbl$plotName, "replicate")
-  blk <-plotName2id(tbl$plotName, "block")
-  plt <-plotName2id(tbl$plotName, "plot")
+  REP <-plotName2id(tbl$observationUnitName, "replicate")
+  BLOCK <-plotName2id(tbl$observationUnitName, "block")
+  PLOT <-plotName2id(tbl$observationUnitName, "plot")
+
+  #obs <- stringr::str_split(req$result$observationVariableName, "\\|") %>% unlist
 
   meta = list(
     year = unique(tbl$year) %>% as.character %>% as.integer(),
@@ -53,15 +64,19 @@ study_table <- function(studyId = NULL) {
     observationVariableName <- req$result$observationVariableName %>% as.character
     )
 
-  tbl$plotName = plt
-  tbl$blockNumber = blk
-  tbl$rep = rps
-  names(tbl)[9:11] = c("PLOT", "REP", "BLOCK")
-  tbl = tbl[, c(9, 8, 11, 10, 6, 7, 12:ncol(tbl))]
+  # tbl$plotName = plt
+  # tbl$blockNumber = blk
+  # tbl$rep = rps
+  # names(tbl)[9:11] = c("PLOT", "REP", "BLOCK")
+  nms = stringr::str_split(req$result$observationVariableName, "\\|") %>% unlist
+  nms <- nms[stringr::str_sub(nms,1, 3) != "CO_"]
+
+  tbl = cbind(PLOT, REP, BLOCK, tbl[, c("germplasmName", "germplasmDbId", nms )])
+  #tbl = tbl[, c(9, 8, 11, 10, 6, 7, 12:ncol(tbl))]
 
   tbl$germplasmDbId = tbl$germplasmDbId %>% as.character %>%  as.integer
   #TODO determine idx dynamically somehow from column meaning; e.g. containing 'measuring, computing, ...'
-  idx = 7
+  idx = 1
   for(i in idx:ncol(tbl)){
     nm = names(tbl)[i]
     nu = any(stringr::str_detect(nm, "measuring"), stringr::str_detect(nm, "computing"))
@@ -73,6 +88,8 @@ study_table <- function(studyId = NULL) {
   tbl = tbl[with(tbl, order(PLOT)), ]
 
   attr(tbl, "meta") = meta
+  attr(tbl, "source") = url
+  #class(tbl) <- class(c("brapi", class(tbl)))
 
   tbl
 }

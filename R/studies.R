@@ -12,7 +12,7 @@
 #' @import progress
 #' @references \url{http://docs.brapi.apiary.io/#reference/study/list-studies/list-of-study-summaries?console=1}
 #' @export
-studies <- function(programId = NULL, page = 1, pageSize = 100) {
+studies <- function(programId = NULL, page = 1, pageSize = 10000) {
   #check_id(programId)
   if (is.null(programId) ) {
     programId = ""
@@ -28,14 +28,15 @@ studies <- function(programId = NULL, page = 1, pageSize = 100) {
     #page = NULL
     #pageSize=NULL
     #print("X\n")
-    qry = paste0("studies?", "&page=", page, "&pageSize=", pageSize)
+    qry = paste0("studies-search?", "&page=", page, "&pageSize=", pageSize)
     #req <- get_page(qry, page = page, pageSize = pageSize)
     #rsp <- brapi_GET(paste0(query))
-    rsp <- httr::GET(paste0(get_brapi(), qry))
+    url = paste0("https://", get_brapi(), qry)
+    rsp <- httr::GET(url)
     req <- httr::content(rsp)
 
   } else {
-    qry = paste0("studies?programId=", programId)
+    qry = paste0("studies-search?programId=", programId)
     req <- get_page(qry, page = page, pageSize = pageSize)
     # print("y\n")
     # print(qry)
@@ -54,12 +55,16 @@ studies <- function(programId = NULL, page = 1, pageSize = 100) {
   get_rdf <- function(n) {
     data.frame(
       studyDbId = integer(n),
+      studyPUI = character(n),
       name =character(n),
       studyType = character(n),
-      years = character(n),
+      seasons = character(n),
       locationDbId = integer(n),
+      locationName = character(n),
       programDbId = integer(n),
-      studyPUI = character(n),
+      programName = character(n),
+      trialDbId = integer(n),
+      trialName = character(n),
       startDate = character(n),
       endDate = character(n)
       , stringsAsFactors = F)
@@ -68,25 +73,37 @@ studies <- function(programId = NULL, page = 1, pageSize = 100) {
   rdf <- get_rdf(n)
 
 
-  list2tbl <- function(data,  rdf) {
+  list2tbl <- function(dats,  rdf) {
     # decide how to fill in total table
-    n = length(data)
+    n = length(dats)
 
     for(i in 1:n){
-      dat = data[[i]]
-      oi = dat$optionalInfo
-      dat$optionalInfo = NULL
-      dat = c(dat, list(startDate = oi$startDate))
-      dat = c(dat, list(endDate = oi$endDate))
-      dat = c(dat, list(studyPUI = oi$studyPUI))
-      dat$years = paste(dat$years, collapse = "; ")
-      m = length(dat)
-      # flatten response data to simple list
-      cn = names(dat)
-      for(j in 1:m){
-        ct = typeof(rdf[, cn[j]])
-        rdf[i, cn[j]] <- assign_item(cn[j], dat, ct)
-      }
+      dat = dats[[i]]
+      # oi = dat$additionalInfo
+      # dat$additionalInfo = NULL
+      # dat = c(dat, list(startDate = oi$startDate))
+      # dat = c(dat, list(endDate = oi$endDate))
+      # dat = c(dat, list(studyPUI = oi$studyPUI))
+      # dat$years = paste(dat$years, collapse = "; ")
+      # m = length(dat)
+      # # flatten response data to simple list
+      # cn = names(dat)
+      # for(j in 1:m){
+      #   ct = typeof(rdf[, cn[j]])
+      #   rdf[i, cn[j]] <- assign_item(cn[j], dat, ct)
+      # }
+      rdf[i, "studyDbId"] = dat$studyDbId
+      rdf[i, "studyPUI"] = dat$additionalInfo$studyPUI
+      rdf[i, "seasons"] = dat$seasons
+      rdf[i, "programDbId"] = dat$programDbId
+      rdf[i, "programName"] = dat$programName
+      rdf[i, "name"] = dat$name
+      rdf[i, "locationDbId"] = dat$locationDbId
+      rdf[i, "studyType"] = dat$studyType
+      rdf[i, "trialDbId"] = dat$trialDbId
+      rdf[i, "trialName"] = dat$trialName
+      rdf[i, "startDate"] = dat$startDate
+      rdf[i, "endDate"] = dat$endDate
     }
     rdf
   }
@@ -109,5 +126,9 @@ studies <- function(programId = NULL, page = 1, pageSize = 100) {
   #   }
   # }
   pb$tick(1e7,  tokens = list(what = pb_what))
+  out = tibble::as_tibble(out)
+  attr(out, "source") = url
+
+  class(out) = c("brapi", class(out))
   out
 }
