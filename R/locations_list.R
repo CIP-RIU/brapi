@@ -81,11 +81,14 @@ locations_list <- function(){
       # ct = typeof(rdf[, cnr[j]])
       # val = assign_item(cn[j], dat, ct)
       val = dat[cnr[j]][[1]]
-      print(paste(val, "\n"))
+      #print(paste(val, "\n"))
       if(!is.null(val)) rdf[i, cnr[j]] <- val
     }
   }
 
+  rdf$latitude = as.numeric(rdf$latitude)
+  rdf$longitude = as.numeric(rdf$longitude)
+  rdf$altitude = as.integer(rdf$altitude)
   class(rdf) = c("brapi", class(rdf))
   attr(rdf, "source") = locs_lst
   rdf

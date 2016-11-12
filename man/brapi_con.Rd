@@ -4,20 +4,20 @@
 \alias{brapi_con}
 \title{brapi_con}
 \usage{
-brapi_con(crop, db, port, user, pwd, session = "")
+brapi_con(crop, db, port = 80, user = "", pwd = "", session = "")
 }
 \arguments{
 \item{crop}{character string}
 
 \item{db}{character string (url)}
 
-\item{port}{numeric}
+\item{port}{numeric (optional, default 80)}
 
-\item{user}{character string}
+\item{user}{character string (optional, default '')}
 
-\item{pwd}{character string}
+\item{pwd}{character string (optional, default '')}
 
-\item{session}{character string}
+\item{session}{character string (optional)}
 }
 \value{
 object of class 'brapi'

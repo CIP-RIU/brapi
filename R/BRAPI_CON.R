@@ -5,10 +5,10 @@
 #'
 #' @param crop character string
 #' @param db character string (url)
-#' @param port numeric
-#' @param user character string
-#' @param pwd character string
-#' @param session character string
+#' @param port numeric (optional, default 80)
+#' @param user character string (optional, default '')
+#' @param pwd character string (optional, default '')
+#' @param session character string (optional)
 #'
 #' @return object of class 'brapi'
 #' @family brapi_con
@@ -16,9 +16,9 @@
 #' @export
 #'
 #' @example inst/examples/brapi_con.R
-brapi_con <- function(crop, db, port, user, pwd, session="") {
+brapi_con <- function(crop, db, port = 80, user = "", pwd = "", session="") {
   if(!can_internet()) {
-    print("Can not connect to internet!")
+    message("Can not connect to internet!")
     return(NULL)
   }
 
@@ -38,7 +38,7 @@ brapi_con <- function(crop, db, port, user, pwd, session="") {
               session = session)
   attr(obj, "class") = "brapi_con"
   brapi <<- obj
-  brapi_auth(user, pwd)
+  if(user != "" & pwd != "" ) brapi_auth(user, pwd)
   obj
 }
 
