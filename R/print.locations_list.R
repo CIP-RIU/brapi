@@ -3,7 +3,7 @@
 #'
 #' @param x printable locations_list object
 #' @param ... extended parameters
-#'
+#' @importFrom utils str
 #' @return data.frame of class brapi
 #' @export
 print.brapi <- function(x, ...){
