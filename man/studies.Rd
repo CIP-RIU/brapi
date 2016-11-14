@@ -4,7 +4,7 @@
 \alias{studies}
 \title{studies}
 \usage{
-studies(programId = NULL, page = 1, pageSize = 10000)
+studies(programId = NULL, page = 1, pageSize = 100)
 }
 \arguments{
 \item{programId}{integer}

@@ -105,15 +105,25 @@ brapi_check <- function(req) {
 
 brapi_GET <- function(resource) {
   stopifnot(can_internet())
+  ua <- httr::user_agent("c5sire/brapi R package")
   url = get_brapi()
   # auth <- brapi_session()
   # if(auth != ""){
   #   path = paste0(url, resource, "session_token=", auth)
   # } else {
-    path = paste0(url, resource)
+  path = paste0(url, resource)
   #}
+  #req = NULL
 
-  req <- httr::GET(path)
+  req <- tryCatch({
+      httr::GET(path, ua, httr::progress(), httr::timeout(40))
+    }, error = function(e){
+      NULL
+    }, finally = {
+      NULL
+    })
+  if(is.null(req)) stop("Server cannot be reached.")
+  if (httr::status_code(req) != 200) stop("Server answer failed.")
   brapi_check(req)
 
   req

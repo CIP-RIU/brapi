@@ -12,7 +12,7 @@
 #' @import progress
 #' @references \url{http://docs.brapi.apiary.io/#reference/study/list-studies/list-of-study-summaries?console=1}
 #' @export
-studies <- function(programId = NULL, page = 1, pageSize = 10000) {
+studies <- function(programId = NULL, page = 1, pageSize = 100) {
   #check_id(programId)
   if (is.null(programId) ) {
     programId = ""

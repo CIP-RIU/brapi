@@ -15,11 +15,20 @@
 study_table <- function(studyId = NULL) {
   check_id(studyId)
 
+
   qry = paste0("studies/", studyId, "/table?pageSize=10000")
-  url <- brapi_GET(qry)
+  url <- tryCatch({
+    brapi_GET(qry)
+  }, error = function(e){
+    stop("Server cannot be reached.")
+  })
+
+
+  #if(is.null(url)) stop("Server cannot be reached.")
+
   req <- httr::content(url)
   pgs = req$metadata$pagination$totalPages %>% as.integer()
-  if(length(pgs)==0) stop('No data!')
+  if(length(pgs)==0) return('No data!')
   dat = req$result$data
   if (length(dat) == 0) return(NULL)  # No data!
 
