@@ -12,7 +12,7 @@
 #' @import progress
 #' @references \url{http://docs.brapi.apiary.io/#reference/study/list-studies/list-of-study-summaries?console=1}
 #' @export
-studies <- function(programId = NULL, page = 1, pageSize = 100) {
+studies <- function(programId = NULL, page = 1, pageSize = 1000) {
   #check_id(programId)
   if (is.null(programId) ) {
     programId = ""
@@ -28,7 +28,7 @@ studies <- function(programId = NULL, page = 1, pageSize = 100) {
     #page = NULL
     #pageSize=NULL
     #print("X\n")
-    qry = paste0("studies-search?", "&page=", page, "&pageSize=", pageSize)
+    qry = paste0("studies-search?", "&currentPage=", page, "&pageSize=", pageSize)
     #req <- get_page(qry, page = page, pageSize = pageSize)
     #rsp <- brapi_GET(paste0(query))
     url = paste0("https://", get_brapi(), qry)
@@ -92,9 +92,13 @@ studies <- function(programId = NULL, page = 1, pageSize = 100) {
       #   ct = typeof(rdf[, cn[j]])
       #   rdf[i, cn[j]] <- assign_item(cn[j], dat, ct)
       # }
+      #message(paste0("transforming: ", i ))
       rdf[i, "studyDbId"] = dat$studyDbId
       rdf[i, "studyPUI"] = dat$additionalInfo$studyPUI
-      rdf[i, "seasons"] = dat$seasons
+      #rdf[i, "seasons"] = dat$seasons[[1]]
+      ds = dat$seasons[[1]]
+      if(is.null(ds)) ds = ""
+      rdf[i, "seasons"] = ds
       rdf[i, "programDbId"] = dat$programDbId
       rdf[i, "programName"] = dat$programName
       rdf[i, "name"] = dat$name
