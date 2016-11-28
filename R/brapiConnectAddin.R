@@ -36,6 +36,7 @@ brapiConnectAddin <- function(){
       try({
         #Sys.setenv(BRAPI_LOGIN = paste0(dtl[["user"]],":", dtl[["password"]]))
         brapi$crop <<- dtl[["crop"]]
+        brapi$protocol <<- dtl[["protocol"]]
         brapi$db <<- dtl[["server"]]
         brapi$port <<- dtl[["port"]] %>% as.numeric
         brapi$user <<- dtl[["user"]]

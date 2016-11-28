@@ -16,7 +16,6 @@ no returned value
 }
 \description{
 Define which BRAPI database to use for this session.
-Leading 'http://' and trailing '/' will be removed.
 }
 \author{
 Reinhard Simon

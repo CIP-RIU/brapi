@@ -45,9 +45,9 @@ get_brapi <- function() {
   #Sys.getenv('BRAPI_DB')
   if(is.null(brapi)) return(NULL)
   if(brapi$port == 80 | brapi$port == 8080) {
-    url = paste0(brapi$db, "/brapi/v1/")
+    url = paste0(brapi$protocol, brapi$db, "/brapi/v1/")
   } else {
-    url = paste0(brapi$db, ":", brapi$port, "/brapi/v1/" )
+    url = paste0(brapi$protocol, brapi$db, ":", brapi$port, "/brapi/v1/" )
   }
 
   url
@@ -56,7 +56,6 @@ get_brapi <- function() {
 #' set BRAPI database
 #'
 #' Define which BRAPI database to use for this session.
-#' Leading 'http://' and trailing '/' will be removed.
 #'
 #' @param url string a URL to a local or remote BRAPI compliant database
 #' @param port integer number
@@ -66,9 +65,9 @@ get_brapi <- function() {
 set_brapi <- function(url, port=3000) {
 
   db = stringr::str_extract(url, "[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}")
-  if(stringr::str_detect(url,"http:")){
-    db = url
-  }
+  # if(stringr::str_detect(url,"http:")){
+  #   db = url
+  # }
   if(port != -1){
     db = paste0(db,":", port, "/brapi/v1/")
   } else {
@@ -160,7 +159,8 @@ brapi_auth <- function(user, password){
   stopifnot(can_internet())
   #W TODO display error when not authenticated
   #url = paste0(get_brapi(), "token?username=", user, "&password=", password, "&grant_type=password")
-  url = paste0("https://", get_brapi(), "token")
+  #url = paste0("https://", get_brapi(), "token")
+  url = paste0(get_brapi(), "token")
   dat = list(grant_type = "password", username = user, password = password,
              client_id = "R package brapi")
   x = httr::POST(url = url, body = dat, encode = "form")
