@@ -2,6 +2,7 @@ library(jug)
 library(jsonlite)
 
 crops = readLines("crops.txt")
+
 crops = list(
   metadata = list(
     pagination = list(
@@ -18,7 +19,7 @@ crops = list(
 
 mw_crops <-
   collector() %>%
-  get("/brapi/v1/crops/", function(req,res,err){
+  get("/brapi/v1/crops/", function(req, res, err){
     #res$content_type("text/json")
     #toJSON(crops)
     res$json(crops)

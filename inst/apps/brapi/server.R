@@ -1,6 +1,7 @@
 library(jug)
 
-message(getwd())
+#mw_crops = NULL
+#mw_programs = NULL
 
 res <- jug() %>%
   cors() %>%
@@ -8,5 +9,6 @@ res <- jug() %>%
     "\nServer ready!\n\n"
   }) %>%
   include(mw_crops, "mw_crops.R") %>%
+  include(mw_programs, "mw_programs.R") %>%
   simple_error_handler() %>%
   serve_it(port = 80)
