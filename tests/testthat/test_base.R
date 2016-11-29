@@ -1,15 +1,12 @@
+source("check_server_status.R")
 
-req <- tryCatch({
-  curl::curl_fetch_memory('http://127.0.0.1:2021/brapi/v1/')
-}, error = function(e){
-  list(status_code = 555)
-})
+if(check_server_status == 555) {
+  message("Could not connect to local BrAPI server.")
+  message("Start a server in an independent command line window\nusing brapi::mock_server().")
+}
 
 
-if (req$status_code == 555) {
-  message("Server not found!\n")
-  message("Start a new brapi server:\nsource('inst/apps/brapi/server.R') from a different R session!")
-} else {
+if (check_server_status == 200) {
   context("Testing server")
 
   test_that("Base URL for brapi.", {
