@@ -17,10 +17,8 @@ crops = list(
   result = list(data = crops)
   )
 
-mw_crops <-
+mw_crops <<-
   collector() %>%
   get("/brapi/v1/crops/", function(req, res, err){
-    #res$content_type("text/json")
-    #toJSON(crops)
     res$json(crops)
   })

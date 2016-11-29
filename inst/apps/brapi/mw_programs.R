@@ -18,7 +18,7 @@ programs = list(
                             )
 )
 
-mw_programs <-
+mw_programs <<-
   collector() %>%
   get("/brapi/v1/programs/", function(req, res, err){
     # if(exists(req$params$abbreviation)){
