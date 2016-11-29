@@ -1,11 +1,11 @@
 library(jug)
 library(jsonlite)
 
-source("brapi_status.R")
+source(system.file("apps/brapi/brapi_status.R", package = "brapi"))
 
 calls_data = tryCatch({
-  read.csv("calls.csv", stringsAsFactors = FALSE)
-}, error = function(e){
+  read.csv(system.file("apps/brapi/data/calls.csv", package = "brapi"), stringsAsFactors = FALSE)
+}, error = function(e) {
   NULL
 }
 )

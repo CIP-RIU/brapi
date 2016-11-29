@@ -4,15 +4,6 @@ if (check_server_status == 200) {
 
 context("Testing the call 'crops'")
 
-brapi <<- list(
-  crop = "sweetpotato",
-  db = '127.0.0.1',
-  port = 2021,
-  user = "rsimon",
-  password = "password",
-  session = "",
-  protocol = "http://"
-)
 
 test_that("Crops are listed.", {
   expect_equal(length(brapi::crops_list()), 4)

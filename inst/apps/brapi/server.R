@@ -3,7 +3,8 @@ library(jug)
 # workaround: the include function's 2nd parameter does not seem to
 # work correctly. So here is a one line solution:
 # Load all modules in memory to activate mw_ variables for include
-x = list.files(pattern = "mw_") %>% lapply(source)
+x = list.files(system.file("apps/brapi", package = "brapi"), pattern = "mw_", full.names = TRUE) %>%
+  lapply(source)
 
 res <- jug() %>%
   cors() %>%

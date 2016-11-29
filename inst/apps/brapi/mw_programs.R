@@ -1,9 +1,9 @@
 library(jug)
 library(jsonlite)
-source("brapi_status.R")
+source(system.file("apps/brapi/brapi_status.R", package = "brapi"))
 
 programs_data = tryCatch({
-  read.csv("programs.csv", stringsAsFactors = FALSE)
+  read.csv(system.file("apps/brapi/data/programs.csv", package = "brapi"), stringsAsFactors = FALSE)
 }, error = function(e){
   NULL
 }

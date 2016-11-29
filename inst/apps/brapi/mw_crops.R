@@ -1,7 +1,7 @@
 library(jug)
 library(jsonlite)
 
-crops = readLines("crops.txt")
+crops = readLines(system.file("apps/brapi/data/crops.txt", package = "brapi"))
 
 crops = list(
   metadata = list(
