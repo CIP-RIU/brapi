@@ -11,7 +11,7 @@ res <- jug() %>%
     "\nMock BrAPI server ready!\n\n"
   }) %>%
 
-  # each include corresponds to a first level path and corresponding path
+  # each 'include' corresponds to a first level path and corresponding path
   include(mw_calls) %>%
   include(mw_germplasm_search) %>%
   include(mw_germplasm) %>%
