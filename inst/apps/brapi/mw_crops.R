@@ -19,6 +19,16 @@ crops = list(
 
 mw_crops <<-
   collector() %>%
-  get("/brapi/v1/crops/", function(req, res, err){
+   get("/brapi/v1/crops[/]?", function(req, res, err){
     res$json(crops)
+  }) %>%
+  post("/brapi/v1/crops[/]?", function(req, res, err){
+    res$set_status(405)
+  })  %>%
+  put("/brapi/v1/crops[/]?", function(req, res, err){
+    res$set_status(405)
+  })  %>%
+  delete("/brapi/v1/crops[/]?", function(req, res, err){
+    res$set_status(405)
   })
+
