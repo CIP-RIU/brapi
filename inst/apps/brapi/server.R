@@ -11,6 +11,7 @@ res <- jug() %>%
     "\nMock BrAPI server ready!\n\n"
   }) %>%
 
+  # each include corresponds to a first level path and corresponding path
   include(mw_calls) %>%
   include(mw_germplasm_search) %>%
   include(mw_germplasm) %>%
@@ -34,5 +35,6 @@ res <- jug() %>%
   include(mw_locations) %>%
   include(mw_samples) %>%
 
+  # catch any remaining unknown pathes
   simple_error_handler() %>%
   serve_it(port = 2021)

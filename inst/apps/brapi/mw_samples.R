@@ -7,7 +7,7 @@ mw_samples <<-
     res$set_status(501)
   })  %>%
   put("/brapi/v1/samples[/]?", function(req, res, err){
-    res$set_status(405)
+    res$set_status(501)
   }) %>%
   post("/brapi/v1/samples[/]?", function(req, res, err){
     res$set_status(405)
