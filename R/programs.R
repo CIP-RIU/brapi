@@ -1,4 +1,4 @@
-#' program list
+#' programs
 #'
 #' lists the breeding programs
 #'
@@ -10,7 +10,7 @@
 #' @author Reinhard Simon
 #' @return data.frame
 #' @export
-program_list <- function(pageSize = 20, page = 1) {
+programs <- function(pageSize = 20, page = 1) {
   # get_set <- function(page){
   #   brapi_GET(paste0("programs?",
   #                    "pageSize=",pageSize,"&page=", page))
