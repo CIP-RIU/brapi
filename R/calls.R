@@ -26,9 +26,5 @@ calls <- function(datatypes = NULL) {
     NULL
   })
 
-  # if(!raw & !is.null(calls)){
-  #   calls <- calls$result$data %>% jsonlite::fromJSON(simplifyVector = TRUE)
-  # }
-
   calls
 }

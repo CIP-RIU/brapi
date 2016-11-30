@@ -2,7 +2,7 @@ source("check_server_status.R")
 
 if (check_server_status == 200) {
 
-context("Testing the call 'crops'")
+context("Testing the path 'crops'")
 
 
 test_that("Crops are listed.", {
