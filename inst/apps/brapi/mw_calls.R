@@ -43,7 +43,7 @@ calls = list(
       totalPages = 1
     ),
     status = NULL,
-    datafiles = NULL
+    datafiles = list()
   ),
   result = list(data = calls_list())
 )

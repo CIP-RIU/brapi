@@ -34,12 +34,12 @@ programs = list(
   metadata = list(
     pagination = list(
       pageSize = 100,
-      currentPage = 1,
+      currentPage = 0,
       totalCount = nrow(programs_data),
       totalPages = 1
     ),
     status = NULL,
-    datafiles = NULL
+    datafiles = list()
   ),
   result = list(data = prg_list())
 )

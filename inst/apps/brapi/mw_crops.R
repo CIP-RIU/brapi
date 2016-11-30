@@ -12,7 +12,7 @@ crops = list(
       totalPages = 1
     ),
     status = NULL,
-    datafiles = NULL
+    datafiles = list()
   ),
   result = list(data = crops_data)
   )
