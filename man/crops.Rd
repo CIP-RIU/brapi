@@ -4,10 +4,10 @@
 \alias{crops}
 \title{crops}
 \usage{
-crops(raw = FALSE)
+crops(format = FALSE)
 }
 \arguments{
-\item{raw}{logical; default is FALSE; whether to display the raw json object or not}
+\item{format}{logical; default is FALSE; whether to display the raw json object or not}
 }
 \value{
 a vector of crop names or NULL
