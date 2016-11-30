@@ -51,7 +51,8 @@ calls = list(
 process_calls <- function(req, res, err){
   prms <- names(req$params)
   if('datatypes' %in% prms){
-    calls$result$data = calls_list(req$params$datatypes)
+    calls$result <- list(data = calls_list(req$params$datatypes))
+    calls$metadata$pagination$totalCount = length(calls$result$data)
   }
 
   if('page' %in% prms | 'pageSize' %in% prms){

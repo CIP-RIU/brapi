@@ -4,10 +4,10 @@
 \alias{calls}
 \title{calls}
 \usage{
-calls(raw = FALSE)
+calls(datatypes = NULL)
 }
 \arguments{
-\item{raw}{logical; default is FALSE; whether to display the raw json object or not}
+\item{datatypes}{string, list of data types}
 }
 \value{
 a data.frame

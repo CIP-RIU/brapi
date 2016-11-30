@@ -2,12 +2,18 @@
 #'
 #' lists calls available on a brapi server
 #'
-#' @param raw logical; default is FALSE; whether to display the raw json object or not
+#' @param datatypes string, list of data types
 #' @author Reinhard Simon
 #' @return a data.frame
 #' @export
-calls <- function(raw = FALSE){
-  calls_list = paste0(get_brapi(), "calls")
+calls <- function(datatypes = NULL) {
+
+  if(is.null(datatypes)){
+    calls_list = paste0(get_brapi(), "calls")
+  } else {
+    calls_list = paste0(get_brapi(), "calls/?datatypes=", datatypes)
+  }
+
 
   calls <- tryCatch({
     res <- httr::GET(calls_list)
