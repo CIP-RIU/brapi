@@ -6,7 +6,7 @@
 #' @author Reinhard Simon
 #' @return a vector of crop names or NULL
 #' @export
-crops <- function(format = "plain"){
+crops <- function(format = "json"){
   crops_list = paste0(get_brapi(), "crops")
 
   crops <- tryCatch({

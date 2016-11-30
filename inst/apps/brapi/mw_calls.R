@@ -4,7 +4,8 @@ library(jsonlite)
 source(system.file("apps/brapi/brapi_status.R", package = "brapi"))
 
 calls_data = tryCatch({
-  read.csv(system.file("apps/brapi/data/calls.csv", package = "brapi"), stringsAsFactors = FALSE)
+  read.csv(system.file("apps/brapi/data/calls.csv", package = "brapi"),
+           stringsAsFactors = FALSE)[, c(1:3)]
 }, error = function(e) {
   NULL
 }
@@ -37,7 +38,7 @@ calls = list(
   metadata = list(
     pagination = list(
       pageSize = 100,
-      currentPage = 1,
+      currentPage = 0,
       totalCount = nrow(calls_data),
       totalPages = 1
     ),
@@ -56,7 +57,7 @@ process_calls <- function(req, res, err){
   }
 
   if('page' %in% prms | 'pageSize' %in% prms){
-    calls$metadata <- brapi_status(code = 200,
+    calls$metadata <- brapi_status(code = 501,
                                       "Parameters 'page' and 'pageSize' are not implemented." )
   }
 
@@ -65,9 +66,14 @@ process_calls <- function(req, res, err){
     res$set_status(404)
     calls$metadata <- brapi_status(100, "No matching results!")
   }
-  res$set_header("Access-Control-Allow-Methods", "GET")
-  res$json(calls)
 
+  # Returning a 501 http error is the recommended practice
+  # if('page' %in% prms | 'pageSize' %in% prms){
+  #   res$set_status(501)
+  # } else {
+    res$set_header("Access-Control-Allow-Methods", "GET")
+    res$json(calls)
+  #  }
 }
 
 

@@ -7,7 +7,7 @@ crops = list(
   metadata = list(
     pagination = list(
       pageSize = 100,
-      currentPage = 1,
+      currentPage = 0,
       totalCount = length(crops_data),
       totalPages = 1
     ),
@@ -19,7 +19,7 @@ crops = list(
 
 mw_crops <<-
   collector() %>%
-   get("/brapi/v1/crops[/]?", function(req, res, err){
+   get("[/a-z]*/brapi/v1/crops[/]?", function(req, res, err){
      prms <- names(req$params)
      if('format' %in% prms){
        #message("ok")

@@ -6,11 +6,11 @@ context("Testing the path 'crops'")
 
 
 test_that("Crops are listed.", {
-  expect_equal(length(brapi::crops()), 4)
-  expect_equal(brapi::crops()[1], "cassava")
-  expect_equal(brapi::crops()[2], "potato")
-  expect_equal(brapi::crops()[3], "sweetpotato")
-  expect_equal(brapi::crops()[4], "yam")
+  expect_equal(length(crops()), 4)
+  expect_equal(crops()[1], "cassava")
+  expect_equal(crops()[2], "potato")
+  expect_equal(crops()[3], "sweetpotato")
+  expect_equal(crops()[4], "yam")
 })
 
 test_that("Crop format is used.", {
