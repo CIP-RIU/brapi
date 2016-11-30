@@ -16,6 +16,7 @@ test_that("Crops are listed.", {
 test_that("Crop format is used.", {
   expect_equal(length(brapi::crops(format = "json")), 2)
   expect_equal(brapi::crops(format = "json")$result$data[1], "cassava")
+  expect_equal(brapi::crops(format = "plain")[1], "cassava")
 })
 
 

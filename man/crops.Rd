@@ -4,7 +4,7 @@
 \alias{crops}
 \title{crops}
 \usage{
-crops(format = character())
+crops(format = "plain")
 }
 \arguments{
 \item{format}{logical; default is FALSE; whether to display the raw json object or not}
