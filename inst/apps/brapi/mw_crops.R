@@ -23,7 +23,7 @@ mw_crops <<-
      prms <- names(req$params)
      if('format' %in% prms){
        #message("ok")
-       if(req$params$format == "plain") {
+       if(req$params$format != "plain") {
          #message("ok")
 
          res$set_header("ContentType", "text/plain")

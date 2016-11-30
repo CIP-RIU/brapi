@@ -6,7 +6,7 @@
 #' @author Reinhard Simon
 #' @return a vector of crop names or NULL
 #' @export
-crops <- function(format = NULL){
+crops <- function(format = character()){
   crops_list = paste0(get_brapi(), "crops")
 
   crops <- tryCatch({
@@ -19,7 +19,7 @@ crops <- function(format = NULL){
     NULL
   })
 
-  if(is.null(format)){
+  if(length(format) == 0){
     crops <- crops$result$data %>% unlist %>% sort
   }
   crops

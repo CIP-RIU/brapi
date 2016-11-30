@@ -7,7 +7,7 @@ if(check_server_status == 555) {
 
 
 if (check_server_status != 555) {
-  context("Testing server")
+  context("\nTesting server")
 
   test_that("Base URL for brapi.", {
     expect_equal(check_server_status, 200)
