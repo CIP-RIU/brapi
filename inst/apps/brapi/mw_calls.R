@@ -1,7 +1,7 @@
 library(jug)
 library(jsonlite)
 
-source(system.file("apps/brapi/brapi_status.R", package = "brapi"))
+source(system.file("apps/brapi/utils/brapi_status.R", package = "brapi"))
 
 calls_data = tryCatch({
   read.csv(system.file("apps/brapi/data/calls.csv", package = "brapi"),

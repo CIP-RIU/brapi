@@ -1,7 +1,8 @@
 library(jug)
 library(jsonlite)
 
-source(system.file("apps/brapi/brapi_status.R", package = "brapi"))
+source(system.file("apps/brapi/utils/brapi_status.R", package = "brapi"))
+source(system.file("apps/brapi/utils/paging.R", package = "brapi"))
 
 seasons_data = tryCatch({
   read.csv(system.file("apps/brapi/data/seasons.csv", package = "brapi"), stringsAsFactors = FALSE)
@@ -11,18 +12,27 @@ seasons_data = tryCatch({
 )
 
 
-seasons_list = function(year = NULL){
+seasons_list = function(year = 0, page = 0, pageSize = 1000){
   if(is.null(seasons_data)) return(NULL)
-  if(!is.null(year)){
+  if(year != 0) {
     seasons_data = seasons_data[seasons_data$year == year, ]
     if(nrow(seasons_data) == 0) return(NULL)
   }
 
+  # paging here after filtering
+  nn = nrow(seasons_data)
+  pg = paging(nn, page, pageSize)
+  seasons_data <- seasons_data[pg$recStart:pg$recEnd, ]
   n = nrow(seasons_data)
+
   out = list(n)
   for(i in 1:n){
     out[[i]] <- as.list(seasons_data[i, ])
   }
+
+  pagination = list(totalCount = nn, currentPage = pg$page,
+                    pageTotal = pg$pageTotal, pageSize = pageSize)
+  attr(out, "pagination") = pagination
   out
 }
 
@@ -30,7 +40,7 @@ seasons_list = function(year = NULL){
 seasons = list(
   metadata = list(
     pagination = list(
-      pageSize = 100,
+      pageSize = 1000,
       currentPage = 0,
       totalCount = nrow(seasons_data),
       totalPages = 1
@@ -44,16 +54,12 @@ seasons = list(
 
 process_seasons <- function(req, res, err){
   prms <- names(req$params)
-  if('year' %in% prms){
-    seasons$result$data = seasons_list(req$params$year)
-    seasons$metadata$pagination$totalCount = length(seasons$result$data)
-  }
+  page = ifelse('page' %in% prms, as.integer(req$params$page), 0)
+  pageSize = ifelse('pageSize' %in% prms, as.integer(req$params$pageSize), 1000)
+  year = ifelse(('year' %in% prms), as.integer(req$params$year), 0)
 
-  if('page' %in% prms | 'pageSize' %in% prms){
-    seasons$metadata <- brapi_status(code = 200,
-                                      "Parameters 'page' and 'pageSize' are not implemented." )
-  }
-
+  seasons$result$data = seasons_list(year, page, pageSize)
+  seasons$metadata$pagination = attr(seasons$result$data, "pagination")
 
   if(is.null(seasons$result$data)){
     res$set_status(404)
