@@ -10,7 +10,7 @@ programs_data = tryCatch({
 }
 )
 
-programs_list = function(abbr = "none", prg = "none", page=0, pageSize = 10){
+programs_list = function(abbr = "none", prg = "none", page=0, pageSize = 100){
   if(is.null(programs_data)) return(NULL)
   if(abbr != "none"){
     programs_data = programs_data[programs_data$abbreviation == abbr, ]
@@ -38,7 +38,7 @@ programs_list = function(abbr = "none", prg = "none", page=0, pageSize = 10){
 programs = list(
   metadata = list(
     pagination = list(
-      pageSize = 10,
+      pageSize = 100,
       currentPage = 0,
       totalCount = nrow(programs_data),
       totalPages = 1
@@ -53,7 +53,7 @@ programs = list(
 process_programs <- function(req, res, err){
   prms <- names(req$params)
   page = ifelse('page' %in% prms, as.integer(req$params$page), 0)
-  pageSize = ifelse('pageSize' %in% prms, as.integer(req$params$pageSize), 10)
+  pageSize = ifelse('pageSize' %in% prms, as.integer(req$params$pageSize), 100)
   abbreviation = ifelse('abbreviation' %in% prms, req$params$abbreviation, "none")
   programName = ifelse('programName' %in% prms, req$params$programName, "none")
 

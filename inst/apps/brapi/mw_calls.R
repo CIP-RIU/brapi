@@ -13,7 +13,7 @@ calls_data = tryCatch({
 }
 )
 
-calls_list = function(datatypes = "all", page = 0, pageSize = 10){
+calls_list = function(datatypes = "all", page = 0, pageSize = 100){
   if(is.null(calls_data)) return(NULL)
   if(datatypes != "all") {
     calls_data = calls_data[stringr::str_detect(calls_data$datatypes, datatypes), ]
@@ -61,7 +61,7 @@ calls = list(
 process_calls <- function(req, res, err){
   prms <- names(req$params)
   page = ifelse('page' %in% prms, as.integer(req$params$page), 0)
-  pageSize = ifelse('pageSize' %in% prms, as.integer(req$params$pageSize), 10)
+  pageSize = ifelse('pageSize' %in% prms, as.integer(req$params$pageSize), 100)
   datatypes = ifelse(('datatypes' %in% prms), req$params$datatypes, "all")
 
   calls$result$data = calls_list(datatypes, page, pageSize)
