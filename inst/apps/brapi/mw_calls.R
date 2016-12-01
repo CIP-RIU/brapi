@@ -2,6 +2,8 @@ library(jug)
 library(jsonlite)
 
 source(system.file("apps/brapi/utils/brapi_status.R", package = "brapi"))
+source(system.file("apps/brapi/utils/paging.R", package = "brapi"))
+
 
 calls_data = tryCatch({
   read.csv(system.file("apps/brapi/data/calls.csv", package = "brapi"),
@@ -11,12 +13,16 @@ calls_data = tryCatch({
 }
 )
 
-calls_list = function(datatypes = NULL){
+calls_list = function(datatypes = "all", page = 0, pageSize = 10){
   if(is.null(calls_data)) return(NULL)
-  if(!is.null(datatypes)){
+  if(datatypes != "all") {
     calls_data = calls_data[stringr::str_detect(calls_data$datatypes, datatypes), ]
     if(nrow(calls_data) == 0) return(NULL)
   }
+
+  # paging here after filtering
+  pg = paging(calls_data, page, pageSize)
+  calls_data <- calls_data[pg$recStart:pg$recEnd, ]
 
   n = nrow(calls_data)
   out = list(n)
@@ -30,6 +36,9 @@ calls_list = function(datatypes = NULL){
     }
 
   }
+
+  attr(out, "pagination") = pg$pagination
+  out
   out
 }
 
@@ -37,7 +46,7 @@ calls_list = function(datatypes = NULL){
 calls = list(
   metadata = list(
     pagination = list(
-      pageSize = 100,
+      pageSize = 10,
       currentPage = 0,
       totalCount = nrow(calls_data),
       totalPages = 1
@@ -51,29 +60,20 @@ calls = list(
 
 process_calls <- function(req, res, err){
   prms <- names(req$params)
-  if('datatypes' %in% prms){
-    calls$result <- list(data = calls_list(req$params$datatypes))
-    calls$metadata$pagination$totalCount = length(calls$result$data)
-  }
+  page = ifelse('page' %in% prms, as.integer(req$params$page), 0)
+  pageSize = ifelse('pageSize' %in% prms, as.integer(req$params$pageSize), 10)
+  datatypes = ifelse(('datatypes' %in% prms), req$params$datatypes, "all")
 
-  if('page' %in% prms | 'pageSize' %in% prms){
-    calls$metadata <- brapi_status(code = 501,
-                                      "Parameters 'page' and 'pageSize' are not implemented." )
-  }
+  calls$result$data = calls_list(datatypes, page, pageSize)
+  calls$metadata$pagination = attr(calls$result$data, "pagination")
 
 
   if(is.null(calls$result$data)){
     res$set_status(404)
     calls$metadata <- brapi_status(100, "No matching results!")
   }
-
-  # Returning a 501 http error is the recommended practice
-  # if('page' %in% prms | 'pageSize' %in% prms){
-  #   res$set_status(501)
-  # } else {
-    res$set_header("Access-Control-Allow-Methods", "GET")
-    res$json(calls)
-  #  }
+  res$set_header("Access-Control-Allow-Methods", "GET")
+  res$json(calls)
 }
 
 
