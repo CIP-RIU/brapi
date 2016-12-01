@@ -11,7 +11,7 @@
 #' @author Reinhard Simon
 #' @return data.frame
 #' @export
-seasons <- function(year = NULL, page = 0, pageSize = 5, format = "json",
+seasons <- function(year = NULL, page = 0, pageSize = 1000, format = "json",
                     progress = FALSE) {
   #stopifnot(is.list(brapi), "BrAPI connection not set.")
   if(progress) {

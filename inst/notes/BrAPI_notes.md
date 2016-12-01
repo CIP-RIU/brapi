@@ -7,3 +7,6 @@ output: pdf_document
 
 # Notes on BrAPI documentation
 
+# Notes on BrAPI implemenation of sweetpotatobase
+
+# Notes on sweetpotato database

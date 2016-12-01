@@ -20,8 +20,7 @@ seasons_list = function(year = 0, page = 0, pageSize = 1000){
   }
 
   # paging here after filtering
-  nn = nrow(seasons_data)
-  pg = paging(nn, page, pageSize)
+  pg = paging(seasons_data, page, pageSize)
   seasons_data <- seasons_data[pg$recStart:pg$recEnd, ]
   n = nrow(seasons_data)
 
@@ -29,10 +28,7 @@ seasons_list = function(year = 0, page = 0, pageSize = 1000){
   for(i in 1:n){
     out[[i]] <- as.list(seasons_data[i, ])
   }
-
-  pagination = list(totalCount = nn, currentPage = pg$page,
-                    pageTotal = pg$pageTotal, pageSize = pageSize)
-  attr(out, "pagination") = pagination
+  attr(out, "pagination") = pg$pagination
   out
 }
 

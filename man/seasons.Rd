@@ -4,7 +4,7 @@
 \alias{seasons}
 \title{seasons}
 \usage{
-seasons(year = NULL, page = 0, pageSize = 5, format = "json",
+seasons(year = NULL, page = 0, pageSize = 1000, format = "json",
   progress = FALSE)
 }
 \arguments{
