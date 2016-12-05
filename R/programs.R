@@ -4,21 +4,21 @@
 #'
 #' BRAPI discussion: Should this return also the crop?
 #'
-#' @param page integer requested page number
-#' @param pageSize items per page
+#' @param page integer requested page number, default = 0 (1st page)
+#' @param pageSize items per page (default = 100)
 #' @param progress logical default is FALSE
 #' @import httr
 #' @author Reinhard Simon
 #' @return data.frame
 #' @export
-programs <- function(page = NULL, pageSize = NULL, progress = FALSE) {
+programs <- function(page = 0, pageSize = 100, progress = FALSE) {
   if(progress) {
     pb <- progress_bar$new(total = 1e7, clear = FALSE, width = 60,
                            format = "  downloading :what [:bar] :percent eta: :eta")
     pb$tick(tokens = list(what = "program list   "))
   }
 
-  if(is.null(page) & is.null(pageSize)) {
+  if(page == 0 & pageSize == 100) {
     programs_list = paste0(get_brapi(), "programs")
   } else if (is.numeric(page) & is.numeric(pageSize)) {
     programs_list = paste0(get_brapi(), "programs/?page=", page, "&pageSize=", pageSize)

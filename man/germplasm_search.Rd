@@ -4,19 +4,19 @@
 \alias{germplasm_search}
 \title{germplasm search}
 \usage{
-germplasm_search(name = "*", matchMethod = "wildcard",
-  include = "synonyms", pageSize = 10, page = 1)
+germplasm_search(germplasmDbId = "none", germplasmName = "none",
+  germplasmPUI = "none", page = 0, pageSize = 10)
 }
 \arguments{
-\item{name}{string}
+\item{germplasmDbId}{string}
 
-\item{matchMethod}{defaults to 'wildcard'.}
+\item{germplasmName}{string}
 
-\item{include}{synonyms of germplasm}
-
-\item{pageSize}{integer}
+\item{germplasmPUI}{string}
 
 \item{page}{integer}
+
+\item{pageSize}{integer}
 }
 \value{
 data.frame

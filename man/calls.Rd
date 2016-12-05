@@ -4,7 +4,7 @@
 \alias{calls}
 \title{calls}
 \usage{
-calls(datatypes = NULL)
+calls(datatypes = "all")
 }
 \arguments{
 \item{datatypes}{string, list of data types}

@@ -6,9 +6,9 @@
 #' @author Reinhard Simon
 #' @return a data.frame
 #' @export
-calls <- function(datatypes = NULL) {
+calls <- function(datatypes = "all") {
 
-  if(is.null(datatypes)){
+  if(datatypes == "all"){
     calls_list = paste0(get_brapi(), "calls")
   } else {
     calls_list = paste0(get_brapi(), "calls/?datatypes=", datatypes)

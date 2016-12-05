@@ -11,10 +11,9 @@ test_that("Calls are listed.", {
 })
 
 test_that("Parameters are tested.", {
-  expect_equal(length(brapi::programs(page = 1, pageSize = 1)$result$data), 2)
-  expect_equal(brapi::programs(page = 1, pageSize = 1)$metadata$status[[1]]$code, 200)
-  expect_equal(brapi::programs(page = 1, pageSize = 1)$metadata$status[[1]]$message,
-               "Parameters 'page' and 'pageSize' are not implemented.")
+  expect_equal(length(brapi::programs(page = 0, pageSize = 1)$result$data), 1)
+  expect_equal(length(brapi::programs(page = 0, pageSize = 2)$result$data), 2)
+  expect_equal(length(brapi::programs(page = 1, pageSize = 1)$result$data), 1)
 })
 
 }
