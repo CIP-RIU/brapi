@@ -5,7 +5,7 @@
 \title{germplasm search}
 \usage{
 germplasm_search(germplasmDbId = "none", germplasmName = "none",
-  germplasmPUI = "none", page = 0, pageSize = 10)
+  germplasmPUI = "none", page = 0, pageSize = 1000, method = "GET")
 }
 \arguments{
 \item{germplasmDbId}{string}
@@ -17,6 +17,8 @@ germplasm_search(germplasmDbId = "none", germplasmName = "none",
 \item{page}{integer}
 
 \item{pageSize}{integer}
+
+\item{method}{string; default 'GET'; alternative 'POST'}
 }
 \value{
 data.frame

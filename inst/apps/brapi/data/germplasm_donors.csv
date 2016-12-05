@@ -1,6 +1,7 @@
-donorId,donorAccessionNumber,donorInstituteCode,germplasmPUI
+germplasmDbId,donorAccessionNumber,donorInstituteCode,germplasmPUI
 1,BRA001001,BRA001,http://bra/accession/BRA001001
 2,ECU001001,ECU001,http://ecu/accession/ECU001001
 3,A000003,PER001,http://data.cipotato.org/accession/A000003
 4,A000004,PER001,http://data.cipotato.org/accession/A000004
 5,ECU001002,ECU002,http://ecu/accession/ECU001002
+5,PER002001,PER002,http://per/accession/PER002001

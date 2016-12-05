@@ -10,11 +10,23 @@ germplasm_search_data = tryCatch({
   x$biologicalStatusOfAccessionCode <- as.integer(x$biologicalStatusOfAccessionCode)
   x$typeOfGermplasmStorageCode <- as.integer(x$typeOfGermplasmStorageCode)
   x
-  # TODO add donor info!
+
 }, error = function(e){
   NULL
 }
 )
+
+# TODO add donor info!
+germplasm_donor = tryCatch({
+  x <- read.csv(system.file("apps/brapi/data/germplasm_donors.csv", package = "brapi"), stringsAsFactors = FALSE)
+  x <- sapply(x, function(x) ifelse(is.na(x), "", x))
+  x <- x %>% as.data.frame(stringsAsFactors = FALSE)
+  x
+}, error = function(e){
+  NULL
+}
+)
+
 
 germplasm_search_list = function(
                                  germplasmDbId = "none",
@@ -48,6 +60,23 @@ germplasm_search_list = function(
   out = list(n)
   for(i in 1:n){
     out[[i]] <- as.list(germplasm_search_data[i, ])
+
+    if(!is.null(germplasm_donor)){
+      x <- germplasm_donor[germplasm_donor$germplasmDbId == out[[i]]$germplasmDbId, 2:4 ]
+      y <- sapply(x, function(x) ifelse(is.na(x), "", x))
+      nn <- nrow(y)
+      if(!is.null(nn)){
+        out[[i]]$donors = list(nn)
+        #message(i)
+        for (j in 1:nn) {
+          out[[i]]$donors[[j]] <- as.list(y[j, ])
+        }
+      } else {
+        out[[i]]$donors <- list(as.list(y))
+      }
+
+    }
+
   }
   attr(out, "pagination") = pg$pagination
   out
