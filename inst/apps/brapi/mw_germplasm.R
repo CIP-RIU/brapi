@@ -5,10 +5,11 @@ source(system.file("apps/brapi/utils/paging.R", package = "brapi"))
 source(system.file("apps/brapi/utils/get_germplasm.R", package = "brapi"))
 
 process_germplasm <- function(req, res, err){
-  germplasmDbId <- basename(req$path)
+  germplasmDbId <- as.integer(basename(req$path))
 
   germplasm_search$result$data = germplasm_search_list(germplasmDbId)
-  germplasm_search$metadata$pagination = attr(germplasm_search$result$data, "pagination")
+  germplasm_search$metadata = list(pagination = NULL, status = NULL,
+                                   datafiles = list())
 
   if(is.null(germplasm_search$result$data)){
     res$set_status(404)

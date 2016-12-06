@@ -4,10 +4,12 @@
 \alias{germplasm_pedigree}
 \title{germplasm_pedigree}
 \usage{
-germplasm_pedigree(id = NULL)
+germplasm_pedigree(germplasmDbId = 0, notation = "purdue")
 }
 \arguments{
-\item{id}{integer}
+\item{germplasmDbId}{integer; default 0}
+
+\item{notation}{string; default: purdue format}
 }
 \value{
 list of pedigree data
@@ -19,6 +21,6 @@ Gets minimal pedigree data from database using database internal id
 Reinhard Simon
 }
 \references{
-\url{http://docs.brapi.apiary.io/#reference/germplasm/germplasm-details-list-by-studydbid/germplasm-pedigree-by-id?console=1}
+\url{http://docs.brapi.apiary.io/#reference/germplasm/}
 }
 

@@ -1,6 +1,6 @@
 germplasmDbId,defaultDisplayName,accessionNumber,germplasmName,germplasmPUI,pedigree,germplasmSeedSource,synonyms,commonCropName,instituteCode,instituteName,biologicalStatusOfAccessionCode,countryOfOriginCode,typeOfGermplasmStorageCode,genus,species,speciesAuthority,subtaxa,subtaxaAuthority,donors,acquisitionDate
 1,G000001,A000001,Name001,http://data.cipotato.org/accession/A000001,landrace,open pollination,landrace 1,sweetpotato,PER001,CIP,300,BRA,13,Ipomoea,batatas,L,,,1,19840101
 2,G000002,A000002,Name002,http://data.cipotato.org/accession/A000002,landrace,open pollination,landrace 2,sweetpotato,PER001,CIP,300,ECU,20,Ipomoea,batatas,L,,,2,19840101
-3,G000003,A000003,Name003,http://data.cipotato.org/accession/A000003,A000001/A000002,A000001/A000002,variety 1,sweetpotato,PER001,CIP,500,PER,12,Ipomoea,batatas,L,,,3,20010101
-4,G000004,A000004,Name004,http://data.cipotato.org/accession/A000004,A000002/A000001,A000002/A000001,variety 2,sweetpotato,PER001,CIP,500,PER,12,Ipomoea,batatas,L,,,4,20010101
+3,G000003,A000003,Name003,http://data.cipotato.org/accession/A000003,A000001 / A000002,A000001/A000002,variety 1,sweetpotato,PER001,CIP,500,PER,12,Ipomoea,batatas,L,,,3,20010101
+4,G000004,A000004,Name004,http://data.cipotato.org/accession/A000004,A000002 / A000001,A000002/A000001,variety 2,sweetpotato,PER001,CIP,500,PER,12,Ipomoea,batatas,L,,,4,20010101
 5,G000005,A000005,Name005,http://data.cipotato.org/accession/A000005,landrace,open pollination,landrace 3,sweetpotato,PER001,CIP,300,ECU,20,Ipomoea,batatas,L,,,5,19910101

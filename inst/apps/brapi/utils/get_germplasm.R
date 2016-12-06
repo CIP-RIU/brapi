@@ -7,6 +7,7 @@ germplasm_search_data = tryCatch({
   x <- read.csv(system.file("apps/brapi/data/germplasm-search.csv", package = "brapi"), stringsAsFactors = FALSE)
   x <- sapply(x, function(x) ifelse(is.na(x), "", x))
   x <- x %>% as.data.frame(stringsAsFactors = FALSE)
+  x$biologicalStatusOfAccessionCode <- as.integer(x$germplasmDbId)
   x$biologicalStatusOfAccessionCode <- as.integer(x$biologicalStatusOfAccessionCode)
   x$typeOfGermplasmStorageCode <- as.integer(x$typeOfGermplasmStorageCode)
   x
@@ -29,12 +30,12 @@ germplasm_donor = tryCatch({
 
 
 germplasm_search_list = function(
-                                 germplasmDbId = "none",
+                                 germplasmDbId = 0,
                                  germplasmName = "none",
                                  germplasmPUI = "none",
                                  page=0, pageSize = 100){
   if(is.null(germplasm_search_data)) return(NULL)
-  if(germplasmDbId != "none"){
+  if(germplasmDbId > 0){
     germplasm_search_data =
       germplasm_search_data[germplasm_search_data$germplasmDbId == germplasmDbId, ]
     if(nrow(germplasm_search_data) == 0) return(NULL)
@@ -60,9 +61,10 @@ germplasm_search_list = function(
   out = list(n)
   for(i in 1:n){
     out[[i]] <- as.list(germplasm_search_data[i, ])
+    out[[i]]$germplasmDbId <- as.integer(out[[i]]$germplasmDbId)
 
     if(!is.null(germplasm_donor)){
-      x <- germplasm_donor[germplasm_donor$germplasmDbId == out[[i]]$germplasmDbId, 2:4 ]
+      x <- germplasm_donor[as.integer(germplasm_donor$germplasmDbId) == out[[i]]$germplasmDbId, 2:4 ]
       y <- sapply(x, function(x) ifelse(is.na(x), "", x))
       nn <- nrow(y)
       if(!is.null(nn)){
@@ -96,43 +98,3 @@ germplasm_search = list(
   ),
   result = list(data = germplasm_search_list())
 )
-
-
-# process_germplasm_search <- function(req, res, err){
-#   prms <- names(req$params)
-#   page = ifelse('page' %in% prms, as.integer(req$params$page), 0)
-#   pageSize = ifelse('pageSize' %in% prms, as.integer(req$params$pageSize), 100)
-#   germplasmDbId = ifelse('germplasmDbId' %in% prms, req$params$germplasmDbId, "none")
-#   germplasmName = ifelse('germplasmName' %in% prms, req$params$germplasmName, "none")
-#   germplasmPUI = ifelse('germplasmPUI' %in% prms, req$params$germplasmPUI, "none")
-#
-#   germplasm_search$result$data =
-#     germplasm_search_list(
-#       germplasmDbId, germplasmName, germplasmPUI,
-#       page, pageSize)
-#   germplasm_search$metadata$pagination = attr(germplasm_search$result$data, "pagination")
-#
-#   if(is.null(germplasm_search$result$data)){
-#     res$set_status(404)
-#     germplasm_search$metadata <- brapi_status(100, "No matching results!")
-#   }
-#   res$set_header("Access-Control-Allow-Methods", "GET")
-#   res$json(germplasm_search)
-#
-# }
-#
-# mw_germplasm_search <<-
-#   collector() %>%
-#   get("/brapi/v1/germplasm-search[/]?", function(req, res, err){
-#     process_germplasm_search(req, res, err)
-#   }) %>%
-#   put("/brapi/v1/germplasm-search[/]?", function(req, res, err){
-#     res$set_status(405)
-#   }) %>%
-#   post("/brapi/v1/germplasm-search[/]?", function(req, res, err){
-#     #res$set_status(405)
-#     process_germplasm_search(req, res, err)
-#   }) %>%
-#   delete("/brapi/v1/germplasm-search[/]?", function(req, res, err){
-#     res$set_status(405)
-#   })

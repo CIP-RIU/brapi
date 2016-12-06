@@ -7,6 +7,7 @@
 #' @return list
 #' @export
 germplasm_mcpd <- function(id = NULL){
+  .Deprecated('germplasm')
   check_id(id)
   #TODO double check with Nick
   rsp = brapi_GET(paste0("germplasm/",id, "/mcpd"))

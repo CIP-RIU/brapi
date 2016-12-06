@@ -3,15 +3,33 @@
 #'
 #' Gets minimal pedigree data from database using database internal id
 #'
-#' @param id integer
+
+#' @param germplasmDbId integer; default 0
+#' @param notation string; default: purdue format
+#'
 #' @author Reinhard Simon
 #' @return list of pedigree data
 #' @import httr
-#' @references \url{http://docs.brapi.apiary.io/#reference/germplasm/germplasm-details-list-by-studydbid/germplasm-pedigree-by-id?console=1}
+#' @references \url{http://docs.brapi.apiary.io/#reference/germplasm/}
 #' @export
-germplasm_pedigree <- function(id = NULL){
-  check_id(id)
+germplasm_pedigree <- function(germplasmDbId = 0, notation = "purdue"){
+  if(germplasmDbId == 0) return(NULL)
+  if(is.null(germplasmDbId)) return(NULL)
+  if(is.na(germplasmDbId)) return(NULL)
 
-  rsp <- brapi_GET(paste0("germplasm/", id, "/pedigree?notation=purdue"))
-  httr::content(rsp)$result
+  germplasm_pedigree = paste0(get_brapi(), "germplasm/", germplasmDbId,
+                              "/pedigree/?notation=", notation)
+
+  tryCatch({
+    res <- httr::GET(germplasm_pedigree)
+    jsonlite::fromJSON(
+      httr::content(res, "text",
+                    encoding = "UTF-8" # This removes a message
+      ), simplifyVector = FALSE
+    )
+  }, error = function(e){
+    NULL
+  })
+
+
 }
