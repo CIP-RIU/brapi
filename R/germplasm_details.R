@@ -6,7 +6,8 @@
 #' @import httr
 #' @return list of lists
 #' @export
-germplasm_details <- function(id){
+germplasm_details <- function(id = NULL){
+  .Deprecated("germplasm")
   rsp = brapi_GET(paste0("germplasm/",id))
   httr::content(rsp)$result
 }

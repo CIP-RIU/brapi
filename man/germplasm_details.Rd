@@ -4,7 +4,7 @@
 \alias{germplasm_details}
 \title{germplasm details}
 \usage{
-germplasm_details(id)
+germplasm_details(id = NULL)
 }
 \arguments{
 \item{id}{integer number}
