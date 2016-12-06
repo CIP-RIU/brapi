@@ -4,14 +4,16 @@ check_server_status <- tryCatch({
   555
 })
 
+brapi::connect()
 
-brapi <<- list(
-  crop = "sweetpotato",
-  db = '127.0.0.1',
-  port = 2021,
-  user = "rsimon",
-  password = "password",
-  session = "",
-  protocol = "http://"
-)
-
+#
+# brapi <<- list(
+#   crop = "sweetpotato",
+#   db = '127.0.0.1',
+#   port = 2021,
+#   user = "rsimon",
+#   password = "password",
+#   session = "",
+#   protocol = "http://"
+# )
+#
