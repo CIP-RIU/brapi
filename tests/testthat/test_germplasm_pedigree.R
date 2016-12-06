@@ -14,6 +14,8 @@ test_that("Parameters are tested.", {
   expect_equal(length(brapi::germplasm_pedigree(5)$result), 4)
   expect_equal(length(brapi::germplasm_pedigree(5, notation = "purdue")$result), 4)
   expect_equal(brapi::germplasm_pedigree(5)$result$pedigree, "landrace")
+  expect_equal(brapi::germplasm_pedigree(3)$result$parent1Id, 1)
+  expect_equal(brapi::germplasm_pedigree(3)$result$parent2Id, 2)
  })
 
 }

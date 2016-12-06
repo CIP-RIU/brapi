@@ -23,6 +23,9 @@ connect(crop = "sweetpotato", db = "127.0.0.1", port = 2021,
 
 \item{session}{string; default: '' (empty)}
 }
+\value{
+logical
+}
 \description{
 Sets a global list variable 'brapi' that contains all parameters to connect to
 a BrAPI compliant online database.

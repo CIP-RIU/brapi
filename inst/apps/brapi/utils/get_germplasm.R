@@ -7,7 +7,8 @@ germplasm_search_data = tryCatch({
   x <- read.csv(system.file("apps/brapi/data/germplasm-search.csv", package = "brapi"), stringsAsFactors = FALSE)
   x <- sapply(x, function(x) ifelse(is.na(x), "", x))
   x <- x %>% as.data.frame(stringsAsFactors = FALSE)
-  x$biologicalStatusOfAccessionCode <- as.integer(x$germplasmDbId)
+  x$germplasmDbId <- as.integer(x$germplasmDbId)
+  x$biologicalStatusOfAccessionCode <- as.integer(x$biologicalStatusOfAccessionCode)
   x$biologicalStatusOfAccessionCode <- as.integer(x$biologicalStatusOfAccessionCode)
   x$typeOfGermplasmStorageCode <- as.integer(x$typeOfGermplasmStorageCode)
   x
@@ -93,7 +94,7 @@ germplasm_search = list(
       totalCount = nrow(germplasm_search_data),
       totalPages = 1
     ),
-    status = NULL,
+    status = list(),
     datafiles = list()
   ),
   result = list(data = germplasm_search_list())

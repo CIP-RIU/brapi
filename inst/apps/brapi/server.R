@@ -17,6 +17,7 @@ res <- jug() %>%
   include(mw_germplasm_search) %>%
   include(mw_germplasm) %>%
   include(mw_germplasm_pedigree) %>%
+  include(mw_germplasm_markerprofiles) %>%
   include(mw_attributes) %>%
   include(mw_markers) %>%
   include(mw_markerprofiles) %>%

@@ -4,10 +4,12 @@
 \alias{germplasm_markerprofiles}
 \title{germplasm_markerprofiles}
 \usage{
-germplasm_markerprofiles(id = NULL)
+germplasm_markerprofiles(germplasmDbId = 0, format = "json")
 }
 \arguments{
-\item{id}{integer}
+\item{germplasmDbId}{integer}
+
+\item{format}{character, default: json; alternative: vector}
 }
 \value{
 list of marker profile ids
@@ -19,6 +21,6 @@ Gets minimal marker profile data from database using database internal id
 Reinhard Simon
 }
 \references{
-\url{http://docs.brapi.apiary.io/#reference/germplasm/germplasm-markerprofiles/markerprofiles-by-germplasmdbid?console=1}
+\url{http://docs.brapi.apiary.io/#reference/germplasm/markerprofiles/}
 }
 

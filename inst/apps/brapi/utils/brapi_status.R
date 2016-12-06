@@ -1,12 +1,6 @@
 brapi_status <- function(code, message){
-  pagination = NULL
   if(code == 100){
-    pagination = list(
-      pageSize = 0,
-      currentPage = 0,
-      totalCount = 0,
-      totalPages = 0
-    )
+    pagination = list()
 
   }
   status =
@@ -16,5 +10,5 @@ brapi_status <- function(code, message){
         message = message
       )
     )
-  list(pagination = pagination, status = status)
+  list(pagination = NULL, status = status, data = list())
 }

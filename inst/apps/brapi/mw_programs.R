@@ -43,7 +43,7 @@ programs = list(
       totalCount = nrow(programs_data),
       totalPages = 1
     ),
-    status = NULL,
+    status = list(),
     datafiles = list()
   ),
   result = list(data = programs_list())
