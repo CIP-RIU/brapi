@@ -5,8 +5,8 @@
 \title{connect}
 \usage{
 connect(crop = "sweetpotato", db = "127.0.0.1", port = 2021,
-  protocol = "http://", user = "user", password = "password",
-  session = "")
+  protocol = "http://", multi = FALSE, user = "user",
+  password = "password", session = "")
 }
 \arguments{
 \item{crop}{string; default: sweetpotato}
@@ -16,6 +16,8 @@ connect(crop = "sweetpotato", db = "127.0.0.1", port = 2021,
 \item{port}{integer; default: 2021}
 
 \item{protocol}{string; default: http:// (else: https://)}
+
+\item{multi}{logical; default: FALSE}
 
 \item{user}{string; default: user}
 

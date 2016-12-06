@@ -12,6 +12,7 @@
 #' @param db string; default '127.0.0.1' (localhost)
 #' @param port integer; default: 2021
 #' @param protocol string; default: http:// (else: https://)
+#' @param multi logical; default: FALSE
 #' @param user string; default: user
 #' @param password string; default: password
 #' @param session string; default: '' (empty)
@@ -19,7 +20,7 @@
 #' @return logical
 #' @export
 connect <- function(crop = "sweetpotato", db = "127.0.0.1", port = 2021,
-                    protocol = "http://",
+                    protocol = "http://", multi = FALSE,
                     user = "user", password = "password", session = ""){
   brapi <<- list(
     crop = crop,
@@ -28,7 +29,8 @@ connect <- function(crop = "sweetpotato", db = "127.0.0.1", port = 2021,
     user = user,
     password = password,
     sesssion = session,
-    protocol = protocol
+    protocol = protocol,
+    multi = multi
   )
   TRUE
 }

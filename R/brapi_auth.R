@@ -47,7 +47,13 @@ get_brapi <- function() {
   if(brapi$port == 80 | brapi$port == 8080) {
     url = paste0(brapi$protocol, brapi$db, "/brapi/v1/")
   } else {
-    url = paste0(brapi$protocol, brapi$db, ":", brapi$port, "/brapi/v1/" )
+    if(brapi$multi){
+      url = paste0(brapi$protocol, brapi$db, ":", brapi$port,"/",
+                   brapi$crop, "/brapi/v1/" )
+    } else {
+      url = paste0(brapi$protocol, brapi$db, ":", brapi$port, "/brapi/v1/" )
+    }
+
   }
 
   url
