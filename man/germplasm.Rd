@@ -4,10 +4,10 @@
 \alias{germplasm}
 \title{germplasm}
 \usage{
-germplasm(germplasmDbId = NULL)
+germplasm(germplasmDbId = 0)
 }
 \arguments{
-\item{germplasmDbId}{string; default NULL; an internal ID for a germplasm}
+\item{germplasmDbId}{string; default 0; an internal ID for a germplasm}
 }
 \value{
 list

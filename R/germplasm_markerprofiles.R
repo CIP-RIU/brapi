@@ -4,13 +4,13 @@
 #' Gets minimal marker profile data from database using database internal id
 #'
 #' @param germplasmDbId integer
-#' @param format character, default: json; alternative: vector
+#' @param rclass character, default: list; alternative: vector
 #' @author Reinhard Simon
 #' @return list of marker profile ids
 #' @import httr
 #' @references \url{http://docs.brapi.apiary.io/#reference/germplasm/markerprofiles/}
 #' @export
-germplasm_markerprofiles <- function(germplasmDbId = 0, format = "json"){
+germplasm_markerprofiles <- function(germplasmDbId = 0, rclass = "list"){
   brapi::check(FALSE)
   germplasm_markerprofiles = paste0(get_brapi(), "germplasm/", germplasmDbId,
                               "/markerprofiles/")
@@ -29,7 +29,7 @@ germplasm_markerprofiles <- function(germplasmDbId = 0, format = "json"){
     NULL
   })
 
-  if(!is.null(out) & format == 'vector'){
+  if(!is.null(out) & rclass == 'vector'){
     out = out$result$markerProfiles %>% unlist
   }
   out

@@ -13,9 +13,7 @@
 #' @references \url{http://docs.brapi.apiary.io/#reference/germplasm/}
 #' @export
 germplasm_pedigree <- function(germplasmDbId = 0, notation = "purdue"){
-  if(germplasmDbId == 0) return(NULL)
-  if(is.null(germplasmDbId)) return(NULL)
-  if(is.na(germplasmDbId)) return(NULL)
+  brapi::check(FALSE)
 
   germplasm_pedigree = paste0(get_brapi(), "germplasm/", germplasmDbId,
                               "/pedigree/?notation=", notation)

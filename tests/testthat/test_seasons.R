@@ -6,8 +6,8 @@ context("Testing the path 'seasons'")
 
 test_that("Seasons are listed.", {
   expect_equal(length(seasons()), 2)
-  expect_equal(length(seasons(format = "json")), 2)
-  expect_equal(nrow(seasons(format = "data.frame")), 10)
+  expect_equal(length(seasons(rclass = "list")), 2)
+  expect_equal(nrow(seasons(rclass = "data.frame")), 10)
   expect_equal(seasons()$result$data[[10]]$year[1], 2008)
 })
 

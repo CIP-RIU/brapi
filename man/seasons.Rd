@@ -4,8 +4,7 @@
 \alias{seasons}
 \title{seasons}
 \usage{
-seasons(year = NULL, page = 0, pageSize = 1000, format = "json",
-  progress = FALSE)
+seasons(year = NULL, page = 0, pageSize = 1000, rclass = "list")
 }
 \arguments{
 \item{year}{integer}
@@ -14,9 +13,7 @@ seasons(year = NULL, page = 0, pageSize = 1000, format = "json",
 
 \item{pageSize}{items per page}
 
-\item{format}{character; one of json (default) or data.frame}
-
-\item{progress}{logical default is FALSE}
+\item{rclass}{character; one of list (default) or data.frame}
 }
 \value{
 data.frame

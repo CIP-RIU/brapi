@@ -4,7 +4,7 @@
 \alias{germplasm_search}
 \title{germplasm search}
 \usage{
-germplasm_search(germplasmDbId = "none", germplasmName = "none",
+germplasm_search(germplasmDbId = 0, germplasmName = "none",
   germplasmPUI = "none", page = 0, pageSize = 1000, method = "GET")
 }
 \arguments{

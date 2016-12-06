@@ -6,7 +6,7 @@ context("Testing the path 'germplasm/{id}/pedigree'")
 
 
 test_that("Calls are listed.", {
-  expect_equal(brapi::germplasm_pedigree(), NULL)
+  expect_equal(length(brapi::germplasm_pedigree()), 2)
 })
 
 test_that("Parameters are tested.", {

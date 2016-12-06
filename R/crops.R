@@ -2,11 +2,12 @@
 #'
 #' lists crops available in a database
 #'
-#' @param format logical; default is FALSE; whether to display the raw json object or not
+#' @param rclass logical; default is FALSE; whether to display the raw list object or not
 #' @author Reinhard Simon
 #' @return a vector of crop names or NULL
 #' @export
-crops <- function(format = "json"){
+crops <- function(rclass = "list"){
+  brapi::check(FALSE)
   crops_list = paste0(get_brapi(), "crops")
 
   crops <- tryCatch({
@@ -19,7 +20,7 @@ crops <- function(format = "json"){
     NULL
   })
 
-  if (format == "plain"){
+  if (rclass != "list"){
     crops <- crops$result$data %>% unlist %>% sort
   }
 

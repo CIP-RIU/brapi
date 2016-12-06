@@ -7,15 +7,15 @@ context("Testing the path 'crops'")
 
 test_that("Crops are listed.", {
   expect_equal(length(crops()), 2)
-  expect_equal(crops(format = "plain")[1], "cassava")
-  expect_equal(crops(format = "plain")[2], "potato")
-  expect_equal(crops(format = "plain")[3], "sweetpotato")
-  expect_equal(crops(format = "plain")[4], "yam")
+  expect_equal(crops(rclass = "vector")[1], "cassava")
+  expect_equal(crops(rclass = "vector")[2], "potato")
+  expect_equal(crops(rclass = "vector")[3], "sweetpotato")
+  expect_equal(crops(rclass = "vector")[4], "yam")
 })
 
 test_that("Crop format is used.", {
-  expect_equal(length(brapi::crops(format = "json")), 2)
-  expect_equal(brapi::crops(format = "json")$result$data[1], "cassava")
+  expect_equal(length(brapi::crops(rclass = "list")), 2)
+  expect_equal(brapi::crops(rclass = "list")$result$data[1], "cassava")
 
 })
 

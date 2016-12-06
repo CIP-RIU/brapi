@@ -7,7 +7,7 @@
 #' @return a data.frame
 #' @export
 calls <- function(datatypes = "all") {
-
+  brapi::check(FALSE)
   if(datatypes == "all"){
     calls_list = paste0(get_brapi(), "calls")
   } else {

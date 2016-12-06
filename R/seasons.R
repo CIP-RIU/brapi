@@ -5,21 +5,13 @@
 #' @param year integer
 #' @param page integer requested page number
 #' @param pageSize items per page
-#' @param format character; one of json (default) or data.frame
-#' @param progress logical default is FALSE
+#' @param rclass character; one of list (default) or data.frame
 #' @import httr
 #' @author Reinhard Simon
 #' @return data.frame
 #' @export
-seasons <- function(year = NULL, page = 0, pageSize = 1000, format = "json",
-                    progress = FALSE) {
-  #stopifnot(is.list(brapi), "BrAPI connection not set.")
-  if(progress) {
-    pb <- progress_bar$new(total = 1e7, clear = FALSE, width = 60,
-                           format = "  downloading :what [:bar] :percent eta: :eta")
-    pb$tick(tokens = list(what = "program list   "))
-  }
-
+seasons <- function(year = NULL, page = 0, pageSize = 1000, rclass = "list") {
+  brapi::check(FALSE)
   if(is.null(page) & is.null(pageSize)) {
     seasons_list = paste0(get_brapi(), "seasons")
   }
@@ -43,9 +35,7 @@ seasons <- function(year = NULL, page = 0, pageSize = 1000, format = "json",
     NULL
   })
 
-  if (progress) pb$tick(1e7, tokens = list(what = "seasons list   "))
-
-  if(format == "data.frame") {
+  if(rclass == "data.frame") {
     dat <- seasons$result$data %>% unlist() %>%
              matrix(ncol = 3, byrow = T) %>% as.data.frame
     names(dat) = c("id", "season", "year")

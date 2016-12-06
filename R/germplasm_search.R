@@ -17,10 +17,11 @@
 #'
 #' @return data.frame
 #' @export
-germplasm_search <- function(germplasmDbId = "none",
+germplasm_search <- function(germplasmDbId = 0,
                              germplasmName = "none",
                              germplasmPUI  = "none",
                              page = 0, pageSize = 1000, method = "GET"){
+  brapi::check(FALSE)
   if (is.numeric(page) & is.numeric(pageSize)) {
     germplasm_search = paste0(get_brapi(), "germplasm-search/?page=", page, "&pageSize=", pageSize)
   }
@@ -30,7 +31,7 @@ germplasm_search <- function(germplasmDbId = "none",
   }
 
 
-  if(germplasmDbId != "none") {
+  if(germplasmDbId > 0) {
     germplasm_search = paste0(get_brapi(), "germplasm-search/?germplasmDbId=", germplasmDbId)
   }
 

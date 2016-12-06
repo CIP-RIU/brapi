@@ -4,12 +4,12 @@
 \alias{germplasm_markerprofiles}
 \title{germplasm_markerprofiles}
 \usage{
-germplasm_markerprofiles(germplasmDbId = 0, format = "json")
+germplasm_markerprofiles(germplasmDbId = 0, rclass = "list")
 }
 \arguments{
 \item{germplasmDbId}{integer}
 
-\item{format}{character, default: json; alternative: vector}
+\item{rclass}{character, default: list; alternative: vector}
 }
 \value{
 list of marker profile ids

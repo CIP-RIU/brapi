@@ -2,13 +2,12 @@
 #'
 #' Gets germplasm details given an id.
 #'
-#' @param germplasmDbId string; default NULL; an internal ID for a germplasm
+#' @param germplasmDbId string; default 0; an internal ID for a germplasm
 #' @author Reinhard Simon
 #' @return list
 #' @export
-germplasm <- function(germplasmDbId = NULL) {
-  if(is.null(germplasmDbId)) return(NULL)
-  if(is.na(germplasmDbId)) return(NULL)
+germplasm <- function(germplasmDbId = 0) {
+  brapi::check(FALSE)
   germplasm = paste0(get_brapi(), "germplasm/", germplasmDbId, "/")
 
 
