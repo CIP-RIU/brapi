@@ -5,13 +5,15 @@ crops_data = readLines(system.file("apps/brapi/data/crops.txt", package = "brapi
 
 crops = list(
   metadata = list(
-    pagination = list(
-      pageSize = 100,
-      currentPage = 0,
-      totalCount = length(crops_data),
-      totalPages = 1
-    ),
-    status = NULL,
+    pagination = NULL
+      #list(
+      # pageSize = 100,
+      # currentPage = 0,
+      # totalCount = length(crops_data),
+      # totalPages = 1
+    #)
+      ,
+    status = list(),
     datafiles = list()
   ),
   result = list(data = crops_data)
