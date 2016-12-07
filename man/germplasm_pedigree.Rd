@@ -4,12 +4,15 @@
 \alias{germplasm_pedigree}
 \title{germplasm_pedigree}
 \usage{
-germplasm_pedigree(germplasmDbId = 0, notation = "purdue")
+germplasm_pedigree(germplasmDbId = 0, notation = "purdue",
+  rclass = "tibble")
 }
 \arguments{
 \item{germplasmDbId}{integer; default 0}
 
 \item{notation}{string; default: purdue format}
+
+\item{rclass}{string; default: tibble}
 }
 \value{
 list of pedigree data

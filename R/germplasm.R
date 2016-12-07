@@ -6,7 +6,6 @@
 #' @param germplasmDbId string; default 0; an internal ID for a germplasm
 #' @import tidyjson
 #' @import dplyr
-#' @importFrom tibble, as_tibble
 #' @author Reinhard Simon
 #' @references \url{http://docs.brapi.apiary.io/#reference/0/germplasm-details-by-germplasmdbid}
 #' @return list
