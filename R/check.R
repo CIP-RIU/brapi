@@ -10,7 +10,7 @@
 #' @return logical
 #' @export
 check <- function(verbose = TRUE){
-  if(!("brapi" %in% ls(env = globalenv()))) stop("BrAPI connection details not available. Use brapi::connect()")
+  if(!("brapi" %in% ls(envir = globalenv()))) stop("BrAPI connection details not available. Use brapi::connect()")
   if(is.null(brapi))     stop("BrAPI connection object is NULL. Use brapi::connect()")
 
   if(!can_internet())      stop("No internet connection. Check your LAN or WIFI.")

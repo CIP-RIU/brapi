@@ -2,30 +2,29 @@
 #'
 #' lists calls available on a brapi server
 #'
+#' @param rclass string; default: tibble
 #' @param datatypes string, list of data types
+#'
 #' @author Reinhard Simon
 #' @references \url{http://docs.brapi.apiary.io/#reference/0/call-search}
-#' @return a data.frame
+#' @return rclass as defined
+#' @import tibble
+#' @import tidyjson
 #' @export
-calls <- function(datatypes = "all") {
+calls <- function(datatypes = "all", rclass = "tibble") {
   brapi::check(FALSE)
+  brp <- get_brapi()
   if(datatypes == "all"){
-    calls_list = paste0(get_brapi(), "calls")
+    calls_list = paste0(brp, "calls")
   } else {
-    calls_list = paste0(get_brapi(), "calls/?datatypes=", datatypes)
+    calls_list = paste0(brp, "calls/?datatypes=", datatypes)
   }
 
-
-  calls <- tryCatch({
-    res <- httr::GET(calls_list)
-    jsonlite::fromJSON(
-      httr::content(res, "text",
-                    encoding = "UTF-8" # This removes a message
-                    ), simplifyVector = FALSE
-    )
+  tryCatch({
+    res <- brapiGET(calls_list)
+    res <-  httr::content(res, "text", encoding = "UTF-8")
+    dat2tbl(res, rclass)
   }, error = function(e){
     NULL
   })
-
-  calls
 }

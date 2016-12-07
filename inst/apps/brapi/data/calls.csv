@@ -1,10 +1,14 @@
 call,datatypes,methods,servers,clients
-token,json;text,POST;DELETE,Tripal;Cassavabase;Sweetpotatobase;Germinate,Flapjack;[brapi R package];[HIDAP]
-calls,json,GET,Germinate;[Sweetpotatobase],Flapjack;[brapi R package];[HIDAP]
-germplasm-search,json,GET;POST,[Sweetpotatobase],
-germplasm/id,json,GET,[Sweetpotatobase],
-germplasm/id/pedigree,json,GET,[Sweetpotatobase],
-germplasm/id/markerprofiles,json,GET,[Sweetpotatobase],
+token,json,POST,Tripal;Cassavabase;Sweetpotatobase;Germinate,Flapjack;[HIDAP]
+token,text,POST,Tripal;Cassavabase;Sweetpotatobase;Germinate,Flapjack;[HIDAP]
+token,json,DELETE,Tripal;Cassavabase;Sweetpotatobase;Germinate,Flapjack;[HIDAP]
+token,text,DELETE,Tripal;Cassavabase;Sweetpotatobase;Germinate,Flapjack;[HIDAP]
+calls,json,GET,Germinate;[Sweetpotatobase],brapi
+germplasm-search,json,GET,[Sweetpotatobase],brapi
+germplasm-search,json,POST,[Sweetpotatobase],
+germplasm/id,json,GET,[Sweetpotatobase],brapi
+germplasm/id/pedigree,json,GET,[Sweetpotatobase],brapi
+germplasm/id/markerprofiles,json,GET,[Sweetpotatobase],brapi
 attributes,json,GET,[Sweetpotatobase],
 attributes/categories,json,GET,[Sweetpotatobase],
 germplasm/germplasmDbId/attributes,json,GET,[Sweetpotatobase],
@@ -12,23 +16,36 @@ markers,json,GET,,
 markers/markerDbId,json,GET,,
 markerprofiles,json,GET,[Sweetpotatobase],
 markerprofiles/germplasmDbId,json,GET,[Sweetpotatobase],
-allelematrix-search,json;tsv;csv,GET;POST,[Sweetpotatobase],
-programs,json,GET,[Sweetpotatobase],[brapi R package]
-crops,json,GET,[Sweetpotatobase],[brapi R package]
+allelematrix-search,json,GET,[Sweetpotatobase],
+allelematrix-search,json,POST,[Sweetpotatobase],
+allelematrix-search,tsv,GET,[Sweetpotatobase],
+allelematrix-search,tsv,POST,[Sweetpotatobase],
+allelematrix-search,csv,GET,[Sweetpotatobase],
+allelematrix-search,csv,POST,[Sweetpotatobase],
+programs,json,GET,[Sweetpotatobase],brapi
+crops,json,GET,[Sweetpotatobase],brapi
 trials,json,GET,[Sweetpotatobase],
 trials/trialDbId,json,GET,[Sweetpotatobase],
-seasons,json,GET,[Sweetpotatobase],
+seasons,json,GET,[Sweetpotatobase],brapi
 studyTypes,json,GET,[Sweetpotatobase],
-studies-search,json,GET;POST,[Sweetpotatobase],
+studies-search,json,GET,[Sweetpotatobase],
+studies-search,json,POST,[Sweetpotatobase],
 studies/studyDbId,json,GET,[Sweetpotatobase],
 studies/studyDbId/observationVariables,json,GET,,
 studies/studyDbId/germplasm,json,GET,[Sweetpotatobase],
 observationLevels,json,GET,[Sweetpotatobase],
-studies/studyId/observationUnits,json,GET;POST,,
-studies/studyDbId/table,json;tsv;csv,GET;POST,[Sweetpotatobase],
+studies/studyId/observationUnits,json,GET,,
+studies/studyId/observationUnits,json,POST,,
+studies/studyDbId/table,json,GET,[Sweetpotatobase],
+studies/studyDbId/table,json,POST,[Sweetpotatobase],
+studies/studyDbId/table,tsv,GET,[Sweetpotatobase],
+studies/studyDbId/table,tsc,POST,[Sweetpotatobase],
+studies/studyDbId/table,csv,GET,[Sweetpotatobase],
+studies/studyDbId/table,csv,POST,[Sweetpotatobase],
 studies/studyDbId/layout,json,GET,[Sweetpotatobase],
 studies/studyDbId/observations,json,GET,[Sweetpotatobase],
-phenotypes-search,json,GET;POST,[Sweetpotatobase],
+phenotypes-search,json,GET,[Sweetpotatobase],
+phenotypes-search,json,POST,[Sweetpotatobase],
 traits,json,GET,[Sweetpotatobase],
 traits/traitDbId,json,GET,[Sweetpotatobase],
 variables/datatypes,json,GET,,

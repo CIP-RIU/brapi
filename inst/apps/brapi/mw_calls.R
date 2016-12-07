@@ -6,8 +6,9 @@ source(system.file("apps/brapi/utils/paging.R", package = "brapi"))
 
 
 calls_data = tryCatch({
-  read.csv(system.file("apps/brapi/data/calls.csv", package = "brapi"),
-           stringsAsFactors = FALSE)[, c(1:3)]
+  res <- read.csv(system.file("apps/brapi/data/calls.csv", package = "brapi"),
+           stringsAsFactors = FALSE)
+  res[stringr::str_detect(res$clients, "brapi"), 1:3]
 }, error = function(e) {
   NULL
 }

@@ -6,23 +6,18 @@
 #' @author Reinhard Simon
 #' @return a vector of crop names or NULL
 #' @export
-crops <- function(rclass = "list"){
+crops <- function(rclass = "vector"){
   brapi::check(FALSE)
   crops_list = paste0(get_brapi(), "crops")
+  rclass <- df2tibble(rclass)
 
-  crops <- tryCatch({
-    res <- httr::GET(crops_list)
+  tryCatch({
+    res <- brapiGET(crops_list)
+    res <- httr::content(res, "text",encoding = "UTF-8")
 
-    jsonlite::fromJSON( httr::content(res, "text",
-                    encoding = "UTF-8" # This removes a message
-                    ), simplifyVector = TRUE)
-  }, error = function(e){
+    dat2tbl(res, rclass)
+    }, error = function(e){
     NULL
   })
 
-  if (rclass != "list"){
-    crops <- crops$result$data %>% unlist %>% sort
-  }
-
-  crops
 }

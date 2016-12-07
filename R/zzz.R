@@ -1,6 +1,4 @@
 .onLoad <- function(libname = find.package("brapi"), pkgname = "brapi") {
-  #crops <<- c("cassava", "potato", "sweetpotato")
-
+  show_info()
   brapi <<- NULL
-
 }

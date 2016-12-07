@@ -5,46 +5,31 @@
 #' @param year integer
 #' @param page integer requested page number
 #' @param pageSize items per page
-#' @param rclass character; one of list (default) or data.frame
+#' @param rclass character; one of tibble (default), json, list or data.frame
 #' @import httr
 #' @author Reinhard Simon
 #' @return data.frame
 #' @references \url{http://docs.brapi.apiary.io/#reference/0/list-seasons/list-seasons-or-years}
 #' @export
-seasons <- function(year = NULL, page = 0, pageSize = 1000, rclass = "list") {
+seasons <- function(year = NULL, page = 0, pageSize = 1000, rclass = "tibble") {
   brapi::check(FALSE)
+  brp <- get_brapi()
   if(is.null(page) & is.null(pageSize)) {
-    seasons_list = paste0(get_brapi(), "seasons")
+    seasons_list = paste0(brp, "seasons")
   }
   if (is.numeric(page) & is.numeric(pageSize)) {
-    seasons_list = paste0(get_brapi(), "seasons?page=", page, "&pageSize=", pageSize)
+    seasons_list = paste0(brp, "seasons?page=", page, "&pageSize=", pageSize)
   }
-
   if (!is.null(year)) {
     seasons_list = paste0(seasons_list, "&year=", year)
   }
 
+  tryCatch({
+    res <- brapiGET(seasons_list)
+    res <- httr::content(res, "text", encoding = "UTF-8")
 
-  seasons <- tryCatch({
-    res <- httr::GET(seasons_list)
-    jsonlite::fromJSON(
-      httr::content(res, "text",
-                    encoding = "UTF-8" # This removes a message
-      ), simplifyVector = FALSE
-    )
+    dat2tbl(res, rclass)
   }, error = function(e){
     NULL
   })
-
-  if(rclass == "data.frame") {
-    dat <- seasons$result$data %>% unlist() %>%
-             matrix(ncol = 3, byrow = T) %>% as.data.frame
-    names(dat) = c("id", "season", "year")
-    dat[, 1] <- as.integer(dat[, 1])
-    dat[, 3] <- as.integer(dat[, 3])
-    attr(dat, "status") = seasons$metadata$status
-    seasons = dat
-  }
-
-  seasons
 }

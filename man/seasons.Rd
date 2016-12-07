@@ -4,7 +4,7 @@
 \alias{seasons}
 \title{seasons}
 \usage{
-seasons(year = NULL, page = 0, pageSize = 1000, rclass = "list")
+seasons(year = NULL, page = 0, pageSize = 1000, rclass = "tibble")
 }
 \arguments{
 \item{year}{integer}
@@ -13,7 +13,7 @@ seasons(year = NULL, page = 0, pageSize = 1000, rclass = "list")
 
 \item{pageSize}{items per page}
 
-\item{rclass}{character; one of list (default) or data.frame}
+\item{rclass}{character; one of tibble (default), json, list or data.frame}
 }
 \value{
 data.frame

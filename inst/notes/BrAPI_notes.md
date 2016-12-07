@@ -16,6 +16,14 @@ Metadata are not consistently used in examples.
 - Empty status object should therefore be rather: '"status": []'
 - Paging: although the intro says that page counting starts with page = 0 all (?) examples show a 1.
 
+## List of Trials
+
+- Call says: crops; should be: trials
+
+## germplasm_markerprofiles
+
+- the inner result items should be wrapped into 'data'
+
 # Notes on BrAPI implemenation of sweetpotatobase
 
 # Notes on sweetpotato database

@@ -4,13 +4,15 @@
 \alias{calls}
 \title{calls}
 \usage{
-calls(datatypes = "all")
+calls(datatypes = "all", rclass = "tibble")
 }
 \arguments{
 \item{datatypes}{string, list of data types}
+
+\item{rclass}{string; default: tibble}
 }
 \value{
-a data.frame
+rclass as defined
 }
 \description{
 lists calls available on a brapi server

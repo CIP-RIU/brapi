@@ -4,7 +4,7 @@
 \alias{crops}
 \title{crops}
 \usage{
-crops(rclass = "list")
+crops(rclass = "vector")
 }
 \arguments{
 \item{rclass}{logical; default is FALSE; whether to display the raw list object or not}

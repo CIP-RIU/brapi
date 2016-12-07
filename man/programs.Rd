@@ -4,15 +4,17 @@
 \alias{programs}
 \title{programs}
 \usage{
-programs(page = 0, pageSize = 100)
+programs(page = 0, pageSize = 100, rclass = "tibble")
 }
 \arguments{
 \item{page}{integer requested page number, default = 0 (1st page)}
 
 \item{pageSize}{items per page (default = 100)}
+
+\item{rclass}{string; default: tibble}
 }
 \value{
-data.frame
+rclass
 }
 \description{
 lists the breeding programs

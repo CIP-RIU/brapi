@@ -4,7 +4,7 @@
 \alias{germplasm_markerprofiles}
 \title{germplasm_markerprofiles}
 \usage{
-germplasm_markerprofiles(germplasmDbId = 0, rclass = "list")
+germplasm_markerprofiles(germplasmDbId = 0, rclass = "vector")
 }
 \arguments{
 \item{germplasmDbId}{integer}
