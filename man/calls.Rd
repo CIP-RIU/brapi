@@ -18,4 +18,7 @@ lists calls available on a brapi server
 \author{
 Reinhard Simon
 }
+\references{
+\url{http://docs.brapi.apiary.io/#reference/0/call-search}
+}
 

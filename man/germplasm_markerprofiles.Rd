@@ -21,6 +21,6 @@ Gets minimal marker profile data from database using database internal id
 Reinhard Simon
 }
 \references{
-\url{http://docs.brapi.apiary.io/#reference/germplasm/markerprofiles/}
+\url{http://docs.brapi.apiary.io/#reference/0/germplasm-markerprofiles}
 }
 

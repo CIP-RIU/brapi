@@ -24,4 +24,7 @@ lists the seasons and years
 \author{
 Reinhard Simon
 }
+\references{
+\url{http://docs.brapi.apiary.io/#reference/0/list-seasons/list-seasons-or-years}
+}
 

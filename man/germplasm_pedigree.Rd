@@ -21,6 +21,6 @@ Gets minimal pedigree data from database using database internal id
 Reinhard Simon
 }
 \references{
-\url{http://docs.brapi.apiary.io/#reference/germplasm/}
+\url{http://docs.brapi.apiary.io/#reference/0/germplasm-pedigree}
 }
 

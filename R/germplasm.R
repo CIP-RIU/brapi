@@ -4,6 +4,7 @@
 #'
 #' @param germplasmDbId string; default 0; an internal ID for a germplasm
 #' @author Reinhard Simon
+#' @references \url{http://docs.brapi.apiary.io/#reference/0/germplasm-details-by-germplasmdbid}
 #' @return list
 #' @export
 germplasm <- function(germplasmDbId = 0) {

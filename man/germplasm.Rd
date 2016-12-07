@@ -18,4 +18,7 @@ Gets germplasm details given an id.
 \author{
 Reinhard Simon
 }
+\references{
+\url{http://docs.brapi.apiary.io/#reference/0/germplasm-details-by-germplasmdbid}
+}
 

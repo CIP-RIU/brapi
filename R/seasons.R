@@ -9,6 +9,7 @@
 #' @import httr
 #' @author Reinhard Simon
 #' @return data.frame
+#' @references \url{http://docs.brapi.apiary.io/#reference/0/list-seasons/list-seasons-or-years}
 #' @export
 seasons <- function(year = NULL, page = 0, pageSize = 1000, rclass = "list") {
   brapi::check(FALSE)

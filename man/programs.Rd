@@ -23,4 +23,7 @@ BRAPI discussion: Should this return also the crop?
 \author{
 Reinhard Simon
 }
+\references{
+\url{http://docs.brapi.apiary.io/#reference/0/program-list/list-programs}
+}
 

@@ -30,6 +30,6 @@ Lists germplasmm as result of a search.
 Reinhard Simon
 }
 \references{
-\url{http://docs.brapi.apiary.io/reference/germplasm/germplasm-search/search-names-to-retrieve-germplasm-records}
+\url{http://docs.brapi.apiary.io/#reference/0/germplasm-search}
 }
 

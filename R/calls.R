@@ -4,6 +4,7 @@
 #'
 #' @param datatypes string, list of data types
 #' @author Reinhard Simon
+#' @references \url{http://docs.brapi.apiary.io/#reference/0/call-search}
 #' @return a data.frame
 #' @export
 calls <- function(datatypes = "all") {

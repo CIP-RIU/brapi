@@ -8,7 +8,7 @@
 #' @author Reinhard Simon
 #' @return list of marker profile ids
 #' @import httr
-#' @references \url{http://docs.brapi.apiary.io/#reference/germplasm/markerprofiles/}
+#' @references \url{http://docs.brapi.apiary.io/#reference/0/germplasm-markerprofiles}
 #' @export
 germplasm_markerprofiles <- function(germplasmDbId = 0, rclass = "list"){
   brapi::check(FALSE)

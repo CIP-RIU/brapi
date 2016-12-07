@@ -10,7 +10,7 @@
 #' @author Reinhard Simon
 #' @return list of pedigree data
 #' @import httr
-#' @references \url{http://docs.brapi.apiary.io/#reference/germplasm/}
+#' @references \url{http://docs.brapi.apiary.io/#reference/0/germplasm-pedigree}
 #' @export
 germplasm_pedigree <- function(germplasmDbId = 0, notation = "purdue"){
   brapi::check(FALSE)

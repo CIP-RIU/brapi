@@ -9,6 +9,7 @@
 #' @import httr
 #' @author Reinhard Simon
 #' @return data.frame
+#' @references \url{http://docs.brapi.apiary.io/#reference/0/program-list/list-programs}
 #' @export
 programs <- function(page = 0, pageSize = 100) {
   brapi::check(FALSE)
