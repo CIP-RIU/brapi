@@ -4,10 +4,12 @@
 \alias{germplasm}
 \title{germplasm}
 \usage{
-germplasm(germplasmDbId = 0)
+germplasm(germplasmDbId = 0, rclass = "list")
 }
 \arguments{
 \item{germplasmDbId}{string; default 0; an internal ID for a germplasm}
+
+\item{rclass}{character; list}
 }
 \value{
 list

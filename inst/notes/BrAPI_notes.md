@@ -20,6 +20,11 @@ Metadata are not consistently used in examples.
 
 - Call says: crops; should be: trials
 
+## Germplasm
+
+- naming inconsistent?: germplasmPUI -> donorGermplasmPUI
+- acquisitionDate: should be within nested donors (one acquisition date for each donation?)
+
 ## germplasm_markerprofiles
 
 - the inner result items should be wrapped into 'data'
