@@ -21,11 +21,6 @@ germplasm_markerprofiles <- function(germplasmDbId = 0, rclass = "vector"){
     res <- brapiGET(germplasm_markerprofiles)
     res <- httr::content(res, "text", encoding = "UTF-8")
     out <- NULL
-    if(rclass %in% c("json", "list")) out <- dat2tbl(res, rclass)
-    if(rclass == "vector") {
-      out = jsonlite::fromJSON(res, simplifyVector = FALSE)$result$markerProfiles %>%
-        unlist
-    }
     ms2tbl <- function(res){
       markerProfiles <- NULL
       res %>% as.character %>%
@@ -36,17 +31,14 @@ germplasm_markerprofiles <- function(germplasmDbId = 0, rclass = "vector"){
         append_values_number("markerProfiles") %>%
         dplyr::select(germplasmDbId, markerProfiles)
     }
-    if(rclass == "data.frame"){
-      out  <- ms2tbl(res)
-    }
-    if(rclass == "tibble"){
-      out  <- ms2tbl(res) %>% tibble::as_tibble()
-    }
+
+    if(rclass %in% c("json", "list")) out <- dat2tbl(res, rclass)
+    if(rclass == "vector") out = jsonlite::fromJSON(res, simplifyVector = FALSE)$result$markerProfiles %>% unlist
+    if(rclass == "data.frame") out  <- ms2tbl(res)
+    if(rclass == "tibble")     out  <- ms2tbl(res) %>% tibble::as_tibble()
 
     out
-
   }, error = function(e){
     NULL
   })
-
 }

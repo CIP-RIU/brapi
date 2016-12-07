@@ -8,7 +8,9 @@
 #' @param germplasmPUI string
 #' @param pageSize integer
 #' @param page integer
+#' @param rclass character; default: tibble
 #' @param method string; default 'GET'; alternative 'POST'
+#'
 #' @author Reinhard Simon
 #' @import httr
 #' @import progress
@@ -20,10 +22,12 @@
 germplasm_search <- function(germplasmDbId = 0,
                              germplasmName = "none",
                              germplasmPUI  = "none",
-                             page = 0, pageSize = 1000, method = "GET"){
+                             page = 0, pageSize = 1000, method = "GET",
+                             rclass = "tibble"){
   brapi::check(FALSE)
+  brp <- get_brapi()
   if (is.numeric(page) & is.numeric(pageSize)) {
-    germplasm_search = paste0(get_brapi(), "germplasm-search/?page=", page, "&pageSize=", pageSize)
+    germplasm_search = paste0(brp, "germplasm-search/?page=", page, "&pageSize=", pageSize)
   }
 
   if(germplasmName != "none") {
@@ -32,28 +36,28 @@ germplasm_search <- function(germplasmDbId = 0,
 
 
   if(germplasmDbId > 0) {
-    germplasm_search = paste0(get_brapi(), "germplasm-search/?germplasmDbId=", germplasmDbId)
+    germplasm_search = paste0(brp, "germplasm-search/?germplasmDbId=", germplasmDbId)
   }
 
 
   if(germplasmPUI != "none") {
-    germplasm_search = paste0(get_brapi(), "germplasm-search/?germplasmPUI=", germplasmPUI)
+    germplasm_search = paste0(brp, "germplasm-search/?germplasmPUI=", germplasmPUI)
   }
 
-  if(method == "POST")  message("POST not implemented yet!")
+  if(method == "POST")  message_brapi("POST not implemented yet!")
 
-  germplasm_search <- tryCatch({
-    #res <- ifelse(method == 'GET', httr::GET(germplasm_search), httr::GET(germplasm_search))
-    res <- httr::GET(germplasm_search)
-    jsonlite::fromJSON(
-      httr::content(res, "text",
-                    encoding = "UTF-8" # This removes a message
-      ), simplifyVector = FALSE
-    )
+  tryCatch({
+    res <- brapiGET(germplasm_search)
+    res <- httr::content(res, "text", encoding = "UTF-8")
+    out <- NULL
+
+    if (rclass %in% c("json", "list")) out <- dat2tbl(res, rclass)
+    if (rclass == "data.frame") out  <- gp2tbl(res)
+    if (rclass == "tibble")     out  <- gp2tbl(res) %>% tibble::as_tibble()
+
+    out
   }, error = function(e){
     NULL
   })
-
-  germplasm_search
 }
 

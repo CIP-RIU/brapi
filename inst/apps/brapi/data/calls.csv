@@ -3,7 +3,7 @@ token,json,POST,Tripal;Cassavabase;Sweetpotatobase;Germinate,Flapjack;[HIDAP]
 token,text,POST,Tripal;Cassavabase;Sweetpotatobase;Germinate,Flapjack;[HIDAP]
 token,json,DELETE,Tripal;Cassavabase;Sweetpotatobase;Germinate,Flapjack;[HIDAP]
 token,text,DELETE,Tripal;Cassavabase;Sweetpotatobase;Germinate,Flapjack;[HIDAP]
-calls,json,GET,Germinate;[Sweetpotatobase],brapi
+calls,json,GET,Germinate; [Sweetpotatobase],brapi
 germplasm-search,json,GET,[Sweetpotatobase],brapi
 germplasm-search,json,POST,[Sweetpotatobase],
 germplasm/id,json,GET,[Sweetpotatobase],brapi
@@ -39,7 +39,7 @@ studies/studyId/observationUnits,json,POST,,
 studies/studyDbId/table,json,GET,[Sweetpotatobase],
 studies/studyDbId/table,json,POST,[Sweetpotatobase],
 studies/studyDbId/table,tsv,GET,[Sweetpotatobase],
-studies/studyDbId/table,tsc,POST,[Sweetpotatobase],
+studies/studyDbId/table,tsv,POST,[Sweetpotatobase],
 studies/studyDbId/table,csv,GET,[Sweetpotatobase],
 studies/studyDbId/table,csv,POST,[Sweetpotatobase],
 studies/studyDbId/layout,json,GET,[Sweetpotatobase],
