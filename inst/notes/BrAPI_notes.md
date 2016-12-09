@@ -7,6 +7,8 @@ output: pdf_document
 
 # Notes on BrAPI documentation
 
+All id's in request and response objects should be given as integers!? See: germplasm/attributes call.
+
 ## SCOPE
 
 Use of Scope: if 'GENOTYPING' is used for calls like 'attributes' should 'PHENOTYPING' be used for calls related to 'traits' and 'variables'?

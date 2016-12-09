@@ -7,7 +7,9 @@
 attributes(attributeCategoryDbId = 0, rclass = "tibble")
 }
 \arguments{
-\item{attributeCategoryDbId}{}
+\item{attributeCategoryDbId}{integer; default: 0}
+
+\item{rclass}{character; default: tibble}
 }
 \value{
 rclass as set by parameter

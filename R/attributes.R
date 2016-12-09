@@ -2,12 +2,14 @@
 #'
 #' attibutes call.
 #'
-#' @param attributeCategoryDbId
+#' @param attributeCategoryDbId integer; default: 0
+#' @param rclass character; default: tibble
 #'
 #' @return rclass as set by parameter
 #' @import httr
 #' @author Reinhard Simon
 #' @references \url{http://docs.brapi.apiary.io/#reference/0/list-attributes-available/attributes-by-attributecategorydbid}
+#' @family brapi_call
 #' @export
 attributes <- function(attributeCategoryDbId = 0, rclass = "tibble"){
   brapi::check(FALSE)

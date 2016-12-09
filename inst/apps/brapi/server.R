@@ -20,6 +20,7 @@ res <- jug() %>%
   include(mw_germplasm_markerprofiles) %>%
   include(mw_attributes) %>%
   include(mw_attributes_categories) %>%
+  include(mw_germplasm_attributes) %>%
   include(mw_markers) %>%
   include(mw_markerprofiles) %>%
   include(mw_allelematrix_search) %>%
