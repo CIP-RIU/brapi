@@ -7,6 +7,10 @@ output: pdf_document
 
 # Notes on BrAPI documentation
 
+## SCOPE
+
+Use of Scope: if 'GENOTYPING' is used for calls like 'attributes' should 'PHENOTYPING' be used for calls related to 'traits' and 'variables'?
+
 ## Metadata
 
 Metadata are not consistently used in examples.
@@ -39,6 +43,10 @@ Metadata are not consistently used in examples.
   - attributeCategory equals the category of the phenotypic effect (as the example suggests)?
 - Or attribute equals 'trait'?
 
+## attribute categories
+
+- defines page and pageSize in parameters (should also be defined then for attributes!)
+- contratry to up-front definition: 1st page is defined here as 1 (not 0 as in general?!)
 
 # Notes on BrAPI implemenation of sweetpotatobase
 

@@ -23,7 +23,7 @@ The library implements currently mainly API calls to retrievie phenotypic field 
 Implementation status
 ---------------------
 
-Out of 60 BrAPI calls currently **9 (15%)** are implemented in this package.
+Out of 60 BrAPI calls currently **10 (16.7%)** are implemented in this package.
 
 | call                        | datatypes | methods | scope      |
 |:----------------------------|:----------|:--------|:-----------|
@@ -33,6 +33,7 @@ Out of 60 BrAPI calls currently **9 (15%)** are implemented in this package.
 | germplasm/id/pedigree       | json      | GET     | CORE       |
 | germplasm/id/markerprofiles | json      | GET     | GENOTYPING |
 | attributes                  | json      | GET     | GENOTYPING |
+| attributes/categories       | json      | GET     | GENOTYPING |
 | programs                    | json      | GET     | CORE       |
 | crops                       | json      | GET     | CORE       |
 | seasons                     | json      | GET     | CORE       |

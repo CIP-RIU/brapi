@@ -3,6 +3,7 @@
 S3method(print,brapi)
 S3method(print,brapi_con)
 export(attributes)
+export(attributes_categories)
 export(averages_germplasm)
 export(brapiConnect)
 export(brapiConnectAddin)
