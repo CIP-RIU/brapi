@@ -2,10 +2,11 @@
 output: github_document
 ---
 
+
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-------------------- -------------------------------------------
-![Tip](warning.png)  This package is under development. It has not yet been exhaustively tested for all calls neither. Usage may also still change. If you have suggestions please use the issue tracker.
+--------------------------------------------------------------
+This package is under development. It has not yet been exhaustively tested for all calls neither. Usage may also still change. If you have suggestions please use the issue tracker.
 ------------------------------------------------------------------------
 
 ```{r, echo = FALSE}
@@ -34,20 +35,29 @@ The library implements currently mainly API calls to retrievie phenotypic field 
 
 ## Implementation status
 
-API call | status
----------|-------
-location |done
-germplasm search | in progress
-germplasm details| in progress
-germplasm MCPD | in progress
-germplasm pedigree | in progress
-germplasm markerprofiles| in progress
-program list |done
-study list|done
-study |done
-study details|done
-study layout|done
-studies table|done
+```{r, echo=FALSE}
+calls_data = tryCatch({
+  read.csv(system.file("apps/brapi/data/calls.csv", package = "brapi"),
+           stringsAsFactors = FALSE)
+  
+}, error = function(e) {
+  NULL
+}
+)
+
+res <- calls_data[stringr::str_detect(calls_data$clients, "brapi"), 1:4]
+
+pct <- round(nrow(res) / nrow(calls_data) * 100, 1)
+```
+
+Out of `r nrow(calls_data)` BrAPI calls currently **`r nrow(res)` (`r pct`%)** are implemented in this package.
+
+```{r, echo=FALSE}
+knitr::kable(res, row.names = FALSE)
+
+```
+
+
 
 ## How to use
 
