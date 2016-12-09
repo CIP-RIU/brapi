@@ -12,6 +12,9 @@
 #' @author Reinhard Simon
 #' @return rclass
 #' @references \url{http://docs.brapi.apiary.io/#reference/0/program-list/list-programs}
+#' @family brapi_call
+#' @family core
+#' @family experiments
 #' @export
 programs <- function(page = 0, pageSize = 100, rclass = "tibble") {
   brapi::check(FALSE)

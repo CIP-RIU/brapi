@@ -10,6 +10,9 @@
 #' @return rclass as defined
 #' @import tibble
 #' @import tidyjson
+#' @family brapi_call
+#' @family core
+#' @family access
 #' @export
 calls <- function(datatypes = "all", rclass = "tibble") {
   brapi::check(FALSE)

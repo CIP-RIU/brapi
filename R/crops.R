@@ -5,6 +5,9 @@
 #' @param rclass logical; default is FALSE; whether to display the raw list object or not
 #' @author Reinhard Simon
 #' @return a vector of crop names or NULL
+#' @family brapi_call
+#' @family core
+#' @family access
 #' @export
 crops <- function(rclass = "vector"){
   brapi::check(FALSE)

@@ -11,6 +11,9 @@
 #' @import tidyjson
 #' @import dplyr
 #' @references \url{http://docs.brapi.apiary.io/#reference/0/germplasm-markerprofiles}
+#' @family brapi_call
+#' @family genotyping
+#' @family attributes
 #' @export
 germplasm_markerprofiles <- function(germplasmDbId = 0, rclass = "vector"){
   brapi::check(FALSE)

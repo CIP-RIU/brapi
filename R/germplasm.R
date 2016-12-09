@@ -9,6 +9,9 @@
 #' @author Reinhard Simon
 #' @references \url{http://docs.brapi.apiary.io/#reference/0/germplasm-details-by-germplasmdbid}
 #' @return list
+#' @family brapi_call
+#' @family core
+#' @family germplasm
 #' @export
 germplasm <- function(germplasmDbId = 0, rclass = "tibble") {
   brapi::check(FALSE)

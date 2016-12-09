@@ -13,6 +13,9 @@
 #' @return list of pedigree data
 #' @import httr
 #' @references \url{http://docs.brapi.apiary.io/#reference/0/germplasm-pedigree}
+#' @family brapi_call
+#' @family core
+#' @family germplasm
 #' @export
 germplasm_pedigree <- function(germplasmDbId = 0, notation = "purdue",
                                rclass = "tibble"){

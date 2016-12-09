@@ -27,12 +27,19 @@ Reinhard Simon
 }
 \seealso{
 Other attributes: \code{\link{attributes}},
-  \code{\link{germplasm_attributes}}
+  \code{\link{germplasm_attributes}},
+  \code{\link{germplasm_markerprofiles}}
 
 Other brapi_call: \code{\link{attributes}},
-  \code{\link{germplasm_attributes}}
+  \code{\link{calls}}, \code{\link{crops}},
+  \code{\link{germplasm_attributes}},
+  \code{\link{germplasm_markerprofiles}},
+  \code{\link{germplasm_pedigree}},
+  \code{\link{germplasm_search}}, \code{\link{germplasm}},
+  \code{\link{programs}}, \code{\link{seasons}}
 
 Other genotyping: \code{\link{attributes}},
-  \code{\link{germplasm_attributes}}
+  \code{\link{germplasm_attributes}},
+  \code{\link{germplasm_markerprofiles}}
 }
 

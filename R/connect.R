@@ -18,6 +18,7 @@
 #' @param session string; default: '' (empty)
 #'
 #' @return logical
+#' @family access
 #' @export
 connect <- function(crop = "sweetpotato", db = "127.0.0.1", port = 2021,
                     protocol = "http://", multi = FALSE,

@@ -18,4 +18,20 @@ lists crops available in a database
 \author{
 Reinhard Simon
 }
+\seealso{
+Other access: \code{\link{calls}}, \code{\link{connect}}
+
+Other brapi_call: \code{\link{attributes_categories}},
+  \code{\link{attributes}}, \code{\link{calls}},
+  \code{\link{germplasm_attributes}},
+  \code{\link{germplasm_markerprofiles}},
+  \code{\link{germplasm_pedigree}},
+  \code{\link{germplasm_search}}, \code{\link{germplasm}},
+  \code{\link{programs}}, \code{\link{seasons}}
+
+Other core: \code{\link{calls}},
+  \code{\link{germplasm_pedigree}},
+  \code{\link{germplasm_search}}, \code{\link{germplasm}},
+  \code{\link{programs}}, \code{\link{seasons}}
+}
 

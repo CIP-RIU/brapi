@@ -23,4 +23,21 @@ Reinhard Simon
 \references{
 \url{http://docs.brapi.apiary.io/#reference/0/germplasm-details-by-germplasmdbid}
 }
+\seealso{
+Other brapi_call: \code{\link{attributes_categories}},
+  \code{\link{attributes}}, \code{\link{calls}},
+  \code{\link{crops}}, \code{\link{germplasm_attributes}},
+  \code{\link{germplasm_markerprofiles}},
+  \code{\link{germplasm_pedigree}},
+  \code{\link{germplasm_search}}, \code{\link{programs}},
+  \code{\link{seasons}}
+
+Other core: \code{\link{calls}}, \code{\link{crops}},
+  \code{\link{germplasm_pedigree}},
+  \code{\link{germplasm_search}}, \code{\link{programs}},
+  \code{\link{seasons}}
+
+Other germplasm: \code{\link{germplasm_pedigree}},
+  \code{\link{germplasm_search}}
+}
 

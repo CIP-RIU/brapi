@@ -28,4 +28,20 @@ Reinhard Simon
 \references{
 \url{http://docs.brapi.apiary.io/#reference/0/program-list/list-programs}
 }
+\seealso{
+Other brapi_call: \code{\link{attributes_categories}},
+  \code{\link{attributes}}, \code{\link{calls}},
+  \code{\link{crops}}, \code{\link{germplasm_attributes}},
+  \code{\link{germplasm_markerprofiles}},
+  \code{\link{germplasm_pedigree}},
+  \code{\link{germplasm_search}}, \code{\link{germplasm}},
+  \code{\link{seasons}}
+
+Other core: \code{\link{calls}}, \code{\link{crops}},
+  \code{\link{germplasm_pedigree}},
+  \code{\link{germplasm_search}}, \code{\link{germplasm}},
+  \code{\link{seasons}}
+
+Other experiments: \code{\link{seasons}}
+}
 

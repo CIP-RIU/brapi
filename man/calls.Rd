@@ -23,4 +23,20 @@ Reinhard Simon
 \references{
 \url{http://docs.brapi.apiary.io/#reference/0/call-search}
 }
+\seealso{
+Other access: \code{\link{connect}}, \code{\link{crops}}
+
+Other brapi_call: \code{\link{attributes_categories}},
+  \code{\link{attributes}}, \code{\link{crops}},
+  \code{\link{germplasm_attributes}},
+  \code{\link{germplasm_markerprofiles}},
+  \code{\link{germplasm_pedigree}},
+  \code{\link{germplasm_search}}, \code{\link{germplasm}},
+  \code{\link{programs}}, \code{\link{seasons}}
+
+Other core: \code{\link{crops}},
+  \code{\link{germplasm_pedigree}},
+  \code{\link{germplasm_search}}, \code{\link{germplasm}},
+  \code{\link{programs}}, \code{\link{seasons}}
+}
 

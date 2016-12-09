@@ -9,4 +9,7 @@ mock_server()
 \description{
 Starts a mock BrAPI server intended for local testing of brapi calls.
 }
+\seealso{
+Other utility: \code{\link{show_info}}
+}
 

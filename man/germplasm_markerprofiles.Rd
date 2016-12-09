@@ -23,4 +23,20 @@ Reinhard Simon
 \references{
 \url{http://docs.brapi.apiary.io/#reference/0/germplasm-markerprofiles}
 }
+\seealso{
+Other attributes: \code{\link{attributes_categories}},
+  \code{\link{attributes}},
+  \code{\link{germplasm_attributes}}
+
+Other brapi_call: \code{\link{attributes_categories}},
+  \code{\link{attributes}}, \code{\link{calls}},
+  \code{\link{crops}}, \code{\link{germplasm_attributes}},
+  \code{\link{germplasm_pedigree}},
+  \code{\link{germplasm_search}}, \code{\link{germplasm}},
+  \code{\link{programs}}, \code{\link{seasons}}
+
+Other genotyping: \code{\link{attributes_categories}},
+  \code{\link{attributes}},
+  \code{\link{germplasm_attributes}}
+}
 

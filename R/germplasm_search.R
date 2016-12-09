@@ -18,6 +18,9 @@
 #' @references \url{http://docs.brapi.apiary.io/#reference/0/germplasm-search}
 #'
 #' @return data.frame
+#' @family brapi_call
+#' @family core
+#' @family germplasm
 #' @export
 germplasm_search <- function(germplasmDbId = 0,
                              germplasmName = "none",
