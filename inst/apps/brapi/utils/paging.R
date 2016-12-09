@@ -15,8 +15,5 @@ paging <- function(df,  page, pageSize) {
          )
     )
 
-  # } else {
-  #   list(status =400)
-  # }
 
 }

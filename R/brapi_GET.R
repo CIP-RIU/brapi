@@ -6,8 +6,18 @@ brapiGET <- function(url){
   # TODO: Insert here status messages if any!
   out <- httr::content(res, "text", encoding = "UTF-8")
   # Get JSON
+  out <- jsonlite::fromJSON(out)$metadata$status
   # Check if status object has any key-value pairs
-  # if so: cycle through and print a message for each!
+  n <- nrow(out)
+  if (n > 0) {
+    # if so: cycle through and print a message for each!
+    for(i in 1:n) {
+      msg <- paste0("Error code: ", out[i, "code"], ": ", out[i, "message"], "\n")
+      message_brapi(msg)
+    }
+
+  }
+
 
   res
 }
