@@ -4,7 +4,7 @@
 #'
 #' @param rclass character; default: tibble; or else: json, list, data.frame.
 #' @param germplasmDbId integer; default: 1.
-#' @param attributeDbId integer vector; default: 1.
+#' @param attributeList integer vector; default: 1.
 #' @param page integer; default: 0.
 #' @param pageSize integer; default: 10.
 #'
@@ -33,7 +33,11 @@ germplasm_attributes <- function(germplasmDbId = 1, attributeList = 1,
     res <- httr::content(res, "text", encoding = "UTF-8")
 
     ms2tbl <- function(res){
-      markerProfiles <- NULL
+      attributeDbId <- NULL
+      attributeCode <- NULL
+      attributeName <- NULL
+      value <- NULL
+      dateDetermined <- NULL
       res %>% as.character %>%
         enter_object("result") %>%
         spread_values(germplasmDbId = jnumber("germplasmDbId")) %>%

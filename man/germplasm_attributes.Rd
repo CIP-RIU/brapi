@@ -10,13 +10,13 @@ germplasm_attributes(germplasmDbId = 1, attributeList = 1, page = 0,
 \arguments{
 \item{germplasmDbId}{integer; default: 1.}
 
+\item{attributeList}{integer vector; default: 1.}
+
 \item{page}{integer; default: 0.}
 
 \item{pageSize}{integer; default: 10.}
 
 \item{rclass}{character; default: tibble; or else: json, list, data.frame.}
-
-\item{attributeDbId}{integer vector; default: 1.}
 }
 \value{
 rclass as set by parameter.
