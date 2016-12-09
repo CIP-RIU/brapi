@@ -9,7 +9,7 @@ germplasm-search,json,POST,CORE,[Sweetpotatobase],
 germplasm/id,json,GET,CORE,[Sweetpotatobase],brapi
 germplasm/id/pedigree,json,GET,CORE,[Sweetpotatobase],brapi
 germplasm/id/markerprofiles,json,GET,GENOTYPING,[Sweetpotatobase],brapi
-attributes,json,GET,GENOTYPING,[Sweetpotatobase],
+attributes,json,GET,GENOTYPING,[Sweetpotatobase],brapi
 attributes/categories,json,GET,GENOTYPING,[Sweetpotatobase],
 germplasm/germplasmDbId/attributes,json,GET,GENOTYPING,[Sweetpotatobase],
 markers,json,GET,GENOTYPING,,
