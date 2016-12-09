@@ -29,6 +29,17 @@ Metadata are not consistently used in examples.
 
 - the inner result items should be wrapped into 'data'
 
+## attributes
+
+- response json: 1st entry should probably be: attrubuteDbId (not attributeCategoryDbId; otherwise duplicating with attributeCategoryId)
+- attributeCategoryId (2nd entry) should probably be: attributeCategoryDbId
+- should there be: pages
+- response object: currentPage = 0!
+- unclear: attributes are always molecular (genetic/genomic markers)?
+  - attributeCategory equals the category of the phenotypic effect (as the example suggests)?
+- Or attribute equals 'trait'?
+
+
 # Notes on BrAPI implemenation of sweetpotatobase
 
 # Notes on sweetpotato database
