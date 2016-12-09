@@ -10,6 +10,8 @@
 #' @author Reinhard Simon
 #' @references \url{http://docs.brapi.apiary.io/#reference/0/list-attributes-available/attributes-by-attributecategorydbid}
 #' @family brapi_call
+#' @family genotyping
+#' @family attributes
 #' @export
 attributes <- function(attributeCategoryDbId = 0, rclass = "tibble"){
   brapi::check(FALSE)
@@ -22,7 +24,7 @@ attributes <- function(attributeCategoryDbId = 0, rclass = "tibble"){
     res <- httr::content(res, "text", encoding = "UTF-8")
 
     out <- dat2tbl(res, rclass)
-    if(rclass %in% c("tibble", "data.frame")){
+    if (rclass %in% c("tibble", "data.frame")){
       out$values <- sapply(out$values, paste, collapse = "; ")
     }
     out

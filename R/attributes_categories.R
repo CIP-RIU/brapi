@@ -10,6 +10,9 @@
 #' @import httr
 #' @author Reinhard Simon
 #' @references \url{http://docs.brapi.apiary.io/#reference/0/list-attribute-categories}
+#' @family brapi_call
+#' @family genotyping
+#' @family attributes
 #' @export
 attributes_categories <- function(page = 0, pageSize = 10, rclass = "tibble"){
   brapi::check(FALSE)

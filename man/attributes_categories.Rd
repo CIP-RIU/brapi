@@ -25,4 +25,14 @@ Reinhard Simon
 \references{
 \url{http://docs.brapi.apiary.io/#reference/0/list-attribute-categories}
 }
+\seealso{
+Other attributes: \code{\link{attributes}},
+  \code{\link{germplasm_attributes}}
+
+Other brapi_call: \code{\link{attributes}},
+  \code{\link{germplasm_attributes}}
+
+Other genotyping: \code{\link{attributes}},
+  \code{\link{germplasm_attributes}}
+}
 

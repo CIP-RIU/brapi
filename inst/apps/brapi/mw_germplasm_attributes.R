@@ -48,7 +48,18 @@ germplasm_attributes_list = function(germplasmDbId = 0,
    data = germplasm_attributes_data[, 2:6]
   )
 
+  status = list()
+  if (!all(attributeList %in% germplasm_attributes_data$attributeDbId)) {
+    not_found = attributeList[!(attributeList %in% germplasm_attributes_data$attributeDbId )]
+    status <- list(
+      list(code = 111,
+           message = paste0("AttributeDbId's not found are: ",
+                                       paste(not_found, collapse = ", ")))
+    )
+  }
+
   attr(out, "pagination") = pg$pagination
+  attr(out, "status") = status
   out
 }
 
@@ -83,17 +94,18 @@ process_germplasm_attributes <- function(req, res, err){
                                                           attributeList,
                                                           page, pageSize)
   germplasm_attributes$metadata = list(pagination = attr(germplasm_attributes$result, "pagination"),
-                                       status = list(),
+                                       status = attr(germplasm_attributes$result, "status"),
                                    datafiles = list())
 
   if(is.null(germplasm_attributes$result)){
     res$set_status(404)
     germplasm_attributes$metadata <-
-      brapi_status(100,"No matching results for germplasmDbId!")
+      brapi_status(100,"No matching results for germplasmDbId!"
+                   , germplasm_attributes$metadata$status)
       #result = list()
     germplasm_attributes$result = list()
   }
-  message(str(germplasm_attributes$result$data))
+  #message(str(germplasm_attributes$result$data))
 
   if (is.null(germplasm_attributes$result$data) ||
      is.na(germplasm_attributes$result$data[1,1])) {
@@ -105,6 +117,9 @@ process_germplasm_attributes <- function(req, res, err){
     #result = list()
     germplasm_attributes$result = list()
   }
+
+
+
 res$set_header("Access-Control-Allow-Methods", "GET")
   res$json(germplasm_attributes)
 
