@@ -15,7 +15,7 @@
 #' @family genotyping
 #' @family attributes
 #' @export
-germplasm_markerprofiles <- function(germplasmDbId = 0, rclass = "vector"){
+germplasm_markerprofiles <- function(germplasmDbId = 0, rclass = "tibble"){
   brapi::check(FALSE)
   germplasm_markerprofiles = paste0(get_brapi(), "germplasm/", germplasmDbId,
                               "/markerprofiles/")

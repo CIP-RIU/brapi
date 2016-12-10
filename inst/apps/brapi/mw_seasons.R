@@ -41,7 +41,7 @@ seasons = list(
       totalCount = nrow(seasons_data),
       totalPages = 1
     ),
-    status = NULL,
+    status = list(),
     datafiles = list()
   ),
   result = list(data = seasons_list())

@@ -52,7 +52,7 @@ calls = list(
       totalCount = nrow(calls_data),
       totalPages = 1
     ),
-    status = NULL,
+    status = list(),
     datafiles = list()
   ),
   result = list(data = calls_list())
