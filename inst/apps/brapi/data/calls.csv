@@ -12,11 +12,11 @@ germplasm/i{germplasmDbId}/markerprofiles,json,GET,GENOTYPING,[Sweetpotatobase],
 attributes,json,GET,GENOTYPING,[Sweetpotatobase],brapi
 attributes/categories,json,GET,GENOTYPING,[Sweetpotatobase],brapi
 germplasm/{germplasmDbId}/attributes/,json,GET,GENOTYPING,[Sweetpotatobase],brapi
-markers,json,GET,GENOTYPING,,
-markers/{markerDbId},json,GET,GENOTYPING,,
-markerprofiles,json,GET,GENOTYPING,[Sweetpotatobase],
-markerprofiles/{germplasmDbId},json,GET,GENOTYPING,[Sweetpotatobase],
-allelematrix-search,json,GET,GENOTYPING,[Sweetpotatobase],
+markers,json,GET,GENOTYPING,,brapi
+markers/{markerDbId},json,GET,GENOTYPING,,brapi
+markerprofiles,json,GET,GENOTYPING,[Sweetpotatobase],brapi
+markerprofiles/{germplasmDbId},json,GET,GENOTYPING,[Sweetpotatobase],brapi
+allelematrix-search,json,GET,GENOTYPING,[Sweetpotatobase],brapi
 allelematrix-search,json,POST,GENOTYPING,[Sweetpotatobase],
 allelematrix-search,tsv,GET,GENOTYPING,[Sweetpotatobase],
 allelematrix-search,tsv,POST,GENOTYPING,[Sweetpotatobase],

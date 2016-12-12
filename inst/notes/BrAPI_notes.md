@@ -50,6 +50,13 @@ Metadata are not consistently used in examples.
 - defines page and pageSize in parameters (should also be defined then for attributes!)
 - contratry to up-front definition: 1st page is defined here as 1 (not 0 as in general?!)
 
+## markers
+
+- should be markers-search (as the section title seems to imply?)
+- include parameter: may be better: synonyms?
+
+
+
 # Notes on BrAPI implemenation of sweetpotatobase
 
 # Notes on sweetpotato database

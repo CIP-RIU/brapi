@@ -1,0 +1,6 @@
+markerDbId,defaultDisplayName,type,synonyms,refAlt,analysisMethods
+1,a_01_10001,SNP,i_01_10001; popA_10001,A;T,illumina
+2,A_01_10002,SNP,i_01_10001; popA_10002,G;C,illumina
+3,b_02_10003,Dart,i_02_10001; popA_10003,C;G,kasp
+4,B_02_10004,Dart,i_02_10001; popA_10004,T;A,kasp
+5,C_11_10005,SNP,i_11_10001; popA_10005,T;A,illumina;kasp
