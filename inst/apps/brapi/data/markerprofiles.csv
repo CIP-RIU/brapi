@@ -1,0 +1,9 @@
+germplasmDbId,markerProfilesDbId,uniqueDisplayName,sampleDbId,extractDbId,studyDbId,analysisMethod,resultCount
+3,1,germplasm3,33,1,1,GBS,1
+3,2,germplasm3,33,1,1,GBS,1
+3,3,germplasm3,33,1,1,GBS,1
+4,11,germplasm4,44,2,2,GoldenGate,1
+4,12,germplasm4,44,2,2,GoldenGate,1
+4,13,germplasm4,44,2,2,GoldenGate,1
+4,14,germplasm4,55,3,3,GoldenGate,1
+4,15,germplasm4,55,3,3,GoldenGate,1

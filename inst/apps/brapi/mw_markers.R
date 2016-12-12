@@ -1,8 +1,8 @@
-
-source(system.file("apps/brapi/utils/brapi_status.R", package = "brapi"))
-source(system.file("apps/brapi/utils/safe_split.R", package = "brapi"))
-source(system.file("apps/brapi/utils/paging.R", package = "brapi"))
-
+#
+# source(system.file("apps/brapi/utils/brapi_status.R", package = "brapi"))
+# source(system.file("apps/brapi/utils/safe_split.R", package = "brapi"))
+# source(system.file("apps/brapi/utils/paging.R", package = "brapi"))
+#
 
 markers_data = tryCatch({
   res <- read.csv(system.file("apps/brapi/data/markers.csv", package = "brapi"),
@@ -12,9 +12,10 @@ markers_data = tryCatch({
 }
 )
 
-markers_list = function(name = "none",
+markers_list = function(markersDbId = NA, name = "none",
                         matchMethod = "exact", include = TRUE, type = "all",
                         page = 0, pageSize = 1000){
+  #message(paste("Marker:", markersDbId))
   name = ifelse(is.character(name), name, "none")
   matchMethod = ifelse(matchMethod %in% c("exact", "case_insensitive", "wildcard"),
                        matchMethod, "exact")
@@ -23,46 +24,56 @@ markers_list = function(name = "none",
   page = ifelse(is.integer(page), as.integer(page), 0)
   pageSize = ifelse(is.integer(pageSize), as.integer(pageSize), 1000)
 
-  if (matchMethod == 'exact') {
-    markers_data = markers_data[markers_data$defaultDisplayName == name, ]
-    if(nrow(markers_data) == 0) return(NULL)
-  }
-  if (matchMethod == 'wildcard') {
-    name = stringr::str_replace(name, "\\%", "\\*")
-    #message(name)
-    markers_data = markers_data[grep(name, markers_data$defaultDisplayName), ]
-    #message(markers_data$defaultDisplayName)
-    if(nrow(markers_data) == 0) return(NULL)
-  }
-  if (matchMethod == 'case_insensitive') {
-    name = toupper(name)
-    markers_data = markers_data = markers_data[toupper(markers_data$defaultDisplayName) == name, ]
-    if(nrow(markers_data) == 0) return(NULL)
+  if (is.na(markersDbId)){
+
+    if (matchMethod == 'exact') {
+      markers_data = markers_data[markers_data$defaultDisplayName == name, ]
+      if(nrow(markers_data) == 0) return(NULL)
+    }
+    if (matchMethod == 'wildcard') {
+      name = stringr::str_replace(name, "\\%", "\\*")
+      #message(name)
+      markers_data = markers_data[grep(name, markers_data$defaultDisplayName), ]
+      #message(markers_data$defaultDisplayName)
+      if(nrow(markers_data) == 0) return(NULL)
+    }
+    if (matchMethod == 'case_insensitive') {
+      name = toupper(name)
+      markers_data = markers_data[toupper(markers_data$defaultDisplayName) == name, ]
+      if(nrow(markers_data) == 0) return(NULL)
+    }
+
+    if(type != "all"){
+      markers_data = markers_data[stringr::str_detect(markers_data$type, type), ]
+      if(nrow(markers_data) == 0) return(NULL)
+    }
+
+    if(!include) {
+      markers_data = markers_data[, !names(markers_data) %in% "synonyms"]
+      if(nrow(markers_data) == 0) return(NULL)
+    }
+
+
+
+    # paging here after filtering
+  } else {
+    markers_data = markers_data[markersDbId, ]
+    if (nrow(markers_data) == 0) return(NULL)
   }
 
-  if(type != "all"){
-    markers_data = markers_data[stringr::str_detect(markers_data$type, type), ]
-    if(nrow(markers_data) == 0) return(NULL)
-  }
-
-  if(!include) {
-    markers_data = markers_data[, !names(markers_data) %in% "synonyms"]
-    if(nrow(markers_data) == 0) return(NULL)
-  }
-
-
-
-  # paging here after filtering
   pg = paging(markers_data, page, pageSize)
   markers_data <- markers_data[pg$recStart:pg$recEnd, ]
 
   n = nrow(markers_data)
+  #message(n)
   out = list(n)
-  for(i in 1:n){
+  for (i in 1:n){
     out[[i]] <- as.list(markers_data[i, ])
-    if(include) out[[i]]$synonyms = out[[i]]$synonyms %>% safe_split()
-    out[[i]]$refAlt = out[[i]]$refAlt %>% safe_split()
-    out[[i]]$analysisMethods = out[[i]]$analysisMethods %>% safe_split()
+    if (!is.na(markersDbId)){
+      if (include) out[[i]]$synonyms = out[[i]]$synonyms %>% safe_split()
+    }
+    # out[[i]]$refAlt = out[[i]]$refAlt %>% safe_split()
+    # out[[i]]$analysisMethods = out[[i]]$analysisMethods %>% safe_split()
   }
 
   attr(out, "pagination") = pg$pagination
@@ -88,6 +99,7 @@ markers = list(
 
 process_markers <- function(req, res, err){
   prms <- names(req$params)
+
   name = ifelse('name' %in% prms, req$params$name, "none")
   matchMethod = ifelse('matchMethod' %in% prms,
                        req$params$matchMethod, "exact")
@@ -98,9 +110,29 @@ process_markers <- function(req, res, err){
   pageSize = ifelse('pageSize' %in% prms, as.integer(req$params$pageSize), 100)
 
 
-  markers$result$data = markers_list(name, matchMethod, include, type, page, pageSize)
+  markers$result$data = markers_list(NA,
+    name, matchMethod, include, type, page, pageSize)
   markers$metadata$pagination = attr(markers$result$data, "pagination")
 
+
+  if(is.null(markers$result$data)){
+    res$set_status(404)
+    markers$metadata <- brapi_status(100, "No matching results!")
+  }
+  res$set_header("Access-Control-Allow-Methods", "GET")
+  res$json(markers)
+}
+
+process_single_marker <- function(req, res, err){
+  #message(is.integer(basename(req$path)))
+  markersDbId <- as.integer(basename(req$path))
+  #message(paste("prm: ", markersDbId))
+  if(markersDbId <= nrow(markers_data)){
+    markers$result$data = markers_list(markersDbId)
+    markers$metadata$pagination = NULL
+  } else {
+    markers$result$data = NULL
+  }
 
   if(is.null(markers$result$data)){
     res$set_status(404)
@@ -123,5 +155,19 @@ mw_markers <<-
     res$set_status(405)
   }) %>%
   delete("/brapi/v1/markers[/]?", function(req, res, err){
+    res$set_status(405)
+  }) %>%
+
+  #collector() %>%
+  get("/brapi/v1/markers/[0-9]{1,12}[/]?", function(req, res, err){
+    process_single_marker(req, res, err)
+  }) %>%
+  put("/brapi/v1/markers/[0-9]{1,12}[/]?", function(req, res, err){
+    res$set_status(405)
+  }) %>%
+  post("/brapi/v1/markers/[0-9]{1,12}[/]?", function(req, res, err){
+    res$set_status(405)
+  }) %>%
+  delete("/brapi/v1/markers/[0-9]{1,12}[/]?", function(req, res, err){
     res$set_status(405)
   })

@@ -55,6 +55,11 @@ Metadata are not consistently used in examples.
 - should be markers-search (as the section title seems to imply?)
 - include parameter: may be better: synonyms?
 
+## markerProfile search
+
+- should als be markerprofiles-search?
+- search parameter 'studyDbId' is not in response object
+- method parameter not described
 
 
 # Notes on BrAPI implemenation of sweetpotatobase
