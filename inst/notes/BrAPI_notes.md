@@ -74,4 +74,11 @@ Metadata are not consistently used in examples.
 - example on t3sandbox includes in response the field 'encoding': to be used?
 - instructions on paging state first page equals 1 (not 0 - contrary to intro)
 
+# allelematrix-search
+
+- in case of multiple markerprofileDbId it is unclear how exactly the response object will look like
+- Note: R brapi just sends one profile
+- format parameter not documented?
+- markerDbId: for multiple the call repeats them; but notation in other cases uses commas?
+- there is no germplasmDbId to filter as in the preceding marker data call as part of the path nor as parameter? 
 

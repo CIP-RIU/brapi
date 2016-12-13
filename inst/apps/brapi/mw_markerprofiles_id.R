@@ -30,7 +30,7 @@ markerprofiles_id_list = function(germplasmDbId = 0, markerprofilesDbId = 0,
   if(!any(markerprofilesDbId == markerprofiles_id_alleles_data$markerprofilesDbId)) return(NULL)
 
   # paging here after filtering
-  x <- markerprofiles_id_alleles_data[markerprofiles_id_alleles_data$markerprofilesDbId == markerprofilesDbId, 2:3]
+  x <- markerprofiles_id_alleles_data[markerprofiles_id_alleles_data$markerprofilesDbId == markerprofilesDbId, 3:4]
 
   pg = paging(x, page, pageSize)
   x <- x[pg$recStart:pg$recEnd, ]

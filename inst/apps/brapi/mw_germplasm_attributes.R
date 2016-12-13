@@ -82,7 +82,7 @@ process_germplasm_attributes <- function(req, res, err){
   prms <- names(req$params)
   page = ifelse('page' %in% prms, as.integer(req$params$page), 0)
   pageSize = ifelse('pageSize' %in% prms, as.integer(req$params$pageSize), 100)
-  attributeList = ifelse('attributeList' %in% prms, req$params$attributeList, 0)
+  attributeList = ifelse('attributeList' %in% prms, req$params$attributeList, "")
 
   #message(attributeList)
 
