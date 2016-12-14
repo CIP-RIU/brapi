@@ -47,23 +47,27 @@ allelematrix_search_list = function(markerprofilesDbId = 0, markerDbId = 0,
   x <- x[pg$recStart:pg$recEnd, ]
 
   allelematrix_search_data = allelematrix_search_data[, !names(allelematrix_search_data) %in% c("synonyms", "sampleDbId", "studyDbId", "resultCount" )]
-  n = nrow(allelematrix_search_data)
+  #n = nrow(allelematrix_search_data)
   #message(n)
-  out = list(n)
-  for (i in 1:n){
+  #out = list(n)
+  out = list()
+  #for (i in 1:n){
 
     if(!is.null(allelematrix_search_alleles_data)) {
 
       #y <- sapply(x, function(x) ifelse(is.na(x), "", x))
       nn <- nrow(x)
       if(!is.null(nn)){
-      out[[i]]$data = list(nn)
+      #out[[i]]$data = list(nn)
+      #out$data = list(nn)
       for (j in 1:nn) {
-        out[[i]]$data[[j]] <- as.character(x[j, ])
+        #out[[i]]$data[[j]] <- as.character(x[j, ])
+        out[[j]] <- as.character(x[j, ])
       }
       }
     }
-  }
+   #out$1 <- NULL
+  #}
 
   attr(out, "pagination") = pg$pagination
   out
@@ -81,7 +85,7 @@ allelematrix_search = list(
     status = list(),
     datafiles = list()
   ),
-  result = list(data = allelematrix_search_list())
+  result = allelematrix_search_list()
 )
 
 
@@ -94,6 +98,7 @@ process_allelematrix_search <- function(req, res, err){
   expandHomozygotes = ifelse('expandHomozygotes' %in% prms, req$params$expandHomozygotes, TRUE)
   sepPhased = ifelse('sepPhased' %in% prms, req$params$sepPhased, 0)
   sepUnphased = ifelse('sepUnphased' %in% prms, req$params$sepUnphased, 0)
+  format = ifelse('format' %in% prms, req$params$format, "json")
 
   page = ifelse('page' %in% prms, as.integer(req$params$page), 0)
   pageSize = ifelse('pageSize' %in% prms, as.integer(req$params$pageSize), 10000)

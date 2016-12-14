@@ -26,7 +26,7 @@ Metadata are not consistently used in examples.
 
 - should we always use the trailing '/' before the question mark for the parameters?
 - is there agreement on the full path structure: after the server name there is only one optional path element for the crop on multi-crop databases? That is: my.server.org/[mycrop]/brapi/v1/? No other addtional elements before [mycrop]?
-- on a multicrop server: in the concept of REST architecture one should be able to get the next step from just looking at server calls. So, how do I know which crops to look for in the first call? One option: Can we assume an initial empty call for all brapi servers like: my.server.org/brapi/v1/crops which returns the list of all crops on that server and then one can go from there? E.g. assume the crops calls returns crop1, crop2, ... and then one knows that the crop specific calls are accessible via: my.server.org/crop1/brapi/v1/calls; my.server.org/crop2/brapi/v1/calls. In the case of a single crop server as before the 'crop' path element is omitted.
+- on a multicrop server: in the concept of REST architecture one should be able to get the next step from just looking at server calls. So, how do I know which crops to look for in the first call? One option: Can we assume an initial empty call for all brapi servers like: my.server.org/brapi/v1/crops which returns the list of all crops on that server and then one can go from there? E.g. assume the crops calls returns crop1, crop2, ... and then one knows that the crop specific calls are accessible via: my.server.org/crop1/brapi/v1/calls; my.server.org/crop2/brapi/v1/calls. In the case of a single crop server as before the 'crop' path element is omitted. To be more explicit: maybe the crop call should return corresponding links for each crop (like datalinks).
 
 # List of Trials
 
@@ -63,7 +63,7 @@ Metadata are not consistently used in examples.
 
 # markerProfile search
 
-- should als be markerprofiles-search?
+- should also be markerprofiles-search?
 - search parameter 'studyDbId' is not in response object
 - method parameter not described
 
@@ -80,5 +80,8 @@ Metadata are not consistently used in examples.
 - Note: R brapi just sends one profile
 - format parameter not documented?
 - markerDbId: for multiple the call repeats them; but notation in other cases uses commas?
-- there is no germplasmDbId to filter as in the preceding marker data call as part of the path nor as parameter? 
+- there is no germplasmDbId to filter as in the preceding marker data call as part of the path nor as parameter? It seems that the assumption is that a germplasm may have several markerprofileDbId (where each markerprofileDbId in turn is unique for a germplasmId). In the format given in the example (https://github.com/plantbreeding/Documentation/wiki/BrAPI-TSV-Expected-Formats) the table apparently lists markers in the rows and the germplasm markerprofiles in the columns. Should be made more explicit since it seems to me the more standard way in general is to list objects (germplasm) in the rows and attributes (markers) in the columns. The column header should probably therefore be: markerDbId? Assuming 'mpdbid?' stands for 'markerprofileDbId?'?
+
+
+
 

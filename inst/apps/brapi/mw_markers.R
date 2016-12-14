@@ -1,8 +1,8 @@
-#
-# source(system.file("apps/brapi/utils/brapi_status.R", package = "brapi"))
-# source(system.file("apps/brapi/utils/safe_split.R", package = "brapi"))
-# source(system.file("apps/brapi/utils/paging.R", package = "brapi"))
-#
+
+source(system.file("apps/brapi/utils/brapi_status.R", package = "brapi"))
+source(system.file("apps/brapi/utils/safe_split.R", package = "brapi"))
+source(system.file("apps/brapi/utils/paging.R", package = "brapi"))
+
 
 markers_data = tryCatch({
   res <- read.csv(system.file("apps/brapi/data/markers.csv", package = "brapi"),
@@ -69,11 +69,17 @@ markers_list = function(markersDbId = NA, name = "none",
   out = list(n)
   for (i in 1:n){
     out[[i]] <- as.list(markers_data[i, ])
-    if (!is.na(markersDbId)){
-      if (include) out[[i]]$synonyms = out[[i]]$synonyms %>% safe_split()
-    }
-    # out[[i]]$refAlt = out[[i]]$refAlt %>% safe_split()
-    # out[[i]]$analysisMethods = out[[i]]$analysisMethods %>% safe_split()
+    message(markersDbId)
+    message(include)
+    #if (!is.na(markersDbId)){
+      if (include) {
+        message("synonyms", out[[i]]$synonyms)
+        out[[i]]$synonyms = out[[i]]$synonyms %>% safe_split()
+        message("synonyms", out[[i]]$synonyms)
+      }
+    #}
+    out[[i]]$refAlt = out[[i]]$refAlt %>% safe_split()
+    out[[i]]$analysisMethods = out[[i]]$analysisMethods %>% safe_split()
   }
 
   attr(out, "pagination") = pg$pagination
