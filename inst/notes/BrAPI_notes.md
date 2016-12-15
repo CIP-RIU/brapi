@@ -53,7 +53,7 @@ Metadata are not consistently used in examples.
 
 # attribute categories
 
-- defines page and pageSize in parameters (should also be defined then for attributes!)
+htt- defines page and pageSize in parameters (should also be defined then for attributes!)
 - contratry to up-front definition: 1st page is defined here as 1 (not 0 as in general?!)
 
 # markers
