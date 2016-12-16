@@ -7,12 +7,13 @@ x = list.files(system.file("apps/brapi", package = "brapi"), pattern = "mw_", fu
   lapply(source)
 
 res <- jug() %>%
-  cors() %>%
+  #cors() %>%
   get("/brapi/v1/", function(req, res, err){
     "\nMock BrAPI server ready!\n\n"
   }) %>%
 
   # each 'include' corresponds to a first level path and corresponding path
+  #include(mw_logs) %>%
   include(mw_calls) %>%
   include(mw_germplasm_search) %>%
   include(mw_germplasm) %>%

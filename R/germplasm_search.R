@@ -47,9 +47,30 @@ germplasm_search <- function(germplasmDbId = 0,
     germplasm_search = paste0(brp, "germplasm-search/?germplasmPUI=", germplasmPUI)
   }
 
-  if(method == "POST")  message_brapi("POST not implemented yet!")
+  if(method == "POST")  { #message_brapi("POST not implemented yet!")
+    body = list(germplasmDbId = germplasmDbId,
+                germplasmName = germplasmName,
+                germplasmPUI  = germplasmPUI,
+                page = page,
+                pageSize = pageSize)
+    out = tryCatch({
+      germplasm_search = paste0(brp, "germplasm-search/")
+      res <- brapiPOST(germplasm_search, body)
+      res <- httr::content(res, "text", encoding = "UTF-8")
+      out <- NULL
 
-  tryCatch({
+      if (rclass %in% c("json", "list")) out <- dat2tbl(res, rclass)
+      if (rclass == "data.frame") out  <- gp2tbl(res)
+      if (rclass == "tibble")     out  <- gp2tbl(res) %>% tibble::as_tibble()
+
+      out
+    }, error = function(e){
+      NULL
+    })
+
+  } else  {
+
+  out = tryCatch({
     res <- brapiGET(germplasm_search)
     res <- httr::content(res, "text", encoding = "UTF-8")
     out <- NULL
@@ -62,5 +83,9 @@ germplasm_search <- function(germplasmDbId = 0,
   }, error = function(e){
     NULL
   })
+  }
+
+  out
+
 }
 

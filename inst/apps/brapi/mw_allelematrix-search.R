@@ -133,17 +133,19 @@ process_allelematrix_search <- function(req, res, err){
     res$set_status(404)
     allelematrix_search$metadata <- brapi_status(100, "No matching results!")
   }
-  res$set_header("Access-Control-Allow-Methods", "GET")
+  #res$set_header("Access-Control-Allow-Methods", "GET")
   res$json(allelematrix_search)
 }
 
 
 process_allelematrix_search_format <- function(req, res, err){
+
+  # TODO use allelematrix.csv? and allelematrix.tsv?
   format = ifelse(basename(req$path) %in% c("csv", "tsv"), basename(req$path), "json")
   #message(format)
   prms <- names(req$params)
 
-  message("1")
+  #message("1")
   markerprofilesDbId = ifelse('markerprofileDbId' %in% prms, req$params$markerprofileDbId, "")
   markerDbId = ifelse('markerDbId' %in% prms, req$params$markerDbId, "")
   unknownString = ifelse('unknownString' %in% prms, req$params$unknownString, "-")
@@ -155,9 +157,18 @@ process_allelematrix_search_format <- function(req, res, err){
     markerprofilesDbId, markerDbId,
     unknownString, expandHomozygotes, sepPhased, sepUnphased, format = format)
 
-  res$set_header("Access-Control-Allow-Methods", "GET")
-  res$content_type(paste0("text/", format))
-  res$text(as.character(txt))
+  out = as.character(txt)
+
+  if(out == '') {
+    res$set_status(404)
+    txt = "No matching results!"
+    res$content_type("text/txt")
+    res$text(txt)
+  } else {
+    res$content_type(paste0("text/", format))
+    res$text(out)
+  }
+  #res$set_header("Access-Control-Allow-Methods", "GET")
 }
 
 
@@ -172,12 +183,23 @@ mw_allelematrix_search <<-
   get("/brapi/v1/allelematrix-search/tsv/?", function(req, res, err){
     process_allelematrix_search_format(req, res, err)
   }) %>%
+
+  post("/brapi/v1/allelematrix-search[/]?", function(req, res, err){
+    process_allelematrix_search(req, res, err)
+  }) %>%
+  post("/brapi/v1/allelematrix-search/csv/?", function(req, res, err){
+    process_allelematrix_search_format(req, res, err)
+  }) %>%
+  post("/brapi/v1/allelematrix-search/tsv/?", function(req, res, err){
+    process_allelematrix_search_format(req, res, err)
+  }) %>%
+
   put("/brapi/v1/allelematrix-search[/]?", function(req, res, err){
     res$set_status(405)
   }) %>%
-  post("/brapi/v1/allelematrix-search[/]?", function(req, res, err){
-    res$set_status(501)
-  }) %>%
+  # post("/brapi/v1/allelematrix-search[/]?", function(req, res, err){
+  #   res$set_status(501)
+  # }) %>%
   delete("/brapi/v1/allelematrix-search[/]?", function(req, res, err){
     res$set_status(405)
   })
