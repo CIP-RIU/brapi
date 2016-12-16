@@ -103,11 +103,18 @@ allelematrix_search = list(
 
 process_allelematrix_search <- function(req, res, err){
   prms <- names(req$params)
+  # message("Hi")
+  # message(req$method)
+  # message(req$path)
+  # #message(req$raw)
+  # message(req$body)
+  # message(paste(names(req$params), collapse = ", "))
+  # message(paste(req$params, collapse = ", "))
 
-  markerprofilesDbId = ifelse('markerprofileDbId' %in% prms, req$params$markerprofileDbId, "")
-  markerDbId = ifelse('markerDbId' %in% prms, req$params$markerDbId, "")
+  markerprofilesDbId = ifelse('markerprofileDbId' %in% prms, req$params$markerprofileDbId, "0")
+  markerDbId = ifelse('markerDbId' %in% prms, req$params$markerDbId, "0")
   unknownString = ifelse('unknownString' %in% prms, req$params$unknownString, "-")
-  expandHomozygotes = ifelse('expandHomozygotes' %in% prms, req$params$expandHomozygotes, TRUE)
+  expandHomozygotes = ifelse('expandHomozygotes' %in% prms, req$params$expandHomozygotes, FALSE)
   sepPhased = ifelse('sepPhased' %in% prms, req$params$sepPhased, "|")
   sepUnphased = ifelse('sepUnphased' %in% prms, req$params$sepUnphased, "/")
   format = ifelse('format' %in% prms, req$params$format, "json")

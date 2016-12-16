@@ -17,11 +17,11 @@ markers/{markerDbId},json,GET,GENOTYPING,,brapi
 markerprofiles,json,GET,GENOTYPING,[Sweetpotatobase],brapi
 markerprofiles/{markerprofileDbId},json,GET,GENOTYPING,[Sweetpotatobase],brapi
 allelematrix-search,json,GET,GENOTYPING,[Sweetpotatobase],brapi
-allelematrix-search,json,POST,GENOTYPING,[Sweetpotatobase],
+allelematrix-search,json,POST,GENOTYPING,[Sweetpotatobase],brapi
 allelematrix-search,tsv,GET,GENOTYPING,[Sweetpotatobase],brapi
-allelematrix-search,tsv,POST,GENOTYPING,[Sweetpotatobase],
+allelematrix-search,tsv,POST,GENOTYPING,[Sweetpotatobase],brapi
 allelematrix-search,csv,GET,GENOTYPING,[Sweetpotatobase],brapi
-allelematrix-search,csv,POST,GENOTYPING,[Sweetpotatobase],
+allelematrix-search,csv,POST,GENOTYPING,[Sweetpotatobase],brapi
 programs,json,GET,CORE,[Sweetpotatobase],brapi
 crops,json,GET,CORE,[Sweetpotatobase],brapi
 trials,json,GET,CORE,[Sweetpotatobase],

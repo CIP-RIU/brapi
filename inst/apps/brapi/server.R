@@ -7,7 +7,7 @@ x = list.files(system.file("apps/brapi", package = "brapi"), pattern = "mw_", fu
   lapply(source)
 
 res <- jug() %>%
-  #cors() %>%
+  cors() %>%
   get("/brapi/v1/", function(req, res, err){
     "\nMock BrAPI server ready!\n\n"
   }) %>%

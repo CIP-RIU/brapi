@@ -58,34 +58,39 @@ allelematrix_search <- function(markerprofileDbId = 0,
   allelematrix_search = paste0(allelematrix_search, "&sepUnphased=", sepUnphased)
   allelematrix_search = paste0(allelematrix_search, "&format=", format)
 
+  transform_data <- function(res, format, rclass) {
+    res <- httr::content(res, "text", encoding = "UTF-8")
+    out = NULL
+    if(format == "json") {
+      out = dat2tbl(res, rclass)
+      if(rclass %in% c("data.frame", "tibble")) {
+        colnames(out) =
+          c("markerprofileDbId", "markerDbId", "alleleCall")
+      }
+    }
+    if(format == "csv"){
+      url = jsonlite::fromJSON(res)$metadata$data$url
+      out = read.csv(url, stringsAsFactors = FALSE)
+      if(rclass == "tibble"){
+        out = tibble::as_tibble(out)
+      }
+    }
+    if(format == "tsv"){
+      url = jsonlite::fromJSON(res)$metadata$data$url
+      out = read.delim(url, stringsAsFactors = FALSE)
+      if(rclass == "tibble"){
+        out = tibble::as_tibble(out)
+      }
+    }
+    out
+  }
+
+
+
   if(method == "GET"){
     out <- tryCatch({
       res <- brapiGET(allelematrix_search)
-      res <- httr::content(res, "text", encoding = "UTF-8")
-      out = NULL
-      if(format == "json") {
-        out = dat2tbl(res, rclass)
-        if(rclass %in% c("data.frame", "tibble")) {
-          colnames(out) =
-           c("markerprofileDbId", "markerDbId", "alleleCall")
-        }
-      }
-      if(format == "csv"){
-        url = jsonlite::fromJSON(res)$metadata$data$url
-        out = read.csv(url, stringsAsFactors = FALSE)
-        if(rclass == "tibble"){
-          out = tibble::as_tibble(out)
-        }
-      }
-      if(format == "tsv"){
-        url = jsonlite::fromJSON(res)$metadata$data$url
-        out = read.delim(url, stringsAsFactors = FALSE)
-        if(rclass == "tibble"){
-          out = tibble::as_tibble(out)
-        }
-      }
-
-      out
+      transform_data(res, format, rclass)
     }, error = function(e){
       NULL
     })
@@ -93,7 +98,7 @@ allelematrix_search <- function(markerprofileDbId = 0,
   } else {
     body = list(markerprofileDbId = markerprofileDbId %>% paste(collapse = ","),
                 markerDbId = markerDbId %>% paste(collapse = ","),
-                expandHomozygotes  = expandHomozygotes,
+                expandHomozygotes  = expandHomozygotes %>% tolower(),
                 unknownString = unknownString,
                 sepPhased = sepPhased,
                 sepUnphased = sepUnphased,
@@ -102,20 +107,10 @@ allelematrix_search <- function(markerprofileDbId = 0,
                 pageSize = pageSize)
     out = tryCatch({
       allelematrix_search = paste0(brp, "allelematrix-search/")
+      # message(allelematrix_search)
+      # message(body)
       res <- brapiPOST(allelematrix_search, body)
-      res <- httr::content(res, "text", encoding = "UTF-8")
-      out <- NULL
-      #
-      # if (rclass %in% c("json", "list")) out <- dat2tbl(res, rclass)
-      # if (rclass == "data.frame") out  <- gp2tbl(res)
-      # if (rclass == "tibble")     out  <- gp2tbl(res) %>% tibble::as_tibble()
-      #
-      if(format == "json") {
-        out = dat2tbl(res, rclass)
-      }
-
-
-      out
+      transform_data(res, format, rclass)
     }, error = function(e){
       NULL
     })
