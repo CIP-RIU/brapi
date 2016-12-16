@@ -13,13 +13,13 @@ markers_data = tryCatch({
 )
 
 markers_list = function(markersDbId = NA, name = "none",
-                        matchMethod = "exact", include = TRUE, type = "all",
+                        matchMethod = "exact", include = "synonyms", type = "all",
                         page = 0, pageSize = 1000){
   #message(paste("Marker:", markersDbId))
   name = ifelse(is.character(name), name, "none")
   matchMethod = ifelse(matchMethod %in% c("exact", "case_insensitive", "wildcard"),
                        matchMethod, "exact")
-  include = ifelse(is.logical(include), as.logical(include), TRUE)
+  #include = ifelse(include, include, "synonyms")
   type = ifelse(is.character(type), type, "all")
   page = ifelse(is.integer(page), as.integer(page), 0)
   pageSize = ifelse(is.integer(pageSize), as.integer(pageSize), 1000)
@@ -48,7 +48,7 @@ markers_list = function(markersDbId = NA, name = "none",
       if(nrow(markers_data) == 0) return(NULL)
     }
 
-    if(!include) {
+    if(include != "synonyms") {
       markers_data = markers_data[, !names(markers_data) %in% "synonyms"]
       if(nrow(markers_data) == 0) return(NULL)
     }
@@ -69,15 +69,7 @@ markers_list = function(markersDbId = NA, name = "none",
   out = list(n)
   for (i in 1:n){
     out[[i]] <- as.list(markers_data[i, ])
-    message(markersDbId)
-    message(include)
-    #if (!is.na(markersDbId)){
-      if (include) {
-        message("synonyms", out[[i]]$synonyms)
-        out[[i]]$synonyms = out[[i]]$synonyms %>% safe_split()
-        message("synonyms", out[[i]]$synonyms)
-      }
-    #}
+    if(include == "synonyms") out[[i]]$synonyms = out[[i]]$synonyms %>% safe_split()
     out[[i]]$refAlt = out[[i]]$refAlt %>% safe_split()
     out[[i]]$analysisMethods = out[[i]]$analysisMethods %>% safe_split()
   }
@@ -109,7 +101,7 @@ process_markers <- function(req, res, err){
   name = ifelse('name' %in% prms, req$params$name, "none")
   matchMethod = ifelse('matchMethod' %in% prms,
                        req$params$matchMethod, "exact")
-  include = ifelse('include' %in% prms, as.logical(req$params$include), TRUE)
+  include = ifelse('include' %in% prms, req$params$include, "synonyms")
   type = ifelse('type' %in% prms, req$params$type, "all")
 
   page = ifelse('page' %in% prms, as.integer(req$params$page), 0)

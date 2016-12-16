@@ -28,15 +28,22 @@ Other attributes: \code{\link{attributes_categories}},
   \code{\link{attributes}},
   \code{\link{germplasm_attributes}}
 
-Other brapi_call: \code{\link{attributes_categories}},
+Other brapi_call: \code{\link{allelematrix_search}},
+  \code{\link{attributes_categories}},
   \code{\link{attributes}}, \code{\link{calls}},
   \code{\link{crops}}, \code{\link{germplasm_attributes}},
   \code{\link{germplasm_pedigree}},
   \code{\link{germplasm_search}}, \code{\link{germplasm}},
+  \code{\link{marker_search}},
+  \code{\link{markerprofiles_alleles}},
+  \code{\link{markerprofiles}}, \code{\link{markers}},
   \code{\link{programs}}, \code{\link{seasons}}
 
-Other genotyping: \code{\link{attributes_categories}},
+Other genotyping: \code{\link{allelematrix_search}},
+  \code{\link{attributes_categories}},
   \code{\link{attributes}},
-  \code{\link{germplasm_attributes}}
+  \code{\link{germplasm_attributes}},
+  \code{\link{markerprofiles_alleles}},
+  \code{\link{markerprofiles}}, \code{\link{markers}}
 }
 

@@ -27,18 +27,23 @@ Reinhard Simon
 \url{http://docs.brapi.apiary.io/#reference/0/germplasm-pedigree}
 }
 \seealso{
-Other brapi_call: \code{\link{attributes_categories}},
+Other brapi_call: \code{\link{allelematrix_search}},
+  \code{\link{attributes_categories}},
   \code{\link{attributes}}, \code{\link{calls}},
   \code{\link{crops}}, \code{\link{germplasm_attributes}},
   \code{\link{germplasm_markerprofiles}},
   \code{\link{germplasm_search}}, \code{\link{germplasm}},
+  \code{\link{marker_search}},
+  \code{\link{markerprofiles_alleles}},
+  \code{\link{markerprofiles}}, \code{\link{markers}},
   \code{\link{programs}}, \code{\link{seasons}}
 
 Other core: \code{\link{calls}}, \code{\link{crops}},
   \code{\link{germplasm_search}}, \code{\link{germplasm}},
-  \code{\link{programs}}, \code{\link{seasons}}
+  \code{\link{marker_search}}, \code{\link{programs}},
+  \code{\link{seasons}}
 
 Other germplasm: \code{\link{germplasm_search}},
-  \code{\link{germplasm}}
+  \code{\link{germplasm}}, \code{\link{marker_search}}
 }
 

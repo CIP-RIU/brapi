@@ -15,13 +15,14 @@ markerprofiles_id_alleles_data = tryCatch({
 )
 
 
-markerprofiles_id_list = function(germplasmDbId = 0, markerprofilesDbId = 0,
+markerprofiles_id_list = function(#germplasmDbId = 0,
+  markerprofilesDbId = 0,
             unknownString = "empty_string", expandHomozygotes = TRUE,
             sepPhased ="empty_string", sepUnphased ="empty_string",
                         page = 0, pageSize = 1000){
 
-  markerprofiles_id_data <- markerprofiles_id_data[markerprofiles_id_data$germplasmDbId == germplasmDbId, ]
-  if(nrow(markerprofiles_id_data) == 0) return(NULL)
+  # markerprofiles_id_data <- markerprofiles_id_data[markerprofiles_id_data$germplasmDbId == germplasmDbId, ]
+  # if(nrow(markerprofiles_id_data) == 0) return(NULL)
 
   if(markerprofilesDbId > 0){
     markerprofiles_id_data <- markerprofiles_id_data[markerprofiles_id_data$markerProfilesDbId == markerprofilesDbId, ]
@@ -83,11 +84,11 @@ markerprofiles_id = list(
 
 process_markerprofiles_id <- function(req, res, err){
   #message(basename(req$path))
-  germplasmDbId <- basename(req$path) %>% as.integer()
+  markerprofilesDbId <- basename(req$path) %>% as.integer()
 
   prms <- names(req$params)
 
-  markerprofilesDbId = ifelse('markerprofilesDbId' %in% prms, req$params$markerprofilesDbId, 0)
+  #markerprofilesDbId = ifelse('markerprofilesDbId' %in% prms, req$params$markerprofilesDbId, 0)
   unknownString = ifelse('unknownString' %in% prms, req$params$unknownString, "empty_string")
   expandHomozygotes = ifelse('expandHomozygotes' %in% prms, req$params$expandHomozygotes, TRUE)
   sepPhased = ifelse('sepPhased' %in% prms, req$params$sepPhased, 0)
@@ -100,7 +101,8 @@ process_markerprofiles_id <- function(req, res, err){
   #message(markerprofilesDbId)
 
   markerprofiles_id$result$data = markerprofiles_id_list(
-    germplasmDbId, markerprofilesDbId,
+    #germplasmDbId,
+    markerprofilesDbId,
     unknownString, expandHomozygotes, sepPhased, sepUnphased,
     page, pageSize)
   markerprofiles_id$metadata$pagination = attr(markerprofiles_id$result$data, "pagination")
