@@ -7,7 +7,7 @@
 #' @param studyDbId integer; default 0
 #' @param sampleDbId integer; default: 0
 #' @param extractDbId integer; default: 0
-#' @param methodName string; default: unknown
+#' @param methodDbId string; default: unknown
 #' @param page integer; default: 0
 #' @param pageSize integer; default 1000
 #' @param rclass character; default: tibble

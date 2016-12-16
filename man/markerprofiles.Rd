@@ -17,13 +17,13 @@ markerprofiles(germplasmDbId = 0, studyDbId = 0, sampleDbId = 0,
 
 \item{extractDbId}{integer; default: 0}
 
+\item{methodDbId}{string; default: unknown}
+
 \item{page}{integer; default: 0}
 
 \item{pageSize}{integer; default 1000}
 
 \item{rclass}{character; default: tibble}
-
-\item{methodName}{string; default: unknown}
 }
 \value{
 data.frame
