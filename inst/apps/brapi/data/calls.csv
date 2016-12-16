@@ -17,7 +17,7 @@ markers/{markerDbId},json,GET,GENOTYPING,,brapi
 markerprofiles,json,GET,GENOTYPING,[Sweetpotatobase],brapi
 markerprofiles/{markerprofileDbId},json,GET,GENOTYPING,[Sweetpotatobase],brapi
 allelematrix-search,json,GET,GENOTYPING,[Sweetpotatobase],brapi
-allelematrix-search,json,POST,GENOTYPING,[Sweetpotatobase],brapi
+allelematrix-search,json,POST,GENOTYPING,[Sweetpotatobase],
 allelematrix-search,tsv,GET,GENOTYPING,[Sweetpotatobase],
 allelematrix-search,tsv,POST,GENOTYPING,[Sweetpotatobase],
 allelematrix-search,csv,GET,GENOTYPING,[Sweetpotatobase],
