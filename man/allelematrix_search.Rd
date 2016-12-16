@@ -7,7 +7,7 @@
 allelematrix_search(markerprofileDbId = 0, markerDbId = 0,
   expandHomozygotes = FALSE, unknownString = "-", sepPhased = "|",
   sepUnphased = "/", format = "json", page = 0, pageSize = 10000,
-  method = "GET", rclass = "list")
+  method = "GET", rclass = "tibble")
 }
 \arguments{
 \item{markerprofileDbId}{integer; default 0}

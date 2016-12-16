@@ -40,7 +40,7 @@ allelematrix_search_list = function(markerprofilesDbId = "", markerDbId = "",
 
   markerDbId <- tryCatch({safe_split(markerDbId, ",") %>% as.integer()}, error = function(e){NA})
 
-  if(!is.na(markerDbId) & is.integer(markerDbId)) {
+  if(!is.na(markerDbId) & is.integer(markerDbId) & markerDbId[1] > 0) {
     allelematrix_search_alleles_data <- allelematrix_search_alleles_data[
       allelematrix_search_alleles_data$markerDbId %in% markerDbId, ]
   }
@@ -68,6 +68,7 @@ allelematrix_search_list = function(markerprofilesDbId = "", markerDbId = "",
     }
   } else {
     x = tidyr::spread(x, markerDbId, alleleCall)
+    colnames(x)[2:ncol(x)] = paste0("m", colnames(x)[2:ncol(x)])
     out = toTextTable(x, format)
     pg$pagination = list(pageSize = 0, currentPage = 0, totalPages = 0, totalCount = 0)
     attr(out, "datafiles") = list(url =

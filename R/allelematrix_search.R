@@ -34,7 +34,7 @@ allelematrix_search <- function(markerprofileDbId = 0,
                              format = "json",
                              page = 0, pageSize = 10000,
                              method = "GET",
-                             rclass = "list") {
+                             rclass = "tibble") {
   brapi::check(FALSE)
   brp <- get_brapi()
   if (markerprofileDbId > 0) {
@@ -62,18 +62,41 @@ allelematrix_search <- function(markerprofileDbId = 0,
     out <- tryCatch({
       res <- brapiGET(allelematrix_search)
       res <- httr::content(res, "text", encoding = "UTF-8")
-      dat2tbl(res, rclass)
+      out = NULL
+      if(format == "json") {
+        out = dat2tbl(res, rclass)
+        if(rclass %in% c("data.frame", "tibble")) {
+          colnames(out) =
+           c("markerprofileDbId", "markerDbId", "alleleCall")
+        }
+      }
+      if(format == "csv"){
+        url = jsonlite::fromJSON(res)$metadata$data$url
+        out = read.csv(url, stringsAsFactors = FALSE)
+        if(rclass == "tibble"){
+          out = tibble::as_tibble(out)
+        }
+      }
+      if(format == "tsv"){
+        url = jsonlite::fromJSON(res)$metadata$data$url
+        out = read.delim(url, stringsAsFactors = FALSE)
+        if(rclass == "tibble"){
+          out = tibble::as_tibble(out)
+        }
+      }
+
+      out
     }, error = function(e){
       NULL
     })
 
   } else {
-    body = list(markerprofileDbId = markerprofileDbId %>% paste(collapse=","),
-                markerDbId = markerDbId %>% paste(collapse=","),
+    body = list(markerprofileDbId = markerprofileDbId %>% paste(collapse = ","),
+                markerDbId = markerDbId %>% paste(collapse = ","),
                 expandHomozygotes  = expandHomozygotes,
                 unknownString = unknownString,
                 sepPhased = sepPhased,
-                sepUnphased =sepUnphased,
+                sepUnphased = sepUnphased,
                 format = format,
                 page = page,
                 pageSize = pageSize)
