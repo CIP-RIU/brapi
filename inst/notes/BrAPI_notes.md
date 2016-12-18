@@ -82,6 +82,8 @@ htt- defines page and pageSize in parameters (should also be defined then for at
 - markerDbId: for multiple the call repeats them; but notation in other cases uses commas?
 - there is no germplasmDbId to filter as in the preceding marker data call as part of the path nor as parameter? It seems that the assumption is that a germplasm may have several markerprofileDbId (where each markerprofileDbId in turn is unique for a germplasmId). In the format given in the example (https://github.com/plantbreeding/Documentation/wiki/BrAPI-TSV-Expected-Formats) the table apparently lists markers in the rows and the germplasm markerprofiles in the columns. Should be made more explicit since it seems to me the more standard way in general is to list objects (germplasm) in the rows and attributes (markers) in the columns. The column header should probably therefore be: markerDbId? Assuming 'mpdbid?' stands for 'markerprofileDbId?'?
 
+# location
 
+- pageNumber should be: currentPage in pagination.
 
 
