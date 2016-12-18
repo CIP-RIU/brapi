@@ -1,17 +1,17 @@
-locationDbId,altern,local,crops,cont,creg,adm3,adm2,adm1
-1,NA,San Ramon,"potato, sweetpotato",South America,LAC,San Ramon,Chanchamayo,Junin
-3,CIPLM,La Molina,"potato, sweetpotato",South America,LAC,La Molina,Lima,Lima
-4,NA,Gurue,"potato, sweetpotato",Africa,SSA,Gurue,Gurue,Zambezia
-5,NA,Umbeluzi,"potato, sweetpotato",Africa,SSA,Umbeluzi,Boane,Maputo
-6,MARANK,San Miguel Centro Marankiari,sweetpotato,South America,LAC,Perené,Chanchamayo,Junin
-7,SHIRANI,Shirani,sweetpotato,South America,LAC,Pichanaki,Chanchamayo,Junin
-8,BETALT,Betania,sweetpotato,South America,LAC,Rio Tambo,Satipo,Junin
-9,BETBAJ,Betania,sweetpotato,South America,LAC,Rio Tambo,Satipo,Junin
-10,OVIRI,Nuevaluz Oviri,sweetpotato,South America,LAC,Rio Tambo,Satipo,Junin
-11,PTOCOPA,Puerto Ocopa,sweetpotato,South America,LAC,Rio Tambo,Satipo,Junin
-12,SNPEDRO,San Pedro,sweetpotato,South America,LAC,Coviriali,Satipo,Junin
-13,NA,Fumesua,sweetpotato,Africa,SSA,NA,Ejisu-Juaben,Ashanti
-14,NA,Komenda,sweetpotato,Africa,SSA,NA,NA,Central
-15,NA,Tono dam,sweetpotato,Africa,SSA,NA,Kassena-Nankana,Upper East
-16,NA,NaCRRI,sweetpotato,Africa,SSA,NA,NA,NA
-17,NA,NaSARRI,sweetpotato,Africa,SSA,NA,NA,Serere
+locationDbId,altern,local,crops,cont,creg,adm3,adm2,adm1,annualTotalPrecipitation,annualMeanTemperature
+1,NA,San Ramon,"potato, sweetpotato",South America,LAC,San Ramon,Chanchamayo,Junin,NA,NA
+3,NA,NA,NA,NA,NA,NA,NA,NA,6.4,19.2
+4,NA,Gurue,"potato, sweetpotato",Africa,SSA,Gurue,Gurue,Zambezia,NA,NA
+5,NA,Umbeluzi,"potato, sweetpotato",Africa,SSA,Umbeluzi,Boane,Maputo,NA,NA
+6,MARANK,San Miguel Centro Marankiari,sweetpotato,South America,LAC,Perené,Chanchamayo,Junin,NA,NA
+7,SHIRANI,Shirani,sweetpotato,South America,LAC,Pichanaki,Chanchamayo,Junin,NA,NA
+8,BETALT,Betania,sweetpotato,South America,LAC,Rio Tambo,Satipo,Junin,NA,NA
+9,BETBAJ,Betania,sweetpotato,South America,LAC,Rio Tambo,Satipo,Junin,NA,NA
+10,OVIRI,Nuevaluz Oviri,sweetpotato,South America,LAC,Rio Tambo,Satipo,Junin,NA,NA
+11,PTOCOPA,Puerto Ocopa,sweetpotato,South America,LAC,Rio Tambo,Satipo,Junin,NA,NA
+12,SNPEDRO,San Pedro,sweetpotato,South America,LAC,Coviriali,Satipo,Junin,NA,NA
+13,NA,Fumesua,sweetpotato,Africa,SSA,NA,Ejisu-Juaben,Ashanti,NA,NA
+14,NA,Komenda,sweetpotato,Africa,SSA,NA,NA,Central,NA,NA
+15,NA,Tono dam,sweetpotato,Africa,SSA,NA,Kassena-Nankana,Upper East,NA,NA
+16,NA,NaCRRI,sweetpotato,Africa,SSA,NA,NA,NA,NA,NA
+17,NA,NaSARRI,sweetpotato,Africa,SSA,NA,NA,Serere,NA,NA

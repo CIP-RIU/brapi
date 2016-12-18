@@ -70,14 +70,14 @@ allelematrix_search <- function(markerprofileDbId = 0,
     }
     if(format == "csv"){
       url = jsonlite::fromJSON(res)$metadata$data$url
-      out = read.csv(url, stringsAsFactors = FALSE)
+      out = utils::read.csv(url, stringsAsFactors = FALSE)
       if(rclass == "tibble"){
         out = tibble::as_tibble(out)
       }
     }
     if(format == "tsv"){
       url = jsonlite::fromJSON(res)$metadata$data$url
-      out = read.delim(url, stringsAsFactors = FALSE)
+      out = utils::read.delim(url, stringsAsFactors = FALSE)
       if(rclass == "tibble"){
         out = tibble::as_tibble(out)
       }

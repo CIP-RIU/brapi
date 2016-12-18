@@ -42,6 +42,7 @@ locations_list = function(locationType = "all", page = 0, pageSize = 100){
     if(nrow(additionalInfo) == 0) {
       additionalInfo = NULL
     } else {
+      additionalInfo = additionalInfo[, !is.na(additionalInfo)  %>% as.logical() ]
       additionalInfo = as.list(additionalInfo)
     }
     out[[i]]$additionalInfo = list(additionalInfo)
