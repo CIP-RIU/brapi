@@ -30,9 +30,9 @@ locations <- function(locationType = "all", rclass = "tibble") {
     if (rclass %in% c("json", "list")) {
       out = dat2tbl(res, rclass)
     }
-    # if (rclass %in% c("tibble", "data.frame")) { {
-    #   out = loc2tbl(res, rclass)
-    # }
+    if (rclass %in% c("tibble", "data.frame")) {
+      out = loc2tbl(res, rclass)
+    }
     out
   }, error = function(e){
     NULL

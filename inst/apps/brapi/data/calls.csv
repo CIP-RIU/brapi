@@ -56,6 +56,6 @@ variables-search,json,POST,CORE,,
 maps,json,GET,GENOTYPING,[Sweetpotatobase],
 maps/{mapDbId}/positions,json,GET,GENOTYPING,[Sweetpotatobase],
 maps/{mapDbId}/positions/linkageGroupId,json,GET,GENOTYPING,,
-locations,json,GET,PHENOTYPING,[Sweetpotatobase],
+locations,json,GET,PHENOTYPING,[Sweetpotatobase],brapi
 samples,json,PUT,PHENOTYPING,,
 samples/{sampleId},json,GET,PHENOTYPING,,

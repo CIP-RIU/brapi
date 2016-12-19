@@ -1,14 +1,50 @@
 loc2tbl <- function(res, rclass) {
   lst <- jsonlite::fromJSON(res)
   dat <- jsonlite::toJSON(lst$result)
+  dat <- jsonlite::fromJSON(dat)
 
-  if (rclass == 'data.frame') {
-    res <- jsonlite::fromJSON(dat, simplifyDataFrame = TRUE, flatten = TRUE)
+  # get all var names
+  nms <- unique(lapply(dat, names) %>% unlist)
+  #TODO vectorize the next
+  n = length(dat)
+  x = character(n)
+  for(i in 1:n){
+    x = c(x, names(dat[[i]]$additionalInfo))
   }
+  nms <- c(nms, unique(x))
+  nms <- nms[!nms %in% c("", "additionalInfo")]
+
+  # construct basic data.frame
+
+  df <- as.data.frame(matrix(NA, ncol = length(nms), nrow = n),
+                      stringsAsFactors = FALSE)
+  names(df) <- nms
+
+  # fill in data in sparse matrix
+  for(i in 1:n) {
+    #fixed names
+    fnms <- names(dat[[i]])[-10] # exclude field additionalInfo
+    df[i, fnms] <- dat[[i]][1:9]
+
+    # variable names
+    vnms <- names(dat[[i]]$additionalInfo)
+    df[i, vnms] <- dat[[i]]$additionalInfo
+  }
+
+  # df$locationDbId = as.integer(df$locationDbId)
+  # df$latitude = as.numeric(df$latitude)
+  # df$longitude = as.numeric(df$longitude)
+  # df$altitude = as.numeric(df$altitude)
+
+  for(i in 1:ncol(df)) {
+    if (is.numeric(df[, i])) df[, i] <- as.numeric(df[, i])
+    if (is.integer(df[, i])) df[, i] <- as.integer(df[, i])
+  }
+
+
   if (rclass == 'tibble') {
-    res <- jsonlite::fromJSON(dat, simplifyDataFrame = TRUE)
-    res <- tibble::as_tibble(res)
+    df <- tibble::as_tibble(df)
   }
 
-  res
+  df
 }

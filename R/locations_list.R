@@ -11,6 +11,7 @@
 #' @export
 locations_list <- function(){
   #locs = brapi_GET("locations?pageSize=10000&page=1&")
+  .Deprecated("locations")
   base = get_brapi()
   if(is.null(base)) stop("No host given.")
   base_url = paste0("https://", get_brapi())
