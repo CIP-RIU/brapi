@@ -4,6 +4,8 @@
 #'
 #' @param rclass string; default: tibble
 #' @param locationType string, list of data types
+#' @param page integer; default 0
+#' @param pageSize integer; default 1000
 #'
 #' @author Reinhard Simon
 #' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/Locations/ListLocations.md}
@@ -14,14 +16,18 @@
 #' @family core
 #' @family access
 #' @export
-locations <- function(locationType = "all", rclass = "tibble") {
+locations <- function(locationType = "all", rclass = "tibble", page = 0, pageSize = 1000) {
   brapi::check(FALSE)
   brp <- get_brapi()
-  if(locationType == "all"){
-    locations_list = paste0(brp, "locations")
-  } else {
-    locations_list = paste0(brp, "locations/?locationType=", locationType)
+  locations_list = paste0(brp, "locations/")
+  if (is.numeric(page) & is.numeric(pageSize)) {
+    locations_list = paste0(locations_list, "?page=", page, "&pageSize=", pageSize)
   }
+
+  if(locationType != "all"){
+    locations_list = paste0(locations_list, "&locationType=", locationType)
+  }
+
 
   tryCatch({
     res <- brapiGET(locations_list)

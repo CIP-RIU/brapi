@@ -4,12 +4,17 @@
 \alias{locations}
 \title{locations}
 \usage{
-locations(locationType = "all", rclass = "tibble")
+locations(locationType = "all", rclass = "tibble", page = 0,
+  pageSize = 1000)
 }
 \arguments{
 \item{locationType}{string, list of data types}
 
 \item{rclass}{string; default: tibble}
+
+\item{page}{integer; default 0}
+
+\item{pageSize}{integer; default 1000}
 }
 \value{
 rclass as defined

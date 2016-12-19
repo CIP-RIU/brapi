@@ -3,6 +3,10 @@ brapiGET <- function(url, format = "json"){
   txt <- ifelse(res$status == 200, " (ok)!", " (error)!" )
   message_brapi(paste0("Server status: ", res$status, txt, "\n"))
 
+  if(res$status != 200){
+    message_brapi(paste0("URL call was: ", url, "\n"))
+  }
+
   # TODO: Insert here status messages if any!
   out <- httr::content(res, "text", encoding = "UTF-8")
   # Get JSON
