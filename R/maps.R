@@ -19,19 +19,14 @@
 maps <- function(species = "all", type = "all", page = 0, pageSize = 30, rclass = "tibble") {
   brapi::check(FALSE, "maps")
   brp <- get_brapi()
-  maps_list = paste0(brp, "maps/")
-  if (is.numeric(page) & is.numeric(pageSize)) {
-    maps_list = paste0(maps_list, "?page=", page, "&pageSize=", pageSize)
-  }
+  maps_list = paste0(brp, "maps/?")
 
-  if(species != "all"){
-    maps_list = paste0(maps_list, "&species=", species)
-  }
+  species = ifelse(species != "all", paste0("species=", species, "&"), "")
+  type = ifelse(type != "all", paste0("type=", type, "&"), "")
+  page = ifelse(is.numeric(page), paste0("page=", page, "&"), "")
+  pageSize = ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
 
-
-  if(type != "all"){
-    maps_list = paste0(maps_list, "&type=", type)
-  }
+  maps_list = paste0(maps_list, page, pageSize, species, type)
 
   try({
     res <- brapiGET(maps_list)

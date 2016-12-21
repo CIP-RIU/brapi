@@ -42,8 +42,8 @@ Other brapi_call: \code{\link{allelematrix_search}},
   \code{\link{germplasm_markerprofiles}},
   \code{\link{germplasm_pedigree}},
   \code{\link{germplasm_search}}, \code{\link{germplasm}},
-  \code{\link{locations}}, \code{\link{maps}},
-  \code{\link{markerprofiles_alleles}},
+  \code{\link{locations}}, \code{\link{maps_positions}},
+  \code{\link{maps}}, \code{\link{markerprofiles_alleles}},
   \code{\link{markerprofiles}}, \code{\link{markers}},
   \code{\link{programs}}, \code{\link{seasons}}
 
