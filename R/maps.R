@@ -14,8 +14,7 @@
 #' @import tibble
 #' @import tidyjson
 #' @family brapi_call
-#' @family core
-#' @family access
+#' @family genotyping
 #' @export
 maps <- function(species = "all", type = "all", page = 0, pageSize = 30, rclass = "tibble") {
   brapi::check(FALSE)

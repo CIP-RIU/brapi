@@ -13,8 +13,7 @@
 #' @import tibble
 #' @import tidyjson
 #' @family brapi_call
-#' @family core
-#' @family access
+#' @family phenotyping
 #' @export
 locations <- function(locationType = "all", rclass = "tibble", page = 0, pageSize = 1000) {
   brapi::check(FALSE)
