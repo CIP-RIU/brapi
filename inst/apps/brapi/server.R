@@ -39,6 +39,7 @@ res <- jug() %>%
   include(mw_variables) %>%
   include(mw_variables_search) %>%
   include(mw_maps) %>%
+  include(mw_maps_details) %>%
   include(mw_maps_positions) %>%
   include(mw_maps_positions_range) %>%
   include(mw_locations) %>%

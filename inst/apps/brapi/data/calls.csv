@@ -37,9 +37,9 @@ variables/category,json,GET,CORE,,
 variables/id,json,GET,CORE,,
 variables-search,json,POST,CORE,,
 maps,json,GET,GENOTYPING,[Sweetpotatobase],brapi
+maps/id,json,GET,GENOTYPING,[Sweetpotatobase],brapi
 maps/id/positions,json,GET,GENOTYPING,[Sweetpotatobase],brapi
-maps/id/positions/id,json,GET,GENOTYPING,,brapi
-maps/id/positions/linkageGroupId,json,GET,GENOTYPING,,
+maps/id/positions/id,json,GET,GENOTYPING,[Sweetpotatobase],brapi
 locations,json,GET,PHENOTYPING,[Sweetpotatobase],brapi
 samples,json,PUT,PHENOTYPING,,
 samples/id,json,GET,PHENOTYPING,,
