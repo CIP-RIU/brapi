@@ -4,8 +4,8 @@ if (check_server_status == 200) {
 
 context("Testing the path 'maps_positions'")
 
-test_that("maps_positions are listed.", {
-  expect_equal(length(maps_positions(1, rclass = "list")), 2)
+test_that("maps_range are listed.", {
+  expect_equal(length(maps_positions(1, 1, rclass = "list")), 2)
   expect_equal(ncol(maps_positions(1, 1)), 4)
 })
 
