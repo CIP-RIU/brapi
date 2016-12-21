@@ -14,7 +14,7 @@
 #' @family germplasm
 #' @export
 germplasm <- function(germplasmDbId = 0, rclass = "tibble") {
-  brapi::check(FALSE)
+  brapi::check(FALSE, "germplasm/id")
   germplasm = paste0(get_brapi(), "germplasm/", germplasmDbId, "/")
 
   try({

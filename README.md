@@ -25,26 +25,26 @@ Implementation status
 
 Out of 43 BrAPI calls currently **18 (41.9%)** are implemented in this package.
 
-| call                                      | datatypes      | methods   | scope       |
-|:------------------------------------------|:---------------|:----------|:------------|
-| calls                                     | json           | GET       | CORE        |
-| germplasm-search                          | json           | GET; POST | CORE        |
-| germplasm/{germplasmDbId}                 | json           | GET       | CORE        |
-| germplasm/{germplasmDbId}/pedigree        | json           | GET       | CORE        |
-| germplasm/i{germplasmDbId}/markerprofiles | json           | GET       | GENOTYPING  |
-| attributes                                | json           | GET       | GENOTYPING  |
-| attributes/categories                     | json           | GET       | GENOTYPING  |
-| germplasm/{germplasmDbId}/attributes/     | json           | GET       | GENOTYPING  |
-| markers                                   | json           | GET       | GENOTYPING  |
-| markers/{markerDbId}                      | json           | GET       | GENOTYPING  |
-| markerprofiles                            | json           | GET       | GENOTYPING  |
-| markerprofiles/{markerprofileDbId}        | json           | GET       | GENOTYPING  |
-| allelematrix-search                       | json; csv; tsv | GET; POST | GENOTYPING  |
-| programs                                  | json           | GET       | CORE        |
-| crops                                     | json           | GET       | CORE        |
-| seasons                                   | json           | GET       | CORE        |
-| maps                                      | json           | GET       | GENOTYPING  |
-| locations                                 | json           | GET       | PHENOTYPING |
+| call                        | datatypes      | methods   | scope       |
+|:----------------------------|:---------------|:----------|:------------|
+| calls                       | json           | GET       | CORE        |
+| germplasm-search            | json           | GET; POST | CORE        |
+| germplasm/id                | json           | GET       | CORE        |
+| germplasm/id/pedigree       | json           | GET       | CORE        |
+| germplasm/id/markerprofiles | json           | GET       | GENOTYPING  |
+| attributes                  | json           | GET       | GENOTYPING  |
+| attributes/categories       | json           | GET       | GENOTYPING  |
+| germplasm/id/attributes/    | json           | GET       | GENOTYPING  |
+| markers                     | json           | GET       | GENOTYPING  |
+| markers/id                  | json           | GET       | GENOTYPING  |
+| markerprofiles              | json           | GET       | GENOTYPING  |
+| markerprofiles/id           | json           | GET       | GENOTYPING  |
+| allelematrix-search         | json; csv; tsv | GET; POST | GENOTYPING  |
+| programs                    | json           | GET       | CORE        |
+| crops                       | json           | GET       | CORE        |
+| seasons                     | json           | GET       | CORE        |
+| maps                        | json           | GET       | GENOTYPING  |
+| locations                   | json           | GET       | PHENOTYPING |
 
 How to use
 ----------

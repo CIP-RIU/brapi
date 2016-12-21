@@ -27,7 +27,7 @@ germplasm_search <- function(germplasmDbId = 0,
                              germplasmPUI  = "none",
                              page = 0, pageSize = 1000, method = "GET",
                              rclass = "tibble"){
-  brapi::check(FALSE)
+  brapi::check(FALSE, "germplasm-search")
   brp <- get_brapi()
   if (is.numeric(page) & is.numeric(pageSize)) {
     germplasm_search = paste0(brp, "germplasm-search/?page=", page, "&pageSize=", pageSize)
