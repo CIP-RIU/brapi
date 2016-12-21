@@ -31,7 +31,7 @@ Other brapi_call: \code{\link{allelematrix_search}},
   \code{\link{germplasm_markerprofiles}},
   \code{\link{germplasm_pedigree}},
   \code{\link{germplasm_search}}, \code{\link{locations}},
-  \code{\link{marker_search}},
+  \code{\link{maps}}, \code{\link{marker_search}},
   \code{\link{markerprofiles_alleles}},
   \code{\link{markerprofiles}}, \code{\link{markers}},
   \code{\link{programs}}, \code{\link{seasons}}
@@ -39,8 +39,8 @@ Other brapi_call: \code{\link{allelematrix_search}},
 Other core: \code{\link{calls}}, \code{\link{crops}},
   \code{\link{germplasm_pedigree}},
   \code{\link{germplasm_search}}, \code{\link{locations}},
-  \code{\link{marker_search}}, \code{\link{programs}},
-  \code{\link{seasons}}
+  \code{\link{maps}}, \code{\link{marker_search}},
+  \code{\link{programs}}, \code{\link{seasons}}
 
 Other germplasm: \code{\link{germplasm_pedigree}},
   \code{\link{germplasm_search}},

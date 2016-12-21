@@ -38,6 +38,6 @@ connect <- function(crop = "sweetpotato", db = "127.0.0.1", port = 2021,
   crops() %>% paste(collapse = ", ") %>% message_brapi()
   calls(rclass = "data.frame")[, 1] %>% paste(collapse = ", ") %>% message_brapi()
   #show_info(TRUE)
-  TRUE
+  "ok"
 }
 

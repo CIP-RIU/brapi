@@ -1,7 +1,8 @@
 brapiGET <- function(url, format = "json"){
   res <- httr::GET(url)
-  txt <- ifelse(res$status == 200, " (ok)!", " (error)!" )
-  message_brapi(paste0("Server status: ", res$status, txt, "\n"))
+  txt <- ifelse(res$status == 200, " ok!", " problem!" )
+  #message_brapi(paste0("Server status: ", res$status, txt, "\n"))
+  message_brapi(paste0("Server status: ", txt, "\n"))
 
   if(res$status != 200){
     message_brapi(paste0("URL call was: ", url, "\n"))

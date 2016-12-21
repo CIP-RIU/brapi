@@ -40,7 +40,6 @@ calls_list = function(datatypes = "all", page = 0, pageSize = 100){
 
   attr(out, "pagination") = pg$pagination
   out
-  out
 }
 
 

@@ -38,6 +38,6 @@ must be started in a separate R session using 'brapi::mock_server()'.
 }
 \seealso{
 Other access: \code{\link{calls}}, \code{\link{crops}},
-  \code{\link{locations}}
+  \code{\link{locations}}, \code{\link{maps}}
 }
 
