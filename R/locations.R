@@ -18,17 +18,16 @@
 locations <- function(locationType = "all", rclass = "tibble", page = 0, pageSize = 1000) {
   brapi::check(FALSE, "locations")
   brp <- get_brapi()
-  locations_list = paste0(brp, "locations/")
-  if (is.numeric(page) & is.numeric(pageSize)) {
-    locations_list = paste0(locations_list, "?page=", page, "&pageSize=", pageSize)
-  }
+  locations_list = paste0(brp, "locations/?")
 
-  if(locationType != "all"){
-    locations_list = paste0(locations_list, "&locationType=", locationType)
-  }
+  locationType = ifelse(locationType != "all", paste0("locationType=", locationType, "&"), "")
+  page = ifelse(is.numeric(page), paste0("page=", page, "&"), "")
+  pageSize = ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
+
+  locations_list = paste0(locations_list, page, pageSize, locationType)
 
 
-  tryCatch({
+  try({
     res <- brapiGET(locations_list)
     res <-  httr::content(res, "text", encoding = "UTF-8")
     out = NULL
@@ -39,7 +38,5 @@ locations <- function(locationType = "all", rclass = "tibble", page = 0, pageSiz
       out = loc2tbl(res, rclass)
     }
     out
-  }, error = function(e){
-    NULL
   })
 }

@@ -15,24 +15,20 @@
 #' @family experiments
 #' @export
 seasons <- function(year = NULL, page = 0, pageSize = 1000, rclass = "tibble") {
-  brapi::check(FALSE)
+  brapi::check(FALSE, "seasons")
   brp <- get_brapi()
-  if(is.null(page) & is.null(pageSize)) {
-    seasons_list = paste0(brp, "seasons")
-  }
-  if (is.numeric(page) & is.numeric(pageSize)) {
-    seasons_list = paste0(brp, "seasons?page=", page, "&pageSize=", pageSize)
-  }
-  if (!is.null(year)) {
-    seasons_list = paste0(seasons_list, "&year=", year)
-  }
+  seasons_list = paste0(brp, "seasons/?")
 
-  tryCatch({
+  year = ifelse(is.numeric(year), paste0("year=", year, "&"), "")
+  page = ifelse(is.numeric(page), paste0("page=", page, "&"), "")
+  pageSize = ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
+
+  seasons_list = paste0(seasons_list, page, pageSize, year)
+
+  try({
     res <- brapiGET(seasons_list)
     res <- httr::content(res, "text", encoding = "UTF-8")
 
     dat2tbl(res, rclass)
-  }, error = function(e){
-    NULL
   })
 }
