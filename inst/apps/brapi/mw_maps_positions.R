@@ -61,14 +61,14 @@ process_maps_positions <- function(req, res, err){
   mapDbId <- basename(stringr::str_replace(req$path, "/positions[/]?", "")) %>%
     as.integer()
 
-  message(names(req$params))
+  #message(names(req$params))
   # message(req$params$linkageGroupId)
   linkageGroupId = ifelse('linkageGroupId' %in% prms, req$params$linkageGroupId, 0)
   linkageGroupId = req$params[names(req$params) == "linkageGroupId"] %>% paste(collapse = ",")
-  message(linkageGroupId)
+  #message(linkageGroupId)
   linkageGroupId = safe_split(linkageGroupId, ",")
 
-  message(linkageGroupId)
+  #message(linkageGroupId)
 
   page = ifelse('page' %in% prms, as.integer(req$params$page), 0)
   pageSize = ifelse('pageSize' %in% prms, as.integer(req$params$pageSize), 30)

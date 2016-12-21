@@ -27,15 +27,17 @@ maps_details <- function(mapDbId = 0, rclass = "tibble") {
     if(rclass %in% c("data.frame", "tibble")) {
       lst <- jsonlite::fromJSON(res)
       dat <- jsonlite::toJSON(lst$result$linkageGroups)
-      message(dat)
+      #message(dat)
       if (rclass == 'data.frame') {
         out <- jsonlite::fromJSON(dat, simplifyDataFrame = TRUE)[[1]]
 
       } else {
         out <- jsonlite::fromJSON(dat, simplifyDataFrame = TRUE)[[1]] %>% tibble::as_tibble()
       }
+      lst$result$linkageGroups <- NULL
+      attr(out, "metadata") <- as.list(lst$result)
     }
-    #attr(out, "meta") = lst$result$data[[1]]$linkageGroups = NULL
+
     out
   })
 }
