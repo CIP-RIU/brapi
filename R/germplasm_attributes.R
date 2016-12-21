@@ -28,7 +28,7 @@ germplasm_attributes <- function(germplasmDbId = 1, attributeList = 1,
   )
 
 
-  tryCatch({
+  try({
     res <- brapiGET(germplasm_attributes_list)
     res <- httr::content(res, "text", encoding = "UTF-8")
 
@@ -58,7 +58,5 @@ germplasm_attributes <- function(germplasmDbId = 1, attributeList = 1,
     if(rclass == "tibble")     out  <- ms2tbl(res) %>% tibble::as_tibble()
 
     out
-  }, error = function(e){
-    NULL
   })
 }

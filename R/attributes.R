@@ -19,7 +19,7 @@ attributes <- function(attributeCategoryDbId = 0, rclass = "tibble"){
   attributes_list = paste0(brp, "attributes/?attributeCategoryDbId=", attributeCategoryDbId)
 
 
-  tryCatch({
+  try({
     res <- brapiGET(attributes_list)
     res <- httr::content(res, "text", encoding = "UTF-8")
 
@@ -28,7 +28,5 @@ attributes <- function(attributeCategoryDbId = 0, rclass = "tibble"){
       out$values <- sapply(out$values, paste, collapse = "; ")
     }
     out
-  }, error = function(e){
-    NULL
   })
 }

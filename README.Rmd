@@ -64,7 +64,16 @@ knitr::kable(res, row.names = FALSE)
 See [tutorial](https://github.com/c5sire/brapi/blob/master/vignettes/tutorial.md).
 
 
+```{r eval=FALSE, echo=FALSE}
+# rp =covr::package_coverage(function_exclusions = 
+#     c("can_internet", "programs_list", "gp2tbl", "brapiConnectAddin", "mk2tbl",
+#       "loc2tbl", "brapi_con", "brapiConnectInput", "brapiPOST", "brapiConnect",
+#       "locations_list",
+#       "germplasm_mcpd", "print/.", "zzz", "brapi_auth", "df2tibble"))
+# 
+# covr::report(rp)
 
+```
 
 
 

@@ -17,17 +17,14 @@
 calls <- function(datatypes = "all", rclass = "tibble") {
   brapi::check(FALSE)
   brp <- get_brapi()
-  if(datatypes == "all"){
-    calls_list = paste0(brp, "calls")
-  } else {
-    calls_list = paste0(brp, "calls/?datatypes=", datatypes)
+  calls_list = paste0(brp, "calls/")
+  if(datatypes != "all"){
+    calls_list = paste0(calls_list, "?datatypes=", datatypes)
   }
 
-  tryCatch({
+  try({
     res <- brapiGET(calls_list)
     res <-  httr::content(res, "text", encoding = "UTF-8")
     dat2tbl(res, rclass)
-  }, error = function(e){
-    NULL
   })
 }

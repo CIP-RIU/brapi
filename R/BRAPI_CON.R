@@ -17,6 +17,7 @@
 #'
 #' @example inst/examples/brapi_con.R
 brapi_con <- function(crop, db, port = 80, user = "", pwd = "", session="") {
+  .Deprecated("connect")
   if(!can_internet()) {
     message("Can not connect to internet!")
     return(NULL)

@@ -26,14 +26,10 @@ programs <- function(page = 0, pageSize = 100, rclass = "tibble") {
   }
 
 
-  programs <- tryCatch({
+  try({
     res <- brapiGET(programs_list)
     res <- httr::content(res, "text", encoding = "UTF-8")
 
     dat2tbl(res, rclass)
-  }, error = function(e){
-    NULL
   })
-
-  programs
 }

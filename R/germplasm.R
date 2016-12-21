@@ -17,7 +17,7 @@ germplasm <- function(germplasmDbId = 0, rclass = "tibble") {
   brapi::check(FALSE)
   germplasm = paste0(get_brapi(), "germplasm/", germplasmDbId, "/")
 
-  tryCatch({
+  try({
     res <- brapiGET(germplasm)
     res <- httr::content(res, "text", encoding = "UTF-8")
     out <- NULL
@@ -27,8 +27,5 @@ germplasm <- function(germplasmDbId = 0, rclass = "tibble") {
     if (rclass == "tibble")     out  <- gp2tbl(res) %>% tibble::as_tibble()
 
     out
-  }, error = function(e){
-    NULL
   })
-
 }

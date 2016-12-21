@@ -14,13 +14,10 @@ crops <- function(rclass = "vector"){
   crops_list = paste0(get_brapi(), "crops")
   rclass <- df2tibble(rclass)
 
-  tryCatch({
+  try({
     res <- brapiGET(crops_list)
     res <- httr::content(res, "text",encoding = "UTF-8")
 
     dat2tbl(res, rclass)
-    }, error = function(e){
-    NULL
   })
-
 }

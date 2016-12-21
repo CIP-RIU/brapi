@@ -17,21 +17,16 @@
 attributes_categories <- function(page = 0, pageSize = 10, rclass = "tibble"){
   brapi::check(FALSE)
   brp <- get_brapi()
-
+  attributes_categories_list = paste0(brp, "attributes/categories/")
   if (is.numeric(page) & is.numeric(pageSize)) {
-    attributes_categories_list = paste0(brp, "attributes/categories/?page=", page, "&pageSize=", pageSize)
-  } else {
-    attributes_categories_list = paste0(brp, "attributes/categories/")
+    attributes_categories_list = paste0(attributes_categories_list, "?page=", page, "&pageSize=", pageSize)
   }
 
-
-  tryCatch({
+  try({
     res <- brapiGET(attributes_categories_list)
     res <- httr::content(res, "text", encoding = "UTF-8")
 
     dat2tbl(res, rclass)
 
-  }, error = function(e){
-    NULL
   })
 }

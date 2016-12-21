@@ -34,12 +34,10 @@ maps <- function(species = "all", type = "all", page = 0, pageSize = 30, rclass 
     maps_list = paste0(maps_list, "&type=", type)
   }
 
-  tryCatch({
+  try({
     res <- brapiGET(maps_list)
     res <-  httr::content(res, "text", encoding = "UTF-8")
     if(rclass == "vector") rclass = "tibble"
     dat2tbl(res, rclass)
-  }, error = function(e){
-    NULL
   })
 }
