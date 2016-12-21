@@ -29,7 +29,7 @@ markerprofiles <- function(germplasmDbId = 0,
                              methodDbId = 0,
                              page = 0, pageSize = 10000,
                              rclass = "tibble"){
-  brapi::check(FALSE)
+  brapi::check(FALSE, "markerprofiles")
   brp <- get_brapi()
   if (is.numeric(page) & is.numeric(pageSize)) {
     markerprofiles = paste0(brp, "markerprofiles/?page=", page, "&pageSize=", pageSize)

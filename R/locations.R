@@ -16,7 +16,7 @@
 #' @family phenotyping
 #' @export
 locations <- function(locationType = "all", rclass = "tibble", page = 0, pageSize = 1000) {
-  brapi::check(FALSE)
+  brapi::check(FALSE, "locations")
   brp <- get_brapi()
   locations_list = paste0(brp, "locations/")
   if (is.numeric(page) & is.numeric(pageSize)) {

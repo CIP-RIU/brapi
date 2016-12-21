@@ -17,7 +17,7 @@
 #' @family experiments
 #' @export
 programs <- function(page = 0, pageSize = 100, rclass = "tibble") {
-  brapi::check(FALSE)
+  brapi::check(FALSE, "programs")
   brp <- get_brapi()
   if(page == 0 & pageSize == 100) {
     programs_list = paste0(brp, "programs")

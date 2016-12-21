@@ -4,16 +4,18 @@
 \alias{connect}
 \title{connect}
 \usage{
-connect(crop = "sweetpotato", db = "127.0.0.1", port = 2021,
-  protocol = "http://", multi = FALSE, user = "user",
+connect(brapi_db = NULL, crop = "sweetpotato", db = "127.0.0.1",
+  port = 2021, protocol = "http://", multi = FALSE, user = "user",
   password = "password", session = "")
 }
 \arguments{
+\item{brapi_db}{brapi_db R object for brapi databases. Created by as.brapi_db}
+
 \item{crop}{string; default: sweetpotato}
 
 \item{db}{string; default '127.0.0.1' (localhost)}
 
-\item{port}{integer; default: 2021}
+\item{port}{integer; default: 80}
 
 \item{protocol}{string; default: http:// (else: https://)}
 
@@ -35,6 +37,8 @@ a BrAPI compliant online database.
 \details{
 The default values are chosen to match a local mock test server. The mock server
 must be started in a separate R session using 'brapi::mock_server()'.
+
+If the brapi_db parameter is used it will override the other parameters; except user, password and session.
 }
 \seealso{
 Other access: \code{\link{calls}}, \code{\link{crops}}
