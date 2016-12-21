@@ -6,10 +6,11 @@
 #' Raises errors.
 #'
 #' @param verbose logical; default TRUE
+#' @param brapi_calls character vector; default: any. Use to check if one or more calls are implemented by the server according to the calls url.
 #'
 #' @return logical
 #' @export
-check <- function(verbose = TRUE){
+check <- function(verbose = TRUE, brapi_calls = "any"){
   if(!("brapi" %in% ls(envir = globalenv()))) stop("BrAPI connection details not available. Use brapi::connect()")
   if(is.null(brapi))     stop("BrAPI connection object is NULL. Use brapi::connect()")
 
@@ -25,8 +26,22 @@ check <- function(verbose = TRUE){
     })
     if(status == 500) stop("Cannot connect to mock server. Use other connection details or start the mock server.")
   } else {
-    url <- get_brapi()
+    url <- brapi$db
     if(!can_internet(url))  stop(paste0("Cannot connect to BrAPI server: ", url, "\nCheck the details."))
+
+  }
+
+  if(brapi_calls != "any"){
+    call_check = !brapi_calls %in% brapi$calls
+    if(any(call_check)){
+      # message(brapi_calls)
+      # message(brapi_calls[call_check])
+      stop(paste0(
+        paste(brapi_calls[call_check], collapse= ", "),
+        " not implemented by server: ", brapi$db )
+        )
+    }
+
   }
 
   if(verbose){

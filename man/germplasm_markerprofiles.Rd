@@ -43,7 +43,7 @@ Other brapi_call: \code{\link{allelematrix_search}},
 Other genotyping: \code{\link{allelematrix_search}},
   \code{\link{attributes_categories}},
   \code{\link{attributes}},
-  \code{\link{germplasm_attributes}},
+  \code{\link{germplasm_attributes}}, \code{\link{maps}},
   \code{\link{markerprofiles_alleles}},
   \code{\link{markerprofiles}}, \code{\link{markers}}
 }

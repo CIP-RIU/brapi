@@ -17,7 +17,7 @@
 #' @family genotyping
 #' @export
 maps <- function(species = "all", type = "all", page = 0, pageSize = 30, rclass = "tibble") {
-  brapi::check(FALSE)
+  brapi::check(FALSE, "maps")
   brp <- get_brapi()
   maps_list = paste0(brp, "maps/")
   if (is.numeric(page) & is.numeric(pageSize)) {

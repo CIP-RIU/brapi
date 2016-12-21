@@ -29,9 +29,6 @@ Reinhard Simon
 \url{https://github.com/plantbreeding/API/blob/master/Specification/Locations/ListLocations.md}
 }
 \seealso{
-Other access: \code{\link{calls}}, \code{\link{connect}},
-  \code{\link{crops}}, \code{\link{maps}}
-
 Other brapi_call: \code{\link{allelematrix_search}},
   \code{\link{attributes_categories}},
   \code{\link{attributes}}, \code{\link{calls}},
@@ -42,12 +39,6 @@ Other brapi_call: \code{\link{allelematrix_search}},
   \code{\link{maps}}, \code{\link{marker_search}},
   \code{\link{markerprofiles_alleles}},
   \code{\link{markerprofiles}}, \code{\link{markers}},
-  \code{\link{programs}}, \code{\link{seasons}}
-
-Other core: \code{\link{calls}}, \code{\link{crops}},
-  \code{\link{germplasm_pedigree}},
-  \code{\link{germplasm_search}}, \code{\link{germplasm}},
-  \code{\link{maps}}, \code{\link{marker_search}},
   \code{\link{programs}}, \code{\link{seasons}}
 }
 

@@ -61,7 +61,7 @@ Other genotyping: \code{\link{attributes_categories}},
   \code{\link{attributes}},
   \code{\link{germplasm_attributes}},
   \code{\link{germplasm_markerprofiles}},
-  \code{\link{markerprofiles_alleles}},
+  \code{\link{maps}}, \code{\link{markerprofiles_alleles}},
   \code{\link{markerprofiles}}, \code{\link{markers}}
 }
 

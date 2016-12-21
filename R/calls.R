@@ -25,6 +25,11 @@ calls <- function(datatypes = "all", rclass = "tibble") {
   try({
     res <- brapiGET(calls_list)
     res <-  httr::content(res, "text", encoding = "UTF-8")
-    dat2tbl(res, rclass)
+    out = dat2tbl(res, rclass)
+    if(rclass %in% c("data.frame", "tibble")){
+      out$methods = sapply(out$methods, paste, collapse = "; ")
+      out$datatypes = sapply(out$datatypes, paste, collapse = "; ")
+    }
+    out
   })
 }

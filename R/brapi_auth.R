@@ -56,7 +56,7 @@ get_brapi <- function() {
 
   }
 
-  message_brapi()
+  #message_brapi()
 
   url
 }

@@ -55,6 +55,7 @@ Other genotyping: \code{\link{allelematrix_search}},
   \code{\link{attributes}},
   \code{\link{germplasm_attributes}},
   \code{\link{germplasm_markerprofiles}},
-  \code{\link{markerprofiles}}, \code{\link{markers}}
+  \code{\link{maps}}, \code{\link{markerprofiles}},
+  \code{\link{markers}}
 }
 

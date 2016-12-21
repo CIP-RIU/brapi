@@ -41,7 +41,6 @@ Other brapi_call: \code{\link{allelematrix_search}},
 
 Other core: \code{\link{calls}}, \code{\link{crops}},
   \code{\link{germplasm_search}}, \code{\link{germplasm}},
-  \code{\link{locations}}, \code{\link{maps}},
   \code{\link{marker_search}}, \code{\link{programs}},
   \code{\link{seasons}}
 

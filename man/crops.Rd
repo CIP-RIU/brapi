@@ -19,8 +19,7 @@ lists crops available in a database
 Reinhard Simon
 }
 \seealso{
-Other access: \code{\link{calls}}, \code{\link{connect}},
-  \code{\link{locations}}, \code{\link{maps}}
+Other access: \code{\link{calls}}, \code{\link{connect}}
 
 Other brapi_call: \code{\link{allelematrix_search}},
   \code{\link{attributes_categories}},
@@ -38,7 +37,6 @@ Other brapi_call: \code{\link{allelematrix_search}},
 Other core: \code{\link{calls}},
   \code{\link{germplasm_pedigree}},
   \code{\link{germplasm_search}}, \code{\link{germplasm}},
-  \code{\link{locations}}, \code{\link{maps}},
   \code{\link{marker_search}}, \code{\link{programs}},
   \code{\link{seasons}}
 }

@@ -3,6 +3,7 @@ library(jsonlite)
 
 source(system.file("apps/brapi/utils/brapi_status.R", package = "brapi"))
 source(system.file("apps/brapi/utils/paging.R", package = "brapi"))
+source(system.file("apps/brapi/utils/safe_split.R", package = "brapi"))
 
 
 calls_data = tryCatch({
@@ -29,13 +30,8 @@ calls_list = function(datatypes = "all", page = 0, pageSize = 100){
   out = list(n)
   for(i in 1:n){
     out[[i]] <- as.list(calls_data[i, ])
-    if(stringr::str_detect(out[[i]]$datatypes, ";") ) {
-      out[[i]]$datatypes = stringr::str_split(out[[i]]$datatypes, ";")[[1]]
-    }
-    if(stringr::str_detect(out[[i]]$methods, ";") ) {
-      out[[i]]$methods = stringr::str_split(out[[i]]$methods, ";")[[1]]
-    }
-
+    out[[i]]$datatypes = list(safe_split(out[[i]]$datatypes, ";"))
+    out[[i]]$methods = list(safe_split(out[[i]]$methods, ";"))
   }
 
   attr(out, "pagination") = pg$pagination

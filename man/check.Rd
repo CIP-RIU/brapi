@@ -4,10 +4,12 @@
 \alias{check}
 \title{check}
 \usage{
-check(verbose = TRUE)
+check(verbose = TRUE, brapi_calls = "any")
 }
 \arguments{
 \item{verbose}{logical; default TRUE}
+
+\item{brapi_calls}{character vector; default: any. Use to check if one or more calls are implemented by the server according to the calls url.}
 }
 \value{
 logical

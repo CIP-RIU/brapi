@@ -13,8 +13,7 @@ vignette: >
 This package is under development. It has not yet been exhaustively tested for all calls neither. Usage may also still change. If you have suggestions please use the issue tracker.
 --------------------------------------------------------------
 
-Content has been removed - docuentation needs to be re-done.
-
+# 
 
 ```
 
