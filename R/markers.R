@@ -22,12 +22,10 @@ markers <- function(markerDbId = 0,
   brp <- get_brapi()
   markers = paste0(brp, "markers/", markerDbId )
 
-  tryCatch({
+  try({
     res <- brapiGET(markers)
     res <- httr::content(res, "text", encoding = "UTF-8")
      dat2tbl(res, rclass)
-  }, error = function(e){
-    NULL
   })
 }
 

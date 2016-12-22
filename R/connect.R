@@ -18,7 +18,7 @@
 #' @param user string; default: user
 #' @param password string; default: password
 #' @param session string; default: '' (empty)
-#'
+#' @example inst/examples/ex_connect.R
 #' @return logical
 #' @family access
 #' @export

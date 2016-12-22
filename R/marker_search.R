@@ -39,7 +39,7 @@ marker_search <- function(name = "none",
   if(name != "none") marker_search = paste0(marker_search, "&name=", name)
   if(type != "all")  marker_search = paste0(marker_search, "&type=", type)
 
-  tryCatch({
+  try({
     res <- brapiGET(marker_search)
     res <- httr::content(res, "text", encoding = "UTF-8")
     # out <- NULL
@@ -51,8 +51,6 @@ marker_search <- function(name = "none",
     # out
     #
     dat2tbl(res, rclass)
-  }, error = function(e){
-    NULL
   })
 }
 
