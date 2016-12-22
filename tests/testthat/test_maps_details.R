@@ -12,5 +12,9 @@ test_that("maps_details are listed.", {
   expect_equal(nrow(maps_details(3)), 3)
 })
 
+test_that("maps_details parameters work.", {
+  expect_equal(nrow(maps_details(1, rclass = "data.frame")), 2)
+})
+
 
 }

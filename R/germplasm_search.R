@@ -53,7 +53,7 @@ germplasm_search <- function(germplasmDbId = 0,
                 germplasmPUI  = germplasmPUI,
                 page = page,
                 pageSize = pageSize)
-    out = tryCatch({
+    out = try({
       germplasm_search = paste0(brp, "germplasm-search/")
       res <- brapiPOST(germplasm_search, body)
       res <- httr::content(res, "text", encoding = "UTF-8")
@@ -64,13 +64,11 @@ germplasm_search <- function(germplasmDbId = 0,
       if (rclass == "tibble")     out  <- gp2tbl(res) %>% tibble::as_tibble()
 
       out
-    }, error = function(e){
-      NULL
     })
 
   } else  {
 
-  out = tryCatch({
+  out = try({
     res <- brapiGET(germplasm_search)
     res <- httr::content(res, "text", encoding = "UTF-8")
     out <- NULL
@@ -80,8 +78,6 @@ germplasm_search <- function(germplasmDbId = 0,
     if (rclass == "tibble")     out  <- gp2tbl(res) %>% tibble::as_tibble()
 
     out
-  }, error = function(e){
-    NULL
   })
   }
 

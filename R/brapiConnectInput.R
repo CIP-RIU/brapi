@@ -23,8 +23,9 @@ brapiConnectInput <- function(id, label = "Connect to BrAPI database"){
     }
   }
 
+  #TODO adjust to new brapi connection details with several crops!
   tagList(
-    shiny::selectInput(ns("crop"), "Crop", choices = crops, selected = brapi$crop),
+    shiny::selectInput(ns("crop"), "Crop", choices = brapi$crop, selected = brapi$crop),
     shiny::selectInput(ns("protocol"), "Protocol", choices = c("https://", "http://")),
     shiny::textInput(ns("server"), label, value = brapi$db, width = '100%'),
     shiny::numericInput(ns("port"), "Port",value = brapi$port , 0, 9999),

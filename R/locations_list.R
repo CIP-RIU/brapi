@@ -8,7 +8,7 @@
 #' @references \url{http://docs.brapi.apiary.io/reference/locations/list/list-locations}
 #' @import httr
 #' @import magrittr
-#' @export
+# @export
 locations_list <- function(){
   #locs = brapi_GET("locations?pageSize=10000&page=1&")
   .Deprecated("locations")

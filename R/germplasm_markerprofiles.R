@@ -20,7 +20,7 @@ germplasm_markerprofiles <- function(germplasmDbId = 0, rclass = "tibble"){
   germplasm_markerprofiles = paste0(get_brapi(), "germplasm/", germplasmDbId,
                               "/markerprofiles/")
 
-  tryCatch({
+  try({
     res <- brapiGET(germplasm_markerprofiles)
     res <- httr::content(res, "text", encoding = "UTF-8")
     out <- NULL
@@ -41,7 +41,5 @@ germplasm_markerprofiles <- function(germplasmDbId = 0, rclass = "tibble"){
     if(rclass == "tibble")     out  <- ms2tbl(res) %>% tibble::as_tibble()
 
     out
-  }, error = function(e){
-    NULL
   })
 }

@@ -24,27 +24,20 @@ germplasm_pedigree <- function(germplasmDbId = 0, notation = "purdue",
   germplasm_pedigree = paste0(get_brapi(), "germplasm/", germplasmDbId,
                               "/pedigree/?notation=", notation)
 
-  tryCatch({
+  try({
     res <- brapiGET(germplasm_pedigree)
     res <- httr::content(res, "text", encoding = "UTF-8")
     out <- NULL
     ms2tbl <- function(res){
       lst <- jsonlite::fromJSON(res)
       dat <- jsonlite::toJSON(lst$result)
-      if (rclass == 'data.frame') {
-        res <- jsonlite::fromJSON(dat, simplifyDataFrame = TRUE)
-      }
-      if (rclass == 'tibble') {
-        res <- jsonlite::fromJSON(dat, simplifyDataFrame = TRUE)
-        res <- tibble::as_tibble(res)
-      }
+      res <- jsonlite::fromJSON(dat, simplifyDataFrame = TRUE)
       attr(res, "metadata") <- lst$metadata
       res
     }
     if (rclass %in% c("json", "list")) out <- dat2tbl(res, rclass)
     if (rclass == "tibble")     out  <- ms2tbl(res) %>% tibble::as_tibble()
+    if (rclass == 'data.frame') out  <- ms2tbl(res) %>% tibble::as_tibble() %>% as.data.frame()
     out
-  }, error = function(e){
-    NULL
   })
 }

@@ -22,6 +22,15 @@ test_that("Metadata object is ok.", {
   expect_equal(class(metadata[3]), "list")
 })
 
+test_that("Returned tibble is ok.", {
+  expect_equal(nrow(germplasm_markerprofiles(3)), 3)
+})
+
+test_that("Returned data.frame is ok.", {
+  expect_equal(nrow(germplasm_markerprofiles(3, "data.frame")), 3)
+})
+
+
 test_that("Parameters are tested.", {
   expect_equal(length(brapi::germplasm_markerprofiles(3, "list")$result), 2)
   expect_equal(length(brapi::germplasm_markerprofiles(3, "list")$result$markerProfiles), 3)
