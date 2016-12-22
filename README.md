@@ -49,7 +49,7 @@ Out of 44 BrAPI calls currently **21 (47.7%)** are implemented in this package.
 | maps/id/positions/id        | json           | GET       | GENOTYPING  |
 | locations                   | json           | GET       | PHENOTYPING |
 
-How to use
-----------
+How to use the package
+----------------------
 
 See [tutorial](https://github.com/c5sire/brapi/blob/master/vignettes/tutorial.md).
