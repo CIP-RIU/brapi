@@ -1,6 +1,11 @@
 brapi_status <- function(code = 100, message = "No matching records found.", status = NULL){
   if(code == 100){
-    pagination = list()
+    pagination = list(
+      pageSize = 0,
+      currentPage = 0,
+      totalCount = 0,
+      totalPages = 0
+    )
   }
 
   if (is.null(status)) {
@@ -15,5 +20,5 @@ brapi_status <- function(code = 100, message = "No matching records found.", sta
     status[[length(status) + 1]] <- list(code = code, message =  message)
   }
 
-  list(pagination = NULL, status = status, data = list())
+  list(pagination = pagination, status = status, data = list())
 }

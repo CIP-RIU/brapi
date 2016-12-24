@@ -4,7 +4,10 @@
 \alias{mock_server}
 \title{mock}
 \usage{
-mock_server()
+mock_server(port = 2021)
+}
+\arguments{
+\item{port}{integer; default 2021}
 }
 \description{
 Starts a mock BrAPI server intended for local testing of brapi calls.

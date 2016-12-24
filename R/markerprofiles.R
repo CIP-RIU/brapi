@@ -3,10 +3,10 @@
 #'
 #' Lists markers as result of a search.
 #'
-#' @param germplasmDbId integer; default 0
-#' @param studyDbId integer; default 0
-#' @param sampleDbId integer; default: 0
-#' @param extractDbId integer; default: 0
+#' @param germplasmDbId character; default ""
+#' @param studyDbId character; default ""
+#' @param sampleDbId character; default: ""
+#' @param extractDbId character; default: ""
 #' @param methodDbId string; default: unknown
 #' @param page integer; default: 0
 #' @param pageSize integer; default 1000
@@ -22,30 +22,34 @@
 #' @family brapi_call
 #' @family genotyping
 #' @export
-markerprofiles <- function(germplasmDbId = 0,
-                             studyDbId = 0,
-                             sampleDbId  = 0,
-                             extractDbId = 0,
-                             methodDbId = 0,
+markerprofiles <- function(germplasmDbId = "",
+                             studyDbId = "",
+                             sampleDbId  = "",
+                             extractDbId = "",
+                             methodDbId = "",
                              page = 0, pageSize = 10000,
                              rclass = "tibble"){
   brapi::check(FALSE, "markerprofiles")
   brp <- get_brapi()
-  if (is.numeric(page) & is.numeric(pageSize)) {
-    markerprofiles = paste0(brp, "markerprofiles/?page=", page, "&pageSize=", pageSize)
-  }
-  if(germplasmDbId > 0) markerprofiles = paste0(markerprofiles, "&germplasm=", germplasmDbId)
-  if(studyDbId > 0) markerprofiles = paste0(markerprofiles, "&studyDbId=", studyDbId)
-  if(sampleDbId > 0) markerprofiles = paste0(markerprofiles, "&sample=", sampleDbId)
-  if(extractDbId > 0) markerprofiles = paste0(markerprofiles, "&extract=", extractDbId)
-  if(methodDbId > 0) markerprofiles = paste0(markerprofiles, "&method=", methodDbId)
+  markerprofiles = paste0(brp, "markerprofiles/?")
 
-  tryCatch({
+  germplasmDbId = ifelse(is.numeric(germplasmDbId), paste0("germplasm=", germplasmDbId, "&"), "")
+  studyDbId = ifelse(studyDbId != "", paste0("study=", studyDbId, "&"), "")
+  sampleDbId = ifelse(sampleDbId != "", paste0("sample=", sampleDbId, "&"), "")
+  extractDbId = ifelse(extractDbId != "", paste0("extract=", extractDbId, "&"), "")
+  methodDbId = ifelse(methodDbId != "", paste0("method=", methodDbId, "&"), "")
+
+  page = ifelse(is.numeric(page), paste0("page=", page, ""), "")
+  pageSize = ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
+  rclass = ifelse(rclass %in% c("tibble", "data.frame", "json", "list"), rclass, "tibble")
+
+  markerprofiles = paste0(markerprofiles, germplasmDbId, studyDbId, sampleDbId, extractDbId,
+                          methodDbId, pageSize, page)
+
+  try({
     res <- brapiGET(markerprofiles)
     res <- httr::content(res, "text", encoding = "UTF-8")
     dat2tbl(res, rclass)
-  }, error = function(e){
-    NULL
   })
 }
 

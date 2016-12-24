@@ -4,18 +4,18 @@
 \alias{markerprofiles}
 \title{marker search}
 \usage{
-markerprofiles(germplasmDbId = 0, studyDbId = 0, sampleDbId = 0,
-  extractDbId = 0, methodDbId = 0, page = 0, pageSize = 10000,
+markerprofiles(germplasmDbId = "", studyDbId = "", sampleDbId = "",
+  extractDbId = "", methodDbId = "", page = 0, pageSize = 10000,
   rclass = "tibble")
 }
 \arguments{
-\item{germplasmDbId}{integer; default 0}
+\item{germplasmDbId}{character; default ""}
 
-\item{studyDbId}{integer; default 0}
+\item{studyDbId}{character; default ""}
 
-\item{sampleDbId}{integer; default: 0}
+\item{sampleDbId}{character; default: ""}
 
-\item{extractDbId}{integer; default: 0}
+\item{extractDbId}{character; default: ""}
 
 \item{methodDbId}{string; default: unknown}
 

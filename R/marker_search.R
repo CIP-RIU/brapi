@@ -28,16 +28,21 @@ marker_search <- function(name = "none",
                              include = "synonyms",
                              page = 0, pageSize = 1000,
                              rclass = "tibble"){
-  brapi::check(FALSE)
+  brapi::check(FALSE, "markers")
   brp <- get_brapi()
-  if (is.numeric(page) & is.numeric(pageSize)) {
-    marker_search = paste0(brp, "markers/?page=", page, "&pageSize=", pageSize)
-  }
-  marker_search = paste0(marker_search, "&matchMethod=", matchMethod)
+  marker_search = paste0(brp, "markers/?")
 
-  if(include != "none") marker_search = paste0(marker_search, "&include=synonyms")
-  if(name != "none") marker_search = paste0(marker_search, "&name=", name)
-  if(type != "all")  marker_search = paste0(marker_search, "&type=", type)
+  page = ifelse(is.numeric(page), paste0("page=", page, "&"), "")
+  pageSize = ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
+
+  name = ifelse(name != "none", paste0("name=", name, "&"), "")
+  type = ifelse(type != "all", paste0("type=", type, "&"), "")
+  matchMethod = ifelse(matchMethod %in% c("exact", "case_insensitive", "wildcard"),
+                       paste0("matchMethod=", matchMethod, "&"), "")
+  include = ifelse(include %in% c("synonyms", "none"), paste0("include=", include, "&"), "")
+  rclass = ifelse(rclass %in% c("tibble", "data.frame", "json", "list"), rclass, "tibble")
+
+  marker_search = paste0(marker_search, name, type, matchMethod, include,  pageSize, page)
 
   try({
     res <- brapiGET(marker_search)
