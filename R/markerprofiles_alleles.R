@@ -24,29 +24,35 @@
 #' @export
 markerprofiles_alleles <- function(markerprofilesDbId = 0,
                              expandHomozygotes = FALSE,
-                             unknownString  = "-",
+                             unknownString  = "N",
                              sepPhased = "|",
                              sepUnphased = "/",
                              page = 0, pageSize = 10000,
-                             rclass = "list"){
+                             rclass = "tibble"){
   brapi::check(FALSE)
   brp <- get_brapi()
-  if(markerprofilesDbId > 0) markerprofiles_alleles = paste0(brp, "markerprofiles/", markerprofilesDbId)
-  if (is.numeric(page) & is.numeric(pageSize)) {
-    markerprofiles_alleles = paste0(markerprofiles_alleles, "/?page=", page, "&pageSize=", pageSize)
-  }
+  if(markerprofilesDbId > 0) markerprofiles_alleles = paste0(brp, "markerprofiles/", markerprofilesDbId, "/?")
 
-  markerprofiles_alleles = paste0(markerprofiles_alleles, "&expandHomozygtes=", expandHomozygotes)
-  markerprofiles_alleles = paste0(markerprofiles_alleles, "&unknownString=", unknownString)
-  markerprofiles_alleles = paste0(markerprofiles_alleles, "&sepPhased=", sepPhased)
-  markerprofiles_alleles = paste0(markerprofiles_alleles, "&sepUnphased=", sepUnphased)
+  expandHomozygotes = ifelse(expandHomozygotes != "", paste0("expandHomozygotes=", expandHomozygotes, "&"), "")
+  sepPhased = ifelse(sepPhased != "", paste0("sepPhased=", sepPhased, "&"), "")
+  sepUnphased = ifelse(sepUnphased != "", paste0("sepUnphased=", sepUnphased, "&"), "")
 
-  tryCatch({
+  page = ifelse(is.numeric(page), paste0("page=", page, ""), "")
+  pageSize = ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
+  rclass = ifelse(rclass %in% c("tibble", "data.frame", "json", "list"), rclass, "tibble")
+
+  markerprofiles_alleles = paste0(markerprofiles_alleles, expandHomozygotes, sepPhased, sepUnphased,
+                          pageSize, page)
+
+
+
+  try({
     res <- brapiGET(markerprofiles_alleles)
     res <- httr::content(res, "text", encoding = "UTF-8")
-    dat2tbl(res, rclass)
-  }, error = function(e){
-    NULL
+    out = NULL
+    if(rclass %in% c("json", "list")) out <- dat2tbl(res, rclass)
+    if(rclass %in% c("data.frame", "tibble")) out <- mpa2tbl(res, rclass)
+    out
   })
 }
 

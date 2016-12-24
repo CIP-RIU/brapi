@@ -5,8 +5,8 @@
 \title{marker search}
 \usage{
 markerprofiles_alleles(markerprofilesDbId = 0, expandHomozygotes = FALSE,
-  unknownString = "-", sepPhased = "|", sepUnphased = "/", page = 0,
-  pageSize = 10000, rclass = "list")
+  unknownString = "N", sepPhased = "|", sepUnphased = "/", page = 0,
+  pageSize = 10000, rclass = "tibble")
 }
 \arguments{
 \item{markerprofilesDbId}{integer; default 0}
