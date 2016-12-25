@@ -50,7 +50,7 @@ markerprofiles_alleles <- function(markerprofilesDbId = 0,
     res <- brapiGET(markerprofiles_alleles)
     res <- httr::content(res, "text", encoding = "UTF-8")
     out = NULL
-    if(rclass %in% c("json", "list")) out <- dat2tbl(res, rclass)
+    if(rclass %in% c("json", "list")) out <- dat2tbl(res, rclass, "brapi_markerprofiles_alleles")
     if(rclass %in% c("data.frame", "tibble")) out <- mpa2tbl(res, rclass)
     out
   })

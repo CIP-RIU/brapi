@@ -11,7 +11,7 @@ test_that("Markers are listed.", {
 
 test_that("Calls parameters work.", {
   expect_equal(class(markers(1, "tibble"))[1], "tbl_df")
-  expect_equal(class(markers(1, "data.frame")), "data.frame")
+  expect_equal((class(markers(1, "data.frame")))[1], "data.frame")
   expect_equal(class(markers(1, "list"))[1], "list")
   expect_equal(class(markers(1, "json")), "json")
 })

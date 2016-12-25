@@ -31,7 +31,7 @@ test_that("include", {
 test_that("rclass", {
   expect_equal(marker_search("*", matchMethod = "wildcard", rclass = "json") %>% class, 'json')
   expect_equal(marker_search("*", matchMethod = "wildcard", rclass = "list") %>% class, 'list')
-  expect_equal(marker_search("*", matchMethod = "wildcard", rclass = "data.frame") %>% class, 'data.frame')
+  expect_equal((marker_search("*", matchMethod = "wildcard", rclass = "data.frame") %>% class)[1], 'data.frame')
   expect_equal(class(marker_search("*", matchMethod = "wildcard", rclass = "tibble"))[1], 'tbl_df')
 })
 
