@@ -4,15 +4,15 @@
 \alias{allelematrix_search}
 \title{marker search}
 \usage{
-allelematrix_search(markerprofileDbId = 0, markerDbId = 0,
+allelematrix_search(markerprofileDbId = "", markerDbId = "",
   expandHomozygotes = FALSE, unknownString = "-", sepPhased = "|",
   sepUnphased = "/", format = "json", page = 0, pageSize = 10000,
   method = "GET", rclass = "tibble")
 }
 \arguments{
-\item{markerprofileDbId}{integer; default 0}
+\item{markerprofileDbId}{character vector; default ""}
 
-\item{markerDbId}{integer; default 0}
+\item{markerDbId}{character vector; default ""}
 
 \item{expandHomozygotes}{logical; default false}
 

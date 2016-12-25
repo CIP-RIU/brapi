@@ -22,7 +22,7 @@
 #' @family brapi_call
 #' @family genotyping
 #' @export
-markerprofiles_alleles <- function(markerprofilesDbId = 0,
+markerprofiles_alleles <- function(markerprofilesDbId = "",
                              expandHomozygotes = FALSE,
                              unknownString  = "N",
                              sepPhased = "|",
@@ -31,7 +31,7 @@ markerprofiles_alleles <- function(markerprofilesDbId = 0,
                              rclass = "tibble"){
   brapi::check(FALSE)
   brp <- get_brapi()
-  if(markerprofilesDbId > 0) markerprofiles_alleles = paste0(brp, "markerprofiles/", markerprofilesDbId, "/?")
+  markerprofiles_alleles = paste0(brp, "markerprofiles/", markerprofilesDbId, "/?")
 
   expandHomozygotes = ifelse(expandHomozygotes != "", paste0("expandHomozygotes=", expandHomozygotes, "&"), "")
   sepPhased = ifelse(sepPhased != "", paste0("sepPhased=", sepPhased, "&"), "")

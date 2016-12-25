@@ -4,7 +4,7 @@
 \alias{markerprofiles_alleles}
 \title{marker search}
 \usage{
-markerprofiles_alleles(markerprofilesDbId = 0, expandHomozygotes = FALSE,
+markerprofiles_alleles(markerprofilesDbId = "", expandHomozygotes = FALSE,
   unknownString = "N", sepPhased = "|", sepUnphased = "/", page = 0,
   pageSize = 10000, rclass = "tibble")
 }

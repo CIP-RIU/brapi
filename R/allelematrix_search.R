@@ -3,8 +3,8 @@
 #'
 #' Lists markers as result of a search.
 #'
-#' @param markerprofileDbId integer; default 0
-#' @param markerDbId integer; default 0
+#' @param markerprofileDbId character vector; default ""
+#' @param markerDbId character vector; default ""
 #' @param expandHomozygotes logical; default false
 #' @param unknownString chaaracter; default: '-'
 #' @param sepPhased character; default: '|'
@@ -25,8 +25,8 @@
 #' @family brapi_call
 #' @family genotyping
 #' @export
-allelematrix_search <- function(markerprofileDbId = 0,
-                                markerDbId = 0,
+allelematrix_search <- function(markerprofileDbId = "",
+                                markerDbId = "",
                              expandHomozygotes = FALSE,
                              unknownString  = "-",
                              sepPhased = "|",
@@ -35,28 +35,25 @@ allelematrix_search <- function(markerprofileDbId = 0,
                              page = 0, pageSize = 10000,
                              method = "GET",
                              rclass = "tibble") {
-  brapi::check(FALSE)
+  brapi::check(FALSE, "allelematrix-search")
   brp <- get_brapi()
-  if (markerprofileDbId > 0) {
-    allelematrix_search = paste0(brp, "allelematrix-search/?markerprofileDbId=",
-                                    paste(markerprofileDbId, collapse = ",")
-    )
-  }
-  if (markerDbId > 0) {
-    allelematrix_search = paste0(allelematrix_search, "&markerDbId=",
-                                 paste(markerDbId, collapse = ",")
-    )
-  }
 
-  if (is.numeric(page) & is.numeric(pageSize)) {
-    allelematrix_search = paste0(allelematrix_search, "&page=", page, "&pageSize=", pageSize)
-  }
+  allelematrix_search = paste0(brp, "allelematrix-search/?")
+  markerprofileDbId = paste0("markerprofileDbId=", markerprofileDbId, "&") %>% paste(collapse = "")
+  markerDbId = paste0("markerDbId=", markerDbId, "&") %>% paste(collapse = "")
 
-  allelematrix_search = paste0(allelematrix_search, "&expandHomozygtes=", expandHomozygotes)
-  allelematrix_search = paste0(allelematrix_search, "&unknownString=", unknownString)
-  allelematrix_search = paste0(allelematrix_search, "&sepPhased=", sepPhased)
-  allelematrix_search = paste0(allelematrix_search, "&sepUnphased=", sepUnphased)
-  allelematrix_search = paste0(allelematrix_search, "&format=", format)
+  expandHomozygotes = ifelse(expandHomozygotes != "", paste0("expandHomozygotes=", tolower(expandHomozygotes), "&"), "")
+  sepPhased = ifelse(sepPhased != "", paste0("sepPhased=", sepPhased, "&"), "")
+  sepUnphased = ifelse(sepUnphased != "", paste0("sepUnphased=", sepUnphased, "&"), "")
+
+  page = ifelse(is.numeric(page), paste0("page=", page, ""), "")
+  pageSize = ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
+  rclass = ifelse(rclass %in% c("tibble", "data.frame", "json", "list"), rclass, "tibble")
+
+  allelematrix_search = paste0(allelematrix_search, markerprofileDbId, markerDbId,
+                               expandHomozygotes, sepPhased, sepUnphased,
+                                  pageSize, page)
+
 
   transform_data <- function(res, format, rclass) {
     res <- httr::content(res, "text", encoding = "UTF-8")

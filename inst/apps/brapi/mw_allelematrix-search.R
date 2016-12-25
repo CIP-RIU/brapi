@@ -1,5 +1,5 @@
-library(jug)
-library(jsonlite)
+# library(jug)
+# library(jsonlite)
 source(system.file("apps/brapi/utils/brapi_status.R", package = "brapi"))
 source(system.file("apps/brapi/utils/paging.R", package = "brapi"))
 source(system.file("apps/brapi/utils/safe_split.R", package = "brapi"))
@@ -67,8 +67,10 @@ allelematrix_search_list = function(markerprofilesDbId = "", markerDbId = "",
       }
     }
   } else {
-    x = tidyr::spread(x, markerDbId, alleleCall)
-    colnames(x)[2:ncol(x)] = paste0("m", colnames(x)[2:ncol(x)])
+    x = tidyr::spread(x, markerDbId, alleleCall) %>% t
+    colnames(x) = x[1, ]
+    x = x[-c(1), ]
+    #colnames(x)[2:ncol(x)] = paste0( colnames(x)[2:ncol(x)])
     out = toTextTable(x, format)
     pg$pagination = list(pageSize = 0, currentPage = 0, totalPages = 0, totalCount = 0)
     attr(out, "datafiles") = list(url =
@@ -103,16 +105,15 @@ allelematrix_search = list(
 
 process_allelematrix_search <- function(req, res, err){
   prms <- names(req$params)
-  # message("Hi")
-  # message(req$method)
-  # message(req$path)
-  # #message(req$raw)
-  # message(req$body)
-  # message(paste(names(req$params), collapse = ", "))
-  # message(paste(req$params, collapse = ", "))
 
-  markerprofilesDbId = ifelse('markerprofileDbId' %in% prms, req$params$markerprofileDbId, "0")
-  markerDbId = ifelse('markerDbId' %in% prms, req$params$markerDbId, "0")
+  markerprofilesDbId = ifelse('markerprofileDbId' %in% prms, req$params$markerprofileDbId, "")
+  markerprofilesDbId = req$params[names(req$params) == "markerprofileDbId"] %>% paste(collapse = ",")
+  markerprofilesDbId = safe_split(markerprofilesDbId, ",")
+
+  markerDbId = ifelse('markerDbId' %in% prms, req$params$markerDbId, "")
+  markerDbId = req$params[names(req$params) == "markerDbId"] %>% paste(collapse = ",")
+  markerDbId = safe_split(markerDbId, ",")
+
   unknownString = ifelse('unknownString' %in% prms, req$params$unknownString, "-")
   expandHomozygotes = ifelse('expandHomozygotes' %in% prms, req$params$expandHomozygotes, FALSE)
   sepPhased = ifelse('sepPhased' %in% prms, req$params$sepPhased, "|")
@@ -150,12 +151,16 @@ process_allelematrix_search_format <- function(req, res, err){
 
   # TODO use allelematrix.csv? and allelematrix.tsv?
   format = ifelse(basename(req$path) %in% c("csv", "tsv"), basename(req$path), "json")
-  #message(format)
   prms <- names(req$params)
 
-  #message("1")
   markerprofilesDbId = ifelse('markerprofileDbId' %in% prms, req$params$markerprofileDbId, "")
+  markerprofilesDbId = req$params[names(req$params) == "markerprofileDbId"] %>% paste(collapse = ",")
+  markerprofilesDbId = safe_split(markerprofilesDbId, ",")
+
   markerDbId = ifelse('markerDbId' %in% prms, req$params$markerDbId, "")
+  markerDbId = req$params[names(req$params) == "markerDbId"] %>% paste(collapse = ",")
+  markerDbId = safe_split(markerDbId, ",")
+
   unknownString = ifelse('unknownString' %in% prms, req$params$unknownString, "-")
   expandHomozygotes = ifelse('expandHomozygotes' %in% prms, req$params$expandHomozygotes, TRUE)
   sepPhased = ifelse('sepPhased' %in% prms, req$params$sepPhased, "|")
