@@ -55,46 +55,22 @@ allelematrix_search <- function(markerprofileDbId = "",
                                   pageSize, page)
 
 
-  transform_data <- function(res, format, rclass) {
-    res <- httr::content(res, "text", encoding = "UTF-8")
-    out = NULL
-    if(format == "json") {
-      out = dat2tbl(res, rclass)
-      if(rclass %in% c("data.frame", "tibble")) {
-        colnames(out) =
-          c("markerprofileDbId", "markerDbId", "alleleCall")
-      }
-    }
-    if(format == "csv"){
-      url = jsonlite::fromJSON(res)$metadata$data$url
-      out = utils::read.csv(url, stringsAsFactors = FALSE)
-      if(rclass == "tibble"){
-        out = tibble::as_tibble(out)
-      }
-    }
-    if(format == "tsv"){
-      url = jsonlite::fromJSON(res)$metadata$data$url
-      out = utils::read.delim(url, stringsAsFactors = FALSE)
-      if(rclass == "tibble"){
-        out = tibble::as_tibble(out)
-      }
-    }
-    out
-  }
-
 
 
   if(method == "GET"){
-    out <- tryCatch({
+    out <- try({
       res <- brapiGET(allelematrix_search)
-      transform_data(res, format, rclass)
-    }, error = function(e){
-      NULL
+      ams2tbl(res, format, rclass)
     })
 
   } else {
-    body = list(markerprofileDbId = markerprofileDbId %>% paste(collapse = ","),
-                markerDbId = markerDbId %>% paste(collapse = ","),
+    x1 = as.list(markerprofileDbId)
+    names(x1)[1:length(markerprofileDbId)] = "markerprofileDbId"
+    x2 = as.list(markerDbId)
+    names(x2)[1:length(markerDbId)] = "markerDbId"
+    body = list(#markerprofileDbId = markerprofileDbId %>% paste(collapse = ","),
+                #markerDbId = markerDbId %>% paste(collapse = ","),
+
                 expandHomozygotes  = expandHomozygotes %>% tolower(),
                 unknownString = unknownString,
                 sepPhased = sepPhased,
@@ -102,16 +78,14 @@ allelematrix_search <- function(markerprofileDbId = "",
                 format = format,
                 page = page,
                 pageSize = pageSize)
-    out = tryCatch({
+    body = c(x1, x2, body)
+    out = try({
       allelematrix_search = paste0(brp, "allelematrix-search/")
       # message(allelematrix_search)
       # message(body)
       res <- brapiPOST(allelematrix_search, body)
-      transform_data(res, format, rclass)
-    }, error = function(e){
-      NULL
+      ams2tbl(res, format, rclass)
     })
-
   }
 
   out

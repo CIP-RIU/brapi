@@ -51,6 +51,7 @@ allelematrix_search_list = function(markerprofilesDbId = "", markerDbId = "",
   # paging here after filtering
   pg = paging(x, page, pageSize)
   x <- x[pg$recStart:pg$recEnd, ]
+  #message(str(x))
 
   out = list()
 
@@ -67,9 +68,10 @@ allelematrix_search_list = function(markerprofilesDbId = "", markerDbId = "",
       }
     }
   } else {
-    x = tidyr::spread(x, markerDbId, alleleCall) %>% t
-    colnames(x) = x[1, ]
+    x = tidyr::spread(x, markerDbId, alleleCall) %>% t %>% tibble::as_tibble()
+    colnames(x) = x[1, ]# %>% tibble::as_tibble()
     x = x[-c(1), ]
+    #message(str(x))
     #colnames(x)[2:ncol(x)] = paste0( colnames(x)[2:ncol(x)])
     out = toTextTable(x, format)
     pg$pagination = list(pageSize = 0, currentPage = 0, totalPages = 0, totalCount = 0)
