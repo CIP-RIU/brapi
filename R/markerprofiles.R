@@ -49,11 +49,39 @@ markerprofiles <- function(germplasmDbId = "",
   pmarkerprofiles = paste0(pmarkerprofiles, pgermplasmDbId, pstudyDbId, psampleDbId, pextractDbId,
                           pmethodDbId, ppageSize, ppage)
 
-  out <- try({
-    res <- brapiGET(pmarkerprofiles)
-    res <- httr::content(res, "text", encoding = "UTF-8")
-    dat2tbl(res, rclass)
-  })
+  out <- NULL
+
+  nurl = nchar(pmarkerprofiles)
+  if(nurl <= 2000){
+    message_brapi("Using GET")
+    out <- try({
+      res <- brapiGET(pmarkerprofiles)
+      res <- httr::content(res, "text", encoding = "UTF-8")
+      dat2tbl(res, rclass)
+    })
+
+  }
+  if(nurl > 2000){
+    message_brapi("Using POST")
+
+    x1 = as.list(germplasmDbId)
+    names(x1)[1:length(germplasmDbId)] = "germplasm"
+    x2 = as.list(extractDbId)
+    names(x2)[1:length(extractDbId)] = "extract"
+    body = list(studyDbId = studyDbId,
+                sample = sampleDbId,
+                method = methodDbId,
+                page = page,
+                pageSize = pageSize)
+    body = c(x1, x2, body)
+
+    out <- try({
+      pmarkerprofiles = paste0(brp, "markerprofiles-search/?")
+      res <- brapiPOST(pmarkerprofiles, body )
+      res <- httr::content(res, "text", encoding = "UTF-8")
+      dat2tbl(res, rclass)
+    })
+  }
 
   out
 }

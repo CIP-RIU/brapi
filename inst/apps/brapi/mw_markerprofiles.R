@@ -50,25 +50,23 @@ markerprofiles = list(
 process_markerprofiles <- function(req, res, err){
   prms <- names(req$params)
 
-  germplasmDbId = ifelse('germplasm' %in% prms, req$params$germplasm, "")
   germplasmDbId = req$params[names(req$params) == "germplasm"] %>% paste(collapse = ",")
   germplasmDbId = safe_split(germplasmDbId, ",")
 
-  extractDbId = ifelse('extract' %in% prms, req$params$extract, "")
   extractDbId = req$params[names(req$params) == "extract"] %>% paste(collapse = ",")
   extractDbId = safe_split(extractDbId, ",")
 
   #germplasmDbId = ifelse('germplasm' %in% prms, req$params$germplasm, "")
-  studyDbId = ifelse('studyDbId' %in% prms, req$params$study, "")
+  studyDbId = ifelse('studyDbId' %in% prms, req$params$studyDbId, "")
   sampleDbId = ifelse('sample' %in% prms, req$params$sample, "")
   #extractDbId = ifelse('extract' %in% prms, req$params$extract, "")
   analysisMethod = ifelse('method' %in% prms, req$params$method, "all")
 
-  # message(paste("germplasm", germplasmDbId))
-  # message(paste("study", studyDbId))
-  # message(paste("sample", sampleDbId))
-  # message(paste("extract", extractDbId))
-  # message(paste("method", analysisMethod))
+  message(paste("germplasm", paste(germplasmDbId, collapse = ", ")))
+  message(paste("study", studyDbId))
+  message(paste("sample", sampleDbId))
+  message(paste("extract", paste(extractDbId, collapse = ", ")))
+  message(paste("method", analysisMethod))
 
   page = ifelse('page' %in% prms, as.integer(req$params$page), 0)
   pageSize = ifelse('pageSize' %in% prms, as.integer(req$params$pageSize), 100)

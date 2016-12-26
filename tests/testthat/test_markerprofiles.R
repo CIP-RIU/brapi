@@ -17,6 +17,13 @@ test_that("Parmaeter", {
   expect_equal(markerprofiles(sampleDbId = 33) %>% nrow, 1)
 })
 
+
+test_that("POST", {
+  expect_equal(markerprofiles(3:1000) %>% nrow, 2)
+
+})
+
+
 test_that("paging", {
   expect_equal(markerprofiles(3, pageSize = 1, rclass = "tibble") %>% nrow, 1)
 
