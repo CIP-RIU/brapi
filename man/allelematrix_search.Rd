@@ -2,7 +2,7 @@
 % Please edit documentation in R/allelematrix_search.R
 \name{allelematrix_search}
 \alias{allelematrix_search}
-\title{marker search}
+\title{allelematrix search}
 \usage{
 allelematrix_search(markerprofileDbId = "", markerDbId = "",
   expandHomozygotes = FALSE, unknownString = "-", sepPhased = "|",
@@ -36,7 +36,9 @@ allelematrix_search(markerprofileDbId = "", markerDbId = "",
 data.frame
 }
 \description{
-Lists markers as result of a search.
+Gets markers in matrix format. If the format parameter is set to either csv or tsv the returned object
+is always a tibble object. If the format parameter is 'json' (default) the rclass parameter can be used
+to as in other functions.
 }
 \author{
 Reinhard Simon

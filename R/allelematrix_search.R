@@ -1,7 +1,9 @@
 
-#' marker search
+#' allelematrix search
 #'
-#' Lists markers as result of a search.
+#' Gets markers in matrix format. If the format parameter is set to either csv or tsv the returned object
+#' is always a tibble object. If the format parameter is 'json' (default) the rclass parameter can be used
+#' to as in other functions.
 #'
 #' @param markerprofileDbId character vector; default ""
 #' @param markerDbId character vector; default ""
@@ -38,40 +40,40 @@ allelematrix_search <- function(markerprofileDbId = "",
   brapi::check(FALSE, "allelematrix-search")
   brp <- get_brapi()
 
-  allelematrix_search = paste0(brp, "allelematrix-search/?")
-  markerprofileDbId = paste0("markerprofileDbId=", markerprofileDbId, "&") %>% paste(collapse = "")
-  markerDbId = paste0("markerDbId=", markerDbId, "&") %>% paste(collapse = "")
+  pallelematrix_search = paste0(brp, "allelematrix-search/?")
+  pmarkerprofileDbId = paste0("markerprofileDbId=", markerprofileDbId, "&") %>% paste(collapse = "")
+  pmarkerDbId = paste0("markerDbId=", markerDbId, "&") %>% paste(collapse = "")
 
-  expandHomozygotes = ifelse(expandHomozygotes != "", paste0("expandHomozygotes=", tolower(expandHomozygotes), "&"), "")
-  sepPhased = ifelse(sepPhased != "", paste0("sepPhased=", sepPhased, "&"), "")
-  sepUnphased = ifelse(sepUnphased != "", paste0("sepUnphased=", sepUnphased, "&"), "")
+  pexpandHomozygotes = ifelse(expandHomozygotes != "", paste0("expandHomozygotes=", tolower(expandHomozygotes), "&"), "")
+  psepPhased = ifelse(sepPhased != "", paste0("sepPhased=", sepPhased, "&"), "")
+  psepUnphased = ifelse(sepUnphased != "", paste0("sepUnphased=", sepUnphased, "&"), "")
 
-  page = ifelse(is.numeric(page), paste0("page=", page, ""), "")
-  pageSize = ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
+  ppage = ifelse(is.numeric(page), paste0("page=", page, ""), "")
+  ppageSize = ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
   rclass = ifelse(rclass %in% c("tibble", "data.frame", "json", "list"), rclass, "tibble")
+  pformat = ifelse(format %in% c("json", "csv", "tsv"), paste0("format=", format, "&"), "")
 
-  allelematrix_search = paste0(allelematrix_search, markerprofileDbId, markerDbId,
-                               expandHomozygotes, sepPhased, sepUnphased,
-                                  pageSize, page)
+  pallelematrix_search = paste0(pallelematrix_search, pmarkerprofileDbId, pmarkerDbId,
+                               pexpandHomozygotes, psepPhased, psepUnphased, pformat,
+                                  ppageSize, ppage)
 
 
-
+  #pb <- progress::progress_bar$new(total = 100)
+  message(method)
 
   if(method == "GET"){
     out <- try({
-      res <- brapiGET(allelematrix_search)
+      res <- brapiGET(pallelematrix_search)
       ams2tbl(res, format, rclass)
     })
 
-  } else {
+  }
+  if(method == "POST"){
     x1 = as.list(markerprofileDbId)
     names(x1)[1:length(markerprofileDbId)] = "markerprofileDbId"
     x2 = as.list(markerDbId)
     names(x2)[1:length(markerDbId)] = "markerDbId"
-    body = list(#markerprofileDbId = markerprofileDbId %>% paste(collapse = ","),
-                #markerDbId = markerDbId %>% paste(collapse = ","),
-
-                expandHomozygotes  = expandHomozygotes %>% tolower(),
+    body = list(expandHomozygotes  = expandHomozygotes %>% tolower(),
                 unknownString = unknownString,
                 sepPhased = sepPhased,
                 sepUnphased = sepUnphased,
@@ -79,11 +81,14 @@ allelematrix_search <- function(markerprofileDbId = "",
                 page = page,
                 pageSize = pageSize)
     body = c(x1, x2, body)
-    out = try({
-      allelematrix_search = paste0(brp, "allelematrix-search/")
-      # message(allelematrix_search)
+    #print(body)
+    #message(names(body))
+    out <- try({
+      pallelematrix_search = paste0(brp, "allelematrix-search/?")
+      #message(pallelematrix_search)
       # message(body)
-      res <- brapiPOST(allelematrix_search, body)
+      res <- brapiPOST(pallelematrix_search, body )
+      #print(res$status_code)
       ams2tbl(res, format, rclass)
     })
   }

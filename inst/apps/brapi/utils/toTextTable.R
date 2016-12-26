@@ -12,5 +12,5 @@ toTextTable <- function(tbl, format = "csv"){
   hdr <- colnames(tbl) %>% paste(collapse = fmt)
   bdy <- rows %>% paste(collapse = "\n")
 
-  paste0("markerprofileDbIds", fmt, hdr, "\n", bdy, "\n")
+  paste0("markerprofileDbId", fmt, hdr, "\n", bdy, "\n")
 }

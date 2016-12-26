@@ -1,7 +1,7 @@
 brapiPOST <- function(url, body){
   res <- httr::POST(url, body = body, encode = "json")
-  txt <- ifelse(res$status == 200, " (ok)!", " (error)!" )
-  message_brapi(paste0("Server status: ", res$status, txt, "\n"))
+  txt <- ifelse(res$status_code == 200, " (ok)!", " (error)!" )
+  message_brapi(paste0("Server status: ", res$status_code, txt, "\n"))
 
   # TODO: Insert here status messages if any!
   out <- httr::content(res, "text", encoding = "UTF-8")

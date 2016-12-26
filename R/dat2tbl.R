@@ -11,7 +11,8 @@ dat2tbl <- function(res, rclass = "tibble", brapi_class = "brapi") {
     return(jsonlite::fromJSON(dat, simplifyVector = TRUE))
   }
   if (rclass == 'data.frame') {
-    res <- jsonlite::fromJSON(dat, simplifyDataFrame = TRUE)
+    res <- jsonlite::fromJSON(dat, simplifyDataFrame = TRUE) %>% as.data.frame
+    #res <- tibble::as_data_frame(res)
   }
   if (rclass == 'tibble') {
     res <- jsonlite::fromJSON(dat, simplifyDataFrame = TRUE)
