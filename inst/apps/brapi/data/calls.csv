@@ -11,8 +11,9 @@ germplasm/id/attributes/,json,GET,GENOTYPING,[Sweetpotatobase],brapi
 markers,json,GET,GENOTYPING,,brapi
 markers/id,json,GET,GENOTYPING,,brapi
 markerprofiles,json,GET,GENOTYPING,[Sweetpotatobase],brapi
+markerprofiles-search,json,POST,GENOTYPING,[Sweetpotatobase],brapi
 markerprofiles/id,json,GET,GENOTYPING,[Sweetpotatobase],brapi
-allelematrix-search,json; csv; tsv,GET; POST,GENOTYPING,[Sweetpotatobase],brapi
+allelematrix-search,json; csv; tsv,GET: POST,GENOTYPING,[Sweetpotatobase],brapi
 programs,json,GET,CORE,[Sweetpotatobase],brapi
 crops,json,GET,CORE,[Sweetpotatobase],brapi
 trials,json,GET,CORE,[Sweetpotatobase],

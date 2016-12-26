@@ -93,7 +93,7 @@ mw_markerprofiles <<-
     res$set_status(405)
   }) %>%
   post("/brapi/v1/markerprofiles[/]?", function(req, res, err){
-    res$set_status(405)
+    process_markerprofiles(req, res, err)
   }) %>%
   delete("/brapi/v1/markerprofiles[/]?", function(req, res, err){
     res$set_status(405)
