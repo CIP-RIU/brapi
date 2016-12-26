@@ -9,10 +9,10 @@ markerprofiles_data = tryCatch({
 markerprofiles_list = function(germplasmDbId = "", studyDbId = "",
                         sampleDbId = "", extractDbId = "", method = "all",
                         page = 0, pageSize = 1000){
-  if(germplasmDbId != "") markerprofiles_data <- markerprofiles_data[markerprofiles_data$germplasmDbId == germplasmDbId, ]
+  if(germplasmDbId != "") markerprofiles_data <- markerprofiles_data[markerprofiles_data$germplasmDbId %in% germplasmDbId, ]
   if(studyDbId != "") markerprofiles_data <- markerprofiles_data[markerprofiles_data$studyDbId == studyDbId, ]
   if(sampleDbId != "" ) markerprofiles_data <- markerprofiles_data[markerprofiles_data$sampleDbId == sampleDbId, ]
-  if(extractDbId != "" ) markerprofiles_data <- markerprofiles_data[markerprofiles_data$extractDbId == extractDbId, ]
+  if(extractDbId != "" ) markerprofiles_data <- markerprofiles_data[markerprofiles_data$extractDbId %in% extractDbId, ]
   if(method != "all" ) markerprofiles_data <- markerprofiles_data[markerprofiles_data$analysisMethod == method, ]
 
   if(nrow(markerprofiles_data) == 0) return(NULL)
@@ -51,9 +51,17 @@ process_markerprofiles <- function(req, res, err){
   prms <- names(req$params)
 
   germplasmDbId = ifelse('germplasm' %in% prms, req$params$germplasm, "")
-  studyDbId = ifelse('study' %in% prms, req$params$study, "")
-  sampleDbId = ifelse('sample' %in% prms, req$params$sample, "")
+  germplasmDbId = req$params[names(req$params) == "germplasm"] %>% paste(collapse = ",")
+  germplasmDbId = safe_split(germplasmDbId, ",")
+
   extractDbId = ifelse('extract' %in% prms, req$params$extract, "")
+  extractDbId = req$params[names(req$params) == "extract"] %>% paste(collapse = ",")
+  extractDbId = safe_split(extractDbId, ",")
+
+  #germplasmDbId = ifelse('germplasm' %in% prms, req$params$germplasm, "")
+  studyDbId = ifelse('studyDbId' %in% prms, req$params$study, "")
+  sampleDbId = ifelse('sample' %in% prms, req$params$sample, "")
+  #extractDbId = ifelse('extract' %in% prms, req$params$extract, "")
   analysisMethod = ifelse('method' %in% prms, req$params$method, "all")
 
   # message(paste("germplasm", germplasmDbId))
@@ -93,6 +101,9 @@ mw_markerprofiles <<-
     res$set_status(405)
   }) %>%
   post("/brapi/v1/markerprofiles[/]?", function(req, res, err){
+    res$set_status(405)
+  }) %>%
+  post("/brapi/v1/markerprofiles-search[/]?", function(req, res, err){
     process_markerprofiles(req, res, err)
   }) %>%
   delete("/brapi/v1/markerprofiles[/]?", function(req, res, err){
