@@ -11,6 +11,7 @@
 #' @param page integer; default: 0
 #' @param pageSize integer; default 1000
 #' @param rclass character; default: tibble
+#' @param method character; default: GET else POST
 #'
 #' @author Reinhard Simon
 #' @import httr
@@ -28,6 +29,7 @@ markerprofiles <- function(germplasmDbId = "",
                              extractDbId = "",
                              methodDbId = "",
                              page = 0, pageSize = 10000,
+                             method = "POST",
                              rclass = "tibble"){
   brapi::check(FALSE, "markerprofiles")
   brp <- get_brapi()
@@ -51,8 +53,9 @@ markerprofiles <- function(germplasmDbId = "",
 
   out <- NULL
 
-  nurl = nchar(pmarkerprofiles)
-  if(nurl <= 2000){
+  #nurl = nchar(pmarkerprofiles)
+
+  if(method == "GET"){
     message_brapi("Using GET")
     out <- try({
       res <- brapiGET(pmarkerprofiles)
@@ -61,7 +64,7 @@ markerprofiles <- function(germplasmDbId = "",
     })
 
   }
-  if(nurl > 2000){
+  if(method == "POST"){
     message_brapi("Using POST")
 
     x1 = as.list(germplasmDbId)

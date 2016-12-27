@@ -6,7 +6,7 @@
 \usage{
 markerprofiles(germplasmDbId = "", studyDbId = "", sampleDbId = "",
   extractDbId = "", methodDbId = "", page = 0, pageSize = 10000,
-  rclass = "tibble")
+  method = "POST", rclass = "tibble")
 }
 \arguments{
 \item{germplasmDbId}{character; default ""}
@@ -22,6 +22,8 @@ markerprofiles(germplasmDbId = "", studyDbId = "", sampleDbId = "",
 \item{page}{integer; default: 0}
 
 \item{pageSize}{integer; default 1000}
+
+\item{method}{character; default: GET else POST}
 
 \item{rclass}{character; default: tibble}
 }

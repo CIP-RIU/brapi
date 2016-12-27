@@ -19,8 +19,7 @@ test_that("Parmaeter", {
 
 
 test_that("POST", {
-  expect_equal(markerprofiles(3:1000) %>% nrow, 2)
-
+  expect_equal(markerprofiles(3:10, method = "POST") %>% nrow, 2)
 })
 
 
