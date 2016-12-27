@@ -54,6 +54,7 @@ if(interactive()){
 }
 }
 \seealso{
-Other access: \code{\link{calls}}, \code{\link{crops}}
+Other access: \code{\link{calls}}, \code{\link{crops}},
+  \code{\link{observationLevels}}
 }
 

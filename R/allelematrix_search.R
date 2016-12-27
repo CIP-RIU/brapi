@@ -14,6 +14,7 @@
 #' @param format character; default: json; other: csv, tsv
 #' @param page integer; default: 0
 #' @param pageSize integer; default 1000
+#' @note The handling of long-running responses via asynch status messages is not yet implemented.
 # @param method character; web access method. Default: GET; other: POST
 #' @param rclass character; default: tibble
 #'

@@ -23,7 +23,7 @@ The library implements currently mainly API calls to retrievie phenotypic field 
 Implementation status
 ---------------------
 
-Out of 44 BrAPI calls currently **21 (47.7%)** are implemented in this package.
+Out of 45 BrAPI calls currently **23 (51.1%)** are implemented in this package.
 
 | call                        | datatypes      | methods   | scope       |
 |:----------------------------|:---------------|:----------|:------------|
@@ -38,11 +38,13 @@ Out of 44 BrAPI calls currently **21 (47.7%)** are implemented in this package.
 | markers                     | json           | GET       | GENOTYPING  |
 | markers/id                  | json           | GET       | GENOTYPING  |
 | markerprofiles              | json           | GET       | GENOTYPING  |
+| markerprofiles-search       | json           | POST      | GENOTYPING  |
 | markerprofiles/id           | json           | GET       | GENOTYPING  |
-| allelematrix-search         | json; csv; tsv | GET; POST | GENOTYPING  |
+| allelematrix-search         | json; csv; tsv | GET: POST | GENOTYPING  |
 | programs                    | json           | GET       | CORE        |
 | crops                       | json           | GET       | CORE        |
 | seasons                     | json           | GET       | CORE        |
+| observationLevels           | json           | GET       | CORE        |
 | maps                        | json           | GET       | GENOTYPING  |
 | maps/id                     | json           | GET       | GENOTYPING  |
 | maps/id/positions           | json           | GET       | GENOTYPING  |

@@ -42,12 +42,13 @@ Other brapi_call: \code{\link{allelematrix_search}},
   \code{\link{marker_search}},
   \code{\link{markerprofiles_alleles}},
   \code{\link{markerprofiles}}, \code{\link{markers}},
-  \code{\link{seasons}}
+  \code{\link{observationLevels}}, \code{\link{seasons}}
 
 Other core: \code{\link{calls}}, \code{\link{crops}},
   \code{\link{germplasm_pedigree}},
   \code{\link{germplasm_search}}, \code{\link{germplasm}},
-  \code{\link{marker_search}}, \code{\link{seasons}}
+  \code{\link{marker_search}},
+  \code{\link{observationLevels}}, \code{\link{seasons}}
 
 Other experiments: \code{\link{seasons}}
 }

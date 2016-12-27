@@ -24,7 +24,8 @@ Reinhard Simon
 \url{http://docs.brapi.apiary.io/#reference/0/call-search}
 }
 \seealso{
-Other access: \code{\link{connect}}, \code{\link{crops}}
+Other access: \code{\link{connect}}, \code{\link{crops}},
+  \code{\link{observationLevels}}
 
 Other brapi_call: \code{\link{allelematrix_search}},
   \code{\link{attributes_categories}},
@@ -39,12 +40,14 @@ Other brapi_call: \code{\link{allelematrix_search}},
   \code{\link{marker_search}},
   \code{\link{markerprofiles_alleles}},
   \code{\link{markerprofiles}}, \code{\link{markers}},
-  \code{\link{programs}}, \code{\link{seasons}}
+  \code{\link{observationLevels}}, \code{\link{programs}},
+  \code{\link{seasons}}
 
 Other core: \code{\link{crops}},
   \code{\link{germplasm_pedigree}},
   \code{\link{germplasm_search}}, \code{\link{germplasm}},
-  \code{\link{marker_search}}, \code{\link{programs}},
+  \code{\link{marker_search}},
+  \code{\link{observationLevels}}, \code{\link{programs}},
   \code{\link{seasons}}
 }
 

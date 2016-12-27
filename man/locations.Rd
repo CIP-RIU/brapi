@@ -42,6 +42,7 @@ Other brapi_call: \code{\link{allelematrix_search}},
   \code{\link{marker_search}},
   \code{\link{markerprofiles_alleles}},
   \code{\link{markerprofiles}}, \code{\link{markers}},
-  \code{\link{programs}}, \code{\link{seasons}}
+  \code{\link{observationLevels}}, \code{\link{programs}},
+  \code{\link{seasons}}
 }
 

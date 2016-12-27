@@ -38,6 +38,9 @@ Gets markers in matrix format. If the format parameter is set to either csv or t
 is always a tibble object. If the format parameter is 'json' (default) the rclass parameter can be used
 to as in other functions.
 }
+\note{
+The handling of long-running responses via asynch status messages is not yet implemented.
+}
 \author{
 Reinhard Simon
 }
@@ -57,7 +60,8 @@ Other brapi_call: \code{\link{attributes_categories}},
   \code{\link{marker_search}},
   \code{\link{markerprofiles_alleles}},
   \code{\link{markerprofiles}}, \code{\link{markers}},
-  \code{\link{programs}}, \code{\link{seasons}}
+  \code{\link{observationLevels}}, \code{\link{programs}},
+  \code{\link{seasons}}
 
 Other genotyping: \code{\link{attributes_categories}},
   \code{\link{attributes}},

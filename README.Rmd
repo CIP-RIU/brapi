@@ -70,7 +70,7 @@ See [tutorial](https://github.com/c5sire/brapi/blob/master/vignettes/tutorial.md
 #       "loc2tbl", "brapi_con", "brapiConnectInput", "brapiPOST", "brapiConnect",
 #       "locations_list",
 #       "germplasm_mcpd", "print.brapi", ".onLoad", "brapi_auth", "df2tibble"))
-# 
+
 # covr::report(rp)
 
 ```

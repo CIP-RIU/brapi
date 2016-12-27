@@ -16,15 +16,15 @@ markerprofiles/id,json,GET,GENOTYPING,[Sweetpotatobase],brapi
 allelematrix-search,json; csv; tsv,GET: POST,GENOTYPING,[Sweetpotatobase],brapi
 programs,json,GET,CORE,[Sweetpotatobase],brapi
 crops,json,GET,CORE,[Sweetpotatobase],brapi
-trials,json,GET,CORE,[Sweetpotatobase],
-trials/id,json,GET,CORE,[Sweetpotatobase],
+trials,json,GET,PHENOTYPING,[Sweetpotatobase],
+trials/id,json,GET,PHENOTYPING,[Sweetpotatobase],
 seasons,json,GET,CORE,[Sweetpotatobase],brapi
 studyTypes,json,GET,CORE,[Sweetpotatobase],
 studies-search,json,GET; POST,CORE,[Sweetpotatobase],
 studies/id,json,GET,CORE,[Sweetpotatobase],
 studies/id/observationVariables,json,GET,CORE,,
 studies/id/germplasm,json,GET,CORE,[Sweetpotatobase],
-observationLevels,json,GET,CORE,[Sweetpotatobase],
+observationLevels,json,GET,CORE,[Sweetpotatobase],brapi
 studies/id/observationUnits,json,GET; POST,CORE,,
 studies/id/table,json; csv; tsv,GET; POST,CORE,[Sweetpotatobase],
 studies/id/layout,json,GET,CORE,[Sweetpotatobase],
