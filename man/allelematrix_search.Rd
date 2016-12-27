@@ -7,7 +7,7 @@
 allelematrix_search(markerprofileDbId = "", markerDbId = "",
   expandHomozygotes = FALSE, unknownString = "-", sepPhased = "|",
   sepUnphased = "/", format = "json", page = 0, pageSize = 10000,
-  method = "GET", rclass = "tibble")
+  rclass = "tibble")
 }
 \arguments{
 \item{markerprofileDbId}{character vector; default ""}
@@ -27,8 +27,6 @@ allelematrix_search(markerprofileDbId = "", markerDbId = "",
 \item{page}{integer; default: 0}
 
 \item{pageSize}{integer; default 1000}
-
-\item{method}{character; web access method. Default: GET; other: POST}
 
 \item{rclass}{character; default: tibble}
 }

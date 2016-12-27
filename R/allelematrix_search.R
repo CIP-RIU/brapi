@@ -14,7 +14,7 @@
 #' @param format character; default: json; other: csv, tsv
 #' @param page integer; default: 0
 #' @param pageSize integer; default 1000
-#' @param method character; web access method. Default: GET; other: POST
+# @param method character; web access method. Default: GET; other: POST
 #' @param rclass character; default: tibble
 #'
 #' @author Reinhard Simon
@@ -35,7 +35,7 @@ allelematrix_search <- function(markerprofileDbId = "",
                              sepUnphased = "/",
                              format = "json",
                              page = 0, pageSize = 10000,
-                             method = "GET",
+                             #method = "GET",
                              rclass = "tibble") {
   brapi::check(FALSE, "allelematrix-search")
   brp <- get_brapi()
@@ -61,16 +61,19 @@ allelematrix_search <- function(markerprofileDbId = "",
   nurl = nchar(pallelematrix_search)
   #method = ifelse(nurl<=2000, "GET", "POST")
   #pb <- progress::progress_bar$new(total = 100)
-  message(method)
+  #message(method)
 
-  if(method == "GET"){
+  if(nurl <= 2000){
+    message("Using GET")
     out <- try({
       res <- brapiGET(pallelematrix_search)
       ams2tbl(res, format, rclass)
     })
 
   }
-  if(method == "POST"){
+  #if(method == "POST"){
+  if(nurl > 2000){
+    message("Using POST")
     x1 = as.list(markerprofileDbId)
     names(x1)[1:length(markerprofileDbId)] = "markerprofileDbId"
     x2 = as.list(markerDbId)

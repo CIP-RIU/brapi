@@ -108,12 +108,12 @@ allelematrix_search = list(
 process_allelematrix_search <- function(req, res, err){
   prms <- names(req$params)
 
-  markerprofilesDbId = ifelse('markerprofileDbId' %in% prms, req$params$markerprofileDbId, "")
-  markerprofilesDbId = req$params[names(req$params) == "markerprofileDbId"] %>% paste(collapse = ",")
+  #markerprofilesDbId = ifelse('markerprofileDbId' %in% prms, req$params$markerprofileDbId, "")
+  markerprofilesDbId = req$params[stringr::str_detect(names(req$params), "markerprofileDbId")] %>% paste(collapse = ",")
   markerprofilesDbId = safe_split(markerprofilesDbId, ",")
 
-  markerDbId = ifelse('markerDbId' %in% prms, req$params$markerDbId, "")
-  markerDbId = req$params[names(req$params) == "markerDbId"] %>% paste(collapse = ",")
+  #markerDbId = ifelse('markerDbId' %in% prms, req$params$markerDbId, "")
+  markerDbId = req$params[stringr::str_detect(names(req$params), "markerDbId")] %>% paste(collapse = ",")
   markerDbId = safe_split(markerDbId, ",")
 
   unknownString = ifelse('unknownString' %in% prms, req$params$unknownString, "-")
