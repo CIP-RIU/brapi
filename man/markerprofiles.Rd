@@ -5,8 +5,8 @@
 \title{marker search}
 \usage{
 markerprofiles(germplasmDbId = "", studyDbId = "", sampleDbId = "",
-  extractDbId = "", methodDbId = "", page = 0, pageSize = 10000,
-  method = "POST", rclass = "tibble")
+  extractDbId = "", methodDbId = "all", page = 0, pageSize = 10000,
+  rclass = "tibble")
 }
 \arguments{
 \item{germplasmDbId}{character; default ""}
@@ -22,8 +22,6 @@ markerprofiles(germplasmDbId = "", studyDbId = "", sampleDbId = "",
 \item{page}{integer; default: 0}
 
 \item{pageSize}{integer; default 1000}
-
-\item{method}{character; default: GET else POST}
 
 \item{rclass}{character; default: tibble}
 }

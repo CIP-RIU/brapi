@@ -11,7 +11,7 @@
 #' @param page integer; default: 0
 #' @param pageSize integer; default 1000
 #' @param rclass character; default: tibble
-#' @param method character; default: GET else POST
+# @param method character; default: GET else POST
 #'
 #' @author Reinhard Simon
 #' @import httr
@@ -27,9 +27,9 @@ markerprofiles <- function(germplasmDbId = "",
                              studyDbId = "",
                              sampleDbId  = "",
                              extractDbId = "",
-                             methodDbId = "",
+                             methodDbId = "all",
                              page = 0, pageSize = 10000,
-                             method = "POST",
+                             #method = "GET",
                              rclass = "tibble"){
   brapi::check(FALSE, "markerprofiles")
   brp <- get_brapi()
@@ -53,9 +53,9 @@ markerprofiles <- function(germplasmDbId = "",
 
   out <- NULL
 
-  #nurl = nchar(pmarkerprofiles)
+  nurl = nchar(pmarkerprofiles)
 
-  if(method == "GET"){
+  if(nurl <= 2000){
     message_brapi("Using GET")
     out <- try({
       res <- brapiGET(pmarkerprofiles)
@@ -64,23 +64,30 @@ markerprofiles <- function(germplasmDbId = "",
     })
 
   }
-  if(method == "POST"){
+  if(nurl > 2000){
     message_brapi("Using POST")
 
     x1 = as.list(germplasmDbId)
     names(x1)[1:length(germplasmDbId)] = "germplasm"
-    x2 = as.list(extractDbId)
-    names(x2)[1:length(extractDbId)] = "extract"
-    body = list(studyDbId = studyDbId,
-                sample = sampleDbId,
-                method = methodDbId,
+    x2 = NULL
+    if(extractDbId != ""){
+      x2 = as.list(extractDbId)
+      names(x2)[1:length(extractDbId)] = "extract"
+    }
+
+    body = list(
+                 studyDbId = studyDbId,
+                 sample = sampleDbId, #ifelse(sampleDbId !="", sampleDbId, NULL),
+                 method = methodDbId, #ifelse(methodDbId !="", methodDbId, NULL),
                 page = page,
                 pageSize = pageSize)
     body = c(x1, x2, body)
 
+    #print(body)
+
     out <- try({
-      pmarkerprofiles = paste0(brp, "markerprofiles-search/?")
-      res <- brapiPOST(pmarkerprofiles, body )
+      pmarkerprofiles = paste0(brp, "markerprofiles-search/")
+      res <- brapiPOST(pmarkerprofiles, body)
       res <- httr::content(res, "text", encoding = "UTF-8")
       dat2tbl(res, rclass)
     })
