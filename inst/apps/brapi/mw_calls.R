@@ -1,10 +1,10 @@
-library(jug)
-library(jsonlite)
-
+# library(jug)
+# library(jsonlite)
+#
 source(system.file("apps/brapi/utils/brapi_status.R", package = "brapi"))
 source(system.file("apps/brapi/utils/paging.R", package = "brapi"))
 source(system.file("apps/brapi/utils/safe_split.R", package = "brapi"))
-
+#
 
 calls_data = tryCatch({
   res <- read.csv(system.file("apps/brapi/data/calls.csv", package = "brapi"),

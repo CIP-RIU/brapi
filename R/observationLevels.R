@@ -6,18 +6,17 @@
 #' @author Reinhard Simon
 #' @return a vector of crop names or NULL
 #' @family brapi_call
-#' @family core
-#' @family access
+#' @family phenotyping
+#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/Studies/ListObservationLevels.md}
 #' @export
 observationLevels <- function(rclass = "vector"){
-  brapi::check(FALSE)
+  brapi::check(FALSE, "observationLevels")
   observationLevels_List = paste0(get_brapi(), "observationLevels")
-  #rclass <- df2tibble(rclass)
-
   try({
     res <- brapiGET(observationLevels_List)
     res <- httr::content(res, "text",encoding = "UTF-8")
-
-    dat2tbl(res, rclass)
+    out <- dat2tbl(res, rclass)
+    class(out) = c(class(out), "brapi_observationLevels")
+    out
   })
 }

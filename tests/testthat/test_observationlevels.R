@@ -12,5 +12,10 @@ test_that("ObservationsLevels are listed.", {
 })
 
 
+test_that("ObservationsLevels has correct classes.", {
+  expect_equal("brapi_observationLevels" %in% class(observationLevels()), TRUE)
+})
+
+
 
 }

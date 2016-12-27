@@ -20,7 +20,7 @@ Reinhard Simon
 }
 \seealso{
 Other access: \code{\link{calls}}, \code{\link{connect}},
-  \code{\link{observationLevels}}
+  \code{\link{studyTypes}}
 
 Other brapi_call: \code{\link{allelematrix_search}},
   \code{\link{attributes_categories}},
@@ -36,13 +36,12 @@ Other brapi_call: \code{\link{allelematrix_search}},
   \code{\link{markerprofiles_alleles}},
   \code{\link{markerprofiles}}, \code{\link{markers}},
   \code{\link{observationLevels}}, \code{\link{programs}},
-  \code{\link{seasons}}
+  \code{\link{seasons}}, \code{\link{studyTypes}}
 
 Other core: \code{\link{calls}},
   \code{\link{germplasm_pedigree}},
   \code{\link{germplasm_search}}, \code{\link{germplasm}},
-  \code{\link{marker_search}},
-  \code{\link{observationLevels}}, \code{\link{programs}},
+  \code{\link{marker_search}}, \code{\link{programs}},
   \code{\link{seasons}}
 }
 

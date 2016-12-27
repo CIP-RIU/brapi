@@ -15,7 +15,7 @@
 #' @family brapi_call
 #' @family phenotyping
 #' @export
-locations <- function(locationType = "all", rclass = "tibble", page = 0, pageSize = 1000) {
+locations <- function(locationType = "all", page = 0, pageSize = 1000, rclass = "tibble") {
   brapi::check(FALSE, "locations")
   brp <- get_brapi()
   locations_list = paste0(brp, "locations/?")

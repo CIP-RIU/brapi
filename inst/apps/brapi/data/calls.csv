@@ -19,7 +19,7 @@ crops,json,GET,CORE,[Sweetpotatobase],brapi
 trials,json,GET,PHENOTYPING,[Sweetpotatobase],
 trials/id,json,GET,PHENOTYPING,[Sweetpotatobase],
 seasons,json,GET,CORE,[Sweetpotatobase],brapi
-studyTypes,json,GET,CORE,[Sweetpotatobase],
+studyTypes,json,GET,CORE,[Sweetpotatobase],brapi
 studies-search,json,GET; POST,CORE,[Sweetpotatobase],
 studies/id,json,GET,CORE,[Sweetpotatobase],
 studies/id/observationVariables,json,GET,CORE,,

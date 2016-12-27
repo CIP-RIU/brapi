@@ -18,10 +18,10 @@ lists crops available in a database
 \author{
 Reinhard Simon
 }
+\references{
+\url{https://github.com/plantbreeding/API/blob/master/Specification/Studies/ListObservationLevels.md}
+}
 \seealso{
-Other access: \code{\link{calls}}, \code{\link{connect}},
-  \code{\link{crops}}
-
 Other brapi_call: \code{\link{allelematrix_search}},
   \code{\link{attributes_categories}},
   \code{\link{attributes}}, \code{\link{calls}},
@@ -35,12 +35,10 @@ Other brapi_call: \code{\link{allelematrix_search}},
   \code{\link{marker_search}},
   \code{\link{markerprofiles_alleles}},
   \code{\link{markerprofiles}}, \code{\link{markers}},
-  \code{\link{programs}}, \code{\link{seasons}}
+  \code{\link{programs}}, \code{\link{seasons}},
+  \code{\link{studyTypes}}
 
-Other core: \code{\link{calls}}, \code{\link{crops}},
-  \code{\link{germplasm_pedigree}},
-  \code{\link{germplasm_search}}, \code{\link{germplasm}},
-  \code{\link{marker_search}}, \code{\link{programs}},
-  \code{\link{seasons}}
+Other phenotyping: \code{\link{locations}},
+  \code{\link{studyTypes}}
 }
 
