@@ -28,12 +28,23 @@ trials_list = function(programDbId = "any", locationDbId = "any",
                        active = "any",
                        sortBy = "none", sortOrder = "asc",
                        page = 0, pageSize = 100){
-  # if(is.null(trials_data)) return(NULL)
-  # if(locationType != "all") {
-  #   trials_data = trials_data[
-  #     stringr::str_detect(trials_data$locationType, locationType), ]
-  #   if(nrow(trials_data) == 0) return(NULL)
-  # }
+
+  if(programDbId != "any") {
+    trials_data <- trials_data[trials_data$programDbId == programDbId, ]
+    if(nrow(trials_data) == 0) return(NULL)
+  }
+
+  if(active != "any") {
+    trials_data <- trials_data[trials_data$active == active, ]
+    if(nrow(trials_data) == 0) return(NULL)
+  }
+
+  if(locationDbId != "any" & programDbId != "any") {
+    studies_data <- studies_data[studies_data$locationDbId == locationDbId & studies_data$programDbId == programDbId, ]
+    if(nrow(studies_data) == 0) return(NULL)
+    trials_data <- trials_data[trials_data$trialDbId == studies_data$trialDbId, ]
+    if(nrow(trials_data) == 0) return(NULL)
+  }
 
   # paging here after filtering
   pg = paging(trials_data, page, pageSize)
@@ -45,9 +56,10 @@ trials_list = function(programDbId = "any", locationDbId = "any",
     out[[i]] <- trials_data[i, ]
     # Note: additionalInfo insertion fails if only one column has a value in a row
 
-    studiesd = studies_data[studies_data$trialDbId == i, c("studyDbId", "studyName", "locationName")]
+    studiesd = studies_data[studies_data$trialDbId == trials_data$trialDbId[i], c("studyDbId", "studyName", "locationName")]
     if(nrow(studiesd) == 0) {
       studieso = list()
+      #return(NULL)
     } else {
       o = nrow(studiesd)
       studieso = list(o)
@@ -59,7 +71,7 @@ trials_list = function(programDbId = "any", locationDbId = "any",
     out[[i]]$studies = list(studieso)
 
     additionalInfo =
-      trials_additionalInfo_data[trials_additionalInfo_data$trialDbId == i,
+      trials_additionalInfo_data[trials_additionalInfo_data$trialDbId == trials_data$trialDbId[i],
                                     -c(1)]
     if(nrow(additionalInfo) == 0) {
       additionalInfo = NULL
@@ -68,10 +80,6 @@ trials_list = function(programDbId = "any", locationDbId = "any",
       additionalInfo = as.list(additionalInfo)
     }
     out[[i]]$additionalInfo = list(additionalInfo)
-
-
-
-
   }
 
   attr(out, "status") = list()
