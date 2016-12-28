@@ -1,5 +1,5 @@
-source(system.file("apps/brapi/utils/brapi_status.R", package = "brapi"))
-source(system.file("apps/brapi/utils/paging.R", package = "brapi"))
+# source(system.file("apps/brapi/utils/brapi_status.R", package = "brapi"))
+# source(system.file("apps/brapi/utils/paging.R", package = "brapi"))
 
 
 locations_data = tryCatch({
