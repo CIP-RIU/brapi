@@ -29,6 +29,8 @@ trials_list = function(programDbId = "any", locationDbId = "any",
                        sortBy = "none", sortOrder = "asc",
                        page = 0, pageSize = 100){
 
+
+
   if(programDbId != "any") {
     trials_data <- trials_data[trials_data$programDbId == programDbId, ]
     if(nrow(trials_data) == 0) return(NULL)
@@ -44,6 +46,11 @@ trials_list = function(programDbId = "any", locationDbId = "any",
     if(nrow(studies_data) == 0) return(NULL)
     trials_data <- trials_data[trials_data$trialDbId == studies_data$trialDbId, ]
     if(nrow(trials_data) == 0) return(NULL)
+  }
+
+  if(sortBy != "none" & sortBy %in% colnames(trials_data)){
+    dcr = ifelse(sortOrder == "asc", FALSE, TRUE)
+    trials_data <- trials_data[ order( trials_data[, sortBy], decreasing = dcr), ]
   }
 
   # paging here after filtering
