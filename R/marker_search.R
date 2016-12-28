@@ -3,9 +3,9 @@
 #'
 #' Lists markers as result of a search.
 #'
-#' @param name string; marker name; default: none
+#' @param name string; marker name; default: *
 #' @param type string; default: all; other: SNP
-#' @param matchMethod string; default: exact; other: case_insensitive, wildcard
+#' @param matchMethod string; default: wildcard; other: case_insensitive, exact
 #' @param include string; default: synonyms
 #' @param page integer; default: 0
 #' @param pageSize integer; default 1000
@@ -22,9 +22,9 @@
 #' @family core
 #' @family germplasm
 #' @export
-marker_search <- function(name = "none",
+marker_search <- function(name = "*",
                              type = "all",
-                             matchMethod  = "exact",
+                             matchMethod  = "wildcard",
                              include = "synonyms",
                              page = 0, pageSize = 1000,
                              rclass = "tibble"){
@@ -47,15 +47,13 @@ marker_search <- function(name = "none",
   try({
     res <- brapiGET(marker_search)
     res <- httr::content(res, "text", encoding = "UTF-8")
-    # out <- NULL
-    #
-    # if (rclass %in% c("json", "list")) out <- dat2tbl(res, rclass)
-    # if (rclass == "data.frame") out  <- mk2tbl(res, include)
-    # if (rclass == "tibble")     out  <- mk2tbl(res, include) %>% tibble::as_tibble()
-    #
-    # out
-    #
-    dat2tbl(res, rclass)
+    out = dat2tbl(res, rclass)
+    if(rclass %in% c("data.frame", "tibble")){
+      out$synonyms <- sapply(out$synonyms,paste, collapse = "; ")
+      out$refAlt <- sapply(out$refAlt,paste, collapse = "; ")
+      out$analysisMethods <- sapply(out$analysisMethods, paste, collapse = "; ")
+    }
+    out
   })
 }
 

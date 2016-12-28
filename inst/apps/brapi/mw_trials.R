@@ -106,7 +106,7 @@ trials = list(
     status = list(),
     datafiles = list()
   ),
-  result = trials_data
+  result =  list(data = trials_list())
 )
 
 
@@ -125,7 +125,7 @@ process_trials <- function(req, res, err){
 
 
 
-  trials$result = trials_list(programDbId, locationDbId, active, sortBy, sortOrder,
+  trials$result$data = trials_list(programDbId, locationDbId, active, sortBy, sortOrder,
                               page, pageSize)
   trials$metadata = list(pagination = attr(trials$result, "pagination"),
                             status = attr(trials$result, "status"),

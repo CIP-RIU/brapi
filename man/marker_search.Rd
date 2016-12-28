@@ -4,15 +4,15 @@
 \alias{marker_search}
 \title{marker search}
 \usage{
-marker_search(name = "none", type = "all", matchMethod = "exact",
+marker_search(name = "*", type = "all", matchMethod = "wildcard",
   include = "synonyms", page = 0, pageSize = 1000, rclass = "tibble")
 }
 \arguments{
-\item{name}{string; marker name; default: none}
+\item{name}{string; marker name; default: *}
 
 \item{type}{string; default: all; other: SNP}
 
-\item{matchMethod}{string; default: exact; other: case_insensitive, wildcard}
+\item{matchMethod}{string; default: wildcard; other: case_insensitive, exact}
 
 \item{include}{string; default: synonyms}
 
