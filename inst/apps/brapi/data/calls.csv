@@ -16,7 +16,7 @@ markerprofiles/id,json,GET,GENOTYPING,[Sweetpotatobase],brapi
 allelematrix-search,json; csv; tsv,GET: POST,GENOTYPING,[Sweetpotatobase],brapi
 programs,json,GET,CORE,[Sweetpotatobase],brapi
 crops,json,GET,CORE,[Sweetpotatobase],brapi
-trials,json,GET,PHENOTYPING,[Sweetpotatobase],
+trials,json,GET,PHENOTYPING,[Sweetpotatobase],brapi
 trials/id,json,GET,PHENOTYPING,[Sweetpotatobase],
 seasons,json,GET,CORE,[Sweetpotatobase],brapi
 studyTypes,json,GET,CORE,[Sweetpotatobase],brapi

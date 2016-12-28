@@ -43,9 +43,10 @@ Other brapi_call: \code{\link{allelematrix_search}},
   \code{\link{markerprofiles_alleles}},
   \code{\link{markerprofiles}}, \code{\link{markers}},
   \code{\link{observationLevels}}, \code{\link{programs}},
-  \code{\link{seasons}}, \code{\link{studyTypes}}
+  \code{\link{seasons}}, \code{\link{studyTypes}},
+  \code{\link{trials}}
 
 Other phenotyping: \code{\link{observationLevels}},
-  \code{\link{studyTypes}}
+  \code{\link{studyTypes}}, \code{\link{trials}}
 }
 

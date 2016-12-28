@@ -51,7 +51,8 @@ Other brapi_call: \code{\link{allelematrix_search}},
   \code{\link{marker_search}},
   \code{\link{markerprofiles}}, \code{\link{markers}},
   \code{\link{observationLevels}}, \code{\link{programs}},
-  \code{\link{seasons}}, \code{\link{studyTypes}}
+  \code{\link{seasons}}, \code{\link{studyTypes}},
+  \code{\link{trials}}
 
 Other genotyping: \code{\link{allelematrix_search}},
   \code{\link{attributes_categories}},

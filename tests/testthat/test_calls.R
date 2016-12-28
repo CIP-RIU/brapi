@@ -15,7 +15,7 @@ test_that("Calls are listed.", {
 })
 
 test_that("Calls parameters work.", {
-  expect_equal(nrow(calls(datatypes = "json")), 24)
+  expect_equal(nrow(calls(datatypes = "json")), 25)
 
   expect_equal(nrow(calls(datatypes = "csv")), 1)
 
