@@ -71,7 +71,7 @@ rp =covr::package_coverage(function_exclusions =
       "locations_list",
       "germplasm_mcpd", "print.brapi", ".onLoad", "brapi_auth", "df2tibble"))
 
-# covr::report(rp)
+covr::report(rp)
 
 ```
 
