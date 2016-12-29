@@ -127,11 +127,11 @@ process_trials <- function(req, res, err){
 
   trials$result$data = trials_list(programDbId, locationDbId, active, sortBy, sortOrder,
                               page, pageSize)
-  trials$metadata = list(pagination = attr(trials$result, "pagination"),
-                            status = attr(trials$result, "status"),
-                            datafiles = list())
+  trials$metadata$pagination = attr(trials$result$data, "pagination")#,
+                            #status = attr(trials$result, "status"),
+                            #datafiles = list())
 
-  if(is.null(trials$result)){
+  if(is.null(trials$result$data)){
     res$set_status(404)
     trials$metadata <-
       brapi_status(100,"No matching results.!"

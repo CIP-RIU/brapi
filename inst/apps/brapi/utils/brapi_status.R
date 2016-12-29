@@ -20,5 +20,5 @@ brapi_status <- function(code = 100, message = "No matching records found.", sta
     status[[length(status) + 1]] <- list(code = code, message =  message)
   }
 
-  list(pagination = pagination, status = status, data = list())
+  list(pagination = pagination, status = status, datafiles = list())
 }
