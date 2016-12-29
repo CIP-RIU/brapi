@@ -14,6 +14,11 @@ test_that("Study type.", {
   expect_equal(nrow(studies_search("MET study")), 3)
 })
 
+test_that("POST.", {
+  expect_equal(nrow(studies_search(germplasmDbIds = 1:1000)), 11)
+})
+
+
 test_that("Paging.", {
   expect_equal(nrow(studies_search(pageSize = 1)), 1)
   expect_equal(nrow(studies_search(pageSize = 3)), 3)

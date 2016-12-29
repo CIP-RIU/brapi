@@ -18,25 +18,25 @@ programs,json,GET,CORE,Sweetpotatobase,brapi
 crops,json,GET,CORE,Sweetpotatobase,brapi
 trials,json,GET,PHENOTYPING,Sweetpotatobase,brapi
 trials/id,json,GET,PHENOTYPING,Sweetpotatobase,brapi
-seasons,json,GET,CORE,Sweetpotatobase,brapi
-studyTypes,json,GET,CORE,Sweetpotatobase,brapi
-studies-search,json,GET: POST,CORE,Sweetpotatobase,brapi
-studies/id,json,GET,CORE,Sweetpotatobase,
-studies/id/observationVariables,json,GET,CORE,,
-studies/id/germplasm,json,GET,CORE,Sweetpotatobase,
-observationLevels,json,GET,CORE,Sweetpotatobase,brapi
-studies/id/observationUnits,json,GET: POST,CORE,,
-studies/id/table,json; csv; tsv,GET: POST,CORE,Sweetpotatobase,
-studies/id/layout,json,GET,CORE,Sweetpotatobase,
-studies/id/observations,json,GET,CORE,Sweetpotatobase,
+seasons,json,GET,PHENOTYPING,Sweetpotatobase,brapi
+studyTypes,json,GET,PHENOTYPING,Sweetpotatobase,brapi
+studies-search,json,GET: POST,PHENOTYPING,Sweetpotatobase,brapi
+studies/id,json,GET,PHENOTYPING,Sweetpotatobase,
+studies/id/observationVariables,json,GET,PHENOTYPING,,
+studies/id/germplasm,json,GET,PHENOTYPING,Sweetpotatobase,
+observationLevels,json,GET,PHENOTYPING,Sweetpotatobase,brapi
+studies/id/observationUnits,json,GET: POST,PHENOTYPING,,
+studies/id/table,json; csv; tsv,GET: POST,PHENOTYPING,Sweetpotatobase,
+studies/id/layout,json,GET,PHENOTYPING,Sweetpotatobase,
+studies/id/observations,json,GET,PHENOTYPING,Sweetpotatobase,
 phenotypes-search,json,GET: POST,PHENOTYPING,Sweetpotatobase,
-traits,json,GET,CORE,Sweetpotatobase,
-traits/id,json,GET,CORE,Sweetpotatobase,
-variables/datatypes,json,GET,CORE,,
-variables,json,GET,CORE,,
-variables/category,json,GET,CORE,,
-variables/id,json,GET,CORE,,
-variables-search,json,POST,CORE,,
+traits,json,GET,PHENOTYPING,Sweetpotatobase,
+traits/id,json,GET,PHENOTYPING,Sweetpotatobase,
+variables/datatypes,json,GET,PHENOTYPING,,
+variables,json,GET,PHENOTYPING,,
+variables/category,json,GET,PHENOTYPING,,
+variables/id,json,GET,PHENOTYPING,,
+variables-search,json,POST,PHENOTYPING,,
 maps,json,GET,GENOTYPING,Sweetpotatobase,brapi
 maps/id,json,GET,GENOTYPING,Sweetpotatobase,brapi
 maps/id/positions,json,GET,GENOTYPING,Sweetpotatobase,brapi

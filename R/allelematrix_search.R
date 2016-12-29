@@ -60,9 +60,6 @@ allelematrix_search <- function(markerprofileDbId = "",
 
 
   nurl = nchar(pallelematrix_search)
-  #method = ifelse(nurl<=2000, "GET", "POST")
-  #pb <- progress::progress_bar$new(total = 100)
-  #message(method)
 
   if(nurl <= 2000){
     message("Using GET")

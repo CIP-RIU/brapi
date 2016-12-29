@@ -116,8 +116,13 @@ process_studies_search <- function(req, res, err){
   locationDbId = ifelse('locationDbId' %in% prms, req$params$locationDbId, "any")
   active = ifelse('active' %in% prms, req$params$active, "any")
 
-  germplasmDbIds = ifelse('germplasmDbIds' %in% prms, req$params$germplasmDbIds, "any")
-  observationVariableDbIds = ifelse('observationVariableDbIds' %in% prms, req$params$observationVariableDbIds, "any")
+  #germplasmDbIds = ifelse('germplasmDbIds' %in% prms, req$params$germplasmDbIds, "any")
+  germplasmDbIds = req$params[stringr::str_detect(names(req$params), "germplasmDbIds")] %>% paste(collapse = ",")
+  germplasmDbIds = safe_split(germplasmDbIds, ",")
+
+  #observationVariableDbIds = ifelse('observationVariableDbIds' %in% prms, req$params$observationVariableDbIds, "any")
+  observationVariableDbIds = req$params[stringr::str_detect(names(req$params), "observationVariableDbIds")] %>% paste(collapse = ",")
+  observationVariableDbIds = safe_split(observationVariableDbIds, ",")
 
   sortBy = ifelse('sortBy' %in% prms, req$params$sortBy, "none")
   sortOrder = ifelse('sortOrder' %in% prms, req$params$sortOrder, "asc")
@@ -179,7 +184,7 @@ mw_studies_search <<-
     res$set_status(405)
   }) %>%
   post("/brapi/v1/studies-search[/]?", function(req, res, err){
-    res$set_status(405)
+    process_studies_search(req, res, err)
   }) %>%
   delete("/brapi/v1/studies-search[/]?", function(req, res, err){
     res$set_status(405)

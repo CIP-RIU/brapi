@@ -29,7 +29,7 @@ studies_search <- function(studyType = "any", programDbId = "any", locationDbId 
                            page = 0, pageSize = 1000, rclass = "tibble") {
   brapi::check(FALSE, "studies-search")
   brp <- get_brapi()
-  ptrials = paste0(brp, "studies-search/?")
+  pstudies_search = paste0(brp, "studies-search/?")
 
   pstudyType = paste0("studyType=", studyType, "&")
   pprogramDbId = paste0("programDbId=", programDbId, "&")
@@ -44,16 +44,51 @@ studies_search <- function(studyType = "any", programDbId = "any", locationDbId 
   ppage = ifelse(is.numeric(page), paste0("page=", page, ""), "")
   ppageSize = ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
 
-  ptrials = paste0(ptrials, pstudyType, pprogramDbId, plocationDbId, pseasonDbId, pgermplasmDbIds, pobservationVariableDbIds,
+  pstudies_search = paste0(pstudies_search, pstudyType, pprogramDbId, plocationDbId, pseasonDbId, pgermplasmDbIds, pobservationVariableDbIds,
                    pactive, psortBy, psortOrder, ppageSize, ppage)
 
+  nurl = nchar(pstudies_search)
+  out <- NULL
+  if(nurl <= 2000){
+    message("Using GET")
 
-  try({
-    res <- brapiGET(ptrials)
-    res <- httr::content(res, "text", encoding = "UTF-8")
-    out = NULL
-    if(rclass %in% c("list", "json")) out = dat2tbl(res, rclass)
-    if(rclass %in% c("data.frame", "tibble")) out = std2tbl(res, rclass)
-    out
-  })
+    out <-   try({
+      res <- brapiGET(pstudies_search)
+      res <- httr::content(res, "text", encoding = "UTF-8")
+      out = NULL
+      if(rclass %in% c("list", "json")) out = dat2tbl(res, rclass)
+      if(rclass %in% c("data.frame", "tibble")) out = std2tbl(res, rclass)
+      out
+    })
+
+  } else {
+    message("Using POST")
+    x1 = as.list(germplasmDbIds)
+    names(x1)[1:length(germplasmDbIds)] = "germplasmDbIds"
+    x2 = as.list(observationVariableDbIds)
+    names(x2)[1:length(observationVariableDbIds)] = "observationVariableDbIds"
+    body = list(studyType = studyType,
+                programDbId = programDbId,
+                locationDbId = locationDbId,
+                seasonDbId = seasonDbId,
+
+                active = active,
+                sortBy = sortBy,
+                sortOrder = sortOrder,
+                page = page,
+                pageSize = pageSize)
+    body = c(x1, x2, body)
+    out <- try({
+      pstudies_search = paste0(brp, "studies-search/?")
+      res <- brapiPOST(pstudies_search, body )
+      res <- httr::content(res, "text", encoding = "UTF-8")
+      out = NULL
+      if(rclass %in% c("list", "json")) out = dat2tbl(res, rclass)
+      if(rclass %in% c("data.frame", "tibble")) out = std2tbl(res, rclass)
+      out
+    })
+
+  }
+
+  out
 }
