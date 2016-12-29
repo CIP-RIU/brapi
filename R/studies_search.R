@@ -1,0 +1,59 @@
+#' studies_search
+#'
+#' lists trials available on a brapi server
+#'
+#' @param studyType string; default: any
+#' @param programDbId string; default: any
+#' @param locationDbId  string; default: any
+#' @param seasonDbId  string; default: any
+#' @param germplasmDbIds  string; default: any
+#' @param observationVariableDbIds  string; default: any
+#' @param active  string; default: any
+#' @param sortBy  string; default: any
+#' @param sortOrder  string; default: any
+#' @param page integer; default: 1000
+#' @param pageSize integer; default: 0
+#' @param rclass string; default: tibble
+#'
+#' @author Reinhard Simon
+#' @references \url{}
+#' @return rclass as defined
+#' @import tibble
+#' @import tidyjson
+#' @family brapi_call
+#' @family phenotyping
+#' @export
+studies_search <- function(studyType = "any", programDbId = "any", locationDbId = "any", seasonDbId = "any",
+                           germplasmDbIds = "any", observationVariableDbIds = "any",
+                           active = "any", sortBy = "any", sortOrder = "any",
+                           page = 0, pageSize = 1000, rclass = "tibble") {
+  brapi::check(FALSE, "studies-search")
+  brp <- get_brapi()
+  ptrials = paste0(brp, "studies-search/?")
+
+  pstudyType = paste0("studyType=", studyType, "&")
+  pprogramDbId = paste0("programDbId=", programDbId, "&")
+  plocationDbId = paste0("locationDbId=", locationDbId, "&")
+  pseasonDbId = paste0("seasonDbId=", seasonDbId, "&")
+  pgermplasmDbIds = paste0("germplasmDbIds=", germplasmDbIds, "&") %>% paste0(collapse = "")
+  pobservationVariableDbIds = paste0("observationVariableDbIds=", observationVariableDbIds, "&") %>% paste(collapse = "")
+  pactive = paste0("active=", active, "&")
+  psortBy = paste0("sortBy=", sortBy, "&")
+  psortOrder = paste0("sortOrder=", sortOrder, "&")
+
+  ppage = ifelse(is.numeric(page), paste0("page=", page, ""), "")
+  ppageSize = ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
+
+  ptrials = paste0(ptrials, pstudyType, pprogramDbId, plocationDbId, pseasonDbId, pgermplasmDbIds, pobservationVariableDbIds,
+                   pactive, psortBy, psortOrder, ppageSize, ppage)
+
+
+  try({
+    res <- brapiGET(ptrials)
+    res <- httr::content(res, "text", encoding = "UTF-8")
+    out = NULL
+    if(rclass %in% c("list", "json")) out = dat2tbl(res, rclass)
+    if(rclass %in% c("data.frame", "tibble")) out = std2tbl(res, rclass)
+    out
+  })
+}

@@ -86,4 +86,12 @@ htt- defines page and pageSize in parameters (should also be defined then for at
 
 - pageNumber should be: currentPage in pagination.
 
+# studies-search
+
+- name -> studyName
+- consistent use of plural and singular for identifier(s)
+- consistent use of -search / list / summary
+- POST parameters are different from GET version!
+
+
 

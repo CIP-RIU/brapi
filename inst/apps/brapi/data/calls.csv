@@ -20,7 +20,7 @@ trials,json,GET,PHENOTYPING,Sweetpotatobase,brapi
 trials/id,json,GET,PHENOTYPING,Sweetpotatobase,brapi
 seasons,json,GET,CORE,Sweetpotatobase,brapi
 studyTypes,json,GET,CORE,Sweetpotatobase,brapi
-studies-search,json,GET: POST,CORE,Sweetpotatobase,
+studies-search,json,GET: POST,CORE,Sweetpotatobase,brapi
 studies/id,json,GET,CORE,Sweetpotatobase,
 studies/id/observationVariables,json,GET,CORE,,
 studies/id/germplasm,json,GET,CORE,Sweetpotatobase,
