@@ -9,7 +9,7 @@ trials_data = tryCatch({
 
 studies_data = tryCatch({
   res <- read.csv(system.file("apps/brapi/data/studies.csv", package = "brapi"),
-                  stringsAsFactors = FALSE)
+                  stringsAsFactors = FALSE)[, 1:12]
 }, error = function(e) {
   NULL
 }

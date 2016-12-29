@@ -1,46 +1,47 @@
-call,datatypes,methods,scope,servers,clients
-token,json; text,POST; DELETE,OTHER,Tripal+ADs-Cassavabase+ADs-Sweetpotatobase+ADs-Germinate,Flapjack;HIDAP
-calls,json,GET,CORE,Germinate+ADs-,brapi
-germplasm-search,json,GET; POST,CORE,Sweetpotatobase,brapi
-germplasm/id,json,GET,CORE,Sweetpotatobase,brapi
-germplasm/id/pedigree,json,GET,CORE,Sweetpotatobase,brapi
-germplasm/id/markerprofiles,json,GET,GENOTYPING,Sweetpotatobase,brapi
-attributes,json,GET,GENOTYPING,Sweetpotatobase,brapi
-attributes/categories,json,GET,GENOTYPING,Sweetpotatobase,brapi
-germplasm/id/attributes/,json,GET,GENOTYPING,Sweetpotatobase,brapi
-markers,json,GET,GENOTYPING,,brapi
-markers/id,json,GET,GENOTYPING,,brapi
-markerprofiles,json,GET,GENOTYPING,Sweetpotatobase,brapi
-markerprofiles-search,json,POST,GENOTYPING,Sweetpotatobase,brapi
-markerprofiles/id,json,GET,GENOTYPING,Sweetpotatobase,brapi
-allelematrix-search,json; csv; tsv,GET: POST,GENOTYPING,Sweetpotatobase,brapi
-programs,json,GET,CORE,Sweetpotatobase,brapi
-crops,json,GET,CORE,Sweetpotatobase,brapi
-trials,json,GET,PHENOTYPING,Sweetpotatobase,brapi
-trials/id,json,GET,PHENOTYPING,Sweetpotatobase,brapi
-seasons,json,GET,PHENOTYPING,Sweetpotatobase,brapi
-studyTypes,json,GET,PHENOTYPING,Sweetpotatobase,brapi
-studies-search,json,GET: POST,PHENOTYPING,Sweetpotatobase,brapi
-studies/id,json,GET,PHENOTYPING,Sweetpotatobase,
-studies/id/observationVariables,json,GET,PHENOTYPING,,
-studies/id/germplasm,json,GET,PHENOTYPING,Sweetpotatobase,
-observationLevels,json,GET,PHENOTYPING,Sweetpotatobase,brapi
-studies/id/observationUnits,json,GET: POST,PHENOTYPING,,
-studies/id/table,json; csv; tsv,GET: POST,PHENOTYPING,Sweetpotatobase,
-studies/id/layout,json,GET,PHENOTYPING,Sweetpotatobase,
-studies/id/observations,json,GET,PHENOTYPING,Sweetpotatobase,
-phenotypes-search,json,GET: POST,PHENOTYPING,Sweetpotatobase,
-traits,json,GET,PHENOTYPING,Sweetpotatobase,
-traits/id,json,GET,PHENOTYPING,Sweetpotatobase,
-variables/datatypes,json,GET,PHENOTYPING,,
-variables,json,GET,PHENOTYPING,,
-variables/category,json,GET,PHENOTYPING,,
-variables/id,json,GET,PHENOTYPING,,
-variables-search,json,POST,PHENOTYPING,,
-maps,json,GET,GENOTYPING,Sweetpotatobase,brapi
-maps/id,json,GET,GENOTYPING,Sweetpotatobase,brapi
-maps/id/positions,json,GET,GENOTYPING,Sweetpotatobase,brapi
-maps/id/positions/id,json,GET,GENOTYPING,Sweetpotatobase,brapi
-locations,json,GET,PHENOTYPING,Sweetpotatobase,brapi
-samples,json,PUT,PHENOTYPING,,
-samples/id,json,GET,PHENOTYPING,,
+call,datatypes,methods,scope,servers,clients,Comment
+token,json; text,POST; DELETE,OTHER,Tripal+ADs-Cassavabase+ADs-Sweetpotatobase+ADs-Germinate,Flapjack;HIDAP,
+calls,json,GET,CORE,Germinate+ADs-,brapi,
+germplasm-search,json,GET; POST,CORE,Sweetpotatobase,brapi,
+germplasm/id,json,GET,CORE,Sweetpotatobase,brapi,
+germplasm/id/pedigree,json,GET,CORE,Sweetpotatobase,brapi,
+germplasm/id/markerprofiles,json,GET,GENOTYPING,Sweetpotatobase,brapi,
+attributes,json,GET,GENOTYPING,Sweetpotatobase,brapi,
+attributes/categories,json,GET,GENOTYPING,Sweetpotatobase,brapi,
+germplasm/id/attributes/,json,GET,GENOTYPING,Sweetpotatobase,brapi,
+markers,json,GET,GENOTYPING,,brapi,
+markers/id,json,GET,GENOTYPING,,brapi,
+markerprofiles,json,GET,GENOTYPING,Sweetpotatobase,brapi,
+markerprofiles-search,json,POST,GENOTYPING,Sweetpotatobase,brapi,
+markerprofiles/id,json,GET,GENOTYPING,Sweetpotatobase,brapi,
+allelematrix-search,json; csv; tsv,GET: POST,GENOTYPING,Sweetpotatobase,brapi,
+programs,json,GET,CORE,Sweetpotatobase,brapi,
+crops,json,GET,CORE,Sweetpotatobase,brapi,
+trials,json,GET,PHENOTYPING,Sweetpotatobase,brapi,
+trials/id,json,GET,PHENOTYPING,Sweetpotatobase,brapi,
+seasons,json,GET,PHENOTYPING,Sweetpotatobase,brapi,
+studyTypes,json,GET,PHENOTYPING,Sweetpotatobase,brapi,
+studies-search,json,GET,PHENOTYPING,Sweetpotatobase,brapi,
+studies-search,json,POST,PHENOTYPING,Sweetpotatobase,brapi,POST parameters are different from GET version; brapi R package implements a version equal to GET
+studies/id,json,GET,PHENOTYPING,Sweetpotatobase,brapi,
+studies/id/observationVariables,json,GET,PHENOTYPING,,,
+studies/id/germplasm,json,GET,PHENOTYPING,Sweetpotatobase,,
+observationLevels,json,GET,PHENOTYPING,Sweetpotatobase,brapi,
+studies/id/observationUnits,json,GET: POST,PHENOTYPING,,,
+studies/id/table,json; csv; tsv,GET: POST,PHENOTYPING,Sweetpotatobase,,
+studies/id/layout,json,GET,PHENOTYPING,Sweetpotatobase,,
+studies/id/observations,json,GET,PHENOTYPING,Sweetpotatobase,,
+phenotypes-search,json,GET: POST,PHENOTYPING,Sweetpotatobase,,
+traits,json,GET,PHENOTYPING,Sweetpotatobase,,
+traits/id,json,GET,PHENOTYPING,Sweetpotatobase,,
+variables/datatypes,json,GET,PHENOTYPING,,,
+variables,json,GET,PHENOTYPING,,,
+variables/category,json,GET,PHENOTYPING,,,
+variables/id,json,GET,PHENOTYPING,,,
+variables-search,json,POST,PHENOTYPING,,,
+maps,json,GET,GENOTYPING,Sweetpotatobase,brapi,
+maps/id,json,GET,GENOTYPING,Sweetpotatobase,brapi,
+maps/id/positions,json,GET,GENOTYPING,Sweetpotatobase,brapi,
+maps/id/positions/id,json,GET,GENOTYPING,Sweetpotatobase,brapi,
+locations,json,GET,PHENOTYPING,Sweetpotatobase,brapi,
+samples,json,PUT,PHENOTYPING,,,
+samples/id,json,GET,PHENOTYPING,,,
