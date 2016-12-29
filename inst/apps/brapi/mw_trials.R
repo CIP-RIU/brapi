@@ -27,8 +27,14 @@ trials_additionalInfo_data = tryCatch({
 trials_list = function(programDbId = "any", locationDbId = "any",
                        active = "any",
                        sortBy = "none", sortOrder = "asc",
-                       page = 0, pageSize = 100){
+                       page = 0, pageSize = 100,
+                       trialDbId = "any"){
 
+
+  if(trialDbId != "any") {
+    trials_data <- trials_data[trials_data$trialDbId == trialDbId, ]
+    if(nrow(trials_data) == 0) return(NULL)
+  }
 
 
   if(programDbId != "any") {
@@ -145,6 +151,27 @@ process_trials <- function(req, res, err){
 }
 
 
+process_trialsbyid <- function(req, res, err){
+  trialDbId <- basename(req$path)
+  #message(trialDbId)
+
+  trials$result$data = trials_list(trialDbId = trialDbId)
+
+  if(is.null(trials$result$data)){
+    res$set_status(404)
+    trials$metadata <-
+      brapi_status(100,"No matching results.!"
+                   , trials$metadata$status)
+    trials$result = list()
+  } else {
+    trials$metadata$pagination$totalCount = 1
+  }
+
+  res$set_header("Access-Control-Allow-Methods", "GET")
+  res$json(trials)
+
+}
+
 
 mw_trials <<-
   collector() %>%
@@ -159,4 +186,18 @@ mw_trials <<-
   }) %>%
   delete("/brapi/v1/trials[/]?", function(req, res, err){
     res$set_status(405)
+  })%>%
+
+  get("/brapi/v1/trials/[0-9a-zA-Z]{1,12}[/]?", function(req, res, err){
+    process_trialsbyid(req, res, err)
+  })  %>%
+  put("/brapi/v1/trials/[0-9a-zA-Z]{1,12}[/]?", function(req, res, err){
+    res$set_status(405)
+  }) %>%
+  post("/brapi/v1/trials/[0-9a-zA-Z]{1,12}[/]?", function(req, res, err){
+    res$set_status(405)
+  }) %>%
+  delete("/brapi/v1/trials/[0-9a-zA-Z]{1,12}[/]?", function(req, res, err){
+    res$set_status(405)
   })
+
