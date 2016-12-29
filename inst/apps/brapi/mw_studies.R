@@ -9,7 +9,7 @@ studiesid_data = tryCatch({
 }
 )
 
-studies_additionalInfo_data = tryCatch({
+studiesid_additionalInfo_data = tryCatch({
   res <- read.csv(system.file("apps/brapi/data/studies_additionalinfo.csv", package = "brapi"),
                   stringsAsFactors = FALSE)
 }, error = function(e) {
@@ -17,7 +17,7 @@ studies_additionalInfo_data = tryCatch({
 }
 )
 
-contacts_data = tryCatch({
+studiesid_contacts_data = tryCatch({
   res <- read.csv(system.file("apps/brapi/data/contacts.csv", package = "brapi"),
                   stringsAsFactors = FALSE)
   res
@@ -49,10 +49,7 @@ studies_list = function(studyDbId = "any"){
   studiesid_data <- studiesid_data[studiesid_data$studyDbId == studyDbId, ]
   if(nrow(studiesid_data) == 0) return(NULL)
 
-  # n = nrow(studiesid_data)
-  # out = list(n)
-  # for(i in 1:n){
-  i = 1
+   i = 1
     out <- as.list(studiesid_data[i, ])
     out$seasons = safe_split(out$seasons, ";")  %>% as.list # %>% list
 
@@ -79,16 +76,16 @@ studies_list = function(studyDbId = "any"){
     out$contactDbId <- NULL
     out$contacts <- list(as.list(NULL))
     if(all(contact_s != "")){
-      contacts_data = contacts_data[contacts_data$contactDbId %in% contact_s,  ]
-      contacts = list(nrow(contacts_data))
-      for(j in 1:nrow(contacts_data)){
-        contacts[[j]] <- as.list(contacts_data[j, ])
+      studiesid_contacts_data = studiesid_contacts_data[studiesid_contacts_data$contactDbId %in% contact_s,  ]
+      contacts = list(nrow(studiesid_contacts_data))
+      for(j in 1:nrow(studiesid_contacts_data)){
+        contacts[[j]] <- as.list(studiesid_contacts_data[j, ])
       }
       out$contacts <- contacts
     }
 
     additionalInfo =
-      studies_additionalInfo_data[studies_additionalInfo_data$studyDbId == studiesid_data$studyDbId[i],
+      studiesid_additionalInfo_data[studiesid_additionalInfo_data$studyDbId == studiesid_data$studyDbId[i],
                                     -c(1)]
     if(nrow(additionalInfo) == 0) {
       additionalInfo = NULL

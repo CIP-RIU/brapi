@@ -39,14 +39,14 @@ Other brapi_call: \code{\link{allelematrix_search}},
   \code{\link{markerprofiles}}, \code{\link{markers}},
   \code{\link{observationLevels}}, \code{\link{programs}},
   \code{\link{seasons}}, \code{\link{studies_search}},
-  \code{\link{studyTypes}}, \code{\link{trial_by_id}},
-  \code{\link{trials}}
+  \code{\link{studies}}, \code{\link{studyTypes}},
+  \code{\link{trial_by_id}}, \code{\link{trials}}
 
 Other core: \code{\link{calls}}, \code{\link{crops}},
   \code{\link{germplasm_pedigree}},
   \code{\link{germplasm_search}},
   \code{\link{marker_search}}, \code{\link{programs}},
-  \code{\link{seasons}}
+  \code{\link{seasons}}, \code{\link{studies}}
 
 Other germplasm: \code{\link{germplasm_pedigree}},
   \code{\link{germplasm_search}},

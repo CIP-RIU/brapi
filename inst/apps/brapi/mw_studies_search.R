@@ -69,8 +69,8 @@ studies_search_list = function(studyType = "any", programDbId = "any",
   n = nrow(studies_search_data)
   out = list(n)
   for(i in 1:n){
-    out[[i]] <- studies_search_data[i, ]
-    out[[i]]$seasons = safe_split(out[[i]]$seasons, ";")  %>% as.list %>% list
+    out[[i]] <- studies_search_data[i, ] %>% as.list
+    out[[i]]$seasons = safe_split(out[[i]]$seasons, ";")  %>% as.list
 
 
     additionalInfo =
@@ -82,7 +82,7 @@ studies_search_list = function(studyType = "any", programDbId = "any",
       additionalInfo = additionalInfo[, !is.na(additionalInfo)  %>% as.logical() ]
       additionalInfo = as.list(additionalInfo)
     }
-    out[[i]]$additionalInfo = list(additionalInfo)
+    out[[i]]$additionalInfo = additionalInfo
   }
 
   attr(out, "status") = list()
@@ -102,7 +102,7 @@ studies_search = list(
     status = list(),
     datafiles = list()
   ),
-  result =  list(data = studies_search_list())
+  result = list()
 )
 
 
@@ -151,28 +151,6 @@ process_studies_search <- function(req, res, err){
   res$json(studies_search)
 
 }
-
-#
-# process_studies_searchbyid <- function(req, res, err){
-#   trialDbId <- basename(req$path)
-#   #message(trialDbId)
-#
-#   studies_search$result$data = studies_search_list(trialDbId = trialDbId)
-#
-#   if(is.null(studies_search$result$data)){
-#     res$set_status(404)
-#     studies_search$metadata <-
-#       brapi_status(100,"No matching results.!"
-#                    , studies_search$metadata$status)
-#     studies_search$result = list()
-#   } else {
-#     studies_search$metadata$pagination$totalCount = 1
-#   }
-#
-#   res$set_header("Access-Control-Allow-Methods", "GET")
-#   res$json(studies_search)
-#
-# }
 
 
 mw_studies_search <<-

@@ -31,11 +31,6 @@ loc2tbl <- function(res, rclass) {
     df[i, vnms] <- dat[[i]]$additionalInfo
   }
 
-  # df$locationDbId = as.integer(df$locationDbId)
-  # df$latitude = as.numeric(df$latitude)
-  # df$longitude = as.numeric(df$longitude)
-  # df$altitude = as.numeric(df$altitude)
-
   for(i in 1:ncol(df)) {
     if (is.numeric(df[, i])) df[, i] <- as.numeric(df[, i])
     if (is.integer(df[, i])) df[, i] <- as.integer(df[, i])

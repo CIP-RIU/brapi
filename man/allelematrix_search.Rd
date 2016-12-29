@@ -62,8 +62,8 @@ Other brapi_call: \code{\link{attributes_categories}},
   \code{\link{markerprofiles}}, \code{\link{markers}},
   \code{\link{observationLevels}}, \code{\link{programs}},
   \code{\link{seasons}}, \code{\link{studies_search}},
-  \code{\link{studyTypes}}, \code{\link{trial_by_id}},
-  \code{\link{trials}}
+  \code{\link{studies}}, \code{\link{studyTypes}},
+  \code{\link{trial_by_id}}, \code{\link{trials}}
 
 Other genotyping: \code{\link{attributes_categories}},
   \code{\link{attributes}},
