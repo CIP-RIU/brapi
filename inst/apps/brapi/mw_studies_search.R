@@ -1,7 +1,7 @@
 
 studies_search_data = tryCatch({
   res <- read.csv(system.file("apps/brapi/data/studies.csv", package = "brapi"),
-                  stringsAsFactors = FALSE)[, 1:12]
+                  stringsAsFactors = FALSE)[, 1:13]
   colnames(res)[2] = "name"
   res
 }, error = function(e) {
@@ -77,12 +77,13 @@ studies_search_list = function(studyType = "any", programDbId = "any",
       studies_search_additionalInfo_data[studies_search_additionalInfo_data$studyDbId == studies_search_data$studyDbId[i],
                                     -c(1)]
     if(nrow(additionalInfo) == 0) {
-      additionalInfo = NULL
+      out[[i]] = list(additionalInfo = NULL)
     } else {
       additionalInfo = additionalInfo[, !is.na(additionalInfo)  %>% as.logical() ]
-      additionalInfo = as.list(additionalInfo)
+      additionalInfo = as.list(out[[i]], additionalInfo)
     }
     out[[i]]$additionalInfo = additionalInfo
+    #out[[i]] = list(out[[i]], additionalInfo = additionalInfo)
   }
 
   attr(out, "status") = list()
