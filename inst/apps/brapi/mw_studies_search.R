@@ -77,10 +77,11 @@ studies_search_list = function(studyType = "any", programDbId = "any",
       studies_search_additionalInfo_data[studies_search_additionalInfo_data$studyDbId == studies_search_data$studyDbId[i],
                                     -c(1)]
     if(nrow(additionalInfo) == 0) {
-      out[[i]] = list(additionalInfo = NULL)
+      #out[[i]] = as.list(out[[i]], additionalInfo = "") ### Challenge: how to get the empty object NOT the array!
+      additionalInfo = jsonlite::fromJSON("{}")
     } else {
-      additionalInfo = additionalInfo[, !is.na(additionalInfo)  %>% as.logical() ]
-      additionalInfo = as.list(out[[i]], additionalInfo)
+      additionalInfo = additionalInfo[, !is.na(additionalInfo)  %>% as.logical() ] %>% as.list
+      #additionalInfo = as.list(out[[i]], additionalInfo)
     }
     out[[i]]$additionalInfo = additionalInfo
     #out[[i]] = list(out[[i]], additionalInfo = additionalInfo)
