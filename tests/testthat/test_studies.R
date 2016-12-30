@@ -11,6 +11,14 @@ test_that("Studies are listed.", {
 })
 
 
+test_that("With varying numbers of contacts", {
+  expect_equal(nrow(studies(1)), 2)
+  expect_equal(ncol(studies(1)), 36)
+  expect_equal(nrow(studies(11)), 1)
+  expect_equal(ncol(studies(11)), 22)
+})
+
+
 
 
 }
