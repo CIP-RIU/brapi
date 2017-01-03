@@ -43,9 +43,6 @@ lists trials available on a brapi server
 \author{
 Reinhard Simon
 }
-\references{
-\url{}
-}
 \seealso{
 Other brapi_call: \code{\link{allelematrix_search}},
   \code{\link{attributes_categories}},

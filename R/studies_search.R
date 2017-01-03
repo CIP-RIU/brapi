@@ -16,7 +16,6 @@
 #' @param rclass string; default: tibble
 #'
 #' @author Reinhard Simon
-#' @references \url{}
 #' @return rclass as defined
 #' @import tibble
 #' @import tidyjson
