@@ -76,7 +76,6 @@ markers_list = function(markersDbId = NA, name = "none",
 
   attr(out, "pagination") = pg$pagination
   out
-  out
 }
 
 
