@@ -58,12 +58,14 @@ Other brapi_call: \code{\link{allelematrix_search}},
   \code{\link{markerprofiles_alleles}},
   \code{\link{markerprofiles}}, \code{\link{markers}},
   \code{\link{observationLevels}}, \code{\link{programs}},
-  \code{\link{seasons}}, \code{\link{studies_layout}},
-  \code{\link{studies}}, \code{\link{studyTypes}},
-  \code{\link{trial_by_id}}, \code{\link{trials}}
+  \code{\link{seasons}}, \code{\link{studies_germplasm}},
+  \code{\link{studies_layout}}, \code{\link{studies}},
+  \code{\link{studyTypes}}, \code{\link{trial_by_id}},
+  \code{\link{trials}}
 
 Other phenotyping: \code{\link{locations}},
   \code{\link{observationLevels}},
+  \code{\link{studies_germplasm}},
   \code{\link{studies_layout}}, \code{\link{studyTypes}},
   \code{\link{trial_by_id}}, \code{\link{trials}}
 }

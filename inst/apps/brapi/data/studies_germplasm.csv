@@ -1,4 +1,4 @@
-studyDbId,trialName,germplasmName,entryNumber,germplasmName,pedigree,seedSource,accessionNumber,germplasmPUI,synonyms
+studyDbId,trialName,germplasmDbId,entryNumber,germplasmName,pedigree,seedSource,accessionNumber,germplasmPUI,synonyms
 123,myBestTrial,382,1,Pahang,TOBA97/SW90.1057,SS1,ITC0609,http://www.crop-diversity.org/mgis/accession/01BEL084609,01BEL084609
 123,myBestTrial,394,2,Pahang,TOBA97/SW90.1057,SS2,ITC0727,http://www.crop-diversity.org/mgis/accession/01BEL084727,01BEL084727
 123,myBestTrial,378,3,Pahang,TOBA97/SW90.1057,SS3,ABC0123,http://www.crop-diversity.org/mgis/accession/02ABZY012034,02ABZY012034; Bukundi

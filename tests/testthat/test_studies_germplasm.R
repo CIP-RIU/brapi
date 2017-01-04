@@ -6,8 +6,15 @@ context("Testing the path 'studies/id/germplasm'")
 
 test_that("Basics.", {
   expect_equal(length(studies_germplasm(rclass = "list")), 2)
-  expect_equal(nrow(studies_germplasm(rclass = "data.frame")), 6)
+  expect_equal(nrow(studies_germplasm(rclass = "data.frame")), 3)
 })
+
+
+test_that("Paging", {
+  expect_equal(nrow(studies_germplasm(pageSize = 1)), 1)
+  expect_equal(nrow(studies_germplasm(pageSize = 1, page = 2)), 1)
+})
+
 
 test_that("Classes", {
   expect_equal("json" %in% class(studies_germplasm(rclass = "json")), TRUE)
