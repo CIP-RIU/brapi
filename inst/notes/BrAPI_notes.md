@@ -98,5 +98,10 @@ htt- defines page and pageSize in parameters (should also be defined then for at
 - could be large response object; is paging envisioned? No page parameters are documented. If no paging: the paging details should all be set to 0.
 - this call is similar to the studies/id/germplasm one. In the latter case, though, the common variables/factors are singled out in the result object (that is studyDbId and trialName). This is similar to prior calls. So, studies layout should do the same?
 
+# studies observations
+
+- not clear: can there be more than one observationVariable? How should they be requested? Comma separated values or repetition of parameter name? Both ways are used elsewhere.
+  Example: observationVariableDbIds=1,2,3 or
+          observationVariableDbIds=1&observationVariableDbIds=2observationVariableDbIds=3
 
 

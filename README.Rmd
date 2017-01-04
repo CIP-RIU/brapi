@@ -68,7 +68,7 @@ See [tutorial](https://github.com/c5sire/brapi/blob/master/vignettes/tutorial.md
 rp =covr::package_coverage(function_exclusions =
     c("can_internet", "programs_list", "gp2tbl", "brapiConnectAddin", "mk2tbl",
       "loc2tbl", "brapi_con", "brapiConnectInput", "brapiPOST", "brapiConnect",
-      "locations_list",
+      "locations_list", "mock", "sgp2tbl",
       "germplasm_mcpd", "print.brapi", ".onLoad", "brapi_auth", "df2tibble"))
 
 covr::report(rp)
