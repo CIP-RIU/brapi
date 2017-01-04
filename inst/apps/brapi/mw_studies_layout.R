@@ -34,6 +34,7 @@ studies_layout_list = function(studyDbId = "any"){
       studies_layout_additionalInfo_data[
         studies_layout_additionalInfo_data$observationUnitDbId ==
           studies_layout_data$observationUnitDbId[i], -c(1)]
+    additionalInfo = tibble::as_tibble(additionalInfo)
     if(nrow(additionalInfo) == 0) {
       additionalInfo = jsonlite::fromJSON("{}")
     } else {

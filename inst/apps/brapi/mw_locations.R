@@ -40,7 +40,7 @@ locations_list = function(locationType = "all", page = 0, pageSize = 100){
        locations_additionalInfo_data[locations_additionalInfo_data$locationDbId == i,
                                      -c(1)]
     if(nrow(additionalInfo) == 0) {
-      additionalInfo = NULL
+      additionalInfo = jsonlite::fromJSON("{}")
     } else {
       additionalInfo = additionalInfo[, !is.na(additionalInfo)  %>% as.logical() ]
       additionalInfo = as.list(additionalInfo)
