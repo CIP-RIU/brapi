@@ -34,6 +34,7 @@ res <- jug() %>%
   include(mw_studies_search) %>%
   include(mw_studies) %>%
   include(mw_studies_layout) %>%
+  include(mw_studies_germplasm) %>%
   include(mw_observationlevels) %>%
   include(mw_phenotypes_search) %>%
   include(mw_traits) %>%
