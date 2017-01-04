@@ -2,7 +2,7 @@ source("check_server_status.R")
 
 if (check_server_status == 200) {
 
-context("Testing the path 'studies/id/germplasm'")
+context("Testing the path 'studies/id/observations'")
 
 test_that("Basics.", {
   expect_equal(length(studies_observations(rclass = "list")), 2)
