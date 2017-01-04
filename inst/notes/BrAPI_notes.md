@@ -93,5 +93,10 @@ htt- defines page and pageSize in parameters (should also be defined then for at
 - consistent use of -search / list / summary
 - POST parameters are different from GET version!
 
+# studies layout
+
+- could be large response object; is paging envisioned? No page parameters are documented. If no paging: the paging details should all be set to 0.
+- this call is similar to the studies/id/germplasm one. In the latter case, though, the common variables/factors are singled out in the result object (that is studyDbId and trialName). This is similar to prior calls. So, studies layout should do the same?
+
 
 
