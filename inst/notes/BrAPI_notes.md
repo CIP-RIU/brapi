@@ -110,7 +110,12 @@ htt- defines page and pageSize in parameters (should also be defined then for at
 - also different between the two: observationTimestamp vs observationTimeStamp
 - in response: observationVariableId should be: observationVariableDbId
 - unclear: if request is for observationLevel = plant: what should be returned if the observations are only at plot level (or all plantNumber = 0)? Just the corresponding fields or no observations for that observationUnit at all?
+- camelCase? observationUnits (comapare to: observationVariables)
 
+# studies observationVariables
 
-
+- it does not have paging parameters? Corrrect? Pagination object slots should all be set to zero.
+- from the first example several fields are missing after ontologyName like synonyms, contextOfUse. However in other cases they are simply set to empty strings (or null). So they should be listed in any case.
+- in response: name should be observationVariableName as in other similar cases.
+- for empty objects in method and scale should be {} - not: null
 
