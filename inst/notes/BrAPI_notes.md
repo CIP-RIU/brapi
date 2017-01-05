@@ -104,4 +104,11 @@ htt- defines page and pageSize in parameters (should also be defined then for at
   Example: observationVariableDbIds=1,2,3 or
           observationVariableDbIds=1&observationVariableDbIds=2observationVariableDbIds=3
 
+# studies observationunits
+
+- data fields are basically all the same as in studies observtions. Only in the former 'operator' corresponds to 'collector' in this call. Should be the same!
+- also different between the two: observationTimestamp vs observationTimeStamp
+- in response: observationVariableId should be: observationVariableDbId
+
+
 

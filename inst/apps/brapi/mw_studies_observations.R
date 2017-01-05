@@ -2,7 +2,7 @@
 studies_observations_data = tryCatch({
   res <- read.csv(system.file("apps/brapi/data/studies_observations.csv", package = "brapi"),
                   stringsAsFactors = FALSE)
-  res
+  res[, 1:12]
 }, error = function(e) {
   NULL
 }
@@ -66,7 +66,6 @@ process_studies_observations <- function(req, res, err){
   pageSize = ifelse('pageSize' %in% prms, as.integer(req$params$pageSize), 1000)
 
   studies_observations$result$data = studies_observations_list(studyDbId, observationVariableDbId, page, pageSize)
-  print(studies_observations$result$data)
 
   if(is.null(studies_observations$result$data)){
     res$set_status(404)
