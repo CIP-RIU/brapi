@@ -48,6 +48,10 @@ studies_observationVariables_list = function(studyDbId = "any"){
     out[[i]]$trait = xy
     out[[i]][16:(max(xt) - 2)] = NULL
 
+    out[[i]]$trait$synonyms <- lst2arr(out[[i]]$trait$synonyms)
+    out[[i]]$trait$alternativeAbbreviations <- lst2arr(out[[i]]$trait$alternativeAbbreviations)
+
+
     #method
     xt = which(stringr::str_detect(cn, "method\\."))
     xy = studies_observationVariables_data[i, xt]
