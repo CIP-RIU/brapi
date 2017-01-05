@@ -53,7 +53,7 @@ Out of 46 BrAPI calls currently **35 (76.1%)** are implemented in this package.
 | studies/id/observationVariables | json           | GET       | PHENOTYPING |
 | studies/id/germplasm            | json           | GET       | PHENOTYPING |
 | observationLevels               | json           | GET       | PHENOTYPING |
-| studies/id/observationUnits     | json           | GET; POST | PHENOTYPING |
+| studies/id/observationunits     | json           | GET; POST | PHENOTYPING |
 | studies/id/table                | json; csv; tsv | GET; POST | PHENOTYPING |
 | studies/id/layout               | json           | GET       | PHENOTYPING |
 | studies/id/observations         | json           | GET       | PHENOTYPING |

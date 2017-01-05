@@ -64,6 +64,7 @@ Other brapi_call: \code{\link{attributes_categories}},
   \code{\link{seasons}}, \code{\link{studies_germplasm}},
   \code{\link{studies_layout}},
   \code{\link{studies_observations}},
+  \code{\link{studies_observationunits}},
   \code{\link{studies_search}}, \code{\link{studies}},
   \code{\link{studyTypes}}, \code{\link{trial_by_id}},
   \code{\link{trials}}

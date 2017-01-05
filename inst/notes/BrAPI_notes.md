@@ -109,6 +109,8 @@ htt- defines page and pageSize in parameters (should also be defined then for at
 - data fields are basically all the same as in studies observtions. Only in the former 'operator' corresponds to 'collector' in this call. Should be the same!
 - also different between the two: observationTimestamp vs observationTimeStamp
 - in response: observationVariableId should be: observationVariableDbId
+- unclear: if request is for observationLevel = plant: what should be returned if the observations are only at plot level (or all plantNumber = 0)? Just the corresponding fields or no observations for that observationUnit at all?
+
 
 
 

@@ -41,6 +41,7 @@ Other brapi_call: \code{\link{allelematrix_search}},
   \code{\link{seasons}}, \code{\link{studies_germplasm}},
   \code{\link{studies_layout}},
   \code{\link{studies_observations}},
+  \code{\link{studies_observationunits}},
   \code{\link{studies_search}}, \code{\link{studies}},
   \code{\link{studyTypes}}, \code{\link{trials}}
 
@@ -49,6 +50,7 @@ Other phenotyping: \code{\link{locations}},
   \code{\link{studies_germplasm}},
   \code{\link{studies_layout}},
   \code{\link{studies_observations}},
+  \code{\link{studies_observationunits}},
   \code{\link{studies_search}}, \code{\link{studyTypes}},
   \code{\link{trials}}
 }
