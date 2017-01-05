@@ -38,6 +38,7 @@ res <- jug() %>%
   include(mw_studies_observations) %>%
   include(mw_studies_observationunits) %>%
   include(mw_studies_observationVariables) %>%
+  include(mw_studies_table) %>%
   include(mw_observationlevels) %>%
   include(mw_phenotypes_search) %>%
   include(mw_traits) %>%

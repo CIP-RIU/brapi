@@ -119,3 +119,10 @@ htt- defines page and pageSize in parameters (should also be defined then for at
 - in response: name should be observationVariableName as in other similar cases.
 - for empty objects in method and scale should be {} - not: null
 
+# studies table GET
+
+- observationTimestamp would be different for each measurement; so one column here does not make sense
+
+
+
+
