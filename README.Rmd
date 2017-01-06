@@ -61,7 +61,7 @@ knitr::kable(res, row.names = FALSE)
 
 ## How to use the package
 
-See [tutorial](https://github.com/c5sire/brapi/blob/master/vignettes/tutorial.md).
+See [tutorial](https://github.com/c5sire/brapi/blob/master/inst/doc/tutorial.Rmd).
 
 
 ```{r eval=FALSE, echo=FALSE}
