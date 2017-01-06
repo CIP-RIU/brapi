@@ -12,12 +12,50 @@
 
 <meta name="author" content="Reinhard Simon" />
 
-<meta name="date" content="2016-12-07" />
+<meta name="date" content="2017-01-06" />
 
 <title>Basic Tutorial</title>
 
 
 
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
 
 
 
@@ -32,7 +70,7 @@
 
 <h1 class="title toc-ignore">Basic Tutorial</h1>
 <h4 class="author"><em>Reinhard Simon</em></h4>
-<h4 class="date"><em>2016-12-07</em></h4>
+<h4 class="date"><em>2017-01-06</em></h4>
 
 
 
@@ -43,8 +81,40 @@
 </tr>
 </tbody>
 </table>
-<p>Content has been removed - docuentation needs to be re-done.</p>
-<p>```</p>
+<div id="new" class="section level1">
+<h1>NEW</h1>
+<div id="sandbox-testing-server" class="section level2">
+<h2>Sandbox testing server</h2>
+<p>To eaes local testing the package comes now with a localized simple testing server implementing the BrAPI v1 protocol. To start this server use in an R session:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">brapi::<span class="kw">mock_server</span>()</code></pre></div>
+<p>or on the command line in an MS-DOS box</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">R -e <span class="st">&quot;brapi::mock_server()&quot;</span></code></pre></div>
+<p>The server must be started in a R session separate from the one use for the BrAPI calls. The server uses by default the port 2021. This can be changed by using the port parameter: brapi::mock_server(80).</p>
+<p>Soon, the mock_server function will be moved to its own package ‘brapiTS’.</p>
+</div>
+</div>
+<div id="starting-the-connection" class="section level1">
+<h1>Starting the connection</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(brapi)
+
+<span class="kw">connect</span>() <span class="co"># the standard parameter will work connect to a running local mock server</span>
+
+<span class="kw">crops</span>() <span class="co"># which crops are available</span>
+
+<span class="kw">calls</span>() <span class="co"># which calls are available</span></code></pre></div>
+</div>
+<div id="new-testing-the-calls" class="section level1">
+<h1>NEW: Testing the calls</h1>
+<p>BrAPI calls are now being extensively tested using the testthat framework. The local tests are being executed against the local mock_server instance. If not present a warning message will be displayed.</p>
+<p>Quick start in RStudio: Ctrl + Shift + T</p>
+</div>
+<div id="new-return-tables" class="section level1">
+<h1>NEW: return tables</h1>
+<ul>
+<li><p>all R functions using the brapi have a new parameter: rclass which can have up to five different values: json, list, data.frame, tibble, vector. The default value is tibble for most functions - that is it will alwways return a table. Vector is default for very small return objects like in the case of ‘crops’.</p></li>
+<li><p>also: all R functions are checked against the list of calls provided by the server. That is: if a certain server does not implement all calls the corresponding R functions will not ‘insist’ calling it.</p></li>
+</ul>
+</div>
 
 
 
