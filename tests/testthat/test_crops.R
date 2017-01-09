@@ -14,6 +14,7 @@ test_that("Crops are listed.", {
 })
 
 test_that("Crop format is used.", {
+  expect_equal(nrow(brapi::crops(rclass = "data.frame")), 4)
   expect_equal(length(brapi::crops(rclass = "list")), 2)
   expect_equal(brapi::crops(rclass = "list")$result$data[[1]][1], "cassava")
 

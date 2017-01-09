@@ -9,9 +9,10 @@ connect(brapi_db = NULL, crop = "sweetpotato", db = "127.0.0.1",
   password = "password", session = "")
 }
 \arguments{
-\item{brapi_db}{brapi_db R object for brapi databases. Created by as.brapi_db}
+\item{brapi_db}{brapi_db R object for brapi databases. Created by as.brapi_db
+param brapiDb brapi_db R object for brapi databases. Created by as.brapi_db}
 
-\item{crop}{string; default: sweetpotato}
+\item{crop}{string; default: ''}
 
 \item{db}{string; default '127.0.0.1' (localhost)}
 
