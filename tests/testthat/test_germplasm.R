@@ -10,6 +10,8 @@ test_that("Calls are listed.", {
 })
 
 test_that("Parameters are tested.", {
+  expect_equal(nrow(brapi::germplasm()), 6)
+  expect_equal(nrow(brapi::germplasm(rclass = "data.frame")), 6)
   expect_equal(length(brapi::germplasm(1, rclass = "list")$result$data), 1)
   expect_equal(length(brapi::germplasm(5, rclass = "list")$result$data), 1)
  })
