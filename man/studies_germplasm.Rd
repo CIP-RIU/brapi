@@ -31,7 +31,8 @@ Reinhard Simon
 \seealso{
 Other brapi_call: \code{\link{allelematrix_search}},
   \code{\link{attributes_categories}},
-  \code{\link{attributes}}, \code{\link{calls}},
+  \code{\link{attributes}},
+  \code{\link{brapi_studies_table}}, \code{\link{calls}},
   \code{\link{crops}}, \code{\link{germplasm_attributes}},
   \code{\link{germplasm_markerprofiles}},
   \code{\link{germplasm_pedigree}},
@@ -51,8 +52,8 @@ Other brapi_call: \code{\link{allelematrix_search}},
   \code{\link{studyTypes}}, \code{\link{trial_by_id}},
   \code{\link{trials}}
 
-Other phenotyping: \code{\link{locations}},
-  \code{\link{observationLevels}},
+Other phenotyping: \code{\link{brapi_studies_table}},
+  \code{\link{locations}}, \code{\link{observationLevels}},
   \code{\link{studies_layout}},
   \code{\link{studies_observationVariables}},
   \code{\link{studies_observations}},

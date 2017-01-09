@@ -10,14 +10,25 @@
 #' If the brapi_db parameter is used it will override the other parameters; except user, password and session.
 #'
 #' @param brapi_db brapi_db R object for brapi databases. Created by as.brapi_db
-#' @param crop string; default: sweetpotato
+#' param brapiDb brapi_db R object for brapi databases. Created by as.brapi_db
+# param secure logical TRUE/FALSE
+#' @param protocol string; default: http:// (else: https://)
 #' @param db string; default '127.0.0.1' (localhost)
 #' @param port integer; default: 80
-#' @param protocol string; default: http:// (else: https://)
-#' @param multi logical; default: FALSE
+# param apipath character; default NULL
+# param multicrop logical; default FALSE
+#' @param crop string; default: ''
+
 #' @param user string; default: user
 #' @param password string; default: password
+# param token
 #' @param session string; default: '' (empty)
+
+#' @param multi logical; default: FALSE
+# param granttype
+# param clientid
+# param bms TRUE/FALSE
+
 #' @example inst/examples/ex_connect.R
 #' @return logical
 #' @family access
