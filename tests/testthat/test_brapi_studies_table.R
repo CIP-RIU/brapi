@@ -13,6 +13,7 @@ test_that("Basics.", {
 test_that("Parameters", {
   expect_equal(nrow(brapi_studies_table(studyDbId = 1)), 8)
   expect_equal(nrow(brapi_studies_table(studyDbId = 2)), 6)
+  expect_equal(nrow(brapi_studies_table(studyDbId = 2, format = "tsv")), 6)
 })
 
 
