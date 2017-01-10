@@ -25,7 +25,6 @@ Reinhard Simon
 }
 \seealso{
 Other access: \code{\link{brapi_variables_datatypes}},
-  \code{\link{brapi_variables_ontologies}},
   \code{\link{connect}}, \code{\link{crops}},
   \code{\link{studyTypes}}
 

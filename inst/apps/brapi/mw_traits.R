@@ -17,10 +17,10 @@ traits_list = function(traitDbId = "all", page = 0, pageSize = 1000){
     if(nrow(traits_data) == 0) return(NULL)
   }
 
-
   # paging here after filtering
   pg = paging(traits_data, page, pageSize)
   traits_data <- traits_data[pg$recStart:pg$recEnd, ]
+
 
   n = nrow(traits_data)
   out = list(n)

@@ -23,7 +23,7 @@ The library implements currently mainly API calls to retrievie phenotypic field 
 Implementation status
 ---------------------
 
-Out of 47 BrAPI calls currently **39 (83%)** are implemented in this package.
+Out of 47 BrAPI calls currently **41 (87.2%)** are implemented in this package.
 
 | group                | status   | call                            | datatypes      |
 |:---------------------|:---------|:--------------------------------|:---------------|
@@ -61,6 +61,8 @@ Out of 47 BrAPI calls currently **39 (83%)** are implemented in this package.
 |                      |          | traits/id                       | json           |
 | ObservationVariables | ACCEPTED | variables/datatypes             | json           |
 | ObservationVariables | ACCEPTED | ontologies                      | json           |
+| ObservationVariables | ACCEPTED | variables                       | json           |
+| ObservationVariables | ACCEPTED | variables/id                    | json           |
 |                      |          | maps                            | json           |
 |                      |          | maps/id                         | json           |
 |                      |          | maps/id/positions               | json           |

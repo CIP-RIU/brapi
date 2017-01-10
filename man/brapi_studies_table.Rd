@@ -56,7 +56,8 @@ Other brapi_call: \code{\link{allelematrix_search}},
   \code{\link{trials}}
 
 Other phenotyping: \code{\link{brapi_traits_details}},
-  \code{\link{brapi_traits}}, \code{\link{locations}},
+  \code{\link{brapi_traits}},
+  \code{\link{brapi_variables}}, \code{\link{locations}},
   \code{\link{observationLevels}},
   \code{\link{studies_germplasm}},
   \code{\link{studies_layout}},

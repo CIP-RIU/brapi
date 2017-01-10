@@ -27,7 +27,6 @@ Reinhard Simon
 }
 \seealso{
 Other access: \code{\link{brapi_variables_datatypes}},
-  \code{\link{brapi_variables_ontologies}},
   \code{\link{calls}}, \code{\link{connect}},
   \code{\link{crops}}
 
@@ -59,7 +58,8 @@ Other brapi_call: \code{\link{allelematrix_search}},
 
 Other phenotyping: \code{\link{brapi_studies_table}},
   \code{\link{brapi_traits_details}},
-  \code{\link{brapi_traits}}, \code{\link{locations}},
+  \code{\link{brapi_traits}},
+  \code{\link{brapi_variables}}, \code{\link{locations}},
   \code{\link{observationLevels}},
   \code{\link{studies_germplasm}},
   \code{\link{studies_layout}},

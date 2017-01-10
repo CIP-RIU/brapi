@@ -20,7 +20,6 @@ Reinhard Simon
 }
 \seealso{
 Other access: \code{\link{brapi_variables_datatypes}},
-  \code{\link{brapi_variables_ontologies}},
   \code{\link{calls}}, \code{\link{connect}},
   \code{\link{studyTypes}}
 
