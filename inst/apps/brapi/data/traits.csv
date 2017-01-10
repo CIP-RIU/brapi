@@ -1,0 +1,6 @@
+traitDbId,traitId,name,description,observationVariables,defaultValue
+1,CO_334:0100620,Carotenoid content,Cassava storage root pulp carotenoid content,CO_334:0100621;CO_334:0100623;CO_334:0100623, 
+2,CO_334:0100621,Plant height,Plant height,CO_334:0200001, 
+3,CO_334:0100622,Root weight,Root weight,CO_334:0200002;CO_334:0300002, 
+4,CO_334:0100623,Root color,Root color,CO_334:0200003,3
+5,CO_334:0100624,Virus susceptibility,Virus susceptibility,CO_334:0200004,5

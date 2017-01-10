@@ -123,6 +123,10 @@ htt- defines page and pageSize in parameters (should also be defined then for at
 
 - observationTimestamp would be different for each measurement; so one column here does not make sense
 
+# traits
+
+- parameters page & pageSize not documentedl but probably implied
+
 
 
 # TODO
