@@ -1,6 +1,6 @@
 Package: brapi
 Title: Provides a Client to Access Breeding Databases
-Version: 0.0.0.9054
+Version: 0.0.0.9055
 Authors@R: c(
   person("Reinhard", "Simon", email = "R.SIMON@CGIAR.ORG", role = c("aut", "cre")),
   person("Maikel", "Verouden", role = c("aut", "ctb"),

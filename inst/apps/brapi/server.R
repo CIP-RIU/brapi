@@ -43,6 +43,7 @@ res <- jug() %>%
   include(mw_phenotypes_search) %>%
   include(mw_traits) %>%
   include(mw_variables_datatypes) %>%
+  include(mw_variables_ontologies) %>%
   include(mw_variables) %>%
   include(mw_variables_search) %>%
   include(mw_maps) %>%
