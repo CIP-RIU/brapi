@@ -31,6 +31,10 @@ brapi_variables <- function(con = NULL, traitClass = "all",
     res <- brapiGET(brapi_variables)
     res <-  httr::content(res, "text", encoding = "UTF-8")
     out = NULL
+    if (!rclass %in% c("json", "list", "tibble", "data.frame")) {
+      rclass = "json"
+    }
+
     if (rclass %in% c("json", "list")) {
       out = dat2tbl(res, rclass)
     }
