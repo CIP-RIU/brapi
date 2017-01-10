@@ -1,7 +1,17 @@
-.DS_Store
+# Files to be ignored in the local and remote git repository
+# R specific files
 .Rproj.user
 .Rhistory
 .RData
+.Ruserdata
+
+# Apple generated map metadata files
+.DS_Store
+
+# Project folders or files to be ignored during development to prevent creation
+# of a huge git repo
+NAMESPACE
+man/
 inst/doc
 brapi_session.rda
 www
