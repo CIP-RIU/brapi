@@ -10,8 +10,7 @@
 #' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/brapi_traits_details/Listbrapi_traits_details.md}
 #' @return rclass as defined
 #' @import tibble
-#' @import tidyjson
-#' @family brapi_call
+#' @family traits
 #' @family phenotyping
 #' @export
 brapi_traits_details <- function(con = NULL, traitDbId = 1, rclass = "tibble") {

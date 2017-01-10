@@ -31,9 +31,7 @@ Reinhard Simon
 \seealso{
 Other brapi_call: \code{\link{allelematrix_search}},
   \code{\link{attributes_categories}},
-  \code{\link{attributes}},
-  \code{\link{brapi_traits_details}},
-  \code{\link{brapi_traits}}, \code{\link{calls}},
+  \code{\link{attributes}}, \code{\link{calls}},
   \code{\link{crops}}, \code{\link{germplasm_attributes}},
   \code{\link{germplasm_markerprofiles}},
   \code{\link{germplasm_pedigree}},
