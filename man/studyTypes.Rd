@@ -26,14 +26,17 @@ Reinhard Simon
 \url{http://docs.brapi.apiary.io/#reference/0/studyTypes}
 }
 \seealso{
-Other access: \code{\link{calls}}, \code{\link{connect}},
+Other access: \code{\link{brapi_variables_datatypes}},
+  \code{\link{calls}}, \code{\link{connect}},
   \code{\link{crops}}
 
 Other brapi_call: \code{\link{allelematrix_search}},
   \code{\link{attributes_categories}},
   \code{\link{attributes}},
-  \code{\link{brapi_studies_table}}, \code{\link{calls}},
-  \code{\link{crops}}, \code{\link{germplasm_attributes}},
+  \code{\link{brapi_studies_table}},
+  \code{\link{brapi_variables_datatypes}},
+  \code{\link{calls}}, \code{\link{crops}},
+  \code{\link{germplasm_attributes}},
   \code{\link{germplasm_markerprofiles}},
   \code{\link{germplasm_pedigree}},
   \code{\link{germplasm_search}}, \code{\link{germplasm}},

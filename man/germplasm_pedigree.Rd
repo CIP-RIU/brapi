@@ -30,8 +30,10 @@ Reinhard Simon
 Other brapi_call: \code{\link{allelematrix_search}},
   \code{\link{attributes_categories}},
   \code{\link{attributes}},
-  \code{\link{brapi_studies_table}}, \code{\link{calls}},
-  \code{\link{crops}}, \code{\link{germplasm_attributes}},
+  \code{\link{brapi_studies_table}},
+  \code{\link{brapi_variables_datatypes}},
+  \code{\link{calls}}, \code{\link{crops}},
+  \code{\link{germplasm_attributes}},
   \code{\link{germplasm_markerprofiles}},
   \code{\link{germplasm_search}}, \code{\link{germplasm}},
   \code{\link{locations}}, \code{\link{maps_details}},
@@ -50,7 +52,8 @@ Other brapi_call: \code{\link{allelematrix_search}},
   \code{\link{studyTypes}}, \code{\link{trial_by_id}},
   \code{\link{trials}}
 
-Other core: \code{\link{calls}}, \code{\link{crops}},
+Other core: \code{\link{brapi_variables_datatypes}},
+  \code{\link{calls}}, \code{\link{crops}},
   \code{\link{germplasm_search}}, \code{\link{germplasm}},
   \code{\link{marker_search}}, \code{\link{programs}},
   \code{\link{seasons}}, \code{\link{studies}}

@@ -23,47 +23,48 @@ The library implements currently mainly API calls to retrievie phenotypic field 
 Implementation status
 ---------------------
 
-Out of 47 BrAPI calls currently **37 (78.7%)** are implemented in this package.
+Out of 47 BrAPI calls currently **38 (80.9%)** are implemented in this package.
 
-| call                            | datatypes      | methods   | scope       |
-|:--------------------------------|:---------------|:----------|:------------|
-| calls                           | json           | GET       | CORE        |
-| germplasm-search                | json           | GET; POST | CORE        |
-| germplasm/id                    | json           | GET       | CORE        |
-| germplasm/id/pedigree           | json           | GET       | CORE        |
-| germplasm/id/markerprofiles     | json           | GET       | GENOTYPING  |
-| attributes                      | json           | GET       | GENOTYPING  |
-| attributes/categories           | json           | GET       | GENOTYPING  |
-| germplasm/id/attributes/        | json           | GET       | GENOTYPING  |
-| markers                         | json           | GET       | GENOTYPING  |
-| markers/id                      | json           | GET       | GENOTYPING  |
-| markerprofiles                  | json           | GET       | GENOTYPING  |
-| markerprofiles-search           | json           | POST      | GENOTYPING  |
-| markerprofiles/id               | json           | GET       | GENOTYPING  |
-| allelematrix-search             | json; csv; tsv | GET; POST | GENOTYPING  |
-| programs                        | json           | GET       | CORE        |
-| crops                           | json           | GET       | CORE        |
-| trials                          | json           | GET       | PHENOTYPING |
-| trials/id                       | json           | GET       | PHENOTYPING |
-| seasons                         | json           | GET       | PHENOTYPING |
-| studyTypes                      | json           | GET       | PHENOTYPING |
-| studies-search                  | json           | GET       | PHENOTYPING |
-| studies-search                  | json           | POST      | PHENOTYPING |
-| studies/id                      | json           | GET       | PHENOTYPING |
-| studies/id/observationVariables | json           | GET       | PHENOTYPING |
-| studies/id/germplasm            | json           | GET       | PHENOTYPING |
-| observationLevels               | json           | GET       | PHENOTYPING |
-| studies/id/observationunits     | json           | GET; POST | PHENOTYPING |
-| studies/id/table                | json; csv; tsv | GET       | PHENOTYPING |
-| studies/id/layout               | json           | GET       | PHENOTYPING |
-| studies/id/observations         | json           | GET       | PHENOTYPING |
-| traits                          | json           | GET       | PHENOTYPING |
-| traits/id                       | json           | GET       | PHENOTYPING |
-| maps                            | json           | GET       | GENOTYPING  |
-| maps/id                         | json           | GET       | GENOTYPING  |
-| maps/id/positions               | json           | GET       | GENOTYPING  |
-| maps/id/positions/id            | json           | GET       | GENOTYPING  |
-| locations                       | json           | GET       | PHENOTYPING |
+| group | status | call                            | datatypes      |
+|:------|:-------|:--------------------------------|:---------------|
+| NA    | NA     | calls                           | json           |
+| NA    | NA     | germplasm-search                | json           |
+| NA    | NA     | germplasm/id                    | json           |
+| NA    | NA     | germplasm/id/pedigree           | json           |
+| NA    | NA     | germplasm/id/markerprofiles     | json           |
+| NA    | NA     | attributes                      | json           |
+| NA    | NA     | attributes/categories           | json           |
+| NA    | NA     | germplasm/id/attributes/        | json           |
+| NA    | NA     | markers                         | json           |
+| NA    | NA     | markers/id                      | json           |
+| NA    | NA     | markerprofiles                  | json           |
+| NA    | NA     | markerprofiles-search           | json           |
+| NA    | NA     | markerprofiles/id               | json           |
+| NA    | NA     | allelematrix-search             | json; csv; tsv |
+| NA    | NA     | programs                        | json           |
+| NA    | NA     | crops                           | json           |
+| NA    | NA     | trials                          | json           |
+| NA    | NA     | trials/id                       | json           |
+| NA    | NA     | seasons                         | json           |
+| NA    | NA     | studyTypes                      | json           |
+| NA    | NA     | studies-search                  | json           |
+| NA    | NA     | studies-search                  | json           |
+| NA    | NA     | studies/id                      | json           |
+| NA    | NA     | studies/id/observationVariables | json           |
+| NA    | NA     | studies/id/germplasm            | json           |
+| NA    | NA     | observationLevels               | json           |
+| NA    | NA     | studies/id/observationunits     | json           |
+| NA    | NA     | studies/id/table                | json; csv; tsv |
+| NA    | NA     | studies/id/layout               | json           |
+| NA    | NA     | studies/id/observations         | json           |
+| NA    | NA     | traits                          | json           |
+| NA    | NA     | traits/id                       | json           |
+| NA    | NA     | variables/datatypes             | json           |
+| NA    | NA     | maps                            | json           |
+| NA    | NA     | maps/id                         | json           |
+| NA    | NA     | maps/id/positions               | json           |
+| NA    | NA     | maps/id/positions/id            | json           |
+| NA    | NA     | locations                       | json           |
 
 How to use the package
 ----------------------

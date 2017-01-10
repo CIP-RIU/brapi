@@ -7,7 +7,6 @@
 #' @param traitDbId alphanumeric; default 1
 #'
 #' @author Reinhard Simon
-#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/brapi_traits_details/Listbrapi_traits_details.md}
 #' @return rclass as defined
 #' @import tibble
 #' @family traits

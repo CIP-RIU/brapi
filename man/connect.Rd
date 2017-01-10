@@ -55,7 +55,8 @@ if(interactive()){
 }
 }
 \seealso{
-Other access: \code{\link{calls}}, \code{\link{crops}},
+Other access: \code{\link{brapi_variables_datatypes}},
+  \code{\link{calls}}, \code{\link{crops}},
   \code{\link{studyTypes}}
 }
 

@@ -8,7 +8,6 @@
 #' @param pageSize integer; defautlt 1000
 #'
 #' @author Reinhard Simon
-#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/brapi_traits/Listbrapi_traits.md}
 #' @return rclass as defined
 #' @import tibble
 #' @family traits
