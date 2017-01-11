@@ -21,7 +21,7 @@ lists crops available in a database
 Reinhard Simon
 }
 \references{
-\url{https://github.com/plantbreeding/API/blob/master/Specification/Crops/ListCrops.md}
+\url{https://github.com/plantbreeding/API/blob/master/Specification/Crops/ListCrops.md}(github)
 }
 \seealso{
 Other core: \code{\link{calls}},

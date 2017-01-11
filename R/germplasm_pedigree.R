@@ -11,7 +11,7 @@
 #' @author Reinhard Simon
 #' @return list of pedigree data
 #' @import httr
-#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/Germplasm/GermplasmPedigree.md}
+#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/Germplasm/GermplasmPedigree.md}(github)
 #' @family germplasm
 #' @family core
 #' @export

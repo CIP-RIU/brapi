@@ -8,7 +8,7 @@
 #' @param rclass string; default: tibble
 #'
 #' @author Reinhard Simon
-#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/Studies/ListStudyTypes.md}
+#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/Studies/ListStudyTypes.md}(github)
 #' @return rclass as defined
 #' @import tibble
 #' @import tidyjson

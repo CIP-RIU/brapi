@@ -13,7 +13,7 @@
 #' @param sortOrder character; default: 'asc'; otherwise 'desc'
 #'
 #' @author Reinhard Simon
-#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/Trials/ListTrialSummaries.md}
+#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/Trials/ListTrialSummaries.md}(github)
 #' @return rclass as defined
 #' @import tibble
 #' @import tidyjson

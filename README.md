@@ -23,10 +23,11 @@ The library implements currently mainly API calls to retrievie phenotypic field 
 Implementation status
 ---------------------
 
-Out of 50 BrAPI calls currently **43 (86%)** are implemented in this package.
+Out of 50 BrAPI calls currently **44 (88%)** are implemented in this package.
 
 | group                | name                                       | R.function                           |
 |:---------------------|:-------------------------------------------|:-------------------------------------|
+| Authentication       | Authentication                             | authenticate                         |
 | Calls                | Calls                                      | calls                                |
 | Crops                | ListCrops                                  | crops                                |
 | GenomeMaps           | ListOfGenomeMap                            | genomemaps                           |

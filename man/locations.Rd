@@ -28,7 +28,7 @@ lists locations available on a brapi server
 Reinhard Simon
 }
 \references{
-\url{https://github.com/plantbreeding/API/blob/master/Specification/Locations/ListLocations.md}
+\url{https://github.com/plantbreeding/API/blob/master/Specification/Locations/ListLocations.md}(github)
 }
 \seealso{
 Other phenotyping: \code{\link{studies_details}},

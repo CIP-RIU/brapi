@@ -26,7 +26,7 @@ Gets minimal pedigree data from database using database internal id
 Reinhard Simon
 }
 \references{
-\url{https://github.com/plantbreeding/API/blob/master/Specification/Germplasm/GermplasmPedigree.md}
+\url{https://github.com/plantbreeding/API/blob/master/Specification/Germplasm/GermplasmPedigree.md}(github)
 }
 \seealso{
 Other core: \code{\link{calls}}, \code{\link{crops}},

@@ -28,7 +28,7 @@ BRAPI discussion: Should this return also the crop?
 Reinhard Simon
 }
 \references{
-\url{https://github.com/plantbreeding/API/blob/master/Specification/Programs/ListPrograms.md}
+\url{https://github.com/plantbreeding/API/blob/master/Specification/Programs/ListPrograms.md}(github)
 }
 \seealso{
 Other core: \code{\link{calls}}, \code{\link{crops}},

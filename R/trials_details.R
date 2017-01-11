@@ -7,7 +7,7 @@
 #' @param trialDbId character; default: 'any'; otherwise an identifier
 #'
 #' @author Reinhard Simon
-#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/Trials/GetTrialById.md}
+#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/Trials/GetTrialById.md}(github)
 #' @return rclass as defined
 #' @import tibble
 #' @import tidyjson

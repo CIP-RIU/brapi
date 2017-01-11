@@ -29,7 +29,7 @@
 #' @family access
 #' @export
 connect <- function(brapiDb = NULL,
-                    secure = TRUE,
+                    secure = FALSE,
                     protocol = "http://",
                     db = "127.0.0.1",
                     port = 2021,
@@ -39,7 +39,7 @@ connect <- function(brapiDb = NULL,
                     user = "user",
                     password = "password",
                     token = "",
-                    granttype = NULL,
+                    granttype = "password",
                     clientid = "rbrapi",
                     bms = FALSE
                     ){
@@ -61,7 +61,7 @@ connect <- function(brapiDb = NULL,
     crops = "",
     calls = ""
   )
-  class(brapi) = c(class(brapi), "brapi")
+  class(brapi) <- c(class(brapi), "brapi")
   #message_brapi()
   #show_info(FALSE)
   # brapi$crops <- crops(brapi, rclass = "vector")

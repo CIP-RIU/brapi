@@ -23,7 +23,7 @@ lists studies_layout available on a brapi server
 Reinhard Simon
 }
 \references{
-\url{https://github.com/plantbreeding/API/blob/master/Specification/Studies/PlotLayoutDetails.md}
+\url{https://github.com/plantbreeding/API/blob/master/Specification/Studies/PlotLayoutDetails.md}(github)
 }
 \seealso{
 Other phenotyping: \code{\link{locations}},

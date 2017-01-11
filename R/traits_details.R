@@ -5,7 +5,7 @@
 #' @param rclass string; default: tibble
 #' @param con object; brapi connection object
 #' @param traitDbId alphanumeric; default 1
-#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/Traits/TraitDetails.md}
+#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/Traits/TraitDetails.md}(github)
 #' @author Reinhard Simon
 #' @return rclass as defined
 #' @import tibble

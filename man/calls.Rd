@@ -28,7 +28,7 @@ lists calls available on a brapi server
 Reinhard Simon
 }
 \references{
-\url{https://github.com/plantbreeding/API/blob/master/Specification/Calls/Calls.md}
+\url{https://github.com/plantbreeding/API/blob/master/Specification/Calls/Calls.md}(github)
 }
 \seealso{
 Other core: \code{\link{crops}},

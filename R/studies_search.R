@@ -15,7 +15,7 @@
 #' @param page integer; default: 1000
 #' @param pageSize integer; default: 0
 #' @param rclass string; default: tibble
-#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/Studies/ListStudySummaries.md}
+#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/Studies/ListStudySummaries.md}(github)
 #' @author Reinhard Simon
 #' @return rclass as defined
 #' @import tibble

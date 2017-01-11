@@ -23,7 +23,7 @@ lists  @param con brapi connection object available on a brapi server
 Reinhard Simon
 }
 \references{
-\url{https://github.com/plantbreeding/API/blob/master/Specification/Studies/StudyObservationVariables.md}
+\url{https://github.com/plantbreeding/API/blob/master/Specification/Studies/StudyObservationVariables.md}(github)
 }
 \seealso{
 Other phenotyping: \code{\link{locations}},

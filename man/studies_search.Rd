@@ -46,7 +46,7 @@ lists trials available on a brapi server
 Reinhard Simon
 }
 \references{
-\url{https://github.com/plantbreeding/API/blob/master/Specification/Studies/ListStudySummaries.md}
+\url{https://github.com/plantbreeding/API/blob/master/Specification/Studies/ListStudySummaries.md}(github)
 }
 \seealso{
 Other phenotyping: \code{\link{locations}},

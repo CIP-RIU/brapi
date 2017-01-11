@@ -4,10 +4,10 @@
 \alias{connect}
 \title{connect}
 \usage{
-connect(brapiDb = NULL, secure = TRUE, protocol = "http://",
+connect(brapiDb = NULL, secure = FALSE, protocol = "http://",
   db = "127.0.0.1", port = 2021, apipath = NULL, multicrop = FALSE,
   crop = "sweetpotato", user = "user", password = "password",
-  token = "", granttype = NULL, clientid = "rbrapi", bms = FALSE)
+  token = "", granttype = "password", clientid = "rbrapi", bms = FALSE)
 }
 \arguments{
 \item{brapiDb}{brapiDb R object for brapi databases. Created by as.brapi_db}
