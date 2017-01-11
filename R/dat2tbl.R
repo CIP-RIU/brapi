@@ -1,6 +1,6 @@
 dat2tbl <- function(res, rclass = "tibble", brapi_class = "brapi") {
   if(!rclass %in% c("json", "list", "tibble", "data.frame", "vector") ) {
-    rclass = "json"
+    rclass  <-  "json"
   }
   if (rclass == "json") return(jsonlite::prettify(res))
 
@@ -24,6 +24,6 @@ dat2tbl <- function(res, rclass = "tibble", brapi_class = "brapi") {
     res <- tibble::as_tibble(res)
   }
   attr(res, "metadata") <- lst$metadata
-  class(res) = c(class(res), brapi_class)
+  class(res)  <-  c(class(res), brapi_class)
   res
 }

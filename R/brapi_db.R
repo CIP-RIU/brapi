@@ -25,6 +25,6 @@ brapi_db <- function(){
     sweetpotatobase = sweetpotatobase,
     mockbase = mockbase
     )
-  class(out) = "brapi_db_list"
+  class(out)  <-  "brapi_db_list"
   out
 }

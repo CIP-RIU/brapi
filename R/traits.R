@@ -6,7 +6,7 @@
 #' @param con object; brapi connection object
 #' @param page integer; default 0
 #' @param pageSize integer; defautlt 1000
-#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/Traits/ListAllTraits.md}(github)
+#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Traits/ListAllTraits.md}{github}
 #' @author Reinhard Simon
 #' @return rclass as defined
 #' @import tibble

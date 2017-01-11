@@ -7,7 +7,7 @@
 #' @param studyDbId string; default: 1
 #'
 #' @author Reinhard Simon
-#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/Studies/PlotLayoutDetails.md}(github)
+#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/Studies/PlotLayoutDetails.md}{github}
 #' @return rclass as defined
 #' @import tibble
 #' @import tidyjson

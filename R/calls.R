@@ -9,7 +9,7 @@
 #' @param page integer; default = 0
 #'
 #' @author Reinhard Simon
-#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/Calls/Calls.md}(github)
+#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Calls/Calls.md}{github}
 #' @return rclass as defined
 #' @import tibble
 #' @family core

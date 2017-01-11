@@ -11,15 +11,15 @@
 #' @return logical
 #' @export
 check <- function(con = NULL, verbose = TRUE, brapi_calls = "any"){
-  brapi = con
+  brapi <- con
   #if(!("brapi" %in% ls(envir = globalenv()))) stop("BrAPI connection details not available. Use brapi::connect()")
-  if(is.null(brapi))     stop("BrAPI connection object is NULL. Use brapi::connect()")
+  if( is.null(brapi) )     stop("BrAPI connection object is NULL. Use brapi::connect()")
 
   url <- brapi$db
 
   if(stringr::str_detect(brapi$db, "127")){
     url <- paste0(brapi$db, ":", brapi$port, "/brapi/v1/")
-    status = 600
+    status <- 600
     status <- try({
       httr::GET(url)$status_code
     })
