@@ -9,10 +9,10 @@
 #' @param page integer; default = 0
 #'
 #' @author Reinhard Simon
-#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Calls/Calls.md}{github}
+# @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Calls/Calls.md}{github}
 #' @return rclass as defined
 #' @import tibble
-#' @family core
+# @family core
 #' @export
 calls <- function(con = NULL, datatypes = "all", pageSize = 1000, page = 0,
                   rclass = "tibble") {

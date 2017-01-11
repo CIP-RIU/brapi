@@ -27,20 +27,4 @@ lists calls available on a brapi server
 \author{
 Reinhard Simon
 }
-\references{
-\url{https://github.com/plantbreeding/API/blob/master/Specification/Calls/Calls.md}(github)
-}
-\seealso{
-Other core: \code{\link{crops}},
-  \code{\link{germplasm_details_study}},
-  \code{\link{germplasm_details}},
-  \code{\link{germplasm_pedigree}},
-  \code{\link{germplasm_search}},
-  \code{\link{observationvariables_datatypes}},
-  \code{\link{observationvariables_details}},
-  \code{\link{observationvariables_ontologies}},
-  \code{\link{observationvariables}},
-  \code{\link{programs}}, \code{\link{traits_details}},
-  \code{\link{traits}}
-}
 

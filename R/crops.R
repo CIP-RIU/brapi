@@ -7,8 +7,8 @@
 #'
 #' @author Reinhard Simon
 #' @return a vector of crop names or NULL
-#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Crops/ListCrops.md}{github}
-#' @family core
+# @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Crops/ListCrops.md}{github}
+# @family core
 #' @export
 crops <- function(con = NULL, rclass = "tibble"){
   brapi::check(con, FALSE, "crops")

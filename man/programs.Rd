@@ -31,8 +31,7 @@ Reinhard Simon
 \url{https://github.com/plantbreeding/API/blob/master/Specification/Programs/ListPrograms.md}(github)
 }
 \seealso{
-Other core: \code{\link{calls}}, \code{\link{crops}},
-  \code{\link{germplasm_details_study}},
+Other core: \code{\link{germplasm_details_study}},
   \code{\link{germplasm_details}},
   \code{\link{germplasm_pedigree}},
   \code{\link{germplasm_search}},
