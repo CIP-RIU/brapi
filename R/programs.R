@@ -12,7 +12,7 @@
 #' @import httr
 #' @author Reinhard Simon
 #' @return rclass
-#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/Programs/ListPrograms.md}(github)
+# @references \url{https://github.com/plantbreeding/API/blob/master/Specification/Programs/ListPrograms.md}(github)
 #' @family core
 #' @export
 programs <- function(con = NULL, page = 0, pageSize = 100, rclass = "tibble") {

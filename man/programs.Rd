@@ -27,9 +27,6 @@ BRAPI discussion: Should this return also the crop?
 \author{
 Reinhard Simon
 }
-\references{
-\url{https://github.com/plantbreeding/API/blob/master/Specification/Programs/ListPrograms.md}(github)
-}
 \seealso{
 Other core: \code{\link{germplasm_details_study}},
   \code{\link{germplasm_details}},

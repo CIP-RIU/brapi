@@ -34,8 +34,7 @@ Reinhard Simon
 \url{https://github.com/plantbreeding/API/blob/master/Specification/Studies/GetObservationUnitsByObservationVariableIds.md}
 }
 \seealso{
-Other phenotyping: \code{\link{locations}},
-  \code{\link{studies_details}},
+Other phenotyping: \code{\link{studies_details}},
   \code{\link{studies_layout}},
   \code{\link{studies_observationlevels}},
   \code{\link{studies_observationunits}},

@@ -13,7 +13,7 @@
 #' @return rclass as defined
 #' @import tibble
 #' @import tidyjson
-#' @family phenotyping
+# @family phenotyping
 #' @export
 locations <- function(con = NULL, locationType = "all", page = 0, pageSize = 1000, rclass = "tibble") {
   brapi::check(con, FALSE, "locations")
