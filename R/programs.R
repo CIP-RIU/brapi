@@ -13,9 +13,7 @@
 #' @author Reinhard Simon
 #' @return rclass
 #' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/Programs/ListPrograms.md}
-#' @family brapi_call
 #' @family core
-#' @family experiments
 #' @export
 programs <- function(con = NULL, page = 0, pageSize = 100, rclass = "tibble") {
   brapi::check(con, FALSE, "programs")

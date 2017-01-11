@@ -12,7 +12,6 @@
 #' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/Calls/Calls.md}
 #' @return rclass as defined
 #' @import tibble
-#' @family calls
 #' @family core
 #' @export
 calls <- function(con = NULL, datatypes = "all", pageSize = 1000, page = 0,

@@ -31,9 +31,6 @@ Reinhard Simon
 \url{https://github.com/plantbreeding/API/blob/master/Specification/Locations/ListLocations.md}
 }
 \seealso{
-Other brapi_call: \code{\link{programs}},
-  \code{\link{studies_details}}
-
 Other phenotyping: \code{\link{studies_details}},
   \code{\link{studies_layout}},
   \code{\link{studies_observationlevels}},

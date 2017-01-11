@@ -31,9 +31,6 @@ Reinhard Simon
 \url{https://github.com/plantbreeding/API/blob/master/Specification/Programs/ListPrograms.md}
 }
 \seealso{
-Other brapi_call: \code{\link{locations}},
-  \code{\link{studies_details}}
-
 Other core: \code{\link{calls}}, \code{\link{crops}},
   \code{\link{germplasm_details_study}},
   \code{\link{germplasm_details}},

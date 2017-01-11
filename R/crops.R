@@ -8,7 +8,6 @@
 #' @author Reinhard Simon
 #' @return a vector of crop names or NULL
 #' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/Crops/ListCrops.md}
-#' @family crops
 #' @family core
 #' @export
 crops <- function(con = NULL, rclass = "tibble"){

@@ -1,4 +1,3 @@
-
 #' germplasm_pedigree
 #'
 #' Gets minimal pedigree data from database using database internal id
