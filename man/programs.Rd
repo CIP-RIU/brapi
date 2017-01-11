@@ -4,9 +4,11 @@
 \alias{programs}
 \title{programs}
 \usage{
-programs(page = 0, pageSize = 100, rclass = "tibble")
+programs(con = NULL, page = 0, pageSize = 100, rclass = "tibble")
 }
 \arguments{
+\item{con}{brapi connection object}
+
 \item{page}{integer requested page number, default = 0 (1st page)}
 
 \item{pageSize}{items per page (default = 100)}
@@ -26,44 +28,21 @@ BRAPI discussion: Should this return also the crop?
 Reinhard Simon
 }
 \references{
-\url{http://docs.brapi.apiary.io/#reference/0/program-list/list-programs}
+\url{https://github.com/plantbreeding/API/blob/master/Specification/Programs/ListPrograms.md}
 }
 \seealso{
-Other brapi_call: \code{\link{allelematrix_search}},
-  \code{\link{attributes_categories}},
-  \code{\link{attributes}},
-  \code{\link{brapi_studies_table}},
-  \code{\link{brapi_variables_datatypes}},
-  \code{\link{brapi_variables_ontologies}},
-  \code{\link{calls}}, \code{\link{crops}},
-  \code{\link{germplasm_attributes}},
-  \code{\link{germplasm_markerprofiles}},
-  \code{\link{germplasm_pedigree}},
-  \code{\link{germplasm_search}}, \code{\link{germplasm}},
-  \code{\link{locations}}, \code{\link{maps_details}},
-  \code{\link{maps_positions_range}},
-  \code{\link{maps_positions}}, \code{\link{maps}},
-  \code{\link{marker_search}},
-  \code{\link{markerprofiles_alleles}},
-  \code{\link{markerprofiles}}, \code{\link{markers}},
-  \code{\link{observationLevels}}, \code{\link{seasons}},
-  \code{\link{studies_germplasm}},
-  \code{\link{studies_layout}},
-  \code{\link{studies_observationVariables}},
-  \code{\link{studies_observations}},
-  \code{\link{studies_observationunits}},
-  \code{\link{studies_search}}, \code{\link{studies}},
-  \code{\link{studyTypes}}, \code{\link{trial_by_id}},
-  \code{\link{trials}}
+Other brapi_call: \code{\link{locations}},
+  \code{\link{studies_details}}
 
-Other core: \code{\link{brapi_variables_datatypes}},
-  \code{\link{brapi_variables_ontologies}},
-  \code{\link{calls}}, \code{\link{crops}},
+Other core: \code{\link{calls}}, \code{\link{crops}},
+  \code{\link{germplasm_details_study}},
+  \code{\link{germplasm_details}},
   \code{\link{germplasm_pedigree}},
-  \code{\link{germplasm_search}}, \code{\link{germplasm}},
-  \code{\link{marker_search}}, \code{\link{seasons}},
-  \code{\link{studies}}
-
-Other experiments: \code{\link{seasons}}
+  \code{\link{germplasm_search}},
+  \code{\link{observationvariables_datatypes}},
+  \code{\link{observationvariables_details}},
+  \code{\link{observationvariables_ontologies}},
+  \code{\link{observationvariables}},
+  \code{\link{traits_details}}, \code{\link{traits}}
 }
 

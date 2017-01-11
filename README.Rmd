@@ -45,7 +45,7 @@ calls_data = tryCatch({
 }
 )
 
-res <- calls_data[stringr::str_detect(calls_data$clients, "brapi"), 1:4]
+res <- calls_data[stringr::str_detect(calls_data$client.brapi, "x"), c(1, 7, 8)]
 
 pct <- round(nrow(res) / nrow(calls_data) * 100, 1)
 ```

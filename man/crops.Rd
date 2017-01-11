@@ -4,9 +4,11 @@
 \alias{crops}
 \title{crops}
 \usage{
-crops(rclass = "vector")
+crops(con = NULL, rclass = "tibble")
 }
 \arguments{
+\item{con}{brapi connection object}
+
 \item{rclass}{logical; default is FALSE; whether to display the raw list object or not}
 }
 \value{
@@ -18,42 +20,20 @@ lists crops available in a database
 \author{
 Reinhard Simon
 }
+\references{
+\url{https://github.com/plantbreeding/API/blob/master/Specification/Crops/ListCrops.md}
+}
 \seealso{
-Other access: \code{\link{brapi_variables_datatypes}},
-  \code{\link{calls}}, \code{\link{connect}},
-  \code{\link{studyTypes}}
-
-Other brapi_call: \code{\link{allelematrix_search}},
-  \code{\link{attributes_categories}},
-  \code{\link{attributes}},
-  \code{\link{brapi_studies_table}},
-  \code{\link{brapi_variables_datatypes}},
-  \code{\link{brapi_variables_ontologies}},
-  \code{\link{calls}}, \code{\link{germplasm_attributes}},
-  \code{\link{germplasm_markerprofiles}},
+Other core: \code{\link{calls}},
+  \code{\link{germplasm_details_study}},
+  \code{\link{germplasm_details}},
   \code{\link{germplasm_pedigree}},
-  \code{\link{germplasm_search}}, \code{\link{germplasm}},
-  \code{\link{locations}}, \code{\link{maps_details}},
-  \code{\link{maps_positions_range}},
-  \code{\link{maps_positions}}, \code{\link{maps}},
-  \code{\link{marker_search}},
-  \code{\link{markerprofiles_alleles}},
-  \code{\link{markerprofiles}}, \code{\link{markers}},
-  \code{\link{observationLevels}}, \code{\link{programs}},
-  \code{\link{seasons}}, \code{\link{studies_germplasm}},
-  \code{\link{studies_layout}},
-  \code{\link{studies_observationVariables}},
-  \code{\link{studies_observations}},
-  \code{\link{studies_observationunits}},
-  \code{\link{studies_search}}, \code{\link{studies}},
-  \code{\link{studyTypes}}, \code{\link{trial_by_id}},
-  \code{\link{trials}}
-
-Other core: \code{\link{brapi_variables_datatypes}},
-  \code{\link{brapi_variables_ontologies}},
-  \code{\link{calls}}, \code{\link{germplasm_pedigree}},
-  \code{\link{germplasm_search}}, \code{\link{germplasm}},
-  \code{\link{marker_search}}, \code{\link{programs}},
-  \code{\link{seasons}}, \code{\link{studies}}
+  \code{\link{germplasm_search}},
+  \code{\link{observationvariables_datatypes}},
+  \code{\link{observationvariables_details}},
+  \code{\link{observationvariables_ontologies}},
+  \code{\link{observationvariables}},
+  \code{\link{programs}}, \code{\link{traits_details}},
+  \code{\link{traits}}
 }
 

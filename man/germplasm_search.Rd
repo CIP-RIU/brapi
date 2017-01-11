@@ -2,13 +2,15 @@
 % Please edit documentation in R/germplasm_search.R
 \name{germplasm_search}
 \alias{germplasm_search}
-\title{germplasm search}
+\title{germplasm_search}
 \usage{
-germplasm_search(germplasmDbId = 0, germplasmName = "none",
+germplasm_search(con = NULL, germplasmDbId = 0, germplasmName = "none",
   germplasmPUI = "none", page = 0, pageSize = 1000, method = "GET",
   rclass = "tibble")
 }
 \arguments{
+\item{con}{brapi connection object}
+
 \item{germplasmDbId}{string}
 
 \item{germplasmName}{string}
@@ -24,7 +26,7 @@ germplasm_search(germplasmDbId = 0, germplasmName = "none",
 \item{rclass}{character; default: tibble}
 }
 \value{
-data.frame
+tibble
 }
 \description{
 Lists germplasmm as result of a search.
@@ -33,45 +35,24 @@ Lists germplasmm as result of a search.
 Reinhard Simon
 }
 \references{
-\url{http://docs.brapi.apiary.io/#reference/0/germplasm-search}
+\url{https://github.com/plantbreeding/API/blob/master/Specification/Germplasm/GermplasmSearchGET.md}
+   \url{https://github.com/plantbreeding/API/blob/master/Specification/Germplasm/GermplasmSearchPOST.md}
 }
 \seealso{
-Other brapi_call: \code{\link{allelematrix_search}},
-  \code{\link{attributes_categories}},
-  \code{\link{attributes}},
-  \code{\link{brapi_studies_table}},
-  \code{\link{brapi_variables_datatypes}},
-  \code{\link{brapi_variables_ontologies}},
-  \code{\link{calls}}, \code{\link{crops}},
-  \code{\link{germplasm_attributes}},
+Other core: \code{\link{calls}}, \code{\link{crops}},
+  \code{\link{germplasm_details_study}},
+  \code{\link{germplasm_details}},
+  \code{\link{germplasm_pedigree}},
+  \code{\link{observationvariables_datatypes}},
+  \code{\link{observationvariables_details}},
+  \code{\link{observationvariables_ontologies}},
+  \code{\link{observationvariables}},
+  \code{\link{programs}}, \code{\link{traits_details}},
+  \code{\link{traits}}
+
+Other germplasm: \code{\link{germplasm_details_study}},
+  \code{\link{germplasm_details}},
   \code{\link{germplasm_markerprofiles}},
-  \code{\link{germplasm_pedigree}},
-  \code{\link{germplasm}}, \code{\link{locations}},
-  \code{\link{maps_details}},
-  \code{\link{maps_positions_range}},
-  \code{\link{maps_positions}}, \code{\link{maps}},
-  \code{\link{marker_search}},
-  \code{\link{markerprofiles_alleles}},
-  \code{\link{markerprofiles}}, \code{\link{markers}},
-  \code{\link{observationLevels}}, \code{\link{programs}},
-  \code{\link{seasons}}, \code{\link{studies_germplasm}},
-  \code{\link{studies_layout}},
-  \code{\link{studies_observationVariables}},
-  \code{\link{studies_observations}},
-  \code{\link{studies_observationunits}},
-  \code{\link{studies_search}}, \code{\link{studies}},
-  \code{\link{studyTypes}}, \code{\link{trial_by_id}},
-  \code{\link{trials}}
-
-Other core: \code{\link{brapi_variables_datatypes}},
-  \code{\link{brapi_variables_ontologies}},
-  \code{\link{calls}}, \code{\link{crops}},
-  \code{\link{germplasm_pedigree}},
-  \code{\link{germplasm}}, \code{\link{marker_search}},
-  \code{\link{programs}}, \code{\link{seasons}},
-  \code{\link{studies}}
-
-Other germplasm: \code{\link{germplasm_pedigree}},
-  \code{\link{germplasm}}, \code{\link{marker_search}}
+  \code{\link{germplasm_pedigree}}
 }
 

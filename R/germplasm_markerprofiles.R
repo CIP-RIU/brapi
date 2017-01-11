@@ -3,25 +3,25 @@
 #'
 #' Gets minimal marker profile data from database using database internal id
 #'
+#' @param con brapi connection object
 #' @param germplasmDbId integer
 #' @param rclass character, default: list; alternative: vector
 #' @author Reinhard Simon
 #' @return list of marker profile ids
 #' @import httr
-#' @import tidyjson
 #' @import dplyr
-#' @references \url{http://docs.brapi.apiary.io/#reference/0/germplasm-markerprofiles}
-#' @family brapi_call
+#' @import tidyjson
+#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/Germplasm/GermplasmMarkerprofiles.md}
+#' @family germplasm
 #' @family genotyping
-#' @family attributes
 #' @export
-germplasm_markerprofiles <- function(germplasmDbId = 0, rclass = "tibble"){
-  brapi::check(FALSE)
-  germplasm_markerprofiles = paste0(get_brapi(), "germplasm/", germplasmDbId,
+germplasm_markerprofiles <- function(con = NULL, germplasmDbId = 0, rclass = "tibble"){
+  brapi::check(con, FALSE)
+  germplasm_markerprofiles = paste0(get_brapi(con), "germplasm/", germplasmDbId,
                               "/markerprofiles/")
 
   try({
-    res <- brapiGET(germplasm_markerprofiles)
+    res <- brapiGET(germplasm_markerprofiles, con = con)
     res <- httr::content(res, "text", encoding = "UTF-8")
     out <- NULL
     ms2tbl <- function(res){
@@ -40,6 +40,7 @@ germplasm_markerprofiles <- function(germplasmDbId = 0, rclass = "tibble"){
     if(rclass == "data.frame") out  <- ms2tbl(res)
     if(rclass == "tibble")     out  <- ms2tbl(res) %>% tibble::as_tibble()
 
+    class(out) = c(class(out), "brapi_germplasm_markerprofiles")
     out
   })
 }

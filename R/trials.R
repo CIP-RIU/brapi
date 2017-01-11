@@ -2,6 +2,7 @@
 #'
 #' lists trials available on a brapi server
 #'
+#' @param con brapi connection object
 #' @param rclass string; default: tibble
 #' @param page integer; default 0
 #' @param pageSize integer; default 1000
@@ -16,14 +17,14 @@
 #' @return rclass as defined
 #' @import tibble
 #' @import tidyjson
-#' @family brapi_call
+#' @family trials
 #' @family phenotyping
 #' @export
-trials <- function(programDbId = "any", locationDbId = "any", active = "any",
+trials <- function(con = NULL, programDbId = "any", locationDbId = "any", active = "any",
                       sortBy = "none", sortOrder = "asc",
                       page = 0, pageSize = 1000, rclass = "tibble") {
-  brapi::check(FALSE, "trials")
-  brp <- get_brapi()
+  brapi::check(con, FALSE, "trials")
+  brp <- get_brapi(con)
   ptrials = paste0(brp, "trials/?")
 
 
@@ -40,11 +41,12 @@ trials <- function(programDbId = "any", locationDbId = "any", active = "any",
 
 
   try({
-    res <- brapiGET(ptrials)
+    res <- brapiGET(ptrials, con = con)
     res <- httr::content(res, "text", encoding = "UTF-8")
     out = NULL
     if(rclass %in% c("list", "json")) out = dat2tbl(res, rclass)
     if(rclass %in% c("data.frame", "tibble")) out = trl2tbl(res, rclass)
+    class(out) = c(class(out), "brapi_trials")
     out
   })
 }

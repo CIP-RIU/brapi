@@ -4,11 +4,13 @@
 \alias{trials}
 \title{trials}
 \usage{
-trials(programDbId = "any", locationDbId = "any", active = "any",
-  sortBy = "none", sortOrder = "asc", page = 0, pageSize = 1000,
-  rclass = "tibble")
+trials(con = NULL, programDbId = "any", locationDbId = "any",
+  active = "any", sortBy = "none", sortOrder = "asc", page = 0,
+  pageSize = 1000, rclass = "tibble")
 }
 \arguments{
+\item{con}{brapi connection object}
+
 \item{programDbId}{character; default: 'any'; otherwise an identifier}
 
 \item{locationDbId}{character; default: 'any'; otherwise an identifier}
@@ -38,44 +40,18 @@ Reinhard Simon
 \url{https://github.com/plantbreeding/API/blob/master/Specification/Trials/ListTrialSummaries.md}
 }
 \seealso{
-Other brapi_call: \code{\link{allelematrix_search}},
-  \code{\link{attributes_categories}},
-  \code{\link{attributes}},
-  \code{\link{brapi_studies_table}},
-  \code{\link{brapi_variables_datatypes}},
-  \code{\link{brapi_variables_ontologies}},
-  \code{\link{calls}}, \code{\link{crops}},
-  \code{\link{germplasm_attributes}},
-  \code{\link{germplasm_markerprofiles}},
-  \code{\link{germplasm_pedigree}},
-  \code{\link{germplasm_search}}, \code{\link{germplasm}},
-  \code{\link{locations}}, \code{\link{maps_details}},
-  \code{\link{maps_positions_range}},
-  \code{\link{maps_positions}}, \code{\link{maps}},
-  \code{\link{marker_search}},
-  \code{\link{markerprofiles_alleles}},
-  \code{\link{markerprofiles}}, \code{\link{markers}},
-  \code{\link{observationLevels}}, \code{\link{programs}},
-  \code{\link{seasons}}, \code{\link{studies_germplasm}},
+Other phenotyping: \code{\link{locations}},
+  \code{\link{studies_details}},
   \code{\link{studies_layout}},
-  \code{\link{studies_observationVariables}},
+  \code{\link{studies_observationlevels}},
   \code{\link{studies_observations}},
   \code{\link{studies_observationunits}},
-  \code{\link{studies_search}}, \code{\link{studies}},
-  \code{\link{studyTypes}}, \code{\link{trial_by_id}}
+  \code{\link{studies_observationvariables}},
+  \code{\link{studies_search}},
+  \code{\link{studies_seasons}},
+  \code{\link{studies_studytypes}},
+  \code{\link{studies_table}}, \code{\link{trials_details}}
 
-Other phenotyping: \code{\link{brapi_studies_table}},
-  \code{\link{brapi_traits_details}},
-  \code{\link{brapi_traits}},
-  \code{\link{brapi_variables_details}},
-  \code{\link{brapi_variables}}, \code{\link{locations}},
-  \code{\link{observationLevels}},
-  \code{\link{studies_germplasm}},
-  \code{\link{studies_layout}},
-  \code{\link{studies_observationVariables}},
-  \code{\link{studies_observations}},
-  \code{\link{studies_observationunits}},
-  \code{\link{studies_search}}, \code{\link{studyTypes}},
-  \code{\link{trial_by_id}}
+Other trials: \code{\link{trials_details}}
 }
 

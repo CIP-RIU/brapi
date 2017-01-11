@@ -2,22 +2,25 @@
 #'
 #' lists crops available in a database
 #'
+#' @param con brapi connection object
 #' @param rclass logical; default is FALSE; whether to display the raw list object or not
+#'
 #' @author Reinhard Simon
 #' @return a vector of crop names or NULL
-#' @family brapi_call
+#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/Crops/ListCrops.md}
+#' @family crops
 #' @family core
-#' @family access
 #' @export
-crops <- function(rclass = "vector"){
-  brapi::check(FALSE)
-  crops_list = paste0(get_brapi(), "crops")
+crops <- function(con = NULL, rclass = "tibble"){
+  ok = brapi::check(con, FALSE, "crops")
+  crops_list = paste0(get_brapi(con), "crops")
   rclass <- df2tibble(rclass)
 
   try({
-    res <- brapiGET(crops_list)
+    res <- brapiGET(crops_list, con = con)
     res <- httr::content(res, "text",encoding = "UTF-8")
-
-    dat2tbl(res, rclass)
+    out = dat2tbl(res, rclass)
+    class(out) = c(class(out), "brapi_crops")
+    out
   })
 }

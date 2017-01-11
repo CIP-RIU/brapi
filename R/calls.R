@@ -4,32 +4,40 @@
 #'
 #' @param rclass string; default: tibble
 #' @param datatypes string, list of data types
+#' @param con brapi connection object
+#' @param pageSize integer; default = 1000
+#' @param page integer; default = 0
 #'
 #' @author Reinhard Simon
-#' @references \url{http://docs.brapi.apiary.io/#reference/0/call-search}
+#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/Calls/Calls.md}
 #' @return rclass as defined
 #' @import tibble
-#' @import tidyjson
-#' @family brapi_call
+#' @family calls
 #' @family core
-#' @family access
 #' @export
-calls <- function(datatypes = "all", rclass = "tibble") {
-  brapi::check(FALSE)
-  brp <- get_brapi()
-  calls_list = paste0(brp, "calls/")
-  if(datatypes != "all"){
-    calls_list = paste0(calls_list, "?datatypes=", datatypes)
-  }
+calls <- function(con = NULL, datatypes = "all", pageSize = 1000, page = 0,
+                  rclass = "tibble") {
+
+  ok = brapi::check(con, FALSE, 'calls')
+  brp <- get_brapi(con)
+  brapi_calls = paste0(brp, "calls/?")
+
+  pdatatypes = ifelse(datatypes == "all", "", paste0("datatypes=", datatypes, "&"))
+  ppage = ifelse(is.numeric(page), paste0("page=", page, ""), "")
+  ppageSize = ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
+  brapi_calls = paste0(brapi_calls, pdatatypes, ppageSize, ppage)
 
   try({
-    res <- brapiGET(calls_list)
+    res <- brapiGET(brapi_calls, con = con)
     res <-  httr::content(res, "text", encoding = "UTF-8")
+
     out = dat2tbl(res, rclass)
+
     if(rclass %in% c("data.frame", "tibble")){
       out$methods = sapply(out$methods, paste, collapse = "; ")
       out$datatypes = sapply(out$datatypes, paste, collapse = "; ")
     }
+    class(out) = c(class(out), "brapi_calls")
     out
   })
 }

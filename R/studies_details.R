@@ -1,0 +1,31 @@
+#' studies_details
+#'
+#' Gets studies details given an id.
+#'
+#' @param con brapi connection object
+#' @param rclass character; tibble
+#' @param studiesDbId string; default 0; an internal ID for a studies
+#' @import tidyjson
+#' @import dplyr
+#' @author Reinhard Simon
+#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/Studies/StudyDetails.md}
+#' @return data.frame
+#' @family brapi_call
+#' @family studies
+#' @family phenotyping
+#' @export
+studies_details <- function(con = NULL, studiesDbId = 0, rclass = "tibble") {
+  brapi::check(con, FALSE, "studies/id")
+  studies = paste0(get_brapi(con), "studies/", studiesDbId, "/")
+
+  try({
+    res <- brapiGET(studies, con = con)
+    res <- httr::content(res, "text", encoding = "UTF-8")
+    out <- NULL
+
+    if (rclass %in% c("json", "list")) out <- dat2tbl(res, rclass)
+    if (rclass %in% c("data.frame", "tibble")) out  <- stdd2tbl(res, rclass)
+    class(out) = c(class(out), "brapi_studies_details")
+    out
+  })
+}

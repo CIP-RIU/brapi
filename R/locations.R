@@ -2,6 +2,7 @@
 #'
 #' lists locations available on a brapi server
 #'
+#' @param con brapi connection object
 #' @param rclass string; default: tibble
 #' @param locationType string, list of data types
 #' @param page integer; default 0
@@ -15,9 +16,9 @@
 #' @family brapi_call
 #' @family phenotyping
 #' @export
-locations <- function(locationType = "all", page = 0, pageSize = 1000, rclass = "tibble") {
-  brapi::check(FALSE, "locations")
-  brp <- get_brapi()
+locations <- function(con = NULL, locationType = "all", page = 0, pageSize = 1000, rclass = "tibble") {
+  brapi::check(con, FALSE, "locations")
+  brp <- get_brapi(con)
   locations_list = paste0(brp, "locations/?")
 
   locationType = ifelse(locationType != "all", paste0("locationType=", locationType, "&"), "")
@@ -28,7 +29,7 @@ locations <- function(locationType = "all", page = 0, pageSize = 1000, rclass = 
 
 
   try({
-    res <- brapiGET(locations_list)
+    res <- brapiGET(locations_list, con = con)
     res <-  httr::content(res, "text", encoding = "UTF-8")
     out = NULL
     if (rclass %in% c("json", "list")) {
@@ -37,6 +38,7 @@ locations <- function(locationType = "all", page = 0, pageSize = 1000, rclass = 
     if (rclass %in% c("tibble", "data.frame")) {
       out = loc2tbl(res, rclass)
     }
+    class(out) = c(class(out), "brapi_locations")
     out
   })
 }

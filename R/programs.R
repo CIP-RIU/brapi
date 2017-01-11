@@ -4,6 +4,7 @@
 #'
 #' BRAPI discussion: Should this return also the crop?
 #'
+#' @param con brapi connection object
 #' @param page integer requested page number, default = 0 (1st page)
 #' @param rclass string; default: tibble
 #' @param pageSize items per page (default = 100)
@@ -11,14 +12,14 @@
 #' @import httr
 #' @author Reinhard Simon
 #' @return rclass
-#' @references \url{http://docs.brapi.apiary.io/#reference/0/program-list/list-programs}
+#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/Programs/ListPrograms.md}
 #' @family brapi_call
 #' @family core
 #' @family experiments
 #' @export
-programs <- function(page = 0, pageSize = 100, rclass = "tibble") {
-  brapi::check(FALSE, "programs")
-  brp <- get_brapi()
+programs <- function(con = NULL, page = 0, pageSize = 100, rclass = "tibble") {
+  brapi::check(con, FALSE, "programs")
+  brp <- get_brapi(con)
   if(page == 0 & pageSize == 100) {
     programs_list = paste0(brp, "programs")
   } else if (is.numeric(page) & is.numeric(pageSize)) {
@@ -27,9 +28,11 @@ programs <- function(page = 0, pageSize = 100, rclass = "tibble") {
 
 
   try({
-    res <- brapiGET(programs_list)
+    res <- brapiGET(programs_list, con = con)
     res <- httr::content(res, "text", encoding = "UTF-8")
 
-    dat2tbl(res, rclass)
+    out = dat2tbl(res, rclass)
+    class(out) = c(class(out), "brapi_programs")
+    out
   })
 }

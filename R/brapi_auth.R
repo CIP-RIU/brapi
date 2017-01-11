@@ -40,26 +40,26 @@
 #'
 #' @return string
 #' @author Reinhard Simon
-#' @export
-get_brapi <- function() {
-  #Sys.getenv('BRAPI_DB')
-  if(is.null(brapi)) return(NULL)
-  if(brapi$port == 80 | brapi$port == 8080) {
-    url = paste0(brapi$protocol, brapi$db, "/brapi/v1/")
-  } else {
-    if(brapi$multi){
-      url = paste0(brapi$protocol, brapi$db, ":", brapi$port,"/",
-                   brapi$crop, "/brapi/v1/" )
-    } else {
-      url = paste0(brapi$protocol, brapi$db, ":", brapi$port, "/brapi/v1/" )
-    }
-
-  }
-
-  #message_brapi()
-
-  url
-}
+# @export
+# get_brapi <- function(brapi = NULL ) {
+#   #Sys.getenv('BRAPI_DB')
+#   if(is.null(brapi)) return(NULL)
+#   if(brapi$port == 80 | brapi$port == 8080) {
+#     url = paste0(brapi$protocol, brapi$db, brapi$ "/brapi/v1/")
+#   } else {
+#     if(brapi$multi){
+#       url = paste0(brapi$protocol, brapi$db, ":", brapi$port,"/",
+#                    brapi$crop, "/brapi/v1/" )
+#     } else {
+#       url = paste0(brapi$protocol, brapi$db, ":", brapi$port, "/brapi/v1/" )
+#     }
+#
+#   }
+#
+#   #message_brapi()
+#
+#   url
+# }
 
 # #' set BRAPI database
 # #'

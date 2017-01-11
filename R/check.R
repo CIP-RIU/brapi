@@ -4,14 +4,15 @@
 #' Checks if a BrAPI server can be reached given the connection details.
 #'
 #' Raises errors.
-#'
+#' @param con brapi_connectin object
 #' @param verbose logical; default TRUE
 #' @param brapi_calls character vector; default: any. Use to check if one or more calls are implemented by the server according to the calls url.
 #'
 #' @return logical
 #' @export
-check <- function(verbose = TRUE, brapi_calls = "any"){
-  if(!("brapi" %in% ls(envir = globalenv()))) stop("BrAPI connection details not available. Use brapi::connect()")
+check <- function(con = NULL, verbose = TRUE, brapi_calls = "any"){
+  brapi = con
+  #if(!("brapi" %in% ls(envir = globalenv()))) stop("BrAPI connection details not available. Use brapi::connect()")
   if(is.null(brapi))     stop("BrAPI connection object is NULL. Use brapi::connect()")
 
   url <- brapi$db
@@ -28,16 +29,16 @@ check <- function(verbose = TRUE, brapi_calls = "any"){
     if(!can_internet(url))  stop(paste0("Cannot connect to BrAPI server: ", url, "\nCheck the details."))
   }
 
-  if(!("any" %in% brapi_calls)){
-    call_check = !brapi_calls %in% brapi$calls
-    if(any(call_check)){
-     stop(paste0(
-        paste(brapi_calls[call_check], collapse= ", "),
-        " not implemented by server: ", brapi$db )
-        )
-    }
-
-  }
+  # if(!("any" %in% brapi_calls)){
+  #   call_check = !brapi_calls %in% brapi$calls
+  #   if(any(call_check)){
+  #    stop(paste0(
+  #       paste(brapi_calls[call_check], collapse= ", "),
+  #       " not implemented by server: ", brapi$db )
+  #       )
+  #   }
+  #
+  # }
 
   if(verbose){
     message("BrAPI connection ok.")

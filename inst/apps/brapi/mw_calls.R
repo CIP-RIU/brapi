@@ -9,7 +9,7 @@ source(system.file("apps/brapi/utils/safe_split.R", package = "brapi"))
 calls_data = tryCatch({
   res <- read.csv(system.file("apps/brapi/data/calls.csv", package = "brapi"),
            stringsAsFactors = FALSE)
-  res[stringr::str_detect(res$clients, "brapi"), 3:5]
+  res[stringr::str_detect(res$client.brapi, "x"), 3:5]
 }, error = function(e) {
   NULL
 }

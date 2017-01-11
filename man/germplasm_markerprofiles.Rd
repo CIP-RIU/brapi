@@ -4,9 +4,11 @@
 \alias{germplasm_markerprofiles}
 \title{germplasm_markerprofiles}
 \usage{
-germplasm_markerprofiles(germplasmDbId = 0, rclass = "tibble")
+germplasm_markerprofiles(con = NULL, germplasmDbId = 0, rclass = "tibble")
 }
 \arguments{
+\item{con}{brapi connection object}
+
 \item{germplasmDbId}{integer}
 
 \item{rclass}{character, default: list; alternative: vector}
@@ -21,47 +23,25 @@ Gets minimal marker profile data from database using database internal id
 Reinhard Simon
 }
 \references{
-\url{http://docs.brapi.apiary.io/#reference/0/germplasm-markerprofiles}
+\url{https://github.com/plantbreeding/API/blob/master/Specification/Germplasm/GermplasmMarkerprofiles.md}
 }
 \seealso{
-Other attributes: \code{\link{attributes_categories}},
-  \code{\link{attributes}},
-  \code{\link{germplasm_attributes}}
+Other genotyping: \code{\link{genomemaps_data_range}},
+  \code{\link{genomemaps_data}},
+  \code{\link{genomemaps_details}},
+  \code{\link{genomemaps}},
+  \code{\link{germplasmattributes_categories}},
+  \code{\link{germplasmattributes_details}},
+  \code{\link{germplasmattributes}},
+  \code{\link{markerprofiles_allelematrix_search}},
+  \code{\link{markerprofiles_details}},
+  \code{\link{markerprofiles_search}},
+  \code{\link{markers_details}},
+  \code{\link{markers_search}}
 
-Other brapi_call: \code{\link{allelematrix_search}},
-  \code{\link{attributes_categories}},
-  \code{\link{attributes}},
-  \code{\link{brapi_studies_table}},
-  \code{\link{brapi_variables_datatypes}},
-  \code{\link{brapi_variables_ontologies}},
-  \code{\link{calls}}, \code{\link{crops}},
-  \code{\link{germplasm_attributes}},
+Other germplasm: \code{\link{germplasm_details_study}},
+  \code{\link{germplasm_details}},
   \code{\link{germplasm_pedigree}},
-  \code{\link{germplasm_search}}, \code{\link{germplasm}},
-  \code{\link{locations}}, \code{\link{maps_details}},
-  \code{\link{maps_positions_range}},
-  \code{\link{maps_positions}}, \code{\link{maps}},
-  \code{\link{marker_search}},
-  \code{\link{markerprofiles_alleles}},
-  \code{\link{markerprofiles}}, \code{\link{markers}},
-  \code{\link{observationLevels}}, \code{\link{programs}},
-  \code{\link{seasons}}, \code{\link{studies_germplasm}},
-  \code{\link{studies_layout}},
-  \code{\link{studies_observationVariables}},
-  \code{\link{studies_observations}},
-  \code{\link{studies_observationunits}},
-  \code{\link{studies_search}}, \code{\link{studies}},
-  \code{\link{studyTypes}}, \code{\link{trial_by_id}},
-  \code{\link{trials}}
-
-Other genotyping: \code{\link{allelematrix_search}},
-  \code{\link{attributes_categories}},
-  \code{\link{attributes}},
-  \code{\link{germplasm_attributes}},
-  \code{\link{maps_details}},
-  \code{\link{maps_positions_range}},
-  \code{\link{maps_positions}}, \code{\link{maps}},
-  \code{\link{markerprofiles_alleles}},
-  \code{\link{markerprofiles}}, \code{\link{markers}}
+  \code{\link{germplasm_search}}
 }
 

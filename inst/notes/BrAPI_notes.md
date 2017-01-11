@@ -28,6 +28,11 @@ Metadata are not consistently used in examples.
 - is there agreement on the full path structure: after the server name there is only one optional path element for the crop on multi-crop databases? That is: my.server.org/[mycrop]/brapi/v1/? No other addtional elements before [mycrop]?
 - on a multicrop server: in the concept of REST architecture one should be able to get the next step from just looking at server calls. So, how do I know which crops to look for in the first call? One option: Can we assume an initial empty call for all brapi servers like: my.server.org/brapi/v1/crops which returns the list of all crops on that server and then one can go from there? E.g. assume the crops calls returns crop1, crop2, ... and then one knows that the crop specific calls are accessible via: my.server.org/crop1/brapi/v1/calls; my.server.org/crop2/brapi/v1/calls. In the case of a single crop server as before the 'crop' path element is omitted. To be more explicit: maybe the crop call should return corresponding links for each crop (like datalinks).
 
+# calls
+
+- dataype: the argument reads: dataFile; should better be same: datatype or 'format'?
+
+
 # List of Trials
 
 - Call says: crops; should be: trials
@@ -118,6 +123,10 @@ htt- defines page and pageSize in parameters (should also be defined then for at
 - from the first example several fields are missing after ontologyName like synonyms, contextOfUse. However in other cases they are simply set to empty strings (or null). So they should be listed in any case.
 - in response: name should be observationVariableName as in other similar cases.
 - for empty objects in method and scale should be {} - not: null
+
+# studies germplasm details
+
+- is grouped both under germplasm and studies!
 
 # studies table GET
 

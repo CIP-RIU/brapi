@@ -1,8 +1,8 @@
-
-#' germplasm search
+#' germplasm_search
 #'
 #' Lists germplasmm as result of a search.
 #'
+#' @param con brapi connection object
 #' @param germplasmDbId string
 #' @param germplasmName string
 #' @param germplasmPUI string
@@ -15,20 +15,21 @@
 #' @import httr
 #' @import progress
 #' @importFrom magrittr '%>%'
-#' @references \url{http://docs.brapi.apiary.io/#reference/0/germplasm-search}
+#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/Germplasm/GermplasmSearchGET.md}
+#'    \url{https://github.com/plantbreeding/API/blob/master/Specification/Germplasm/GermplasmSearchPOST.md}
 #'
-#' @return data.frame
-#' @family brapi_call
+#' @return tibble
 #' @family core
 #' @family germplasm
 #' @export
-germplasm_search <- function(germplasmDbId = 0,
+germplasm_search <- function(con = NULL,
+                             germplasmDbId = 0,
                              germplasmName = "none",
                              germplasmPUI  = "none",
                              page = 0, pageSize = 1000, method = "GET",
                              rclass = "tibble"){
-  brapi::check(FALSE, "germplasm-search")
-  brp <- get_brapi()
+  brapi::check(con, FALSE, "germplasm-search")
+  brp <- get_brapi(con)
   if (is.numeric(page) & is.numeric(pageSize)) {
     germplasm_search = paste0(brp, "germplasm-search/?page=", page, "&pageSize=", pageSize)
   }
@@ -47,6 +48,8 @@ germplasm_search <- function(germplasmDbId = 0,
     germplasm_search = paste0(brp, "germplasm-search/?germplasmPUI=", germplasmPUI)
   }
 
+
+
   if(method == "POST")  { #message_brapi("POST not implemented yet!")
     body = list(germplasmDbId = germplasmDbId,
                 germplasmName = germplasmName,
@@ -55,7 +58,7 @@ germplasm_search <- function(germplasmDbId = 0,
                 pageSize = pageSize)
     out = try({
       germplasm_search = paste0(brp, "germplasm-search/")
-      res <- brapiPOST(germplasm_search, body)
+      res <- brapiPOST(germplasm_search, body, con)
       res <- httr::content(res, "text", encoding = "UTF-8")
       out <- NULL
 
@@ -69,7 +72,7 @@ germplasm_search <- function(germplasmDbId = 0,
   } else  {
 
   out = try({
-    res <- brapiGET(germplasm_search)
+    res <- brapiGET(germplasm_search, con = con)
     res <- httr::content(res, "text", encoding = "UTF-8")
     out <- NULL
 
@@ -81,6 +84,7 @@ germplasm_search <- function(germplasmDbId = 0,
   })
   }
 
+  class(out) = c(class(out), "brapi_germplasm_search")
   out
 
 }

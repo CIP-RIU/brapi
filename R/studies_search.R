@@ -2,6 +2,7 @@
 #'
 #' lists trials available on a brapi server
 #'
+#' @param con brapi connection object
 #' @param studyType string; default: any
 #' @param programDbId string; default: any
 #' @param locationDbId  string; default: any
@@ -14,20 +15,20 @@
 #' @param page integer; default: 1000
 #' @param pageSize integer; default: 0
 #' @param rclass string; default: tibble
-#'
+#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/Studies/ListStudySummaries.md}
 #' @author Reinhard Simon
 #' @return rclass as defined
 #' @import tibble
 #' @import tidyjson
-#' @family brapi_call
+#' @family studies
 #' @family phenotyping
 #' @export
-studies_search <- function(studyType = "any", programDbId = "any", locationDbId = "any", seasonDbId = "any",
+studies_search <- function(con = NULL, studyType = "any", programDbId = "any", locationDbId = "any", seasonDbId = "any",
                            germplasmDbIds = "any", observationVariableDbIds = "any",
                            active = "any", sortBy = "any", sortOrder = "any",
                            page = 0, pageSize = 1000, rclass = "tibble") {
-  brapi::check(FALSE, "studies-search")
-  brp <- get_brapi()
+  brapi::check(con, FALSE, "studies-search")
+  brp <- get_brapi(con)
   pstudies_search = paste0(brp, "studies-search/?")
 
   pstudyType = paste0("studyType=", studyType, "&")
@@ -52,7 +53,7 @@ studies_search <- function(studyType = "any", programDbId = "any", locationDbId 
     message("Using GET")
 
     out <-   try({
-      res <- brapiGET(pstudies_search)
+      res <- brapiGET(pstudies_search, con = con)
       res <- httr::content(res, "text", encoding = "UTF-8")
       out = NULL
       if(rclass %in% c("list", "json")) out = dat2tbl(res, rclass)
@@ -79,7 +80,7 @@ studies_search <- function(studyType = "any", programDbId = "any", locationDbId 
     body = c(x1, x2, body)
     out <- try({
       pstudies_search = paste0(brp, "studies-search/?")
-      res <- brapiPOST(pstudies_search, body )
+      res <- brapiPOST(pstudies_search, body, con)
       res <- httr::content(res, "text", encoding = "UTF-8")
       out = NULL
       if(rclass %in% c("list", "json")) out = dat2tbl(res, rclass)
@@ -88,6 +89,7 @@ studies_search <- function(studyType = "any", programDbId = "any", locationDbId 
     })
 
   }
-
+  class(out) = c(class(out), "brapi_studies_search")
+  out
   out
 }

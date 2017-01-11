@@ -2,22 +2,23 @@
 #'
 #' lists studies_observationunits available on a brapi server
 #'
+#' @param con brapi connection object
 #' @param rclass string; default: tibble
 #' @param observationLevel string; default: plot; alternative: plant
 #' @param studyDbId character; default: 1
 #'
 #' @author Reinhard Simon
-#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/studies_observationunits/Liststudies_observationunits.md}
+#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/Studies/ObservationUnitDetails.md}
 #' @return rclass as defined
 #' @import tibble
 #' @import tidyjson
-#' @family brapi_call
+#' @family studies
 #' @family phenotyping
 #' @export
-studies_observationunits <- function(studyDbId = 1, observationLevel = "plot",
+studies_observationunits <- function(con = NULL, studyDbId = 1, observationLevel = "plot",
                                  rclass = "tibble") {
-  brapi::check(FALSE, "studies/id/observationunits")
-  brp <- get_brapi()
+  brapi::check(con, FALSE, "studies/id/observationunits")
+  brp <- get_brapi(con)
   studies_observationunits_list = paste0(brp, "studies/", studyDbId ,"/observationunits/?")
 
   observationLevel <- ifelse(observationLevel == "plant", "observationLevel=plant",
@@ -27,7 +28,7 @@ studies_observationunits <- function(studyDbId = 1, observationLevel = "plot",
 
   #message(studies_observationunits_list)
   try({
-    res <- brapiGET(studies_observationunits_list)
+    res <- brapiGET(studies_observationunits_list, con = con)
     res <-  httr::content(res, "text", encoding = "UTF-8")
     out = NULL
     if (rclass %in% c("json", "list")) {

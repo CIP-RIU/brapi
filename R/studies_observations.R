@@ -2,6 +2,7 @@
 #'
 #' lists studies_observations available on a brapi server
 #'
+#' @param con brapi connection object
 #' @param rclass string; default: tibble
 #' @param page integer; default 0
 #' @param pageSize integer; default 1000
@@ -9,17 +10,17 @@
 #' @param observationVariableDbId character; default: 1:3
 #'
 #' @author Reinhard Simon
-#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/studies_observations/Liststudies_observations.md}
+#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/Studies/GetObservationUnitsByObservationVariableIds.md}
 #' @return rclass as defined
 #' @import tibble
 #' @import tidyjson
-#' @family brapi_call
+#' @family studies
 #' @family phenotyping
 #' @export
-studies_observations <- function(studyDbId = 1, observationVariableDbId = 1:3,
+studies_observations <- function(con = NULL, studyDbId = 1, observationVariableDbId = 1:3,
                                  page = 0, pageSize = 1000, rclass = "tibble") {
-  brapi::check(FALSE, "studies/id/observations")
-  brp <- get_brapi()
+  brapi::check(con, FALSE, "studies/id/observations")
+  brp <- get_brapi(con)
   studies_observations_list = paste0(brp, "studies/", studyDbId ,"/observations/?")
 
   observationVariableDbId = paste0("observationVariableDbIds=",
@@ -32,7 +33,7 @@ studies_observations <- function(studyDbId = 1, observationVariableDbId = 1:3,
 
   #message(studies_observations_list)
   try({
-    res <- brapiGET(studies_observations_list)
+    res <- brapiGET(studies_observations_list, con = con)
     res <-  httr::content(res, "text", encoding = "UTF-8")
     out = NULL
     if (rclass %in% c("json", "list", "tibble", "data.frame")) {

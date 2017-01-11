@@ -4,9 +4,11 @@
 \alias{check}
 \title{check}
 \usage{
-check(verbose = TRUE, brapi_calls = "any")
+check(con = NULL, verbose = TRUE, brapi_calls = "any")
 }
 \arguments{
+\item{con}{brapi_connectin object}
+
 \item{verbose}{logical; default TRUE}
 
 \item{brapi_calls}{character vector; default: any. Use to check if one or more calls are implemented by the server according to the calls url.}

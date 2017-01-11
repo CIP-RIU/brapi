@@ -4,32 +4,42 @@
 \alias{connect}
 \title{connect}
 \usage{
-connect(brapi_db = NULL, crop = "sweetpotato", db = "127.0.0.1",
-  port = 2021, protocol = "http://", multi = FALSE, user = "user",
-  password = "password", session = "")
+connect(brapiDb = NULL, secure = TRUE, protocol = "http://",
+  db = "127.0.0.1", port = 2021, apipath = NULL, multicrop = FALSE,
+  crop = "sweetpotato", user = "user", password = "password",
+  token = "", granttype = NULL, clientid = "rbrapi", bms = FALSE)
 }
 \arguments{
-\item{brapi_db}{brapi_db R object for brapi databases. Created by as.brapi_db
-param brapiDb brapi_db R object for brapi databases. Created by as.brapi_db}
+\item{brapiDb}{brapiDb R object for brapi databases. Created by as.brapi_db}
 
-\item{crop}{string; default: ''}
+\item{secure}{logical TRUE/FALSE}
+
+\item{protocol}{string; default: http:// (else: https://)}
 
 \item{db}{string; default '127.0.0.1' (localhost)}
 
 \item{port}{integer; default: 80}
 
-\item{protocol}{string; default: http:// (else: https://)}
+\item{apipath}{character; default NULL}
 
-\item{multi}{logical; default: FALSE}
+\item{multicrop}{logical; default FALSE}
+
+\item{crop}{string; default: ''}
 
 \item{user}{string; default: user}
 
 \item{password}{string; default: password}
 
-\item{session}{string; default: '' (empty)}
+\item{token}{string; default: '' (empty)}
+
+\item{granttype}{string}
+
+\item{clientid}{string: default: rbrapi}
+
+\item{bms}{logical; default: FALSE}
 }
 \value{
-logical
+connection object
 }
 \description{
 Sets a global list variable 'brapi' that contains all parameters to connect to
@@ -53,10 +63,5 @@ if(interactive()){
 
   }
 }
-}
-\seealso{
-Other access: \code{\link{brapi_variables_datatypes}},
-  \code{\link{calls}}, \code{\link{crops}},
-  \code{\link{studyTypes}}
 }
 
