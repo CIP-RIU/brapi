@@ -22,8 +22,8 @@ test_that("Paging works.", {
 })
 
 test_that("Calls parameters work.", {
-  expect_equal(nrow(calls(con, datatypes = "json")), 41)
-  expect_equal(nrow(calls(con, datatypes = "csv")), 2)
+  expect_equal(nrow(calls(con, datatypes = "json")), 43)
+  expect_equal(nrow(calls(con, datatypes = "csv")), 3)
 })
 
 

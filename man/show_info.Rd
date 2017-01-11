@@ -12,7 +12,4 @@ show_info(show = TRUE)
 \description{
 Show informative messages or not
 }
-\seealso{
-Other utility: \code{\link{mock_server}}
-}
 
