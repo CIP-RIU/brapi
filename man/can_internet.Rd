@@ -7,15 +7,15 @@
 can_internet(url = "www.google.org")
 }
 \arguments{
-\item{url}{a url to check; default is Google}
+\item{url}{a url to check (default \href{https://www.google.org}{www.google.org})}
 }
 \value{
-logical TRUE or FALSE
+logical TRUE when internet access is available or FALSE when internet access is not available
 }
 \description{
 Check for internet connection.
 }
 \references{
-stackoverflow
+\href{http://stackoverflow.com/questions/5076593/how-to-determine-if-you-have-an-internet-connection-in-r}{Stack Overflow} and  \code{\link[curl]{has_internet}}
 }
 
