@@ -7,14 +7,14 @@ context("Testing the path 'germplasm/{id}/markerprofiles'")
   con = connect(secure = FALSE)
 
 test_that("Basic return object is ok.", {
-  acall = germplasm_markerprofiles(con, 0, "list")
+  acall = germplasm_markerprofiles(con, 3, "list")
   expect_equal(length(acall), 2)
   expect_equal(names(acall)[1], "metadata")
   expect_equal(names(acall)[2], "result")
 })
 
 test_that("Metadata object is ok.", {
-  metadata = germplasm_markerprofiles(con, 0, "list")$metadata
+  metadata = germplasm_markerprofiles(con, 3, "list")$metadata
   expect_equal(names(metadata)[1], "pagination")
   expect_equal(names(metadata)[2], "status")
   expect_equal(names(metadata)[3], "datafiles")

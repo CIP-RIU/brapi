@@ -9,10 +9,10 @@
 #' @param page integer; default = 0
 #'
 #' @author Reinhard Simon
-# @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Calls/Calls.md}{github}
+#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Calls/Calls.md}{github}
 #' @return rclass as defined
 #' @import tibble
-# @family core
+#' @family brapi_core
 #' @export
 calls <- function(con = NULL, datatypes = "all", pageSize = 1000, page = 0,
                   rclass = "tibble") {
@@ -30,16 +30,14 @@ calls <- function(con = NULL, datatypes = "all", pageSize = 1000, page = 0,
     res <- brapiGET(brapi_calls, con = con)
     out <- NULL
 
-    if (is.status_ok(res)) {
-      res <-  httr::content(res, "text", encoding = "UTF-8")
-      out <- dat2tbl(res, rclass)
+    res <-  httr::content(res, "text", encoding = "UTF-8")
+    out <- dat2tbl(res, rclass)
 
-      if(rclass %in% c("data.frame", "tibble")){
-        out$methods <- sapply(out$methods, paste, collapse = "; ")
-        out$datatypes <- sapply(out$datatypes, paste, collapse = "; ")
-      }
-      class(out) <- c(class(out), "brapi_calls")
+    if(rclass %in% c("data.frame", "tibble")){
+      out$methods <- sapply(out$methods, paste, collapse = "; ")
+      out$datatypes <- sapply(out$datatypes, paste, collapse = "; ")
     }
+    class(out) <- c(class(out), "brapi_calls")
     out
   })
 }

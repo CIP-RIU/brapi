@@ -4,17 +4,19 @@
 \alias{as.brapi_db}
 \title{Tas.brapi_db}
 \usage{
-as.brapi_db(crop = "any", protocol = "http://", db = "127.0.0.1",
-  port = 80, multi = FALSE)
+as.brapi_db(secure = FALSE, protocol = "http://", db = "127.0.0.1",
+  port = 2021, apipath = NULL, multicrop = FALSE, crop = "",
+  user = "", password = "", token = "", granttype = "password",
+  clientid = "rbrapi", bms = FALSE)
 }
 \arguments{
-\item{crop}{character}
-
 \item{protocol}{character}
 
 \item{db}{character}
 
 \item{port}{integer}
+
+\item{crop}{character}
 
 \item{multi}{logical}
 }

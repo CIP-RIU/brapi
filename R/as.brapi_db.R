@@ -8,14 +8,37 @@
 #'
 #' @return brapi_db class
 #' @export
-as.brapi_db <- function(crop = "any", protocol = "http://", db = "127.0.0.1", port = 80, multi=FALSE){
+as.brapi_db <- function(
+  secure = FALSE,
+  protocol = "http://",
+  db = "127.0.0.1",
+  port = 2021,
+  apipath = NULL,
+  multicrop = FALSE,
+  crop = "",
+  user = "",
+  password = "",
+  token = "",
+  granttype = "password",
+  clientid = "rbrapi",
+  bms = FALSE
+  ){
+
   out <- list(
-    crop = crop,
-    protocol = protocol,
+    secure = secure,
+    secure = secure,
     db = db,
     port = port,
-    multi = multi
+    apipath = apipath,
+    multicrop = multicrop,
+    crop = crop,
+    user = user,
+    password = password,
+    token = token,
+    granttype = granttype,
+    clientid = clientid,
+    bms = bms
   )
-  class(out) = "brapi_db"
+  class(out) <- c("list", "brapi_db", "brapi")
   out
 }

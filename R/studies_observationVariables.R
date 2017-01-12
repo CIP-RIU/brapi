@@ -7,7 +7,7 @@
 #' @param studyDbId character; default: 1
 #'
 #' @author Reinhard Simon
-# @references \url{https://github.com/plantbreeding/API/blob/master/Specification/Studies/StudyObservationVariables.md}(github)
+#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Studies/StudyObservationVariables.md}{github}
 #' @return rclass as defined
 #' @import tibble
 #' @import tidyjson

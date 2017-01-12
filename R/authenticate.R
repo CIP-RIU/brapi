@@ -20,42 +20,40 @@ authenticate <- function(brapi) {
     stop("The brapi argument is empty or not of class brapi_con, please use brapi_con() first to create a valid brapi argument of class brapi_con.")
   }
   # Set authentication URL
-  if (brapi$bms == TRUE) {
-    # For BMS
-    callurl <- paste0(get_brapi(brapi),
-                      # brapi$db, ":", brapi$port,
-                      # paste0(brapi$apipath,
-                             "authenticate")
-  } else {
-    # For other database systems
-    callurl <- paste0(get_brapi(brapi),
-                      "token")
-  }
-  # Create Body data for POST call
+  callpath <- "token"
+  omc <- brapi$multicrop
+  brapi$multicrop <- FALSE
+  callurl <- paste0(get_brapi(brapi),
+                      callpath)
+  brapi$multicrop <- omc
+
   dat <- list(grant_type = "password",
               username = brapi$user,
-              password = brapi$password)
+              password = brapi$password,
+              client_id = "")
   # Make POST call for submitting form data
   resp <- httr::POST(url = callurl,
                      body = dat,
-                     httr::add_headers("Content-Type" = "multipart/form-data"))
-  # Extract token out of resp(onse) from POST call
-  if (brapi$bms == TRUE) {
-    # For BMS
-    token <- httr::content(resp)$token
+                     encode = ifelse(brapi$bms == TRUE, "json", "form"))
+
+  # Check response status
+  if (resp$status_code == 401) {
+    # Status Unauthorized
+    httr::stop_for_status(resp, task = "authenticate. Check your username and password!")
   } else {
-    # For other database systems
-    token <- httr::content(resp)$access_token
-  }
-  # Check token assignment
-  if (length(token) == 0 | token == "") {
-    # No token assigned
-    stop("Authentication failed. Check your username and password!")
-  } else {
-    # Proper token assignment
-    brapi$token <- token
-    message("Authenticated!")
+    # Status other than unauthorized
+    if (resp$status_code != 200) {
+      # Status other than Unauthorized and OK
+      httr::stop_for_status(resp)
+    } else {
+      # Status OK
+      # Extract token out of resp(onse) from POST call
+      token <- httr::content(resp)$access_token
+      brapi$token <- token
+      message("Authenticated!")
+    }
   }
   ## Return brapi object with
   return(brapi)
+
 }

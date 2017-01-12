@@ -20,4 +20,11 @@ lists crops available in a database
 \author{
 Reinhard Simon
 }
+\references{
+\href{https://github.com/plantbreeding/API/blob/master/Specification/Crops/ListCrops.md}{github}
+}
+\seealso{
+Other brapi_core: \code{\link{calls}},
+  \code{\link{programs}}
+}
 

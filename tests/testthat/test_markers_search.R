@@ -34,7 +34,7 @@ test_that("rclass", {
   expect_equal('json' %in% class(markers_search(con, "*", matchMethod = "wildcard", rclass = "json")), TRUE)
   expect_equal('list' %in% class(markers_search(con, "*", matchMethod = "wildcard", rclass = "list")), TRUE)
   expect_equal((markers_search(con, "*", matchMethod = "wildcard", rclass = "data.frame") %>% class)[1], 'data.frame')
-  expect_equal(class(markers_search(con, "*", matchMethod = "wildcard", rclass = "tibble"))[1], 'tbl_df')
+  expect_equal('tbl_df' %in% class(markers_search(con, "*", matchMethod = "wildcard", rclass = "tibble")), TRUE)
   expect_equal("brapi_markers_search" %in% class(markers_search(con, "*", matchMethod = "wildcard")), TRUE)
 })
 

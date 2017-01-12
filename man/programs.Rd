@@ -27,15 +27,10 @@ BRAPI discussion: Should this return also the crop?
 \author{
 Reinhard Simon
 }
+\references{
+\href{https://github.com/plantbreeding/API/blob/master/Specification/Programs/ListPrograms.md}{github}
+}
 \seealso{
-Other core: \code{\link{germplasm_details_study}},
-  \code{\link{germplasm_details}},
-  \code{\link{germplasm_pedigree}},
-  \code{\link{germplasm_search}},
-  \code{\link{observationvariables_datatypes}},
-  \code{\link{observationvariables_details}},
-  \code{\link{observationvariables_ontologies}},
-  \code{\link{observationvariables}},
-  \code{\link{traits_details}}, \code{\link{traits}}
+Other brapi_core: \code{\link{calls}}, \code{\link{crops}}
 }
 

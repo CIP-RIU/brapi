@@ -16,7 +16,7 @@
 #' @import httr
 #' @import progress
 #' @importFrom magrittr '%>%'
-#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/Markers/MarkerSearch.md}
+#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Markers/MarkerSearch.md}{github}
 #'
 #' @return data.frame
 #' @family markers
@@ -30,30 +30,41 @@ markers_search <- function(con = NULL, name = "*",
                              rclass = "tibble"){
   brapi::check(con, FALSE, "markers")
   brp <- get_brapi(con)
-  marker_search = paste0(brp, "markers/?")
+  marker_search <- paste0(brp, "markers/?")
 
-  page = ifelse(is.numeric(page), paste0("page=", page, "&"), "")
-  pageSize = ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
+  page <- ifelse(is.numeric(page), paste0("page=", page, "&"), "")
+  pageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
 
-  name = ifelse(name != "none", paste0("name=", name, "&"), "")
-  type = ifelse(type != "all", paste0("type=", type, "&"), "")
-  matchMethod = ifelse(matchMethod %in% c("exact", "case_insensitive", "wildcard"),
+  # name = ifelse(name != "none", paste0("name=", name, "&"), "")
+  # type = ifelse(type != "all", paste0("type=", type, "&"), "")
+  matchMethod <- ifelse(matchMethod %in% c("exact", "case_insensitive", "wildcard"),
                        paste0("matchMethod=", matchMethod, "&"), "")
-  include = ifelse(include %in% c("synonyms", "none"), paste0("include=", include, "&"), "")
-  rclass = ifelse(rclass %in% c("tibble", "data.frame", "json", "list"), rclass, "tibble")
+  include <- ifelse(include %in% c("synonyms", "none"), paste0("include=", include, "&"), "")
+  name <- ifelse(name != "", paste0("name=", name, "&"), "")
+  type <- ifelse(type != "", paste0("type=", type, "&"), "")
 
-  marker_search = paste0(marker_search, name, type, matchMethod, include,  pageSize, page)
+  rclass <- ifelse(rclass %in% c("tibble", "data.frame", "json", "list"), rclass, "tibble")
 
+  marker_search <- paste0(marker_search, name, type, matchMethod, include,  pageSize, page)
   try({
     res <- brapiGET(marker_search, con = con)
     res <- httr::content(res, "text", encoding = "UTF-8")
-    out = dat2tbl(res, rclass)
-    if(rclass %in% c("data.frame", "tibble")){
+    if(rclass %in% c("json", "list")) {
+      out <- dat2tbl(res, rclass)
+    }
+    if(rclass %in% c("data.frame", "tibble")) {
+      out <- jsonlite::fromJSON(res, simplifyDataFrame = TRUE, flatten = TRUE)
+
+      meta <- out$metadata
+      out <- out$result$data
+      attr(out, "metadata") <- meta
       out$synonyms <- sapply(out$synonyms,paste, collapse = "; ")
       out$refAlt <- sapply(out$refAlt,paste, collapse = "; ")
       out$analysisMethods <- sapply(out$analysisMethods, paste, collapse = "; ")
     }
-    class(out) = c(class(out), "brapi_markers_search")
+    if(rclass == "tibble") out <- tibble::as_tibble(out)
+    class(out) <- c(class(out), "brapi_markers_search")
+
     out
   })
 }

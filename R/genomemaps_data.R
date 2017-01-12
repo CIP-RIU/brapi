@@ -10,7 +10,7 @@
 #' @param linkageGroupId integer; default 0
 #'
 #' @author Reinhard Simon
-#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/GenomeMaps/GenomeMapData.md}{github}
+#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/GenomeMaps/GenomeMapData.md}{github}
 #' @return rclass as defined
 #' @import tibble
 #' @import tidyjson

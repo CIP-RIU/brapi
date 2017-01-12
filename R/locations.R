@@ -18,26 +18,36 @@
 locations <- function(con = NULL, locationType = "all", page = 0, pageSize = 1000, rclass = "tibble") {
   brapi::check(con, FALSE, "locations")
   brp <- get_brapi(con)
-  locations_list = paste0(brp, "locations/?")
+  locations_list <- paste0(brp, "locations/?")
 
-  locationType = ifelse(locationType != "all", paste0("locationType=", locationType, "&"), "")
-  page = ifelse(is.numeric(page), paste0("page=", page, "&"), "")
-  pageSize = ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
+  locationType <- ifelse(locationType != "all", paste0("?locationType=", locationType, "&"), "")
+  page <- ifelse(is.numeric(page), paste0("page=", page, "&"), "")
+  pageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
+  # if(locationType == ""){
+  #   page <- ""
+  #   pageSize <- ""
+  # }
 
-  locations_list = paste0(locations_list, page, pageSize, locationType)
+  locations_list <- paste0(locations_list, page, pageSize, locationType)
 
 
   try({
     res <- brapiGET(locations_list, con = con)
     res <-  httr::content(res, "text", encoding = "UTF-8")
-    out = NULL
+    out <- NULL
     if (rclass %in% c("json", "list")) {
-      out = dat2tbl(res, rclass)
+      out <- dat2tbl(res, rclass)
     }
     if (rclass %in% c("tibble", "data.frame")) {
-      out = loc2tbl(res, rclass)
+      #if(con$bms) {
+        out <- jsonlite::fromJSON(res, simplifyDataFrame = TRUE, flatten = TRUE)$result$data
+        if(rclass == "tibble") out <- tibble::as_tibble(out)
+      # } else {
+      #   out <- loc2tbl(res, rclass)
+      # }
+
     }
-    class(out) = c(class(out), "brapi_locations")
+    class(out) <- c( "brapi_locations", class(out))
     out
   })
 }

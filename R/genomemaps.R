@@ -10,7 +10,7 @@
 #' @param pageSize integer; default 30
 #'
 #' @author Reinhard Simon
-#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/GenomeMaps/ListOfGenomeMaps.md}{github}
+#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/GenomeMaps/ListOfGenomeMaps.md}{github}
 #' @return rclass as defined
 #' @import tibble
 #' @family genomemaps

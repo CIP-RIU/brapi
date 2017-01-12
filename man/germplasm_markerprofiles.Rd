@@ -4,7 +4,7 @@
 \alias{germplasm_markerprofiles}
 \title{germplasm_markerprofiles}
 \usage{
-germplasm_markerprofiles(con = NULL, germplasmDbId = 0, rclass = "tibble")
+germplasm_markerprofiles(con = NULL, germplasmDbId = 3, rclass = "tibble")
 }
 \arguments{
 \item{con}{brapi connection object}
@@ -23,7 +23,7 @@ Gets minimal marker profile data from database using database internal id
 Reinhard Simon
 }
 \references{
-\url{https://github.com/plantbreeding/API/blob/master/Specification/Germplasm/GermplasmMarkerprofiles.md}
+\href{https://github.com/plantbreeding/API/blob/master/Specification/Germplasm/GermplasmMarkerprofiles.md}{github}
 }
 \seealso{
 Other genotyping: \code{\link{genomemaps_data_range}},

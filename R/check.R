@@ -7,10 +7,11 @@
 #' @param con brapi_connectin object
 #' @param verbose logical; default TRUE
 #' @param brapi_calls character vector; default: any. Use to check if one or more calls are implemented by the server according to the calls url.
-#'
+#' @family brapi_util
 #' @return logical
 #' @export
 check <- function(con = NULL, verbose = TRUE, brapi_calls = "any"){
+  stopifnot(is.brapi(con))
   brapi <- con
   #if(!("brapi" %in% ls(envir = globalenv()))) stop("BrAPI connection details not available. Use brapi::connect()")
   if( is.null(brapi) )     stop("BrAPI connection object is NULL. Use brapi::connect()")

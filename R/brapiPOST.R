@@ -3,6 +3,9 @@ brapiPOST <- function(url, body, con = con){
                     httr::add_headers("X-AUTH-TOKEN" = con$token))
   txt <- ifelse(res$status_code == 200, " (ok)!", " (error)!" )
   message_brapi(paste0("Server status: ", res$status_code, txt, "\n"))
+  message_brapi(paste0("URL call was: ", url, "\n"))
+
+  if (is.status_ok(res)) {
 
   # TODO: Insert here status messages if any!
   out <- httr::content(res, "text", encoding = "UTF-8")
@@ -19,7 +22,7 @@ brapiPOST <- function(url, body, con = con){
     }
   }
   }
-
+  }
 
   res
 }

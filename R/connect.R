@@ -43,6 +43,54 @@ connect <- function(brapiDb = NULL,
                     clientid = "rbrapi",
                     bms = FALSE
                     ){
+  brapi <- NULL
+
+  if(!is.null(brapiDb)){
+    if("list" %in% class(brapiDb)){
+      brapi <- brapiDb
+      class(brapi) <- c("list", "brapi")
+    }
+  } else {
+
+    if(!brapi::can_internet()) {
+      stop("Can not connect to internet!")
+    }
+    # Check function arguments
+    if (!is.logical(secure)) {
+      stop("The secure argument in brapi_con() can only be a logical (TRUE or FALSE) value.")
+    }
+    if (!is.character(db)) {
+      stop("The db argument in brapi_con() can only be a character string.")
+    }
+    if (!is.numeric(port)) {
+      stop("The port argument in brapi_con() can only be a numeric value.")
+    }
+    if (!is.logical(bms)) {
+      stop("The bms argument argument in brapi_con() can only be a logical value (TRUE or FALSE).")
+    }
+    if (!xor(is.null(apipath), is.character(apipath))) {
+      stop("The apipath argument in brapi_con() can only be NULL or a character string.")
+    }
+    if (!is.character(crop)) {
+      stop("The crop argument in brapi_con() can only be a character string.")
+    }
+    if (!is.logical(multicrop)) {
+      stop("The multicrop argument in brapi_con() can only be a logical value (TRUE or FALSE).")
+    }
+    if (!is.character(user)) {
+      stop("The user argument in brapi_con() can only be a character string.")
+    }
+    if (!is.character(password)) {
+      stop("The password argument in brapi_con() can only be a character string.")
+    }
+    if (!is.character(token)) {
+      stop("The token argument in brapi_con() can only be a character string.")
+    }
+    # bms == TRUE, then always multicrop == TRUE
+    if (bms == TRUE) {
+      multicrop <- TRUE
+    }
+
   brapi <- list(
     brapi_db = brapi_db,
     secure = secure,
@@ -61,7 +109,8 @@ connect <- function(brapiDb = NULL,
     crops = "",
     calls = ""
   )
-  class(brapi) <- c(class(brapi), "brapi")
+  class(brapi) <- c(class(brapi), "brapi_con", "brapi")
+  }
   #message_brapi()
   #show_info(FALSE)
   # brapi$crops <- crops(brapi, rclass = "vector")

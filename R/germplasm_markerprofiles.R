@@ -11,11 +11,11 @@
 #' @import httr
 #' @import dplyr
 #' @import tidyjson
-#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/Germplasm/GermplasmMarkerprofiles.md}
+#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Germplasm/GermplasmMarkerprofiles.md}{github}
 #' @family germplasm
 #' @family genotyping
 #' @export
-germplasm_markerprofiles <- function(con = NULL, germplasmDbId = 0, rclass = "tibble"){
+germplasm_markerprofiles <- function(con = NULL, germplasmDbId = 3, rclass = "tibble"){
   brapi::check(con, FALSE)
   germplasm_markerprofiles = paste0(get_brapi(con), "germplasm/", germplasmDbId,
                               "/markerprofiles/")

@@ -1,13 +1,19 @@
 brapiGET <- function(url, format = "json", con = NULL){
-  res <- httr::GET(url,  httr::add_headers("X-AUTH-TOKEN" = con$token))
+
+  # res <- NULL
+  # if(con$bms){
+    res <- httr::GET(url,  httr::add_headers("X-AUTH-TOKEN" = con$token))
+  # } else{
+  #   res <- httr::GET(url)
+  # }
+
+
   txt <- ifelse(res$status == 200, " ok!", " problem!" )
   #message_brapi(paste0("Server status: ", res$status, txt, "\n"))
   message_brapi(paste0("Server status: ", txt, "\n"))
+  message_brapi(paste0("URL call was: ", url, "\n"))
 
-  if(res$status != 200){
-    message_brapi(paste0("URL call was: ", url, "\n"))
-  }
-
+  if (is.status_ok(res)) {
   # TODO: Insert here status messages if any!
   out <- httr::content(res, "text", encoding = "UTF-8")
   # Get JSON
@@ -25,6 +31,7 @@ brapiGET <- function(url, format = "json", con = NULL){
       }
     }
     }
+  }
   }
 
   res

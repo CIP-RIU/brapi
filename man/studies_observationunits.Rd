@@ -26,7 +26,7 @@ lists studies_observationunits available on a brapi server
 Reinhard Simon
 }
 \references{
-\url{https://github.com/plantbreeding/API/blob/master/Specification/Studies/ObservationUnitDetails.md}{github}
+\href{https://github.com/plantbreeding/API/blob/master/Specification/Studies/ObservationUnitDetails.md}{github}
 }
 \seealso{
 Other phenotyping: \code{\link{studies_details}},
