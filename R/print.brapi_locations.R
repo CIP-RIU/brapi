@@ -5,7 +5,7 @@
 #' @param brapi a brapi_locations object
 #' @param ... other print parameters
 #' @author Reinhard Simon
-#' @export
+# @export
 print.brapi_locations <- function(brapi, ...) {
   # Print in console
   missing_geo <- brapi[is.na(brapi$latitude), ]
