@@ -14,31 +14,33 @@
 #' @family genotyping
 #' @export
 genomemaps_details <- function(con = NULL, mapDbId = 1, rclass = "tibble") {
-  #TODO: revision; rename: map_
-  brapi::check(con, FALSE, "maps/id")
-  brp <- get_brapi(con)
-  maps_list = paste0(brp, "maps/", mapDbId, "/")
-
-  try({
-    res <- brapiGET(maps_list, con = con)
-    res <-  httr::content(res, "text", encoding = "UTF-8")
-    if(rclass == "vector") rclass = "tibble"
-    out = NULL
-    if(rclass %in% c("json", "list")) out = dat2tbl(res, rclass)
-    if(rclass %in% c("data.frame", "tibble")) {
-      lst <- jsonlite::fromJSON(res)
-      dat <- jsonlite::toJSON(lst$result$linkageGroups)
-      #message(dat)
-      if (rclass == 'data.frame') {
-        out <- jsonlite::fromJSON(dat, simplifyDataFrame = TRUE)[[1]]
-
-      } else {
-        out <- jsonlite::fromJSON(dat, simplifyDataFrame = TRUE)[[1]] %>% tibble::as_tibble()
-      }
-      lst$result$linkageGroups <- NULL
-      attr(out, "metadata") <- as.list(lst$result)
-    }
-    class(out) = c(class(out), "brapi_genomemaps_details")
-    out
-  })
+    # TODO: revision; rename: map_
+    brapi::check(con, FALSE, "maps/id")
+    brp <- get_brapi(con)
+    maps_list = paste0(brp, "maps/", mapDbId, "/")
+    
+    try({
+        res <- brapiGET(maps_list, con = con)
+        res <- httr::content(res, "text", encoding = "UTF-8")
+        if (rclass == "vector") 
+            rclass = "tibble"
+        out = NULL
+        if (rclass %in% c("json", "list")) 
+            out = dat2tbl(res, rclass)
+        if (rclass %in% c("data.frame", "tibble")) {
+            lst <- jsonlite::fromJSON(res)
+            dat <- jsonlite::toJSON(lst$result$linkageGroups)
+            # message(dat)
+            if (rclass == "data.frame") {
+                out <- jsonlite::fromJSON(dat, simplifyDataFrame = TRUE)[[1]]
+                
+            } else {
+                out <- jsonlite::fromJSON(dat, simplifyDataFrame = TRUE)[[1]] %>% tibble::as_tibble()
+            }
+            lst$result$linkageGroups <- NULL
+            attr(out, "metadata") <- as.list(lst$result)
+        }
+        class(out) = c(class(out), "brapi_genomemaps_details")
+        out
+    })
 }

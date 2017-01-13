@@ -15,21 +15,21 @@
 #' @family phenotyping
 #' @export
 studies_layout <- function(con = NULL, studyDbId = 1, rclass = "tibble") {
-  brapi::check(con, FALSE, "studies/id/layout")
-  brp <- get_brapi(con)
-  studies_layout_list <- paste0(brp, "studies/", studyDbId, "/layout/")
-
-  try({
-    res <- brapiGET(studies_layout_list, con = con)
-    res <-  httr::content(res, "text", encoding = "UTF-8")
-    out <- NULL
-    if (rclass %in% c("json", "list")) {
-      out <- dat2tbl(res, rclass)
-    }
-    if (rclass %in% c("tibble", "data.frame")) {
-      out <- lyt2tbl(res, rclass)
-    }
-    class(out) <- c(class(out), "brapi_studies_layout")
-    out
-  })
+    brapi::check(con, FALSE, "studies/id/layout")
+    brp <- get_brapi(con)
+    studies_layout_list <- paste0(brp, "studies/", studyDbId, "/layout/")
+    
+    try({
+        res <- brapiGET(studies_layout_list, con = con)
+        res <- httr::content(res, "text", encoding = "UTF-8")
+        out <- NULL
+        if (rclass %in% c("json", "list")) {
+            out <- dat2tbl(res, rclass)
+        }
+        if (rclass %in% c("tibble", "data.frame")) {
+            out <- lyt2tbl(res, rclass)
+        }
+        class(out) <- c(class(out), "brapi_studies_layout")
+        out
+    })
 }

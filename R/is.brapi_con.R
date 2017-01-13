@@ -9,6 +9,6 @@
 #' @family brapi_con
 #' @export
 is.brapi_con <- function(obj) {
-  comparison <- (class(obj) == "brapi_con")
-  return(comparison)
+    comparison <- (class(obj) == "brapi_con")
+    return(comparison)
 }

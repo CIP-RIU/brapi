@@ -52,16 +52,12 @@ must be started in a separate R session using 'brapi::mock_server()'.
 If the brapi_db parameter is used it will override the other parameters; except user, password and session.
 }
 \examples{
-if(interactive()){
-  if(can_internet("http://127.0.0.1:2021/brapi/v1")){
-
-    connect()
-
-    calls()
-
-    crops()
-
-  }
+if (interactive()) {
+    if (can_internet("http://127.0.0.1:2021/brapi/v1")) {
+        connect()
+        calls()
+        crops()
+    }
 }
 }
 

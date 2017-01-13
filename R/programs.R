@@ -16,21 +16,21 @@
 #' @family brapi_core
 #' @export
 programs <- function(con = NULL, page = 0, pageSize = 100, rclass = "tibble") {
-  brapi::check(con, FALSE, "programs")
-  brp <- get_brapi(con)
-  if(page == 0 & pageSize == 100) {
-    programs_list <- paste0(brp, "programs")
-  } else if (is.numeric(page) & is.numeric(pageSize)) {
-    programs_list <- paste0(brp, "programs/?page=", page, "&pageSize=", pageSize)
-  }
-
-
-  try({
-    res <- brapiGET(programs_list, con = con)
-    res <- httr::content(res, "text", encoding = "UTF-8")
-
-    out <- dat2tbl(res, rclass)
-    class(out)  <-  c(class(out), "brapi_programs")
-    out
-  })
+    brapi::check(con, FALSE, "programs")
+    brp <- get_brapi(con)
+    if (page == 0 & pageSize == 100) {
+        programs_list <- paste0(brp, "programs")
+    } else if (is.numeric(page) & is.numeric(pageSize)) {
+        programs_list <- paste0(brp, "programs/?page=", page, "&pageSize=", pageSize)
+    }
+    
+    
+    try({
+        res <- brapiGET(programs_list, con = con)
+        res <- httr::content(res, "text", encoding = "UTF-8")
+        
+        out <- dat2tbl(res, rclass)
+        class(out) <- c(class(out), "brapi_programs")
+        out
+    })
 }

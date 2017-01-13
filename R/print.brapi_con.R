@@ -8,8 +8,8 @@
 #' @family brapi_con
 #' @export
 print.brapi_con <- function(x, ...) {
-  # Print in console
-  cat(paste0("Crop = ", x$crop, "\n\n"))
-  cat(paste0("Addres:Port = ", x$db, ":", x$port, "\n"))
-  cat(paste0("User = ", x$user, "\n"))
+    # Print in console
+    cat(paste0("Crop = ", x$crop, "\n\n"))
+    cat(paste0("Addres:Port = ", x$db, ":", x$port, "\n"))
+    cat(paste0("User = ", x$user, "\n"))
 }

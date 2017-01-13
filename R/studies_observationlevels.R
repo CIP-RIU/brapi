@@ -10,14 +10,14 @@
 #' @family phenotyping
 #' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/Studies/ListObservationLevels.md}
 #' @export
-studies_observationlevels <- function(con = NULL, rclass = "vector"){
-  brapi::check(con, FALSE, "observationLevels")
-  observationLevels_List = paste0(get_brapi(con), "observationLevels")
-  try({
-    res <- brapiGET(observationLevels_List, con = con)
-    res <- httr::content(res, "text",encoding = "UTF-8")
-    out <- dat2tbl(res, rclass)
-    class(out) = c(class(out), "brapi_studies_observationlevels")
-    out
-  })
+studies_observationlevels <- function(con = NULL, rclass = "vector") {
+    brapi::check(con, FALSE, "observationLevels")
+    observationLevels_List = paste0(get_brapi(con), "observationLevels")
+    try({
+        res <- brapiGET(observationLevels_List, con = con)
+        res <- httr::content(res, "text", encoding = "UTF-8")
+        out <- dat2tbl(res, rclass)
+        class(out) = c(class(out), "brapi_studies_observationlevels")
+        out
+    })
 }

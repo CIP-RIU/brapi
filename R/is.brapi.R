@@ -6,6 +6,6 @@
 #' @family brapi_util
 #' @return logical
 #' @export
-is.brapi <- function(con){
-  "brapi" %in% class(con)
+is.brapi <- function(con) {
+    "brapi" %in% class(con)
 }

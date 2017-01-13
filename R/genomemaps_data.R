@@ -18,28 +18,28 @@
 #' @family genomemaps
 #' @family genotyping
 #' @export
-genomemaps_data <- function(con = NULL, mapDbId = 0, linkageGroupId= 0,
-                           page = 0, pageSize = 30, rclass = "tibble") {
-  #TODO: revision; rename: map_data
-  brapi::check(con, FALSE, "maps/id/positions")
-  brp <- get_brapi(con)
-  maps_positions_list <- paste0(brp, "maps/", mapDbId ,"/positions/?")
-
-  #if(is.vector(linkageGroupId)) linkageGroupId = paste(linkageGroupId, collapse = ",")
-  linkageGroupId <- paste("linkageGroupId=", linkageGroupId, "&", sep="") %>% paste(collapse = "")
-
-  page <- ifelse(is.numeric(page), paste0("page=", page, "&"), "")
-  pageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
-
-  maps_positions_list <- paste0(maps_positions_list, page, pageSize, linkageGroupId)
-
-  #message(maps_positions_list)
-  try({
-    res <- brapiGET(maps_positions_list, con = con)
-    res <-  httr::content(res, "text", encoding = "UTF-8")
-    if(rclass == "vector") rclass = "tibble"
-    out <- dat2tbl(res, rclass)
-    class(out)  <-  c(class(out), "brapi_genomemaps_data")
-    out
-  })
+genomemaps_data <- function(con = NULL, mapDbId = 0, linkageGroupId = 0, page = 0, pageSize = 30, rclass = "tibble") {
+    # TODO: revision; rename: map_data
+    brapi::check(con, FALSE, "maps/id/positions")
+    brp <- get_brapi(con)
+    maps_positions_list <- paste0(brp, "maps/", mapDbId, "/positions/?")
+    
+    # if(is.vector(linkageGroupId)) linkageGroupId = paste(linkageGroupId, collapse = ',')
+    linkageGroupId <- paste("linkageGroupId=", linkageGroupId, "&", sep = "") %>% paste(collapse = "")
+    
+    page <- ifelse(is.numeric(page), paste0("page=", page, "&"), "")
+    pageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
+    
+    maps_positions_list <- paste0(maps_positions_list, page, pageSize, linkageGroupId)
+    
+    # message(maps_positions_list)
+    try({
+        res <- brapiGET(maps_positions_list, con = con)
+        res <- httr::content(res, "text", encoding = "UTF-8")
+        if (rclass == "vector") 
+            rclass = "tibble"
+        out <- dat2tbl(res, rclass)
+        class(out) <- c(class(out), "brapi_genomemaps_data")
+        out
+    })
 }
