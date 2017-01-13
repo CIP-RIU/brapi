@@ -29,7 +29,7 @@ Reinhard Simon
 Other genotyping: \code{\link{genomemaps_data_range}},
   \code{\link{genomemaps_data}},
   \code{\link{genomemaps_details}},
-  \code{\link{genomemaps}},
+  \code{\link{genomemaps}}, \code{\link{germplasm_search}},
   \code{\link{germplasmattributes_categories}},
   \code{\link{germplasmattributes_details}},
   \code{\link{germplasmattributes}},

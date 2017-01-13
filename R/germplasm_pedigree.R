@@ -13,7 +13,7 @@
 #' @import httr
 #' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/Germplasm/GermplasmPedigree.md}(github)
 #' @family germplasm
-#' @family core
+#' @family brapi_core
 #' @export
 germplasm_pedigree <- function(con = NULL, germplasmDbId = 0, notation = "purdue",
                                rclass = "tibble"){

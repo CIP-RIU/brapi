@@ -19,7 +19,8 @@
 #'    \url{https://github.com/plantbreeding/API/blob/master/Specification/Germplasm/GermplasmSearchPOST.md}
 #'
 #' @return tibble
-#' @family core
+#' @family brapi_core
+#' @family genotyping
 #' @family germplasm
 #' @export
 germplasm_search <- function(con = NULL,

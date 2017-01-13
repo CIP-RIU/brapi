@@ -39,14 +39,22 @@ Reinhard Simon
    \url{https://github.com/plantbreeding/API/blob/master/Specification/Germplasm/GermplasmSearchPOST.md}
 }
 \seealso{
-Other core: \code{\link{germplasm_details_study}},
-  \code{\link{germplasm_details}},
-  \code{\link{germplasm_pedigree}},
-  \code{\link{observationvariables_datatypes}},
-  \code{\link{observationvariables_details}},
-  \code{\link{observationvariables_ontologies}},
-  \code{\link{observationvariables}},
-  \code{\link{traits_details}}, \code{\link{traits}}
+Other brapi_core: \code{\link{calls}}, \code{\link{crops}},
+  \code{\link{germplasm_pedigree}}, \code{\link{programs}}
+
+Other genotyping: \code{\link{genomemaps_data_range}},
+  \code{\link{genomemaps_data}},
+  \code{\link{genomemaps_details}},
+  \code{\link{genomemaps}},
+  \code{\link{germplasm_markerprofiles}},
+  \code{\link{germplasmattributes_categories}},
+  \code{\link{germplasmattributes_details}},
+  \code{\link{germplasmattributes}},
+  \code{\link{markerprofiles_allelematrix_search}},
+  \code{\link{markerprofiles_details}},
+  \code{\link{markerprofiles_search}},
+  \code{\link{markers_details}},
+  \code{\link{markers_search}}
 
 Other germplasm: \code{\link{germplasm_details_study}},
   \code{\link{germplasm_details}},

@@ -32,6 +32,7 @@ Reinhard Simon
 }
 \seealso{
 Other brapi_core: \code{\link{crops}},
-  \code{\link{programs}}
+  \code{\link{germplasm_pedigree}},
+  \code{\link{germplasm_search}}, \code{\link{programs}}
 }
 

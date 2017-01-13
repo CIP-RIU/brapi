@@ -8,9 +8,8 @@
 #' @import tidyjson
 #' @import dplyr
 #' @author Reinhard Simon
-#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/Studies/StudyDetails.md}(github)
+#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Studies/StudyDetails.md}{github}
 #' @return data.frame
-#' @family brapi_call
 #' @family studies
 #' @family phenotyping
 #' @export

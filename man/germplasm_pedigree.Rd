@@ -29,14 +29,8 @@ Reinhard Simon
 \url{https://github.com/plantbreeding/API/blob/master/Specification/Germplasm/GermplasmPedigree.md}(github)
 }
 \seealso{
-Other core: \code{\link{germplasm_details_study}},
-  \code{\link{germplasm_details}},
-  \code{\link{germplasm_search}},
-  \code{\link{observationvariables_datatypes}},
-  \code{\link{observationvariables_details}},
-  \code{\link{observationvariables_ontologies}},
-  \code{\link{observationvariables}},
-  \code{\link{traits_details}}, \code{\link{traits}}
+Other brapi_core: \code{\link{calls}}, \code{\link{crops}},
+  \code{\link{germplasm_search}}, \code{\link{programs}}
 
 Other germplasm: \code{\link{germplasm_details_study}},
   \code{\link{germplasm_details}},
