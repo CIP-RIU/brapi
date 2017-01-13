@@ -3,8 +3,16 @@
 #' @param crop character
 #' @param protocol character
 #' @param db character
-#' @param port integer
-#' @param multi logical
+#' @param secure logical; default: false
+#' @param apipath character; default: ''
+#' @param multicrop logical; default: false
+#' @param user character; default: ''
+#' @param password character; default: ''
+#' @param token character; default: ''
+#' @param granttype character; default: 'password'
+#' @param clientid character; default: 'rbrapi'
+#' @param bms logical; default: false
+#' @param port integer; default: 80
 #'
 #' @return brapi_db class
 #' @export
@@ -12,7 +20,7 @@ as.brapi_db <- function(
   secure = FALSE,
   protocol = "http://",
   db = "127.0.0.1",
-  port = 2021,
+  port = 80,
   apipath = NULL,
   multicrop = FALSE,
   crop = "",

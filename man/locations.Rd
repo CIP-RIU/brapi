@@ -4,7 +4,7 @@
 \alias{locations}
 \title{locations}
 \usage{
-locations(con = NULL, locationType = "all", page = 0, pageSize = 1000,
+locations(con = NULL, locationType = "all", page = 0, pageSize = 1e+06,
   rclass = "tibble")
 }
 \arguments{

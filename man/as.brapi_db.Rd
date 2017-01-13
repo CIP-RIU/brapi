@@ -5,20 +5,36 @@
 \title{Tas.brapi_db}
 \usage{
 as.brapi_db(secure = FALSE, protocol = "http://", db = "127.0.0.1",
-  port = 2021, apipath = NULL, multicrop = FALSE, crop = "",
-  user = "", password = "", token = "", granttype = "password",
+  port = 80, apipath = NULL, multicrop = FALSE, crop = "", user = "",
+  password = "", token = "", granttype = "password",
   clientid = "rbrapi", bms = FALSE)
 }
 \arguments{
+\item{secure}{logical; default: false}
+
 \item{protocol}{character}
 
 \item{db}{character}
 
-\item{port}{integer}
+\item{port}{integer; default: 80}
+
+\item{apipath}{character; default: ''}
+
+\item{multicrop}{logical; default: false}
 
 \item{crop}{character}
 
-\item{multi}{logical}
+\item{user}{character; default: ''}
+
+\item{password}{character; default: ''}
+
+\item{token}{character; default: ''}
+
+\item{granttype}{character; default: 'password'}
+
+\item{clientid}{character; default: 'rbrapi'}
+
+\item{bms}{logical; default: false}
 }
 \value{
 brapi_db class
