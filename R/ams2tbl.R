@@ -1,13 +1,13 @@
 ams2tbl <- function(res, format, rclass, pb = NULL) {
     res <- httr::content(res, "text", encoding = "UTF-8")
     out <- NULL
-    markerprofiledbid <- NULL
-    allelecall <- NULL
+    markerprofileDbId <- NULL
+    alleleCall <- NULL
     if (format == "json") {
         out <- dat2tbl(res, rclass)
         if (rclass %in% c("data.frame", "tibble")) {
             colnames(out) <- c("markerprofileDbId", "markerDbId", "alleleCall")
-            out <- tidyr::spread(out, markerprofiledbid, allelecall)
+            out <- tidyr::spread(out, markerprofileDbId, alleleCall)
             colnames(out)[1] <- "markerprofileDbId"
         }
     }
