@@ -13,20 +13,20 @@
 #' @return rclass as defined
 #' @import tibble
 #' @family observationvariables
-#' @family core
+#' @family brapi_core
 #'
 #' @export
 observationvariables <- function(con = NULL, traitClass = "all", page = 0, pageSize = 1000, rclass = "tibble") {
     brapi::check(con, FALSE, "variables")
-    
+
     brp <- get_brapi(con)
     brapi_variables = paste0(brp, "variables/?")
-    
+
     ptraitClass = paste0("traitClass=", traitClass, "&")
     ppage = paste0("page=", page, "")
     ppageSize = paste0("pageSize=", pageSize, "&")
     brapi_variables = paste0(brapi_variables, ptraitClass, ppageSize, ppage)
-    
+
     try({
         res <- brapiGET(brapi_variables, con = con)
         res <- httr::content(res, "text", encoding = "UTF-8")
@@ -34,7 +34,7 @@ observationvariables <- function(con = NULL, traitClass = "all", page = 0, pageS
         if (!rclass %in% c("json", "list", "tibble", "data.frame")) {
             rclass = "json"
         }
-        
+
         if (rclass %in% c("json", "list")) {
             out = dat2tbl(res, rclass)
         }

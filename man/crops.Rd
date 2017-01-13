@@ -25,7 +25,15 @@ Reinhard Simon
 }
 \seealso{
 Other brapi_core: \code{\link{calls}},
+  \code{\link{germplasm_details_study}},
+  \code{\link{germplasm_details}},
   \code{\link{germplasm_pedigree}},
-  \code{\link{germplasm_search}}, \code{\link{programs}}
+  \code{\link{germplasm_search}},
+  \code{\link{observationvariables_datatypes}},
+  \code{\link{observationvariables_details}},
+  \code{\link{observationvariables_ontologies}},
+  \code{\link{observationvariables}},
+  \code{\link{programs}}, \code{\link{traits_details}},
+  \code{\link{traits}}
 }
 

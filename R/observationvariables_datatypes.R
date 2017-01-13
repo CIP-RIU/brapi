@@ -11,13 +11,13 @@
 #' @import tibble
 #' @import tidyjson
 #' @family observationvariables
-#' @family core
+#' @family brapi_core
 #' @export
 observationvariables_datatypes <- function(con = NULL, rclass = "tibble") {
     brapi::check(con, FALSE, "variables/datatypes")
     brp <- get_brapi(con)
     variables_datatypes_list = paste0(brp, "variables/datatypes/")
-    
+
     try({
         res <- brapiGET(variables_datatypes_list, con = con)
         res <- httr::content(res, "text", encoding = "UTF-8")
