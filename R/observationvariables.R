@@ -13,7 +13,7 @@
 #' @return rclass as defined
 #' @import tibble
 #' @family observationvariables
-#' @family brapi_core
+#' @family brapicore
 #'
 #' @export
 observationvariables <- function(con = NULL, traitClass = "all", page = 0, pageSize = 1000, rclass = "tibble") {

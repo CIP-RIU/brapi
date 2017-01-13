@@ -11,7 +11,7 @@
 #' @return rclass as defined
 #' @import tibble
 #' @family observationvariables
-#' @family brapi_core
+#' @family brapicore
 #' @export
 observationvariables_ontologies <- function(con = NULL, page = 0, pageSize = 1000, rclass = "tibble") {
     brapi::check(con, FALSE, "ontologies")

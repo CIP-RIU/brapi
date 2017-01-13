@@ -11,7 +11,7 @@
 #' @import tibble
 #' @import tidyjson
 #' @family observationvariables
-#' @family brapi_core
+#' @family brapicore
 #' @export
 observationvariables_datatypes <- function(con = NULL, rclass = "tibble") {
     brapi::check(con, FALSE, "variables/datatypes")

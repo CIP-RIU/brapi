@@ -13,7 +13,7 @@
 #' @author Reinhard Simon
 #' @return rclass
 #' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Programs/ListPrograms.md}{github}
-#' @family brapi_core
+#' @family brapicore
 #' @export
 programs <- function(con = NULL, page = 0, pageSize = 100, rclass = "tibble") {
     brapi::check(con, FALSE, "programs")
@@ -23,12 +23,12 @@ programs <- function(con = NULL, page = 0, pageSize = 100, rclass = "tibble") {
     } else if (is.numeric(page) & is.numeric(pageSize)) {
         programs_list <- paste0(brp, "programs/?page=", page, "&pageSize=", pageSize)
     }
-    
-    
+
+
     try({
         res <- brapiGET(programs_list, con = con)
         res <- httr::content(res, "text", encoding = "UTF-8")
-        
+
         out <- dat2tbl(res, rclass)
         class(out) <- c(class(out), "brapi_programs")
         out

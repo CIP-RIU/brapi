@@ -10,7 +10,7 @@
 #' @return rclass as defined
 #' @import tibble
 #' @family traits
-#' @family brapi_core
+#' @family brapicore
 #' @export
 traits_details <- function(con = NULL, traitDbId = 1, rclass = "tibble") {
     brapi::check(con, FALSE, "traits")

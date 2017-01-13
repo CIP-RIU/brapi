@@ -11,7 +11,7 @@
 #' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/Germplasm/GermplasmDetailsByGermplasmDbId.md}
 #' @return list
 #' @family germplasm
-#' @family brapi_core
+#' @family brapicore
 #' @export
 germplasm_details <- function(con = NULL, germplasmDbId = 0, rclass = "tibble") {
     # TODO: revision; rename: map

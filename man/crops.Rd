@@ -24,7 +24,7 @@ Reinhard Simon
 \href{https://github.com/plantbreeding/API/blob/master/Specification/Crops/ListCrops.md}{github}
 }
 \seealso{
-Other brapi_core: \code{\link{calls}},
+Other brapicore: \code{\link{calls}},
   \code{\link{germplasm_details_study}},
   \code{\link{germplasm_details}},
   \code{\link{germplasm_pedigree}},

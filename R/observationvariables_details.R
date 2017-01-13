@@ -10,7 +10,7 @@
 #' @return rclass as defined
 #' @import tibble
 #' @family observationvariables
-#' @family brapi_core
+#' @family brapicore
 #'
 #' @export
 observationvariables_details <- function(con = NULL, observationVariableDbId = "CO_334:0100622", rclass = "tibble") {

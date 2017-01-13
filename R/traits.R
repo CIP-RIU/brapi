@@ -11,7 +11,7 @@
 #' @return rclass as defined
 #' @import tibble
 #' @family traits
-#' @family brapi_core
+#' @family brapicore
 #' @export
 traits <- function(con = NULL, page = 0, pageSize = 1000, rclass = "tibble") {
     brapi::check(con, FALSE, "traits")
