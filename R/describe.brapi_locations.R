@@ -12,6 +12,6 @@ describe.brapi_locations <- function(x, ...) {
     cpl <- nrow(x)
     mis <- nrow(missing_geo)
     pct <- mis / cpl * 100
-    cat(paste0("n locations = ", cpl , "\n"))
+    cat(paste0("n locations = ", cpl, "\n"))
     cat(paste0("n locations with missing lat/lon = ", mis, " (", pct, "%) \n\n"))
 }
