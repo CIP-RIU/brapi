@@ -13,10 +13,11 @@
 #' @family germplasm
 #' @family brapicore
 #' @export
-germplasm_details <- function(con = NULL, germplasmDbId = 0, rclass = "tibble") {
+germplasm_details <- function(con = NULL, germplasmDbId = 0,
+                              rclass = "tibble") {
     # TODO: revision; rename: map
     brapi::check(con, FALSE, "germplasm/id")
-    germplasm = paste0(get_brapi(con), "germplasm/", germplasmDbId, "/")
+    germplasm <- paste0(get_brapi(con), "germplasm/", germplasmDbId, "/")
 
     try({
         res <- brapiGET(germplasm, con = con)
@@ -30,7 +31,7 @@ germplasm_details <- function(con = NULL, germplasmDbId = 0, rclass = "tibble") 
         if (rclass == "tibble")
             out <- gp2tbl(res) %>% tibble::as_tibble()
 
-        class(out) = c(class(out), "brapi_germplasm_details")
+        class(out) <- c(class(out), "brapi_germplasm_details")
         out
     })
 }

@@ -28,65 +28,74 @@
 #' @return connection object
 #' @family access
 #' @export
-connect <- function(brapiDb = NULL, secure = FALSE, protocol = "http://", db = "127.0.0.1", port = 2021, 
-    apipath = NULL, multicrop = FALSE, crop = "sweetpotato", user = "user", password = "password", token = "", 
+connect <- function(
+    brapiDb = NULL, secure = FALSE, protocol = "http://",
+    db = "127.0.0.1", port = 2021,
+    apipath = NULL, multicrop = FALSE, crop = "sweetpotato",
+    user = "user", password = "password", token = "",
     granttype = "password", clientid = "rbrapi", bms = FALSE) {
     brapi <- NULL
-    
     if (!is.null(brapiDb)) {
         if ("list" %in% class(brapiDb)) {
             brapi <- brapiDb
             class(brapi) <- c("list", "brapi")
         }
     } else {
-        
         if (!brapi::can_internet()) {
             stop("Can not connect to internet!")
         }
         # Check function arguments
         if (!is.logical(secure)) {
-            stop("The secure argument in brapi_con() can only be a logical (TRUE or FALSE) value.")
+            stop("The secure argument in brapi_con() can only be
+                 a logical (TRUE or FALSE) value.")
         }
         if (!is.character(db)) {
-            stop("The db argument in brapi_con() can only be a character string.")
+            stop("The db argument in brapi_con() can only be a
+                 character string.")
         }
         if (!is.numeric(port)) {
-            stop("The port argument in brapi_con() can only be a numeric value.")
+            stop("The port argument in brapi_con() can only be a
+                 numeric value.")
         }
         if (!is.logical(bms)) {
-            stop("The bms argument argument in brapi_con() can only be a logical value (TRUE or FALSE).")
+            stop("The bms argument argument in brapi_con() can only be a
+                 logical value (TRUE or FALSE).")
         }
         if (!xor(is.null(apipath), is.character(apipath))) {
-            stop("The apipath argument in brapi_con() can only be NULL or a character string.")
+            stop("The apipath argument in brapi_con() can only be NULL or
+                 a character string.")
         }
         if (!is.character(crop)) {
-            stop("The crop argument in brapi_con() can only be a character string.")
+            stop("The crop argument in brapi_con() can only be a
+                 character string.")
         }
         if (!is.logical(multicrop)) {
-            stop("The multicrop argument in brapi_con() can only be a logical value (TRUE or FALSE).")
+            stop("The multicrop argument in brapi_con() can only be a
+                 logical value (TRUE or FALSE).")
         }
         if (!is.character(user)) {
-            stop("The user argument in brapi_con() can only be a character string.")
+            stop("The user argument in brapi_con() can only be a
+                 character string.")
         }
         if (!is.character(password)) {
-            stop("The password argument in brapi_con() can only be a character string.")
+            stop("The password argument in brapi_con() can only be a
+                 character string.")
         }
         if (!is.character(token)) {
-            stop("The token argument in brapi_con() can only be a character string.")
+            stop("The token argument in brapi_con() can only be a
+                 character string.")
         }
         # bms == TRUE, then always multicrop == TRUE
         if (bms == TRUE) {
             multicrop <- TRUE
         }
-        
-        brapi <- list(brapi_db = brapi_db, secure = secure, protocol = protocol, db = db, port = port, apipath = apipath, 
-            multicrop = multicrop, crop = crop, user = user, password = password, token = token, granttype = granttype, 
+        brapi <- list(brapi_db = brapi_db, secure = secure,
+                      protocol = protocol, db = db, port = port,
+                      apipath = apipath,
+            multicrop = multicrop, crop = crop, user = user,
+            password = password, token = token, granttype = granttype,
             clientid = clientid, bms = bms, crops = "", calls = "")
         class(brapi) <- c(class(brapi), "brapi_con", "brapi")
     }
-    # message_brapi() show_info(FALSE) brapi$crops <- crops(brapi, rclass = 'vector') brapi$crops %>%
-    # paste(collapse = ', ') %>% message_brapi() brapi$calls <- calls(brapi, rclass = 'data.frame')[,
-    # 'call'] brapi$calls %>% paste(collapse = ', ') %>% message_brapi()
     brapi
 }
-

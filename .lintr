@@ -1,0 +1,1 @@
+linters: with_defaults(camel_case_linter = NULL, absolute_paths_linter = NULL, line_length_linter(120), object_length_linter(50))

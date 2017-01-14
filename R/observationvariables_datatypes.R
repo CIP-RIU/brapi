@@ -16,16 +16,16 @@
 observationvariables_datatypes <- function(con = NULL, rclass = "tibble") {
     brapi::check(con, FALSE, "variables/datatypes")
     brp <- get_brapi(con)
-    variables_datatypes_list = paste0(brp, "variables/datatypes/")
+    variables_datatypes_list <- paste0(brp, "variables/datatypes/")
 
     try({
         res <- brapiGET(variables_datatypes_list, con = con)
         res <- httr::content(res, "text", encoding = "UTF-8")
-        out = dat2tbl(res, rclass)
+        out <- dat2tbl(res, rclass)
         if (rclass %in% c("data.frame", "tibble")) {
-            colnames(out) = "variables_datatypes"
+            colnames(out) <- "variables_datatypes"
         }
-        class(out) = c(class(out), "brapi_observationvariables_datatypes")
+        class(out) <- c(class(out), "brapi_observationvariables_datatypes")
         out
     })
 }

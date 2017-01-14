@@ -19,12 +19,9 @@ studies_observationunits <- function(con = NULL, studyDbId = 1, observationLevel
     brapi::check(con, FALSE, "studies/id/observationunits")
     brp <- get_brapi(con)
     studies_observationunits_list <- paste0(brp, "studies/", studyDbId, "/observationunits/?")
-    
     observationLevel <- ifelse(observationLevel == "plant", "observationLevel=plant", "observationLevel=plot")
-    
     studies_observationunits_list <- paste0(studies_observationunits_list, observationLevel)
-    
-    # message(studies_observationunits_list)
+
     try({
         res <- brapiGET(studies_observationunits_list, con = con)
         res <- httr::content(res, "text", encoding = "UTF-8")

@@ -18,7 +18,7 @@
 germplasm_pedigree <- function(con = NULL, germplasmDbId = 0, notation = "purdue", rclass = "tibble") {
     brapi::check(con, FALSE)
 
-    germplasm_pedigree = paste0(get_brapi(con), "germplasm/", germplasmDbId, "/pedigree/?notation=", notation)
+    germplasm_pedigree <- paste0(get_brapi(con), "germplasm/", germplasmDbId, "/pedigree/?notation=", notation)
 
     try({
         res <- brapiGET(germplasm_pedigree, con = con)
@@ -37,7 +37,7 @@ germplasm_pedigree <- function(con = NULL, germplasmDbId = 0, notation = "purdue
             out <- ms2tbl(res) %>% tibble::as_tibble()
         if (rclass == "data.frame")
             out <- ms2tbl(res) %>% tibble::as_tibble() %>% as.data.frame()
-        class(out) = c(class(out), "brapi_germplasm_pedigree")
+        class(out) <- c(class(out), "brapi_germplasm_pedigree")
         out
     })
 }

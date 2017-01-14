@@ -28,31 +28,30 @@ germplasm_search <- function(con = NULL, germplasmDbId = 0, germplasmName = "non
     brapi::check(con, FALSE, "germplasm-search")
     brp <- get_brapi(con)
     if (is.numeric(page) & is.numeric(pageSize)) {
-        germplasm_search = paste0(brp, "germplasm-search/?page=", page, "&pageSize=", pageSize)
+        germplasm_search <- paste0(brp, "germplasm-search/?page=", page, "&pageSize=", pageSize)
     }
 
     if (germplasmName != "none") {
-        germplasm_search = paste0(germplasm_search, "&germplasmName=", germplasmName)
+        germplasm_search <- paste0(germplasm_search, "&germplasmName=", germplasmName)
     }
 
 
     if (germplasmDbId > 0) {
-        germplasm_search = paste0(brp, "germplasm-search/?germplasmDbId=", germplasmDbId)
+        germplasm_search <- paste0(brp, "germplasm-search/?germplasmDbId=", germplasmDbId)
     }
 
 
     if (germplasmPUI != "none") {
-        germplasm_search = paste0(brp, "germplasm-search/?germplasmPUI=", germplasmPUI)
+        germplasm_search <- paste0(brp, "germplasm-search/?germplasmPUI=", germplasmPUI)
     }
 
 
 
     if (method == "POST") {
-        # message_brapi('POST not implemented yet!')
-        body = list(germplasmDbId = germplasmDbId, germplasmName = germplasmName, germplasmPUI = germplasmPUI,
+        body <- list(germplasmDbId = germplasmDbId, germplasmName = germplasmName, germplasmPUI = germplasmPUI,
             page = page, pageSize = pageSize)
-        out = try({
-            germplasm_search = paste0(brp, "germplasm-search/")
+        out <- try({
+            germplasm_search <- paste0(brp, "germplasm-search/")
             res <- brapiPOST(germplasm_search, body, con)
             res <- httr::content(res, "text", encoding = "UTF-8")
             out <- NULL
@@ -69,7 +68,7 @@ germplasm_search <- function(con = NULL, germplasmDbId = 0, germplasmName = "non
 
     } else {
 
-        out = try({
+        out <- try({
             res <- brapiGET(germplasm_search, con = con)
             res <- httr::content(res, "text", encoding = "UTF-8")
             out <- NULL
@@ -85,8 +84,7 @@ germplasm_search <- function(con = NULL, germplasmDbId = 0, germplasmName = "non
         })
     }
 
-    class(out) = c(class(out), "brapi_germplasm_search")
+    class(out) <- c(class(out), "brapi_germplasm_search")
     out
 
 }
-

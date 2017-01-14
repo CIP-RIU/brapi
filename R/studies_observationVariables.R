@@ -17,8 +17,8 @@
 studies_observationvariables <- function(con = NULL, studyDbId = 1, rclass = "tibble") {
     brapi::check(con, FALSE, "studies/id/observationVariables")
     brp <- get_brapi(con)
-    studies_observationVariables_list = paste0(brp, "studies/", studyDbId, "/observationVariables/?")
-    
+    studies_observationVariables_list <- paste0(brp, "studies/", studyDbId, "/observationVariables/?")
+
     try({
         res <- brapiGET(studies_observationVariables_list, con = con)
         res <- httr::content(res, "text", encoding = "UTF-8")

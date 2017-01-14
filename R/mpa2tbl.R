@@ -5,11 +5,10 @@ mpa2tbl <- function(res, rclass = "tibble") {
     udb <- unlist(dba)
     udb <- udb[!is.na(udb)] %>% as.data.frame(stringsAsFactors = FALSE)
     udb <- as.data.frame(cbind(marker = rownames(udb), alleles = udb[, 1]), stringsAsFactors = FALSE)
-    if (rclass == "tibble") 
-        udb = tibble::as_tibble(udb)
-    
-    attr(udb, "metadata") = as.list(lst$result$data[1:5])
-    
-    class(udb) = c(class(udb), "brapi_markerprofiles_alleles")
+    if (rclass == "tibble")
+        udb <- tibble::as_tibble(udb)
+    attr(udb, "metadata") <- as.list(lst$result$data[1:5])
+
+    class(udb) <- c(class(udb), "brapi_markerprofiles_alleles")
     udb
 }

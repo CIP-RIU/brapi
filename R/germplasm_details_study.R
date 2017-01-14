@@ -16,28 +16,28 @@
 #' @family germplasm
 #' @family brapicore
 #' @export
-germplasm_details_study <- function(con = NULL, studyDbId = 123, page = 0, pageSize = 1000, rclass = "tibble") {
+germplasm_details_study <- function(con = NULL, studyDbId = 123,
+                                    page = 0, pageSize = 1000,
+                                    rclass = "tibble") {
     # TODO revise name: to group into germplasm
     brapi::check(con, FALSE, "studies/id/germplasm")
     brp <- get_brapi(con)
-    studies_germplasm_list = paste0(brp, "studies/", studyDbId, "/germplasm/?")
-
-    page = ifelse(is.numeric(page), paste0("page=", page), "")
-    pageSize = ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
-
-    studies_germplasm_list = paste0(studies_germplasm_list, pageSize, page)
-
+    studies_germplasm_list <- paste0(brp, "studies/", studyDbId, "/germplasm/?")
+    page <- ifelse(is.numeric(page), paste0("page=", page), "")
+    pageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=",
+                                                    pageSize, "&"), "")
+    studies_germplasm_list <- paste0(studies_germplasm_list, pageSize, page)
     try({
         res <- brapiGET(studies_germplasm_list, con = con)
         res <- httr::content(res, "text", encoding = "UTF-8")
-        out = NULL
+        out <- NULL
         if (rclass %in% c("json", "list")) {
-            out = dat2tbl(res, rclass)
+            out <- dat2tbl(res, rclass)
         }
         if (rclass %in% c("tibble", "data.frame")) {
-            out = sgp2tbl(res, rclass)
+            out <- sgp2tbl(res, rclass)
         }
-        class(out) = c(class(out), "brapi_germplasm_details_study")
+        class(out) <- c(class(out), "brapi_germplasm_details_study")
         out
     })
 }

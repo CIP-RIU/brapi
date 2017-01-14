@@ -17,22 +17,22 @@ observationvariables_details <- function(con = NULL, observationVariableDbId = "
     brapi::check(con, FALSE, "variables/id")
 
     brp <- get_brapi(con)
-    brapi_variables_details = paste0(brp, "variables/", observationVariableDbId)
+    brapi_variables_details <- paste0(brp, "variables/", observationVariableDbId)
 
     try({
         res <- brapiGET(brapi_variables_details, con = con)
         res <- httr::content(res, "text", encoding = "UTF-8")
-        out = NULL
+        out <- NULL
         if (!rclass %in% c("json", "list", "tibble", "data.frame")) {
-            rclass = "json"
+            rclass <- "json"
         }
         if (rclass %in% c("json", "list")) {
-            out = dat2tbl(res, rclass)
+            out <- dat2tbl(res, rclass)
         }
         if (rclass %in% c("tibble", "data.frame")) {
-            out = sov2tbl(res, rclass, TRUE)
+            out <- sov2tbl(res, rclass, TRUE)
         }
-        class(out) = c(class(out), "brapi_observationvariables_details")
+        class(out) <- c(class(out), "brapi_observationvariables_details")
         out
     })
 }

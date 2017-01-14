@@ -21,7 +21,7 @@ sou2tbl <- function(res, rclass, observationLevel){
   observations.observationTimeStamp <- NULL
   observations.value <- NULL
 
-  out = res %>% as.character %>%
+  out <- res %>% as.character %>%
     enter_object("result") %>% enter_object("data") %>% gather_array() %>%
     spread_values(observationUnitDbId = jstring("observationUnitDbId"),
                   observationUnitName = jstring("observationUnitName"),
@@ -69,15 +69,16 @@ sou2tbl <- function(res, rclass, observationLevel){
                   observations.value
                   )
 
-  plantCol = which(colnames(out) == "plantNumber")
-  plotCol = which(colnames(out) == "plotNumber")
+  plantCol <- which(colnames(out) == "plantNumber")
+  plotCol <- which(colnames(out) == "plotNumber")
 
-  if(observationLevel == "plant"){
-    out = out[, -c(plotCol)]
+  if (observationLevel == "plant"){
+    out <- out[, -c(plotCol)]
   }
-  if(observationLevel == "plot"){
-    out = out[, -c(plantCol)]
+  if (observationLevel == "plot"){
+    out <- out[, -c(plantCol)]
   }
-  if(rclass == "tibble") out = tibble::as_tibble(out)
+  if (rclass == "tibble")
+    out <- tibble::as_tibble(out)
   out
 }

@@ -14,24 +14,22 @@
 #' @import tibble
 #' @family brapicore
 #' @export
-calls <- function(con = NULL, datatypes = "all", pageSize = 1000, page = 0, rclass = "tibble") {
-
+calls <- function(con = NULL, datatypes = "all",
+                  pageSize = 1000, page = 0, rclass = "tibble") {
     check(con, FALSE, "calls")
     brp <- get_brapi(con)
     brapi_calls <- paste0(brp, "calls/?")
-
-    pdatatypes <- ifelse(datatypes == "all", "", paste0("datatypes=", datatypes, "&"))
+    pdatatypes <- ifelse(datatypes == "all", "", paste0("datatypes=",
+                                                        datatypes, "&"))
     ppage <- ifelse(is.numeric(page), paste0("page=", page, ""), "")
-    ppageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
+    ppageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=",
+                                                     pageSize, "&"), "")
     brapi_calls <- paste0(brapi_calls, pdatatypes, ppageSize, ppage)
-
     try({
         res <- brapiGET(brapi_calls, con = con)
         out <- NULL
-
         res <- httr::content(res, "text", encoding = "UTF-8")
         out <- dat2tbl(res, rclass)
-
         if (rclass %in% c("data.frame", "tibble")) {
             out$methods <- sapply(out$methods, paste, collapse = "; ")
             out$datatypes <- sapply(out$datatypes, paste, collapse = "; ")

@@ -34,29 +34,27 @@ markerprofiles_search <- function(con = NULL, germplasmDbId = "",
                              rclass = "tibble"){
   brapi::check(con, FALSE, "markerprofiles")
   brp <- get_brapi(con)
-  pmarkerprofiles = paste0(brp, "markerprofiles/?")
+  pmarkerprofiles <- paste0(brp, "markerprofiles/?")
 
-  #germplasmDbId = ifelse(is.numeric(germplasmDbId), paste0("germplasm=", germplasmDbId, "&"), "")
-  pgermplasmDbId = paste0("germplasm=", germplasmDbId, "&") %>% paste(collapse = "")
-  pextractDbId = paste0("extract=", extractDbId, "&") %>% paste(collapse = "")
+  pgermplasmDbId <- paste0("germplasm=", germplasmDbId, "&") %>% paste(collapse = "")
+  pextractDbId <- paste0("extract=", extractDbId, "&") %>% paste(collapse = "")
 
-  pstudyDbId = ifelse(studyDbId != "", paste0("studyDbId=", studyDbId, "&"), "")
-  psampleDbId = ifelse(sampleDbId != "", paste0("sample=", sampleDbId, "&"), "")
-  #extractDbId = ifelse(extractDbId != "", paste0("extract=", extractDbId, "&"), "")
-  pmethodDbId = ifelse(methodDbId != "", paste0("method=", methodDbId, "&"), "")
+  pstudyDbId <- ifelse(studyDbId != "", paste0("studyDbId=", studyDbId, "&"), "")
+  psampleDbId <- ifelse(sampleDbId != "", paste0("sample=", sampleDbId, "&"), "")
+  pmethodDbId <- ifelse(methodDbId != "", paste0("method=", methodDbId, "&"), "")
 
-  ppage = ifelse(is.numeric(page), paste0("page=", page, ""), "")
-  ppageSize = ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
-  rclass = ifelse(rclass %in% c("tibble", "data.frame", "json", "list"), rclass, "tibble")
+  ppage <- ifelse(is.numeric(page), paste0("page=", page, ""), "")
+  ppageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
+  rclass <- ifelse(rclass %in% c("tibble", "data.frame", "json", "list"), rclass, "tibble")
 
-  pmarkerprofiles = paste0(pmarkerprofiles, pgermplasmDbId, pstudyDbId, psampleDbId, pextractDbId,
+  pmarkerprofiles <- paste0(pmarkerprofiles, pgermplasmDbId, pstudyDbId, psampleDbId, pextractDbId,
                           pmethodDbId, ppageSize, ppage)
 
   out <- NULL
 
-  nurl = nchar(pmarkerprofiles)
+  nurl <- nchar(pmarkerprofiles)
 
-  if(nurl <= 2000){
+  if (nurl <= 2000){
     message_brapi("Using GET")
     out <- try({
       res <- brapiGET(pmarkerprofiles, con = con)
@@ -65,36 +63,33 @@ markerprofiles_search <- function(con = NULL, germplasmDbId = "",
     })
 
   }
-  if(nurl > 2000){
+  if (nurl > 2000){
     message_brapi("Using POST")
 
-    x1 = as.list(germplasmDbId)
-    names(x1)[1:length(germplasmDbId)] = "germplasm"
-    x2 = NULL
-    if(extractDbId != ""){
-      x2 = as.list(extractDbId)
-      names(x2)[1:length(extractDbId)] = "extract"
+    x1 <- as.list(germplasmDbId)
+    names(x1)[1:length(germplasmDbId)] <- "germplasm"
+    x2 <- NULL
+    if (extractDbId != ""){
+      x2 <- as.list(extractDbId)
+      names(x2)[1:length(extractDbId)] <- "extract"
     }
 
-    body = list(
+    body <- list(
                  studyDbId = studyDbId,
                  sample = sampleDbId, #ifelse(sampleDbId !="", sampleDbId, NULL),
                  method = methodDbId, #ifelse(methodDbId !="", methodDbId, NULL),
                 page = page,
                 pageSize = pageSize)
-    body = c(x1, x2, body)
-
-    #print(body)
+    body <- c(x1, x2, body)
 
     out <- try({
-      pmarkerprofiles = paste0(brp, "markerprofiles-search/")
+      pmarkerprofiles <- paste0(brp, "markerprofiles-search/")
       res <- brapiPOST(pmarkerprofiles, body, con)
       res <- httr::content(res, "text", encoding = "UTF-8")
       dat2tbl(res, rclass)
     })
   }
 
-  class(out) = c(class(out), "brapi_markerprofiles_search")
+  class(out) <- c(class(out), "brapi_markerprofiles_search")
   out
 }
-
