@@ -7,5 +7,5 @@
 #' @return logical
 #' @export
 is.brapi <- function(con) {
-    "brapi" %in% class(con)
+  any(lapply(con, stringr::str_detect, "brapi") %>% unlist)
 }

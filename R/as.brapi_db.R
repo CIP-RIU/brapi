@@ -25,6 +25,6 @@ as.brapi_db <- function(
                 apipath = apipath, multicrop = multicrop,
                 crop = crop, user = user, password = password, token = token,
                 granttype = granttype, clientid = clientid, bms = bms)
-    class(out) <- c("list", "brapi_db", "brapi")
+    class(out) <- c("list", "brapi_db", "brapi", "brapi_con")
     out
 }
