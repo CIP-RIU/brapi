@@ -18,16 +18,22 @@ test_that("map parameters work.", {
 
 test_that("map paging work.", {
   expect_equal(nrow(genomemaps_data_range(con, 1, 1, pageSize = 1)), 1)
-  expect_equal(nrow(genomemaps_data_range(con, 1, 1, pageSize = 1, page = 2)), 1)
+  expect_equal(nrow(genomemaps_data_range(con, 1, 1, pageSize = 1,
+                                          page = 2)), 1)
 })
 
 
 test_that("Classes", {
-  expect_equal("json" %in% class(genomemaps_data_range(con, rclass = "json")), TRUE)
-  expect_equal("json" %in% class(genomemaps_data_range(con, rclass = "something")), TRUE)
-  expect_equal("list" %in% class(genomemaps_data_range(con, rclass = "list")), TRUE)
-  expect_equal("data.frame" %in% class(genomemaps_data_range(con, rclass = "data.frame")), TRUE)
-  expect_equal("brapi_genomemaps_data_range" %in% class(genomemaps_data_range(con )), TRUE)
+  expect_equal("json" %in%
+                class(genomemaps_data_range(con, rclass = "json")), TRUE)
+  expect_equal("json" %in%
+                class(genomemaps_data_range(con, rclass = "something")), TRUE)
+  expect_equal("list" %in%
+                class(genomemaps_data_range(con, rclass = "list")), TRUE)
+  expect_equal("data.frame" %in%
+                class(genomemaps_data_range(con, rclass = "data.frame")), TRUE)
+  expect_equal("brapi_genomemaps_data_range" %in%
+                class(genomemaps_data_range(con )), TRUE)
 })
 
 

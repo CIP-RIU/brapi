@@ -37,27 +37,8 @@ locations <- function(con = NULL, locationType = "all", page = 0, pageSize = 1e+
             out <- dat2tbl(res, rclass)
         }
         if (rclass %in% c("tibble", "data.frame")) {
-            # if(con$bms) {
-            out <- jsonlite::fromJSON(res, simplifyDataFrame = TRUE)  #, flatten = TRUE)
-            out <- out$result
-            nms <- lapply(out, names) %>% unlist %>% unique()
-            nms <- nms[1:9]
-            n <- length(out)
-            df <- as.data.frame(matrix(NA, ncol = length(nms), nrow = n), stringsAsFactors = FALSE)
-            names(df) <- nms
-            dat <- out
-
-            # fill in data in sparse matrix
-            for (i in 1:n) {
-                # fixed names
-                fnms <- names(dat[[i]])[-10]  # exclude field additionalInfo
-                df[i, fnms] <- dat[[i]][1:9]
-            }
-            out <- df
-
-            if (rclass == "tibble")
-                out <- tibble::as_tibble(out)
-        }
+          out <- loc2tbl(res, rclass, con)
+          }
         if (!is.null(out))
             class(out) <- c(class(out), "brapi_locations")
         out
