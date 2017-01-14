@@ -15,3 +15,4 @@ www
 reports
 ^codecov\.yml$
 ^\.DS_Store
+^\.lintr
