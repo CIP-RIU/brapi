@@ -58,8 +58,8 @@ studies_search <- function(con = NULL, studyType = "any", programDbId = "any", l
       res <- brapiGET(pstudies_search, con = con)
       res <- httr::content(res, "text", encoding = "UTF-8")
       out <- NULL
-      if (rclass %in% c("list", "json")) out = dat2tbl(res, rclass)
-      if (rclass %in% c("data.frame", "tibble")) out = std2tbl(res, rclass)
+      if (rclass %in% c("list", "json")) out <- dat2tbl(res, rclass)
+      if (rclass %in% c("data.frame", "tibble")) out <- std2tbl(res, rclass)
       out
     })
 
@@ -84,8 +84,8 @@ studies_search <- function(con = NULL, studyType = "any", programDbId = "any", l
       res <- brapiPOST(pstudies_search, body, con)
       res <- httr::content(res, "text", encoding = "UTF-8")
       out <- NULL
-      if (rclass %in% c("list", "json")) out = dat2tbl(res, rclass)
-      if (rclass %in% c("data.frame", "tibble")) out = std2tbl(res, rclass)
+      if (rclass %in% c("list", "json")) out <- dat2tbl(res, rclass)
+      if (rclass %in% c("data.frame", "tibble")) out <- std2tbl(res, rclass)
       out
     })
   }

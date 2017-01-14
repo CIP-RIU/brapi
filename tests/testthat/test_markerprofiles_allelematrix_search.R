@@ -4,7 +4,7 @@ if (check_server_status == 200) {
 
 context("Testing the path 'allelematrix-search'")
 
-  con = connect(secure = FALSE)
+  con <- connect(secure = FALSE)
 
 test_that("Basics works", {
   expect_equal(nrow(markerprofiles_allelematrix_search(con, 3)), 12)
@@ -13,7 +13,6 @@ test_that("Basics works", {
 
 test_that("Basics works POST", {
   expect_equal(nrow(markerprofiles_allelematrix_search(con, 3:1000)), 12)
-  #expect_equal(ncol(markerprofiles_allelematrix_search(con, 3, method = "POST")), 2)
 })
 
 

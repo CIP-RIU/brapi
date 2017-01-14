@@ -4,7 +4,7 @@ if (check_server_status == 200) {
 
 context("Testing the path 'trials'")
 
-  con = connect(secure = FALSE)
+  con <- connect(secure = FALSE)
 
 test_that("Trials are listed.", {
   expect_equal(length(trials(con, rclass = "list")), 2)
@@ -21,4 +21,3 @@ test_that("parameters.", {
 
 
 }
-

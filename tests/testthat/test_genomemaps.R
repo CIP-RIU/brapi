@@ -4,7 +4,7 @@ if (check_server_status == 200) {
 
 context("Testing the path 'maps'")
 
-  con = connect(secure = FALSE)
+  con <- connect(secure = FALSE)
 
 test_that("maps are listed.", {
   expect_equal(length(genomemaps(con, rclass = "list")), 2)

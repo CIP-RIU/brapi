@@ -4,7 +4,7 @@ if (check_server_status == 200) {
 
 context("Testing the path 'studyTypes'")
 
-  con = connect(secure = FALSE)
+  con <- connect(secure = FALSE)
 
 test_that("studyTypes are listed.", {
   expect_equal(length(studies_studytypes(con, rclass = "list")), 2)

@@ -4,7 +4,7 @@ if (check_server_status == 200) {
 
 context("Testing the path 'variables/datatypes'")
 
-  con = connect(secure = FALSE)
+  con <- connect(secure = FALSE)
 
 test_that("observationvariables_datatypes are listed.", {
   expect_equal(length(observationvariables_datatypes(con, rclass = "list")), 2)

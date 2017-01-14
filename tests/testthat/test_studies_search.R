@@ -4,7 +4,7 @@ if (check_server_status == 200) {
 
 context("Testing the path 'studies-search'")
 
-  con = connect(secure = FALSE)
+  con <- connect(secure = FALSE)
 
 test_that("Studies are listed.", {
   expect_equal(length(studies_search(con, rclass = "list")), 2)
@@ -35,7 +35,4 @@ test_that("Classes", {
   expect_equal("brapi_studies_search" %in% class(studies_search(con )), TRUE)
 })
 
-
-
 }
-

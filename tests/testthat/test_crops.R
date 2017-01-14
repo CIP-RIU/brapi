@@ -3,7 +3,7 @@ source("check_server_status.R")
 if (check_server_status == 200) {
 
 context("Testing the path 'crops'")
-  con = connect(secure = FALSE)
+  con <- connect(secure = FALSE)
 
 test_that("Crops are listed.", {
   expect_equal(length(crops(con, rclass = "list")), 2)
@@ -13,11 +13,9 @@ test_that("Crops are listed.", {
   expect_equal(crops(con, rclass = "vector")[4], "yam")
 })
 
-
 test_that("Classes", {
   expect_equal("json" %in% class(crops(con, rclass = "json")), TRUE)
   expect_equal("json" %in% class(crops(con, rclass = "something")), TRUE)
-  expect_equal("list" %in% class(crops(con, rclass = "list")), TRUE)
   expect_equal("data.frame" %in% class(crops(con, rclass = "data.frame")), TRUE)
   expect_equal("character" %in% class(crops(con, rclass = "vector" )), TRUE)
   expect_equal("brapi_crops" %in% class(crops(con )), TRUE)

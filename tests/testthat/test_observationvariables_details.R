@@ -4,7 +4,7 @@ if (check_server_status == 200) {
 
 context("Testing the path 'variables/{id}'")
 
-  con = connect(secure = FALSE)
+  con <- connect(secure = FALSE)
 
 test_that("observationvariables_details are listed.", {
   expect_equal(length(observationvariables_details(con, rclass = "list")), 2)

@@ -4,7 +4,7 @@ if (check_server_status == 200) {
 
 context("Testing the path 'germplasm/{id}'")
 
-  con = connect(secure = FALSE)
+  con <- connect(secure = FALSE)
 
 test_that("Calls are listed.", {
   expect_equal(length(germplasm_details(con, rclass = "list")), 2)

@@ -4,18 +4,18 @@ if (check_server_status == 200) {
 
 context("Testing the path 'attributes'")
 
-  con = connect(secure = FALSE)
+  con <- connect(secure = FALSE)
 
 test_that("Calls are listed.", {
-  acall = germplasmattributes(con, rclass = "list")
+  acall <- germplasmattributes(con, rclass = "list")
   expect_equal(length(acall), 2)
   expect_equal(length(acall$result$data), 4)
 })
 
 test_that("Parameters are tested.", {
-  acall = germplasmattributes(con, 2)
+  acall <- germplasmattributes(con, 2)
   expect_equal(nrow(acall), 1)
-  acall = germplasmattributes(con, 1)
+  acall <- germplasmattributes(con, 1)
   expect_equal(nrow(acall), 2)
 })
 

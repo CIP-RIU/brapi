@@ -4,7 +4,7 @@ if (check_server_status == 200) {
 
 context("Testing the path 'markerprofiles'")
 
-  con = connect(secure = FALSE)
+  con <- connect(secure = FALSE)
 
 test_that("Basics works", {
   expect_equal(nrow(markerprofiles_search(con, 3)), 1)

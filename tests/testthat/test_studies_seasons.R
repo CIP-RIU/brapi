@@ -4,7 +4,7 @@ if (check_server_status == 200) {
 
 context("Testing the path 'seasons'")
 
-  con = connect(secure = FALSE)
+  con <- connect(secure = FALSE)
 
 test_that("Seasons are listed.", {
   expect_equal(length(studies_seasons(con, rclass = "list")), 2)
@@ -31,4 +31,3 @@ test_that("Classes", {
 
 
 }
-

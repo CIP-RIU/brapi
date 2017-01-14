@@ -4,7 +4,7 @@ if (check_server_status == 200) {
 
 context("Testing the path 'variables'")
 
-  con = connect(secure = FALSE)
+  con <- connect(secure = FALSE)
 
 test_that("brapi_variables are listed.", {
   expect_equal(length(observationvariables(con, rclass = "list")), 2)

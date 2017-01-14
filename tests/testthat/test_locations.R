@@ -4,7 +4,7 @@ if (check_server_status == 200) {
 
 context("Testing the path 'locations'")
 
-  con = connect(secure = FALSE)
+  con <- connect(secure = FALSE)
 
 test_that("Locations are listed.", {
   expect_equal(length(locations(con, rclass = "list")), 2)
@@ -21,7 +21,4 @@ test_that("Classes", {
   expect_equal("brapi_locations" %in% class(locations(con)), TRUE)
 })
 
-
-
 }
-

@@ -4,7 +4,7 @@ if (check_server_status == 200) {
 
 context("Testing the path 'studies/id/table'")
 
-  con = connect(secure = FALSE)
+  con <- connect(secure = FALSE)
 
 test_that("Basics.", {
   expect_equal(length(studies_table(con, rclass = "list")), 2)
@@ -28,4 +28,3 @@ test_that("Classes", {
 })
 
 }
-

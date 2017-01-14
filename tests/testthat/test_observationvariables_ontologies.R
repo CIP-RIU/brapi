@@ -4,7 +4,7 @@ if (check_server_status == 200) {
 
 context("Testing the path 'ontologies'")
 
-  con = connect(secure = FALSE)
+  con <- connect(secure = FALSE)
 
 test_that("brapi_variables_ontologies are listed.", {
   expect_equal(length(observationvariables_ontologies(con, rclass = "list")), 2)

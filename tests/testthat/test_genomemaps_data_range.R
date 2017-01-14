@@ -3,7 +3,7 @@ source("check_server_status.R")
 if (check_server_status == 200) {
 
 context("Testing the path 'maps_positions_range'")
-  con = connect(secure = FALSE)
+  con <- connect(secure = FALSE)
 
 test_that("maps_range are listed.", {
   expect_equal(length(genomemaps_data_range(con, 1, 1, rclass = "list")), 2)
@@ -17,8 +17,8 @@ test_that("map parameters work.", {
 })
 
 test_that("map paging work.", {
-  expect_equal(nrow(genomemaps_data_range(con,1, 1, pageSize = 1)), 1)
-  expect_equal(nrow(genomemaps_data_range(con,1, 1, pageSize = 1, page = 2)), 1)
+  expect_equal(nrow(genomemaps_data_range(con, 1, 1, pageSize = 1)), 1)
+  expect_equal(nrow(genomemaps_data_range(con, 1, 1, pageSize = 1, page = 2)), 1)
 })
 
 

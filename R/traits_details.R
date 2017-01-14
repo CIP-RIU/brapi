@@ -16,18 +16,18 @@ traits_details <- function(con = NULL, traitDbId = 1, rclass = "tibble") {
     brapi::check(con, FALSE, "traits")
 
     brp <- get_brapi(con)
-    traits = paste0(brp, "traits/", traitDbId)
+    traits <- paste0(brp, "traits/", traitDbId)
 
     try({
         res <- brapiGET(traits, con = con)
         res <- httr::content(res, "text", encoding = "UTF-8")
-        out = dat2tbl(res, rclass)
+        out <- dat2tbl(res, rclass)
 
         if (rclass %in% c("data.frame", "tibble")) {
-            out$observationVariables = sapply(out$observationVariables, paste, collapse = "; ")
+            out$observationVariables <- sapply(out$observationVariables, paste, collapse = "; ")
         }
 
-        class(out) = c(class(out), "brapi_traits_details")
+        class(out) <- c(class(out), "brapi_traits_details")
         out
     })
 }
