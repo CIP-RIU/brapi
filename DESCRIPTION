@@ -17,5 +17,5 @@ Imports: httr, jsonlite, stringi, stringr, progress, curl, magrittr, tibble,
 Remotes: c5sire/fbglobal
 Suggests: knitr, miniUI, rmarkdown,
     testthat, jug,
-    covr
+    covr, lintr
 VignetteBuilder: knitr
