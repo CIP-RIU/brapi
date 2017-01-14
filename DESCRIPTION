@@ -11,11 +11,8 @@ Depends:
 License: GPL-3
 LazyData: true
 RoxygenNote: 5.0.1
-Imports: httr, jsonlite, stringi, stringr, progress, curl, magrittr, tibble,
-    shiny, dplyr, fbglobal, prettyunits, htmltools, httpuv, xtable, utils, 
-    tidyjson, readr, tidyr, maps
+Imports: httr, jsonlite, stringr, progress, curl, magrittr, tibble,
+    dplyr, httpuv, xtable, utils, tidyjson, readr, tidyr, maps
 Remotes: c5sire/fbglobal
-Suggests: knitr, miniUI, rmarkdown,
-    testthat, jug,
-    covr, lintr
+Suggests: knitr, rmarkdown, testthat, covr, lintr
 VignetteBuilder: knitr
