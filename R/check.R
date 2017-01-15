@@ -11,7 +11,7 @@
 #' @return logical
 #' @export
 check <- function(con = NULL, verbose = TRUE, brapi_calls = "any") {
-    stopifnot(is.brapi(con))
+    stopifnot(is.brapi_con(con))
     brapi <- con
     if (is.null(brapi))
         stop("BrAPI connection object is NULL. Use brapi::connect()")

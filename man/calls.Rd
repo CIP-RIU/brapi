@@ -4,7 +4,7 @@
 \alias{calls}
 \title{calls}
 \usage{
-calls(con = NULL, datatypes = "all", pageSize = 1000, page = 0,
+calls(con = NULL, datatypes = "all", pageSize = 50, page = 0,
   rclass = "tibble")
 }
 \arguments{

@@ -15,7 +15,7 @@
 #' @family brapicore
 #' @export
 calls <- function(con = NULL, datatypes = "all",
-                  pageSize = 1000, page = 0, rclass = "tibble") {
+                  pageSize = 50, page = 0, rclass = "tibble") {
     check(con, FALSE, "calls")
     brp <- get_brapi(con)
     brapi_calls <- paste0(brp, "calls/?")
@@ -28,7 +28,7 @@ calls <- function(con = NULL, datatypes = "all",
       ppage <- ""
       ppageSize <- ""
       datatypes <- ""
-      brapi_calls <- paste0(brp, "calls")
+      brapi_calls <- paste0(brp, "calls/?")
     }
     brapi_calls <- paste0(brapi_calls, pdatatypes, ppageSize, ppage)
     try({

@@ -5,7 +5,7 @@
 \title{germplasm_search}
 \usage{
 germplasm_search(con = NULL, germplasmDbId = 0, germplasmName = "none",
-  germplasmPUI = "none", page = 0, pageSize = 1000, method = "GET",
+  germplasmPUI = "none", page = 0, pageSize = 10, method = "GET",
   rclass = "tibble")
 }
 \arguments{

@@ -23,8 +23,9 @@
 #' @family genotyping
 #' @family germplasm
 #' @export
-germplasm_search <- function(con = NULL, germplasmDbId = 0, germplasmName = "none", germplasmPUI = "none",
-    page = 0, pageSize = 1000, method = "GET", rclass = "tibble") {
+germplasm_search <- function(con = NULL, germplasmDbId = 0, germplasmName = "none",
+                             germplasmPUI = "none",
+    page = 0, pageSize = 10, method = "GET", rclass = "tibble") {
     brapi::check(con, FALSE, "germplasm-search")
     brp <- get_brapi(con)
     if (is.numeric(page) & is.numeric(pageSize)) {
@@ -71,15 +72,12 @@ germplasm_search <- function(con = NULL, germplasmDbId = 0, germplasmName = "non
         out <- try({
             res <- brapiGET(germplasm_search, con = con)
             res <- httr::content(res, "text", encoding = "UTF-8")
-            out <- NULL
+            out <- dat2tbl(res, rclass)
 
-            if (rclass %in% c("json", "list"))
-                out <- dat2tbl(res, rclass)
             if (rclass == "data.frame")
-                out <- gp2tbl(res)
+              out <- gp2tbl(res)
             if (rclass == "tibble")
-                out <- gp2tbl(res) %>% tibble::as_tibble()
-
+              out <- gp2tbl(res) %>% tibble::as_tibble()
             out
         })
     }
