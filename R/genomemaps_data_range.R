@@ -30,11 +30,11 @@ genomemaps_data_range <- function(con = NULL, mapDbId = 1, linkageGroupId = 1,
     amin <- ifelse(is.numeric(min), paste0("min=", min, "&"), "")
     amax <- ifelse(is.numeric(max), paste0("max=", max, "&"), "")
 
-    page <- ifelse(is.numeric(page), paste0("page=", page, "&"), "")
-    pageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=",
+    ppage <- ifelse(is.numeric(page), paste0("page=", page, ""), "")
+    ppageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=",
                                                    pageSize, "&"), "")
     maps_positions_range_list <- paste0(maps_positions_range_list, amin, amax,
-                                       page, pageSize, linkageGroupId)
+                                       ppageSize, ppage )
     try({
         res <- brapiGET(maps_positions_range_list, con = con)
         res <- httr::content(res, "text", encoding = "UTF-8")

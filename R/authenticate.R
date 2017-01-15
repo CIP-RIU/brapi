@@ -2,7 +2,7 @@
 #'
 #' Caches a session token and informs of success or failure.
 #'
-#' @param brapi A required object of class 'brapi_con'.
+#' @param con A required object of class 'brapi_con'.
 #'
 #' @return The object of class 'brapi_con' with the authentication token filled.
 #'
@@ -10,7 +10,8 @@
 #' @import httr
 #' @family brapi_con
 #' @export
-authenticate <- function(brapi) {
+authenticate <- function(con) {
+  brapi <- con
     # Check for internet connection
     if (!brapi::can_internet()) {
         stop("Authentication failed,

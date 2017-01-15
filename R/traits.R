@@ -29,7 +29,9 @@ traits <- function(con = NULL, page = 0, pageSize = 1000, rclass = "tibble") {
         out <- dat2tbl(res, rclass)
 
         if (rclass %in% c("data.frame", "tibble")) {
+          if ("observationVariables" %in% colnames(out)) {
             out$observationVariables <- sapply(out$observationVariables, paste, collapse = "; ")
+          }
         }
 
         class(out) <- c(class(out), "brapi_traits")

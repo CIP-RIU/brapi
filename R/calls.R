@@ -24,12 +24,19 @@ calls <- function(con = NULL, datatypes = "all",
     ppage <- ifelse(is.numeric(page), paste0("page=", page, ""), "")
     ppageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=",
                                                      pageSize, "&"), "")
+    if(pageSize == 1000){
+      ppage <- ""
+      ppageSize <- ""
+      datatypes <- ""
+      brapi_calls <- paste0(brp, "calls")
+    }
     brapi_calls <- paste0(brapi_calls, pdatatypes, ppageSize, ppage)
     try({
         res <- brapiGET(brapi_calls, con = con)
         out <- NULL
         res <- httr::content(res, "text", encoding = "UTF-8")
         out <- dat2tbl(res, rclass)
+
         if (rclass %in% c("data.frame", "tibble")) {
             out$methods <- sapply(out$methods, paste, collapse = "; ")
             out$datatypes <- sapply(out$datatypes, paste, collapse = "; ")

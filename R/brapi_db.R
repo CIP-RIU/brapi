@@ -37,10 +37,73 @@ brapi_db <- function() {
       password = "",
       multicrop = TRUE,
       bms = TRUE)
+    ttw <- as.brapi_db(
+      crop = "wheat",
+      secure = TRUE,
+      protocol = "https://",
+      db = "triticeaetoolbox.org",
+      port = 80,
+      apipath = "",
+      user = "",
+      password = "",
+      multicrop = TRUE,
+      bms = FALSE)
+    tto <- as.brapi_db(
+      crop = "oat",
+      secure = TRUE,
+      protocol = "https://",
+      db = "triticeaetoolbox.org",
+      port = 80,
+      apipath = "",
+      user = "",
+      password = "",
+      multicrop = TRUE,
+      bms = FALSE)
+    t3s <- as.brapi_db(
+      crop = "wheatplus",
+      secure = TRUE,
+      protocol = "https://",
+      db = "t3sandbox.org",
+      port = 80,
+      apipath = "t3",
+      user = "",
+      password = "",
+      multicrop = TRUE,
+      bms = FALSE)
+    mgis <- as.brapi_db(
+      crop = "musa",
+      secure = TRUE,
+      protocol = "https://",
+      db = "www.crop-diversity.org",
+      port = 80,
+      apipath = "mgis",
+      user = "",
+      password = "",
+      multicrop = FALSE,
+      bms = FALSE)
+    snpseek <- as.brapi_db(
+      crop = "rice",
+      secure = FALSE,
+      protocol = "http://",
+      db = "snp-seek.irri.org",
+      port = 80,
+      apipath = "ws",
+      user = "snpseek-user",
+      password = "snpseek-user-pass",
+      multicrop = FALSE,
+      token = "",
+      bms = TRUE)
+
+
     out <- list(
       sweetpotatobase = sweetpotatobase,
       eu_sol = eu_sol,
+      ttw = ttw,
+      tto = tto,
+      t3s = t3s,
+      mgis = mgis,
       bms_test = bms_test,
+      snpseek = snpseek,
       mockbase = mockbase)
     class(out) <- "brapi_db_list"
     out

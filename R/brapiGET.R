@@ -1,8 +1,9 @@
 brapiGET <- function(url, format = "json", con = NULL) {
+    message_brapi(paste0("URL call was: ", url, "\n"))
     res <- httr::GET(url, httr::add_headers(`X-AUTH-TOKEN` = con$token))
     txt <- ifelse(res$status == 200, " ok!", " problem!")
     message_brapi(paste0("Server status: ", txt, "\n"))
-    message_brapi(paste0("URL call was: ", url, "\n"))
+
     if (is.status_ok(res)) {
         out <- httr::content(res, "text", encoding = "UTF-8")
         # Get JSON
