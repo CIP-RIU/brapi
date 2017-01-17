@@ -11,6 +11,14 @@ brapi_db <- function() {
       port = 80,
       multicrop = FALSE,
       bms = FALSE)
+    cassavabase <- as.brapi_db(
+      crop = "cassava",
+      secure = TRUE,
+      protocol = "https://",
+      db = "cassavabase.org",
+      port = 80,
+      multicrop = FALSE,
+      bms = FALSE)
     mockbase <- as.brapi_db(
       crop = "sweetpotato",
       secure = FALSE,
