@@ -30,12 +30,15 @@ genomemaps_details <- function(con = NULL, mapDbId = 1, rclass = "tibble") {
             lst <- jsonlite::fromJSON(res)
             dat <- jsonlite::toJSON(lst$result$linkageGroups)
             if (rclass == "data.frame") {
-                out <- jsonlite::fromJSON(dat, simplifyDataFrame = TRUE)[[1]]
+                out <- jsonlite::fromJSON(dat, simplifyDataFrame = TRUE)
             } else {
-                out <- jsonlite::fromJSON(dat, simplifyDataFrame = TRUE)[[1]] %>%
+                out <- jsonlite::fromJSON(dat, simplifyDataFrame = TRUE) %>%
                   tibble::as_tibble()
             }
-            lst$result$linkageGroups <- NULL
+            if (!is.null(lst$result$linkageGroups)) {
+              lst$result$linkageGroups <- NULL
+            }
+
             attr(out, "metadata") <- as.list(lst$result)
         }
         class(out) <- c(class(out), "brapi_genomemaps_details")

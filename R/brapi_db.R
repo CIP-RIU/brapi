@@ -27,6 +27,15 @@ brapi_db <- function() {
       port = 2021,
       multicrop = FALSE,
       bms = FALSE)
+    germinate <- as.brapi_db(
+      crop = "cactuar",
+      secure = TRUE,
+      protocol = "https://",
+      db = "ics.hutton.ac.uk",
+      port = 80,
+      multicrop = FALSE,
+      apipath = "germinate-demo/cactuar",
+      bms = FALSE)
     eu_sol <- as.brapi_db(
       crop = "tomato",
       secure = TRUE,
