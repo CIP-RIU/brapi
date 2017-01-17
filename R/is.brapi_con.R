@@ -6,7 +6,7 @@
 #'
 #' @return boolean (TRUE of FALSE)
 #' @author Reinahard Simon, Maikel Verouden
-#' @family brapi_con
+#' @family brapiutils
 #' @export
 is.brapi_con <- function(obj) {
     "brapi_con" %in% class(obj)

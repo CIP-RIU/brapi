@@ -22,7 +22,4 @@ Checks if a BrAPI server can be reached given the connection details.
 \details{
 Raises errors.
 }
-\seealso{
-Other brapi_util: \code{\link{is.brapi}}
-}
 

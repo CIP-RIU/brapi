@@ -3,7 +3,7 @@
 #' check if the connection object is correct
 #'
 #' @param con brapi connection object
-#' @family brapi_util
+#' @family brapiutils
 #' @return logical
 #' @export
 is.brapi <- function(con) {

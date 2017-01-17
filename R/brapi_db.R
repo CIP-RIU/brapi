@@ -113,15 +113,18 @@ brapi_db <- function() {
 
 
     out <- list(
-      sweetpotatobase = sweetpotatobase,
-      eu_sol = eu_sol,
-      ttw = ttw,
-      tto = tto,
-      t3s = t3s,
-      mgis = mgis,
       bms_test = bms_test,
+      cassavabase = cassavabase,
+      eu_sol = eu_sol,
+      germinate_test = germinate,
+      mgis = mgis,
+      mockbase = mockbase,
       snpseek = snpseek,
-      mockbase = mockbase)
+      sweetpotatobase = sweetpotatobase,
+      t3s = t3s,
+      tto = tto,
+      ttw = ttw
+      )
     class(out) <- "brapi_db_list"
     out
 }

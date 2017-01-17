@@ -8,7 +8,7 @@
 #'
 #' @author Reinhard Simon, Maikel Verouden
 #' @import httr
-#' @family brapi_con
+#' @family brapi
 #' @export
 authenticate <- function(con) {
   brapi <- con

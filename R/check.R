@@ -7,7 +7,7 @@
 #' @param con brapi_connectin object
 #' @param verbose logical; default TRUE
 #' @param brapi_calls character vector; default: any. Use to check if one or more calls are implemented by the server according to the calls url.
-#' @family brapi_util
+#' @family brapiutil
 #' @return logical
 #' @export
 check <- function(con = NULL, verbose = TRUE, brapi_calls = "any") {
