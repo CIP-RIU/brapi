@@ -5,6 +5,7 @@
 #' @param x a brapi_locations data.frame/tibble or a numeric vector of longitudes
 #' @param ... other plot parameters
 #' @import maps
+#'
 #' @author Reinhard Simon
 #' @export
 chart.brapi_locations <- function(x, ...) {
@@ -19,7 +20,7 @@ chart.brapi_locations <- function(x, ...) {
 
     xr <- range(with_geo$longitude)
     yr <- range(with_geo$latitude)
-
+    requireNamespace("maps")
     maps::map("world", xlim = xr, ylim = yr)
     graphics::title(paste0("Locations from database"))
     graphics::points(x = with_geo$longitude, y = with_geo$latitude, col = "red")

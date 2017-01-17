@@ -1,6 +1,6 @@
 .onLoad <- function(libname, pkgname){
   #packageStartupMessage("Welcome to the brapi package!")
-  require("magrittr")
+  #require("magrittr")
   #requireNamespace("maps")
-  require("maps")
+  #require("maps")
 }
