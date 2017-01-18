@@ -17,6 +17,12 @@ a vector of crop names or NULL
 \description{
 lists crops available in a database
 }
+\examples{
+if (interactive()) {
+      con <- connect()
+      crops(con)
+}
+}
 \author{
 Reinhard Simon
 }

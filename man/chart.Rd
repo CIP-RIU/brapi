@@ -19,6 +19,7 @@ Reinhard Simon
 }
 \seealso{
 Other brapiutils: \code{\link{describe}},
-  \code{\link{is.brapi_con}}, \code{\link{is.brapi}}
+  \code{\link{is.brapi_con}}, \code{\link{is.brapi}},
+  \code{\link{print.brapi_db_list}}
 }
 

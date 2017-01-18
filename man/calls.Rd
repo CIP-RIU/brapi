@@ -24,6 +24,12 @@ rclass as defined
 \description{
 lists calls available on a brapi server
 }
+\examples{
+if (interactive()) {
+      con <- connect()
+      calls(con)
+}
+}
 \author{
 Reinhard Simon
 }

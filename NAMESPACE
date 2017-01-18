@@ -3,6 +3,7 @@
 S3method(chart,brapi_locations)
 S3method(describe,brapi_locations)
 S3method(print,brapi_con)
+S3method(print,brapi_db_list)
 export(as.brapi_db)
 export(authenticate)
 export(brapi_db)

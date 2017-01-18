@@ -17,6 +17,7 @@ check if the connection object is correct
 }
 \seealso{
 Other brapiutils: \code{\link{chart}},
-  \code{\link{describe}}, \code{\link{is.brapi_con}}
+  \code{\link{describe}}, \code{\link{is.brapi_con}},
+  \code{\link{print.brapi_db_list}}
 }
 

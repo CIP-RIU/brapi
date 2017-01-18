@@ -9,6 +9,7 @@
 #' @param page integer; default = 0
 #'
 #' @author Reinhard Simon
+#' @example inst/examples/ex_calls.R
 #' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Calls/Calls.md}{github}
 #' @return rclass as defined
 #' @import tibble

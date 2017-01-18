@@ -7,6 +7,7 @@
 #'
 #' @author Reinhard Simon
 #' @return a vector of crop names or NULL
+#' @example inst/examples/ex_crops.R
 #' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Crops/ListCrops.md}{github}
 #' @family brapicore
 #' @export

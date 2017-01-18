@@ -31,9 +31,13 @@ genomemaps_details <- function(con = NULL, mapDbId = 1, rclass = "tibble") {
             dat <- jsonlite::toJSON(lst$result$linkageGroups)
             if (rclass == "data.frame") {
                 out <- jsonlite::fromJSON(dat, simplifyDataFrame = TRUE)
+                out <- out[[1]]
             } else {
-                out <- jsonlite::fromJSON(dat, simplifyDataFrame = TRUE) %>%
-                  tibble::as_tibble()
+                out <- jsonlite::fromJSON(dat, simplifyDataFrame = TRUE) #%>%
+                if (class(out) == "list"){
+                  out <- out[[1]]
+                }
+                  out <- tibble::as_tibble(out)
             }
             if (!is.null(lst$result$linkageGroups)) {
               lst$result$linkageGroups <- NULL

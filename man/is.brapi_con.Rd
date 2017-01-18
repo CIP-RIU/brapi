@@ -20,6 +20,7 @@ Reinahard Simon, Maikel Verouden
 }
 \seealso{
 Other brapiutils: \code{\link{chart}},
-  \code{\link{describe}}, \code{\link{is.brapi}}
+  \code{\link{describe}}, \code{\link{is.brapi}},
+  \code{\link{print.brapi_db_list}}
 }
 
