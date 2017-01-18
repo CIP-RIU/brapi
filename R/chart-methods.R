@@ -101,10 +101,11 @@ chart.brapi_genomemaps_details <- function(x, ...) {
 
   if (chart_type == "plot") {
     ttl <- paste0("Linkage groups")
+    cnid <- which(stringr::str_detect(colnames(x), "Id"))
     graphics::barplot(x$maxPosition,
                       horiz = T,
                       axisnames = T,
-                      names.arg =  x$linkageGroupId,
+                      names.arg =  x[[ c(cnid)]],
                       las = 1,
                       main = ttl,
                       xlab = "Maximum length of linkage group")
