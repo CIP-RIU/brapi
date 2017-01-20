@@ -99,16 +99,17 @@ brapi_db <- function() {
                      password = "",
                      multicrop = TRUE,
                      bms = FALSE)
-  out <- list(bms_test = bms_test,
+  out <- list(sweetpotatobase = sweetpotatobase,
               cassavabase = cassavabase,
-              eu_sol = eu_sol,
               germinate_test = germinate,
-              mgis = mgis,
+              bms_test = bms_test,
               mockbase = mockbase,
               snpseek = snpseek,
-              sweetpotatobase = sweetpotatobase,
+              eu_sol = eu_sol,
+              mgis = mgis,
               t3s = t3s,
-              tto = tto,ttw = ttw)
+              tto = tto,
+              ttw = ttw)
   class(out) <- "brapi_db_list"
   out
 }
