@@ -30,6 +30,7 @@ as.brapi_db <- function(secure = FALSE,
                         clientid = "rbrapi",
                         bms = FALSE) {
   out <- list(secure = secure,
+              protocol = protocol,
               db = db,
               port = port,
               apipath = apipath,
@@ -40,8 +41,10 @@ as.brapi_db <- function(secure = FALSE,
               token = token,
               granttype = granttype,
               clientid = clientid,
-              bms = bms)
-    class(out) <- c("list",
+              bms = bms,
+              crops = "",
+              calls = "")
+    class(out) <- c(class(out),
                     "brapi_db",
                     "brapi",
                     "brapi_con")
