@@ -7,10 +7,10 @@ context("Testing the path 'crops'")
 
 test_that("Crops are listed.", {
   expect_equal(length(crops(con, rclass = "list")), 2)
-  expect_equal(crops(con, rclass = "vector")[1], "cassava")
-  expect_equal(crops(con, rclass = "vector")[2], "potato")
-  expect_equal(crops(con, rclass = "vector")[3], "sweetpotato")
-  expect_equal(crops(con, rclass = "vector")[4], "yam")
+  expect_equal(crops(con, rclass = "vector")[1], "rice")
+  expect_equal(crops(con, rclass = "vector")[2], "wheat")
+  expect_equal(crops(con, rclass = "vector")[3], "potato")
+  expect_equal(crops(con, rclass = "vector")[4], "maize")
 })
 
 test_that("Classes", {
