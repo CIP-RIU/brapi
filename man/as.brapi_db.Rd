@@ -2,7 +2,7 @@
 % Please edit documentation in R/as.brapi_db.R
 \name{as.brapi_db}
 \alias{as.brapi_db}
-\title{Tas.brapi_db}
+\title{as.brapi_db}
 \usage{
 as.brapi_db(secure = FALSE, protocol = "http://", db = "127.0.0.1",
   port = 80, apipath = NULL, multicrop = FALSE, crop = "", user = "",
@@ -40,6 +40,6 @@ as.brapi_db(secure = FALSE, protocol = "http://", db = "127.0.0.1",
 brapi_db class
 }
 \description{
-Tas.brapi_db
+as.brapi_db
 }
 

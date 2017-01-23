@@ -23,6 +23,7 @@
 #' @param clientid string: default: rbrapi
 #' @param bms logical; default: FALSE
 
+#' @author Reinhard Simon, Maikel Verouden
 #' @example inst/examples/ex_connect.R
 #' @return connection object
 #' @family access
@@ -44,7 +45,7 @@ connect <- function(brapiDb = NULL,
   brapi <- NULL
   if (!is.null(brapiDb)) {
     # brapiDb  agrument was not NULL but passed
-    if (all(class(brapiDb) == c("list", "brapi_db", "brapi", "brapi_con"))) { # ("list" %in% class(brapiDb))
+    if (all(class(brapiDb) == c("list", "brapi_db", "brapi", "brapi_con"))) {
       brapi <- brapiDb
       class(brapi) <- c("list", "brapi", "brapi_con")
     }

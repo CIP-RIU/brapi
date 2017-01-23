@@ -10,7 +10,7 @@ connect(brapiDb = NULL, secure = FALSE, protocol = "http://",
   token = "", granttype = "password", clientid = "rbrapi", bms = FALSE)
 }
 \arguments{
-\item{brapiDb}{brapiDb R object for brapi databases. Created by as.brapi_db}
+\item{brapiDb}{brapiDb R object for brapi databases created by as.brapi_db [default: NULL]}
 
 \item{secure}{logical TRUE/FALSE}
 
@@ -56,5 +56,8 @@ if (interactive()) {
       con <- connect()
       con
 }
+}
+\author{
+Reinhard Simon, Maikel Verouden
 }
 

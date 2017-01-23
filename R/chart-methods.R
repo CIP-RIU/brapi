@@ -93,7 +93,6 @@ chart.brapi_genomemaps <- function(x, ...) {
 #' @export
 chart.brapi_genomemaps_details <- function(x, ...) {
   prms <- list(...)
-  #stopifnot(!is.null(x$linkageGroupId & !is.null(x$maxPosition)))
   chart_type <- ifelse(!is.null(prms$chart_type),
                        prms$chart_type,
                        "plot")
