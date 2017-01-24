@@ -4,10 +4,15 @@
 \alias{programs}
 \title{programs}
 \usage{
-programs(con = NULL, page = 0, pageSize = 100, rclass = "tibble")
+programs(con = NULL, programName = "any", abbreviation = "any",
+  page = 0, pageSize = 10000, rclass = "tibble")
 }
 \arguments{
 \item{con}{brapi connection object}
+
+\item{programName}{string; default: any}
+
+\item{abbreviation}{string; default: any}
 
 \item{page}{integer requested page number, default = 0 (1st page)}
 

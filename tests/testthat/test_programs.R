@@ -9,13 +9,18 @@ context("Testing the path 'programs'")
 
 test_that("Calls are listed.", {
   expect_equal(length(programs(con, rclass = "list")), 2)
-  expect_equal(length(programs(con, rclass = "list")$result$data), 6)
+  expect_equal(nrow(programs(con)), 6)
 })
 
 test_that("Parameters are tested.", {
   expect_equal(length(programs(con, page = 0, pageSize = 1, rclass = "list")$result$data), 1)
   expect_equal(length(programs(con, page = 0, pageSize = 2, rclass = "list")$result$data), 2)
   expect_equal(length(programs(con, page = 1, pageSize = 1, rclass = "list")$result$data), 1)
+})
+
+test_that("Filters.", {
+  expect_equal(nrow(programs(con, programName = "Program 1")), 1)
+  expect_equal(nrow(programs(con, abbreviation = "P2")), 1)
 })
 
 
