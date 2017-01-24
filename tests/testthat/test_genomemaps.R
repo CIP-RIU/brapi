@@ -14,7 +14,7 @@ test_that("maps are listed.", {
 
 test_that("map parameters work.", {
   expect_equal(nrow(genomemaps(con, species = "Fructus")), 3)
-  expect_equal(nrow(genomemaps(con, species = "maximus")), 1)
+  expect_equal(nrow(genomemaps(con, species = "novus")), 3)
   expect_equal(nrow(genomemaps(con, type = "Physical")), 1)
 })
 

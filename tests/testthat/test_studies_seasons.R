@@ -8,7 +8,7 @@ context("Testing the path 'seasons'")
 
 test_that("Seasons are listed.", {
   expect_equal(length(studies_seasons(con, rclass = "list")), 2)
-  expect_equal(nrow(studies_seasons(con, rclass = "data.frame")), 10)
+  expect_equal(nrow(studies_seasons(con, rclass = "data.frame")), 16)
   expect_equal(nrow(studies_seasons(con, 2015)), 1)
   expect_equal(studies_seasons(con, rclass = "list")$result$data[[10]]$year[1], 2008)
 })

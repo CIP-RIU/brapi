@@ -37,7 +37,7 @@ The library implements currently mainly API calls to retrievie phenotypic field 
 
 ```{r, echo=FALSE}
 calls_data = tryCatch({
-  read.csv(system.file("apps/brapi/data/calls.csv", package = "brapi"),
+  read.csv(system.file("apps/brapi/info/calls.csv", package = "brapiTS"),
            stringsAsFactors = FALSE)
   
 }, error = function(e) {

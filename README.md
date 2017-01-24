@@ -23,7 +23,7 @@ The library implements currently mainly API calls to retrievie phenotypic field 
 Implementation status
 ---------------------
 
-Out of 50 BrAPI calls currently **44 (88%)** are implemented in this package.
+Out of 48 BrAPI calls currently **44 (91.7%)** are implemented in this package.
 
 | group                | name                                       | R.function                           |
 |:---------------------|:-------------------------------------------|:-------------------------------------|
