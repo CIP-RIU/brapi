@@ -22,7 +22,7 @@ programs <- function(con = NULL, programName = "any", abbreviation = "any",
     brapi::check(con, FALSE, "programs")
     brp <- get_brapi(con)
 
-    pprograms = paste0(brp, "programs/?")
+    pprograms <- paste0(brp, "programs/?")
 
     pprogramName <- ifelse(programName != "any",
                            paste0("programName=", programName, "&"), "")
@@ -31,9 +31,9 @@ programs <- function(con = NULL, programName = "any", abbreviation = "any",
 
     ppage <- ifelse(is.numeric(page), paste0("page=", page, ""), "")
     ppageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
-    if(pageSize == 10000){
-      ppage = ""
-      ppageSize = ""
+    if (pageSize == 10000){
+      ppage <- ""
+      ppageSize <- ""
     }
 
     pprograms <- paste0(pprograms, pprogramName, pabbreviation, ppageSize, ppage)

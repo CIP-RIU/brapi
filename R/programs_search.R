@@ -26,21 +26,7 @@ programs_search <- function(con = NULL,
   brapi::check(con, FALSE, "programs-search")
   brp <- get_brapi(con)
 
-  pprograms = paste0(brp, "programs-search/")
-
-  # pprogramName <- ifelse(programName != "any",
-  #                        paste0("programName=", programName, "&"), "")
-  # pabbreviation <- ifelse(abbreviation != "any",
-  #                         paste0("abbreviation=", abbreviation, "&"), "")
-  #
-  # ppage <- ifelse(is.numeric(page), paste0("page=", page, ""), "")
-  # ppageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
-  # if(pageSize == 10000){
-  #   ppage = ""
-  #   ppageSize = ""
-  # }
-
-  #pprograms <- paste0(pprograms, pprogramName, pabbreviation, ppageSize, ppage)
+  pprograms <- paste0(brp, "programs-search/")
 
   try({
     body <- list(programDbId = programDbId,
