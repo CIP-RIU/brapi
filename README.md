@@ -18,12 +18,12 @@ install.packages("devtools")
 devtools::install_github("c5sire/brapi")
 ```
 
-The library implements currently mainly API calls to retrievie phenotypic field trial related data.
+The library implements currently mainly API calls to retrieve breeding trial related data.
 
 Implementation status
 ---------------------
 
-Out of 48 BrAPI calls currently **44 (91.7%)** are implemented in this package.
+Out of 48 BrAPI calls currently **45 (93.8%)** are implemented in this package.
 
 | group                | name                                       | R.function                           |
 |:---------------------|:-------------------------------------------|:-------------------------------------|
@@ -56,6 +56,7 @@ Out of 48 BrAPI calls currently **44 (91.7%)** are implemented in this package.
 | ObservationVariables | VariableDetails                            | observationvariables\_details        |
 | ObservationVariables | VariableOntologyList                       | observationvariables\_ontologies     |
 | Programs             | ListPrograms                               | programs                             |
+| Programs             | ProgramSearch                              |                                      |
 | Studies              | StudyDetails                               | studies\_details                     |
 | Studies              | ListObservationLevels                      | studies\_observationlevels           |
 | Studies              | GetObservationUnitsByObservationVariableId | studies\_observations                |
