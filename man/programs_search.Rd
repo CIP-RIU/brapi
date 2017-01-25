@@ -27,10 +27,7 @@ programs_search(con = NULL, programDbId = "any", name = "any",
 rclass
 }
 \description{
-lists the breeding programs
-}
-\details{
-BRAPI discussion: Should this return also the crop?
+searches the breeding programs
 }
 \author{
 Reinhard Simon
@@ -47,6 +44,7 @@ Other brapicore: \code{\link{calls}}, \code{\link{crops}},
   \code{\link{observationvariables_datatypes}},
   \code{\link{observationvariables_details}},
   \code{\link{observationvariables_ontologies}},
+  \code{\link{observationvariables_search}},
   \code{\link{observationvariables}},
   \code{\link{programs}}, \code{\link{traits_details}},
   \code{\link{traits}}

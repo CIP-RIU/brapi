@@ -13,7 +13,7 @@
 #' @family brapicore
 #'
 #' @export
-observationvariables_details <- function(con = NULL, observationVariableDbId = "CO_334:0100622", rclass = "tibble") {
+observationvariables_details <- function(con = NULL, observationVariableDbId = "MO_123:0100621", rclass = "tibble") {
     brapi::check(con, FALSE, "variables/id")
 
     brp <- get_brapi(con)

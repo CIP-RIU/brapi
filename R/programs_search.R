@@ -1,8 +1,7 @@
 #' programs_search
 #'
-#' lists the breeding programs
+#' searches the breeding programs
 #'
-#' BRAPI discussion: Should this return also the crop?
 #'
 #' @param con brapi connection object
 #' @param rclass string; default: tibble

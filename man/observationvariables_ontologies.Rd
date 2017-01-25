@@ -36,6 +36,7 @@ Other brapicore: \code{\link{calls}}, \code{\link{crops}},
   \code{\link{germplasm_search}},
   \code{\link{observationvariables_datatypes}},
   \code{\link{observationvariables_details}},
+  \code{\link{observationvariables_search}},
   \code{\link{observationvariables}},
   \code{\link{programs_search}}, \code{\link{programs}},
   \code{\link{traits_details}}, \code{\link{traits}}

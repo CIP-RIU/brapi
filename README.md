@@ -56,7 +56,7 @@ Out of 48 BrAPI calls currently **45 (93.8%)** are implemented in this package.
 | ObservationVariables | VariableDetails                            | observationvariables\_details        |
 | ObservationVariables | VariableOntologyList                       | observationvariables\_ontologies     |
 | Programs             | ListPrograms                               | programs                             |
-| Programs             | ProgramSearch                              |                                      |
+| Programs             | ProgramSearch                              | programs\_search                     |
 | Studies              | StudyDetails                               | studies\_details                     |
 | Studies              | ListObservationLevels                      | studies\_observationlevels           |
 | Studies              | GetObservationUnitsByObservationVariableId | studies\_observations                |

@@ -5,7 +5,7 @@
 \title{observationvariables_details}
 \usage{
 observationvariables_details(con = NULL,
-  observationVariableDbId = "CO_334:0100622", rclass = "tibble")
+  observationVariableDbId = "MO_123:0100621", rclass = "tibble")
 }
 \arguments{
 \item{con}{object; brapi connection object}
@@ -34,6 +34,7 @@ Other brapicore: \code{\link{calls}}, \code{\link{crops}},
   \code{\link{germplasm_search}},
   \code{\link{observationvariables_datatypes}},
   \code{\link{observationvariables_ontologies}},
+  \code{\link{observationvariables_search}},
   \code{\link{observationvariables}},
   \code{\link{programs_search}}, \code{\link{programs}},
   \code{\link{traits_details}}, \code{\link{traits}}
