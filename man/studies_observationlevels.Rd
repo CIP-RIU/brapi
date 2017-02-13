@@ -17,13 +17,20 @@ a vector of crop names or NULL
 \description{
 lists studies_observationlevels available in a database
 }
-\author{
-Reinhard Simon
-}
 \references{
 \url{https://github.com/plantbreeding/API/blob/master/Specification/Studies/ListObservationLevels.md}
 }
 \seealso{
+Other studies: \code{\link{studies_details}},
+  \code{\link{studies_layout}},
+  \code{\link{studies_observations}},
+  \code{\link{studies_observationunits}},
+  \code{\link{studies_observationvariables}},
+  \code{\link{studies_search}},
+  \code{\link{studies_seasons}},
+  \code{\link{studies_studytypes}},
+  \code{\link{studies_table}}
+
 Other phenotyping: \code{\link{studies_details}},
   \code{\link{studies_layout}},
   \code{\link{studies_observations}},
@@ -34,15 +41,7 @@ Other phenotyping: \code{\link{studies_details}},
   \code{\link{studies_studytypes}},
   \code{\link{studies_table}},
   \code{\link{trials_details}}, \code{\link{trials}}
-
-Other studies: \code{\link{studies_details}},
-  \code{\link{studies_layout}},
-  \code{\link{studies_observations}},
-  \code{\link{studies_observationunits}},
-  \code{\link{studies_observationvariables}},
-  \code{\link{studies_search}},
-  \code{\link{studies_seasons}},
-  \code{\link{studies_studytypes}},
-  \code{\link{studies_table}}
 }
-
+\author{
+Reinhard Simon
+}

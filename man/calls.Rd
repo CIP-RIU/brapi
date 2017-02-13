@@ -30,9 +30,6 @@ if (interactive()) {
       calls(con)
 }
 }
-\author{
-Reinhard Simon
-}
 \references{
 \href{https://github.com/plantbreeding/API/blob/master/Specification/Calls/Calls.md}{github}
 }
@@ -50,4 +47,6 @@ Other brapicore: \code{\link{crops}},
   \code{\link{programs_search}}, \code{\link{programs}},
   \code{\link{traits_details}}, \code{\link{traits}}
 }
-
+\author{
+Reinhard Simon
+}

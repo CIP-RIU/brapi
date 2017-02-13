@@ -18,4 +18,3 @@ Check for internet connection.
 \references{
 \href{http://stackoverflow.com/questions/5076593/how-to-determine-if-you-have-an-internet-connection-in-r}{Stack Overflow} and  \code{\link[curl]{has_internet}}
 }
-

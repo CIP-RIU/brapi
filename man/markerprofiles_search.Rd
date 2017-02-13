@@ -33,13 +33,13 @@ data.frame
 \description{
 Lists markers as result of a search.
 }
-\author{
-Reinhard Simon
-}
 \references{
 \url{https://github.com/plantbreeding/API/blob/master/Specification/MarkerProfiles/MarkerProfileSearch.md}
 }
 \seealso{
+Other markerprofiles: \code{\link{markerprofiles_allelematrix_search}},
+  \code{\link{markerprofiles_details}}
+
 Other genotyping: \code{\link{genomemaps_data_range}},
   \code{\link{genomemaps_data}},
   \code{\link{genomemaps_details}},
@@ -53,8 +53,7 @@ Other genotyping: \code{\link{genomemaps_data_range}},
   \code{\link{markerprofiles_details}},
   \code{\link{markers_details}},
   \code{\link{markers_search}}
-
-Other markerprofiles: \code{\link{markerprofiles_allelematrix_search}},
-  \code{\link{markerprofiles_details}}
 }
-
+\author{
+Reinhard Simon
+}

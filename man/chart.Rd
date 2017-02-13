@@ -14,12 +14,11 @@ chart(x, ...)
 \description{
 A generic method to chart brapi objects
 }
-\author{
-Reinhard Simon
-}
 \seealso{
 Other brapiutils: \code{\link{describe}},
   \code{\link{is.brapi_con}}, \code{\link{is.brapi}},
   \code{\link{print.brapi_db_list}}
 }
-
+\author{
+Reinhard Simon
+}

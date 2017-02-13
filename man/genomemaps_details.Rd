@@ -19,9 +19,6 @@ rclass as defined
 \description{
 lists genomemaps_details available on a brapi server
 }
-\author{
-Reinhard Simon
-}
 \references{
 \url{https://github.com/plantbreeding/API/blob/master/Specification/GenomeMaps/GenomeMapDetails.md}
 }
@@ -42,4 +39,6 @@ Other genotyping: \code{\link{genomemaps_data_range}},
   \code{\link{markers_details}},
   \code{\link{markers_search}}
 }
-
+\author{
+Reinhard Simon
+}

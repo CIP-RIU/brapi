@@ -19,13 +19,12 @@ rclass as defined
 \description{
 lists brapi_traits_details available on a brapi server
 }
-\author{
-Reinhard Simon
-}
 \references{
 \url{https://github.com/plantbreeding/API/blob/master/Specification/Traits/TraitDetails.md}(github)
 }
 \seealso{
+Other traits: \code{\link{traits}}
+
 Other brapicore: \code{\link{calls}}, \code{\link{crops}},
   \code{\link{germplasm_details_study}},
   \code{\link{germplasm_details}},
@@ -38,7 +37,7 @@ Other brapicore: \code{\link{calls}}, \code{\link{crops}},
   \code{\link{observationvariables}},
   \code{\link{programs_search}}, \code{\link{programs}},
   \code{\link{traits}}
-
-Other traits: \code{\link{traits}}
 }
-
+\author{
+Reinhard Simon
+}

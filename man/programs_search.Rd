@@ -29,9 +29,6 @@ rclass
 \description{
 searches the breeding programs
 }
-\author{
-Reinhard Simon
-}
 \references{
 \href{https://github.com/plantbreeding/API/blob/master/Specification/Programs/ProgramSearch.md}{github}
 }
@@ -49,4 +46,6 @@ Other brapicore: \code{\link{calls}}, \code{\link{crops}},
   \code{\link{programs}}, \code{\link{traits_details}},
   \code{\link{traits}}
 }
-
+\author{
+Reinhard Simon
+}

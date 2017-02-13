@@ -42,4 +42,3 @@ brapi_db class
 \description{
 as.brapi_db
 }
-

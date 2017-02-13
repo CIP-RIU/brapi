@@ -22,13 +22,14 @@ rclass as defined
 \description{
 lists variables_datatypes available on a brapi server
 }
-\author{
-Reinhard Simon
-}
 \references{
 \url{https://github.com/plantbreeding/API/blob/master/Specification/ObservationVariables/VariableOntologyList.md}
 }
 \seealso{
+Other observationvariables: \code{\link{observationvariables_datatypes}},
+  \code{\link{observationvariables_details}},
+  \code{\link{observationvariables}}
+
 Other brapicore: \code{\link{calls}}, \code{\link{crops}},
   \code{\link{germplasm_details_study}},
   \code{\link{germplasm_details}},
@@ -40,9 +41,7 @@ Other brapicore: \code{\link{calls}}, \code{\link{crops}},
   \code{\link{observationvariables}},
   \code{\link{programs_search}}, \code{\link{programs}},
   \code{\link{traits_details}}, \code{\link{traits}}
-
-Other observationvariables: \code{\link{observationvariables_datatypes}},
-  \code{\link{observationvariables_details}},
-  \code{\link{observationvariables}}
 }
-
+\author{
+Reinhard Simon
+}

@@ -30,9 +30,6 @@ rclass as defined
 \description{
 lists genomemaps_data_range available on a brapi server
 }
-\author{
-Reinhard Simon
-}
 \references{
 \url{https://github.com/plantbreeding/API/blob/master/Specification/GenomeMaps/GenomeMapDataByRangeOnLinkageGroup.md}
 }
@@ -55,4 +52,6 @@ Other genotyping: \code{\link{genomemaps_data}},
   \code{\link{markers_details}},
   \code{\link{markers_search}}
 }
-
+\author{
+Reinhard Simon
+}

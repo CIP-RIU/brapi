@@ -24,13 +24,15 @@ rclass as defined
 \description{
 lists studies_germplasm available on a brapi server
 }
-\author{
-Reinhard Simon
-}
 \references{
 \url{https://github.com/plantbreeding/API/blob/master/Specification/Germplasm/GermplasmDetailsListByStudyDbId.md}
 }
 \seealso{
+Other germplasm: \code{\link{germplasm_details}},
+  \code{\link{germplasm_markerprofiles}},
+  \code{\link{germplasm_pedigree}},
+  \code{\link{germplasm_search}}
+
 Other brapicore: \code{\link{calls}}, \code{\link{crops}},
   \code{\link{germplasm_details}},
   \code{\link{germplasm_pedigree}},
@@ -42,10 +44,7 @@ Other brapicore: \code{\link{calls}}, \code{\link{crops}},
   \code{\link{observationvariables}},
   \code{\link{programs_search}}, \code{\link{programs}},
   \code{\link{traits_details}}, \code{\link{traits}}
-
-Other germplasm: \code{\link{germplasm_details}},
-  \code{\link{germplasm_markerprofiles}},
-  \code{\link{germplasm_pedigree}},
-  \code{\link{germplasm_search}}
 }
-
+\author{
+Reinhard Simon
+}

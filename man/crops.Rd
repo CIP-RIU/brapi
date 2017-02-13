@@ -23,9 +23,6 @@ if (interactive()) {
       crops(con)
 }
 }
-\author{
-Reinhard Simon
-}
 \references{
 \href{https://github.com/plantbreeding/API/blob/master/Specification/Crops/ListCrops.md}{github}
 }
@@ -43,4 +40,6 @@ Other brapicore: \code{\link{calls}},
   \code{\link{programs_search}}, \code{\link{programs}},
   \code{\link{traits_details}}, \code{\link{traits}}
 }
-
+\author{
+Reinhard Simon
+}

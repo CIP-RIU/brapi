@@ -17,4 +17,3 @@ print method for an object of class brapi_brapi_genomemaps, which will only disp
 \author{
 Reinhard Simon
 }
-

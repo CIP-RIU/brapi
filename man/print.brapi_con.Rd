@@ -17,4 +17,3 @@ print method for an object of class brapi_con, which will only display the crop,
 \author{
 Reinhard Simon, Maikel Verouden
 }
-

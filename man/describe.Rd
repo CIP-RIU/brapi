@@ -14,12 +14,11 @@ describe(x, ...)
 \description{
 A generic method to sum up brapi objects
 }
-\author{
-Reinhard Simon
-}
 \seealso{
 Other brapiutils: \code{\link{chart}},
   \code{\link{is.brapi_con}}, \code{\link{is.brapi}},
   \code{\link{print.brapi_db_list}}
 }
-
+\author{
+Reinhard Simon
+}

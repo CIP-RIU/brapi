@@ -19,13 +19,12 @@ rclass as defined
 \description{
 lists trials_details available on a brapi server
 }
-\author{
-Reinhard Simon
-}
 \references{
 \url{https://github.com/plantbreeding/API/blob/master/Specification/Trials/GetTrialById.md}(github)
 }
 \seealso{
+Other trials: \code{\link{trials}}
+
 Other phenotyping: \code{\link{studies_details}},
   \code{\link{studies_layout}},
   \code{\link{studies_observationlevels}},
@@ -36,7 +35,7 @@ Other phenotyping: \code{\link{studies_details}},
   \code{\link{studies_seasons}},
   \code{\link{studies_studytypes}},
   \code{\link{studies_table}}, \code{\link{trials}}
-
-Other trials: \code{\link{trials}}
 }
-
+\author{
+Reinhard Simon
+}

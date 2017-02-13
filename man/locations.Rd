@@ -24,10 +24,9 @@ rclass as defined
 \description{
 lists locations available on a brapi server
 }
-\author{
-Reinhard Simon
-}
 \references{
 \url{https://github.com/plantbreeding/API/blob/master/Specification/Locations/ListLocations.md}(github)
 }
-
+\author{
+Reinhard Simon
+}

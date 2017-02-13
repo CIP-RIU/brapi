@@ -22,4 +22,3 @@ Checks if a BrAPI server can be reached given the connection details.
 \details{
 Raises errors.
 }
-

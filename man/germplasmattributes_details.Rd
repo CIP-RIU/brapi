@@ -26,13 +26,13 @@ rclass as set by parameter.
 \description{
 attibutes call.
 }
-\author{
-Reinhard Simon
-}
 \references{
 \url{https://github.com/plantbreeding/API/blob/master/Specification/GermplasmAttributes/GermplasmAttributeValuesByGermplasmDbId.md}
 }
 \seealso{
+Other germplasmattributes: \code{\link{germplasmattributes_categories}},
+  \code{\link{germplasmattributes}}
+
 Other genotyping: \code{\link{genomemaps_data_range}},
   \code{\link{genomemaps_data}},
   \code{\link{genomemaps_details}},
@@ -46,8 +46,7 @@ Other genotyping: \code{\link{genomemaps_data_range}},
   \code{\link{markerprofiles_search}},
   \code{\link{markers_details}},
   \code{\link{markers_search}}
-
-Other germplasmattributes: \code{\link{germplasmattributes_categories}},
-  \code{\link{germplasmattributes}}
 }
-
+\author{
+Reinhard Simon
+}

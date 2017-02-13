@@ -12,4 +12,3 @@ list; white list of brapi databases
 \description{
 brapi_db
 }
-

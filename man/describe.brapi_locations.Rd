@@ -17,4 +17,3 @@ describe method for an object of class brapi_con, which will only display the cr
 \author{
 Reinhard Simon
 }
-

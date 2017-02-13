@@ -36,9 +36,6 @@ rclass
 \description{
 lists the breeding observationvariables
 }
-\author{
-Reinhard Simon
-}
 \references{
 \href{https://github.com/plantbreeding/API/blob/master/Specification/ObservationVariables/VariableSearch.md}{github}
 }
@@ -55,4 +52,6 @@ Other brapicore: \code{\link{calls}}, \code{\link{crops}},
   \code{\link{programs_search}}, \code{\link{programs}},
   \code{\link{traits_details}}, \code{\link{traits}}
 }
-
+\author{
+Reinhard Simon
+}

@@ -43,13 +43,13 @@ to as in other functions.
 \note{
 The handling of long-running responses via asynch status messages is not yet implemented.
 }
-\author{
-Reinhard Simon
-}
 \references{
 \url{https://github.com/plantbreeding/API/blob/master/Specification/MarkerProfiles/MarkerProfileAlleleMatrix.md}
 }
 \seealso{
+Other markerprofiles: \code{\link{markerprofiles_details}},
+  \code{\link{markerprofiles_search}}
+
 Other genotyping: \code{\link{genomemaps_data_range}},
   \code{\link{genomemaps_data}},
   \code{\link{genomemaps_details}},
@@ -63,8 +63,7 @@ Other genotyping: \code{\link{genomemaps_data_range}},
   \code{\link{markerprofiles_search}},
   \code{\link{markers_details}},
   \code{\link{markers_search}}
-
-Other markerprofiles: \code{\link{markerprofiles_details}},
-  \code{\link{markerprofiles_search}}
 }
-
+\author{
+Reinhard Simon
+}

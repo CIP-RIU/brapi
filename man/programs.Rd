@@ -29,9 +29,6 @@ lists the breeding programs
 \details{
 BRAPI discussion: Should this return also the crop?
 }
-\author{
-Reinhard Simon
-}
 \references{
 \href{https://github.com/plantbreeding/API/blob/master/Specification/Programs/ListPrograms.md}{github}
 }
@@ -49,4 +46,6 @@ Other brapicore: \code{\link{calls}}, \code{\link{crops}},
   \code{\link{programs_search}},
   \code{\link{traits_details}}, \code{\link{traits}}
 }
-
+\author{
+Reinhard Simon
+}

@@ -14,12 +14,11 @@
 \description{
 print method for an object of class brapi_db_list
 }
-\author{
-Reinhard Simon, Maikel Verouden
-}
 \seealso{
 Other brapiutils: \code{\link{chart}},
   \code{\link{describe}}, \code{\link{is.brapi_con}},
   \code{\link{is.brapi}}
 }
-
+\author{
+Reinhard Simon, Maikel Verouden
+}

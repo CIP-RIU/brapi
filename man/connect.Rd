@@ -60,4 +60,3 @@ if (interactive()) {
 \author{
 Reinhard Simon, Maikel Verouden
 }
-

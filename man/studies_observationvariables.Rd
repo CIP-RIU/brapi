@@ -19,13 +19,20 @@ rclass as defined
 \description{
 lists  @param con brapi connection object available on a brapi server
 }
-\author{
-Reinhard Simon
-}
 \references{
 \href{https://github.com/plantbreeding/API/blob/master/Specification/Studies/StudyObservationVariables.md}{github}
 }
 \seealso{
+Other studies: \code{\link{studies_details}},
+  \code{\link{studies_layout}},
+  \code{\link{studies_observationlevels}},
+  \code{\link{studies_observations}},
+  \code{\link{studies_observationunits}},
+  \code{\link{studies_search}},
+  \code{\link{studies_seasons}},
+  \code{\link{studies_studytypes}},
+  \code{\link{studies_table}}
+
 Other phenotyping: \code{\link{studies_details}},
   \code{\link{studies_layout}},
   \code{\link{studies_observationlevels}},
@@ -36,15 +43,7 @@ Other phenotyping: \code{\link{studies_details}},
   \code{\link{studies_studytypes}},
   \code{\link{studies_table}},
   \code{\link{trials_details}}, \code{\link{trials}}
-
-Other studies: \code{\link{studies_details}},
-  \code{\link{studies_layout}},
-  \code{\link{studies_observationlevels}},
-  \code{\link{studies_observations}},
-  \code{\link{studies_observationunits}},
-  \code{\link{studies_search}},
-  \code{\link{studies_seasons}},
-  \code{\link{studies_studytypes}},
-  \code{\link{studies_table}}
 }
-
+\author{
+Reinhard Simon
+}

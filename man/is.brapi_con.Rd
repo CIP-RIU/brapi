@@ -15,12 +15,11 @@ boolean (TRUE of FALSE)
 \description{
 check whether an object is of class brapi_con
 }
-\author{
-Reinahard Simon, Maikel Verouden
-}
 \seealso{
 Other brapiutils: \code{\link{chart}},
   \code{\link{describe}}, \code{\link{is.brapi}},
   \code{\link{print.brapi_db_list}}
 }
-
+\author{
+Reinahard Simon, Maikel Verouden
+}

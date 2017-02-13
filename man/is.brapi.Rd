@@ -20,4 +20,3 @@ Other brapiutils: \code{\link{chart}},
   \code{\link{describe}}, \code{\link{is.brapi_con}},
   \code{\link{print.brapi_db_list}}
 }
-

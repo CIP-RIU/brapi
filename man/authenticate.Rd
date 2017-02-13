@@ -18,4 +18,3 @@ Caches a session token and informs of success or failure.
 \author{
 Reinhard Simon, Maikel Verouden
 }
-
