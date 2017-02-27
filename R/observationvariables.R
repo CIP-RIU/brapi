@@ -42,6 +42,6 @@ observationvariables <- function(con = NULL, traitClass = "all", page = 0, pageS
             out <- sov2tbl(res, rclass, TRUE)
         }
         class(out) <- c(class(out), "brapi_observationvariables")
-        out
+        return(out)
     })
 }

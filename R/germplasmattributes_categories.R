@@ -26,6 +26,6 @@ germplasmattributes_categories <- function(con = NULL, page = 0, pageSize = 10, 
         res <- httr::content(res, "text", encoding = "UTF-8")
         out <- dat2tbl(res, rclass)
         class(out) <- c(class(out), "brapi_germplasmattributes_categories")
-        out
+        return(out)
     })
 }

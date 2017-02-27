@@ -111,5 +111,5 @@ brapi_db <- function() {
               tto = tto,
               ttw = ttw)
   class(out) <- "brapi_db_list"
-  out
+  return(out)
 }

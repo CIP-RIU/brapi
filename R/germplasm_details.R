@@ -32,6 +32,6 @@ germplasm_details <- function(con = NULL, germplasmDbId = 0,
             out <- gp2tbl(res) %>% tibble::as_tibble()
 
         class(out) <- c(class(out), "brapi_germplasm_details")
-        out
+        return(out)
     })
 }

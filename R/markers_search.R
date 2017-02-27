@@ -60,6 +60,6 @@ markers_search <- function(con = NULL, name = "*", type = "all", matchMethod = "
         if (rclass == "tibble")
             out <- tibble::as_tibble(out)
         class(out) <- c(class(out), "brapi_markers_search")
-        out
+        return(out)
     })
 }

@@ -30,6 +30,6 @@ crops <- function(con = NULL, rclass = "tibble") {
     })
 
     con$multicrop <- omc
-    out
+    return(out)
 
 }

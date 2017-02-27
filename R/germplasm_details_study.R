@@ -38,6 +38,6 @@ germplasm_details_study <- function(con = NULL, studyDbId = 123,
             out <- sgp2tbl(res, rclass)
         }
         class(out) <- c(class(out), "brapi_germplasm_details_study")
-        out
+        return(out)
     })
 }

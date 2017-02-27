@@ -22,5 +22,5 @@ dat2tbl <- function(res, rclass = "tibble", brapi_class = "brapi") {
     }
     attr(res, "metadata") <- lst$metadata
     class(res) <- c(class(res), brapi_class)
-    res
+    return(res)
 }

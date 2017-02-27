@@ -58,6 +58,6 @@ observationvariables_search <- function(
       out <- sov2tbl(res, rclass, TRUE)
     }
     class(out) <- c(class(out), "brapi_observationvariables_search")
-    out
+    return(out)
   })
 }

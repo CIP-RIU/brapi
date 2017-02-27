@@ -28,6 +28,6 @@ traits_details <- function(con = NULL, traitDbId = 1, rclass = "tibble") {
         }
 
         class(out) <- c(class(out), "brapi_traits_details")
-        out
+        return(out)
     })
 }

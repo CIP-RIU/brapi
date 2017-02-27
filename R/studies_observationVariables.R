@@ -30,6 +30,6 @@ studies_observationvariables <- function(con = NULL, studyDbId = 1, rclass = "ti
             out <- sov2tbl(res, rclass)
         }
         class(out) <- c(class(out), "brapi_studies_observationvariables")
-        out
+        return(out)
     })
 }

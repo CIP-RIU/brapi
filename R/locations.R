@@ -41,6 +41,6 @@ locations <- function(con = NULL, locationType = "all", page = 0, pageSize = 1e+
           }
         if (!is.null(out))
             class(out) <- c(class(out), "brapi_locations")
-        out
+        return(out)
     })
 }

@@ -4,5 +4,5 @@ df2tibble <- function(rclass = "data.frame") {
                       Switching to tibble!")
         rclass <- "tibble"
     }
-    rclass
+    return(rclass)
 }

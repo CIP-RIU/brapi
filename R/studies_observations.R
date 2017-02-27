@@ -38,6 +38,6 @@ studies_observations <- function(con = NULL, studyDbId = 1, observationVariableD
             out <- dat2tbl(res, rclass)
         }
         class(out) <- c(class(out), "brapi_studies_observations")
-        out
+        return(out)
     })
 }

@@ -35,6 +35,6 @@ genomemaps <- function(con = NULL, species = "all", type = "all",
             rclass <- "tibble"
         out <- dat2tbl(res, rclass)
         class(out) <- c(class(out), "brapi_genomemaps")
-        out
+        return(out)
     })
 }

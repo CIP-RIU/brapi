@@ -20,5 +20,5 @@ ams2tbl <- function(res, format, rclass, pb = NULL) {
         out <- readr::read_tsv(file = url, progress = TRUE)
     }
     class(out) <- c(class(out), "brapi_allelematrix")
-    out
+    return(out)
 }

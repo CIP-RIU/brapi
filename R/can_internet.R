@@ -8,5 +8,5 @@
 #' @importFrom curl nslookup
 #' @export
 can_internet <- function(url = "www.google.org") {
-    !is.null(curl::nslookup(url, error = FALSE))
+    return(!is.null(curl::nslookup(url, error = FALSE)))
 }

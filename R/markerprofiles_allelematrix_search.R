@@ -90,5 +90,5 @@ markerprofiles_allelematrix_search <- function(con = NULL, markerprofileDbId = "
     })
   }
   class(out) <- c(class(out), "brapi_markerprofiles_allelematrix_search")
-  out
+  return(out)
 }

@@ -31,6 +31,6 @@ studies_seasons <- function(con = NULL, year = NULL, page = 0, pageSize = 1000, 
 
         out <- dat2tbl(res, rclass)
         class(out) <- c(class(out), "brapi_studies_seasons")
-        out
+        return(out)
     })
 }

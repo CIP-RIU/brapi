@@ -13,5 +13,5 @@ sgp2tbl <- function(res, rclass) {
         df <- tibble::as_tibble(df)
     }
 
-    df
+    return(df)
 }

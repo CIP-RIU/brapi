@@ -18,5 +18,5 @@ sov2tbl <- function(res, rclass, variable = FALSE) {
 
     if (rclass == "tibble")
         out <- tibble::as_tibble(out, validate = FALSE)
-    out
+    return(out)
 }

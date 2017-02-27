@@ -33,6 +33,6 @@ studies_observationunits <- function(con = NULL, studyDbId = 1, observationLevel
             out <- sou2tbl(res = res, rclass = rclass, observationLevel = observationLevel)
         }
         class(out) <- c(class(out), "brapi_studies_observationunits")
-        out
+        return(out)
     })
 }

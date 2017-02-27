@@ -44,6 +44,6 @@ programs <- function(con = NULL, programName = "any", abbreviation = "any",
 
         out <- dat2tbl(res, rclass)
         class(out) <- c(class(out), "brapi_programs")
-        out
+        return(out)
     })
 }

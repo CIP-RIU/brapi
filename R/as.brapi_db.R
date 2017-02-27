@@ -48,5 +48,5 @@ as.brapi_db <- function(secure = FALSE,
                     "brapi_db",
                     "brapi",
                     "brapi_con")
-    out
+    return(out)
 }

@@ -8,7 +8,7 @@
 #' @family brapiutils
 #' @export
 chart <- function (x, ...) {
-  UseMethod("chart", x)
+  return(UseMethod("chart", x))
 }
 
 
@@ -22,5 +22,5 @@ chart <- function (x, ...) {
 #' @family brapiutils
 #' @export
 describe <- function (x, ...) {
-  UseMethod("describe", x)
+  return(UseMethod("describe", x))
 }

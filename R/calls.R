@@ -43,6 +43,6 @@ calls <- function(con = NULL, datatypes = "all",
             out$datatypes <- sapply(out$datatypes, paste, collapse = "; ")
         }
         class(out) <- c(class(out), "brapi_calls")
-        out
+        return(out)
     })
 }

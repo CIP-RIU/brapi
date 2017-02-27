@@ -13,5 +13,5 @@ std2tbl <- function(res, rclass) {
     out <- dat
     if (rclass == "tibble")
         out <- tibble::as_tibble(dat)
-    out
+    return(out)
 }

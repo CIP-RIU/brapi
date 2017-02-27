@@ -60,5 +60,5 @@ loc2tbl <- function(res, rclass, con) {
         df <- tibble::as_tibble(df)
     }
 
-    df
+    return(df)
 }

@@ -5,5 +5,5 @@ lyt2tbl <- function(res, rclass) {
     if (rclass == "tibble") {
         df <- tibble::as_tibble(df)
     }
-    df
+    return(df)
 }

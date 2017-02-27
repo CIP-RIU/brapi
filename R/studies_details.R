@@ -27,6 +27,6 @@ studies_details <- function(con = NULL, studiesDbId = 0, rclass = "tibble") {
                 out <- stdd2tbl(res, rclass)
             class(out) <- c(class(out), "brapi_studies_details")
         }
-        out
+        return(out)
     })
 }

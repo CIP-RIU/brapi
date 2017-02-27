@@ -38,6 +38,6 @@ programs_search <- function(con = NULL,
 
     out <- dat2tbl(res, rclass)
     class(out) <- c(class(out), "brapi_programs_search")
-    out
+    return(out)
   })
 }

@@ -40,6 +40,6 @@ germplasm_markerprofiles <- function(con = NULL, germplasmDbId = 3, rclass = "ti
         if (rclass == "tibble")
             out <- ms2tbl(res) %>% tibble::as_tibble()
         class(out) <- c(class(out), "brapi_germplasm_markerprofiles")
-        out
+        return(out)
     })
 }

@@ -26,6 +26,6 @@ observationvariables_datatypes <- function(con = NULL, rclass = "tibble") {
             colnames(out) <- "variables_datatypes"
         }
         class(out) <- c(class(out), "brapi_observationvariables_datatypes")
-        out
+        return(out)
     })
 }

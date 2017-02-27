@@ -29,6 +29,6 @@ studies_layout <- function(con = NULL, studyDbId = 1, rclass = "tibble") {
             out <- lyt2tbl(res, rclass)
         }
         class(out) <- c(class(out), "brapi_studies_layout")
-        out
+        return(out)
     })
 }

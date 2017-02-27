@@ -46,6 +46,6 @@ genomemaps_data_range <- function(con = NULL, mapDbId = 1, linkageGroupId = 1,
             rclass <- "tibble"
         out <- dat2tbl(res, rclass)
         class(out) <- c(class(out), "brapi_genomemaps_data_range")
-        out
+        return(out)
     })
 }

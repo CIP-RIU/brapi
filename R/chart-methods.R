@@ -38,8 +38,10 @@ chart.brapi_locations <- function(x, ...) {
         graphics::title(paste0("Locations from database"))
         graphics::points(x = with_geo$longitude, y = with_geo$latitude, col = "red")
         maps::map.axes()
+        return()
      } else {
-      message(paste0("Please install and load: library(maps)"))
+        message(paste0("Please install and load: library(maps)"))
+        return()
     }
    }
 
@@ -75,8 +77,8 @@ chart.brapi_genomemaps <- function(x, ...) {
                       xlab = "Number of markers")
   }
 
-  if (chart_type == "map") {
-  }
+  # if (chart_type == "map") {
+  # }
 
 }
 
@@ -110,7 +112,7 @@ chart.brapi_genomemaps_details <- function(x, ...) {
                       xlab = "Maximum length of linkage group")
   }
 
-  if (chart_type == "map") {
-  }
+  # if (chart_type == "map") {
+  # }
 
 }

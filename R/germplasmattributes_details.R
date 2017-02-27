@@ -52,6 +52,6 @@ germplasmattributes_details <- function(con = NULL, germplasmDbId = 1, attribute
             out <- ms2tbl(res) %>% tibble::as_tibble()
 
         class(out) <- c(class(out), "brapi_germplasmattributes_details")
-        out
+        return(out)
     })
 }

@@ -27,6 +27,6 @@ markers_details <- function(con = NULL, markerDbId = 0, rclass = "tibble") {
         res <- httr::content(res, "text", encoding = "UTF-8")
         out <- dat2tbl(res, rclass)
         class(out) <- c(class(out), "brapi_markers_details")
-        out
+        return(out)
     })
 }

@@ -29,6 +29,6 @@ studies_studytypes <- function(con = NULL, page = 0, pageSize = 1000, rclass = "
         res <- httr::content(res, "text", encoding = "UTF-8")
         out <- dat2tbl(res, rclass)
         class(out) <- c(class(out), "brapi_studies_studytypes")
-        out
+        return(out)
     })
 }

@@ -117,5 +117,5 @@ connect <- function(brapiDb = NULL,
                   calls = "")
     class(brapi) <- c(class(brapi), "brapi", "brapi_con")
   }
-    brapi
+    return(brapi)
 }

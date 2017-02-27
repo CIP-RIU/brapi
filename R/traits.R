@@ -35,6 +35,6 @@ traits <- function(con = NULL, page = 0, pageSize = 1000, rclass = "tibble") {
         }
 
         class(out) <- c(class(out), "brapi_traits")
-        out
+        return(out)
     })
 }

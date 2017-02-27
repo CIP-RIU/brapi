@@ -83,6 +83,6 @@ germplasm_search <- function(con = NULL, germplasmDbId = 0, germplasmName = "non
     }
 
     class(out) <- c(class(out), "brapi_germplasm_search")
-    out
+    return(out)
 
 }

@@ -24,5 +24,5 @@ brapiGET <- function(url, format = "json", con = NULL) {
             }
         }
     }
-    res
+    return(res)
 }

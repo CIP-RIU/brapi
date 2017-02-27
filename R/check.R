@@ -36,5 +36,5 @@ check <- function(con = NULL, verbose = TRUE, brapi_calls = "any") {
         message("BrAPI connection ok.")
         message(paste(brapi, collapse = "\n"))
     }
-    TRUE
+    return(TRUE)
 }

@@ -90,5 +90,5 @@ studies_search <- function(con = NULL, studyType = "any", programDbId = "any", l
     })
   }
   class(out) <- c(class(out), "brapi_studies_search")
-  out
+  return(out)
 }

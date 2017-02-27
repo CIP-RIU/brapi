@@ -28,6 +28,6 @@ trials_details <- function(con = NULL, trialDbId = "any", rclass = "tibble") {
         if (rclass %in% c("data.frame", "tibble"))
             out <- trl2tbl(res, rclass)
         class(out) <- c(class(out), "brapi_trials_details")
-        out
+        return(out)
     })
 }

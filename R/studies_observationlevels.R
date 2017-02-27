@@ -18,6 +18,6 @@ studies_observationlevels <- function(con = NULL, rclass = "vector") {
         res <- httr::content(res, "text", encoding = "UTF-8")
         out <- dat2tbl(res, rclass)
         class(out) <- c(class(out), "brapi_studies_observationlevels")
-        out
+        return(out)
     })
 }

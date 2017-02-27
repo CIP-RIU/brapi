@@ -9,5 +9,6 @@
 #' @family brapiutils
 #' @export
 is.brapi_con <- function(obj) {
-    "brapi_con" %in% class(obj)
+    res <- "brapi_con" %in% class(obj)
+    return(res)
 }

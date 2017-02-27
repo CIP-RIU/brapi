@@ -14,5 +14,5 @@ get_brapi <- function(brapi = NULL) {
         url <- paste0(brapi$protocol, brapi$db, port, brapi$apipath, "/brapi/v1/")
     }
 
-    url
+    return(url)
 }

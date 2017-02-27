@@ -50,6 +50,6 @@ markerprofiles_details <- function(con = NULL, markerprofilesDbId = "", expandHo
         if (rclass %in% c("data.frame", "tibble"))
             out <- mpa2tbl(res, rclass)
         class(out) <- c(class(out), "brapi_markerprofiles_details")
-        out
+        return(out)
     })
 }

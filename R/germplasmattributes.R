@@ -27,6 +27,6 @@ germplasmattributes <- function(con = NULL, attributeCategoryDbId = 0, rclass = 
             out$values <- sapply(out$values, paste, collapse = "; ")
         }
         class(out) <- c(class(out), "brapi_germplasmattributes")
-        out
+        return(out)
     })
 }

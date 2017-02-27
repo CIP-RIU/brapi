@@ -51,6 +51,6 @@ studies_table <- function(con = NULL, studyDbId = 1, format = "json", rclass = "
         }
 
         class(out) <- c(class(out), "brapi_studies_table")
-        out
+        return(out)
     })
 }

@@ -20,5 +20,5 @@ is.status_ok <- function(resp) {
             return(TRUE)
         }
     }
-    FALSE
+    return(FALSE)
 }

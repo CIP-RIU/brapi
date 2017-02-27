@@ -22,5 +22,5 @@ brapiPOST <- function(url, body, con = con) {
             }
         }
     }
-    res
+    return(res)
 }

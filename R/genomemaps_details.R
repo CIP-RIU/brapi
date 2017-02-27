@@ -46,6 +46,6 @@ genomemaps_details <- function(con = NULL, mapDbId = 1, rclass = "tibble") {
             attr(out, "metadata") <- as.list(lst$result)
         }
         class(out) <- c(class(out), "brapi_genomemaps_details")
-        out
+        return(out)
     })
 }

@@ -18,5 +18,5 @@ stdd2tbl <- function(res, rclass) {
 
     if (rclass == "tibble")
         dat <- tibble::as_tibble(dat)
-    dat
+    return(dat)
 }

@@ -69,5 +69,5 @@ sou2tbl <- function(res, rclass, observationLevel){
   } else {
     class(out) <- "data.frame"
   }
-  out
+  return(out)
 }

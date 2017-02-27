@@ -27,6 +27,6 @@ observationvariables_ontologies <- function(con = NULL, page = 0, pageSize = 100
         res <- httr::content(res, "text", encoding = "UTF-8")
         out <- dat2tbl(res, rclass)
         class(out) <- c(class(out), "brapi_observationvariables_ontologies")
-        out
+        return(out)
     })
 }

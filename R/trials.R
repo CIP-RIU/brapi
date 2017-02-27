@@ -47,6 +47,6 @@ trials <- function(con = NULL, programDbId = "any", locationDbId = "any", active
         if (rclass %in% c("data.frame", "tibble"))
             out <- trl2tbl(res, rclass)
         class(out) <- c(class(out), "brapi_trials")
-        out
+        return(out)
     })
 }

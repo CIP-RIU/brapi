@@ -48,5 +48,5 @@ trl2tbl <- function(res, rclass) {
 
     if (rclass == "tibble")
         out <- tibble::as_tibble(out)
-    out
+    return(out)
 }

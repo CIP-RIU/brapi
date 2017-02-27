@@ -38,6 +38,6 @@ germplasm_pedigree <- function(con = NULL, germplasmDbId = 0, notation = "purdue
         if (rclass == "data.frame")
             out <- ms2tbl(res) %>% tibble::as_tibble() %>% as.data.frame()
         class(out) <- c(class(out), "brapi_germplasm_pedigree")
-        out
+        return(out)
     })
 }

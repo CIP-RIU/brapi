@@ -9,9 +9,10 @@
 #' @export
 print.brapi_con <- function(x, ...) {
   # Print in console
-  cat(paste0("Crop = ", x$crop, "\n\n"))
-  cat(paste0("Addres:Port = ", x$db, ":", x$port, "\n"))
-  cat(paste0("User = ", x$user, "\n"))
+  txt <- paste0("Crop = ", x$crop, "\n\n")
+  txt <- paste0(txt, "Addres:Port = ", x$db, ":", x$port, "\n")
+  cat(paste0(txt, "User = ", x$user, "\n"))
+  return()
 }
 
 
@@ -26,4 +27,5 @@ print.brapi_con <- function(x, ...) {
 #' @export
 print.brapi_db_list <- function(x, ...) {
   names(x) %>% sort %>% paste(collapse = "\n") %>% cat
+  return()
 }

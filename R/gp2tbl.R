@@ -22,7 +22,7 @@ gp2tbl <- function(res) {
     donors.donorInstituteCode <- NULL
     donors.germplasmPUI <- NULL
     acquisitionDate <- NULL
-    res %>% as.character %>% enter_object("result") %>%
+    out <- res %>% as.character %>% enter_object("result") %>%
       enter_object("data") %>% gather_array() %>%
       spread_values(germplasmDbId = jnumber("germplasmDbId"),
         defaultDisplayName = jstring("defaultDisplayName"),
@@ -53,4 +53,5 @@ gp2tbl <- function(res) {
             subtaxaAuthority, donors.donorAccessionNumber, donors.donorInstituteCode,
             donors.germplasmPUI,
             acquisitionDate)
+    return(out)
 }
