@@ -3,7 +3,7 @@ source("check_server_status.R")
 if (check_server_status == 555) {
   message("Could not connect to local BrAPI server.")
   message("Start a server in an independent command line
-          window\nusing brapi::mock_server().")
+          window\nusing brapiTS::mock_server().")
 }
 
 

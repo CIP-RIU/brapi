@@ -14,10 +14,22 @@ describe(x, ...)
 \description{
 A generic method to sum up brapi objects
 }
+\examples{
+if (interactive()) {
+  library(brapi)
+  library(magrittr)
+
+  # make sure brapiTS::mock_server() is running in a separate process
+
+  con <- ba_connect()
+
+  lcs <- ba_locations(con)
+  lcs \%>\% describe
+}
+}
 \seealso{
 Other brapiutils: \code{\link{chart}},
-  \code{\link{is.brapi_con}}, \code{\link{is.brapi}},
-  \code{\link{print.brapi_db_list}}
+  \code{\link{is.ba_con}}, \code{\link{print.ba_db_list}}
 }
 \author{
 Reinhard Simon

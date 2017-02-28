@@ -23,56 +23,55 @@ The library implements currently mainly API calls to retrieve breeding trial rel
 Implementation status
 ---------------------
 
-Out of 48 BrAPI calls currently **46 (95.8%)** are implemented in this package.
+Out of 50 BrAPI calls currently **45 (90%)** are implemented in this package.
 
-| group                | name                                       | R.function                           |
-|:---------------------|:-------------------------------------------|:-------------------------------------|
-| Authentication       | Authentication                             | authenticate                         |
-| Calls                | Calls                                      | calls                                |
-| Crops                | ListCrops                                  | crops                                |
-| GenomeMaps           | ListOfGenomeMap                            | genomemaps                           |
-| GenomeMaps           | GenomeMapData                              | genomemaps\_data                     |
-| GenomeMaps           | GenomeMapDataByRangeOnLinkageGroup         | genomemaps\_data\_range              |
-| GenomeMaps           | GenomeMapDetails                           | genomemaps\_details                  |
-| Germplasm            | GermplasmDetailsByGermplasmDbId            | germplasm\_details                   |
-| Germplasm            | GermplasmDetailsListByStudyDbId            | germplasm\_details\_study            |
-| Germplasm            | GermplasmMarkerprofile                     | germplasm\_markerprofiles            |
-| Germplasm            | GermplasmPedigree                          | germplasm\_pedigree                  |
-| Germplasm            | GermplasmSearchGET                         | germplasm\_search                    |
-| Germplasm            | GermplasmSearchPOST                        | germplasm\_search                    |
-| GermplasmAttributes  | ListAttributesByAttributeCategoryDbId      | germplasmattributes                  |
-| GermplasmAttributes  | ListAttributeCategories                    | germplasmattributes\_categories      |
-| GermplasmAttributes  | GermplasmAttributeValuesByGermplasmDbId    | germplasmattributes\_details         |
-| Locations            | ListLocations                              | locations                            |
-| MarkerProfiles       | MarkerProfileAlleleMatrix                  | markerprofiles\_allelematrix\_search |
-| MarkerProfiles       | ScoresThroughPOST                          | markerprofiles\_allelematrix\_search |
-| MarkerProfiles       | MarkerProfileData                          | markerprofiles\_details              |
-| MarkerProfiles       | MarkerProfileSearchPost                    | markerprofiles\_search               |
-| MarkerProfiles       | MarkerProfileSearch                        | markerprofiles\_search               |
-| Markers              | MarkerDetailsByMarkerDbId                  | markers\_details                     |
-| Markers              | MarkerSearch                               | markers\_search                      |
-| ObservationVariables | VariableList                               | observationvariables                 |
-| ObservationVariables | VariableDataTypeList                       | observationvariables\_datatypes      |
-| ObservationVariables | VariableDetails                            | observationvariables\_details        |
-| ObservationVariables | VariableOntologyList                       | observationvariables\_ontologies     |
-| ObservationVariables | VariableSearch                             | observationvariables\_search         |
-| Programs             | ListPrograms                               | programs                             |
-| Programs             | ProgramSearch                              | programs\_search                     |
-| Studies              | StudyDetails                               | studies\_details                     |
-| Studies              | ListObservationLevels                      | studies\_observationlevels           |
-| Studies              | GetObservationUnitsByObservationVariableId | studies\_observations                |
-| Studies              | ObservationUnitDetails                     | studies\_observationunits            |
-| Studies              | StudyObservationVariables                  | studies\_observationvariables        |
-| Studies              | ListStudySummaries                         | studies\_search                      |
-| Studies              | SearchStudie                               | studies\_search                      |
-| Studies              | ListSeasons                                | studies\_seasons                     |
-| Studies              | ListStudyTypes                             | studies\_studytypes                  |
-| Studies              | StudyObservationUnitsAsTable               | studies\_table                       |
-| Studies              | PlotLayoutDetails                          | studies\_layout                      |
-| Traits               | ListAllTraits                              | traits                               |
-| Traits               | TraitDetails                               | traits\_details                      |
-| Trials               | ListTrialSummaries                         | trials                               |
-| Trials               | GetTrialById                               | trials\_details                      |
+| group                | name                                       | R.function                               |
+|:---------------------|:-------------------------------------------|:-----------------------------------------|
+| Authentication       | Authentication                             | ba\_authenticate                         |
+| Calls                | Calls                                      | ba\_calls                                |
+| Crops                | ListCrops                                  | ba\_crops                                |
+| GenomeMaps           | ListOfGenomeMap                            | ba\_genomemaps                           |
+| GenomeMaps           | GenomeMapData                              | ba\_genomemaps\_data                     |
+| GenomeMaps           | GenomeMapDataByRangeOnLinkageGroup         | ba\_genomemaps\_data\_range              |
+| GenomeMaps           | GenomeMapDetails                           | ba\_genomemaps\_details                  |
+| Germplasm            | GermplasmDetailsByGermplasmDbId            | ba\_germplasm\_details                   |
+| Germplasm            | GermplasmDetailsListByStudyDbId            | ba\_germplasm\_details\_study            |
+| Germplasm            | GermplasmMarkerprofile                     | ba\_germplasm\_markerprofiles            |
+| Germplasm            | GermplasmPedigree                          | ba\_germplasm\_pedigree                  |
+| Germplasm            | GermplasmSearchGET                         | ba\_germplasm\_search                    |
+| Germplasm            | GermplasmSearchPOST                        | ba\_germplasm\_search                    |
+| GermplasmAttributes  | ListAttributesByAttributeCategoryDbId      | ba\_germplasmattributes                  |
+| GermplasmAttributes  | ListAttributeCategories                    | ba\_germplasmattributes\_categories      |
+| GermplasmAttributes  | GermplasmAttributeValuesByGermplasmDbId    | ba\_germplasmattributes\_details         |
+| Locations            | ListLocations                              | ba\_locations                            |
+| MarkerProfiles       | MarkerProfileAlleleMatrix                  | ba\_markerprofiles\_allelematrix\_search |
+| MarkerProfiles       | ScoresThroughPOST                          | ba\_markerprofiles\_allelematrix\_search |
+| MarkerProfiles       | MarkerProfileData                          | ba\_markerprofiles\_details              |
+| MarkerProfiles       | MarkerProfileSearchPost                    | ba\_markerprofiles\_search               |
+| MarkerProfiles       | MarkerProfileSearch                        | ba\_markerprofiles\_search               |
+| Markers              | MarkerDetailsByMarkerDbId                  | ba\_markers\_details                     |
+| Markers              | MarkerSearch                               | ba\_markers\_search                      |
+| ObservationVariables | VariableList                               | ba\_observationvariables                 |
+| ObservationVariables | VariableDataTypeList                       | ba\_observationvariables\_datatypes      |
+| ObservationVariables | VariableDetails                            | ba\_observationvariables\_details        |
+| ObservationVariables | VariableOntologyList                       | ba\_observationvariables\_ontologies     |
+| Programs             | ListPrograms                               | ba\_programs                             |
+| Programs             | ProgramSearch                              | ba\_programs\_search                     |
+| Studies              | StudyDetails                               | ba\_studies\_details                     |
+| Studies              | ListObservationLevels                      | ba\_studies\_observationlevels           |
+| Studies              | GetObservationUnitsByObservationVariableId | ba\_studies\_observations                |
+| Studies              | ObservationUnitDetails                     | ba\_studies\_observationunits            |
+| Studies              | StudyObservationVariables                  | ba\_studies\_observationvariables        |
+| Studies              | ListStudySummaries                         | ba\_studies\_search                      |
+| Studies              | SearchStudie                               | ba\_studies\_search                      |
+| Studies              | ListSeasons                                | ba\_studies\_seasons                     |
+| Studies              | ListStudyTypes                             | ba\_studies\_studytypes                  |
+| Studies              | StudyObservationUnitsAsTable               | ba\_studies\_table                       |
+| Studies              | PlotLayoutDetails                          | ba\_studies\_layout                      |
+| Traits               | ListAllTraits                              | ba\_traits                               |
+| Traits               | TraitDetails                               | ba\_traits\_details                      |
+| Trials               | ListTrialSummaries                         | ba\_trials                               |
+| Trials               | GetTrialById                               | ba\_trials\_details                      |
 
 How to use the package
 ----------------------

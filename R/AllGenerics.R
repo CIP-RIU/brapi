@@ -5,6 +5,7 @@
 #' @param x an object to be charted
 #' @param ... additional parameters
 #' @author Reinhard Simon
+#' @example inst/examples/ex-chart.R
 #' @family brapiutils
 #' @export
 chart <- function (x, ...) {
@@ -19,6 +20,7 @@ chart <- function (x, ...) {
 #' @param x an object to be described
 #' @param ... additional parameters
 #' @author Reinhard Simon
+#' @example inst/examples/ex-describe.R
 #' @family brapiutils
 #' @export
 describe <- function (x, ...) {

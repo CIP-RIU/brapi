@@ -19,6 +19,6 @@ ams2tbl <- function(res, format, rclass, pb = NULL) {
         url <- jsonlite::fromJSON(res)$metadata$data$url
         out <- readr::read_tsv(file = url, progress = TRUE)
     }
-    class(out) <- c(class(out), "brapi_allelematrix")
+    class(out) <- c(class(out), "ba_allelematrix")
     return(out)
 }

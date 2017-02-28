@@ -9,6 +9,6 @@ mpa2tbl <- function(res, rclass = "tibble") {
         udb <- tibble::as_tibble(udb)
     attr(udb, "metadata") <- as.list(lst$result$data[1:5])
 
-    class(udb) <- c(class(udb), "brapi_markerprofiles_alleles")
+    class(udb) <- c(class(udb), "ba_markerprofiles_alleles")
     return(udb)
 }

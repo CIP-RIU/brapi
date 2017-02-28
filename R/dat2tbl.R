@@ -1,4 +1,4 @@
-dat2tbl <- function(res, rclass = "tibble", brapi_class = "brapi") {
+dat2tbl <- function(res, rclass = "tibble", brapi_class = "ba") {
     if (!rclass %in% c("json", "list", "tibble", "data.frame", "vector")) {
         rclass <- "json"
     }

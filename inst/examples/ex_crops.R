@@ -1,4 +1,4 @@
 if (interactive()) {
-      con <- connect()
-      crops(con)
+      con <- ba_connect()
+      ba_crops(con)
 }

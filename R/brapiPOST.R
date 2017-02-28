@@ -1,11 +1,11 @@
 brapiPOST <- function(url, body, con = con) {
-    message_brapi(paste0("URL call was: ", url, "\n"))
+   ba_message(paste0("URL call was: ", url, "\n"))
     res <- httr::POST(url, body = body, encode = "json",
                       httr::add_headers(`X-AUTH-TOKEN` = con$token))
     txt <- ifelse(res$status_code == 200, " (ok)!", " (error)!")
-    message_brapi(paste0("Server status: ", res$status_code, txt, "\n"))
+    ba_message(paste0("Server status: ", res$status_code, txt, "\n"))
 
-    if (is.status_ok(res)) {
+    if (is.ba_status_ok(res)) {
         out <- httr::content(res, "text", encoding = "UTF-8")
         # Get JSON
         out <- jsonlite::fromJSON(out)$metadata$status
@@ -17,7 +17,7 @@ brapiPOST <- function(url, body, con = con) {
                 for (i in 1:n) {
                   msg <- paste0("Warning code -> ", out[i, "code"], ": ",
                                 out[i, "message"], "")
-                  message_brapi(msg)
+                  ba_message(msg)
                 }
             }
         }

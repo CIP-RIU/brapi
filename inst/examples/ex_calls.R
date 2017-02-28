@@ -1,4 +1,6 @@
 if (interactive()) {
-      con <- connect()
-      calls(con)
+  library(brapi)
+
+  con <- ba_connect()
+  ba_calls(con)
 }

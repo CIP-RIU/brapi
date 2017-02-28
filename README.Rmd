@@ -37,7 +37,7 @@ The library implements currently mainly API calls to retrieve breeding trial rel
 
 ```{r, echo=FALSE}
 calls_data = tryCatch({
-  read.csv(system.file("apps/brapi/info/calls.csv", package = "brapiTS"),
+  read.csv(system.file("apps/brapi/data/calls.csv", package = "brapi"),
            stringsAsFactors = FALSE)
   
 }, error = function(e) {
