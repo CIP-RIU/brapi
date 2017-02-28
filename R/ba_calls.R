@@ -25,7 +25,7 @@ ba_calls <- function(con = NULL, datatypes = "all",
     ppage <- ifelse(is.numeric(page), paste0("page=", page, ""), "")
     ppageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=",
                                                      pageSize, "&"), "")
-    if (pageSize == 1000){
+    if (pageSize >= 1000){
       ppage <- ""
       ppageSize <- ""
       datatypes <- ""
