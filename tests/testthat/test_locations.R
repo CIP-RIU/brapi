@@ -13,12 +13,40 @@ test_that("Locations are listed.", {
 })
 
 test_that("Special cases", {
-  # bms <- ba_db()$bms_test
-  # try({
-  #   bms <- ba_authenticate(bms)
-  #
-  #   expect_equal(ba_locations(bms), TRUE)
-  # })
+
+  res <- '{
+    "metadata": {
+  "pagination": {
+  "pageNumber": 1,
+  "pageSize": 1,
+  "totalCount": 5084,
+  "totalPages": 5084
+  },
+  "status": null,
+  "datafiles": null
+},
+  "result": {
+  "data": [
+  {
+  "locationDbId": 1,
+  "locationType": "COUNTRY",
+  "name": "Afghanistan",
+  "abbreviation": "AFG",
+  "countryCode": "AFG",
+  "countryName": "Afghanistan",
+  "latitude": 33.0,
+  "longitude": 65.0,
+  "attributes": [
+
+  ]
+  }
+  ]
+  }
+  }'
+
+  con1 <- list(bms = TRUE)
+  expect_equal(brapi:::loc2tbl(res, "tibble", con1) %>% nrow, 1)
+
 })
 
 

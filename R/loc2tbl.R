@@ -16,13 +16,6 @@ loc2tbl <- function(res, rclass, con) {
                 addinfo
       )
     }
-    # if (class(dat$data) == "data.frame") {
-    #   df <- dat$data[, xnms]
-    #   if (rclass == "tibble") {
-    #     df <- tibble::as_tibble(df)
-    #   }
-    #   return(df)
-    # }
 
     # get all var names
     nms <- unique(lapply(dat, colnames) %>% unlist)
@@ -30,7 +23,9 @@ loc2tbl <- function(res, rclass, con) {
     n <- length(dat)
     x <- character(n)
     for (i in 1:n) {
+      if(length(dat[[i]]) == 10) {
         x <- c(x, names(dat[[i]][[10]]))
+      }
     }
     nms <- c(nms, unique(x))
     nms <- nms[!nms %in% c("", 10)]
@@ -44,8 +39,10 @@ loc2tbl <- function(res, rclass, con) {
         df[i, 1:9] <- dat[[i]][, 1:9]
 
         # variable names
-        vnms <- colnames(dat[[i]][[10]])
-        df[i, vnms] <- dat[[i]][[10]]
+        if(length(dat[[i]]) == 10) {
+          vnms <- colnames(dat[[i]][[10]])
+          df[i, vnms] <- dat[[i]][[10]]
+        }
     }
 
     for (i in 1:ncol(df)) {

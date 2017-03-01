@@ -10,17 +10,7 @@ brapiPOST <- function(url, body, con = con) {
         # Get JSON
         out <- jsonlite::fromJSON(out)$metadata$status
         # Check if status object has any key-value pairs
-        n <- nrow(out)
-        if (!is.null(n)) {
-            if (n > 0) {
-                # if so: cycle through and print a message for each!
-                for (i in 1:n) {
-                  msg <- paste0("Warning code -> ", out[i, "code"], ": ",
-                                out[i, "message"], "")
-                  ba_message(msg)
-                }
-            }
-        }
+        show_server_status_messages(out)
     }
     return(res)
 }
