@@ -21,7 +21,7 @@ sou2tbl <- function(res, rclass, observationLevel){
   observations.observationTimeStamp <- NULL
   observations.value <- NULL
 
-  out = res %>% as.character %>%
+  out <- res %>% as.character %>%
     enter_object("result") %>% enter_object("data") %>% gather_array() %>%
     spread_values(observationUnitDbId = jstring("observationUnitDbId"),
                   observationUnitName = jstring("observationUnitName"),
@@ -35,9 +35,7 @@ sou2tbl <- function(res, rclass, observationLevel){
                   blockNumber = jnumber("blockNumber"),
                   X = jnumber("X"),
                   Y = jnumber("Y"),
-                  replicate = jnumber("replicate")
-
-    ) %>%
+                  replicate = jnumber("replicate")) %>%
     enter_object("observations") %>% gather_array %>%
     spread_values(
       observations.observationDbId = jstring("observationDbId"),
@@ -45,8 +43,7 @@ sou2tbl <- function(res, rclass, observationLevel){
       observations.observationVariableName = jstring("observationVariableName"),
       observations.collector = jstring("collector"),
       observations.observationTimeStamp = jstring("observationTimeStamp"),
-      observations.value = jstring("value")
-    ) %>%
+      observations.value = jstring("value")) %>%
     dplyr::select(observationUnitDbId,
                   observationUnitName,
                   germplasmDbId,
@@ -60,24 +57,17 @@ sou2tbl <- function(res, rclass, observationLevel){
                   X,
                   Y,
                   replicate,
-
                   observations.observationDbId,
                   observations.observationVariableDbId,
                   observations.observationVariableName,
                   observations.collector,
                   observations.observationTimeStamp,
-                  observations.value
-                  )
+                  observations.value)
 
-  plantCol = which(colnames(out) == "plantNumber")
-  plotCol = which(colnames(out) == "plotNumber")
-
-  if(observationLevel == "plant"){
-    out = out[, -c(plotCol)]
+  if (rclass == "tibble") {
+    out <- tibble::as_tibble(out)
+  } else {
+    class(out) <- "data.frame"
   }
-  if(observationLevel == "plot"){
-    out = out[, -c(plantCol)]
-  }
-  if(rclass == "tibble") out = tibble::as_tibble(out)
-  out
+  return(out)
 }

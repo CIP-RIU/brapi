@@ -17,11 +17,11 @@ This package is under development. It has not yet been exhaustively tested for a
 
 ## Sandbox testing server
 
-To eaes local testing the package comes now with a localized simple testing server implementing the BrAPI v1 protocol. To start this server use in an R session:
+To eaes local testing the package has now a companion package with a localized simple testing server implementing the BrAPI v1 protocol. To start this server use in an R session:
 
 ```{r eval=FALSE}
 
-brapi::mock_server()
+brapiTS::mock_server()
 
 ```
 
@@ -29,7 +29,7 @@ or on the command line in an MS-DOS box
 
 ```{r eval=FALSE}
 
-R -e "brapi::mock_server()"
+R -e "brapiTS::mock_server()"
 
 ```
 
@@ -43,11 +43,15 @@ Soon, the mock_server function will be moved to its own package 'brapiTS'.
 ```{r eval=FALSE}
 library(brapi)
 
-connect() # the standard parameter will work connect to a running local mock server
+con = ba_connect() # the standard parameter will work connect to a running local mock server
 
-crops() # which crops are available
+# Optionally: authenticate yourself
 
-calls() # which calls are available
+con = ba_connect(user = "user", password = "password") %>% ba_authenticate()
+
+ba_crops(con) # which crops are available
+
+ba_calls(con) # which calls are available
 
 
 ```

@@ -12,7 +12,7 @@
 
 <meta name="author" content="Reinhard Simon" />
 
-<meta name="date" content="2017-01-06" />
+<meta name="date" content="2017-02-28" />
 
 <title>Basic Tutorial</title>
 
@@ -70,7 +70,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <h1 class="title toc-ignore">Basic Tutorial</h1>
 <h4 class="author"><em>Reinhard Simon</em></h4>
-<h4 class="date"><em>2017-01-06</em></h4>
+<h4 class="date"><em>2017-02-28</em></h4>
 
 
 
@@ -85,10 +85,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h1>NEW</h1>
 <div id="sandbox-testing-server" class="section level2">
 <h2>Sandbox testing server</h2>
-<p>To eaes local testing the package comes now with a localized simple testing server implementing the BrAPI v1 protocol. To start this server use in an R session:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">brapi::<span class="kw">mock_server</span>()</code></pre></div>
+<p>To eaes local testing the package has now a companion package with a localized simple testing server implementing the BrAPI v1 protocol. To start this server use in an R session:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">brapiTS::<span class="kw">mock_server</span>()</code></pre></div>
 <p>or on the command line in an MS-DOS box</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">R -e <span class="st">&quot;brapi::mock_server()&quot;</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">R -e <span class="st">&quot;brapiTS::mock_server()&quot;</span></code></pre></div>
 <p>The server must be started in a R session separate from the one use for the BrAPI calls. The server uses by default the port 2021. This can be changed by using the port parameter: brapi::mock_server(80).</p>
 <p>Soon, the mock_server function will be moved to its own package ‘brapiTS’.</p>
 </div>
@@ -97,11 +97,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h1>Starting the connection</h1>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(brapi)
 
-<span class="kw">connect</span>() <span class="co"># the standard parameter will work connect to a running local mock server</span>
+con =<span class="st"> </span><span class="kw">ba_connect</span>() <span class="co"># the standard parameter will work connect to a running local mock server</span>
 
-<span class="kw">crops</span>() <span class="co"># which crops are available</span>
+<span class="co"># Optionally: authenticate yourself</span>
 
-<span class="kw">calls</span>() <span class="co"># which calls are available</span></code></pre></div>
+con =<span class="st"> </span><span class="kw">ba_connect</span>(<span class="dt">user =</span> <span class="st">&quot;user&quot;</span>, <span class="dt">password =</span> <span class="st">&quot;password&quot;</span>) %&gt;%<span class="st"> </span><span class="kw">ba_authenticate</span>()
+
+<span class="kw">ba_crops</span>(con) <span class="co"># which crops are available</span>
+
+<span class="kw">ba_calls</span>(con) <span class="co"># which calls are available</span></code></pre></div>
 </div>
 <div id="new-testing-the-calls" class="section level1">
 <h1>NEW: Testing the calls</h1>

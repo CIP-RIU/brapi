@@ -31,7 +31,7 @@ install.packages("devtools")
 devtools::install_github("c5sire/brapi")
 ```
 
-The library implements currently mainly API calls to retrievie phenotypic field trial related data.
+The library implements currently mainly API calls to retrieve breeding trial related data.
 
 ## Implementation status
 

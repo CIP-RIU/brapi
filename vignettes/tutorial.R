@@ -11,15 +11,15 @@
 ## ----eval=FALSE----------------------------------------------------------
 #  library(brapi)
 #  
-#  con = connect() # the standard parameter will work connect to a running local mock server
+#  con = ba_connect() # the standard parameter will work connect to a running local mock server
 #  
 #  # Optionally: authenticate yourself
 #  
-#  con = connect(user = "user", password = "password") %>% authenticate()
+#  con = ba_connect(user = "user", password = "password") %>% ba_authenticate()
 #  
-#  crops(con) # which crops are available
+#  ba_crops(con) # which crops are available
 #  
-#  calls(con) # which calls are available
+#  ba_calls(con) # which calls are available
 #  
 #  
 

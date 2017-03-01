@@ -10,10 +10,10 @@
 
 # Project folders or files to be ignored during development to prevent creation
 # of a huge git repo
-NAMESPACE
-man/
-inst/doc
-brapi_session.rda
-www
-reports
-write-test-f329663c-8ea6-4df9-a9f3-35cf6d6c1757
+
+# do not uncomment the following; these directories/files are needed for
+# the automated testing servers
+
+# NAMESPACE
+# man/
+# inst/doc
