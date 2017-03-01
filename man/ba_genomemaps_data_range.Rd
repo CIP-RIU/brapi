@@ -39,7 +39,7 @@ if (interactive()) {
 
   con <- ba_connect()
 
-  #TODO
+  ba_genomemaps_data_range(con)
 
 }
 }

@@ -35,7 +35,7 @@ if (interactive()) {
 
   con <- ba_connect()
 
-  #TODO
+  ba_genomemaps(con)
 
 }
 }

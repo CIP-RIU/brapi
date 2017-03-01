@@ -40,7 +40,7 @@ if (interactive()) {
 
   con <- ba_connect()
 
-  #TODO
+  ba_germplasm_search(con)
 
 }
 }

@@ -31,7 +31,7 @@ if (interactive()) {
 
   con <- ba_connect()
 
-  #TODO
+  ba_germplasmattributes_categories(con)
 
 }
 }
