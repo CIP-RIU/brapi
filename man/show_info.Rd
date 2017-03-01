@@ -12,4 +12,3 @@ show_info(show = TRUE)
 \description{
 Show informative messages or not
 }
-

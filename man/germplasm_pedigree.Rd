@@ -22,13 +22,15 @@ list of pedigree data
 \description{
 Gets minimal pedigree data from database using database internal id
 }
-\author{
-Reinhard Simon
-}
 \references{
 \url{https://github.com/plantbreeding/API/blob/master/Specification/Germplasm/GermplasmPedigree.md}(github)
 }
 \seealso{
+Other germplasm: \code{\link{germplasm_details_study}},
+  \code{\link{germplasm_details}},
+  \code{\link{germplasm_markerprofiles}},
+  \code{\link{germplasm_search}}
+
 Other core: \code{\link{germplasm_details_study}},
   \code{\link{germplasm_details}},
   \code{\link{germplasm_search}},
@@ -37,10 +39,7 @@ Other core: \code{\link{germplasm_details_study}},
   \code{\link{observationvariables_ontologies}},
   \code{\link{observationvariables}},
   \code{\link{traits_details}}, \code{\link{traits}}
-
-Other germplasm: \code{\link{germplasm_details_study}},
-  \code{\link{germplasm_details}},
-  \code{\link{germplasm_markerprofiles}},
-  \code{\link{germplasm_search}}
 }
-
+\author{
+Reinhard Simon
+}

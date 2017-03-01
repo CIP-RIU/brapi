@@ -24,13 +24,12 @@ lists the breeding programs
 \details{
 BRAPI discussion: Should this return also the crop?
 }
-\author{
-Reinhard Simon
-}
 \references{
 \href{https://github.com/plantbreeding/API/blob/master/Specification/Programs/ListPrograms.md}{github}
 }
 \seealso{
 Other brapi_core: \code{\link{calls}}, \code{\link{crops}}
 }
-
+\author{
+Reinhard Simon
+}

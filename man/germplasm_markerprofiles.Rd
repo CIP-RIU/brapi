@@ -19,13 +19,15 @@ list of marker profile ids
 \description{
 Gets minimal marker profile data from database using database internal id
 }
-\author{
-Reinhard Simon
-}
 \references{
 \href{https://github.com/plantbreeding/API/blob/master/Specification/Germplasm/GermplasmMarkerprofiles.md}{github}
 }
 \seealso{
+Other germplasm: \code{\link{germplasm_details_study}},
+  \code{\link{germplasm_details}},
+  \code{\link{germplasm_pedigree}},
+  \code{\link{germplasm_search}}
+
 Other genotyping: \code{\link{genomemaps_data_range}},
   \code{\link{genomemaps_data}},
   \code{\link{genomemaps_details}},
@@ -38,10 +40,7 @@ Other genotyping: \code{\link{genomemaps_data_range}},
   \code{\link{markerprofiles_search}},
   \code{\link{markers_details}},
   \code{\link{markers_search}}
-
-Other germplasm: \code{\link{germplasm_details_study}},
-  \code{\link{germplasm_details}},
-  \code{\link{germplasm_pedigree}},
-  \code{\link{germplasm_search}}
 }
-
+\author{
+Reinhard Simon
+}

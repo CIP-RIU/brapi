@@ -24,9 +24,6 @@ rclass as defined
 \description{
 lists calls available on a brapi server
 }
-\author{
-Reinhard Simon
-}
 \references{
 \href{https://github.com/plantbreeding/API/blob/master/Specification/Calls/Calls.md}{github}
 }
@@ -34,4 +31,6 @@ Reinhard Simon
 Other brapi_core: \code{\link{crops}},
   \code{\link{programs}}
 }
-
+\author{
+Reinhard Simon
+}

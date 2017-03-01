@@ -31,9 +31,6 @@ tibble
 \description{
 Lists germplasmm as result of a search.
 }
-\author{
-Reinhard Simon
-}
 \references{
 \url{https://github.com/plantbreeding/API/blob/master/Specification/Germplasm/GermplasmSearchGET.md}
    \url{https://github.com/plantbreeding/API/blob/master/Specification/Germplasm/GermplasmSearchPOST.md}
@@ -53,4 +50,6 @@ Other germplasm: \code{\link{germplasm_details_study}},
   \code{\link{germplasm_markerprofiles}},
   \code{\link{germplasm_pedigree}}
 }
-
+\author{
+Reinhard Simon
+}
