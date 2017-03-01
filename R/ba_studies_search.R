@@ -24,7 +24,8 @@
 #' @family studies
 #' @family phenotyping
 #' @export
-ba_studies_search <- function(con = NULL, studyType = "any", programDbId = "any", locationDbId = "any", seasonDbId = "any",
+ba_studies_search <- function(con = NULL, studyType = "any", programDbId = "any", locationDbId = "any",
+                              seasonDbId = "any",
                            germplasmDbIds = "any", observationVariableDbIds = "any",
                            active = "any", sortBy = "any", sortOrder = "any",
                            page = 0, pageSize = 1000, rclass = "tibble") {

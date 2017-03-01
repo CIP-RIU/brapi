@@ -26,7 +26,8 @@ test_that("type", {
 test_that("rclass", {
   expect_equal("json" %in% class(ba_markers_search(con, "*", matchMethod = "wildcard", rclass = "json")), TRUE)
   expect_equal("list" %in% class(ba_markers_search(con, "*", matchMethod = "wildcard", rclass = "list")), TRUE)
-  expect_equal( (ba_markers_search(con, "*", matchMethod = "wildcard", rclass = "data.frame") %>% class)[1], "data.frame")
+  expect_equal( (ba_markers_search(con, "*", matchMethod = "wildcard", rclass = "data.frame") %>%
+                   class)[1], "data.frame")
   expect_equal("tbl_df" %in% class(ba_markers_search(con, "*", matchMethod = "wildcard", rclass = "tibble")), TRUE)
   expect_equal("ba_markers_search" %in% class(ba_markers_search(con, "*", matchMethod = "wildcard")), TRUE)
 })
