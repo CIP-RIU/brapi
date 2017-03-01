@@ -33,7 +33,7 @@ if (interactive()) {
 
   con <- ba_connect()
 
-  #TODO
+  ba_observationvariables(con)
 
 }
 }

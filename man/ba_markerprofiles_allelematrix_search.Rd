@@ -52,7 +52,7 @@ if (interactive()) {
 
   con <- ba_connect()
 
-  #TODO
+  ba_markerprofiles_allelematrix_search(con, markerprofileDbId = 3)
 
 }
 }

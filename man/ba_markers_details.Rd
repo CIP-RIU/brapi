@@ -28,7 +28,7 @@ if (interactive()) {
 
   con <- ba_connect()
 
-  #TODO
+  ba_markers_details(con, 3)
 
 }
 }

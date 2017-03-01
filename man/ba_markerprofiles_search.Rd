@@ -42,7 +42,7 @@ if (interactive()) {
 
   con <- ba_connect()
 
-  #TODO
+  ba_markerprofiles_search(con, 3)
 
 }
 }
