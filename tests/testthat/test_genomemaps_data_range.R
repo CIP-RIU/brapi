@@ -20,6 +20,8 @@ test_that("map paging work.", {
   expect_equal(nrow(ba_genomemaps_data_range(con, 1, 1, pageSize = 1)), 1)
   expect_equal(nrow(ba_genomemaps_data_range(con, 1, 1, pageSize = 1,
                                           page = 2)), 1)
+  expect_equal(nrow(ba_genomemaps_data_range(con, 1, 1, pageSize = 10000,
+                                             page = 2)), 5)
 })
 
 

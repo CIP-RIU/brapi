@@ -7,6 +7,9 @@ context("Testing the helper function check")
 
 test_that("Check parameters work.", {
   expect_message(ba_check(con), regexp = "BrAPI connection ok.", all = FALSE)
+
+  spb <- brapi::ba_db()$sweetpotato
+  expect_equal(ba_check(spb), TRUE)
 })
 
 

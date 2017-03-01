@@ -34,7 +34,7 @@ ba_genomemaps_data_range <- function(con = NULL, mapDbId = 1, linkageGroupId = 1
     ppage <- ifelse(is.numeric(page), paste0("page=", page, ""), "")
     ppageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=",
                                                    pageSize, "&"), "")
-    if (pageSize == 10000) {
+    if (pageSize >= 10000) {
       ppage <- ""
       ppageSize <- ""
     }

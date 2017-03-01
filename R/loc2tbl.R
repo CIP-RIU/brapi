@@ -16,13 +16,13 @@ loc2tbl <- function(res, rclass, con) {
                 addinfo
       )
     }
-    if (class(dat$data) == "data.frame") {
-      df <- dat$data[, xnms]
-      if (rclass == "tibble") {
-        df <- tibble::as_tibble(df)
-      }
-      return(df)
-    }
+    # if (class(dat$data) == "data.frame") {
+    #   df <- dat$data[, xnms]
+    #   if (rclass == "tibble") {
+    #     df <- tibble::as_tibble(df)
+    #   }
+    #   return(df)
+    # }
 
     # get all var names
     nms <- unique(lapply(dat, colnames) %>% unlist)

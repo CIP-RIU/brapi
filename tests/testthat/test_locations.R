@@ -12,6 +12,15 @@ test_that("Locations are listed.", {
   expect_equal(nrow(ba_locations(con, "field")), 6)
 })
 
+test_that("Special cases", {
+  # bms <- ba_db()$bms_test
+  # try({
+  #   bms <- ba_authenticate(bms)
+  #
+  #   expect_equal(ba_locations(bms), TRUE)
+  # })
+})
+
 
 test_that("Classes", {
   expect_equal("tbl_df" %in% class(ba_locations(con,  rclass = "tibble")), TRUE)
