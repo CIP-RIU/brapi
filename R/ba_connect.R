@@ -47,7 +47,7 @@ ba_connect <- function(brapiDb = NULL,
     # brapiDb  agrument was not NULL but passed
     if (all(class(brapiDb) == c("list", "ba_db", "ba", "ba_con"))) {
       brapi <- brapiDb
-      class(brapi) <- c("list", "ba", "ba_con")
+      #class(brapi) <- c("list", "ba", "ba_con")
     }
   } else {
     # check for net connectivity
