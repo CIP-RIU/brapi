@@ -4,7 +4,7 @@
 \alias{ba_germplasmattributes}
 \title{ba_germplasmattributes}
 \usage{
-ba_germplasmattributes(con = NULL, attributeCategoryDbId = 0,
+ba_germplasmattributes(con = NULL, attributeCategoryDbId = "0",
   rclass = "tibble")
 }
 \arguments{

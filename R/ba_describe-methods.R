@@ -6,6 +6,7 @@
 #' @param ... other print parameters
 #' @author Reinhard Simon
 #' @example inst/examples/ex-describe.R
+#' @family brapiutils
 #' @export
 ba_describe.ba_locations <- function(x, ...) {
     # Print in console

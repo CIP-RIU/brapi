@@ -6,6 +6,6 @@ if (interactive()) {
 
   con <- ba_connect()
 
-  ba_germplasm_pedigree(con, germplasmDbId = 3)
+  ba_germplasm_pedigree(con, germplasmDbId = "3")
 
 }

@@ -6,7 +6,7 @@ if (interactive()) {
 
   con <- ba_connect()
 
-  gmd <- ba_genomemaps_details(con, mapDbId = 1)
-  gmd %>% chart
+  gmd <- ba_genomemaps_details(con, mapDbId = "1")
+  gmd %>% ba_chart
 
 }

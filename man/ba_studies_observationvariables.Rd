@@ -4,7 +4,7 @@
 \alias{ba_studies_observationvariables}
 \title{ba_studies_observationvariables}
 \usage{
-ba_studies_observationvariables(con = NULL, studyDbId = 1,
+ba_studies_observationvariables(con = NULL, studyDbId = "1",
   rclass = "tibble")
 }
 \arguments{
@@ -23,13 +23,12 @@ lists  @param con brapi connection object available on a brapi server
 \examples{
 if (interactive()) {
   library(brapi)
-  library(magrittr)
 
   # make sure brapiTS::mock_server() is running in a separate process
 
   con <- ba_connect()
 
-  #TODO
+  ba_studies_observationvariables(con)
 
 }
 }

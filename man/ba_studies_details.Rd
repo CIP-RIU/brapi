@@ -4,7 +4,7 @@
 \alias{ba_studies_details}
 \title{ba_studies_details}
 \usage{
-ba_studies_details(con = NULL, studiesDbId = 0, rclass = "tibble")
+ba_studies_details(con = NULL, studiesDbId = "0", rclass = "tibble")
 }
 \arguments{
 \item{con}{brapi connection object}
@@ -22,13 +22,12 @@ Gets studies details given an id.
 \examples{
 if (interactive()) {
   library(brapi)
-  library(magrittr)
 
   # make sure brapiTS::mock_server() is running in a separate process
 
   con <- ba_connect()
 
-  #TODO
+  ba_studies_details(con, studiesDbId = "1")
 
 }
 }

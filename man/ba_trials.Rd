@@ -5,7 +5,7 @@
 \title{ba_trials}
 \usage{
 ba_trials(con = NULL, programDbId = "any", locationDbId = "any",
-  active = "any", sortBy = "none", sortOrder = "asc", page = 0,
+  active = TRUE, sortBy = "none", sortOrder = "asc", page = 0,
   pageSize = 1000, rclass = "tibble")
 }
 \arguments{
@@ -15,7 +15,7 @@ ba_trials(con = NULL, programDbId = "any", locationDbId = "any",
 
 \item{locationDbId}{character; default: 'any'; otherwise an identifier}
 
-\item{active}{character; default: 'any'; otherwise TRUE or FALSE}
+\item{active}{logical; default: 'TRUE'; otherwise TRUE or FALSE}
 
 \item{sortBy}{character; default: 'none'; otherwise a name from the first level entry names of the return object.}
 
@@ -36,13 +36,12 @@ lists trials available on a brapi server
 \examples{
 if (interactive()) {
   library(brapi)
-  library(magrittr)
 
   # make sure brapiTS::mock_server() is running in a separate process
 
   con <- ba_connect()
 
-  #TODO
+  ba_trials(con)
 
 }
 }

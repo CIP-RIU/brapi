@@ -34,7 +34,8 @@ test_that("rclass", {
   expect_equal(class(ba_markerprofiles_allelematrix_search(con, "3", rclass = "data.frame"))[1], "data.frame")
   expect_equal(class(ba_markerprofiles_allelematrix_search(con, "3", rclass = "list"))[1], "list")
   expect_equal(class(ba_markerprofiles_allelematrix_search(con, "3", rclass = "json"))[1], "json")
-  expect_equal("ba_markerprofiles_allelematrix_search" %in% class(ba_markerprofiles_allelematrix_search(con, "3")), TRUE )
+  expect_equal("ba_markerprofiles_allelematrix_search" %in%
+                 class(ba_markerprofiles_allelematrix_search(con, "3")), TRUE )
 })
 
 

@@ -4,14 +4,14 @@
 \alias{ba_genomemaps_details}
 \title{ba_genomemaps_details}
 \usage{
-ba_genomemaps_details(con = NULL, mapDbId = 1, rclass = "tibble")
+ba_genomemaps_details(con = NULL, mapDbId = "1", rclass = "tibble")
 }
 \arguments{
 \item{con}{brapi connection object}
 
-\item{mapDbId}{integer; default 0}
+\item{mapDbId}{character; default 0}
 
-\item{rclass}{string; default: tibble}
+\item{rclass}{character; default: tibble}
 }
 \value{
 rclass as defined
@@ -22,13 +22,12 @@ lists genomemaps_details available on a brapi server
 \examples{
 if (interactive()) {
   library(brapi)
-  library(magrittr)
 
   # make sure brapiTS::mock_server() is running in a separate process
 
   con <- ba_connect()
 
-  #TODO
+  ba_genomemaps_details(con)
 
 }
 }

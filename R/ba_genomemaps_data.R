@@ -6,8 +6,8 @@
 #' @param rclass string; default: tibble
 #' @param page integer; default 0
 #' @param pageSize integer; default 30
-#' @param mapDbId integer; default 0
-#' @param linkageGroupId integer; default 0
+#' @param mapDbId character; default 0
+#' @param linkageGroupId character; default 0
 #' @example inst/examples/ex-ba_genomemaps_data.R
 #'
 #' @author Reinhard Simon
@@ -19,12 +19,12 @@
 #' @family genomemaps
 #' @family genotyping
 #' @export
-ba_genomemaps_data <- function(con = NULL, mapDbId = 0, linkageGroupId = 0,
+ba_genomemaps_data <- function(con = NULL, mapDbId = "0", linkageGroupId = "0",
                             page = 0, pageSize = 30, rclass = "tibble") {
 
     ba_check(con, FALSE, "maps/id/positions")
-    stopifnot(is.numeric(mapDbId))
-    stopifnot(is.numeric(linkageGroupId))
+    stopifnot(is.character(mapDbId))
+    stopifnot(is.character(linkageGroupId))
     check_paging(pageSize, page)
     check_rclass(rclass)
 

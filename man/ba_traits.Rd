@@ -24,13 +24,12 @@ lists brapi_traits available on a brapi server
 \examples{
 if (interactive()) {
   library(brapi)
-  library(magrittr)
 
   # make sure brapiTS::mock_server() is running in a separate process
 
   con <- ba_connect()
 
-  #TODO
+  ba_traits(con)
 
 }
 }

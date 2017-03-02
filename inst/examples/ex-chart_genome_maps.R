@@ -8,6 +8,6 @@ if (interactive()) {
 
   # example 1
   gm <- ba_genomemaps(con)
-  gm %>% chart
+  gm %>% ba_chart
 
 }

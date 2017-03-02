@@ -25,12 +25,25 @@ if (interactive()) {
   con <- ba_connect()
 
   # Example 1
-  bl <- ba_locations()
-  bl \%>\% chart()
+  bl <- ba_locations(con)
+  bl \%>\% ba_chart()
 
   # Example 2
-  bl \%>\% chart(chart_type = "map")
+  bl \%>\% ba_chart(chart_type = "map")
 }
+}
+\seealso{
+Other brapiutils: \code{\link{as.ba_db}},
+  \code{\link{ba_authenticate}},
+  \code{\link{ba_can_internet}},
+  \code{\link{ba_chart.ba_genomemaps_details}},
+  \code{\link{ba_chart.ba_genomemaps}},
+  \code{\link{ba_chart}}, \code{\link{ba_check}},
+  \code{\link{ba_connect}}, \code{\link{ba_db}},
+  \code{\link{ba_describe.ba_locations}},
+  \code{\link{ba_describe}}, \code{\link{is.ba_con}},
+  \code{\link{print.ba_con}},
+  \code{\link{print.ba_db_list}}
 }
 \author{
 Reinhard Simon

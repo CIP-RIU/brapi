@@ -7,8 +7,9 @@
 #' @return The object of class 'brapi_con' with the authentication token filled.
 #'
 #' @author Reinhard Simon, Maikel Verouden
+#' @example inst/examples/ex-ba_authenticate.R
 #' @import httr
-#' @family brapi
+#' @family brapiutils
 #' @export
 ba_authenticate <- function(con) {
   stopifnot(is.ba_con(con))

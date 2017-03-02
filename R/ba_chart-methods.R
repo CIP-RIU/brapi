@@ -6,7 +6,7 @@
 #' @param ... other plot parameters
 #' @example inst/examples/ex-chart_locations.R
 #' @author Reinhard Simon
-#'
+#' @family brapiutils
 #' @export
 ba_chart.ba_locations <- function(x, ...) {
     prms <- list(...)
@@ -57,6 +57,7 @@ ba_chart.ba_locations <- function(x, ...) {
 #' @param ... other plot parameters
 #' @example inst/examples/ex-chart_genome_maps.R
 #' @author Reinhard Simon
+#'@family brapiutils
 #' @export
 ba_chart.ba_genomemaps <- function(x, ...) {
   prms <- list(...)
@@ -89,6 +90,7 @@ ba_chart.ba_genomemaps <- function(x, ...) {
 #' @param ... other plot parameters
 #' @example inst/examples/ex-chart_genome_maps_details.R
 #' @author Reinhard Simon
+#' @family brapiutils
 #' @export
 ba_chart.ba_genomemaps_details <- function(x, ...) {
   prms <- list(...)

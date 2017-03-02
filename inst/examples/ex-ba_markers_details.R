@@ -6,6 +6,6 @@ if (interactive()) {
 
   con <- ba_connect()
 
-  ba_markers_details(con, 3)
+  ba_markers_details(con, "3")
 
 }

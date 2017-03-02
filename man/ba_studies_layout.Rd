@@ -4,7 +4,7 @@
 \alias{ba_studies_layout}
 \title{ba_studies_layout}
 \usage{
-ba_studies_layout(con = NULL, studyDbId = 1, rclass = "tibble")
+ba_studies_layout(con = NULL, studyDbId = "1", rclass = "tibble")
 }
 \arguments{
 \item{con}{brapi connection object}
@@ -22,13 +22,13 @@ lists studies_layout available on a brapi server
 \examples{
 if (interactive()) {
   library(brapi)
-  library(magrittr)
+
 
   # make sure brapiTS::mock_server() is running in a separate process
 
   con <- ba_connect()
 
-  #TODO
+  ba_studies_layout(con, studyDbId = "1")
 
 }
 }

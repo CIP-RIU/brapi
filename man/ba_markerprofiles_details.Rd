@@ -11,7 +11,7 @@ ba_markerprofiles_details(con = NULL, markerprofilesDbId = "",
 \arguments{
 \item{con}{brapi connection object}
 
-\item{markerprofilesDbId}{integer; default 0}
+\item{markerprofilesDbId}{character; default 0}
 
 \item{expandHomozygotes}{logical; default false}
 
@@ -42,7 +42,7 @@ if (interactive()) {
 
   con <- ba_connect()
 
-  ba_markerprofiles_details(con, 3)
+  ba_markerprofiles_details(con, "3")
 
 }
 }

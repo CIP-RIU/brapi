@@ -4,15 +4,15 @@
 \alias{ba_genomemaps_data}
 \title{ba_genomemaps_data}
 \usage{
-ba_genomemaps_data(con = NULL, mapDbId = 0, linkageGroupId = 0,
+ba_genomemaps_data(con = NULL, mapDbId = "0", linkageGroupId = "0",
   page = 0, pageSize = 30, rclass = "tibble")
 }
 \arguments{
 \item{con}{brapi connection object}
 
-\item{mapDbId}{integer; default 0}
+\item{mapDbId}{character; default 0}
 
-\item{linkageGroupId}{integer; default 0}
+\item{linkageGroupId}{character; default 0}
 
 \item{page}{integer; default 0}
 
@@ -35,7 +35,7 @@ if (interactive()) {
 
   con <- ba_connect()
 
-  ba_genomemaps_details(con, mapDbId = 1)
+  ba_genomemaps_details(con, mapDbId = "1")
 
 }
 }

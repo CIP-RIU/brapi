@@ -26,9 +26,7 @@ ba_observationvariables_details <- function(con = NULL, observationVariableDbId 
         res <- brapiGET(brapi_variables_details, con = con)
         res <- httr::content(res, "text", encoding = "UTF-8")
         out <- NULL
-        if (!rclass %in% c("json", "list", "tibble", "data.frame")) {
-            rclass <- "json"
-        }
+
         if (rclass %in% c("json", "list")) {
             out <- dat2tbl(res, rclass)
         }

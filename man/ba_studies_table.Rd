@@ -4,7 +4,7 @@
 \alias{ba_studies_table}
 \title{ba_studies_table}
 \usage{
-ba_studies_table(con = NULL, studyDbId = 1, format = "json",
+ba_studies_table(con = NULL, studyDbId = "1", format = "json",
   rclass = "tibble")
 }
 \arguments{
@@ -25,13 +25,12 @@ lists studies_table available on a brapi server
 \examples{
 if (interactive()) {
   library(brapi)
-  library(magrittr)
 
   # make sure brapiTS::mock_server() is running in a separate process
 
   con <- ba_connect()
 
-  #TODO
+  ba_studies_table(con)
 
 }
 }

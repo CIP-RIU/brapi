@@ -17,7 +17,8 @@
 #' @family germplasmattributes
 #' @family genotyping
 #' @export
-ba_germplasmattributes_details <- function(con = NULL, germplasmDbId = "1", attributeList = "1", page = 0, pageSize = 10,
+ba_germplasmattributes_details <- function(con = NULL, germplasmDbId = "1", attributeList = "1",
+                                           page = 0, pageSize = 10,
     rclass = "tibble") {
     ba_check(con, FALSE)
     stopifnot(is.character(germplasmDbId))

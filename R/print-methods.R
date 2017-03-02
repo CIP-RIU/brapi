@@ -5,7 +5,7 @@
 #' @param x a brapi_con object
 #' @param ... other print parameters
 #' @author Reinhard Simon, Maikel Verouden
-#' @family brapi_con
+#' @family brapiutils
 #' @export
 print.ba_con <- function(x, ...) {
   # Print in console

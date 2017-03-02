@@ -5,6 +5,7 @@
 #' @return list
 #' @author Reinhard Simon
 #' @example inst/examples/ex-ba_db.R
+#' @family brapiutils
 #' @export
 ba_db <- function() {
   sweetpotatobase <- as.ba_db(crop = "sweetpotato",

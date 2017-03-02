@@ -32,13 +32,12 @@ BRAPI discussion: Should this return also the crop?
 \examples{
 if (interactive()) {
   library(brapi)
-  library(magrittr)
 
   # make sure brapiTS::mock_server() is running in a separate process
 
   con <- ba_connect()
 
-  #TODO
+  ba_programs(con)
 
 }
 }

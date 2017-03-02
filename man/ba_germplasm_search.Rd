@@ -4,9 +4,9 @@
 \alias{ba_germplasm_search}
 \title{ba_germplasm_search}
 \usage{
-ba_germplasm_search(con = NULL, germplasmDbId = 0, germplasmName = "none",
-  germplasmPUI = "none", page = 0, pageSize = 10, method = "GET",
-  rclass = "tibble")
+ba_germplasm_search(con = NULL, germplasmDbId = "0",
+  germplasmName = "none", germplasmPUI = "none", page = 0,
+  pageSize = 10, method = "GET", rclass = "tibble")
 }
 \arguments{
 \item{con}{brapi connection object}

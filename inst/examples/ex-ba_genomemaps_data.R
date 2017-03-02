@@ -6,6 +6,6 @@ if (interactive()) {
 
   con <- ba_connect()
 
-  ba_genomemaps_details(con, mapDbId = 1)
+  ba_genomemaps_details(con, mapDbId = "1")
 
 }

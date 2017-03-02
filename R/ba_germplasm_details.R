@@ -16,7 +16,7 @@
 #' @export
 ba_germplasm_details <- function(con = NULL, germplasmDbId = "0",
                               rclass = "tibble") {
-    # TODO: revision; rename: map
+
     ba_check(con, FALSE, "germplasm/id")
     stopifnot(is.character(germplasmDbId))
     check_rclass(rclass)

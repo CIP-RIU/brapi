@@ -4,7 +4,7 @@
 \alias{ba_studies_observationunits}
 \title{ba_studies_observationunits}
 \usage{
-ba_studies_observationunits(con = NULL, studyDbId = 1,
+ba_studies_observationunits(con = NULL, studyDbId = "1",
   observationLevel = "plot", rclass = "tibble")
 }
 \arguments{
@@ -25,13 +25,12 @@ lists studies_observationunits available on a brapi server
 \examples{
 if (interactive()) {
   library(brapi)
-  library(magrittr)
 
   # make sure brapiTS::mock_server() is running in a separate process
 
   con <- ba_connect()
 
-  #TODO
+  ba_studies_observationunits(con)
 
 }
 }

@@ -4,7 +4,7 @@
 \alias{ba_studies_seasons}
 \title{ba_studies_seasons}
 \usage{
-ba_studies_seasons(con = NULL, year = NULL, page = 0, pageSize = 1000,
+ba_studies_seasons(con = NULL, year = 0, page = 0, pageSize = 1000,
   rclass = "tibble")
 }
 \arguments{
@@ -27,13 +27,12 @@ lists the studies seasons and years
 \examples{
 if (interactive()) {
   library(brapi)
-  library(magrittr)
 
   # make sure brapiTS::mock_server() is running in a separate process
 
   con <- ba_connect()
 
-  #TODO
+  ba_studies_seasons(con)
 
 }
 }

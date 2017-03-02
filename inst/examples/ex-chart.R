@@ -9,16 +9,16 @@ if (interactive()) {
 
   # example 1
   gm <- ba_genomemaps(con)
-  gm %>% chart
+  gm %>% ba_chart
 
   # example 2
-  gmd <- ba_genomemaps_details(con, mapDbId = 1)
-  gmd %>% chart
+  gmd <- ba_genomemaps_details(con, mapDbId = "1")
+  gmd %>% ba_chart
 
   # example 3
-  bl <- ba_locations()
-  bl %>% chart()
+  bl <- ba_locations(con)
+  bl %>% ba_chart()
 
   # example 4
-  bl %>% chart(chart_type = "map")
+  bl %>% ba_chart(chart_type = "map")
 }

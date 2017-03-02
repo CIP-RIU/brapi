@@ -7,6 +7,7 @@
 #' @example inst/examples/ex-can_internet.R
 #' @references \href{http://stackoverflow.com/questions/5076593/how-to-determine-if-you-have-an-internet-connection-in-r}{Stack Overflow} and  \code{\link[curl]{has_internet}}
 #' @importFrom curl nslookup
+#' @family brapiutils
 #' @export
 ba_can_internet <- function(url = "www.google.org") {
   stopifnot(is.character(url))

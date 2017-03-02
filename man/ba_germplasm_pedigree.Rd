@@ -4,8 +4,8 @@
 \alias{ba_germplasm_pedigree}
 \title{ba_germplasm_pedigree}
 \usage{
-ba_germplasm_pedigree(con = NULL, germplasmDbId = 0, notation = "purdue",
-  rclass = "tibble")
+ba_germplasm_pedigree(con = NULL, germplasmDbId = "0",
+  notation = "purdue", rclass = "tibble")
 }
 \arguments{
 \item{con}{brapi connection object}
@@ -31,7 +31,7 @@ if (interactive()) {
 
   con <- ba_connect()
 
-  ba_germplasm_pedigree(con, germplasmDbId = 3)
+  ba_germplasm_pedigree(con, germplasmDbId = "3")
 
 }
 }

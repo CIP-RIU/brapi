@@ -26,7 +26,7 @@
 #' @author Reinhard Simon, Maikel Verouden
 #' @example inst/examples/ex_connect.R
 #' @return connection object
-#' @family access
+#' @family brapiutils
 #' @export
 ba_connect <- function(brapiDb = NULL,
                     secure = FALSE,

@@ -3,8 +3,8 @@
 #' lists genomemaps_details available on a brapi server
 #'
 #' @param con brapi connection object
-#' @param rclass string; default: tibble
-#' @param mapDbId integer; default 0
+#' @param rclass character; default: tibble
+#' @param mapDbId character; default 0
 #'
 #' @author Reinhard Simon
 #' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/GenomeMaps/GenomeMapDetails.md}
@@ -14,10 +14,10 @@
 #' @family genomemaps
 #' @family genotyping
 #' @export
-ba_genomemaps_details <- function(con = NULL, mapDbId = 1, rclass = "tibble") {
-    # TODO: revision; rename: map_
+ba_genomemaps_details <- function(con = NULL, mapDbId = "1", rclass = "tibble") {
+
     ba_check(con, FALSE, "maps/id")
-    stopifnot(is.numeric(mapDbId))
+    stopifnot(is.character(mapDbId))
     check_rclass(rclass)
     brp <- get_brapi(con)
     maps_list <- paste0(brp, "maps/", mapDbId, "/")

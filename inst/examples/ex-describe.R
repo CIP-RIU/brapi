@@ -7,5 +7,5 @@ if (interactive()) {
   con <- ba_connect()
 
   lcs <- ba_locations(con)
-  lcs %>% describe
+  lcs %>% ba_describe
 }

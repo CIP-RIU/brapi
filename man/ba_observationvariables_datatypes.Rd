@@ -26,7 +26,7 @@ if (interactive()) {
 
   con <- ba_connect()
 
-  #TODO
+  ba_observationvariables_datatypes(con)
 
 }
 }

@@ -20,13 +20,12 @@ lists studies_observationlevels available in a database
 \examples{
 if (interactive()) {
   library(brapi)
-  library(magrittr)
 
   # make sure brapiTS::mock_server() is running in a separate process
 
   con <- ba_connect()
 
-  #TODO
+  ba_studies_observationlevels(con)
 
 }
 }

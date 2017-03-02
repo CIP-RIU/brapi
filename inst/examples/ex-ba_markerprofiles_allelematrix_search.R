@@ -6,6 +6,6 @@ if (interactive()) {
 
   con <- ba_connect()
 
-  ba_markerprofiles_allelematrix_search(con, markerprofileDbId = 3)
+  ba_markerprofiles_allelematrix_search(con, markerprofileDbId = "3")
 
 }

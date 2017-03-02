@@ -4,12 +4,12 @@
 \alias{ba_traits_details}
 \title{ba_traits_details}
 \usage{
-ba_traits_details(con = NULL, traitDbId = 1, rclass = "tibble")
+ba_traits_details(con = NULL, traitDbId = "1", rclass = "tibble")
 }
 \arguments{
 \item{con}{object; brapi connection object}
 
-\item{traitDbId}{alphanumeric; default 1}
+\item{traitDbId}{character; default 1}
 
 \item{rclass}{string; default: tibble}
 }
@@ -22,13 +22,12 @@ lists brapi_traits_details available on a brapi server
 \examples{
 if (interactive()) {
   library(brapi)
-  library(magrittr)
 
   # make sure brapiTS::mock_server() is running in a separate process
 
   con <- ba_connect()
 
-  #TODO
+  ba_traits_details(con)
 
 }
 }

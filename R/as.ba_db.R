@@ -17,6 +17,7 @@
 #' @return ba_db class
 #' @author Reinhard Simon, Maikel Verouden
 #' @example inst/examples/ex-as_ba_db.R
+#' @family brapiutils
 #' @export
 as.ba_db <- function(secure = FALSE,
                         protocol = "http://",

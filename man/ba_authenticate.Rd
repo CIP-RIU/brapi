@@ -15,6 +15,30 @@ The object of class 'brapi_con' with the authentication token filled.
 \description{
 Caches a session token and informs of success or failure.
 }
+\examples{
+if (interactive()) {
+
+  library(brapi)
+
+  con <- ba_connect()
+
+  # ba_authenticate(con)
+
+}
+}
+\seealso{
+Other brapiutils: \code{\link{as.ba_db}},
+  \code{\link{ba_can_internet}},
+  \code{\link{ba_chart.ba_genomemaps_details}},
+  \code{\link{ba_chart.ba_genomemaps}},
+  \code{\link{ba_chart.ba_locations}},
+  \code{\link{ba_chart}}, \code{\link{ba_check}},
+  \code{\link{ba_connect}}, \code{\link{ba_db}},
+  \code{\link{ba_describe.ba_locations}},
+  \code{\link{ba_describe}}, \code{\link{is.ba_con}},
+  \code{\link{print.ba_con}},
+  \code{\link{print.ba_db_list}}
+}
 \author{
 Reinhard Simon, Maikel Verouden
 }

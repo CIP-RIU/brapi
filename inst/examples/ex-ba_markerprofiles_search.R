@@ -6,6 +6,6 @@ if (interactive()) {
 
   con <- ba_connect()
 
-  ba_markerprofiles_search(con, 3)
+  ba_markerprofiles_search(con, "3")
 
 }

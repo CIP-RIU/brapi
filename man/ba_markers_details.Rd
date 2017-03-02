@@ -4,12 +4,12 @@
 \alias{ba_markers_details}
 \title{ba_markers_details}
 \usage{
-ba_markers_details(con = NULL, markerDbId = 0, rclass = "tibble")
+ba_markers_details(con = NULL, markerDbId = "0", rclass = "tibble")
 }
 \arguments{
 \item{con}{brapi connection object}
 
-\item{markerDbId}{integer; marker id; default: 0}
+\item{markerDbId}{character; marker id; default: 0}
 
 \item{rclass}{character; default: tibble}
 }
@@ -28,7 +28,7 @@ if (interactive()) {
 
   con <- ba_connect()
 
-  ba_markers_details(con, 3)
+  ba_markers_details(con, "3")
 
 }
 }

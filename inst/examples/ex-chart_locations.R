@@ -8,9 +8,9 @@ if (interactive()) {
   con <- ba_connect()
 
   # Example 1
-  bl <- ba_locations()
-  bl %>% chart()
+  bl <- ba_locations(con)
+  bl %>% ba_chart()
 
   # Example 2
-  bl %>% chart(chart_type = "map")
+  bl %>% ba_chart(chart_type = "map")
 }

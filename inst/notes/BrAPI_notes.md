@@ -137,19 +137,7 @@ htt- defines page and pageSize in parameters (should also be defined then for at
 - parameters page & pageSize not documentedl but probably implied
 
 
-
-# TODO
-
-- remove global variable brapi_db and replace with con object and parameter
-  - add additionalPath elements to connection object
-  - revise session/token part and update for all calls; use authenticate header
-  - whitelist in csv tabular form
-- add special case handler for bmsapi calls since not all use the standard pattern
-- update all reference url to new github API calls
-- update connect function to handle case where the calls 'calls' and 'crops' are not implemented by a database
-  - use a local checklist!
--   
-  
+ 
   
   
   

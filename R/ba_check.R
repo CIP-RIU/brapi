@@ -7,7 +7,8 @@
 #' @param con brapi_connection object
 #' @param verbose logical; default TRUE
 #' @param brapi_calls character vector; default: any. Use to check if one or more calls are implemented by the server according to the calls url.
-#' @family brapiutil
+#' @family brapiutils
+#'
 #' @return logical
 #' @author Reinhard Simon
 #' @example inst/examples/ex-ba_check.R

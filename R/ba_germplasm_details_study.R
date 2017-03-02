@@ -20,7 +20,7 @@
 ba_germplasm_details_study <- function(con = NULL, studyDbId = "123",
                                     page = 0, pageSize = 1000,
                                     rclass = "tibble") {
-    # TODO revise name: to group into germplasm
+
     ba_check(con, FALSE, "studies/id/germplasm")
     stopifnot(is.character(studyDbId))
     check_paging(pageSize, page)

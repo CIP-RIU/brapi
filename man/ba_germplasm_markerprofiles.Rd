@@ -4,7 +4,7 @@
 \alias{ba_germplasm_markerprofiles}
 \title{ba_germplasm_markerprofiles}
 \usage{
-ba_germplasm_markerprofiles(con = NULL, germplasmDbId = 3,
+ba_germplasm_markerprofiles(con = NULL, germplasmDbId = "3",
   rclass = "tibble")
 }
 \arguments{

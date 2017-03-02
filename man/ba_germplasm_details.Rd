@@ -4,7 +4,7 @@
 \alias{ba_germplasm_details}
 \title{ba_germplasm_details}
 \usage{
-ba_germplasm_details(con = NULL, germplasmDbId = 0, rclass = "tibble")
+ba_germplasm_details(con = NULL, germplasmDbId = "0", rclass = "tibble")
 }
 \arguments{
 \item{con}{brapi connection object}
