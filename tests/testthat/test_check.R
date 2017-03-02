@@ -10,6 +10,15 @@ test_that("Check parameters work.", {
 
   spb <- brapi::ba_db()$sweetpotato
   expect_equal(ba_check(spb), TRUE)
+
+  expect_error(ba_check("x"))
+  expect_error(ba_check(spb, "x"))
+  expect_error(ba_check(spb, 1))
+
+  expect_error(ba_check(spb, TRUE, 1))
+  expect_error(ba_check(spb, brapi_calls = FALSE))
+
+
 })
 
 

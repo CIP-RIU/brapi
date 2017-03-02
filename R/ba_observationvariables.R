@@ -19,6 +19,9 @@
 #' @export
 ba_observationvariables <- function(con = NULL, traitClass = "all", page = 0, pageSize = 1000, rclass = "tibble") {
     ba_check(con, FALSE, "variables")
+    stopifnot(is.character(traitClass))
+    check_paging(pageSize, page)
+    check_rclass(rclass)
 
     brp <- get_brapi(con)
     brapi_variables <- paste0(brp, "variables/?")
@@ -32,9 +35,6 @@ ba_observationvariables <- function(con = NULL, traitClass = "all", page = 0, pa
         res <- brapiGET(brapi_variables, con = con)
         res <- httr::content(res, "text", encoding = "UTF-8")
         out <- NULL
-        if (!rclass %in% c("json", "list", "tibble", "data.frame")) {
-            rclass <- "json"
-        }
 
         if (rclass %in% c("json", "list")) {
             out <- dat2tbl(res, rclass)

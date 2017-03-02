@@ -25,6 +25,14 @@ ba_genomemaps_data_range <- function(con = NULL, mapDbId = 1, linkageGroupId = 1
     pageSize = 30, rclass = "tibble") {
     # TODO: revision; rename: map_data_range
     ba_check(con, FALSE, "maps/id/positions/id")
+    stopifnot(is.numeric(mapDbId))
+    stopifnot(is.numeric(linkageGroupId))
+    stopifnot(is.numeric(min))
+    stopifnot(is.numeric(max))
+    stopifnot(max > min)
+    check_paging(pageSize, page)
+    check_rclass(rclass)
+
     brp <- get_brapi(con)
     maps_positions_range_list <- paste0(brp, "maps/", mapDbId, "/positions/",
                                        linkageGroupId, "/?")

@@ -11,6 +11,7 @@
 #' @family brapi
 #' @export
 ba_authenticate <- function(con) {
+  stopifnot(is.ba_con(con))
   brapi <- con
   # Check for internet connection
   if (!ba_can_internet()) {

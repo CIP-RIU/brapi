@@ -8,15 +8,14 @@ context("Testing the path 'trials'")
 
 test_that("Trials are listed.", {
   expect_equal(length(ba_trials(con, rclass = "list")), 2)
-  expect_equal(nrow(ba_trials(con, rclass = "data.frame")), 11)
-  expect_equal(nrow(ba_trials(con, rclass = "tibble")), 11)
+  expect_equal(nrow(ba_trials(con, rclass = "data.frame")), 2)
+  expect_equal(nrow(ba_trials(con, rclass = "tibble")), 2)
   expect_equal("ba_trials" %in% class(ba_trials(con )), TRUE)
 })
 
 test_that("parameters.", {
-  expect_equal(nrow(ba_trials(con, programDbId = 1)), 2)
+  expect_equal(nrow(ba_trials(con, programDbId = "any")), 2)
   expect_equal(nrow(ba_trials(con, active = FALSE)), 9)
-
 })
 
 

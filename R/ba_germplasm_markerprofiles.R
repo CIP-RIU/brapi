@@ -16,8 +16,11 @@
 #' @family germplasm
 #' @family genotyping
 #' @export
-ba_germplasm_markerprofiles <- function(con = NULL, germplasmDbId = 3, rclass = "tibble") {
+ba_germplasm_markerprofiles <- function(con = NULL, germplasmDbId = "3", rclass = "tibble") {
     ba_check(con, FALSE)
+    stopifnot(is.character(germplasmDbId))
+    check_rclass(rclass)
+
     germplasm_markerprofiles <- paste0(get_brapi(con), "germplasm/", germplasmDbId, "/markerprofiles/")
     try({
         res <- brapiGET(germplasm_markerprofiles, con = con)

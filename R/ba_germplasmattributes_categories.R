@@ -17,6 +17,9 @@
 #' @export
 ba_germplasmattributes_categories <- function(con = NULL, page = 0, pageSize = 10, rclass = "tibble") {
     ba_check(con, FALSE)
+    check_paging(pageSize, page)
+    check_rclass(rclass)
+
     brp <- get_brapi(con)
     attributes_categories_list <- paste0(brp, "attributes/categories/")
     if (is.numeric(page) & is.numeric(pageSize)) {

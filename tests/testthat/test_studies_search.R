@@ -17,7 +17,7 @@ test_that("Study type.", {
 })
 
 test_that("POST.", {
-  expect_equal(nrow(ba_studies_search(con, germplasmDbIds = 1:1000)), 11)
+  expect_equal(nrow(ba_studies_search(con, germplasmDbIds = as.character(1:1000))), 11)
 })
 
 

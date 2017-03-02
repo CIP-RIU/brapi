@@ -38,9 +38,19 @@ ba_markerprofiles_allelematrix_search <- function(con = NULL, markerprofileDbId 
                              sepUnphased = "/",
                              format = "json",
                              page = 0, pageSize = 10000,
-                             #method = "GET",
+
                              rclass = "tibble") {
   ba_check(con, FALSE, "allelematrix-search")
+  stopifnot(is.character(markerprofileDbId))
+  stopifnot(is.character(markerDbId))
+  stopifnot(is.logical(expandHomozygotes))
+  stopifnot(is.character(unknownString))
+  stopifnot(is.character(sepPhased))
+  stopifnot(is.character(sepUnphased))
+  stopifnot(format %in% c("json", "tsv", "csv"))
+  check_paging(pageSize, page)
+  check_rclass(rclass)
+
   brp <- get_brapi(con)
 
   pallelematrix_search <- paste0(brp, "allelematrix-search/?")

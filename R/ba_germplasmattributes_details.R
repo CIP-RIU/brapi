@@ -4,8 +4,8 @@
 #'
 #' @param con brapi connection object
 #' @param rclass character; default: tibble; or else: json, list, data.frame.
-#' @param germplasmDbId integer; default: 1.
-#' @param attributeList integer vector; default: 1.
+#' @param germplasmDbId character; default: 1.
+#' @param attributeList character vector; default: 1.
 #' @param page integer; default: 0.
 #' @param pageSize integer; default: 10.
 #'
@@ -17,9 +17,14 @@
 #' @family germplasmattributes
 #' @family genotyping
 #' @export
-ba_germplasmattributes_details <- function(con = NULL, germplasmDbId = 1, attributeList = 1, page = 0, pageSize = 10,
+ba_germplasmattributes_details <- function(con = NULL, germplasmDbId = "1", attributeList = "1", page = 0, pageSize = 10,
     rclass = "tibble") {
     ba_check(con, FALSE)
+    stopifnot(is.character(germplasmDbId))
+    stopifnot(is.character(attributeList))
+    check_paging(pageSize, page)
+    check_rclass(rclass)
+
     brp <- get_brapi(con)
     germplasm_attributes_list <- paste0(brp, "germplasm/", germplasmDbId, "/attributes/?attributeList=",
         paste(attributeList, collapse = ","), "&page=", page, "&pageSize=", pageSize)

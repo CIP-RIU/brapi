@@ -15,8 +15,11 @@
 #' @family studies
 #' @family phenotyping
 #' @export
-ba_studies_observationvariables <- function(con = NULL, studyDbId = 1, rclass = "tibble") {
+ba_studies_observationvariables <- function(con = NULL, studyDbId = "1", rclass = "tibble") {
     ba_check(con, FALSE, "studies/id/observationVariables")
+    stopifnot(is.character(studyDbId))
+    check_rclass(rclass)
+
     brp <- get_brapi(con)
     studies_observationVariables_list <- paste0(brp, "studies/", studyDbId, "/observationVariables/?")
 

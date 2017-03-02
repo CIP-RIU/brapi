@@ -18,6 +18,10 @@
 ba_calls <- function(con = NULL, datatypes = "all",
                   pageSize = 50, page = 0, rclass = "tibble") {
     ba_check(con, FALSE, "calls")
+    check_paging(pageSize, page)
+    check_rclass(rclass)
+    stopifnot(datatypes %in% c("all", "json", "csv", "tsv"))
+
     brp <- get_brapi(con)
     brapi_calls <- paste0(brp, "calls/?")
     pdatatypes <- ifelse(datatypes == "all", "", paste0("datatypes=",

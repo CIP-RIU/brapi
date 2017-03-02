@@ -13,8 +13,8 @@ test_that("Calls are listed.", {
 test_that("Parameters are tested.", {
   expect_equal(nrow(ba_germplasm_details(con, )), 6)
   expect_equal(nrow(ba_germplasm_details(con, rclass = "data.frame")), 6)
-  expect_equal(length(ba_germplasm_details(con, 1, rclass = "list")$result$data), 1)
-  expect_equal(length(ba_germplasm_details(con, 5, rclass = "list")$result$data), 1)
+  expect_equal(length(ba_germplasm_details(con, "1", rclass = "list")$result$data), 1)
+  expect_equal(length(ba_germplasm_details(con, "5", rclass = "list")$result$data), 1)
  })
 
 

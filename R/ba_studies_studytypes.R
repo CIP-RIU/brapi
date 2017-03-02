@@ -18,6 +18,9 @@
 #' @export
 ba_studies_studytypes <- function(con = NULL, page = 0, pageSize = 1000, rclass = "tibble") {
     ba_check(con, FALSE, "studyTypes")
+    check_paging(pageSize, page)
+    check_rclass(rclass)
+
     brp <- get_brapi(con)
     pstudyTypes <- paste0(brp, "studyTypes/?")
 

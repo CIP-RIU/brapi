@@ -14,6 +14,9 @@
 #' @export
 ba_check <- function(con = NULL, verbose = TRUE, brapi_calls = "any") {
     stopifnot(is.ba_con(con))
+    stopifnot(is.logical(verbose))
+    stopifnot(is.character(brapi_calls))
+
     brapi <- con
     if (is.null(brapi))
         stop("BrAPI connection object is NULL. Use brapi::connect()")

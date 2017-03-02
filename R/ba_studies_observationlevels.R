@@ -13,6 +13,7 @@
 #' @export
 ba_studies_observationlevels <- function(con = NULL, rclass = "vector") {
     ba_check(con, FALSE, "observationLevels")
+    check_rclass(rclass)
     observationLevels_List <- paste0(get_brapi(con), "observationLevels")
     try({
         res <- brapiGET(observationLevels_List, con = con)

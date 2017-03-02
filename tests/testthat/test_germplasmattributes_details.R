@@ -15,7 +15,7 @@ test_that("Calls are listed.", {
 test_that("Parameters are tested.", {
   acall <- ba_germplasmattributes_details(con, pageSize = 1)
   expect_equal(nrow(acall), 1)
-  acall <- ba_germplasmattributes_details(con, 0, pageSize = 2)
+  acall <- ba_germplasmattributes_details(con, "0", pageSize = 2)
   expect_equal(nrow(acall), 2)
 })
 

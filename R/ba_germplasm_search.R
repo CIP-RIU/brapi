@@ -24,10 +24,16 @@
 #' @family genotyping
 #' @family germplasm
 #' @export
-ba_germplasm_search <- function(con = NULL, germplasmDbId = 0, germplasmName = "none",
+ba_germplasm_search <- function(con = NULL, germplasmDbId = "0", germplasmName = "none",
                              germplasmPUI = "none",
     page = 0, pageSize = 10, method = "GET", rclass = "tibble") {
     ba_check(con, FALSE, "germplasm-search")
+    stopifnot(is.character(germplasmDbId))
+    stopifnot(is.character(germplasmName))
+    stopifnot(is.character(germplasmPUI))
+    check_paging(pageSize, page)
+    check_rclass(rclass)
+
     brp <- get_brapi(con)
     if (is.numeric(page) & is.numeric(pageSize)) {
         germplasm_search <- paste0(brp, "germplasm-search/?page=", page, "&pageSize=", pageSize)

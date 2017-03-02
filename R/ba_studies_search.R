@@ -31,6 +31,18 @@ ba_studies_search <- function(con = NULL, studyType = "any", programDbId = "any"
                            page = 0, pageSize = 1000, rclass = "tibble") {
   ba_check(con, FALSE, "studies-search")
   brp <- get_brapi(con)
+  stopifnot(is.character(studyType))
+  stopifnot(is.character(programDbId))
+  stopifnot(is.character(locationDbId))
+  stopifnot(is.character(seasonDbId))
+  stopifnot(is.character(germplasmDbIds))
+  stopifnot(is.character(observationVariableDbIds))
+  stopifnot(is.character(active))
+  stopifnot(is.character(sortBy))
+  stopifnot(is.character(sortOrder))
+  check_paging(pageSize, page)
+  check_rclass(rclass)
+
   pstudies_search <- paste0(brp, "studies-search/?")
 
   pstudyType <- paste0("studyType=", studyType, "&")

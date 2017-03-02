@@ -17,6 +17,8 @@
 ba_genomemaps_details <- function(con = NULL, mapDbId = 1, rclass = "tibble") {
     # TODO: revision; rename: map_
     ba_check(con, FALSE, "maps/id")
+    stopifnot(is.numeric(mapDbId))
+    check_rclass(rclass)
     brp <- get_brapi(con)
     maps_list <- paste0(brp, "maps/", mapDbId, "/")
     try({

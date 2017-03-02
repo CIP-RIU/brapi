@@ -18,9 +18,14 @@
 #' @family studies
 #' @family phenotyping
 #' @export
-ba_studies_observations <- function(con = NULL, studyDbId = 1, observationVariableDbId = 1:3,
+ba_studies_observations <- function(con = NULL, studyDbId = "1", observationVariableDbId = as.character(1:3),
                                  page = 0, pageSize = 1000, rclass = "tibble") {
     ba_check(con, FALSE, "studies/id/observations")
+    stopifnot(is.character(studyDbId))
+    stopifnot(is.character(observationVariableDbId))
+    check_paging(pageSize, page)
+    check_rclass(rclass)
+
     brp <- get_brapi(con)
     studies_observations_list <- paste0(brp, "studies/", studyDbId, "/observations/?")
 

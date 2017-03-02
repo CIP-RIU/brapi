@@ -13,9 +13,9 @@ test_that("Basics.", {
 })
 
 test_that("Parameters", {
-  expect_equal(nrow(ba_studies_table(con, studyDbId = 1)), 8)
-  expect_equal(nrow(ba_studies_table(con, studyDbId = 2)), 6)
-  expect_equal(nrow(ba_studies_table(con, studyDbId = 2, format = "tsv")), 6)
+  expect_equal(nrow(ba_studies_table(con, studyDbId = "1")), 8)
+  expect_equal(nrow(ba_studies_table(con, studyDbId = "2")), 6)
+  expect_equal(nrow(ba_studies_table(con, studyDbId = "2", format = "tsv")), 6)
 })
 
 

@@ -14,8 +14,11 @@
 #' @family germplasmattributes
 #' @family genotyping
 #' @export
-ba_germplasmattributes <- function(con = NULL, attributeCategoryDbId = 0, rclass = "tibble") {
+ba_germplasmattributes <- function(con = NULL, attributeCategoryDbId = "0", rclass = "tibble") {
     ba_check(con, FALSE)
+    stopifnot(is.character(attributeCategoryDbId))
+    check_rclass(rclass)
+
     brp <- get_brapi(con)
     attributes_list <- paste0(brp, "attributes/?attributeCategoryDbId=", attributeCategoryDbId)
 

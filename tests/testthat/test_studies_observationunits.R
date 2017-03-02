@@ -12,10 +12,10 @@ test_that("Basics.", {
 })
 
 test_that("Parameters", {
-  expect_equal(nrow(ba_studies_observationunits(con, 1)), 3)
-  expect_equal(nrow(ba_studies_observationunits(con, 2)), 4)
-  expect_equal("plotNumber" %in% colnames(ba_studies_observationunits(con, 1, "plot")), TRUE)
-  expect_equal("plantNumber" %in% colnames(ba_studies_observationunits(con, 1, "plant")), TRUE)
+  expect_equal(nrow(ba_studies_observationunits(con, "1")), 3)
+  expect_equal(nrow(ba_studies_observationunits(con, "2")), 4)
+  expect_equal("plotNumber" %in% colnames(ba_studies_observationunits(con, "1", "plot")), TRUE)
+  expect_equal("plantNumber" %in% colnames(ba_studies_observationunits(con, "1", "plant")), TRUE)
 })
 
 

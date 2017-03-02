@@ -16,7 +16,11 @@
 #' @export
 ba_observationvariables_ontologies <- function(con = NULL, page = 0, pageSize = 1000, rclass = "tibble") {
     ba_check(con, FALSE, "ontologies")
+    check_paging(pageSize, page)
+    check_rclass(rclass)
+
     brp <- get_brapi(con)
+
     variables_ontologies <- paste0(brp, "ontologies/?")
 
     ppage <- paste0("page=", page, "")

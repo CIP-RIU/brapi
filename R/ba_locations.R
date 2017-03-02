@@ -18,6 +18,10 @@
 #' @export
 ba_locations <- function(con = NULL, locationType = "all", page = 0, pageSize = 1e+06, rclass = "tibble") {
     ba_check(con, FALSE, "locations")
+    stopifnot(is.character(locationType))
+    check_paging(pageSize, page)
+    check_rclass(rclass)
+
     brp <- get_brapi(con)
     locations_list <- paste0(brp, "locations/?")
     plocationType <- ifelse(locationType != "all", paste0("locationType=", locationType, "&"), "")

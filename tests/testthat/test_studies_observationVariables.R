@@ -13,8 +13,8 @@ test_that("Basics.", {
 })
 
 test_that("Parameters", {
-  expect_equal(nrow(ba_studies_observationvariables(con, 1)), 2)
-  expect_equal(nrow(ba_studies_observationvariables(con, 2)), 3)
+  expect_equal(nrow(ba_studies_observationvariables(con, "1")), 2)
+  expect_equal(nrow(ba_studies_observationvariables(con, "2")), 3)
 })
 
 

@@ -21,6 +21,11 @@
 ba_programs <- function(con = NULL, programName = "any", abbreviation = "any",
                      page = 0, pageSize = 10000, rclass = "tibble") {
     ba_check(con, FALSE, "programs")
+    stopifnot(is.character(programName))
+    stopifnot(is.character(abbreviation))
+    check_paging(pageSize, page)
+    check_rclass(rclass)
+
     brp <- get_brapi(con)
 
     pprograms <- paste0(brp, "programs/?")

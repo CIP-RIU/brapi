@@ -16,9 +16,12 @@
 #' @family studies
 #' @family phenotyping
 #' @export
-ba_studies_table <- function(con = NULL, studyDbId = 1, format = "json", rclass = "tibble") {
+ba_studies_table <- function(con = NULL, studyDbId = "1", format = "json", rclass = "tibble") {
     ba_check(con, FALSE, "studies/id/table")
-    #
+    stopifnot(is.character(studyDbId))
+    stopifnot(format %in% c("json", "tsv", "csv"))
+    check_rclass(rclass)
+
     brp <- get_brapi(con)
     studies_table <- paste0(brp, "studies/", studyDbId, "/table/?")
 

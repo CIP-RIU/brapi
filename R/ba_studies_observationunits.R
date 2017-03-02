@@ -16,8 +16,12 @@
 #' @family studies
 #' @family phenotyping
 #' @export
-ba_studies_observationunits <- function(con = NULL, studyDbId = 1, observationLevel = "plot", rclass = "tibble") {
+ba_studies_observationunits <- function(con = NULL, studyDbId = "1", observationLevel = "plot", rclass = "tibble") {
     ba_check(con, FALSE, "studies/id/observationunits")
+    stopifnot(is.character(studyDbId))
+    stopifnot(observationLevel %in% c("plot", "plant"))
+    check_rclass(rclass)
+
     brp <- get_brapi(con)
     studies_observationunits_list <- paste0(brp, "studies/", studyDbId, "/observationunits/?")
     observationLevel <- ifelse(observationLevel == "plant", "observationLevel=plant", "observationLevel=plot")

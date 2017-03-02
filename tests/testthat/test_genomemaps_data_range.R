@@ -28,8 +28,6 @@ test_that("map paging work.", {
 test_that("Classes", {
   expect_equal("json" %in%
                 class(ba_genomemaps_data_range(con, rclass = "json")), TRUE)
-  expect_equal("json" %in%
-                class(ba_genomemaps_data_range(con, rclass = "something")), TRUE)
   expect_equal("list" %in%
                 class(ba_genomemaps_data_range(con, rclass = "list")), TRUE)
   expect_equal("data.frame" %in%

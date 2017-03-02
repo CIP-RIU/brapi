@@ -7,7 +7,7 @@ context("Testing describe methods")
 test_that("print output for 'ba_locations'.", {
   con <- ba_connect(secure = FALSE)
 
-  out <- capture.output( ba_locations(con) %>% describe() )
+  out <- capture.output( ba_locations(con) %>% ba_describe() )
 
   expect_equal(length(out), 3)
   expect_equal(out[1], "n locations = 17")

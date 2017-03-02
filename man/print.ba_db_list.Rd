@@ -15,8 +15,8 @@
 print method for an object of class ba_db_list
 }
 \seealso{
-Other brapiutils: \code{\link{chart}},
-  \code{\link{describe}}, \code{\link{is.ba_con}}
+Other brapiutils: \code{\link{ba_chart}},
+  \code{\link{ba_describe}}, \code{\link{is.ba_con}}
 }
 \author{
 Reinhard Simon, Maikel Verouden

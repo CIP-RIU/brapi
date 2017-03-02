@@ -14,8 +14,11 @@
 #' @family studies
 #' @family phenotyping
 #' @export
-ba_studies_details <- function(con = NULL, studiesDbId = 0, rclass = "tibble") {
+ba_studies_details <- function(con = NULL, studiesDbId = "0", rclass = "tibble") {
     ba_check(con, FALSE, "studies/id")
+    stopifnot(is.character(studiesDbId))
+    check_rclass(rclass)
+
     studies <- paste0(get_brapi(con), "studies/", studiesDbId, "/")
     try({
         res <- brapiGET(studies, con = con)

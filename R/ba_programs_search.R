@@ -24,6 +24,13 @@ ba_programs_search <- function(con = NULL,
                             objective = "any", leadPerson = "any",
                             rclass = "tibble") {
   ba_check(con, FALSE, "programs-search")
+  stopifnot(is.character(programDbId))
+  stopifnot(is.character(name))
+  stopifnot(is.character(abbreviation))
+  stopifnot(is.character(objective))
+  stopifnot(is.character(leadPerson))
+  check_rclass(rclass)
+
   brp <- get_brapi(con)
 
   pprograms <- paste0(brp, "programs-search/")

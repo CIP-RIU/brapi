@@ -1,4 +1,4 @@
-#' chart
+#' ba_chart
 #'
 #' A generic method to chart brapi objects
 #'
@@ -8,12 +8,12 @@
 #' @example inst/examples/ex-chart.R
 #' @family brapiutils
 #' @export
-chart <- function (x, ...) {
-  return(UseMethod("chart", x))
+ba_chart <- function (x, ...) {
+  return(UseMethod("ba_chart", x))
 }
 
 
-#' describe
+#' ba_describe
 #'
 #' A generic method to sum up brapi objects
 #'
@@ -23,6 +23,6 @@ chart <- function (x, ...) {
 #' @example inst/examples/ex-describe.R
 #' @family brapiutils
 #' @export
-describe <- function (x, ...) {
-  return(UseMethod("describe", x))
+ba_describe <- function (x, ...) {
+  return(UseMethod("ba_describe", x))
 }

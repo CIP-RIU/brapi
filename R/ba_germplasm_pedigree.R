@@ -16,8 +16,11 @@
 #' @family germplasm
 #' @family brapicore
 #' @export
-ba_germplasm_pedigree <- function(con = NULL, germplasmDbId = 0, notation = "purdue", rclass = "tibble") {
+ba_germplasm_pedigree <- function(con = NULL, germplasmDbId = "0", notation = "purdue", rclass = "tibble") {
     ba_check(con, FALSE)
+    stopifnot(is.character(germplasmDbId))
+    stopifnot(notation == "purdue")
+    check_rclass(rclass)
 
     germplasm_pedigree <- paste0(get_brapi(con), "germplasm/", germplasmDbId, "/pedigree/?notation=", notation)
 

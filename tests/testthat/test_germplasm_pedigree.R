@@ -11,21 +11,21 @@ test_that("Calls are listed.", {
 })
 
 test_that("Parameters are tested.", {
-  expect_equal(length(ba_germplasm_pedigree(con, 1, rclass = "list")$result), 4)
-  expect_equal(length(ba_germplasm_pedigree(con, 5, rclass = "list")$result), 4)
-  expect_equal(length(ba_germplasm_pedigree(con, 5, notation = "purdue", rclass = "list")$result), 4)
-  expect_equal(ba_germplasm_pedigree(con, 5, rclass = "list")$result$pedigree, "landrace")
-  expect_equal(ba_germplasm_pedigree(con, 3, rclass = "list")$result$parent1Id, 1)
-  expect_equal(ba_germplasm_pedigree(con, 3, rclass = "list")$result$parent2Id, 2)
+  expect_equal(length(ba_germplasm_pedigree(con, "1", rclass = "list")$result), 4)
+  expect_equal(length(ba_germplasm_pedigree(con, "5", rclass = "list")$result), 4)
+  expect_equal(length(ba_germplasm_pedigree(con, "5", notation = "purdue", rclass = "list")$result), 4)
+  expect_equal(ba_germplasm_pedigree(con, "5", rclass = "list")$result$pedigree, "landrace")
+  expect_equal(ba_germplasm_pedigree(con, "3", rclass = "list")$result$parent1Id, 1)
+  expect_equal(ba_germplasm_pedigree(con, "3", rclass = "list")$result$parent2Id, 2)
  })
 
 
 test_that("Classes", {
-  expect_equal("tbl_df" %in% class(ba_germplasm_pedigree(con, 3, rclass = "tibble")), TRUE)
-  expect_equal("json" %in% class(ba_germplasm_pedigree(con, 3, rclass = "json")), TRUE)
-  expect_equal("list" %in% class(ba_germplasm_pedigree(con, 3, rclass = "list")), TRUE)
-  expect_equal("data.frame" %in% class(ba_germplasm_pedigree(con, 3, rclass = "data.frame")), TRUE)
-  expect_equal("ba_germplasm_pedigree" %in% class(ba_germplasm_pedigree(con, 3)), TRUE)
+  expect_equal("tbl_df" %in% class(ba_germplasm_pedigree(con, "3", rclass = "tibble")), TRUE)
+  expect_equal("json" %in% class(ba_germplasm_pedigree(con, "3", rclass = "json")), TRUE)
+  expect_equal("list" %in% class(ba_germplasm_pedigree(con, "3", rclass = "list")), TRUE)
+  expect_equal("data.frame" %in% class(ba_germplasm_pedigree(con, "3", rclass = "data.frame")), TRUE)
+  expect_equal("ba_germplasm_pedigree" %in% class(ba_germplasm_pedigree(con, "3")), TRUE)
 })
 
 

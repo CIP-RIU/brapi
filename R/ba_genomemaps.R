@@ -19,8 +19,14 @@
 #' @export
 ba_genomemaps <- function(con = NULL, species = "all", type = "all",
                        page = 0, pageSize = 30, rclass = "tibble") {
-    # TODO: revision; rename: map
+
     ba_check(con, FALSE, "maps")
+    stopifnot(is.character(species))
+    stopifnot(is.character(type))
+    check_paging(pageSize, page)
+    check_rclass(rclass)
+
+
     brp <- get_brapi(con)
     genomemaps_list <- paste0(brp, "maps/?")
     species <- ifelse(species != "all", paste0("species=", species, "&"), "")

@@ -1,4 +1,4 @@
-#' describe.ba_locations
+#' ba_describe.ba_locations
 #'
 #' describe method for an object of class brapi_con, which will only display the crop,  database address:port and user
 #'
@@ -7,7 +7,7 @@
 #' @author Reinhard Simon
 #' @example inst/examples/ex-describe.R
 #' @export
-describe.ba_locations <- function(x, ...) {
+ba_describe.ba_locations <- function(x, ...) {
     # Print in console
     missing_geo <- x[is.na(x$latitude), ]
     cpl <- nrow(x)

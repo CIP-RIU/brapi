@@ -27,6 +27,13 @@ ba_markers_search <- function(con = NULL, name = "*", type = "all", matchMethod 
                            include = "synonyms",
     page = 0, pageSize = 1000, rclass = "tibble") {
     ba_check(con, FALSE, "markers")
+    stopifnot(is.character(name))
+    stopifnot(is.character(type))
+    stopifnot(matchMethod %in% c("wildcard", "case_insensitive", "exact"))
+    stopifnot(include == "synonyms")
+    check_paging(pageSize, page)
+    check_rclass(rclass)
+
     brp <- get_brapi(con)
     marker_search <- paste0(brp, "markers/?")
 

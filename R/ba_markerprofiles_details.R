@@ -4,7 +4,7 @@
 #' Lists markers as result of a search.
 #'
 #' @param con brapi connection object
-#' @param markerprofilesDbId integer; default 0
+#' @param markerprofilesDbId character; default 0
 #' @param expandHomozygotes logical; default false
 #' @param unknownString chaaracter; default: '-'
 #' @param sepPhased character; default: '|'
@@ -28,6 +28,13 @@ ba_markerprofiles_details <- function(con = NULL, markerprofilesDbId = "", expan
                                    unknownString = "N",
     sepPhased = "|", sepUnphased = "/", page = 0, pageSize = 10000, rclass = "tibble") {
     ba_check(con, FALSE, "markerprofiles/id/")
+    stopifnot(is.character(markerprofilesDbId))
+    stopifnot(is.logical(expandHomozygotes))
+    stopifnot(is.character(sepPhased))
+    stopifnot(is.character(sepUnphased))
+    check_paging(pageSize, page)
+    check_rclass(rclass)
+
     brp <- get_brapi(con)
     markerprofiles_alleles <- paste0(brp, "markerprofiles/", markerprofilesDbId, "/?")
 

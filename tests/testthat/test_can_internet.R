@@ -6,7 +6,8 @@ context("Testing 'can_internet'")
 
 test_that("Can internet parameters work.", {
   expect_equal(ba_can_internet(), TRUE)
-
+  expect_error(ba_can_internet(1))
+  expect_error(ba_can_internet(TRUE))
 })
 
 }

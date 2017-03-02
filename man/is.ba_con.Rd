@@ -16,8 +16,8 @@ boolean (TRUE of FALSE)
 check whether an object is of class brapi_con
 }
 \seealso{
-Other brapiutils: \code{\link{chart}},
-  \code{\link{describe}}, \code{\link{print.ba_db_list}}
+Other brapiutils: \code{\link{ba_chart}},
+  \code{\link{ba_describe}}, \code{\link{print.ba_db_list}}
 }
 \author{
 Reinahard Simon, Maikel Verouden

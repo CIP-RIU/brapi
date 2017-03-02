@@ -18,6 +18,9 @@
 ba_trials_details <- function(con = NULL, trialDbId = "any", rclass = "tibble") {
     ba_check(con, FALSE, "trials/id")
     brp <- get_brapi(con)
+    stopifnot(is.character(trialDbId))
+    check_rclass(rclass)
+
     ptrials <- paste0(brp, "trials/", trialDbId)
 
     try({

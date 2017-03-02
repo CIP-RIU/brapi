@@ -14,10 +14,13 @@
 #' @family germplasm
 #' @family brapicore
 #' @export
-ba_germplasm_details <- function(con = NULL, germplasmDbId = 0,
+ba_germplasm_details <- function(con = NULL, germplasmDbId = "0",
                               rclass = "tibble") {
     # TODO: revision; rename: map
     ba_check(con, FALSE, "germplasm/id")
+    stopifnot(is.character(germplasmDbId))
+    check_rclass(rclass)
+
     germplasm <- paste0(get_brapi(con), "germplasm/", germplasmDbId, "/")
 
     try({

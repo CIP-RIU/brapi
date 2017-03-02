@@ -12,6 +12,9 @@
 #' @family brapicore
 #' @export
 ba_crops <- function(con = NULL, rclass = "tibble") {
+    stopifnot(is.ba_con(con))
+    check_rclass(rclass)
+
     omc <- con$multicrop
     con$multicrop <- FALSE
     ba_check(con, FALSE, "crops")

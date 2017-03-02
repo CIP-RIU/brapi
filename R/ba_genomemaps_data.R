@@ -21,8 +21,13 @@
 #' @export
 ba_genomemaps_data <- function(con = NULL, mapDbId = 0, linkageGroupId = 0,
                             page = 0, pageSize = 30, rclass = "tibble") {
-    # TODO: revision; rename: map_data
+
     ba_check(con, FALSE, "maps/id/positions")
+    stopifnot(is.numeric(mapDbId))
+    stopifnot(is.numeric(linkageGroupId))
+    check_paging(pageSize, page)
+    check_rclass(rclass)
+
     brp <- get_brapi(con)
     maps_positions_list <- paste0(brp, "maps/", mapDbId, "/positions/?")
     linkageGroupId <- paste("linkageGroupId=", linkageGroupId, "&",

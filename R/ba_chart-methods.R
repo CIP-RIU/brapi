@@ -1,4 +1,4 @@
-#' chart.ba_locations
+#' ba_chart.ba_locations
 #'
 #' method for an object of class brapi_locations, which will only display the crop,  database address:port and user
 #'
@@ -8,13 +8,14 @@
 #' @author Reinhard Simon
 #'
 #' @export
-chart.ba_locations <- function(x, ...) {
+ba_chart.ba_locations <- function(x, ...) {
     prms <- list(...)
 
     chart_type <- ifelse(!is.null(prms$chart_type),
                          prms$chart_type,
                          "plot")
 
+    stopifnot(chart_type %in% c("plot", "map"))
     locs <- x
 
     if (chart_type == "plot") {
@@ -48,7 +49,7 @@ chart.ba_locations <- function(x, ...) {
 }
 
 
-#' chart.ba_genomemaps
+#' ba_chart.ba_genomemaps
 #'
 #' print method for an object of class brapi_brapi_genomemaps, which will only display the crop,  database address:port and user
 #'
@@ -57,13 +58,13 @@ chart.ba_locations <- function(x, ...) {
 #' @example inst/examples/ex-chart_genome_maps.R
 #' @author Reinhard Simon
 #' @export
-chart.ba_genomemaps <- function(x, ...) {
+ba_chart.ba_genomemaps <- function(x, ...) {
   prms <- list(...)
   stopifnot(!is.null(x$markerCount & !is.null(x$mapDbId)))
   chart_type <- ifelse(!is.null(prms$chart_type),
                        prms$chart_type,
                        "plot")
-
+  stopifnot(chart_type %in% c("plot"))
 
   if (chart_type == "plot") {
     ttl <- paste0("Comparative view of genome maps")
@@ -80,7 +81,7 @@ chart.ba_genomemaps <- function(x, ...) {
 
 
 
-#' chart.ba_genomemaps_details
+#' ba_chart.ba_genomemaps_details
 #'
 #' print method for an object of class brapi_brapi_genomemaps_details, which will only display the crop,  database address:port and user
 #'
@@ -89,13 +90,13 @@ chart.ba_genomemaps <- function(x, ...) {
 #' @example inst/examples/ex-chart_genome_maps_details.R
 #' @author Reinhard Simon
 #' @export
-chart.ba_genomemaps_details <- function(x, ...) {
+ba_chart.ba_genomemaps_details <- function(x, ...) {
   prms <- list(...)
   chart_type <- ifelse(!is.null(prms$chart_type),
                        prms$chart_type,
                        "plot")
 
-
+  stopifnot(chart_type %in% c("plot"))
   if (chart_type == "plot") {
     ttl <- paste0("Linkage groups")
     cnid <- which(stringr::str_detect(colnames(x), "Id"))

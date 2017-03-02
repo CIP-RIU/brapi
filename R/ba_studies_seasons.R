@@ -15,12 +15,16 @@
 #' @family studies
 #' @family phenotyping
 #' @export
-ba_studies_seasons <- function(con = NULL, year = NULL, page = 0, pageSize = 1000, rclass = "tibble") {
+ba_studies_seasons <- function(con = NULL, year = 0, page = 0, pageSize = 1000, rclass = "tibble") {
     ba_check(con, FALSE, "seasons")
     brp <- get_brapi(con)
+    stopifnot(is.numeric(year))
+    check_paging(pageSize, page)
+    check_rclass(rclass)
+
     seasons_list <- paste0(brp, "seasons/?")
 
-    year <- ifelse(is.numeric(year), paste0("year=", year, "&"), "")
+    year <- ifelse(year != 0, paste0("year=", year, "&"), "")
     page <- ifelse(is.numeric(page), paste0("page=", page, "&"), "")
     pageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
 

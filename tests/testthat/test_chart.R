@@ -8,7 +8,7 @@ context("Testing chart methods")
 test_that("print output for 'ba_locations'.", {
   tmp <- tempfile(fileext = "png")
   png(tmp)
-  ba_locations(con) %>% chart()
+  ba_locations(con) %>% ba_chart()
   dev.off()
 
   expect_equal(file.exists(tmp), TRUE)
@@ -20,10 +20,12 @@ test_that("print output for 'ba_locations'.", {
   #######################
 
   out <- capture_messages(
-    ba_locations(con) %>% chart(chart_type = "map")
+    ba_locations(con) %>% ba_chart(chart_type = "map")
   )
 
-  expect_equal(out[1], "Please install and load: library(maps)\n")
+
+
+  expect_error(ba_locations(con) %>% ba_chart(chart_type = "any"))
 
   #####################
 
@@ -31,7 +33,7 @@ test_that("print output for 'ba_locations'.", {
   library(maps)
   tmp <- tempfile(fileext = "png")
   png(tmp)
-  ba_locations(con) %>% chart(chart_type = "map")
+  ba_locations(con) %>% ba_chart(chart_type = "map")
   dev.off()
 
   expect_equal(file.exists(tmp), TRUE)
@@ -44,25 +46,29 @@ test_that("print output for 'ba_locations'.", {
 test_that("print output for 'ba_genomemaps'.", {
   tmp <- tempfile(fileext = "png")
   png(tmp)
-  ba_genomemaps(con) %>% chart()
+  ba_genomemaps(con) %>% ba_chart()
   dev.off()
 
   expect_equal(file.exists(tmp), TRUE)
   expect_equal(file.size(tmp) > 0, TRUE)
 
   unlink(tmp)
+
+  expect_error(ba_genomemaps(con) %>% ba_chart(chart_type = "any"))
 })
 
 test_that("print output for 'ba_genomemaps_details'.", {
   tmp <- tempfile(fileext = "png")
   png(tmp)
-  ba_genomemaps_details(con) %>% chart()
+  ba_genomemaps_details(con) %>% ba_chart()
   dev.off()
 
   expect_equal(file.exists(tmp), TRUE)
   expect_equal(file.size(tmp) > 0, TRUE)
 
   unlink(tmp)
+
+  expect_error(ba_genomemaps_details(con) %>% ba_chart(chart_type = "any"))
 })
 
 }

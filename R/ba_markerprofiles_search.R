@@ -30,10 +30,17 @@ ba_markerprofiles_search <- function(con = NULL, germplasmDbId = "",
                              extractDbId = "",
                              methodDbId = "all",
                              page = 0, pageSize = 10000,
-                             #method = "GET",
+
                              rclass = "tibble"){
   ba_check(con, FALSE, "markerprofiles")
   brp <- get_brapi(con)
+  stopifnot(is.character(germplasmDbId))
+  stopifnot(is.character(studyDbId))
+  stopifnot(is.character(sampleDbId))
+  stopifnot(is.character(methodDbId))
+  check_paging(pageSize, page)
+  check_rclass(rclass)
+
   pmarkerprofiles <- paste0(brp, "markerprofiles/?")
 
   pgermplasmDbId <- paste0("germplasm=", germplasmDbId, "&") %>% paste(collapse = "")

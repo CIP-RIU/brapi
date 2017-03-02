@@ -34,6 +34,16 @@ ba_observationvariables_search <- function(
   rclass = "tibble") {
 
   ba_check(con, FALSE, "variables-search")
+  stopifnot(is.character(observationVariableDbIds))
+  stopifnot(is.character(ontologyXrefs))
+  stopifnot(is.character(ontologyDbIds))
+  stopifnot(is.character(methodDbIds))
+  stopifnot(is.character(scaleDbIds))
+  stopifnot(is.character(names))
+  stopifnot(is.character(datatypes))
+  stopifnot(is.character(traitClasses))
+  check_rclass(rclass)
+
   brp <- get_brapi(con)
 
   pvariables <- paste0(brp, "variables-search/")

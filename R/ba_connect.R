@@ -47,54 +47,27 @@ ba_connect <- function(brapiDb = NULL,
     # brapiDb  agrument was not NULL but passed
     if (all(class(brapiDb) == c("list", "ba_db", "ba", "ba_con"))) {
       brapi <- brapiDb
-      #class(brapi) <- c("list", "ba", "ba_con")
+
     }
   } else {
     # check for net connectivity
     if (!ba_can_internet()) {
       stop("Can not connect to internet!")
     }
-    # check function arguments
-    if (!is.logical(secure)) {
-      stop("The secure argument in connect() can only be
-           a logical (TRUE or FALSE) value.")
-    }
-    if (!is.character(db)) {
-      stop("The db argument in connect() can only be a
-           character string.")
-    }
-    if (!is.numeric(port)) {
-      stop("The port argument in connect() can only be a
-           numeric value.")
-    }
-    if (!is.logical(bms)) {
-      stop("The bms argument argument in connect() can only be a
-           logical value (TRUE or FALSE).")
-    }
-    if (!xor(is.null(apipath), is.character(apipath))) {
-      stop("The apipath argument in connect() can only be NULL or
-           a character string.")
-    }
-    if (!is.character(crop)) {
-      stop("The crop argument in connect() can only be a
-           character string.")
-    }
-    if (!is.logical(multicrop)) {
-      stop("The multicrop argument in connect() can only be a
-           logical value (TRUE or FALSE).")
-    }
-    if (!is.character(user)) {
-      stop("The user argument in connect() can only be a
-           character string.")
-    }
-    if (!is.character(password)) {
-      stop("The password argument in connect() can only be a
-           character string.")
-    }
-    if (!is.character(token)) {
-      stop("The token argument in connect() can only be a
-           character string.")
-    }
+    check_ba(secure = secure,
+             protocol = protocol,
+             db = db,
+             port = port,
+             apipath = apipath,
+             multicrop = multicrop,
+             crop = crop,
+             user = user,
+             password = password,
+             token = token,
+             granttype = granttype,
+             clientid = clientid,
+             bms = bms)
+
     # bms == TRUE, then always multicrop == TRUE
     if (bms == TRUE) {
       multicrop <- TRUE

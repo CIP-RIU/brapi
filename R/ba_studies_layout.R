@@ -15,8 +15,11 @@
 #' @family studies
 #' @family phenotyping
 #' @export
-ba_studies_layout <- function(con = NULL, studyDbId = 1, rclass = "tibble") {
+ba_studies_layout <- function(con = NULL, studyDbId = "1", rclass = "tibble") {
     ba_check(con, FALSE, "studies/id/layout")
+    stopifnot(is.character(studyDbId))
+    check_rclass(rclass)
+
     brp <- get_brapi(con)
     studies_layout_list <- paste0(brp, "studies/", studyDbId, "/layout/")
     try({

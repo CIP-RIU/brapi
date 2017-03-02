@@ -12,10 +12,15 @@ test_that("Crops are listed.", {
 
 test_that("Classes", {
   expect_equal("json" %in% class(ba_crops(con, rclass = "json")), TRUE)
-  expect_equal("json" %in% class(ba_crops(con, rclass = "something")), TRUE)
+
   expect_equal("data.frame" %in% class(ba_crops(con, rclass = "data.frame")), TRUE)
   expect_equal("character" %in% class(ba_crops(con, rclass = "vector" )), TRUE)
   expect_equal("ba_crops" %in% class(ba_crops(con )), TRUE)
+})
+
+test_that("Parameters", {
+  expect_error(ba_crops("x"))
+  expect_error(ba_crops(con, "something"))
 })
 
 

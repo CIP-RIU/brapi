@@ -13,19 +13,19 @@ test_that("Calls are listed.", {
 })
 
 test_that("Parameters are tested.", {
-  acall <- ba_germplasmattributes(con, 2)
+  acall <- ba_germplasmattributes(con, "2")
   expect_equal(nrow(acall), 1)
-  acall <- ba_germplasmattributes(con, 1)
+  acall <- ba_germplasmattributes(con, "1")
   expect_equal(nrow(acall), 2)
 })
 
 
 test_that("Classes", {
-  expect_equal("tbl_df" %in% class(ba_germplasmattributes(con, 1, rclass = "tibble")), TRUE)
-  expect_equal("json" %in% class(ba_germplasmattributes(con, 1, rclass = "json")), TRUE)
-  expect_equal("list" %in% class(ba_germplasmattributes(con, 1, rclass = "list")), TRUE)
-  expect_equal("data.frame" %in% class(ba_germplasmattributes(con, 1,  rclass = "data.frame")), TRUE)
-  expect_equal("ba_germplasmattributes" %in% class(ba_germplasmattributes(con, 1)), TRUE)
+  expect_equal("tbl_df" %in% class(ba_germplasmattributes(con, "1", rclass = "tibble")), TRUE)
+  expect_equal("json" %in% class(ba_germplasmattributes(con, "1", rclass = "json")), TRUE)
+  expect_equal("list" %in% class(ba_germplasmattributes(con, "1", rclass = "list")), TRUE)
+  expect_equal("data.frame" %in% class(ba_germplasmattributes(con, "1",  rclass = "data.frame")), TRUE)
+  expect_equal("ba_germplasmattributes" %in% class(ba_germplasmattributes(con, "1")), TRUE)
 })
 
 
