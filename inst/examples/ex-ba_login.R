@@ -4,7 +4,7 @@ if (interactive()) {
 
   # make sure brapiTS::mock_server() is running in a separate process
 
-  con <- ba_connect() %>% ba_authenticate()
+  con <- ba_connect() %>% ba_login()
 
   print(con)
 }

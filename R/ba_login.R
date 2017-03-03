@@ -1,4 +1,6 @@
-#' Authenticate against a brapi compatible database.
+#' ba_login
+#'
+#' Login into a brapi compatible database.
 #'
 #' Caches a session token and informs of success or failure.
 #'
@@ -7,23 +9,17 @@
 #' @return The object of class 'brapi_con' with the authentication token filled.
 #'
 #' @author Reinhard Simon, Maikel Verouden
-#' @example inst/examples/ex-ba_authenticate.R
+#' @example inst/examples/ex-ba_login.R
 #' @import httr
 #' @family brapiutils
 #' @export
-ba_authenticate <- function(con) {
+ba_login <- function(con) {
   stopifnot(is.ba_con(con))
   brapi <- con
   # Check for internet connection
   if (!ba_can_internet()) {
     stop("Authentication failed,
        because there is no connection to the internet")
-  }
-  # Check function arguments
-  if (is.null(brapi)) {
-      stop("The brapi argument is empty or not of class brapi_con,
-       please use brapi_con() first to create a valid brapi
-       argument of class brapi_con.")
   }
   # Set authentication URL
   callpath <- "token"

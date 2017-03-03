@@ -23,11 +23,12 @@ The library implements currently mainly API calls to retrieve breeding trial rel
 Implementation status
 ---------------------
 
-Out of 50 BrAPI calls currently **46 (92%)** are implemented in this package.
+Out of 51 BrAPI calls currently **47 (92.2%)** are implemented in this package.
 
 | group                | name                                       | R.function                               |
 |:---------------------|:-------------------------------------------|:-----------------------------------------|
-| Authentication       | Authentication                             | ba\_authenticate                         |
+| Authentication       | Authentication                             | ba\_login                                |
+| Authentication       | Authentication                             | ba\_logout                               |
 | Calls                | Calls                                      | ba\_calls                                |
 | Crops                | ListCrops                                  | ba\_crops                                |
 | GenomeMaps           | ListOfGenomeMap                            | ba\_genomemaps                           |

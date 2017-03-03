@@ -1,5 +1,6 @@
 group,status,call,datatypes,methods,scope,name,R function,client:brapi,server:brapits,client:Flapjack,server:BMS,server:sweetpotatobase,server:cassavabase,server:WUR
-Authentication,ACCEPTED,token,json; text,POST; DELETE,OTHER,Authentication,ba_authenticate,x,,x,,x,,
+Authentication,ACCEPTED,token,json; text,POST,OTHER,Authentication,ba_login,x,x,x,,x,,
+Authentication,ACCEPTED,token,json; text,DELETE,OTHER,Authentication,ba_logout,x,x,,,,,
 Calls,ACCEPTED,calls,json,GET,CORE,Calls,ba_calls,x,x,,,x,,
 Crops,ACCEPTED,crops,json,GET,CORE,ListCrops,ba_crops,x,x,,,x,,
 GenomeMaps,ACCEPTED,maps,json,GET,GENOTYPING,ListOfGenomeMap,ba_genomemaps,x,x,,,,,
