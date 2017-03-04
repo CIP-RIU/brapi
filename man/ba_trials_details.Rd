@@ -46,6 +46,7 @@ Other phenotyping: \code{\link{ba_studies_details}},
   \code{\link{ba_studies_search}},
   \code{\link{ba_studies_seasons}},
   \code{\link{ba_studies_studytypes}},
+  \code{\link{ba_studies_table_save}},
   \code{\link{ba_studies_table}}, \code{\link{ba_trials}}
 }
 \author{

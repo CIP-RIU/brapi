@@ -66,6 +66,7 @@ Other studies: \code{\link{ba_studies_details}},
   \code{\link{ba_studies_observationvariables}},
   \code{\link{ba_studies_seasons}},
   \code{\link{ba_studies_studytypes}},
+  \code{\link{ba_studies_table_save}},
   \code{\link{ba_studies_table}}
 
 Other phenotyping: \code{\link{ba_studies_details}},
@@ -76,6 +77,7 @@ Other phenotyping: \code{\link{ba_studies_details}},
   \code{\link{ba_studies_observationvariables}},
   \code{\link{ba_studies_seasons}},
   \code{\link{ba_studies_studytypes}},
+  \code{\link{ba_studies_table_save}},
   \code{\link{ba_studies_table}},
   \code{\link{ba_trials_details}}, \code{\link{ba_trials}}
 }

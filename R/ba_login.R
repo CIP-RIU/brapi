@@ -48,6 +48,7 @@ ba_login <- function(con) {
       # Status OK Extract token out of resp(onse) from POST call
       token <- httr::content(resp)$access_token
       brapi$token <- token
+      brapi$expires_in <- httr::content(resp)$expires_in
       message("Authenticated!")
     }
   }
