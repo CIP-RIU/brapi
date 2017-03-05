@@ -29,10 +29,7 @@ check_ba <- function(secure = FALSE,
     stop("The port argument can only be an
          numeric value > 0.")
   }
-  if (!is.logical(bms)) {
-    stop("The bms argument argument can only be a
-         logical value (TRUE or FALSE).")
-  }
+
   if (!xor(is.null(apipath), is.character(apipath))) {
     stop("The apipath argument can only be NULL or
          a character string.")
@@ -65,9 +62,11 @@ check_ba <- function(secure = FALSE,
     stop("The clientid argument can only be a
          character string.")
   }
+
   if (!is.logical(bms)) {
-    stop("The bms argument can only be a
+    stop("The bms argument argument can only be a
          logical value (TRUE or FALSE).")
   }
+
   return(invisible(TRUE))
 }

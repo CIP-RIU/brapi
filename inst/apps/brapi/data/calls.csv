@@ -45,7 +45,7 @@ Studies,ACCEPTED,seasons,json,GET,PHENOTYPING,ListSeasons,ba_studies_seasons,x,x
 Studies,ACCEPTED,studyTypes,json,GET,PHENOTYPING,ListStudyTypes,ba_studies_studytypes,x,x,,,x,,
 Studies,ACCEPTED,studies/id/table,json; csv; tsv,GET,PHENOTYPING,StudyObservationUnitsAsTable,ba_studies_table,x,x,,,x,,
 Studies,ACCEPTED,studies/id/layout,json,GET,PHENOTYPING,PlotLayoutDetails,ba_studies_layout,x,x,,,x,,
-Studies,ACCEPTED,studies/id/table,json,POST,PHENOTYPING,StudyObservationUnitsAsTableSave,,,,,,,,
+Studies,ACCEPTED,studies/id/table,json,POST,PHENOTYPING,StudyObservationUnitsAsTableSave,ba_studies_table_save,x,x,,,,,
 Traits,ACCEPTED,traits,json,GET,PHENOTYPING,ListAllTraits,ba_traits,x,x,,,,,
 Traits,ACCEPTED,traits/id,json,GET,PHENOTYPING,TraitDetails,ba_traits_details,x,x,,,,,
 Trials,ACCEPTED,trials,json,GET,PHENOTYPING,ListTrialSummaries,ba_trials,x,x,,,x,,

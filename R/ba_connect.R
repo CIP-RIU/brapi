@@ -51,9 +51,7 @@ ba_connect <- function(brapiDb = NULL,
     }
   } else {
     # check for net connectivity
-    if (!ba_can_internet()) {
-      stop("Can not connect to internet!")
-    }
+    ba_can_internet()
     check_ba(secure = secure,
              protocol = protocol,
              db = db,

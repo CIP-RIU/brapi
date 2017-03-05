@@ -10,7 +10,7 @@ ba_can_internet(url = "www.google.org")
 \item{url}{a url to check (default \href{https://www.google.org}{www.google.org})}
 }
 \value{
-logical TRUE when internet access is available or FALSE when internet access is not available
+NULL when internet access is available or ERROR when internet access is not available
 }
 \description{
 Check for internet connection.

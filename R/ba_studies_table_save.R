@@ -54,10 +54,11 @@ ba_studies_table_save <- function(con = NULL, studyDbId = "1", study_table = NUL
                            body = dat,
                            content_type("text/json"),
                            encode =  "json")
-      # Status other than unauthorized
+
       if (resp$status_code != 200) {
-        # Status other than Unauthorized and OK
+        # Status other than OK
         message(resp$status_code)
+
         httr::stop_for_status(resp)
       } else {
         message("Successfully posted studies table!")

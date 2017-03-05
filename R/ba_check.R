@@ -32,11 +32,8 @@ ba_check <- function(con = NULL, verbose = TRUE, brapi_calls = "any") {
             stop("Cannot connect to mock server.
                  Use other connection details or start the mock server.")
     } else {
-        if (!ba_can_internet())
-            stop("No internet connection. Check your LAN or WIFI.")
-        if (!ba_can_internet(url))
-            stop(paste0("Cannot connect to BrAPI server: ",
-                        url, "\nCheck the details."))
+        ba_can_internet()
+        ba_can_internet(url)
     }
     if (verbose) {
         message("BrAPI connection ok.")

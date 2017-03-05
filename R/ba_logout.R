@@ -16,10 +16,7 @@ ba_logout <- function(con) {
   stopifnot(is.ba_con(con))
   brapi <- con
   # Check for internet connection
-  if (!ba_can_internet()) {
-    stop("Logout failed,
-       because there is no connection to the internet")
-  }
+  ba_can_internet()
   # Set authentication URL
   callpath <- "token"
   omc <- brapi$multicrop

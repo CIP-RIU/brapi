@@ -5,9 +5,10 @@ if (check_server_status == 200) {
 
 context("Testing the path 'studies/{id}/table' using POST")
 
-  con <- ba_connect(secure = FALSE)
+
 
 test_that("Parameters work", {
+  con <- ba_connect()
   con$bms <- TRUE
   out <- ba_login(con)
 
@@ -18,9 +19,13 @@ test_that("Parameters work", {
     variable1Id = c(3, 4)
   ))
 
+
   expect_message(ba_studies_table_save(out, "1", df), "Successfully posted studies table!")
 
   expect_error(ba_studies_table_save(out, "1", 1))
+
+  out$token <- NULL
+  expect_message(ba_studies_table_save(out, "1", df), "400")
 
 })
 
