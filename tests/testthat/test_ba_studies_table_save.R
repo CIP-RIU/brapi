@@ -20,12 +20,12 @@ test_that("Parameters work", {
   ))
 
 
-  expect_message(ba_studies_table_save(out, "1", df), "Successfully posted studies table!")
+  expect_true(ba_studies_table_save(out, "1", df))
 
   expect_error(ba_studies_table_save(out, "1", 1))
 
-  out$token <- NULL
-  expect_message(ba_studies_table_save(out, "1", df), "400")
+  # out$token <- NULL
+  # expect_error(ba_studies_table_save(out, "1", df))
 
 })
 

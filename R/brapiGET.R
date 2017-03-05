@@ -9,9 +9,14 @@ brapiGET <- function(url, format = "json", con = NULL) {
         out <- httr::content(res, "text", encoding = "UTF-8")
         # Get JSON
         if (format == "json") {
-          out <- jsonlite::fromJSON(out)$metadata$status
-          # Check if status object has any key-value pairs
-          show_server_status_messages(out)
+          # x <- jsonlite::fromJSON(out)
+
+          # TODO test if 'metadata' slot exists
+          # if (exists('metadata', where = x)) {
+          #   out <- x$metadata$status
+          #   # Check if status object has any key-value pairs
+          #   show_server_status_messages(out)
+          # }
         }
       }
     }, error = function(e) {

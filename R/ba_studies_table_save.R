@@ -43,27 +43,14 @@ ba_studies_table_save <- function(con = NULL, studyDbId = "1", study_table = NUL
       )
 
       req <- list(
-        access_token = con$token,
+
         metadata = metadata,
         result = result
       )
 
       dat <- jsonlite::toJSON(req)
 
-      resp <- httr::POST( url = studies_table,
-                           body = dat,
-                           content_type("text/json"),
-                           encode =  "json")
-
-      if (resp$status_code != 200) {
-        # Status other than OK
-        message(resp$status_code)
-
-        httr::stop_for_status(resp)
-      } else {
-        message("Successfully posted studies table!")
-      }
-
+      resp <- brapiPOST(studies_table, dat, con)
 
     return(invisible(TRUE))
     })
