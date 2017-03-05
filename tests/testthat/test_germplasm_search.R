@@ -8,7 +8,7 @@ context("Testing the path 'germplasm-search'")
 
 test_that("Calls are listed.", {
   expect_equal(length(ba_germplasm_search(con, rclass = "list")), 2)
-  expect_equal(length(ba_germplasm_search(con, rclass = "list")$result$data), 5)
+  expect_equal(length(ba_germplasm_search(con, rclass = "list")$result$data), 6)
 })
 
 test_that("GET Parameters are tested.", {

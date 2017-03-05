@@ -69,7 +69,8 @@ Other studies: \code{\link{ba_studies_details}},
   \code{\link{ba_studies_table_save}},
   \code{\link{ba_studies_table}}
 
-Other phenotyping: \code{\link{ba_studies_details}},
+Other phenotyping: \code{\link{ba_samples}},
+  \code{\link{ba_studies_details}},
   \code{\link{ba_studies_layout}},
   \code{\link{ba_studies_observationlevels}},
   \code{\link{ba_studies_observations}},

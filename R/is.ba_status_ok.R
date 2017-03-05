@@ -4,7 +4,12 @@ is.ba_status_ok <- function(resp) {
 
   if (resp$status_code == 200) return(TRUE)
 
-  if (resp$status_code %in% c(400, 401)) {
+  if (resp$status_code %in% c(400)) {
+    httr::stop_for_status(resp$status_code, task = "get result due to invalid request.
+                          Revise your parameters")
+  }
+
+  if (resp$status_code %in% c(401)) {
     httr::stop_for_status(resp$status_code, task = "connect due to invalid/expired token,
                               use brapi_auth to obtain/update your token")
   }

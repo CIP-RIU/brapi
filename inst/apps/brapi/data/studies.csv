@@ -10,3 +10,4 @@ studyDbId,studyName,trialDbId,trialName,studyType,seasons,locationDbId,locationN
 9,Mozambique Yield Trial,7,Mozambique Yield Trial,Yield study,2011 A,5,Umbeluzi,4,Mozambique,2011-05-12,2011-11-30,FALSE,C0002; C0003
 10,Mozambique Genotype Trial,8,Mozambique Genotype Trial,Yield study,2012 B,6,Marankiari,4,Mozambique,2012-02-17,2012-08-21,FALSE,C0004
 11,Demo Yield Trial,9,Demo Yield Trial,Yield study,2016 A,3,Experimental station CIP headquarters,6,Demo,2016-03-24,2016-10-21,TRUE,
+StudyId-123,Yield Trial A,10,Yield Trial A,Yield study,summer,LocationId-123,Kenya,7,Demo,2016-01-01,2016-06-30,TRUE,

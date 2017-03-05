@@ -20,7 +20,7 @@ ba_studies_table_save <- function(con = NULL, studyDbId = "1", study_table = NUL
     stopifnot(is.character(studyDbId))
     stopifnot(is.data.frame(study_table))
 
-    brp <- brapi:::get_brapi(con)
+    brp <- get_brapi(con)
     studies_table <- paste0(brp, "studies/", studyDbId, "/table/")
 
     try({

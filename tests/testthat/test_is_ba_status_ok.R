@@ -12,7 +12,7 @@ test_that("printing messages", {
   expect_equal(brapi:::is.ba_status_ok(resp), FALSE)
 
   resp <- list(status_code = 400)
-  expect_error(brapi:::is.ba_status_ok(resp), regexp = "invalid/expired token")
+  expect_error(brapi:::is.ba_status_ok(resp), regexp = "get result due to invalid request")
 
   resp <- list(status_code = 401)
   expect_error(brapi:::is.ba_status_ok(resp), regexp = "invalid/expired token")

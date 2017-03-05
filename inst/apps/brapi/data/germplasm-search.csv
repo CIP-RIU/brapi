@@ -4,3 +4,4 @@ germplasmDbId,defaultDisplayName,accessionNumber,germplasmName,germplasmPUI,pedi
 3,G000003,A000003,Name003,http://data.cipotato.org/accession/A000003,A000001 / A000002,A000001/A000002,variety 1,sweetpotato,PER001,CIP,500,PER,12,Ipomoea,batatas,L,,,3,20010101
 4,G000004,A000004,Name004,http://data.cipotato.org/accession/A000004,A000002 / A000001,A000002/A000001,variety 2,sweetpotato,PER001,CIP,500,PER,12,Ipomoea,batatas,L,,,4,20010101
 5,G000005,A000005,Name005,http://data.cipotato.org/accession/A000005,landrace,open pollination,landrace 3,sweetpotato,PER001,CIP,300,ECU,20,Ipomoea,batatas,L,,,5,19910101
+15,gG00015,A000015,G15,http://www.crop-diversity.org/mgis/accession/GBA0123,unknown/unknown,SS10,Landrace 4,sweetpotato,PER001,CIP,300,PER,12,Ipomoea,batatas,L,,,4,20010101

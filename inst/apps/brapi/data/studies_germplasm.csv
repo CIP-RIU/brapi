@@ -5,3 +5,4 @@ studyDbId,trialName,germplasmDbId,entryNumber,germplasmName,pedigree,seedSource,
 456,yourBestTrial,402,4,Mustang,MASU12/PG08.15,SS4,ACC1234,http://www.crop-diversity.org/mgis/accession/UVWX89001,
 456,yourBestTrial,456,5,Mustang,MASU12/PG08.15,SS5,ACC7890,http://www.crop-diversity.org/mgis/accession/UVWX89002,UVWX89002;mikado05;univac1984
 456,yourBestTrial,493,6,Treebeard,FANG23/OG27.03,SS4,MBA0456,http://www.crop-diversity.org/mgis/accession/UVWX89003,12AIRDOG
+StudyId-123,Yield Trial A,15,1,G15,unknown/unknown,SS10,GBA0123,http://www.crop-diversity.org/mgis/accession/GBA0123,
