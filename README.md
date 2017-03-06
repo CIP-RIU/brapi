@@ -23,7 +23,7 @@ The library implements currently mainly API calls to retrieve breeding trial rel
 Implementation status
 ---------------------
 
-Out of 51 BrAPI calls currently **50 (98%)** are implemented in this package.
+Out of 52 BrAPI calls currently **51 (98.1%)** are implemented in this package.
 
 | group                | name                                       | R.function                               |
 |:---------------------|:-------------------------------------------|:-----------------------------------------|
@@ -65,6 +65,7 @@ Out of 51 BrAPI calls currently **50 (98%)** are implemented in this package.
 | Studies              | ListObservationLevels                      | ba\_studies\_observationlevels           |
 | Studies              | GetObservationUnitsByObservationVariableId | ba\_studies\_observations                |
 | Studies              | ObservationUnitDetails                     | ba\_studies\_observationunits            |
+| Studies              | ObservationUnitDetails                     | ba\_studies\_observationunits\_save      |
 | Studies              | StudyObservationVariables                  | ba\_studies\_observationvariables        |
 | Studies              | ListStudySummaries                         | ba\_studies\_search                      |
 | Studies              | SearchStudie                               | ba\_studies\_search                      |
