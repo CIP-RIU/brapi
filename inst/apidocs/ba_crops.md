@@ -3,6 +3,11 @@
 ## Call: [/{apipath}/{crop}/brapi/v1/crops]
 
 ```r
+library(brapi)
+library(magrittr)
+
+con <- ba_connect()
+
 json <- ba_crops(con, rclass = "json")
 ```
 

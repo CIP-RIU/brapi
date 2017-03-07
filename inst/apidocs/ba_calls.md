@@ -3,6 +3,11 @@
 ## Call: [/{apipath}/{crop}/brapi/v1/calls?datatype={dataFile}&pageSize={pageSize}&page={page}]
 
 ```r
+library(brapi)
+library(magrittr)
+
+con <- ba_connect()
+
 json <- ba_calls(con, pageSize = 3,  rclass = "json")
 ```
 
