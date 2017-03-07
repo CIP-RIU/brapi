@@ -28,6 +28,7 @@ ba_login <- function(con) {
               username = brapi$user,
               password = brapi$password,
               client_id = "")
+  ba_message(jsonlite::toJSON(dat, pretty = TRUE))
   # Make POST call for submitting form data
   resp <- httr::POST(url = callurl,
                      body = dat,
@@ -43,9 +44,14 @@ ba_login <- function(con) {
       httr::stop_for_status(resp)
     } else {
       # Status OK Extract token out of resp(onse) from POST call
-      token <- httr::content(resp)$access_token
+      xout <- httr::content(resp)
+      token <- xout$access_token
       brapi$token <- token
       brapi$expires_in <- httr::content(resp)$expires_in
+
+
+      ba_message(jsonlite::toJSON(xout, pretty = TRUE))
+
       message("Authenticated!")
     }
   }

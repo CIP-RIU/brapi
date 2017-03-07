@@ -38,7 +38,7 @@ See [tutorial](https://github.com/c5sire/brapi/blob/master/inst/doc/tutorial.Rmd
 
 ## Documentation of JSON response/requests
 
-See the inst/apidocs directory for examples: [apidocs](https://github.com/c5sire/brapi/blob/master/inst/apidocs/README.md)
+Follow the links in the table below or see the inst/apidocs directory for examples: [apidocs](https://github.com/c5sire/brapi/blob/master/inst/apidocs/README.md)
 
 ## Implementation status
 
@@ -60,6 +60,14 @@ pct <- round(nrow(res) / nrow(calls_data) * 100, 1)
 Out of `r nrow(calls_data)` BrAPI calls currently **`r nrow(res)` (`r pct`%)** are implemented in this package.
 
 ```{r, echo=FALSE}
+
+
+res[, 3] <- paste0("[", res[, 3], "](https://github.com/c5sire/brapi/blob/master/inst/apidocs/", res[, 3], ".md)") 
+
+res[, 2] <- paste0("[", res[, 2], "](https://github.com/plantbreeding/API/blob/master/Specification/", res[, 1], "/", 
+                   res[, 2], ".md)") 
+res[, 1] <- paste0("[", res[, 1], "](https://github.com/plantbreeding/API/blob/master/Specification/", res[, 1], ")") 
+
 knitr::kable(res, row.names = FALSE)
 
 ```
@@ -71,6 +79,12 @@ rp =covr::package_coverage()
 
 covr::report(rp)
 
+###########################
+owd <- getwd()
+setwd("inst/apidocs")
+mdfiles <- list.files(".", "*.Rmd")
+sapply(mdfiles, knitr::knit)
+setwd(owd)
 ```
 
 

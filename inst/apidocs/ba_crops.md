@@ -1,6 +1,6 @@
 
 
-## Call: [/{apipath}/{crop}/brapi/v1/crops]
+## Call: GET [/{apipath}/{crop}/brapi/v1/crops]
 
 ```r
 library(brapi)
@@ -10,6 +10,14 @@ library(magrittr)
 con <- ba_connect()
 
 json <- ba_crops(con, rclass = "json")
+```
+
+```
+URL call was: http://127.0.0.1:2021/brapi/v1/crops
+```
+
+```
+Server status:  ok!
 ```
 
 ### Response

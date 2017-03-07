@@ -25,6 +25,8 @@ ba_logout <- function(con) {
   brapi$multicrop <- omc
   dat <- list(access_token = brapi$token)
 
+  ba_message(jsonlite::toJSON(dat, pretty = TRUE))
+
   resp <- httr::DELETE(url = callurl,
                      body = dat,
                      encode = ifelse(brapi$bms == TRUE, "json", "form"))
@@ -34,6 +36,9 @@ ba_logout <- function(con) {
       brapi$token <- ""
       httr::stop_for_status(resp)
     } else {
+
+      xout <- httr::content(resp)
+      ba_message(jsonlite::toJSON(xout, pretty = TRUE))
 
       brapi$token <- ""
       message("Successfully logged out!")

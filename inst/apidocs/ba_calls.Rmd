@@ -2,7 +2,7 @@
 knitr::opts_chunk$set(echo = TRUE, comment=NA)
 ```
 
-## Call: [/{apipath}/{crop}/brapi/v1/calls?datatype={dataFile}&pageSize={pageSize}&page={page}]
+## Call: GET [/{apipath}/{crop}/brapi/v1/calls?datatype={dataFile}&pageSize={pageSize}&page={page}]
 ```{r}
 library(brapi)
 library(magrittr)

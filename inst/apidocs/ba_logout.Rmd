@@ -2,21 +2,28 @@
 knitr::opts_chunk$set(echo = TRUE, comment=NA)
 ```
 
-## Call: GET [/{apipath}/{crop}/brapi/v1/crops]
+## Call: DELETE [/{apipath}/{crop}/brapi/v1/token]
 ```{r}
 library(brapi)
 library(magrittr)
 
 # make sure brapiTS::mock_server() is running in a separate process
 con <- ba_connect()
+con <- ba_login(con)
 
-json <- ba_crops(con, rclass = "json")
+ba_show_info(TRUE)
+
+msg <- capture.output({
+  con <- ba_logout(con)
+}, type = "message")
+
+
 ```
 
-### Response
-
-Code: 200 (application/json)
-
 ```json
-`r json`
+`r msg`
+```
+
+```{r}
+ba_show_info(FALSE)
 ```
