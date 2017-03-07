@@ -1,0 +1,17 @@
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment=NA)
+library(brapi)
+library(magrittr)
+
+con <- ba_connect()
+
+```
+
+## '/<apipath>/<crop>/brapi/v1/crops'
+```{r}
+json <- ba_crops(con, rclass = "json")
+```
+
+# JSON
+
+`r json`

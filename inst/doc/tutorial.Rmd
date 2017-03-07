@@ -47,7 +47,7 @@ con = ba_connect() # the standard parameter will work connect to a running local
 
 # Optionally: authenticate yourself
 
-con = ba_connect(user = "user", password = "password") %>% ba_authenticate()
+con = ba_connect(user = "user", password = "password") %>% ba_login()
 
 ba_crops(con) # which crops are available
 
