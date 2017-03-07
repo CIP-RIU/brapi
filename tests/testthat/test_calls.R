@@ -6,7 +6,7 @@ if (check_server_status == 200) {
 context("Testing the path 'calls'")
 
   con <- ba_connect(secure = FALSE)
-  imp <- 51
+  imp <- 52
 
 test_that("Calls are listed.", {
   expect_equal(length(ba_calls(con, rclass = "list")), 2)
@@ -27,7 +27,7 @@ test_that("Paging works.", {
 })
 
 test_that("Calls parameters work.", {
-  expect_equal(nrow(ba_calls(con, datatypes = "json")), imp - 1)
+  expect_equal(nrow(ba_calls(con, datatypes = "json")), imp - 2)
   expect_equal(nrow(ba_calls(con, datatypes = "csv")), 3)
 })
 

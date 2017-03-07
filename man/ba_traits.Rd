@@ -50,6 +50,7 @@ Other brapicore: \code{\link{ba_calls}},
   \code{\link{ba_observationvariables_ontologies}},
   \code{\link{ba_observationvariables_search}},
   \code{\link{ba_observationvariables}},
+  \code{\link{ba_phenotypes_search}},
   \code{\link{ba_programs_search}},
   \code{\link{ba_programs}},
   \code{\link{ba_traits_details}}
