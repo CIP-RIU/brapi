@@ -33,6 +33,8 @@ devtools::install_github("c5sire/brapi")
 
 The library implements currently mainly API calls to retrieve breeding trial related data.
 
+See the inst/apidocs directory for examples of JSON responses: [apidocs](https://github.com/c5sire/brapi/blob/master/inst/apidocs/README.md)
+
 ## Implementation status
 
 ```{r, echo=FALSE}
