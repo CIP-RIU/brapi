@@ -1,13 +1,13 @@
 
 
-## '/<apipath>/<crop>/brapi/v1/crops'
+## Call: [/{apipath}/{crop}/brapi/v1/crops]
 
 ```r
 json <- ba_crops(con, rclass = "json")
 ```
 
 # JSON
-
+```json
 {
     "metadata": {
         "pagination": {
@@ -28,3 +28,4 @@ json <- ba_crops(con, rclass = "json")
     }
 }
 
+```

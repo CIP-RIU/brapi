@@ -7,11 +7,12 @@ con <- ba_connect()
 
 ```
 
-## '/<apipath>/<crop>/brapi/v1/crops'
+## Call: [/{apipath}/{crop}/brapi/v1/crops]
 ```{r}
 json <- ba_crops(con, rclass = "json")
 ```
 
 # JSON
-
+```json
 `r json`
+```
