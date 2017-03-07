@@ -38,7 +38,7 @@ Studies,ACCEPTED,studies/id,json,GET,PHENOTYPING,StudyDetails,ba_studies_details
 Studies,ACCEPTED,observationLevels,json,GET,PHENOTYPING,ListObservationLevels,ba_studies_observationlevels,x,x,,,x,,
 Studies,ACCEPTED,studies/id/observations,json,GET,PHENOTYPING,GetObservationUnitsByObservationVariableId,ba_studies_observations,x,x,,,x,,
 Studies,ACCEPTED,studies/id/observationunits,json,GET,PHENOTYPING,ObservationUnitDetails,ba_studies_observationunits,x,x,,,,,
-Studies,ACCEPTED,studies/id/observationunits,json,POST,PHENOTYPING,ObservationUnitDetails,ba_studies_observationunits_save,x,x,,,,,
+Studies,ACCEPTED,studies/id/observationunits,json,POST,PHENOTYPING,SaveOrUpdateObservationUnits,ba_studies_observationunits_save,x,x,,,,,
 Studies,ACCEPTED,studies/id/observationVariables,json,GET,PHENOTYPING,StudyObservationVariables,ba_studies_observationvariables,x,x,,,,,
 Studies,ACCEPTED,studies-search,json,GET,PHENOTYPING,ListStudySummaries,ba_studies_search,x,x,,,x,,
 Studies,ACCEPTED,studies-search,json,POST,PHENOTYPING,SearchStudie,ba_studies_search,x,x,,,x,,

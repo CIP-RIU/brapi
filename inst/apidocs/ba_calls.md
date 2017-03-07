@@ -6,6 +6,7 @@
 library(brapi)
 library(magrittr)
 
+# make sure brapiTS::mock_server() is running in a separate process
 con <- ba_connect()
 
 json <- ba_calls(con, pageSize = 3,  rclass = "json")
@@ -20,8 +21,8 @@ Code: 200 (application/json)
     "metadata": {
         "pagination": {
             "currentPage": 0,
-            "pageTotal": 15,
-            "totalCount": 44,
+            "pageTotal": 17,
+            "totalCount": 51,
             "pageSize": 3
         },
         "status": [
@@ -42,23 +43,23 @@ Code: 200 (application/json)
                     ]
                 ],
                 "methods": [
+                    "POST"
+                ]
+            },
+            {
+                "call": "token",
+                "datatypes": [
                     [
-                        "POST",
-                        "DELETE"
+                        "json",
+                        "text"
                     ]
+                ],
+                "methods": [
+                    "DELETE"
                 ]
             },
             {
                 "call": "calls",
-                "datatypes": [
-                    "json"
-                ],
-                "methods": [
-                    "GET"
-                ]
-            },
-            {
-                "call": "crops",
                 "datatypes": [
                     "json"
                 ],
@@ -76,7 +77,7 @@ Code: 200 (application/json)
 
 
 ```r
-json <- ba_calls(con, datatypes = "json", pageSize = 3, rclass = "json")
+json <- ba_calls(con, datatypes = "csv", pageSize = 3, rclass = "json")
 ```
 
 ### Response
@@ -88,8 +89,8 @@ Code: 200 (application/json)
     "metadata": {
         "pagination": {
             "currentPage": 0,
-            "pageTotal": 15,
-            "totalCount": 44,
+            "pageTotal": 1,
+            "totalCount": 3,
             "pageSize": 3
         },
         "status": [
@@ -102,33 +103,39 @@ Code: 200 (application/json)
     "result": {
         "data": [
             {
-                "call": "token",
+                "call": "allelematrix-search",
                 "datatypes": [
                     [
                         "json",
-                        "text"
+                        "csv",
+                        "tsv"
                     ]
-                ],
-                "methods": [
-                    [
-                        "POST",
-                        "DELETE"
-                    ]
-                ]
-            },
-            {
-                "call": "calls",
-                "datatypes": [
-                    "json"
                 ],
                 "methods": [
                     "GET"
                 ]
             },
             {
-                "call": "crops",
+                "call": "allelematrix-search",
                 "datatypes": [
-                    "json"
+                    [
+                        "json",
+                        "csv",
+                        "tsv"
+                    ]
+                ],
+                "methods": [
+                    "POST"
+                ]
+            },
+            {
+                "call": "studies/id/table",
+                "datatypes": [
+                    [
+                        "json",
+                        "csv",
+                        "tsv"
+                    ]
                 ],
                 "methods": [
                     "GET"
