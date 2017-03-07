@@ -1,12 +1,12 @@
 
 
-# Call: [/{apipath}/{crop}/brapi/v1/calls?datatype={dataFile}&pageSize={pageSize}&page={page}]
+## Call: [/{apipath}/{crop}/brapi/v1/calls?datatype={dataFile}&pageSize={pageSize}&page={page}]
 
 ```r
 json <- ba_calls(con, pageSize = 3,  rclass = "json")
 ```
 
-## Response
+### Response
 
 Code: 200 (application/json)
 
@@ -67,14 +67,14 @@ Code: 200 (application/json)
 
 ```
 
-# Example 1
+## Example 1
 
 
 ```r
 json <- ba_calls(con, datatypes = "json", pageSize = 3, rclass = "json")
 ```
 
-## Response
+### Response
 
 Code: 200 (application/json)
 

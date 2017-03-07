@@ -6,7 +6,10 @@
 json <- ba_crops(con, rclass = "json")
 ```
 
-# JSON
+### Response
+
+Code: 200 (application/json)
+
 ```json
 {
     "metadata": {
