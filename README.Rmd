@@ -31,9 +31,14 @@ install.packages("devtools")
 devtools::install_github("c5sire/brapi")
 ```
 
-The library implements currently mainly API calls to retrieve breeding trial related data.
 
-See the inst/apidocs directory for examples of JSON responses: [apidocs](https://github.com/c5sire/brapi/blob/master/inst/apidocs/README.md)
+## How to use the package
+
+See [tutorial](https://github.com/c5sire/brapi/blob/master/inst/doc/tutorial.Rmd).
+
+## Documentation of JSON response/requests
+
+See the inst/apidocs directory for examples: [apidocs](https://github.com/c5sire/brapi/blob/master/inst/apidocs/README.md)
 
 ## Implementation status
 
@@ -59,11 +64,6 @@ knitr::kable(res, row.names = FALSE)
 
 ```
 
-
-
-## How to use the package
-
-See [tutorial](https://github.com/c5sire/brapi/blob/master/inst/doc/tutorial.Rmd).
 
 
 ```{r eval=FALSE, echo=FALSE}

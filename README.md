@@ -18,9 +18,15 @@ install.packages("devtools")
 devtools::install_github("c5sire/brapi")
 ```
 
-The library implements currently mainly API calls to retrieve breeding trial related data.
+How to use the package
+----------------------
 
-See the inst/apidocs directory for examples of JSON responses: [apidocs](https://github.com/c5sire/brapi/blob/master/inst/apidocs/README.md)
+See [tutorial](https://github.com/c5sire/brapi/blob/master/inst/doc/tutorial.Rmd).
+
+Documentation of JSON response/requests
+---------------------------------------
+
+See the inst/apidocs directory for examples: [apidocs](https://github.com/c5sire/brapi/blob/master/inst/apidocs/README.md)
 
 Implementation status
 ---------------------
@@ -80,8 +86,3 @@ Out of 52 BrAPI calls currently **51 (98.1%)** are implemented in this package.
 | Traits               | TraitDetails                               | ba\_traits\_details                      |
 | Trials               | ListTrialSummaries                         | ba\_trials                               |
 | Trials               | GetTrialById                               | ba\_trials\_details                      |
-
-How to use the package
-----------------------
-
-See [tutorial](https://github.com/c5sire/brapi/blob/master/inst/doc/tutorial.Rmd).
