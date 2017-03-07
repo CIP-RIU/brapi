@@ -16,7 +16,7 @@ ba_show_info(TRUE)
 msg <- capture.output({
   con <- ba_logout(con)
 }, type = "message")
-
+ba_show_info(FALSE)
 
 ```
 
@@ -24,6 +24,3 @@ msg <- capture.output({
 `r msg`
 ```
 
-```{r}
-ba_show_info(FALSE)
-```

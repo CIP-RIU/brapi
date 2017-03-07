@@ -47,11 +47,10 @@ msg <- capture.output({
 Authenticated!
 ```
 
-```json
-
-```
-
-
 ```r
 ba_show_info(FALSE)
+```
+
+```json
+
 ```

@@ -24,14 +24,40 @@ msg <- capture.output({
 ```
 
 ```
+{
+  "access_token": ["R6gKDBRxM4HLj6eGi4u5HkQjYoIBTPfvtZzUD8TUzg4"]
+}
+```
+
+```
+{
+  "metadata": {
+    "pagination": {
+      "pageSize": [0],
+      "currentPage": [0],
+      "totalCount": [0],
+      "totalPages": [0]
+    },
+    "status": [
+      {
+        "message": ["User has been logged out successfully."]
+      }
+    ],
+    "datafiles": []
+  },
+  "result": {}
+}
+```
+
+```
 Successfully logged out!
+```
+
+```r
+ba_show_info(FALSE)
 ```
 
 ```json
 
 ```
 
-
-```r
-ba_show_info(FALSE)
-```
