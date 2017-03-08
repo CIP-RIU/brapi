@@ -12,16 +12,16 @@ test_that("Basics.", {
 })
 
 test_that("Parameters", {
-  # expect_equal(nrow(ba_phenotypes_search(con, "1")), 3)
-  # expect_equal(nrow(ba_phenotypes_search(con, "2")), 4)
+   expect_equal(nrow(ba_phenotypes_search(con, "1")), 4)
+   #expect_equal(nrow(ba_phenotypes_search(con, "2")), )
 })
 
 
 test_that("Classes", {
   expect_equal("json" %in% class(ba_phenotypes_search(con, "1", rclass = "json")), TRUE)
   expect_equal("list" %in% class(ba_phenotypes_search(con, "1", rclass = "list")), TRUE)
-  # expect_equal("data.frame" %in% class(ba_phenotypes_search(con, rclass = "data.frame")), TRUE)
-  # expect_equal("tbl_df" %in% class(ba_phenotypes_search(con)), TRUE)
+  expect_equal("data.frame" %in% class(ba_phenotypes_search(con, "1", rclass = "data.frame")), TRUE)
+  expect_equal("tbl_df" %in% class(ba_phenotypes_search(con, "1")), TRUE)
   expect_equal("ba_phenotypes_search" %in% class(ba_phenotypes_search(con, "1", rclass = "json")), TRUE)
 })
 

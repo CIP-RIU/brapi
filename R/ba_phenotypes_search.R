@@ -77,14 +77,24 @@ ba_phenotypes_search <- function(
       nr <- sapply(out1$observations, nrow)
       nid <- rep(out1$observationUnitDbId, times = nr)
 
-      for (i in 1:n) {
-        out1$observations[[i]] <- rbind()
-        # first join tables then prepend id col
+      out2 <- out1$observations[[1]]
 
-        # then merge
+      if(n > 1){
+        for (i in 2:n) {
+          out2 <- rbind(out2, out1$observations[[i]])
+        }
       }
+      out2 <- cbind(observationUnitDbId = nid, out2)
+      names(out2)[2:ncol(out2)] = paste0("observations.", names(out2)[2:ncol(out2)])
+      out3 <- merge(out1, out2, by = "observationUnitDbId")
+      out3$observations <- NULL
 
-      #out <- sov2tbl(res, rclass, TRUE)
+      out <- out3
+      if (rclass == "data.frame") {
+        out <- tibble::as_data_frame(out)
+      } else {
+        out <- tibble::as_tibble(out)
+      }
     }
     class(out) <- c(class(out), "ba_phenotypes_search")
     return(out)
