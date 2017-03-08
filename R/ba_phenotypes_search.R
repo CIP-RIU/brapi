@@ -90,6 +90,24 @@ ba_phenotypes_search <- function(
       out3$observations <- NULL
 
       out <- out3
+
+      trt <- as.data.frame(cbind(
+        treatments.factor = rep("", nrow(out)),
+        treatments.modality = rep("", nrow(out))
+        ), stringsAsFactors = FALSE)
+
+      for (i in 1:nrow(out)) {
+        if (length(out$treatments[[i]]) == 2) {
+          trt[i, ] = out$treatments[[i]]
+        }
+      }
+      trt[, 1] <- as.factor(trt[, 1])
+      trt[, 2] <- as.factor(trt[, 2])
+
+      out$treatments <- NULL
+      out <- cbind(out, trt)
+      out <- out[, c(1:19, 27, 28, 20:26)]
+
       if (rclass == "data.frame") {
         out <- tibble::as_data_frame(out)
       } else {

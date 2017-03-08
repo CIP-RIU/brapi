@@ -8,12 +8,12 @@ context("Testing the path 'phenotype-search'")
 
 test_that("Basics.", {
   expect_equal(length(ba_phenotypes_search(con, "1", rclass = "list")), 2)
-  #expect_equal(nrow(ba_phenotypes_search(con, "1", rclass = "data.frame")), 3)
+  expect_equal(nrow(ba_phenotypes_search(con, "1", rclass = "data.frame")), 4)
 })
 
 test_that("Parameters", {
    expect_equal(nrow(ba_phenotypes_search(con, "1")), 4)
-   #expect_equal(nrow(ba_phenotypes_search(con, "2")), )
+   expect_equal(nrow(ba_phenotypes_search(con, "2")), 1)
 })
 
 
