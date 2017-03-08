@@ -13,6 +13,7 @@ test_that("Basics.", {
 
 test_that("Parameters", {
    expect_equal(nrow(ba_phenotypes_search(con, "1")), 4)
+   expect_equal(nrow(ba_phenotypes_search(con, as.character(1:7))), 8)
    expect_equal(nrow(ba_phenotypes_search(con, "2")), 1)
 })
 
