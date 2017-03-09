@@ -6,7 +6,7 @@
 #' @param sampleData list of sample details.
 #'
 #' @author Reinhard Simon
-#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/Samples/TakeASample.md}(github)
+#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Samples/TakeASample.md}{github}
 #' @example inst/examples/ex-ba_samples_save.R
 #' @return character a unique sample ID assigned by the server
 

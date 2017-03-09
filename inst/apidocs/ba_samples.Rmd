@@ -1,0 +1,29 @@
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment=NA)
+```
+## PUT  [/brapi/v1/samples]
+
+```{r}
+library(brapi)
+
+  # make sure brapiTS::mock_server() is running in a separate process
+
+ 
+  con <- ba_connect()
+
+  sampleId <- "Unique-Plant-SampleId-1234567890"
+
+  # Example 1
+  bl <- ba_samples(con, sampleId)
+
+```
+
+### Response
+
+Code: 200 (application/json)
+
+```json
+`r json`
+```
+
+

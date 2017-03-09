@@ -2,12 +2,12 @@
 #'
 #' Get sample metadata available on a brapi server
 #'
-#' @param con brapi connection object
+#' @param con list, brapi connection object
 #' @param rclass character; default: tibble
 #' @param sampleId character
 #'
 #' @author Reinhard Simon
-#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/Samples/RetrieveSampleMetadata.md}(github)
+#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Samples/RetrieveSampleMetadata.md}{github}
 #' @example inst/examples/ex-ba_samples.R
 #' @return rclass as defined
 #' @import tibble

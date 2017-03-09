@@ -3,17 +3,17 @@
 #' lists the breeding observationvariables
 #'
 #'
-#' @param con brapi connection object
-#' @param germplasmDbIds  vector of string; default: any
-#' @param observationVariableDbIds  vector of string; default: any
-#' @param studyDbIds  vector of string; default: any
-#' @param locationDbIds  vector of string; default: any
-#' @param programDbIds  vector of string; default: any
-#' @param seasonDbIds  vector of string; default: any
-#' @param observationLevel  vector of string; default: any
+#' @param con brapi list, connection object
+#' @param germplasmDbIds  vector of character; default: any
+#' @param observationVariableDbIds  vector of character; default: any
+#' @param studyDbIds  vector of character; default: any
+#' @param locationDbIds  vector of character; default: any
+#' @param programDbIds  vector of character; default: any
+#' @param seasonDbIds  vector of character; default: any
+#' @param observationLevel  vector of character; default: any
 #' @param pageSize integer default: 100
 #' @param page integer default: 0
-#' @param rclass string; default: tibble
+#' @param rclass character; default: tibble
 #'
 #' @import httr
 #' @author Reinhard Simon

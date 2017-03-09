@@ -43,7 +43,7 @@ if (interactive()) {
 }
 }
 \references{
-\url{https://github.com/plantbreeding/API/blob/master/Specification/Samples/TakeASample.md}(github)
+\href{https://github.com/plantbreeding/API/blob/master/Specification/Samples/TakeASample.md}{github}
 }
 \seealso{
 Other phenotyping: \code{\link{ba_samples}},

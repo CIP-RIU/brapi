@@ -9,19 +9,19 @@ ba_programs_search(con = NULL, programDbId = "any", name = "any",
   rclass = "tibble")
 }
 \arguments{
-\item{con}{brapi connection object}
+\item{con}{list, brapi connection object}
 
-\item{programDbId}{string; default: any}
+\item{programDbId}{character; default: any}
 
-\item{name}{string; default: any}
+\item{name}{character; default: any}
 
-\item{abbreviation}{string; default: any}
+\item{abbreviation}{character; default: any}
 
-\item{objective}{string; default: any}
+\item{objective}{character; default: any}
 
-\item{leadPerson}{string; default: any}
+\item{leadPerson}{character; default: any}
 
-\item{rclass}{string; default: tibble}
+\item{rclass}{character; default: tibble}
 }
 \value{
 rclass

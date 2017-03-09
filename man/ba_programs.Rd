@@ -8,17 +8,17 @@ ba_programs(con = NULL, programName = "any", abbreviation = "any",
   page = 0, pageSize = 10000, rclass = "tibble")
 }
 \arguments{
-\item{con}{brapi connection object}
+\item{con}{list, brapi connection object}
 
-\item{programName}{string; default: any}
+\item{programName}{character; default: any}
 
-\item{abbreviation}{string; default: any}
+\item{abbreviation}{character; default: any}
 
 \item{page}{integer requested page number, default = 0 (1st page)}
 
-\item{pageSize}{items per page (default = 100)}
+\item{pageSize}{integer, items per page (default = 100)}
 
-\item{rclass}{string; default: tibble}
+\item{rclass}{character, default: tibble}
 }
 \value{
 rclass

@@ -3,13 +3,13 @@
 #' searches the breeding programs
 #'
 #'
-#' @param con brapi connection object
-#' @param rclass string; default: tibble
-#' @param name string; default: any
-#' @param abbreviation string; default: any
-#' @param programDbId string; default: any
-#' @param objective string; default: any
-#' @param leadPerson string; default: any
+#' @param con list, brapi connection object
+#' @param rclass character; default: tibble
+#' @param name character; default: any
+#' @param abbreviation character; default: any
+#' @param programDbId character; default: any
+#' @param objective character; default: any
+#' @param leadPerson character; default: any
 #'
 #' @import httr
 #' @author Reinhard Simon

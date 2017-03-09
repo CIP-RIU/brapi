@@ -4,12 +4,12 @@
 #'
 #' BRAPI discussion: Should this return also the crop?
 #'
-#' @param con brapi connection object
+#' @param con list, brapi connection object
 #' @param page integer requested page number, default = 0 (1st page)
-#' @param rclass string; default: tibble
-#' @param pageSize items per page (default = 100)
-#' @param programName string; default: any
-#' @param abbreviation string; default: any
+#' @param rclass character, default: tibble
+#' @param pageSize integer, items per page (default = 100)
+#' @param programName character; default: any
+#' @param abbreviation character; default: any
 #'
 #' @import httr
 #' @author Reinhard Simon

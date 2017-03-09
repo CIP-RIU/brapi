@@ -10,27 +10,27 @@ ba_phenotypes_search(con = NULL, germplasmDbIds = "any",
   observationLevel = "any", pageSize = 100, page = 0, rclass = "tibble")
 }
 \arguments{
-\item{con}{brapi connection object}
+\item{con}{brapi list, connection object}
 
-\item{germplasmDbIds}{vector of string; default: any}
+\item{germplasmDbIds}{vector of character; default: any}
 
-\item{observationVariableDbIds}{vector of string; default: any}
+\item{observationVariableDbIds}{vector of character; default: any}
 
-\item{studyDbIds}{vector of string; default: any}
+\item{studyDbIds}{vector of character; default: any}
 
-\item{locationDbIds}{vector of string; default: any}
+\item{locationDbIds}{vector of character; default: any}
 
-\item{programDbIds}{vector of string; default: any}
+\item{programDbIds}{vector of character; default: any}
 
-\item{seasonDbIds}{vector of string; default: any}
+\item{seasonDbIds}{vector of character; default: any}
 
-\item{observationLevel}{vector of string; default: any}
+\item{observationLevel}{vector of character; default: any}
 
 \item{pageSize}{integer default: 100}
 
 \item{page}{integer default: 0}
 
-\item{rclass}{string; default: tibble}
+\item{rclass}{character; default: tibble}
 }
 \value{
 rclass

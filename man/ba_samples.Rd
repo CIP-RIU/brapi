@@ -7,7 +7,7 @@
 ba_samples(con = NULL, sampleId = "", rclass = "tibble")
 }
 \arguments{
-\item{con}{brapi connection object}
+\item{con}{list, brapi connection object}
 
 \item{sampleId}{character}
 
@@ -35,7 +35,7 @@ if (interactive()) {
 }
 }
 \references{
-\url{https://github.com/plantbreeding/API/blob/master/Specification/Samples/RetrieveSampleMetadata.md}(github)
+\href{https://github.com/plantbreeding/API/blob/master/Specification/Samples/RetrieveSampleMetadata.md}{github}
 }
 \seealso{
 Other phenotyping: \code{\link{ba_samples_save}},

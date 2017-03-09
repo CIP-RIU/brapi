@@ -1,0 +1,24 @@
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment=NA)
+```
+## POST  [/brapi/v1/programs-search]
+
+```{r}
+library(brapi)
+
+# make sure brapiTS::mock_server() is running in a separate process
+con <- ba_connect()
+ba_show_info(TRUE)
+json <- ba_programs(con, rclass = "json")
+ba_show_info(FALSE)
+```
+
+### Response
+
+Code: 200 (application/json)
+
+```json
+`r json`
+```
+
+
