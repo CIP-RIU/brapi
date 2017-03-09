@@ -12,14 +12,6 @@ con <- ba_connect()
 json <- ba_germplasm_search(con, germplasmDbId = "3", rclass = "json")
 ```
 
-```
-URL call was: http://127.0.0.1:2021/brapi/v1/germplasm-search/?germplasmDbId=3
-```
-
-```
-Server status:  ok!
-```
-
 ### Response
 
 Code: 200 (application/json)

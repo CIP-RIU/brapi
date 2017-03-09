@@ -12,14 +12,6 @@ con <- ba_connect()
 json <- ba_germplasmattributes(con, attributeCategoryDbId = '2', rclass = "json")
 ```
 
-```
-URL call was: http://127.0.0.1:2021/brapi/v1/attributes/?attributeCategoryDbId=2
-```
-
-```
-Server status:  ok!
-```
-
 ### Response
 
 Code: 200 (application/json)

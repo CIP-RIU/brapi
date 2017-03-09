@@ -11,14 +11,6 @@ con <- ba_connect()
 json <- ba_germplasm_details_study(con, studyDbId = "123", rclass = "json")
 ```
 
-```
-URL call was: http://127.0.0.1:2021/brapi/v1/studies/123/germplasm/?pageSize=1000&page=0
-```
-
-```
-Server status:  ok!
-```
-
 ### Response
 
 Code: 200 (application/json)
