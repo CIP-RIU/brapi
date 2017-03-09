@@ -2,14 +2,14 @@
 #'
 #' lists brapi_variables available on a brapi server
 #'
-#' @param rclass string; default: tibble
-#' @param con object; brapi connection object
+#' @param rclass character; default: tibble
+#' @param con list; brapi connection object
 #' @param page integer; default 0
 #' @param pageSize integer; defautlt 1000
-#' @param traitClass string; default 'all'
+#' @param traitClass character; default 'all'
 #'
 #' @author Reinhard Simon
-#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/ObservationVariables/VariableList.md}
+#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/ObservationVariables/VariableList.md}{github}
 #' @return rclass as defined
 #' @example inst/examples/ex-ba_observationvariables.R
 #' @import tibble

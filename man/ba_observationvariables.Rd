@@ -8,15 +8,15 @@ ba_observationvariables(con = NULL, traitClass = "all", page = 0,
   pageSize = 1000, rclass = "tibble")
 }
 \arguments{
-\item{con}{object; brapi connection object}
+\item{con}{list; brapi connection object}
 
-\item{traitClass}{string; default 'all'}
+\item{traitClass}{character; default 'all'}
 
 \item{page}{integer; default 0}
 
 \item{pageSize}{integer; defautlt 1000}
 
-\item{rclass}{string; default: tibble}
+\item{rclass}{character; default: tibble}
 }
 \value{
 rclass as defined
@@ -38,7 +38,7 @@ if (interactive()) {
 }
 }
 \references{
-\url{https://github.com/plantbreeding/API/blob/master/Specification/ObservationVariables/VariableList.md}
+\url{https://github.com/plantbreeding/API/blob/master/Specification/ObservationVariables/VariableList.md}{github}
 }
 \seealso{
 Other observationvariables: \code{\link{ba_observationvariables_datatypes}},
