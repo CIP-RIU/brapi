@@ -5,8 +5,8 @@
 #' @param con brapi connection object
 #' @param germplasmDbId integer; default 0
 #'
-#' @param notation string; default: purdue format
-#' @param rclass string; default: tibble
+#' @param notation character; default: purdue format
+#' @param rclass character; default: tibble
 #'
 #' @author Reinhard Simon
 #' @return list of pedigree data
