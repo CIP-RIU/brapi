@@ -9,7 +9,7 @@ library(magrittr)
 # make sure brapiTS::mock_server() is running in a separate process
 con <- ba_connect()
 
-json <- ba_germplasm_markerprofiles(con, germplasmDbId = "1", rclass = "json")
+json <- ba_germplasm_markerprofiles(con, germplasmDbId = "3", rclass = "json")
 ```
 
 ### Response
@@ -17,12 +17,27 @@ json <- ba_germplasm_markerprofiles(con, germplasmDbId = "1", rclass = "json")
 Code: 200 (application/json)
 
 ```json
-Error in value[[3L]](cond) : 
-  Error in is.ba_status_ok(res): Not Found (HTTP 404). Failed to connect due to url/BrAPI call
-                                      not implemented.
+{
+    "metadata": {
+        "pagination": {
 
+        },
+        "status": [
 
-Malformed request.
+        ],
+        "datafiles": [
+
+        ]
+    },
+    "result": {
+        "germplasmDbId": 3,
+        "markerProfiles": [
+            1,
+            2,
+            3
+        ]
+    }
+}
 
 ```
 
