@@ -4,10 +4,10 @@
 #' Lists markers as result of a search.
 #'
 #' @param con brapi connection object
-#' @param name string; marker name; default: *
-#' @param type string; default: all; other: SNP
-#' @param matchMethod string; default: wildcard; other: case_insensitive, exact
-#' @param include string; default: synonyms
+#' @param name character; marker name; default: *
+#' @param type character; default: all; other: SNP
+#' @param matchMethod character; default: wildcard; other: case_insensitive, exact
+#' @param include character; default: synonyms
 #' @param page integer; default: 0
 #' @param pageSize integer; default 1000
 #' @param rclass character; default: tibble

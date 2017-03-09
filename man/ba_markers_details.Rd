@@ -33,7 +33,7 @@ if (interactive()) {
 }
 }
 \references{
-\url{https://github.com/plantbreeding/API/blob/master/Specification/Markers/MarkerDetailsByMarkerDbId.md}
+\url{https://github.com/plantbreeding/API/blob/master/Specification/Markers/MarkerDetailsByMarkerDbId.md}{github}
 }
 \seealso{
 Other markers: \code{\link{ba_markers_search}}

@@ -11,7 +11,7 @@
 #' @import httr
 #' @import progress
 #' @importFrom magrittr '%>%'
-#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/Markers/MarkerDetailsByMarkerDbId.md}
+#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/Markers/MarkerDetailsByMarkerDbId.md}{github}
 #'
 #' @return data.frame
 #' @example inst/examples/ex-ba_markers_details.R

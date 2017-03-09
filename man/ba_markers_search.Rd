@@ -11,13 +11,13 @@ ba_markers_search(con = NULL, name = "*", type = "all",
 \arguments{
 \item{con}{brapi connection object}
 
-\item{name}{string; marker name; default: *}
+\item{name}{character; marker name; default: *}
 
-\item{type}{string; default: all; other: SNP}
+\item{type}{character; default: all; other: SNP}
 
-\item{matchMethod}{string; default: wildcard; other: case_insensitive, exact}
+\item{matchMethod}{character; default: wildcard; other: case_insensitive, exact}
 
-\item{include}{string; default: synonyms}
+\item{include}{character; default: synonyms}
 
 \item{page}{integer; default: 0}
 
