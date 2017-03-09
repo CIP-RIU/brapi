@@ -1,5 +1,5 @@
 
-## POST  [/brapi/v1/programs-search]
+## GET [/brapi/v1/programs?programName={programName}&abbreviation={abbreviation}&pageSize=&page=]
 
 
 ```r
@@ -7,20 +7,8 @@ library(brapi)
 
 # make sure brapiTS::mock_server() is running in a separate process
 con <- ba_connect()
-ba_show_info(TRUE)
-json <- ba_programs_search(con, rclass = "json")
-```
 
-```
-URL call was: http://127.0.0.1:2021/brapi/v1/programs-search/
-```
-
-```
-Server status: 200 (ok)!
-```
-
-```r
-ba_show_info(FALSE)
+json <- ba_programs(con, rclass = "json")
 ```
 
 ### Response

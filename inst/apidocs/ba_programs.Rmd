@@ -1,16 +1,16 @@
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, comment=NA)
 ```
-## POST  [/brapi/v1/programs-search]
+## GET [/brapi/v1/programs?programName={programName}&abbreviation={abbreviation}&pageSize=&page=]
 
 ```{r}
 library(brapi)
 
 # make sure brapiTS::mock_server() is running in a separate process
 con <- ba_connect()
-ba_show_info(TRUE)
-json <- ba_programs_search(con, rclass = "json")
-ba_show_info(FALSE)
+
+json <- ba_programs(con, rclass = "json")
+
 ```
 
 ### Response
