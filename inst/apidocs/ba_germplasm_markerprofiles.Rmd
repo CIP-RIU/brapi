@@ -1,0 +1,24 @@
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment=NA)
+```
+## GET [/brapi/v1/germplasm/{id}/markerprofiles]
+
+```{r}
+library(brapi)
+library(magrittr)
+
+# make sure brapiTS::mock_server() is running in a separate process
+con <- ba_connect()
+
+json <- ba_germplasm_markerprofiles(con, germplasmDbId = "1", rclass = "json")
+```
+
+### Response
+
+Code: 200 (application/json)
+
+```json
+`r json`
+```
+
+
