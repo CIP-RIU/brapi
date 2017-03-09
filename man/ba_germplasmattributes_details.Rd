@@ -40,7 +40,7 @@ if (interactive()) {
 }
 }
 \references{
-\url{https://github.com/plantbreeding/API/blob/master/Specification/GermplasmAttributes/GermplasmAttributeValuesByGermplasmDbId.md}
+\url{https://github.com/plantbreeding/API/blob/master/Specification/GermplasmAttributes/GermplasmAttributeValuesByGermplasmDbId.md}{github}
 }
 \seealso{
 Other germplasmattributes: \code{\link{ba_germplasmattributes_categories}},

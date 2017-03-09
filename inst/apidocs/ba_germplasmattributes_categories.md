@@ -9,7 +9,7 @@ library(magrittr)
 # make sure brapiTS::mock_server() is running in a separate process
 con <- ba_connect()
 
-json <- ba_germplasmattributes_categories(con, pageSize = 2, rclass = "json")
+json <- ba_germplasmattributes_categories(con, pageSize = 3, rclass = "json")
 ```
 
 ### Response
@@ -21,9 +21,9 @@ Code: 200 (application/json)
     "metadata": {
         "pagination": {
             "currentPage": 0,
-            "pageTotal": 2,
+            "pageTotal": 1,
             "totalCount": 3,
-            "pageSize": 2
+            "pageSize": 3
         },
         "status": [
 
@@ -41,6 +41,10 @@ Code: 200 (application/json)
             {
                 "attributeCategoryDbId": 2,
                 "name": "Agronomic"
+            },
+            {
+                "attributeCategoryDbId": 3,
+                "name": "Biotic stress"
             }
         ]
     }

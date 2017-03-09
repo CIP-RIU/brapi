@@ -36,7 +36,7 @@ if (interactive()) {
 }
 }
 \references{
-\url{https://github.com/plantbreeding/API/blob/master/Specification/GermplasmAttributes/ListAttributeCategories.md}
+\url{https://github.com/plantbreeding/API/blob/master/Specification/GermplasmAttributes/ListAttributeCategories.md}{github}
 }
 \seealso{
 Other germplasmattributes: \code{\link{ba_germplasmattributes_details}},

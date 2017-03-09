@@ -1,7 +1,7 @@
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, comment=NA)
 ```
-## GET [/brapi/v1/attributes/categories/?pageSize=10&page=2]
+## GET [/brapi/v1/germplasm/{germplasmDbId}/attributes?attributeList={attributeDbId},{attributeDbId}&pageSize=&page=]
 
 ```{r}
 library(brapi)
@@ -10,7 +10,7 @@ library(magrittr)
 # make sure brapiTS::mock_server() is running in a separate process
 con <- ba_connect()
 
-json <- ba_germplasmattributes_categories(con, pageSize = 3, rclass = "json")
+json <- ba_germplasmattributes_details(con, germplasmDbId = "1",  rclass = "json")
 ```
 
 ### Response
