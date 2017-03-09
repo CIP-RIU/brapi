@@ -10,21 +10,21 @@ ba_genomemaps(con = NULL, species = "all", type = "all", page = 0,
 \arguments{
 \item{con}{brapi connection object}
 
-\item{species}{string; default:}
+\item{species}{character; default:}
 
-\item{type}{string, default: all}
+\item{type}{character, default: all}
 
 \item{page}{integer; default 0}
 
 \item{pageSize}{integer; default 30}
 
-\item{rclass}{string; default: tibble}
+\item{rclass}{character; default: tibble}
 }
 \value{
 rclass as defined
 }
 \description{
-lists genomemaps available on a brapi server
+Get list of maps
 }
 \examples{
 if (interactive()) {

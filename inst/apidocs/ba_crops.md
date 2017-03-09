@@ -12,6 +12,14 @@ con <- ba_connect()
 json <- ba_crops(con, rclass = "json")
 ```
 
+```
+URL call was: http://127.0.0.1:2021/brapi/v1/crops
+```
+
+```
+Server status:  ok!
+```
+
 ### Response
 
 Code: 200 (application/json)

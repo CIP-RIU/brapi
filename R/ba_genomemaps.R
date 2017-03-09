@@ -1,11 +1,11 @@
 #' ba_genomemaps
 #'
-#' lists genomemaps available on a brapi server
+#' Get list of maps
 #'
 #' @param con brapi connection object
-#' @param rclass string; default: tibble
-#' @param species string; default:
-#' @param type string, default: all
+#' @param rclass character; default: tibble
+#' @param species character; default:
+#' @param type character, default: all
 #' @param page integer; default 0
 #' @param pageSize integer; default 30
 #'

@@ -1,9 +1,9 @@
 #' ba_genomemaps_data
 #'
-#' lists genomemaps_data available on a brapi server
+#' markers ordered by linkageGroup and position
 #'
 #' @param con brapi connection object
-#' @param rclass string; default: tibble
+#' @param rclass character; default: tibble
 #' @param page integer; default 0
 #' @param pageSize integer; default 30
 #' @param mapDbId character; default 0

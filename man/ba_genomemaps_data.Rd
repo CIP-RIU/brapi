@@ -18,13 +18,13 @@ ba_genomemaps_data(con = NULL, mapDbId = "0", linkageGroupId = "0",
 
 \item{pageSize}{integer; default 30}
 
-\item{rclass}{string; default: tibble}
+\item{rclass}{character; default: tibble}
 }
 \value{
 rclass as defined
 }
 \description{
-lists genomemaps_data available on a brapi server
+markers ordered by linkageGroup and position
 }
 \examples{
 if (interactive()) {
