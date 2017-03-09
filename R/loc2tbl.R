@@ -1,7 +1,7 @@
 loc2tbl <- function(res, rclass, con) {
     lst <- jsonlite::fromJSON(res)
     dat <- jsonlite::toJSON(lst$result)
-    dat <- jsonlite::fromJSON(dat)
+    dat <- jsonlite::fromJSON(dat, simplifyDataFrame = TRUE)
 
 
     addinfo <- "additionalInfo"
@@ -17,33 +17,26 @@ loc2tbl <- function(res, rclass, con) {
       )
     }
 
-    # get all var names
-    nms <- unique(lapply(dat, colnames) %>% unlist)
-    # TODO vectorize the next
-    n <- length(dat)
-    x <- character(n)
-    for (i in 1:n) {
-      if (length(dat[[i]]) == 10) {
-        x <- c(x, names(dat[[i]][[10]]))
-      }
-    }
-    nms <- c(nms, unique(x))
-    nms <- nms[!nms %in% c("", 10)]
+    has_add_cols <- !(dat[addinfo][[1]] %>% is.null)
+    if (has_add_cols) {
+      # get all var names
+      addinf <- dat[, names(dat[addinfo])]
+      nms <- lapply(addinf, names) %>% unlist %>% unique()
 
-    # construct basic data.frame
-
-    df <- as.data.frame(matrix(NA, ncol = length(nms), nrow = n), stringsAsFactors = FALSE)
-    names(df) <- nms
-    for (i in 1:n) {
-        # fixed names
-        df[i, 1:9] <- dat[[i]][, 1:9]
-
-        # variable names
-        if (length(dat[[i]]) == 10) {
-          vnms <- colnames(dat[[i]][[10]])
-          df[i, vnms] <- dat[[i]][[10]]
+      df <- as.data.frame(matrix(NA, ncol = length(nms), nrow = nrow(dat)), stringsAsFactors = FALSE)
+      names(df) <- nms
+      n <- nrow(dat)
+      for (i in 1:n) {
+        if (ncol(addinf[[i]]) > 0) {
+          df[i, names(addinf[[i]])] <- addinf[[i]]
         }
+
+      }
+      df <- cbind(dat, df)
+    } else {
+      df <- dat$data[, 1:8]
     }
+
 
     for (i in 1:ncol(df)) {
         if (is.numeric(df[, i]))

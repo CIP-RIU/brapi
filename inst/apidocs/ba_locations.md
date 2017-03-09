@@ -20,20 +20,17 @@ Code: 200 (application/json)
 {
     "metadata": {
         "pagination": {
-            "currentPage": 0,
-            "pageTotal": 1,
-            "totalCount": 17,
-            "pageSize": 1000
-        },
-        "status": [
 
-        ],
+        },
+        "status": {
+
+        },
         "datafiles": [
 
         ]
     },
-    "result": [
-        [
+    "result": {
+        "data": [
             {
                 "locationDbId": 1,
                 "locationType": "Storage location",
@@ -44,19 +41,19 @@ Code: 200 (application/json)
                 "latitude": -11.1275,
                 "longitude": -75.3564,
                 "altitude": 828,
-                "additionalInfo": {
-                    "local": "San Ramon",
-                    "cont": "South America",
-                    "creg": "LAC",
-                    "adm3": "San Ramon",
-                    "adm2": "Chanchamayo",
-                    "adm1": "Junin",
-                    "annualTotalPrecipitation": 360,
-                    "annualMeanTemperature": 23
-                }
-            }
-        ],
-        [
+                "additionalInfo": [
+                    {
+                        "local": "San Ramon",
+                        "cont": "South America",
+                        "creg": "LAC",
+                        "adm3": "San Ramon",
+                        "adm2": "Chanchamayo",
+                        "adm1": "Junin",
+                        "annualTotalPrecipitation": 360,
+                        "annualMeanTemperature": 23
+                    }
+                ]
+            },
             {
                 "locationDbId": 2,
                 "locationType": "Breeding location",
@@ -67,12 +64,12 @@ Code: 200 (application/json)
                 "latitude": -11.1612,
                 "longitude": -75.3417,
                 "altitude": 964,
-                "additionalInfo": {
+                "additionalInfo": [
+                    {
 
-                }
-            }
-        ],
-        [
+                    }
+                ]
+            },
             {
                 "locationDbId": 3,
                 "locationType": "Storage location",
@@ -83,13 +80,13 @@ Code: 200 (application/json)
                 "latitude": -12.0763,
                 "longitude": -76.9484,
                 "altitude": 244,
-                "additionalInfo": {
-                    "annualTotalPrecipitation": 6.4,
-                    "annualMeanTemperature": 19.2
-                }
-            }
-        ],
-        [
+                "additionalInfo": [
+                    {
+                        "annualTotalPrecipitation": 6.4,
+                        "annualMeanTemperature": 19.2
+                    }
+                ]
+            },
             {
                 "locationDbId": 4,
                 "locationType": "Farmer field location",
@@ -100,17 +97,17 @@ Code: 200 (application/json)
                 "latitude": -15.4669,
                 "longitude": 36.9777,
                 "altitude": 701,
-                "additionalInfo": {
-                    "local": "Gurue",
-                    "cont": "Africa",
-                    "creg": "SSA",
-                    "adm3": "Gurue",
-                    "adm2": "Gurue",
-                    "adm1": "Zambezia"
-                }
-            }
-        ],
-        [
+                "additionalInfo": [
+                    {
+                        "local": "Gurue",
+                        "cont": "Africa",
+                        "creg": "SSA",
+                        "adm3": "Gurue",
+                        "adm2": "Gurue",
+                        "adm1": "Zambezia"
+                    }
+                ]
+            },
             {
                 "locationDbId": 5,
                 "locationType": "Breeding location",
@@ -121,17 +118,17 @@ Code: 200 (application/json)
                 "latitude": -26.0283,
                 "longitude": 32.39,
                 "altitude": 7,
-                "additionalInfo": {
-                    "local": "Umbeluzi",
-                    "cont": "Africa",
-                    "creg": "SSA",
-                    "adm3": "Umbeluzi",
-                    "adm2": "Boane",
-                    "adm1": "Maputo"
-                }
-            }
-        ],
-        [
+                "additionalInfo": [
+                    {
+                        "local": "Umbeluzi",
+                        "cont": "Africa",
+                        "creg": "SSA",
+                        "adm3": "Umbeluzi",
+                        "adm2": "Boane",
+                        "adm1": "Maputo"
+                    }
+                ]
+            },
             {
                 "locationDbId": 6,
                 "locationType": "Breeding location",
@@ -142,18 +139,18 @@ Code: 200 (application/json)
                 "latitude": -10.961,
                 "longitude": -75.2207,
                 "altitude": 717,
-                "additionalInfo": {
-                    "altern": "MARANK",
-                    "local": "San Miguel Centro Marankiari",
-                    "cont": "South America",
-                    "creg": "LAC",
-                    "adm3": "Peren<e9>",
-                    "adm2": "Chanchamayo",
-                    "adm1": "Junin"
-                }
-            }
-        ],
-        [
+                "additionalInfo": [
+                    {
+                        "altern": "MARANK",
+                        "local": "San Miguel Centro Marankiari",
+                        "cont": "South America",
+                        "creg": "LAC",
+                        "adm3": "Peren<e9>",
+                        "adm2": "Chanchamayo",
+                        "adm1": "Junin"
+                    }
+                ]
+            },
             {
                 "locationDbId": 7,
                 "locationType": "Breeding location",
@@ -164,18 +161,18 @@ Code: 200 (application/json)
                 "latitude": -10.9318,
                 "longitude": -74.8555,
                 "altitude": 484,
-                "additionalInfo": {
-                    "altern": "SHIRANI",
-                    "local": "Shirani",
-                    "cont": "South America",
-                    "creg": "LAC",
-                    "adm3": "Pichanaki",
-                    "adm2": "Chanchamayo",
-                    "adm1": "Junin"
-                }
-            }
-        ],
-        [
+                "additionalInfo": [
+                    {
+                        "altern": "SHIRANI",
+                        "local": "Shirani",
+                        "cont": "South America",
+                        "creg": "LAC",
+                        "adm3": "Pichanaki",
+                        "adm2": "Chanchamayo",
+                        "adm1": "Junin"
+                    }
+                ]
+            },
             {
                 "locationDbId": 8,
                 "locationType": "Farmer field location",
@@ -186,18 +183,18 @@ Code: 200 (application/json)
                 "latitude": -11.053,
                 "longitude": -73.7525,
                 "altitude": 252,
-                "additionalInfo": {
-                    "altern": "BETALT",
-                    "local": "Betania",
-                    "cont": "South America",
-                    "creg": "LAC",
-                    "adm3": "Rio Tambo",
-                    "adm2": "Satipo",
-                    "adm1": "Junin"
-                }
-            }
-        ],
-        [
+                "additionalInfo": [
+                    {
+                        "altern": "BETALT",
+                        "local": "Betania",
+                        "cont": "South America",
+                        "creg": "LAC",
+                        "adm3": "Rio Tambo",
+                        "adm2": "Satipo",
+                        "adm1": "Junin"
+                    }
+                ]
+            },
             {
                 "locationDbId": 9,
                 "locationType": "Farmer field location",
@@ -208,18 +205,18 @@ Code: 200 (application/json)
                 "latitude": -11.053,
                 "longitude": -73.7525,
                 "altitude": 252,
-                "additionalInfo": {
-                    "altern": "BETBAJ",
-                    "local": "Betania",
-                    "cont": "South America",
-                    "creg": "LAC",
-                    "adm3": "Rio Tambo",
-                    "adm2": "Satipo",
-                    "adm1": "Junin"
-                }
-            }
-        ],
-        [
+                "additionalInfo": [
+                    {
+                        "altern": "BETBAJ",
+                        "local": "Betania",
+                        "cont": "South America",
+                        "creg": "LAC",
+                        "adm3": "Rio Tambo",
+                        "adm2": "Satipo",
+                        "adm1": "Junin"
+                    }
+                ]
+            },
             {
                 "locationDbId": 10,
                 "locationType": "Breeding location",
@@ -230,18 +227,18 @@ Code: 200 (application/json)
                 "latitude": -11.2585,
                 "longitude": -73.8208,
                 "altitude": 276,
-                "additionalInfo": {
-                    "altern": "OVIRI",
-                    "local": "Nuevaluz Oviri",
-                    "cont": "South America",
-                    "creg": "LAC",
-                    "adm3": "Rio Tambo",
-                    "adm2": "Satipo",
-                    "adm1": "Junin"
-                }
-            }
-        ],
-        [
+                "additionalInfo": [
+                    {
+                        "altern": "OVIRI",
+                        "local": "Nuevaluz Oviri",
+                        "cont": "South America",
+                        "creg": "LAC",
+                        "adm3": "Rio Tambo",
+                        "adm2": "Satipo",
+                        "adm1": "Junin"
+                    }
+                ]
+            },
             {
                 "locationDbId": 11,
                 "locationType": "Breeding location",
@@ -252,18 +249,18 @@ Code: 200 (application/json)
                 "latitude": -11.1464,
                 "longitude": -74.3075,
                 "altitude": 323,
-                "additionalInfo": {
-                    "altern": "PTOCOPA",
-                    "local": "Puerto Ocopa",
-                    "cont": "South America",
-                    "creg": "LAC",
-                    "adm3": "Rio Tambo",
-                    "adm2": "Satipo",
-                    "adm1": "Junin"
-                }
-            }
-        ],
-        [
+                "additionalInfo": [
+                    {
+                        "altern": "PTOCOPA",
+                        "local": "Puerto Ocopa",
+                        "cont": "South America",
+                        "creg": "LAC",
+                        "adm3": "Rio Tambo",
+                        "adm2": "Satipo",
+                        "adm1": "Junin"
+                    }
+                ]
+            },
             {
                 "locationDbId": 12,
                 "locationType": "Breeding location",
@@ -274,18 +271,18 @@ Code: 200 (application/json)
                 "latitude": -11.3082,
                 "longitude": -74.6924,
                 "altitude": 758,
-                "additionalInfo": {
-                    "altern": "SNPEDRO",
-                    "local": "San Pedro",
-                    "cont": "South America",
-                    "creg": "LAC",
-                    "adm3": "Coviriali",
-                    "adm2": "Satipo",
-                    "adm1": "Junin"
-                }
-            }
-        ],
-        [
+                "additionalInfo": [
+                    {
+                        "altern": "SNPEDRO",
+                        "local": "San Pedro",
+                        "cont": "South America",
+                        "creg": "LAC",
+                        "adm3": "Coviriali",
+                        "adm2": "Satipo",
+                        "adm1": "Junin"
+                    }
+                ]
+            },
             {
                 "locationDbId": 13,
                 "locationType": "Farmer field location",
@@ -296,16 +293,16 @@ Code: 200 (application/json)
                 "latitude": 6.71,
                 "longitude": -1.572,
                 "altitude": 288,
-                "additionalInfo": {
-                    "local": "Fumesua",
-                    "cont": "Africa",
-                    "creg": "SSA",
-                    "adm2": "Ejisu-Juaben",
-                    "adm1": "Ashanti"
-                }
-            }
-        ],
-        [
+                "additionalInfo": [
+                    {
+                        "local": "Fumesua",
+                        "cont": "Africa",
+                        "creg": "SSA",
+                        "adm2": "Ejisu-Juaben",
+                        "adm1": "Ashanti"
+                    }
+                ]
+            },
             {
                 "locationDbId": 14,
                 "locationType": "Farmer field location",
@@ -316,15 +313,15 @@ Code: 200 (application/json)
                 "latitude": 5.123,
                 "longitude": -1.462,
                 "altitude": 26,
-                "additionalInfo": {
-                    "local": "Komenda",
-                    "cont": "Africa",
-                    "creg": "SSA",
-                    "adm1": "Central"
-                }
-            }
-        ],
-        [
+                "additionalInfo": [
+                    {
+                        "local": "Komenda",
+                        "cont": "Africa",
+                        "creg": "SSA",
+                        "adm1": "Central"
+                    }
+                ]
+            },
             {
                 "locationDbId": 15,
                 "locationType": "Farmer field location",
@@ -335,16 +332,16 @@ Code: 200 (application/json)
                 "latitude": 10.87,
                 "longitude": -1.1466,
                 "altitude": 183,
-                "additionalInfo": {
-                    "local": "Tono dam",
-                    "cont": "Africa",
-                    "creg": "SSA",
-                    "adm2": "Kassena-Nankana",
-                    "adm1": "Upper East"
-                }
-            }
-        ],
-        [
+                "additionalInfo": [
+                    {
+                        "local": "Tono dam",
+                        "cont": "Africa",
+                        "creg": "SSA",
+                        "adm2": "Kassena-Nankana",
+                        "adm1": "Upper East"
+                    }
+                ]
+            },
             {
                 "locationDbId": 16,
                 "locationType": "Storage location",
@@ -355,14 +352,14 @@ Code: 200 (application/json)
                 "latitude": 0.5291,
                 "longitude": 32.6125,
                 "altitude": 1173,
-                "additionalInfo": {
-                    "local": "NaCRRI",
-                    "cont": "Africa",
-                    "creg": "SSA"
-                }
-            }
-        ],
-        [
+                "additionalInfo": [
+                    {
+                        "local": "NaCRRI",
+                        "cont": "Africa",
+                        "creg": "SSA"
+                    }
+                ]
+            },
             {
                 "locationDbId": 17,
                 "locationType": "Storage location",
@@ -373,15 +370,17 @@ Code: 200 (application/json)
                 "latitude": 1.528,
                 "longitude": 33.616,
                 "altitude": 1067,
-                "additionalInfo": {
-                    "local": "NaSARRI",
-                    "cont": "Africa",
-                    "creg": "SSA",
-                    "adm1": "Serere"
-                }
+                "additionalInfo": [
+                    {
+                        "local": "NaSARRI",
+                        "cont": "Africa",
+                        "creg": "SSA",
+                        "adm1": "Serere"
+                    }
+                ]
             }
         ]
-    ]
+    }
 }
 
 ```
