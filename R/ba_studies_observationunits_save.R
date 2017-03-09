@@ -47,7 +47,7 @@ ba_studies_observationunits_save <- function(
 
     obs <- list()
 
-    for(i in 1:n) {
+    for (i in 1:n) {
 
       recs <- unitData[unitData$observationUnitDbId == ouids[i], -c(1)]
       m <- nrow(recs)
@@ -57,7 +57,7 @@ ba_studies_observationunits_save <- function(
         observations = list()
       )
 
-      for(j in 1:m) {
+      for (j in 1:m) {
         obs[[i]]$observations[[j]] <- as.list(recs[j, ])
       }
 
@@ -71,7 +71,7 @@ ba_studies_observationunits_save <- function(
           pageSize = 0,
           currentPage = 0,
           totalCount = 0,
-          totalPages =0
+          totalPages = 0
         ),
         status = list(),
         datafiles = list()

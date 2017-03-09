@@ -9,4 +9,5 @@ if (interactive()) {
   gmd <- ba_genomemaps_details(con, mapDbId = "1")
   gmd %>% ba_chart
 
+  dev.off()
 }

@@ -10,4 +10,5 @@ if (interactive()) {
   gm <- ba_genomemaps(con)
   gm %>% ba_chart
 
+  dev.off()
 }

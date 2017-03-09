@@ -10,7 +10,7 @@ context("Testing the path 'studies/{id}/obervationunits' using POST")
 
   df <- as.data.frame(cbind(
     observationUnitDbId = rep(c("abc-123", "abc-456"), each = 2),
-    observationDbId = c(1,2,3,4),
+    observationDbId = c(1, 2, 3, 4),
     observationVariableId = rep(c(18020, 51496), 2),
     observationVariableName = rep(c("Plant_height", "GW100_g"), 2),
     collector = rep("Mr. Technician", 4),

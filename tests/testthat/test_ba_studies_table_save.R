@@ -24,9 +24,6 @@ test_that("Parameters work", {
 
   expect_error(ba_studies_table_save(out, "1", 1))
 
-  # out$token <- NULL
-  # expect_error(ba_studies_table_save(out, "1", df))
-
 })
 
 

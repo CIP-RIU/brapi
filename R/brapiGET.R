@@ -19,7 +19,8 @@ brapiGET <- function(url, format = "json", con = NULL) {
           # }
         }
       }
-    }, error = function(e) {
+    },
+    error = function(e) {
       stop(paste0(e, "\n\nMalformed request."))
     })
 

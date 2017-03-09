@@ -9,10 +9,10 @@ brapiPUT <- function(url, body, con = con) {
         out <- httr::content(res, "text", encoding = "UTF-8")
         # Get JSON
         x <- jsonlite::fromJSON(out)
-        #print(x)
+
 
         # TODO test if 'metadata' slot exists
-        if ('metadata' %in% names(x)) {
+        if ("metadata" %in% names(x)) {
           out <- x$metadata$status
           # Check if status object has any key-value pairs
           show_server_status_messages(out)

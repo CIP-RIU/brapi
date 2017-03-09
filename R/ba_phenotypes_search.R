@@ -56,8 +56,8 @@ ba_phenotypes_search <- function(
                  studyDbIds = studyDbIds,
                  locationDbIds = locationDbIds,
                  programDbIds = programDbIds,
-                 seasonDbIds = seasonDbIds ,
-                 observationLevel = observationLevel ,
+                 seasonDbIds = seasonDbIds,
+                 observationLevel = observationLevel,
 
                  pageSize = pageSize,
                  page = page
@@ -79,13 +79,13 @@ ba_phenotypes_search <- function(
 
       out2 <- out1$observations[[1]]
 
-      if(n > 1){
+      if (n > 1){
         for (i in 2:n) {
           out2 <- rbind(out2, out1$observations[[i]])
         }
       }
       out2 <- cbind(observationUnitDbId = nid, out2)
-      names(out2)[2:ncol(out2)] = paste0("observations.", names(out2)[2:ncol(out2)])
+      names(out2)[2:ncol(out2)] <- paste0("observations.", names(out2)[2:ncol(out2)])
       out3 <- merge(out1, out2, by = "observationUnitDbId")
       out3$observations <- NULL
 
@@ -98,7 +98,7 @@ ba_phenotypes_search <- function(
 
       for (i in 1:nrow(out)) {
         if (length(out$treatments[[i]]) == 2) {
-          trt[i, ] = out$treatments[[i]]
+          trt[i, ] <- out$treatments[[i]]
         }
       }
       trt[, 1] <- as.factor(trt[, 1])

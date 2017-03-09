@@ -52,6 +52,6 @@ ba_studies_table_save <- function(con = NULL, studyDbId = "1", study_table = NUL
 
       resp <- brapiPOST(studies_table, dat, con)
 
-    return(invisible(TRUE))
+    return(invisible(resp))
     })
 }
