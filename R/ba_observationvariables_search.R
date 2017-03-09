@@ -3,16 +3,16 @@
 #' lists the breeding observationvariables
 #'
 #'
-#' @param con brapi connection object
-#' @param observationVariableDbIds  vector of string; default: any
-#' @param ontologyXrefs  vector of string; default: any
-#' @param ontologyDbIds  vector of string; default: any
-#' @param methodDbIds  vector of string; default: any
-#' @param scaleDbIds  vector of string; default: any
-#' @param names  vector of string; default: any
-#' @param datatypes  vector of string; default: any
-#' @param traitClasses vector of string; default: any
-#' @param rclass string; default: tibble
+#' @param con brapi list; connection object
+#' @param observationVariableDbIds  vector of character; default: any
+#' @param ontologyXrefs  vector of character; default: any
+#' @param ontologyDbIds  vector of character; default: any
+#' @param methodDbIds  vector of character; default: any
+#' @param scaleDbIds  vector of character; default: any
+#' @param names  vector of character; default: any
+#' @param datatypes  vector of character; default: any
+#' @param traitClasses vector of character; default: any
+#' @param rclass character; default: tibble
 #'
 #' @import httr
 #' @author Reinhard Simon

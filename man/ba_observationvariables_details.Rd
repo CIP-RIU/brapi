@@ -8,11 +8,11 @@ ba_observationvariables_details(con = NULL,
   observationVariableDbId = "MO_123:0100621", rclass = "tibble")
 }
 \arguments{
-\item{con}{object; brapi connection object}
+\item{con}{list; brapi connection object}
 
-\item{observationVariableDbId}{string; default 'CO_334:0100622'; from test server.}
+\item{observationVariableDbId}{character; default 'CO_334:0100622'; from test server.}
 
-\item{rclass}{string; default: tibble}
+\item{rclass}{character; default: tibble}
 }
 \value{
 rclass as defined
@@ -34,7 +34,7 @@ if (interactive()) {
 }
 }
 \references{
-\url{https://github.com/plantbreeding/API/blob/master/Specification/ObservationVariables/VariableDetails.md}
+\href{https://github.com/plantbreeding/API/blob/master/Specification/ObservationVariables/VariableDetails.md}{github}
 }
 \seealso{
 Other observationvariables: \code{\link{ba_observationvariables_datatypes}},

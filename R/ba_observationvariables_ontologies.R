@@ -2,12 +2,12 @@
 #'
 #' lists variables_datatypes available on a brapi server
 #'
-#' @param con object; brapi connection object; default = NULL
-#' @param rclass string; default: tibble
+#' @param con list; brapi connection object; default = NULL
+#' @param rclass character; default: tibble
 #' @param page integer; default 0
 #' @param pageSize integer; defautlt 1000
 #' @author Reinhard Simon
-#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/ObservationVariables/VariableOntologyList.md}
+#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/ObservationVariables/VariableOntologyList.md}{github}
 #' @return rclass as defined
 #' @example inst/examples/ex-ba_observationvariables_ontologies.R
 #' @import tibble

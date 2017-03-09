@@ -8,13 +8,13 @@ ba_observationvariables_ontologies(con = NULL, page = 0, pageSize = 1000,
   rclass = "tibble")
 }
 \arguments{
-\item{con}{object; brapi connection object; default = NULL}
+\item{con}{list; brapi connection object; default = NULL}
 
 \item{page}{integer; default 0}
 
 \item{pageSize}{integer; defautlt 1000}
 
-\item{rclass}{string; default: tibble}
+\item{rclass}{character; default: tibble}
 }
 \value{
 rclass as defined
@@ -36,7 +36,7 @@ if (interactive()) {
 }
 }
 \references{
-\url{https://github.com/plantbreeding/API/blob/master/Specification/ObservationVariables/VariableOntologyList.md}
+\href{https://github.com/plantbreeding/API/blob/master/Specification/ObservationVariables/VariableOntologyList.md}{github}
 }
 \seealso{
 Other observationvariables: \code{\link{ba_observationvariables_datatypes}},

@@ -10,25 +10,25 @@ ba_observationvariables_search(con = NULL, observationVariableDbIds = "any",
   traitClasses = "any", rclass = "tibble")
 }
 \arguments{
-\item{con}{brapi connection object}
+\item{con}{brapi list; connection object}
 
-\item{observationVariableDbIds}{vector of string; default: any}
+\item{observationVariableDbIds}{vector of character; default: any}
 
-\item{ontologyXrefs}{vector of string; default: any}
+\item{ontologyXrefs}{vector of character; default: any}
 
-\item{ontologyDbIds}{vector of string; default: any}
+\item{ontologyDbIds}{vector of character; default: any}
 
-\item{methodDbIds}{vector of string; default: any}
+\item{methodDbIds}{vector of character; default: any}
 
-\item{scaleDbIds}{vector of string; default: any}
+\item{scaleDbIds}{vector of character; default: any}
 
-\item{names}{vector of string; default: any}
+\item{names}{vector of character; default: any}
 
-\item{datatypes}{vector of string; default: any}
+\item{datatypes}{vector of character; default: any}
 
-\item{traitClasses}{vector of string; default: any}
+\item{traitClasses}{vector of character; default: any}
 
-\item{rclass}{string; default: tibble}
+\item{rclass}{character; default: tibble}
 }
 \value{
 rclass
