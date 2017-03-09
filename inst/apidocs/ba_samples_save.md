@@ -1,19 +1,51 @@
 
-## GET  [/brapi/v1/samples/{sampleId}]
+## GET [/brapi/v1/samples]
 
 
 ```r
 library(brapi)
-
+library(magrittr)
   # make sure brapiTS::mock_server() is running in a separate process
 
  
-  con <- ba_connect()
+   con <- ba_connect() %>% ba_login()
+```
 
-  sampleId <- "Unique-Plant-SampleId-1234567890"
+```
+Authenticated!
+```
 
-  # Example 1
-  bl <- ba_samples(con, sampleId)
+```r
+  sampleData <- list(
+    plantId = 1,
+    plotId = 1,
+    takenBy = "RS",
+    sampleDate = "01",
+    sampleType = "x",
+    tissueType = "tt",
+    notes = "notes"
+  )
+
+  ba_show_info(TRUE)
+  ba_samples_save(con, sampleData)
+```
+
+```
+URL call was: http://127.0.0.1:2021/brapi/v1/samples/
+```
+
+```
+Server status: 200 (ok)!
+```
+
+```
+[1] "Unique-Plant-SampleId-1234567890"
+attr(,"class")
+[1] "character"  "ba_samples"
+```
+
+```r
+  ba_show_info(FALSE)
 ```
 
 ### Response

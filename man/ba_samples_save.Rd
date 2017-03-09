@@ -7,7 +7,7 @@
 ba_samples_save(con = NULL, sampleData = list())
 }
 \arguments{
-\item{con}{brapi connection object}
+\item{con}{list, brapi connection object}
 
 \item{sampleData}{list of sample details.}
 }

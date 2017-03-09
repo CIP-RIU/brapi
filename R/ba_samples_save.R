@@ -2,7 +2,7 @@
 #'
 #' Save sample data available on a brapi server.
 #'
-#' @param con brapi connection object
+#' @param con list, brapi connection object
 #' @param sampleData list of sample details.
 #'
 #' @author Reinhard Simon

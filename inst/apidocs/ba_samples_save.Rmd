@@ -1,0 +1,38 @@
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment=NA)
+```
+## GET [/brapi/v1/samples]
+
+```{r}
+library(brapi)
+library(magrittr)
+  # make sure brapiTS::mock_server() is running in a separate process
+
+ 
+   con <- ba_connect() %>% ba_login()
+
+  sampleData <- list(
+    plantId = 1,
+    plotId = 1,
+    takenBy = "RS",
+    sampleDate = "01",
+    sampleType = "x",
+    tissueType = "tt",
+    notes = "notes"
+  )
+
+  ba_show_info(TRUE)
+  ba_samples_save(con, sampleData)
+  ba_show_info(FALSE)
+
+```
+
+### Response
+
+Code: 200 (application/json)
+
+```json
+`r json`
+```
+
+
