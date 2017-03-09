@@ -1,5 +1,5 @@
 
-## GET [/brapi/v1/maps/{mapDbId}]
+## GET [/brapi/v1/maps/{mapDbId}/positions/{linkageGroupId}?min={min}&max={max}&pageSize={pageSize}&page={page}]
 
 ```r
 library(brapi)
@@ -8,15 +8,11 @@ library(magrittr)
 # make sure brapiTS::mock_server() is running in a separate process
 con <- ba_connect()
 
-json <- ba_genomemaps_details(con, mapDbId = "1",  rclass = "json")
+json <- ba_genomemaps_data_range(con, mapDbId = "1", linkageGroupId = "1", min = "1", max = "1000", rclass = "json")
 ```
 
 ```
-URL call was: http://127.0.0.1:2021/brapi/v1/maps/1/
-```
-
-```
-Server status:  ok!
+Error: is.numeric(min) is not TRUE
 ```
 
 ### Response
@@ -39,26 +35,9 @@ Code: 200 (application/json)
 
         ]
     },
-    "result": [
-        {
-            "mapDbId": 1,
-            "name": "SSR map 1",
-            "type": "Genetic",
-            "unit": "cM",
-            "linkageGroups": [
-                {
-                    "linkageGroupId": 1,
-                    "numberMarkers": 5,
-                    "maxPosition": 50
-                },
-                {
-                    "linkageGroupId": 2,
-                    "numberMarkers": 5,
-                    "maxPosition": 100
-                }
-            ]
-        }
-    ]
+    "result": {
+        "data": "new crop"
+    }
 }
 
 ```

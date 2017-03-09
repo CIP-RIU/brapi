@@ -9,7 +9,7 @@ GenomeMaps,ACCEPTED,maps/id/positions/id,json,GET,GENOTYPING,GenomeMapDataByRang
 GenomeMaps,ACCEPTED,maps/id,json,GET,GENOTYPING,GenomeMapDetails,ba_genomemaps_details,x,x,,,,,
 Germplasm,ACCEPTED,germplasm/id,json,GET,CORE,GermplasmDetailsByGermplasmDbId,ba_germplasm_details,x,x,,,x,,
 Germplasm,ACCEPTED,studies/id/germplasm,json,GET,CORE,GermplasmDetailsListByStudyDbId,ba_germplasm_details_study,x,x,,,x,,
-Germplasm,ACCEPTED,germplasm/id/markerprofiles,json,GET,GENOTYPING,GermplasmMarkerprofile,ba_germplasm_markerprofiles,x,x,,,x,,
+Germplasm,ACCEPTED,germplasm/id/markerprofiles,json,GET,GENOTYPING,GermplasmMarkerprofiles,ba_germplasm_markerprofiles,x,x,,,x,,
 Germplasm,ACCEPTED,germplasm/id/pedigree,json,GET,CORE,GermplasmPedigree,ba_germplasm_pedigree,x,x,,,x,,
 Germplasm,ACCEPTED,germplasm-search,json,GET,CORE,GermplasmSearchGET,ba_germplasm_search,x,x,,,x,,
 Germplasm,ACCEPTED,germplasm-search,json,POST,CORE,GermplasmSearchPOST,ba_germplasm_search,x,x,,,x,,
