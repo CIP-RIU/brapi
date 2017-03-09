@@ -1,7 +1,7 @@
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, comment=NA)
 ```
-## GET [/brapi/v1/samples]
+## PUT [/brapi/v1/samples]
 
 ```{r}
 library(brapi)

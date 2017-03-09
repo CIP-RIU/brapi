@@ -1,5 +1,5 @@
 
-## GET [/brapi/v1/samples]
+## PUT [/brapi/v1/samples]
 
 
 ```r
