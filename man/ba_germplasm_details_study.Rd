@@ -16,7 +16,7 @@ ba_germplasm_details_study(con = NULL, studyDbId = "123", page = 0,
 
 \item{pageSize}{integer; default 1000}
 
-\item{rclass}{string; default: tibble}
+\item{rclass}{character; default: tibble}
 }
 \value{
 rclass as defined
