@@ -11,6 +11,14 @@ con <- ba_connect()
 json <- ba_genomemaps_data_range(con, mapDbId = "1", linkageGroupId = "1", min = 1, max = 1000, rclass = "json")
 ```
 
+```
+URL call was: http://127.0.0.1:2021/brapi/v1/maps/1/positions/1/?min=1&max=1000&pageSize=30&page=0
+```
+
+```
+Server status:  ok!
+```
+
 ### Response
 
 Code: 200 (application/json)

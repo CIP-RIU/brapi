@@ -1,5 +1,5 @@
 
-## GET [/brapi/v1/attributes?attributeCategoryDbId=0]
+## GET [/brapi/v1/attributes?attributeCategoryDbId=2]
 
 
 ```r
@@ -9,7 +9,15 @@ library(magrittr)
 # make sure brapiTS::mock_server() is running in a separate process
 con <- ba_connect()
 
-json <- ba_germplasmattributes(con, attributeCategoryDbId = "0", rclass = "json")
+json <- ba_germplasmattributes(con, attributeCategoryDbId = '2', rclass = "json")
+```
+
+```
+URL call was: http://127.0.0.1:2021/brapi/v1/attributes/?attributeCategoryDbId=2
+```
+
+```
+Server status:  ok!
 ```
 
 ### Response
@@ -42,51 +50,6 @@ Code: 200 (application/json)
                 "description": "Allele of marker 11_4769, diagnostic for allele b of reduced-height gene Rht-B1",
                 "attributeCategoryDbId": 2,
                 "attributeCategoryName": "Agronomic",
-                "datatype": "Categorical",
-                "values": [
-                    "Present",
-                    "Absent",
-                    "Heterozygous"
-                ]
-            },
-            {
-                "attributeDbId": 2,
-                "code": "WEV",
-                "uri": "http://www.cropontology.org/rdf/CO_3230",
-                "name": "Weevil Resistance",
-                "description": "Resistance allele",
-                "attributeCategoryDbId": 3,
-                "attributeCategoryName": "Biotic stress",
-                "datatype": "Categorical",
-                "values": [
-                    "Present",
-                    "Absent",
-                    "Heterozygous"
-                ]
-            },
-            {
-                "attributeDbId": 3,
-                "code": "FLSHORG",
-                "uri": "http://www.cropontology.org/rdf/CO_3230",
-                "name": "Flesh Color Orange allele",
-                "description": "Allelele for orange flesh",
-                "attributeCategoryDbId": 1,
-                "attributeCategoryName": "Morphological",
-                "datatype": "Categorical",
-                "values": [
-                    "Present",
-                    "Absent",
-                    "Heterozygous"
-                ]
-            },
-            {
-                "attributeDbId": 4,
-                "code": "FLWCOL",
-                "uri": "http://www.cropontology.org/rdf/CO_3230",
-                "name": "Flower color white allele",
-                "description": "Allele for white flower color",
-                "attributeCategoryDbId": 1,
-                "attributeCategoryName": "Morphological",
                 "datatype": "Categorical",
                 "values": [
                     "Present",
