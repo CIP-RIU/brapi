@@ -3,11 +3,11 @@
 #' Lists germplasmm as result of a search.
 #'
 #' @param con brapi connection object
-#' @param germplasmDbId string
-#' @param germplasmName string
-#' @param germplasmPUI string
-#' @param pageSize integer
-#' @param page integer
+#' @param germplasmDbId character default 0
+#' @param germplasmName character default: none
+#' @param germplasmPUI character default: none
+#' @param pageSize integer default: 0
+#' @param page integer default: 10
 #' @param rclass character; default: tibble
 #' @param method string; default 'GET'; alternative 'POST'
 #'
@@ -16,9 +16,7 @@
 #' @import httr
 #' @import progress
 #' @importFrom magrittr '%>%'
-#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/Germplasm/GermplasmSearchGET.md}
-#'    \url{https://github.com/plantbreeding/API/blob/master/Specification/Germplasm/GermplasmSearchPOST.md}
-#'
+#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/Germplasm/GermplasmSearchGET.md}{github}
 #' @return tibble
 #' @family brapicore
 #' @family genotyping

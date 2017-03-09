@@ -1,5 +1,5 @@
 
-## GET [/brapi/v1/germplasm/{id}/markerprofiles]
+## GET [/brapi/v1/germplasm/{id}/pedigree?notation=purdy]
 
 
 ```r
