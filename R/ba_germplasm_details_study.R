@@ -3,7 +3,7 @@
 #' lists studies_germplasm available on a brapi server
 #'
 #' @param con brapi connection object
-#' @param rclass string; default: tibble
+#' @param rclass character; default: tibble
 #' @param page integer; default 0
 #' @param pageSize integer; default 1000
 #' @param studyDbId character; default: 123
