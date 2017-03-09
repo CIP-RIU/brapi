@@ -9,7 +9,7 @@
 #' @param pageSize integer; default 1000
 #'
 #' @author Reinhard Simon
-#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/Locations/ListLocations.md}{github}
+#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Locations/ListLocations.md}{github}
 #' @example inst/examples/ex-ba_locations.R
 #' @return rclass as defined
 #' @import tibble

@@ -3,10 +3,10 @@
 #' lists variables_datatypes available on a brapi server
 #'
 #' @param con object; brapi connection object; default = NULL
-#' @param rclass string; default: tibble
+#' @param rclass character; default: tibble
 #'
 #' @author Reinhard Simon
-#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/ObservationVariables/VariableDataTypeList.md}
+#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/ObservationVariables/VariableDataTypeList.md}{github}
 #' @return rclass as defined
 #' @example inst/examples/ex-ba_observationvariables_datatype.R
 #' @import tibble

@@ -9,7 +9,7 @@ ba_observationvariables_datatypes(con = NULL, rclass = "tibble")
 \arguments{
 \item{con}{object; brapi connection object; default = NULL}
 
-\item{rclass}{string; default: tibble}
+\item{rclass}{character; default: tibble}
 }
 \value{
 rclass as defined
@@ -31,7 +31,7 @@ if (interactive()) {
 }
 }
 \references{
-\url{https://github.com/plantbreeding/API/blob/master/Specification/ObservationVariables/VariableDataTypeList.md}
+\href{https://github.com/plantbreeding/API/blob/master/Specification/ObservationVariables/VariableDataTypeList.md}{github}
 }
 \seealso{
 Other observationvariables: \code{\link{ba_observationvariables_details}},

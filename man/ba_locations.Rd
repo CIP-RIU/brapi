@@ -37,7 +37,7 @@ if (interactive()) {
 }
 }
 \references{
-\url{https://github.com/plantbreeding/API/blob/master/Specification/Locations/ListLocations.md}{github}
+\href{https://github.com/plantbreeding/API/blob/master/Specification/Locations/ListLocations.md}{github}
 }
 \author{
 Reinhard Simon
