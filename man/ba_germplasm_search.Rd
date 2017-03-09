@@ -11,15 +11,15 @@ ba_germplasm_search(con = NULL, germplasmDbId = "0",
 \arguments{
 \item{con}{brapi connection object}
 
-\item{germplasmDbId}{string}
+\item{germplasmDbId}{character default 0}
 
-\item{germplasmName}{string}
+\item{germplasmName}{character default: none}
 
-\item{germplasmPUI}{string}
+\item{germplasmPUI}{character default: none}
 
-\item{page}{integer}
+\item{page}{integer default: 10}
 
-\item{pageSize}{integer}
+\item{pageSize}{integer default: 0}
 
 \item{method}{string; default 'GET'; alternative 'POST'}
 
@@ -45,8 +45,7 @@ if (interactive()) {
 }
 }
 \references{
-\url{https://github.com/plantbreeding/API/blob/master/Specification/Germplasm/GermplasmSearchGET.md}
-   \url{https://github.com/plantbreeding/API/blob/master/Specification/Germplasm/GermplasmSearchPOST.md}
+\url{https://github.com/plantbreeding/API/blob/master/Specification/Germplasm/GermplasmSearchGET.md}{github}
 }
 \seealso{
 Other brapicore: \code{\link{ba_calls}},

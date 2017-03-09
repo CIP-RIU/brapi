@@ -12,9 +12,9 @@ ba_germplasm_pedigree(con = NULL, germplasmDbId = "0",
 
 \item{germplasmDbId}{integer; default 0}
 
-\item{notation}{string; default: purdue format}
+\item{notation}{character; default: purdue format}
 
-\item{rclass}{string; default: tibble}
+\item{rclass}{character; default: tibble}
 }
 \value{
 list of pedigree data
