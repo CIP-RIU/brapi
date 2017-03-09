@@ -9,7 +9,7 @@ library(magrittr)
 # make sure brapiTS::mock_server() is running in a separate process
 con <- ba_connect()
 
-json <- ba_genomemaps_data_range(con, mapDbId = "1", linkageGroupId = "1", min = "1", max = "1000", rclass = "json")
+json <- ba_genomemaps_data_range(con, mapDbId = "1", linkageGroupId = "1", min = 1, max = 1000, rclass = "json")
 ```
 
 ### Response

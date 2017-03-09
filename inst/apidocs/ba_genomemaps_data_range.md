@@ -8,11 +8,7 @@ library(magrittr)
 # make sure brapiTS::mock_server() is running in a separate process
 con <- ba_connect()
 
-json <- ba_genomemaps_data_range(con, mapDbId = "1", linkageGroupId = "1", min = "1", max = "1000", rclass = "json")
-```
-
-```
-Error: is.numeric(min) is not TRUE
+json <- ba_genomemaps_data_range(con, mapDbId = "1", linkageGroupId = "1", min = 1, max = 1000, rclass = "json")
 ```
 
 ### Response
@@ -23,10 +19,10 @@ Code: 200 (application/json)
 {
     "metadata": {
         "pagination": {
-            "pageSize": 0,
             "currentPage": 0,
-            "totalCount": 0,
-            "totalPages": 0
+            "pageTotal": 1,
+            "totalCount": 5,
+            "pageSize": 30
         },
         "status": [
 
@@ -36,7 +32,33 @@ Code: 200 (application/json)
         ]
     },
     "result": {
-        "data": "new crop"
+        "data": [
+            {
+                "markerDbId": 1,
+                "markerName": "m1",
+                "location": 10
+            },
+            {
+                "markerDbId": 2,
+                "markerName": "m2",
+                "location": 20
+            },
+            {
+                "markerDbId": 3,
+                "markerName": "m3",
+                "location": 30
+            },
+            {
+                "markerDbId": 4,
+                "markerName": "m4",
+                "location": 40
+            },
+            {
+                "markerDbId": 5,
+                "markerName": "m5",
+                "location": 50
+            }
+        ]
     }
 }
 
