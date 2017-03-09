@@ -10,13 +10,13 @@ ba_locations(con = NULL, locationType = "all", page = 0,
 \arguments{
 \item{con}{brapi connection object}
 
-\item{locationType}{string, list of data types}
+\item{locationType}{character, list of data types}
 
 \item{page}{integer; default 0}
 
 \item{pageSize}{integer; default 1000}
 
-\item{rclass}{string; default: tibble}
+\item{rclass}{character; default: tibble}
 }
 \value{
 rclass as defined
@@ -27,23 +27,17 @@ lists locations available on a brapi server
 \examples{
 if (interactive()) {
   library(brapi)
-  library(magrittr)
-  library(maps)
 
   # make sure brapiTS::mock_server() is running in a separate process
 
   con <- ba_connect()
 
-  # Example 1
-  bl <- ba_locations(con)
-  bl \%>\% ba_chart()
+  ba_locations(con)
 
-  # Example 2
-  bl \%>\% ba_chart(chart_type = "map")
 }
 }
 \references{
-\url{https://github.com/plantbreeding/API/blob/master/Specification/Locations/ListLocations.md}(github)
+\url{https://github.com/plantbreeding/API/blob/master/Specification/Locations/ListLocations.md}{github}
 }
 \author{
 Reinhard Simon
