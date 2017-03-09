@@ -1,5 +1,5 @@
 
-## GET [/brapi/v1/germplasm/{germplasmDbId}/attributes?attributeList={attributeDbId},{attributeDbId}&pageSize=&page=]
+## GET [/brapi/v1/locations?locationType={locationType}]
 
 
 ```r
