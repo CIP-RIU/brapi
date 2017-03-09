@@ -4,7 +4,7 @@
 #'
 #' @param con brapi connection object
 #' @param rclass character; default: tibble
-#' @param mapDbId character; default 0
+#' @param mapDbId character; default 1
 #'
 #' @author Reinhard Simon
 #' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/GenomeMaps/GenomeMapDetails.md}

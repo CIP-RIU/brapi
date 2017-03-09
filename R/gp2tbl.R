@@ -5,7 +5,7 @@ gp2tbl <- function(res) {
     germplasmName <- NULL
     germplasmPUI <- NULL
     pedigree <- NULL
-    germplasmSeedSource <- NULL
+    seedSource <- NULL
     synonyms <- NULL
     commonCropName <- NULL
     instituteCode <- NULL
@@ -29,7 +29,7 @@ gp2tbl <- function(res) {
         accessionNumber = jstring("accessionNumber"),
         germplasmName = jstring("germplasmName"),
         germplasmPUI = jstring("germplasmPUI"), pedigree = jstring("pedigree"),
-        germplasmSeedSource = jstring("germplasmSeedSource"),
+        seedSource = jstring("seedSource"),
         synonyms = jstring("synonyms"), commonCropName = jstring("commonCropName"),
         instituteCode = jstring("instituteCode"),
         instituteName = jstring("instituteName"),
@@ -46,7 +46,7 @@ gp2tbl <- function(res) {
         donors.germplasmPUI = jstring("germplasmPUI")) %>%
         dplyr::select(germplasmDbId, defaultDisplayName, accessionNumber, germplasmName,
                       germplasmPUI, pedigree,
-            germplasmSeedSource, synonyms, commonCropName, instituteCode, instituteName,
+            seedSource, synonyms, commonCropName, instituteCode, instituteName,
             biologicalStatusOfAccessionCode,
             countryOfOriginCode, typeOfGermplasmStorageCode, genus, species,
             speciesAuthority, subtaxa,

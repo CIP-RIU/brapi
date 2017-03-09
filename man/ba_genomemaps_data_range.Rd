@@ -12,9 +12,9 @@ ba_genomemaps_data_range(con = NULL, mapDbId = "1", linkageGroupId = "1",
 
 \item{mapDbId}{character; default 0}
 
-\item{linkageGroupId}{character; default 0}
+\item{linkageGroupId}{character; default 1}
 
-\item{min}{integer; default 0}
+\item{min}{integer; default 1}
 
 \item{max}{integer; default 1000}
 
@@ -22,13 +22,16 @@ ba_genomemaps_data_range(con = NULL, mapDbId = "1", linkageGroupId = "1",
 
 \item{pageSize}{character; default 30}
 
-\item{rclass}{string; default: tibble}
+\item{rclass}{character; default: tibble}
 }
 \value{
 rclass as defined
 }
 \description{
-lists genomemaps_data_range available on a brapi server
+Get map data by range on linkageGroup
+}
+\details{
+markers ordered by linkageGroup and position
 }
 \examples{
 if (interactive()) {

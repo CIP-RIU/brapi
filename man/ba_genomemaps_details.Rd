@@ -9,7 +9,7 @@ ba_genomemaps_details(con = NULL, mapDbId = "1", rclass = "tibble")
 \arguments{
 \item{con}{brapi connection object}
 
-\item{mapDbId}{character; default 0}
+\item{mapDbId}{character; default 1}
 
 \item{rclass}{character; default: tibble}
 }

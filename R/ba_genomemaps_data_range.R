@@ -1,14 +1,16 @@
 #' ba_genomemaps_data_range
 #'
-#' lists genomemaps_data_range available on a brapi server
+#' Get map data by range on linkageGroup
+#'
+#' markers ordered by linkageGroup and position
 
 #' @param con brapi connection object
-#' @param rclass string; default: tibble
+#' @param rclass character; default: tibble
 #' @param page integer; default 0
 #' @param pageSize character; default 30
 #' @param mapDbId character; default 0
-#' @param linkageGroupId character; default 0
-#' @param min integer; default 0
+#' @param linkageGroupId character; default 1
+#' @param min integer; default 1
 #' @param max integer; default 1000
 #'
 #' @author Reinhard Simon
