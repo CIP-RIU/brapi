@@ -2,9 +2,9 @@
 #'
 #' lists studies_observationunits available on a brapi server
 #'
-#' @param con brapi connection object
-#' @param rclass string; default: tibble
-#' @param observationLevel string; default: plot; alternative: plant
+#' @param con list, brapi connection object
+#' @param rclass character; default: tibble
+#' @param observationLevel character; default: plot; alternative: plant
 #' @param studyDbId character; default: 1
 #'
 #' @author Reinhard Simon

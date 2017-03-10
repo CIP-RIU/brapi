@@ -1,7 +1,7 @@
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, comment=NA)
 ```
-## GET  [/brapi/v1/observationLevels]
+## GET [/brapi/v1/studies/{studyDbId}/observations?observationVariableDbIds={observationVariableDbIds}]
 
 ```{r}
 library(brapi)
@@ -9,7 +9,7 @@ library(brapi)
 # make sure brapiTS::mock_server() is running in a separate process
 con <- ba_connect()
 
-json <- ba_studies_observationlevels(con, rclass = "json")
+json <- ba_studies_observations(con, studyDbId = "1", rclass = "json")
 
 ```
 

@@ -10,7 +10,7 @@
 #' @param commit logical TRUE (default)
 #'
 #' @author Reinhard Simon
-#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/Studies/SaveOrUpdateObservationUnits.md}(github)
+#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Studies/SaveOrUpdateObservationUnits.md}{github}
 #' @example inst/examples/ex-ba_studies_observationunits_save.R
 #' @return character a unique sample ID assigned by the server
 

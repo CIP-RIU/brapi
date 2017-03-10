@@ -10,7 +10,7 @@
 #' @param observationVariableDbId character; default: 1:3
 #'
 #' @author Reinhard Simon
-#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/Studies/GetObservationUnitsByObservationVariableIds.md}
+#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Studies/GetObservationUnitsByObservationVariableIds.md}{github}
 #' @return rclass as defined
 #' @example inst/examples/ex-ba_studies_observations.R
 #' @import tibble

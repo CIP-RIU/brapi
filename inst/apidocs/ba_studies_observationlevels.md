@@ -1,5 +1,5 @@
 
-## GET [/brapi/v1/studies/{studyDbId}/observations?observationVariableDbIds={observationVariableDbIds}]
+## GET  [/brapi/v1/observationLevels]
 
 
 ```r

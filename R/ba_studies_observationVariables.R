@@ -2,8 +2,8 @@
 #'
 #' lists  @param con brapi connection object available on a brapi server
 #'
-#' @param con brapi connection object
-#' @param rclass string; default: tibble
+#' @param con list, brapi connection object
+#' @param rclass character; default: tibble
 #' @param studyDbId character; default: 1
 #'
 #' @author Reinhard Simon
