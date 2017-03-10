@@ -17,6 +17,8 @@ loc2tbl <- function(res, rclass, con) {
       )
     }
 
+    # Complete any missing columns TODO
+
     dat <- dat[, xnms]
 
     has_add_cols <- !(dat[addinfo][[addinfo]] %>% is.null) & !all(length(dat[[addinfo]][[1]]) == 0)
