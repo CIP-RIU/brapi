@@ -1,6 +1,6 @@
 loc2tbl <- function(res, rclass, con) {
     lst <- jsonlite::fromJSON(res)
-    dat <- jsonlite::toJSON(lst$result)
+    dat <- jsonlite::toJSON(lst$result$data)
     dat <- jsonlite::fromJSON(dat, simplifyDataFrame = TRUE)
 
 
@@ -17,7 +17,11 @@ loc2tbl <- function(res, rclass, con) {
       )
     }
 
-    has_add_cols <- !(dat[addinfo][[1]] %>% is.null)
+    dat <- dat[, xnms]
+
+    has_add_cols <- !(dat[addinfo][[addinfo]] %>% is.null) & !all(length(dat[[addinfo]][[1]]) == 0)
+
+
     if (has_add_cols) {
       # get all var names
       addinf <- dat[, names(dat[addinfo])]
@@ -32,9 +36,14 @@ loc2tbl <- function(res, rclass, con) {
         }
 
       }
-      df <- cbind(dat, df)
+      if (ncol(df) > 0) {
+        df <- cbind(dat, df)
+      } else {
+        df <- dat[, 1:8]
+      }
+
     } else {
-      df <- dat$data[, 1:8]
+      df <- dat[, 1:8]
     }
 
 

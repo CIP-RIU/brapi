@@ -4,8 +4,8 @@
 \alias{ba_locations}
 \title{ba_locations}
 \usage{
-ba_locations(con = NULL, locationType = "all", page = 0,
-  pageSize = 1e+06, rclass = "tibble")
+ba_locations(con = NULL, locationType = "all", page = 0, pageSize = 100,
+  rclass = "tibble")
 }
 \arguments{
 \item{con}{brapi connection object}
@@ -14,7 +14,7 @@ ba_locations(con = NULL, locationType = "all", page = 0,
 
 \item{page}{integer; default 0}
 
-\item{pageSize}{integer; default 1000}
+\item{pageSize}{integer; default 100}
 
 \item{rclass}{character; default: tibble}
 }

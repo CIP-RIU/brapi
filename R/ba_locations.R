@@ -6,7 +6,7 @@
 #' @param rclass character; default: tibble
 #' @param locationType character, list of data types
 #' @param page integer; default 0
-#' @param pageSize integer; default 1000
+#' @param pageSize integer; default 100
 #'
 #' @author Reinhard Simon
 #' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Locations/ListLocations.md}{github}
@@ -16,7 +16,7 @@
 #' @import tidyjson
 # @family phenotyping
 #' @export
-ba_locations <- function(con = NULL, locationType = "all", page = 0, pageSize = 1e+06, rclass = "tibble") {
+ba_locations <- function(con = NULL, locationType = "all", page = 0, pageSize = 100, rclass = "tibble") {
     ba_check(con, FALSE, "locations")
     stopifnot(is.character(locationType))
     check_paging(pageSize, page)
