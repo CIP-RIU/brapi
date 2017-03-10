@@ -19,9 +19,9 @@ test_that("print output for 'ba-db'.", {
   bdb <- ba_db()
 
   out <- capture.output( print(bdb) )
-  expect_equal(length(out), 11)
+  expect_equal(length(out), 13)
   expect_equal(out[1], "bms_test")
-  expect_equal(out[11], "ttw")
+  expect_equal(out[12], "ttw")
 })
 
 }
