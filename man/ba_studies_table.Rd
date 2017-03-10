@@ -8,13 +8,13 @@ ba_studies_table(con = NULL, studyDbId = "1", format = "json",
   rclass = "tibble")
 }
 \arguments{
-\item{con}{object; brapi connection object}
+\item{con}{list; brapi connection object}
 
-\item{studyDbId}{string; default: 1}
+\item{studyDbId}{character; default: 1}
 
-\item{format}{string; one of: json, csv, tsv. Defasult: json}
+\item{format}{character; one of: json, csv, tsv. Defasult: json}
 
-\item{rclass}{string; default: tibble}
+\item{rclass}{character; default: tibble}
 }
 \value{
 rclass as defined

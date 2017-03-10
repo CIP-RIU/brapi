@@ -2,7 +2,7 @@
 #'
 #' lists the studies seasons and years
 #'
-#' @param con brapi connection object
+#' @param con list, brapi connection object
 #' @param year integer
 #' @param page integer requested page number
 #' @param pageSize items per page
@@ -11,7 +11,7 @@
 #' @author Reinhard Simon
 #' @return data.frame
 #' @example inst/examples/ex-ba_studies_seasons.R
-#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/Studies/ListSeasons.md}
+#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Studies/ListSeasons.md}{github}
 #' @family studies
 #' @family phenotyping
 #' @export

@@ -8,13 +8,13 @@ ba_studies_studytypes(con = NULL, page = 0, pageSize = 1000,
   rclass = "tibble")
 }
 \arguments{
-\item{con}{brapi connection object}
+\item{con}{list, brapi connection object}
 
 \item{page}{integer; default 0}
 
 \item{pageSize}{integer; default 1000}
 
-\item{rclass}{string; default: tibble}
+\item{rclass}{character; default: tibble}
 }
 \value{
 rclass as defined
@@ -35,7 +35,7 @@ if (interactive()) {
 }
 }
 \references{
-\url{https://github.com/plantbreeding/API/blob/master/Specification/Studies/ListStudyTypes.md}(github)
+\href{https://github.com/plantbreeding/API/blob/master/Specification/Studies/ListStudyTypes.md}{github}
 }
 \seealso{
 Other studies: \code{\link{ba_studies_details}},

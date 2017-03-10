@@ -2,10 +2,10 @@
 #'
 #' lists studies_table available on a brapi server
 #'
-#' @param rclass string; default: tibble
-#' @param studyDbId string; default: 1
-#' @param con object; brapi connection object
-#' @param format string; one of: json, csv, tsv. Defasult: json
+#' @param rclass character; default: tibble
+#' @param studyDbId character; default: 1
+#' @param con list; brapi connection object
+#' @param format character; one of: json, csv, tsv. Defasult: json
 #'
 #' @author Reinhard Simon
 #' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Studies/StudyObservationUnitsAsTable.md}{github}

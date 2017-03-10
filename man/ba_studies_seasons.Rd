@@ -8,7 +8,7 @@ ba_studies_seasons(con = NULL, year = 0, page = 0, pageSize = 1000,
   rclass = "tibble")
 }
 \arguments{
-\item{con}{brapi connection object}
+\item{con}{list, brapi connection object}
 
 \item{year}{integer}
 
@@ -37,7 +37,7 @@ if (interactive()) {
 }
 }
 \references{
-\url{https://github.com/plantbreeding/API/blob/master/Specification/Studies/ListSeasons.md}
+\href{https://github.com/plantbreeding/API/blob/master/Specification/Studies/ListSeasons.md}{github}
 }
 \seealso{
 Other studies: \code{\link{ba_studies_details}},

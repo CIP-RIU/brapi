@@ -10,6 +10,18 @@ library(brapi)
 # make sure brapiTS::mock_server() is running in a separate process
 con <- ba_connect() 
 
+args(ba_studies_search)
+```
+
+```
+function (con = NULL, studyType = "any", programDbId = "any", 
+    locationDbId = "any", seasonDbId = "any", germplasmDbIds = "any", 
+    observationVariableDbIds = "any", active = "any", sortBy = "any", 
+    sortOrder = "any", page = 0, pageSize = 1000, rclass = "tibble") 
+NULL
+```
+
+```r
 json <- ba_studies_search(con, rclass = "json")
 ```
 

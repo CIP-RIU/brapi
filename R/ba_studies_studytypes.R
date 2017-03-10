@@ -2,13 +2,13 @@
 #'
 #' lists studies_studytypes available on a brapi server
 #'
-#' @param con brapi connection object
+#' @param con list, brapi connection object
 #' @param page integer; default 0
 #' @param pageSize integer; default 1000
-#' @param rclass string; default: tibble
+#' @param rclass character; default: tibble
 #'
 #' @author Reinhard Simon
-#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/Studies/ListStudyTypes.md}(github)
+#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Studies/ListStudyTypes.md}{github}
 #' @return rclass as defined
 #' @example inst/examples/ex-ba_studies_studytypes.R
 #' @import tibble
