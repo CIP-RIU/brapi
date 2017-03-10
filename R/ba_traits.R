@@ -2,8 +2,8 @@
 #'
 #' lists brapi_traits available on a brapi server
 #'
-#' @param rclass string; default: tibble
-#' @param con object; brapi connection object
+#' @param rclass character; default: tibble
+#' @param con list; brapi connection object
 #' @param page integer; default 0
 #' @param pageSize integer; defautlt 1000
 #' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Traits/ListAllTraits.md}{github}

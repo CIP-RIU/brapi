@@ -7,9 +7,9 @@
 ba_studies_table_save(con = NULL, studyDbId = "1", study_table = NULL)
 }
 \arguments{
-\item{con}{object; brapi connection object}
+\item{con}{list; brapi connection object}
 
-\item{studyDbId}{string; default: 1}
+\item{studyDbId}{character; default: 1}
 
 \item{study_table}{tibble a tibble or data.frame}
 }

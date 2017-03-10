@@ -2,8 +2,8 @@
 #'
 #' saves a studies_table available on a brapi server
 #'
-#' @param studyDbId string; default: 1
-#' @param con object; brapi connection object
+#' @param studyDbId character; default: 1
+#' @param con list; brapi connection object
 #' @param study_table tibble a tibble or data.frame
 #'
 #' @author Reinhard Simon
@@ -48,7 +48,9 @@ ba_studies_table_save <- function(con = NULL, studyDbId = "1", study_table = NUL
         result = result
       )
 
-      dat <- jsonlite::toJSON(req)
+      dat <- jsonlite::toJSON(req, pretty = TRUE)
+
+      ba_message(dat)
 
       brapiPOST(studies_table, dat, con)
 

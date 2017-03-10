@@ -2,10 +2,10 @@
 #'
 #' lists brapi_traits_details available on a brapi server
 #'
-#' @param rclass string; default: tibble
-#' @param con object; brapi connection object
+#' @param rclass character; default: tibble
+#' @param con list; brapi connection object
 #' @param traitDbId character; default 1
-#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/Traits/TraitDetails.md}(github)
+#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Traits/TraitDetails.md}{github}
 #' @author Reinhard Simon
 #' @return rclass as defined
 #' @example inst/examples/ex-ba_traits_details.R
