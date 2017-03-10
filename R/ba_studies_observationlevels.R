@@ -1,6 +1,6 @@
 #' ba_studies_observationlevels
 #'
-#' lists studies_observationlevels available in a database
+#' Call to retrieve the list of supported observation levels. Observation levels indicate the granularity level at which the measurements are taken. The values are used to supply the observationLevel parameter in the observation unit details call.
 #'
 #' @param con brapi connection object
 #' @param rclass character; default is FALSE; whether to display the raw list object or not
@@ -9,7 +9,7 @@
 #' @example inst/examples/ex-ba_studies_observationlevels.R
 #' @family studies
 #' @family phenotyping
-#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/Studies/ListObservationLevels.md}
+#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Studies/ListObservationLevels.md}{github}
 #' @export
 ba_studies_observationlevels <- function(con = NULL, rclass = "vector") {
     ba_check(con, FALSE, "observationLevels")

@@ -15,7 +15,7 @@ ba_studies_observationlevels(con = NULL, rclass = "vector")
 a vector of crop names or NULL
 }
 \description{
-lists studies_observationlevels available in a database
+Call to retrieve the list of supported observation levels. Observation levels indicate the granularity level at which the measurements are taken. The values are used to supply the observationLevel parameter in the observation unit details call.
 }
 \examples{
 if (interactive()) {
@@ -30,7 +30,7 @@ if (interactive()) {
 }
 }
 \references{
-\url{https://github.com/plantbreeding/API/blob/master/Specification/Studies/ListObservationLevels.md}
+\href{https://github.com/plantbreeding/API/blob/master/Specification/Studies/ListObservationLevels.md}{github}
 }
 \seealso{
 Other studies: \code{\link{ba_studies_details}},
