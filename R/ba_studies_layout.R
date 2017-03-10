@@ -3,8 +3,8 @@
 #' lists studies_layout available on a brapi server
 #'
 #' @param con brapi connection object
-#' @param rclass string; default: tibble
-#' @param studyDbId string; default: 1
+#' @param rclass character; default: tibble
+#' @param studyDbId character; default: 1
 #'
 #' @author Reinhard Simon
 #' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Studies/PlotLayoutDetails.md}{github}

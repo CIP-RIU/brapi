@@ -4,13 +4,6 @@
 
 ```r
 library(brapi)
-```
-
-```
-Welcome to the 'brapi' package!
-```
-
-```r
 library(magrittr)
 
 # make sure brapiTS::mock_server() is running in a separate process

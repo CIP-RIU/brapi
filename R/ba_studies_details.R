@@ -4,7 +4,7 @@
 #'
 #' @param con brapi connection object
 #' @param rclass character; tibble
-#' @param studiesDbId string; default 0; an internal ID for a studies
+#' @param studiesDbId character; default 0; an internal ID for a studies
 #' @import tidyjson
 #' @import dplyr
 #' @author Reinhard Simon
