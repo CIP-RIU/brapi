@@ -61,7 +61,7 @@ if (interactive()) {
 }
 }
 \references{
-\url{https://github.com/plantbreeding/API/blob/master/Specification/Studies/SaveOrUpdateObservationUnits.md}(github)
+\href{https://github.com/plantbreeding/API/blob/master/Specification/Studies/SaveOrUpdateObservationUnits.md}{github}
 }
 \seealso{
 Other phenotyping: \code{\link{ba_samples_save}},

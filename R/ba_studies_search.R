@@ -3,19 +3,19 @@
 #' lists trials available on a brapi server
 #'
 #' @param con brapi connection object
-#' @param studyType string; default: any
-#' @param programDbId string; default: any
-#' @param locationDbId  string; default: any
-#' @param seasonDbId  string; default: any
-#' @param germplasmDbIds  string; default: any
-#' @param observationVariableDbIds  string; default: any
-#' @param active  string; default: any
-#' @param sortBy  string; default: any
-#' @param sortOrder  string; default: any
+#' @param studyType character; default: any
+#' @param programDbId character; default: any
+#' @param locationDbId  character; default: any
+#' @param seasonDbId  character; default: any
+#' @param germplasmDbIds  character; default: any
+#' @param observationVariableDbIds  character; default: any
+#' @param active  character; default: any
+#' @param sortBy  character; default: any
+#' @param sortOrder  character; default: any
 #' @param page integer; default: 1000
 #' @param pageSize integer; default: 0
-#' @param rclass string; default: tibble
-#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/Studies/ListStudySummaries.md}(github)
+#' @param rclass character; default: tibble
+#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Studies/ListStudySummaries.md}{github}
 #' @author Reinhard Simon
 #' @return rclass as defined
 #' @example inst/examples/ex-ba_studies_search.R

@@ -8,11 +8,11 @@ ba_studies_observationvariables(con = NULL, studyDbId = "1",
   rclass = "tibble")
 }
 \arguments{
-\item{con}{brapi connection object}
+\item{con}{list, brapi connection object}
 
 \item{studyDbId}{character; default: 1}
 
-\item{rclass}{string; default: tibble}
+\item{rclass}{character; default: tibble}
 }
 \value{
 rclass as defined

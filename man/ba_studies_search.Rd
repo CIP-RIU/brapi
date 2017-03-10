@@ -12,29 +12,29 @@ ba_studies_search(con = NULL, studyType = "any", programDbId = "any",
 \arguments{
 \item{con}{brapi connection object}
 
-\item{studyType}{string; default: any}
+\item{studyType}{character; default: any}
 
-\item{programDbId}{string; default: any}
+\item{programDbId}{character; default: any}
 
-\item{locationDbId}{string; default: any}
+\item{locationDbId}{character; default: any}
 
-\item{seasonDbId}{string; default: any}
+\item{seasonDbId}{character; default: any}
 
-\item{germplasmDbIds}{string; default: any}
+\item{germplasmDbIds}{character; default: any}
 
-\item{observationVariableDbIds}{string; default: any}
+\item{observationVariableDbIds}{character; default: any}
 
-\item{active}{string; default: any}
+\item{active}{character; default: any}
 
-\item{sortBy}{string; default: any}
+\item{sortBy}{character; default: any}
 
-\item{sortOrder}{string; default: any}
+\item{sortOrder}{character; default: any}
 
 \item{page}{integer; default: 1000}
 
 \item{pageSize}{integer; default: 0}
 
-\item{rclass}{string; default: tibble}
+\item{rclass}{character; default: tibble}
 }
 \value{
 rclass as defined
@@ -55,7 +55,7 @@ if (interactive()) {
 }
 }
 \references{
-\url{https://github.com/plantbreeding/API/blob/master/Specification/Studies/ListStudySummaries.md}(github)
+\href{https://github.com/plantbreeding/API/blob/master/Specification/Studies/ListStudySummaries.md}{github}
 }
 \seealso{
 Other studies: \code{\link{ba_studies_details}},

@@ -1,0 +1,26 @@
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment=NA)
+```
+## GET [/brapi/v1/studies-search?studyType={studyType}&seasonDbId={seasonDbId}&locationDbId={locationDbId}&programDbId={programDbId}&germplasmDbIds={germplasmDbIds}&observationVariableDbIds={observationVariableDbIds}&pageSize={pageSize}&page={page}&active={active}&sortBy={sortBy}&sortOrder={sortOrder}]
+
+## POST [/brapi/v1/studies-search]
+
+```{r}
+library(brapi)
+
+# make sure brapiTS::mock_server() is running in a separate process
+con <- ba_connect() 
+
+json <- ba_studies_search(con, rclass = "json")
+
+```
+
+### Response
+
+Code: 200 (application/json)
+
+```json
+`r json`
+```
+
+

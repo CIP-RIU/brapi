@@ -8,13 +8,13 @@ ba_studies_observationunits(con = NULL, studyDbId = "1",
   observationLevel = "plot", rclass = "tibble")
 }
 \arguments{
-\item{con}{brapi connection object}
+\item{con}{list, brapi connection object}
 
 \item{studyDbId}{character; default: 1}
 
-\item{observationLevel}{string; default: plot; alternative: plant}
+\item{observationLevel}{character; default: plot; alternative: plant}
 
-\item{rclass}{string; default: tibble}
+\item{rclass}{character; default: tibble}
 }
 \value{
 rclass as defined
