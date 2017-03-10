@@ -8,6 +8,15 @@ library(brapi)
 # make sure brapiTS::mock_server() is running in a separate process
 con <- ba_connect() 
 
+args(ba_studies_table)
+```
+
+```
+function (con = NULL, studyDbId = "1", format = "json", rclass = "tibble") 
+NULL
+```
+
+```r
 json <- ba_studies_table(con, rclass = "json")
 ```
 
