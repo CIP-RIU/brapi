@@ -36,9 +36,9 @@ if (interactive()) {
     notes = "notes"
   )
 
-  ba_samples_save(out, sampleData)
+  ba_samples_save(con, sampleData)
 
-  # Note: the test server fro brapiTS does not store the table. It only does some simple checking.
+  # Note: the test server from brapiTS does not store the table. It only does some simple checking.
 
 }
 }

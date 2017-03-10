@@ -7,7 +7,7 @@
 #' @param con A required object of class 'brapi_con'.
 #'
 #' @return The object of class 'brapi_con' with the authentication token filled.
-#'
+#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Authentication/Authentication.md}{github}
 #' @author Reinhard Simon, Maikel Verouden
 #' @example inst/examples/ex-ba_login.R
 #' @import httr

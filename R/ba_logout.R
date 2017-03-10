@@ -9,6 +9,7 @@
 #'
 #' @author Reinhard Simon
 #' @example inst/examples/ex-ba_logout.R
+#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Authentication/Authentication.md}{github}
 #' @import httr
 #' @family brapiutils
 #' @export

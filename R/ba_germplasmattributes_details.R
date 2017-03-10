@@ -13,7 +13,7 @@
 #' @example inst/examples/ex-ba_germplasmattributes_details.R
 #' @import httr
 #' @author Reinhard Simon
-#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/GermplasmAttributes/GermplasmAttributeValuesByGermplasmDbId.md}{github}
+#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/GermplasmAttributes/GermplasmAttributeValuesByGermplasmDbId.md}{github}
 #' @family germplasmattributes
 #' @family genotyping
 #' @export

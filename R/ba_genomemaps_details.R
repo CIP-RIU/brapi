@@ -7,7 +7,7 @@
 #' @param mapDbId character; default 1
 #'
 #' @author Reinhard Simon
-#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/GenomeMaps/GenomeMapDetails.md}
+#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/GenomeMaps/GenomeMapDetails.md}{github}
 #' @return rclass as defined
 #' @example inst/examples/ex-genomemaps_details.R
 #' @import tibble

@@ -57,7 +57,7 @@ if (interactive()) {
 }
 }
 \references{
-\url{https://github.com/plantbreeding/API/blob/master/Specification/MarkerProfiles/MarkerProfileAlleleMatrix.md}
+\href{https://github.com/plantbreeding/API/blob/master/Specification/MarkerProfiles/MarkerProfileAlleleMatrix.md}{github}
 }
 \seealso{
 Other markerprofiles: \code{\link{ba_markerprofiles_details}},

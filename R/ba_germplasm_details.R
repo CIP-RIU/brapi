@@ -8,7 +8,7 @@
 #' @import tidyjson
 #' @import dplyr
 #' @author Reinhard Simon
-#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/Germplasm/GermplasmDetailsByGermplasmDbId.md}
+#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Germplasm/GermplasmDetailsByGermplasmDbId.md}{github}
 #' @return list
 #' @example inst/examples/ex-ba_germplasm_details.R
 #' @family germplasm

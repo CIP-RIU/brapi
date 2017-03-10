@@ -17,7 +17,7 @@
 #' @import httr
 #' @import progress
 #' @importFrom magrittr '%>%'
-#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/MarkerProfiles/MarkerProfileSearch.md}
+#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/MarkerProfiles/MarkerProfileSearch.md}{github}
 #'
 #' @return data.frame
 #' @example inst/examples/ex-ba_markerprofiles_search.R

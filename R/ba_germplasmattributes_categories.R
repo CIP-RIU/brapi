@@ -11,7 +11,7 @@
 #' @example inst/examples/ex-ba_germplasmattributes_categories.R
 #' @import httr
 #' @author Reinhard Simon
-#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/GermplasmAttributes/ListAttributeCategories.md}{github}
+#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/GermplasmAttributes/ListAttributeCategories.md}{github}
 #' @family germplasmattributes
 #' @family genotyping
 #' @export

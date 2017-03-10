@@ -9,7 +9,7 @@
 #' @param traitClass character; default 'all'
 #'
 #' @author Reinhard Simon
-#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/ObservationVariables/VariableList.md}{github}
+#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/ObservationVariables/VariableList.md}{github}
 #' @return rclass as defined
 #' @example inst/examples/ex-ba_observationvariables.R
 #' @import tibble

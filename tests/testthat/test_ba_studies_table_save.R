@@ -20,7 +20,7 @@ test_that("Parameters work", {
   ))
 
 
-  expect_true(ba_studies_table_save(out, "1", df))
+  expect_true(ba_studies_table_save(out, "1",  study_table = df))
 
   expect_error(ba_studies_table_save(out, "1", 1))
 

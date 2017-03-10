@@ -12,7 +12,7 @@
 #' @return list of pedigree data
 #' @example inst/examples/ex-ba_germplasm_pedigree.R
 #' @import httr
-#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/Germplasm/GermplasmPedigree.md}(github)
+#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Germplasm/GermplasmPedigree.md}{github}
 #' @family germplasm
 #' @family brapicore
 #' @export

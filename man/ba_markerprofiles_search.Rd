@@ -47,7 +47,7 @@ if (interactive()) {
 }
 }
 \references{
-\url{https://github.com/plantbreeding/API/blob/master/Specification/MarkerProfiles/MarkerProfileSearch.md}
+\href{https://github.com/plantbreeding/API/blob/master/Specification/MarkerProfiles/MarkerProfileSearch.md}{github}
 }
 \seealso{
 Other markerprofiles: \code{\link{ba_markerprofiles_allelematrix_search}},

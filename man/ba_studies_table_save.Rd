@@ -35,9 +35,9 @@ if (interactive()) {
     variable1Id = c(3, 4)
     ))
 
-  ba_studies_table_save(con)
+  brapi::ba_studies_table_save(con, "1", df)
 
-  # Note: the test server fro brapiTS does not store the table. It only does some simple checking.
+  # Note: the test server from brapiTS does not store the table. It only does some simple checking.
 
 }
 }

@@ -30,6 +30,9 @@ if (interactive()) {
   print(con)
 }
 }
+\references{
+\href{https://github.com/plantbreeding/API/blob/master/Specification/Authentication/Authentication.md}{github}
+}
 \seealso{
 Other brapiutils: \code{\link{as.ba_db}},
   \code{\link{ba_can_internet}},

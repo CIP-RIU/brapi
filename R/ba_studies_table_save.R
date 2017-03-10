@@ -50,8 +50,8 @@ ba_studies_table_save <- function(con = NULL, studyDbId = "1", study_table = NUL
 
       dat <- jsonlite::toJSON(req)
 
-      resp <- brapiPOST(studies_table, dat, con)
+      brapiPOST(studies_table, dat, con)
 
-    return(invisible(resp))
+    return(invisible(TRUE))
     })
 }

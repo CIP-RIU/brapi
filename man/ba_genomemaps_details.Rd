@@ -32,7 +32,7 @@ if (interactive()) {
 }
 }
 \references{
-\url{https://github.com/plantbreeding/API/blob/master/Specification/GenomeMaps/GenomeMapDetails.md}
+\href{https://github.com/plantbreeding/API/blob/master/Specification/GenomeMaps/GenomeMapDetails.md}{github}
 }
 \seealso{
 Other genomemaps: \code{\link{ba_genomemaps_data_range}},

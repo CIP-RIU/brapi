@@ -14,7 +14,7 @@
 #' @param max integer; default 1000
 #'
 #' @author Reinhard Simon
-#' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/GenomeMaps/GenomeMapDataByRangeOnLinkageGroup.md}
+#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/GenomeMaps/GenomeMapDataByRangeOnLinkageGroup.md}{github}
 #' @return rclass as defined
 #' @example inst/examples/ex-ba_genomemaps_data_range.R
 #' @import tibble
