@@ -7,13 +7,13 @@
 ba_traits(con = NULL, page = 0, pageSize = 1000, rclass = "tibble")
 }
 \arguments{
-\item{con}{object; brapi connection object}
+\item{con}{list; brapi connection object}
 
 \item{page}{integer; default 0}
 
 \item{pageSize}{integer; defautlt 1000}
 
-\item{rclass}{string; default: tibble}
+\item{rclass}{character; default: tibble}
 }
 \value{
 rclass as defined

@@ -7,11 +7,11 @@
 ba_traits_details(con = NULL, traitDbId = "1", rclass = "tibble")
 }
 \arguments{
-\item{con}{object; brapi connection object}
+\item{con}{list; brapi connection object}
 
 \item{traitDbId}{character; default 1}
 
-\item{rclass}{string; default: tibble}
+\item{rclass}{character; default: tibble}
 }
 \value{
 rclass as defined
@@ -32,7 +32,7 @@ if (interactive()) {
 }
 }
 \references{
-\url{https://github.com/plantbreeding/API/blob/master/Specification/Traits/TraitDetails.md}(github)
+\href{https://github.com/plantbreeding/API/blob/master/Specification/Traits/TraitDetails.md}{github}
 }
 \seealso{
 Other traits: \code{\link{ba_traits}}

@@ -2,8 +2,8 @@
 #'
 #' lists trials available on a brapi server
 #'
-#' @param con brapi connection object
-#' @param rclass string; default: tibble
+#' @param con list, brapi connection object
+#' @param rclass character; default: tibble
 #' @param page integer; default 0
 #' @param pageSize integer; default 1000
 #' @param programDbId character; default: 'any'; otherwise an identifier

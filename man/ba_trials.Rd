@@ -9,7 +9,7 @@ ba_trials(con = NULL, programDbId = "any", locationDbId = "any",
   pageSize = 1000, rclass = "tibble")
 }
 \arguments{
-\item{con}{brapi connection object}
+\item{con}{list, brapi connection object}
 
 \item{programDbId}{character; default: 'any'; otherwise an identifier}
 
@@ -25,7 +25,7 @@ ba_trials(con = NULL, programDbId = "any", locationDbId = "any",
 
 \item{pageSize}{integer; default 1000}
 
-\item{rclass}{string; default: tibble}
+\item{rclass}{character; default: tibble}
 }
 \value{
 rclass as defined
