@@ -145,7 +145,7 @@ Code: 200 (application/json)
                         "local": "San Miguel Centro Marankiari",
                         "cont": "South America",
                         "creg": "LAC",
-                        "adm3": "Peren<e9>",
+                        "adm3": "Perené",
                         "adm2": "Chanchamayo",
                         "adm1": "Junin"
                     }
