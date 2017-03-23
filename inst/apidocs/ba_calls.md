@@ -5,7 +5,26 @@
 ```r
 library(brapi)
 library(magrittr)
+```
 
+```
+
+Attaching package: 'magrittr'
+```
+
+```
+The following object is masked from 'package:purrr':
+
+    set_names
+```
+
+```
+The following object is masked from 'package:tidyr':
+
+    extract
+```
+
+```r
 # make sure brapiTS::mock_server() is running in a separate process
 con <- ba_connect()
 
