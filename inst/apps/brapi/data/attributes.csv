@@ -1,5 +1,0 @@
-attributeDbId,code,uri,name,description,attributeCategoryDbId,attributeCategoryName,datatype,values
-1,RHT,http://www.cropontology.org/rdf/CO_321:0000020,Rht-B1b,"Allele of marker 11_4769, diagnostic for allele b of reduced-height gene Rht-B1",2,Agronomic,Categorical,Present;Absent;Heterozygous
-2,WEV,http://www.cropontology.org/rdf/CO_3230,Weevil Resistance,Resistance allele,3,Biotic stress,Categorical,Present;Absent;Heterozygous
-3,FLSHORG,http://www.cropontology.org/rdf/CO_3230,Flesh Color Orange allele,Allelele for orange flesh,1,Morphological,Categorical,Present;Absent;Heterozygous
-4,FLWCOL,http://www.cropontology.org/rdf/CO_3230,Flower color white allele,Allele for white flower color,1,Morphological,Categorical,Present;Absent;Heterozygous

@@ -1,2 +1,0 @@
-studyDbId,locationDbId,plotId,plantId,sampleId,takenBy,sampleDate,sampleType,tissueType,notes,studyName,season,locationName,germplasmDbId,plantingDate,harvestDate
-StudyId-123,Kenya,PlotId-123,PlantId-123,Unique-Plant-SampleId-1234567890,Mr. Technician,2016-07-27,TypeOfSample,TypeOfTissue,Cut from infected leave.,Yield Trial A,summer,Kenya,15,2016-01-01,'2016-06-

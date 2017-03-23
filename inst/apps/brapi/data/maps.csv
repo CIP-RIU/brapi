@@ -1,4 +1,0 @@
-mapDbId,name,species,type,unit,publishedDate,markerCount,linkageGroupCount,comments
-1,SSR map 1,Ipomoea batatas,Genetic,cM,6/1/2016,10,2,
-2,SSR map 2,Ipomoea trifida,Genetic,cM,11/15/2016,10,1,none
-3,GBS genomic map,Ipomoea batatas,Physical,bp,12/1/2016,20,3,whatever
