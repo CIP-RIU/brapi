@@ -18,16 +18,16 @@ ba_studies_details <- function(con = NULL, studiesDbId = "0", rclass = "tibble")
     ba_check(con, FALSE, "studies/id")
     stopifnot(is.character(studiesDbId))
     check_rclass(rclass)
-
+    
     studies <- paste0(get_brapi(con), "studies/", studiesDbId, "/")
     try({
         res <- brapiGET(studies, con = con)
         out <- NULL
         if (is.ba_status_ok(res)) {
             res <- httr::content(res, "text", encoding = "UTF-8")
-            if (rclass %in% c("json", "list"))
+            if (rclass %in% c("json", "list")) 
                 out <- dat2tbl(res, rclass)
-            if (rclass %in% c("data.frame", "tibble"))
+            if (rclass %in% c("data.frame", "tibble")) 
                 out <- stdd2tbl(res, rclass)
             class(out) <- c(class(out), "ba_studies_details")
         }

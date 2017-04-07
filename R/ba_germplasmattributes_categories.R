@@ -19,7 +19,7 @@ ba_germplasmattributes_categories <- function(con = NULL, page = 0, pageSize = 1
     ba_check(con, FALSE)
     check_paging(pageSize, page)
     check_rclass(rclass)
-
+    
     brp <- get_brapi(con)
     attributes_categories_list <- paste0(brp, "attributes/categories/")
     if (is.numeric(page) & is.numeric(pageSize)) {

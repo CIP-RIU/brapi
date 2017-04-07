@@ -18,15 +18,15 @@ ba_observationvariables_details <- function(con = NULL, observationVariableDbId 
     ba_check(con, FALSE, "variables/id")
     stopifnot(is.character(observationVariableDbId))
     check_rclass(rclass)
-
+    
     brp <- get_brapi(con)
     brapi_variables_details <- paste0(brp, "variables/", observationVariableDbId)
-
+    
     try({
         res <- brapiGET(brapi_variables_details, con = con)
         res <- httr::content(res, "text", encoding = "UTF-8")
         out <- NULL
-
+        
         if (rclass %in% c("json", "list")) {
             out <- dat2tbl(res, rclass)
         }

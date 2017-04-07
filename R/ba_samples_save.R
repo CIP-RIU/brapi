@@ -16,22 +16,19 @@
 ba_samples_save <- function(con = NULL, sampleData = list()) {
     ba_check(con, FALSE, "samples")
     stopifnot(is.list(sampleData))
-
-    stopifnot(all(
-      c("plotId", "plantId", "takenBy", "sampleDate", "sampleType", "tissueType", "notes") %in% names(sampleData)
-    ))
-
+    
+    stopifnot(all(c("plotId", "plantId", "takenBy", "sampleDate", "sampleType", "tissueType", "notes") %in% names(sampleData)))
+    
     brp <- get_brapi(con)
     call_samples <- paste0(brp, "samples/")
-
+    
     try({
         res <- brapiPUT(call_samples, sampleData, con = con)
         res <- httr::content(res)
         out <- res$result$sampleId
-
-        if (!is.null(out))
+        
+        if (!is.null(out)) 
             class(out) <- c(class(out), "ba_samples")
         return(out)
-    }
-    )
+    })
 }

@@ -14,27 +14,26 @@
 #' @family germplasm
 #' @family brapicore
 #' @export
-ba_germplasm_details <- function(con = NULL, germplasmDbId = "0",
-                              rclass = "tibble") {
-
+ba_germplasm_details <- function(con = NULL, germplasmDbId = "0", rclass = "tibble") {
+    
     ba_check(con, FALSE, "germplasm/id")
     stopifnot(is.character(germplasmDbId))
     check_rclass(rclass)
-
+    
     germplasm <- paste0(get_brapi(con), "germplasm/", germplasmDbId, "/")
-
+    
     try({
         res <- brapiGET(germplasm, con = con)
         res <- httr::content(res, "text", encoding = "UTF-8")
         out <- NULL
-
-        if (rclass %in% c("json", "list"))
+        
+        if (rclass %in% c("json", "list")) 
             out <- dat2tbl(res, rclass)
-        if (rclass == "data.frame")
+        if (rclass == "data.frame") 
             out <- gp2tbl(res)
-        if (rclass == "tibble")
+        if (rclass == "tibble") 
             out <- gp2tbl(res) %>% tibble::as_tibble()
-
+        
         class(out) <- c(class(out), "ba_germplasm_details")
         return(out)
     })

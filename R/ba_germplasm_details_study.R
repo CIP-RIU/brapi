@@ -17,20 +17,17 @@
 #' @family germplasm
 #' @family brapicore
 #' @export
-ba_germplasm_details_study <- function(con = NULL, studyDbId = "123",
-                                    page = 0, pageSize = 1000,
-                                    rclass = "tibble") {
-
+ba_germplasm_details_study <- function(con = NULL, studyDbId = "123", page = 0, pageSize = 1000, rclass = "tibble") {
+    
     ba_check(con, FALSE, "studies/id/germplasm")
     stopifnot(is.character(studyDbId))
     check_paging(pageSize, page)
     check_rclass(rclass)
-
+    
     brp <- get_brapi(con)
     studies_germplasm_list <- paste0(brp, "studies/", studyDbId, "/germplasm/?")
     page <- ifelse(is.numeric(page), paste0("page=", page), "")
-    pageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=",
-                                                    pageSize, "&"), "")
+    pageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
     studies_germplasm_list <- paste0(studies_germplasm_list, pageSize, page)
     try({
         res <- brapiGET(studies_germplasm_list, con = con)

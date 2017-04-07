@@ -22,10 +22,10 @@ ba_markers_details <- function(con = NULL, markerDbId = "0", rclass = "tibble") 
     ba_check(con, FALSE, "markers/id")
     stopifnot(is.character(markerDbId))
     check_rclass(rclass)
-
+    
     brp <- get_brapi(con)
     markers <- paste0(brp, "markers/", markerDbId)
-
+    
     try({
         res <- brapiGET(markers, con = con)
         res <- httr::content(res, "text", encoding = "UTF-8")

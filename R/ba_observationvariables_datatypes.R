@@ -17,10 +17,10 @@
 ba_observationvariables_datatypes <- function(con = NULL, rclass = "tibble") {
     ba_check(con, FALSE, "variables/datatypes")
     check_rclass(rclass)
-
+    
     brp <- get_brapi(con)
     variables_datatypes_list <- paste0(brp, "variables/datatypes/")
-
+    
     try({
         res <- brapiGET(variables_datatypes_list, con = con)
         res <- httr::content(res, "text", encoding = "UTF-8")

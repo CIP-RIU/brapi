@@ -20,7 +20,7 @@ ba_germplasm_markerprofiles <- function(con = NULL, germplasmDbId = "3", rclass 
     ba_check(con, FALSE)
     stopifnot(is.character(germplasmDbId))
     check_rclass(rclass)
-
+    
     germplasm_markerprofiles <- paste0(get_brapi(con), "germplasm/", germplasmDbId, "/markerprofiles/")
     try({
         res <- brapiGET(germplasm_markerprofiles, con = con)
@@ -28,20 +28,16 @@ ba_germplasm_markerprofiles <- function(con = NULL, germplasmDbId = "3", rclass 
         out <- NULL
         ms2tbl <- function(res) {
             markerProfiles <- NULL
-            res %>% as.character %>% enter_object("result") %>%
-              spread_values(germplasmDbId = jnumber("germplasmDbId")) %>%
-                enter_object("markerProfiles") %>% gather_array %>%
-              append_values_number("markerProfiles") %>%
-                dplyr::select(germplasmDbId, markerProfiles)
+            res %>% as.character %>% enter_object("result") %>% spread_values(germplasmDbId = jnumber("germplasmDbId")) %>% enter_object("markerProfiles") %>% 
+                gather_array %>% append_values_number("markerProfiles") %>% dplyr::select(germplasmDbId, markerProfiles)
         }
-        if (rclass %in% c("json", "list"))
+        if (rclass %in% c("json", "list")) 
             out <- dat2tbl(res, rclass)
-        if (rclass == "vector")
-            out <- jsonlite::fromJSON(res,
-                                     simplifyVector = FALSE)$result$markerProfiles %>% unlist
-        if (rclass == "data.frame")
+        if (rclass == "vector") 
+            out <- jsonlite::fromJSON(res, simplifyVector = FALSE)$result$markerProfiles %>% unlist
+        if (rclass == "data.frame") 
             out <- ms2tbl(res)
-        if (rclass == "tibble")
+        if (rclass == "tibble") 
             out <- ms2tbl(res) %>% tibble::as_tibble()
         class(out) <- c(class(out), "ba_germplasm_markerprofiles")
         return(out)

@@ -1,7 +1,7 @@
 .onAttach <- function(libname, pkgname) {
-  packageStartupMessage("Welcome to the 'brapi' package!\n")
+    packageStartupMessage("Welcome to the 'brapi' package!\n")
 }
 
-.onLoad <- function(libname, pkgname){
-
+.onLoad <- function(libname, pkgname) {
+    
 }

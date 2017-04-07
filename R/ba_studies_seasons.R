@@ -21,19 +21,19 @@ ba_studies_seasons <- function(con = NULL, year = 0, page = 0, pageSize = 1000, 
     stopifnot(is.numeric(year))
     check_paging(pageSize, page)
     check_rclass(rclass)
-
+    
     seasons_list <- paste0(brp, "seasons/?")
-
+    
     year <- ifelse(year != 0, paste0("year=", year, "&"), "")
     page <- ifelse(is.numeric(page), paste0("page=", page, "&"), "")
     pageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
-
+    
     seasons_list <- paste0(seasons_list, page, pageSize, year)
-
+    
     try({
         res <- brapiGET(seasons_list, con = con)
         res <- httr::content(res, "text", encoding = "UTF-8")
-
+        
         out <- dat2tbl(res, rclass)
         class(out) <- c(class(out), "ba_studies_seasons")
         return(out)

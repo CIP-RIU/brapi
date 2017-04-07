@@ -21,7 +21,7 @@ ba_locations <- function(con = NULL, locationType = "all", page = 0, pageSize = 
     stopifnot(is.character(locationType))
     check_paging(pageSize, page)
     check_rclass(rclass)
-
+    
     brp <- get_brapi(con)
     locations_list <- paste0(brp, "locations/?")
     plocationType <- ifelse(locationType != "all", paste0("locationType=", locationType, "&"), "")
@@ -31,9 +31,9 @@ ba_locations <- function(con = NULL, locationType = "all", page = 0, pageSize = 
         ppage <- ""
         ppageSize <- ""
     }
-
+    
     locations_list <- paste0(locations_list, plocationType, ppageSize, ppage)
-
+    
     try({
         res <- brapiGET(locations_list, con = con)
         res <- httr::content(res, "text", encoding = "UTF-8")
@@ -42,9 +42,9 @@ ba_locations <- function(con = NULL, locationType = "all", page = 0, pageSize = 
             out <- dat2tbl(res, rclass)
         }
         if (rclass %in% c("tibble", "data.frame")) {
-          out <- loc2tbl(res, rclass, con)
-          }
-        if (!is.null(out))
+            out <- loc2tbl(res, rclass, con)
+        }
+        if (!is.null(out)) 
             class(out) <- c(class(out), "ba_locations")
         return(out)
     })
