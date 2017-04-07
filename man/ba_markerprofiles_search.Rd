@@ -11,13 +11,13 @@ ba_markerprofiles_search(con = NULL, germplasmDbId = "", studyDbId = "",
 \arguments{
 \item{con}{brapi connection object}
 
-\item{germplasmDbId}{character; default ""}
+\item{germplasmDbId}{character; default ''}
 
-\item{studyDbId}{character; default ""}
+\item{studyDbId}{character; default ''}
 
-\item{sampleDbId}{character; default: ""}
+\item{sampleDbId}{character; default: ''}
 
-\item{extractDbId}{character; default: ""}
+\item{extractDbId}{character; default: ''}
 
 \item{methodDbId}{string; default: unknown}
 
