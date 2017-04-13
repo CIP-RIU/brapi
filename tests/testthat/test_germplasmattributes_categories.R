@@ -9,7 +9,7 @@ context("Testing the path 'attributes/categories'")
 test_that("Calls are listed.", {
   acall <- ba_germplasmattributes_categories(con, rclass = "list")
   expect_equal(length(acall), 2)
-  expect_equal(length(acall$result$data), 3)
+  expect_equal(length(acall$result$data), 4)
 })
 
 test_that("Parameters are tested.", {

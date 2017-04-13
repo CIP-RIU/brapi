@@ -7,7 +7,7 @@ context("Testing the path 'crops'")
 
 test_that("Crops are listed.", {
   expect_equal(length(ba_crops(con, rclass = "list")), 2)
-  expect_equal(ba_crops(con, rclass = "vector")[1], "new crop")
+  expect_equal(ba_crops(con, rclass = "vector")[1], "crop1")
 })
 
 test_that("Classes", {

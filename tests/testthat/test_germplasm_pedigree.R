@@ -14,7 +14,7 @@ test_that("Parameters are tested.", {
   expect_equal(length(ba_germplasm_pedigree(con, "1", rclass = "list")$result), 4)
   expect_equal(length(ba_germplasm_pedigree(con, "5", rclass = "list")$result), 4)
   expect_equal(length(ba_germplasm_pedigree(con, "5", notation = "purdue", rclass = "list")$result), 4)
-  expect_equal(ba_germplasm_pedigree(con, "5", rclass = "list")$result$pedigree, "landrace")
+  expect_equal(ba_germplasm_pedigree(con, "5", rclass = "list")$result$pedigree, "")
   expect_equal(ba_germplasm_pedigree(con, "3", rclass = "list")$result$parent1Id, 1)
   expect_equal(ba_germplasm_pedigree(con, "3", rclass = "list")$result$parent2Id, 2)
  })

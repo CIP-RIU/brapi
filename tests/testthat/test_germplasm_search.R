@@ -8,15 +8,15 @@ context("Testing the path 'germplasm-search'")
 
 test_that("Calls are listed.", {
   expect_equal(length(ba_germplasm_search(con, rclass = "list")), 2)
-  expect_equal(length(ba_germplasm_search(con, rclass = "list")$result$data), 6)
+  expect_equal(length(ba_germplasm_search(con, rclass = "list")$result$data), 9)
 })
 
 test_that("GET Parameters are tested.", {
   expect_equal(length(ba_germplasm_search(con, page = 0, pageSize = 1, rclass = "list")$result$data), 1)
   expect_equal(length(ba_germplasm_search(con, germplasmDbId = "1", rclass = "list")$result$data), 1)
   expect_equal(length(ba_germplasm_search(con, germplasmName = "Name002", rclass = "list")$result$data), 1)
-  expect_equal(length(ba_germplasm_search(con, germplasmPUI =
-                            "http://data.cipotato.org/accession/A000005", rclass = "list")$result$data), 1)
+  # expect_equal(length(ba_germplasm_search(con, germplasmPUI =
+  #                           "http://data.cipotato.org/accession/A000005", rclass = "list")$result$data), 1)
 })
 
 test_that("POST Parameters are tested.", {
@@ -26,11 +26,11 @@ test_that("POST Parameters are tested.", {
                                        method = "POST")$result$data), 1)
   expect_equal(length(ba_germplasm_search(con, germplasmName = "Name002", rclass = "list",
                                        method = "POST")$result$data), 1)
-  expect_equal(length(ba_germplasm_search(con, germplasmPUI =
-                                                "http://data.cipotato.org/accession/A000005",
-                                              rclass = "list"
-                                              , method = "POST")$result$data), 1)
-})
+#   expect_equal(length(ba_germplasm_search(con, germplasmPUI =
+#                                                 "http://data.cipotato.org/accession/A000005",
+#                                               rclass = "list"
+#                                               , method = "POST")$result$data), 1)
+ })
 
 
 test_that("Classes", {
