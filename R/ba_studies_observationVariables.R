@@ -19,10 +19,10 @@ ba_studies_observationvariables <- function(con = NULL, studyDbId = "1", rclass 
     ba_check(con, FALSE, "studies/id/observationVariables")
     stopifnot(is.character(studyDbId))
     check_rclass(rclass)
-
+    
     brp <- get_brapi(con)
     studies_observationVariables_list <- paste0(brp, "studies/", studyDbId, "/observationVariables/?")
-
+    
     try({
         res <- brapiGET(studies_observationVariables_list, con = con)
         res <- httr::content(res, "text", encoding = "UTF-8")

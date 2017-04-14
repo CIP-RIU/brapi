@@ -1,8 +1,9 @@
 stdd2tbl <- function(res, rclass) {
     lst <- jsonlite::fromJSON(res)
-    if (length(lst$result) == 0)
+    if (length(lst$result) == 0) 
         return(NULL)
     dat <- jsonlite::toJSON(lst$result)
+
     dat <- jsonlite::fromJSON(dat, simplifyDataFrame = TRUE, flatten = TRUE)
 
     contacts <- dat$contacts
@@ -17,8 +18,6 @@ stdd2tbl <- function(res, rclass) {
     additionalInfo <- dat$additionalInfo
     additionalInfo <- as.data.frame(additionalInfo)
     dat$additionalInfo <- NULL
-
-    #dat <- jsonlite::fromJSON(dat, simplifyDataFrame = TRUE, flatten = TRUE)
 
     if(length(location) == 0) {
       location <- cbind(studyDbId = rep(dat$studyDbId, nrow(location)), location)
@@ -40,9 +39,9 @@ stdd2tbl <- function(res, rclass) {
       dat <- merge(dat, additionalInfo)
       dat$additionalInfo.studyDbId <- NULL
     }
-
-
-    if (rclass == "tibble")
+    
+    
+    if (rclass == "tibble") 
         dat <- tibble::as_tibble(dat)
     return(dat)
 }

@@ -19,41 +19,25 @@ ba_studies_table_save <- function(con = NULL, studyDbId = "1", study_table = NUL
     ba_check(con, FALSE, "studies/id/table")
     stopifnot(is.character(studyDbId))
     stopifnot(is.data.frame(study_table))
-
+    
     brp <- get_brapi(con)
     studies_table <- paste0(brp, "studies/", studyDbId, "/table/")
-
+    
     try({
-
-      metadata <- list(
-        pagination = list(
-          pageSize = 0,
-          currentPage = 0,
-          totalCount = 0,
-          totalPages = 0
-        ),
-        status = list(),
-        datafiles = list()
-      )
-
-      result <- list(
-        headerRow = colnames(study_table),
-        observationVariableDbIds = colnames(study_table)[4:ncol(study_table)],
-        data = sapply(study_table, as.character)
-      )
-
-      req <- list(
-
-        metadata = metadata,
-        result = result
-      )
-
-      dat <- jsonlite::toJSON(req, pretty = TRUE)
-
-      ba_message(dat)
-
-      brapiPOST(studies_table, dat, con)
-
-    return(invisible(TRUE))
+        
+        metadata <- list(pagination = list(pageSize = 0, currentPage = 0, totalCount = 0, totalPages = 0), status = list(), datafiles = list())
+        
+        result <- list(headerRow = colnames(study_table), observationVariableDbIds = colnames(study_table)[4:ncol(study_table)], data = sapply(study_table, 
+            as.character))
+        
+        req <- list(metadata = metadata, result = result)
+        
+        dat <- jsonlite::toJSON(req, pretty = TRUE)
+        
+        ba_message(dat)
+        
+        brapiPOST(studies_table, dat, con)
+        
+        return(invisible(TRUE))
     })
 }

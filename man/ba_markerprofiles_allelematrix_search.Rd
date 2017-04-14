@@ -12,9 +12,9 @@ ba_markerprofiles_allelematrix_search(con = NULL, markerprofileDbId = "",
 \arguments{
 \item{con}{brapi connection object}
 
-\item{markerprofileDbId}{character vector; default ""}
+\item{markerprofileDbId}{character vector; default ''}
 
-\item{markerDbId}{character vector; default ""}
+\item{markerDbId}{character vector; default ''}
 
 \item{expandHomozygotes}{logical; default false}
 

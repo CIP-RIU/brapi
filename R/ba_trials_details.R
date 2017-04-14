@@ -20,16 +20,16 @@ ba_trials_details <- function(con = NULL, trialDbId = "any", rclass = "tibble") 
     brp <- get_brapi(con)
     stopifnot(is.character(trialDbId))
     check_rclass(rclass)
-
+    
     ptrials <- paste0(brp, "trials/", trialDbId)
-
+    
     try({
         res <- brapiGET(ptrials, con = con)
         res <- httr::content(res, "text", encoding = "UTF-8")
         out <- NULL
-        if (rclass %in% c("list", "json"))
+        if (rclass %in% c("list", "json")) 
             out <- dat2tbl(res, rclass)
-        if (rclass %in% c("data.frame", "tibble"))
+        if (rclass %in% c("data.frame", "tibble")) 
             out <- trl2tbl(res, rclass)
         class(out) <- c(class(out), "ba_trials_details")
         return(out)

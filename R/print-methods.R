@@ -8,11 +8,11 @@
 #' @family brapiutils
 #' @export
 print.ba_con <- function(x, ...) {
-  # Print in console
-  txt <- paste0("Crop = ", x$crop, "\n\n")
-  txt <- paste0(txt, "Addres:Port = ", x$db, ":", x$port, "\n")
-  cat(paste0(txt, "User = ", x$user, "\n"))
-  return(invisible())
+    # Print in console
+    txt <- paste0("Crop = ", x$crop, "\n\n")
+    txt <- paste0(txt, "Addres:Port = ", x$db, ":", x$port, "\n")
+    cat(paste0(txt, "User = ", x$user, "\n"))
+    return(invisible())
 }
 
 
@@ -26,6 +26,6 @@ print.ba_con <- function(x, ...) {
 #' @family brapiutils
 #' @export
 print.ba_db_list <- function(x, ...) {
-  names(x) %>% sort %>% paste(collapse = "\n") %>% cat
-  return(invisible())
+    names(x) %>% sort %>% paste(collapse = "\n") %>% cat
+    return(invisible())
 }

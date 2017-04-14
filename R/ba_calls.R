@@ -15,8 +15,7 @@
 #' @import tibble
 #' @family brapicore
 #' @export
-ba_calls <- function(con = NULL, datatypes = "all",
-                  pageSize = 50, page = 0, rclass = "tibble") {
+ba_calls <- function(con = NULL, datatypes = "all", pageSize = 50, page = 0, rclass = "tibble") {
     ba_check(con, FALSE, "calls")
     check_paging(pageSize, page)
     check_rclass(rclass)
@@ -24,16 +23,14 @@ ba_calls <- function(con = NULL, datatypes = "all",
 
     brp <- get_brapi(con)
     brapi_calls <- paste0(brp, "calls/?")
-    pdatatypes <- ifelse(datatypes == "all", "", paste0("datatypes=",
-                                                        datatypes, "&"))
+    pdatatypes <- ifelse(datatypes == "all", "", paste0("datatypes=", datatypes, "&"))
     ppage <- ifelse(is.numeric(page), paste0("page=", page, ""), "")
-    ppageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=",
-                                                     pageSize, "&"), "")
-    if (pageSize >= 1000){
-      ppage <- ""
-      ppageSize <- ""
-      datatypes <- ""
-      brapi_calls <- paste0(brp, "calls/?")
+    ppageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
+    if (pageSize >= 1000) {
+        ppage <- ""
+        ppageSize <- ""
+        datatypes <- ""
+        brapi_calls <- paste0(brp, "calls/?")
     }
     brapi_calls <- paste0(brapi_calls, pdatatypes, ppageSize, ppage)
     try({

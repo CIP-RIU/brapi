@@ -22,20 +22,20 @@ ba_observationvariables <- function(con = NULL, traitClass = "all", page = 0, pa
     stopifnot(is.character(traitClass))
     check_paging(pageSize, page)
     check_rclass(rclass)
-
+    
     brp <- get_brapi(con)
     brapi_variables <- paste0(brp, "variables/?")
-
+    
     ptraitClass <- paste0("traitClass=", traitClass, "&")
     ppage <- paste0("page=", page, "")
     ppageSize <- paste0("pageSize=", pageSize, "&")
     brapi_variables <- paste0(brapi_variables, ptraitClass, ppageSize, ppage)
-
+    
     try({
         res <- brapiGET(brapi_variables, con = con)
         res <- httr::content(res, "text", encoding = "UTF-8")
         out <- NULL
-
+        
         if (rclass %in% c("json", "list")) {
             out <- dat2tbl(res, rclass)
         }

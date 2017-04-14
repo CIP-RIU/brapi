@@ -17,19 +17,19 @@ ba_traits_details <- function(con = NULL, traitDbId = "1", rclass = "tibble") {
     ba_check(con, FALSE, "traits")
     stopifnot(is.character(traitDbId))
     check_rclass(rclass)
-
+    
     brp <- get_brapi(con)
     traits <- paste0(brp, "traits/", traitDbId)
-
+    
     try({
         res <- brapiGET(traits, con = con)
         res <- httr::content(res, "text", encoding = "UTF-8")
         out <- dat2tbl(res, rclass)
-
+        
         if (rclass %in% c("data.frame", "tibble")) {
             out$observationVariables <- sapply(out$observationVariables, paste, collapse = "; ")
         }
-
+        
         class(out) <- c(class(out), "ba_traits_details")
         return(out)
     })
