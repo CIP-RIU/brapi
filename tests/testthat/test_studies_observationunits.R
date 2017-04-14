@@ -12,19 +12,19 @@ test_that("Basics.", {
 })
 
 test_that("Parameters", {
-  expect_equal(nrow(ba_studies_observationunits(con, "1")), 3)
-  expect_equal(nrow(ba_studies_observationunits(con, "2")), 4)
-  expect_equal("plotNumber" %in% colnames(ba_studies_observationunits(con, "1", "plot")), TRUE)
-  expect_equal("plantNumber" %in% colnames(ba_studies_observationunits(con, "1", "plant")), TRUE)
+  expect_equal(nrow(ba_studies_observationunits(con, "1001")), 3)
+  expect_equal(nrow(ba_studies_observationunits(con, "1002")), 4)
+  expect_equal("plotNumber" %in% colnames(ba_studies_observationunits(con, "1001", "plot")), TRUE)
+  expect_equal("plantNumber" %in% colnames(ba_studies_observationunits(con, "1001", "plant")), TRUE)
 })
 
 
 test_that("Classes", {
-  expect_equal("json" %in% class(ba_studies_observationunits(con, rclass = "json")), TRUE)
-  expect_equal("list" %in% class(ba_studies_observationunits(con, rclass = "list")), TRUE)
-  expect_equal("data.frame" %in% class(ba_studies_observationunits(con, rclass = "data.frame")), TRUE)
-  expect_equal("tbl_df" %in% class(ba_studies_observationunits(con)), TRUE)
-  expect_equal("ba_studies_observationunits" %in% class(ba_studies_observationunits(con)), TRUE)
+  expect_equal("json" %in% class(ba_studies_observationunits(con,"1001", rclass = "json")), TRUE)
+  expect_equal("list" %in% class(ba_studies_observationunits(con,"1001", rclass = "list")), TRUE)
+  expect_equal("data.frame" %in% class(ba_studies_observationunits(con, "1001",rclass = "data.frame")), TRUE)
+  expect_equal("tbl_df" %in% class(ba_studies_observationunits(con, "1001")), TRUE)
+  expect_equal("ba_studies_observationunits" %in% class(ba_studies_observationunits(con, "1001")), TRUE)
 })
 
 }

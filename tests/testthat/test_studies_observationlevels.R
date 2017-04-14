@@ -10,7 +10,7 @@ context("Testing the path 'observationLevels'")
 test_that("ObservationsLevels are listed.", {
   expect_equal(length(ba_studies_observationlevels(con, rclass = "list")), 2)
   expect_equal(ba_studies_observationlevels(con, rclass = "vector")[1], "plant")
-  expect_equal(ba_studies_observationlevels(con, rclass = "vector")[2], "plot")
+  expect_equal(ba_studies_observationlevels(con,  rclass = "vector")[2], "plot")
 })
 
 

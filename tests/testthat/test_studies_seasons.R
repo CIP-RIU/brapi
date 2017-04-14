@@ -26,7 +26,7 @@ test_that("Classes", {
   expect_equal("json" %in% class(ba_studies_seasons(con, rclass = "json")), TRUE)
   expect_equal("list" %in% class(ba_studies_seasons(con, rclass = "list")), TRUE)
   expect_equal("data.frame" %in% class(ba_studies_seasons(con, rclass = "data.frame")), TRUE)
-  expect_equal("ba_studies_seasons" %in% class(ba_studies_seasons(con )), TRUE)
+  expect_equal("ba_studies_seasons" %in% class(ba_studies_seasons(con, )), TRUE)
 })
 
 
