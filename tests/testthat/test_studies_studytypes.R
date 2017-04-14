@@ -12,7 +12,7 @@ test_that("studyTypes are listed.", {
 })
 
 test_that("Calls parameters work.", {
-  expect_equal(nrow(ba_studies_studytypes(con)), 3)
+  expect_equal(nrow(ba_studies_studytypes(con)), 4)
   expect_equal(nrow(ba_studies_studytypes(con, pageSize = 1)), 1)
 })
 
