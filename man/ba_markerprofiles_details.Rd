@@ -4,14 +4,14 @@
 \alias{ba_markerprofiles_details}
 \title{ba_markerprofiles_details}
 \usage{
-ba_markerprofiles_details(con = NULL, markerprofilesDbId = "",
+ba_markerprofiles_details(con = NULL, germplasmDbId = "",
   expandHomozygotes = FALSE, unknownString = "N", sepPhased = "|",
   sepUnphased = "/", page = 0, pageSize = 10000, rclass = "tibble")
 }
 \arguments{
 \item{con}{brapi connection object}
 
-\item{markerprofilesDbId}{character; default 0}
+\item{germplasmDbId}{character; default 0}
 
 \item{expandHomozygotes}{logical; default false}
 

@@ -6,7 +6,7 @@ context("Testing the path 'markerprofiles/id'")
   con <- ba_connect(secure = FALSE)
 
 test_that("Basics works", {
-  expect_equal(nrow(ba_markerprofiles_details(con, "3")), 12)
+  expect_equal(nrow(ba_markerprofiles_details(con, "3")), 10)
   expect_equal(ncol(ba_markerprofiles_details(con, "3")), 2)
 })
 

@@ -7,19 +7,19 @@ context("Testing the path 'markers'")
   con <- ba_connect(secure = FALSE)
 
 test_that("Marker search basics.", {
-  expect_equal(ba_markers_search(con, "*", matchMethod = "wildcard") %>% nrow, 5)
+  expect_equal(ba_markers_search(con, "*", matchMethod = "wildcard") %>% nrow, 59)
   expect_equal(ba_markers_search(con, "*", matchMethod = "wildcard") %>% ncol, 6)
 })
 
 test_that("Match method.", {
-  expect_equal(ba_markers_search(con, "a_01_10001", matchMethod = "exact") %>% nrow, 1)
-  expect_equal(ba_markers_search(con, "A_01_10001", matchMethod = "case_insensitive") %>% nrow, 1)
-  expect_equal(ba_markers_search(con, "?_01_1000?", matchMethod = "wildcard") %>% nrow, 2)
+  expect_equal(ba_markers_search(con, "m1", matchMethod = "exact") %>% nrow, 1)
+  expect_equal(ba_markers_search(con, "m1", matchMethod = "case_insensitive") %>% nrow, 1)
+  expect_equal(ba_markers_search(con, "?1", matchMethod = "wildcard") %>% nrow, 15)
 
 })
 
 test_that("type", {
-  expect_equal(ba_markers_search(con, "*", matchMethod = "wildcard", type = "SNP") %>% nrow, 3)
+  expect_equal(ba_markers_search(con, "*", matchMethod = "wildcard", type = "SNP") %>% nrow, 57)
   expect_equal(ba_markers_search(con, "*", matchMethod = "wildcard", type = "Dart") %>% nrow, 2)
 })
 
@@ -37,7 +37,7 @@ test_that("paging", {
   expect_equal( ba_markers_search(con, "*", matchMethod = "wildcard", pageSize = 2) %>% nrow, 2)
   expect_equal( ba_markers_search(con, "*", matchMethod = "wildcard", pageSize = 3) %>% nrow, 3)
   expect_equal( ba_markers_search(con, "*", matchMethod = "wildcard", pageSize = 1, page = 5) %>% nrow, 1)
-  expect_equal( ba_markers_search(con, "*", matchMethod = "wildcard", pageSize = 3, page = 1) %>% nrow, 2)
+  expect_equal( ba_markers_search(con, "*", matchMethod = "wildcard", pageSize = 3, page = 1) %>% nrow, 3)
 })
 
 }

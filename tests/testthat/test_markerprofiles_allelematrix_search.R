@@ -7,20 +7,20 @@ context("Testing the path 'allelematrix-search'")
   con <- ba_connect(secure = FALSE)
 
 test_that("Basics works", {
-  expect_equal(nrow(ba_markerprofiles_allelematrix_search(con, "3")), 12)
+  expect_equal(nrow(ba_markerprofiles_allelematrix_search(con, "3")), 10)
   expect_equal(ncol(ba_markerprofiles_allelematrix_search(con, "3")), 2)
 })
 
 test_that("Basics works POST", {
-  expect_equal(nrow(ba_markerprofiles_allelematrix_search(con, as.character(3:1000))), 12)
+  expect_equal(nrow(ba_markerprofiles_allelematrix_search(con, as.character(3:1000))), 20)
 })
 
 
 test_that("format parameter", {
-  expect_equal(nrow(ba_markerprofiles_allelematrix_search(con, "3", format = "csv")), 12)
+  expect_equal(nrow(ba_markerprofiles_allelematrix_search(con, "3", format = "csv")), 10)
   expect_equal(class(ba_markerprofiles_allelematrix_search(con, "3", format = "csv"))[1], "tbl_df")
 
-  expect_equal(nrow(ba_markerprofiles_allelematrix_search(con, "3", format = "tsv")), 12)
+  expect_equal(nrow(ba_markerprofiles_allelematrix_search(con, "3", format = "tsv")), 10)
   expect_equal(class(ba_markerprofiles_allelematrix_search(con, "3", format = "tsv"))[1], "tbl_df")
 })
 

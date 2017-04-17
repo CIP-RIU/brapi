@@ -24,5 +24,8 @@ test_file("tests/testthat/test_genomemaps_data.R")
 test_file("tests/testthat/test_genomemaps_data_range.R")
 
 test_file("tests/testthat/test_markers_details.R")
+test_file("tests/testthat/test_markers_search.R")
 test_file("tests/testthat/test_markerprofiles_search.R")
 test_file("tests/testthat/test_markerprofiles_details.R")
+test_file("tests/testthat/test_markerprofiles_allelematrix_search.R")
+

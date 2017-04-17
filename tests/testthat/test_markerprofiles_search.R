@@ -11,12 +11,12 @@ test_that("Basics works", {
   expect_equal(ncol(ba_markerprofiles_search(con, "3")), 8)
 })
 
-test_that("Parmaeter", {
+test_that("Parameter", {
   expect_equal(ba_markerprofiles_search(con, germplasmDbId = "3") %>% nrow, 1)
   expect_equal(ba_markerprofiles_search(con, extractDbId = "1") %>% nrow, 1)
   expect_equal(ba_markerprofiles_search(con, studyDbId = "1") %>% nrow, 1)
-  expect_equal(ba_markerprofiles_search(con, methodDbId = "GBS") %>% nrow, 1)
-  expect_equal(ba_markerprofiles_search(con, sampleDbId = "33") %>% nrow, 1)
+  expect_equal(ba_markerprofiles_search(con, methodDbId = "GBS") %>% nrow, 2)
+  expect_equal(ba_markerprofiles_search(con, sampleDbId = "101") %>% nrow, 1)
 })
 
 
