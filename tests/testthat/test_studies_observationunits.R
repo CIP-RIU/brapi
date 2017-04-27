@@ -7,8 +7,8 @@ context("Testing the path 'studies/id/observationunits'")
   con <- ba_connect(secure = FALSE)
 
 test_that("Basics.", {
-  expect_equal(length(ba_studies_observationunits(con, rclass = "list")), 2)
-  expect_equal(nrow(ba_studies_observationunits(con, rclass = "data.frame")), 3)
+  expect_equal(length(ba_studies_observationunits(con, studyDbId = "1001", rclass = "list")), 2)
+  expect_equal(nrow(ba_studies_observationunits(con, studyDbId = "1001", rclass = "data.frame")), 3)
 })
 
 test_that("Parameters", {

@@ -17,6 +17,8 @@ ba_db <- function() {
                          db = "musabase.org", port = 80, multicrop = FALSE, bms = FALSE)
     cassavabase <- as.ba_db(crop = "cassava", secure = TRUE, protocol = "https://",
                             db = "cassavabase.org", port = 80, multicrop = FALSE, bms = FALSE)
+    ricebase <- as.ba_db(crop = "rice", secure = TRUE, protocol = "https://",
+                            db = "ricebase.org", port = 80, multicrop = FALSE, bms = FALSE)
     germinate <- as.ba_db(crop = "cactuar", secure = TRUE, protocol = "https://",
                           db = "ics.hutton.ac.uk", port = 80, multicrop = FALSE,
                           apipath = "germinate-demo/cactuar",
@@ -43,7 +45,7 @@ ba_db <- function() {
     ttw <- as.ba_db(crop = "wheat", secure = TRUE, protocol = "https://",
                     db = "triticeaetoolbox.org", port = 80, apipath = "", user = "", password = "",
         multicrop = TRUE, bms = FALSE)
-    out <- list(sweetpotatobase = sweetpotatobase, yambase = yambase, musabase = musabase,
+    out <- list(sweetpotatobase = sweetpotatobase, yambase = yambase, musabase = musabase, ricebase = ricebase,
                 cassavabase = cassavabase, germinate_test = germinate,
         bms_test = bms_test, mockbase = mockbase, snpseek = snpseek, eu_sol = eu_sol,
         mgis = mgis, t3s = t3s, tto = tto, ttw = ttw)
