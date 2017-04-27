@@ -17,7 +17,7 @@ loc2tbl <- function(res, rclass, con) {
 
     has_add_cols <- FALSE
 
-    if (ncol(dat[addinfo][[addinfo]]) == 0) {
+    if (length(dat[addinfo][[addinfo]]) == 0) {
       has_add_cols <- FALSE
     } else {
       has_add_cols <- !(dat[addinfo][[addinfo]] %>% is.null) & !all(length(dat[[addinfo]][[1]]) == 0)
