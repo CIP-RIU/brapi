@@ -30,7 +30,7 @@ check_ba <- function(secure = FALSE,
   if (!is.character(crop)) {
     stop("The crop argument can only be a character string.")
   }
-  if (!is.logical(multicrop))
+  if (!is.logical(multicrop)) {
     stop("The multicrop argument can only be a logical value (TRUE or FALSE).")
   }
   if (!is.character(user)) {
