@@ -19,16 +19,47 @@
 #' @example inst/examples/ex-as_ba_db.R
 #' @family brapiutils
 #' @export
-as.ba_db <- function(secure = FALSE, protocol = "http://", db = "127.0.0.1", port = 80,
-                     apipath = NULL, multicrop = FALSE, crop = "", user = "",
-    password = "", token = "", granttype = "password", clientid = "rbrapi", bms = FALSE) {
-    check_ba(secure = secure, protocol = protocol, db = db, port = port, apipath = apipath,
-             multicrop = multicrop, crop = crop, user = user, password = password,
-        token = token, granttype = granttype, clientid = clientid, bms = bms)
-
-    out <- list(secure = secure, protocol = protocol, db = db, port = port, apipath = apipath,
-                multicrop = multicrop, crop = crop, user = user, password = password,
-        token = token, granttype = granttype, clientid = clientid, bms = bms, crops = "", calls = "")
-    class(out) <- c(class(out), "ba_db", "ba", "ba_con")
-    return(out)
+as.ba_db <- function(secure = FALSE,
+                     protocol = "http://",
+                     db = "127.0.0.1",
+                     port = 80,
+                     apipath = NULL,
+                     multicrop = FALSE,
+                     crop = "",
+                     user = "",
+                     password = "",
+                     token = "",
+                     granttype = "password",
+                     clientid = "rbrapi",
+                     bms = FALSE) {
+  check_ba(secure = secure,
+           protocol = protocol,
+           db = db,
+           port = port,
+           apipath = apipath,
+           multicrop = multicrop,
+           crop = crop,
+           user = user,
+           password = password,
+           token = token,
+           granttype = granttype,
+           clientid = clientid,
+           bms = bms)
+  out <- list(secure = secure,
+              protocol = protocol,
+              db = db,
+              port = port,
+              apipath = apipath,
+              multicrop = multicrop,
+              crop = crop,
+              user = user,
+              password = password,
+              token = token,
+              granttype = granttype,
+              clientid = clientid,
+              bms = bms,
+              crops = "",
+              calls = "")
+  class(out) <- c(class(out), "ba_db", "ba", "ba_con")
+  return(out)
 }
