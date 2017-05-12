@@ -81,7 +81,7 @@ ba_db <- function() {
                       multicrop = FALSE,
                       crop = "rice",
                       token = "",
-                      bms = TRUE)
+                      bms = FALSE)
   sweetpotatobase <- as.ba_db(secure = TRUE,
                               protocol = "https://",
                               db = "sweetpotatobase.org",
@@ -138,7 +138,7 @@ ba_db <- function() {
               sweetpotatobase = sweetpotatobase,
               t3s = t3s,
               tto = tto,
-              ttw = ttw
+              ttw = ttw,
               yambase = yambase)
   class(out) <- "ba_db_list"
   return(out)
