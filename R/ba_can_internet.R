@@ -10,6 +10,6 @@
 #' @family brapiutils
 #' @export
 ba_can_internet <- function(url = "www.google.org") {
-    stopifnot(is.character(url))
-    return(invisible(curl::nslookup(url)))
+  stopifnot(is.character(url))
+  return(invisible(curl::nslookup(url)))
 }

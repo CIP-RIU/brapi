@@ -15,35 +15,37 @@
 #' @import tibble
 #' @family brapicore
 #' @export
-ba_calls <- function(con = NULL, datatypes = "all", pageSize = 50, page = 0, rclass = "tibble") {
-    ba_check(con, FALSE, "calls")
-    check_paging(pageSize, page)
-    check_rclass(rclass)
-    stopifnot(datatypes %in% c("all", "json", "csv", "tsv"))
-
-    brp <- get_brapi(con)
+ba_calls <- function(con = NULL,
+                     datatypes = "all",
+                     pageSize = 50,
+                     page = 0,
+                     rclass = "tibble") {
+  ba_check(con = con, verbose = FALSE, brapi_calls = "calls")
+  check_paging(pageSize = pageSize, page = page)
+  check_rclass(rclass = rclass)
+  stopifnot(datatypes %in% c("all", "json", "csv", "tsv"))
+  brp <- get_brapi(brapi = con)
+  brapi_calls <- paste0(brp, "calls/?")
+  pdatatypes <- ifelse(datatypes == "all", "", paste0("datatypes=", datatypes, "&"))
+  ppage <- ifelse(is.numeric(page), paste0("page=", page, ""), "")
+  ppageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
+  if (pageSize >= 1000) {
+    ppage <- ""
+    ppageSize <- ""
+    datatypes <- ""
     brapi_calls <- paste0(brp, "calls/?")
-    pdatatypes <- ifelse(datatypes == "all", "", paste0("datatypes=", datatypes, "&"))
-    ppage <- ifelse(is.numeric(page), paste0("page=", page, ""), "")
-    ppageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
-    if (pageSize >= 1000) {
-        ppage <- ""
-        ppageSize <- ""
-        datatypes <- ""
-        brapi_calls <- paste0(brp, "calls/?")
+  }
+  brapi_calls <- paste0(brapi_calls, pdatatypes, ppageSize, ppage)
+  try({
+    res <- brapiGET(brapi_calls, con = con)
+    out <- NULL
+    res <- httr::content(res, "text", encoding = "UTF-8")
+    out <- dat2tbl(res, rclass)
+    if (rclass %in% c("data.frame", "tibble")) {
+      out$methods <- sapply(out$methods, paste, collapse = "; ")
+      out$datatypes <- sapply(out$datatypes, paste, collapse = "; ")
     }
-    brapi_calls <- paste0(brapi_calls, pdatatypes, ppageSize, ppage)
-    try({
-        res <- brapiGET(brapi_calls, con = con)
-        out <- NULL
-        res <- httr::content(res, "text", encoding = "UTF-8")
-        out <- dat2tbl(res, rclass)
-
-        if (rclass %in% c("data.frame", "tibble")) {
-            out$methods <- sapply(out$methods, paste, collapse = "; ")
-            out$datatypes <- sapply(out$datatypes, paste, collapse = "; ")
-        }
-        class(out) <- c(class(out), "ba_calls")
-        return(out)
-    })
+    class(out) <- c(class(out), "ba_calls")
+    return(out)
+  })
 }

@@ -1,4 +1,3 @@
-
 #' ba_check
 #'
 #' Checks if a BrAPI server can be reached given the connection details.
@@ -14,30 +13,31 @@
 #' @example inst/examples/ex-ba_check.R
 #' @export
 ba_check <- function(con = NULL, verbose = TRUE, brapi_calls = "any") {
-    stopifnot(is.ba_con(con))
-    stopifnot(is.logical(verbose))
-    stopifnot(is.character(brapi_calls))
-
-    brapi <- con
-    if (is.null(brapi))
-        stop("BrAPI connection object is NULL. Use brapi::connect()")
-    url <- brapi$db
-    if (stringr::str_detect(brapi$db, "127")) {
-        url <- paste0(brapi$db, ":", brapi$port, "/brapi/v1/")
-        status <- 600
-        status <- try({
-            httr::GET(url)$status_code
-        })
-        if (status == 600)
-            stop("Cannot connect to mock server.
-                 Use other connection details or start the mock server.")
-    } else {
-        ba_can_internet()
-        ba_can_internet(url)
+  stopifnot(is.ba_con(con))
+  stopifnot(is.logical(verbose))
+  stopifnot(is.character(brapi_calls))
+  brapi <- con
+  if (is.null(brapi)) {
+    stop("BrAPI connection object is NULL. Use brapi::connect()")
+  }
+  url <- brapi$db
+  if (stringr::str_detect(brapi$db, "127")) {
+    url <- paste0(brapi$db, ":", brapi$port, "/brapi/v1/")
+    status <- 600
+    status <- try({
+      httr::GET(url)$status_code
+    })
+    if (status == 600) {
+      stop("Cannot connect to mock server.
+            Use other connection details or start the mock server.")
     }
-    if (verbose) {
-        message("BrAPI connection ok.")
-        message(paste(brapi, collapse = "\n"))
-    }
-    return(TRUE)
+  } else {
+    ba_can_internet()
+    ba_can_internet(url)
+  }
+  if (verbose) {
+    message("BrAPI connection ok.")
+    message(paste(brapi, collapse = "\n"))
+  }
+  return(TRUE)
 }
