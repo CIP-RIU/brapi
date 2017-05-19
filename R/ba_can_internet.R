@@ -11,5 +11,5 @@
 #' @export
 ba_can_internet <- function(url = "www.google.org") {
   stopifnot(is.character(url))
-  return(invisible(curl::nslookup(url)))
+  return(invisible(curl::nslookup(host = url)))
 }

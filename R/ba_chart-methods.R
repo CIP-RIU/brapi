@@ -26,8 +26,8 @@ ba_chart.ba_locations <- function(x, ...) {
       with_geo$longitude <- with_geo$longitude %>% as.numeric()
       xr <- range(with_geo$longitude)
       yr <- range(with_geo$latitude)
-      maps::map("world", xlim = xr, ylim = yr)
-      graphics::title(paste0("Locations from database"))
+      maps::map(database = "world", xlim = xr, ylim = yr)
+      graphics::title(main = paste0("Locations from database"))
       graphics::points(x = with_geo$longitude, y = with_geo$latitude, col = "red")
       maps::map.axes()
     } else {
