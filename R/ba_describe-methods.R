@@ -9,12 +9,12 @@
 #' @family brapiutils
 #' @export
 ba_describe.ba_locations <- function(x, ...) {
-    # Print in console
-    missing_geo <- x[is.na(x$latitude), ]
-    cpl <- nrow(x)
-    mis <- nrow(missing_geo)
-    pct <- mis / cpl * 100
-    cat(paste0("n locations = ", cpl, "\n"))
-    cat(paste0("n locations with missing lat/lon = ", mis, " (", pct, "%) \n\n"))
-    return(invisible())
+  # Print in console
+  missing_geo <- x[is.na(x$latitude), ]
+  cpl <- nrow(x)
+  mis <- nrow(missing_geo)
+  pct <- mis / cpl * 100
+  cat(paste0("n locations = ", cpl, "\n"))
+  cat(paste0("n locations with missing lat/lon = ", mis, " (", pct, "%) \n\n"))
+  return(invisible())
 }

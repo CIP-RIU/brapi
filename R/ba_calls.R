@@ -37,13 +37,13 @@ ba_calls <- function(con = NULL,
   }
   brapi_calls <- paste0(brapi_calls, pdatatypes, ppageSize, ppage)
   try({
-    res <- brapiGET(brapi_calls, con = con)
+    res <- brapiGET(url = brapi_calls, con = con)
     out <- NULL
-    res <- httr::content(res, "text", encoding = "UTF-8")
-    out <- dat2tbl(res, rclass)
+    res <- httr::content(x = res, as = "text", encoding = "UTF-8")
+    out <- dat2tbl(res = res, rclass = rclass)
     if (rclass %in% c("data.frame", "tibble")) {
-      out$methods <- sapply(out$methods, paste, collapse = "; ")
-      out$datatypes <- sapply(out$datatypes, paste, collapse = "; ")
+      out$methods <- sapply(X = out$methods, FUN = paste, collapse = "; ")
+      out$datatypes <- sapply(X = out$datatypes, FUN = paste, collapse = "; ")
     }
     class(out) <- c(class(out), "ba_calls")
     return(out)
