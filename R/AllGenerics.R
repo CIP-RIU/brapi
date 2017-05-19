@@ -12,7 +12,6 @@ ba_chart <- function(x, ...) {
   return(UseMethod("ba_chart", x))
 }
 
-
 #' ba_describe
 #'
 #' A generic method to sum up brapi objects
