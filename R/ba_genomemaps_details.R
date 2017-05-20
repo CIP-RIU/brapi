@@ -20,7 +20,9 @@ ba_genomemaps_details <- function(con = NULL,
   ba_check(con = con, verbose = FALSE, brapi_calls = "maps/id")
   stopifnot(is.character(mapDbId))
   check_rclass(rclass = rclass)
+  # fetch url of brapi implementation of the database
   brp <- get_brapi(brapi = con)
+  # generate brapi call url
   maps_list <- paste0(brp, "maps/", mapDbId, "/")
   try({
     res <- brapiGET(url = maps_list, con = con)

@@ -20,11 +20,14 @@ ba_calls <- function(con = NULL,
                      pageSize = 50,
                      page = 0,
                      rclass = "tibble") {
+  # argument checking
   ba_check(con = con, verbose = FALSE, brapi_calls = "calls")
   check_paging(pageSize = pageSize, page = page)
   check_rclass(rclass = rclass)
   stopifnot(datatypes %in% c("all", "json", "csv", "tsv"))
+  # obtain the brapi url
   brp <- get_brapi(brapi = con)
+  # generate the call url
   brapi_calls <- paste0(brp, "calls/?")
   pdatatypes <- ifelse(datatypes == "all", "", paste0("datatypes=", datatypes, "&"))
   ppage <- ifelse(is.numeric(page), paste0("page=", page, ""), "")
@@ -35,10 +38,13 @@ ba_calls <- function(con = NULL,
     datatypes <- ""
     brapi_calls <- paste0(brp, "calls/?")
   }
+  # modify the call url with pagenation
   brapi_calls <- paste0(brapi_calls, pdatatypes, ppageSize, ppage)
   try({
+    # make the brapi GET call with the generated call url
     res <- brapiGET(url = brapi_calls, con = con)
     out <- NULL
+    # parse the GET response
     res <- httr::content(x = res, as = "text", encoding = "UTF-8")
     out <- dat2tbl(res = res, rclass = rclass)
     if (rclass %in% c("data.frame", "tibble")) {

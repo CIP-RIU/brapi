@@ -1,6 +1,6 @@
 #' ba_chart.ba_locations
 #'
-#' method for an object of class brapi_locations, which will only display the crop,  database address:port and user
+#' method for an object of class brapi_locations, which will only display the crop, database address:port and user
 #'
 #' @param x a brapi_locations data.frame/tibble or a numeric vector of longitudes
 #' @param ... other plot parameters
@@ -14,12 +14,12 @@ ba_chart.ba_locations <- function(x, ...) {
   stopifnot(chart_type %in% c("plot", "map"))
   locs <- x
   with_geo <- locs[!is.na(locs$latitude), ]
-  stopifnot(nrow(with_geo) > 0)
+  stopifnot(nrow(x = with_geo) > 0)
   if (chart_type == "plot") {
     graphics::plot(x = locs$longitude, y = locs$latitude)
   }
   if (chart_type == "map") {
-    can_map <- exists("worldMapEnv")
+    can_map <- exists(x = "worldMapEnv")
     if (can_map) {
       maps::map()
       with_geo$latitude <- with_geo$latitude %>% as.numeric()
@@ -81,7 +81,7 @@ ba_chart.ba_genomemaps_details <- function(x, ...) {
   stopifnot(chart_type %in% c("plot"))
   if (chart_type == "plot") {
     ttl <- paste0("Linkage groups")
-    cnid <- which(stringr::str_detect(colnames(x), "Id"))
+    cnid <- which(stringr::str_detect(string = colnames(x), pattern = "Id"))
     graphics::barplot(height = x$maxPosition,
                       horiz = T,
                       axisnames = T,

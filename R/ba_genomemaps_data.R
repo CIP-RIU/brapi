@@ -30,12 +30,14 @@ ba_genomemaps_data <- function(con = NULL,
   stopifnot(is.character(linkageGroupId))
   check_paging(pageSize = pageSize, page = page)
   check_rclass(rclass = rclass)
-
+  # fetch the url of the brapi implementation of the database
   brp <- get_brapi(brapi = con)
+  # generate the call url
   maps_positions_list <- paste0(brp, "maps/", mapDbId, "/positions/?")
   linkageGroupId <- paste("linkageGroupId=", linkageGroupId, "&", sep = "") %>% paste(collapse = "")
   page <- ifelse(is.numeric(page), paste0("page=", page, "&"), "")
   pageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
+  # modify the call url to include pagenation and linkageGroupId
   maps_positions_list <- paste0(maps_positions_list, page, pageSize, linkageGroupId)
   try({
     res <- brapiGET(url = maps_positions_list, con = con)

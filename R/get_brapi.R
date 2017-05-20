@@ -1,3 +1,7 @@
+#' get_brapi
+#'
+#' return the url of the brapi v1 implementation
+#'
 get_brapi <- function(brapi = NULL) {
   if (is.null(brapi)) return(NULL)
   if (!is.null(brapi$apipath)) {
