@@ -14,7 +14,7 @@ ba_chart.ba_locations <- function(x, ...) {
   stopifnot(chart_type %in% c("plot", "map"))
   locs <- x
   with_geo <- locs[!is.na(locs$latitude), ]
-  stopifnot(nrow(x = with_geo) > 0)
+  stopifnot(nrow(with_geo) > 0)
   if (chart_type == "plot") {
     graphics::plot(x = locs$longitude, y = locs$latitude)
   }
