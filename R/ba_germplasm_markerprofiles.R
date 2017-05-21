@@ -1,4 +1,3 @@
-
 #' ba_germplasm_markerprofiles
 #'
 #' Gets minimal marker profile data from database using database internal id
@@ -16,30 +15,43 @@
 #' @family germplasm
 #' @family genotyping
 #' @export
-ba_germplasm_markerprofiles <- function(con = NULL, germplasmDbId = "3", rclass = "tibble") {
-    ba_check(con, FALSE)
-    stopifnot(is.character(germplasmDbId))
-    check_rclass(rclass)
-    
-    germplasm_markerprofiles <- paste0(get_brapi(con), "germplasm/", germplasmDbId, "/markerprofiles/")
-    try({
-        res <- brapiGET(germplasm_markerprofiles, con = con)
-        res <- httr::content(res, "text", encoding = "UTF-8")
-        out <- NULL
-        ms2tbl <- function(res) {
-            markerProfiles <- NULL
-            res %>% as.character %>% enter_object("result") %>% spread_values(germplasmDbId = jnumber("germplasmDbId")) %>% enter_object("markerProfiles") %>% 
-                gather_array %>% append_values_number("markerProfiles") %>% dplyr::select(germplasmDbId, markerProfiles)
-        }
-        if (rclass %in% c("json", "list")) 
-            out <- dat2tbl(res, rclass)
-        if (rclass == "vector") 
-            out <- jsonlite::fromJSON(res, simplifyVector = FALSE)$result$markerProfiles %>% unlist
-        if (rclass == "data.frame") 
-            out <- ms2tbl(res)
-        if (rclass == "tibble") 
-            out <- ms2tbl(res) %>% tibble::as_tibble()
-        class(out) <- c(class(out), "ba_germplasm_markerprofiles")
-        return(out)
-    })
+ba_germplasm_markerprofiles <- function(con = NULL,
+                                        germplasmDbId = "3",
+                                        rclass = "tibble") {
+  ba_check(con = con, verbose = FALSE)
+  stopifnot(is.character(germplasmDbId))
+  check_rclass(rclass = rclass)
+  # generate brapi call url
+  germplasm_markerprofiles <- paste0(get_brapi(brapi = con), "germplasm/", germplasmDbId, "/markerprofiles/")
+  try({
+    res <- brapiGET(url = germplasm_markerprofiles, con = con)
+    res <- httr::content(x = res, as = "text", encoding = "UTF-8")
+    out <- NULL
+    ms2tbl <- function(res) {
+      markerProfiles <- NULL
+      res <- res %>%
+             as.character %>%
+             tidyjson::enter_object("result") %>%
+             tidyjson::spread_values(germplasmDbId = tidyjson::jnumber("germplasmDbId")) %>%
+             tidyjson::enter_object("markerProfiles") %>%
+             tidyjson::gather_array %>%
+             tidyjson::append_values_number("markerProfiles") %>%
+             dplyr::select(germplasmDbId, markerProfiles)
+      return(res)
+    }
+    if (rclass %in% c("json", "list")) {
+      out <- dat2tbl(res = res, rclass = rclass)
+    }
+    if (rclass == "vector") {
+      out <- jsonlite::fromJSON(txt = res, simplifyVector = FALSE)$result$markerProfiles %>% unlist
+    }
+    if (rclass == "data.frame") {
+      out <- ms2tbl(res = res)
+    }
+    if (rclass == "tibble") {
+      out <- ms2tbl(res = res) %>% tibble::as_tibble()
+    }
+    class(out) <- c(class(out), "ba_germplasm_markerprofiles")
+    return(out)
+  })
 }
