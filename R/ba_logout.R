@@ -14,7 +14,7 @@
 #' @family brapiutils
 #' @export
 ba_logout <- function(con) {
-  stopifnot(is.ba_con(obj = con))
+  stopifnot(is.ba_con(con))
   brapi <- con
   # Check for internet connection
   ba_can_internet()
