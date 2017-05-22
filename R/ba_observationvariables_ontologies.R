@@ -14,24 +14,23 @@
 #' @family observationvariables
 #' @family brapicore
 #' @export
-ba_observationvariables_ontologies <- function(con = NULL, page = 0, pageSize = 1000, rclass = "tibble") {
-    ba_check(con, FALSE, "ontologies")
-    check_paging(pageSize, page)
-    check_rclass(rclass)
-    
-    brp <- get_brapi(con)
-    
-    variables_ontologies <- paste0(brp, "ontologies/?")
-    
-    ppage <- paste0("page=", page, "")
-    ppageSize <- paste0("pageSize=", pageSize, "&")
-    variables_ontologies <- paste0(variables_ontologies, ppageSize, ppage)
-    
-    try({
-        res <- brapiGET(variables_ontologies, con = con)
-        res <- httr::content(res, "text", encoding = "UTF-8")
-        out <- dat2tbl(res, rclass)
-        class(out) <- c(class(out), "ba_observationvariables_ontologies")
-        return(out)
-    })
+ba_observationvariables_ontologies <- function(con = NULL,
+                                               page = 0,
+                                               pageSize = 1000,
+                                               rclass = "tibble") {
+  ba_check(con = con, verbose = FALSE, brapi_calls = "ontologies")
+  check_paging(pageSize = pageSize, page = page)
+  check_rclass(rclass = rclass)
+  brp <- get_brapi(brapi = con)
+  variables_ontologies <- paste0(brp, "ontologies/?")
+  ppage <- paste0("page=", page, "")
+  ppageSize <- paste0("pageSize=", pageSize, "&")
+  variables_ontologies <- paste0(variables_ontologies, ppageSize, ppage)
+  try({
+    res <- brapiGET(url = variables_ontologies, con = con)
+    res <- httr::content(x = res, as = "text", encoding = "UTF-8")
+    out <- dat2tbl(res = res, rclass = rclass)
+    class(out) <- c(class(out), "ba_observationvariables_ontologies")
+    return(out)
+  })
 }

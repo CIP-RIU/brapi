@@ -1,4 +1,3 @@
-
 #' ba_markers_details
 #'
 #' Lists markers as result of a search.
@@ -18,19 +17,19 @@
 #' @family markers
 #' @family genotyping
 #' @export
-ba_markers_details <- function(con = NULL, markerDbId = "0", rclass = "tibble") {
-    ba_check(con, FALSE, "markers/id")
-    stopifnot(is.character(markerDbId))
-    check_rclass(rclass)
-    
-    brp <- get_brapi(con)
-    markers <- paste0(brp, "markers/", markerDbId)
-    
-    try({
-        res <- brapiGET(markers, con = con)
-        res <- httr::content(res, "text", encoding = "UTF-8")
-        out <- dat2tbl(res, rclass)
-        class(out) <- c(class(out), "ba_markers_details")
-        return(out)
-    })
+ba_markers_details <- function(con = NULL,
+                               markerDbId = "0",
+                               rclass = "tibble") {
+  ba_check(con = con, verbose = FALSE, brapi_calls = "markers/id")
+  stopifnot(is.character(markerDbId))
+  check_rclass(rclass = rclass)
+  brp <- get_brapi(brapi = con)
+  markers <- paste0(brp, "markers/", markerDbId)
+  try({
+    res <- brapiGET(url = markers, con = con)
+    res <- httr::content(x = res, as = "text", encoding = "UTF-8")
+    out <- dat2tbl(res = res , rclass = rclass)
+    class(out) <- c(class(out), "ba_markers_details")
+    return(out)
+  })
 }
