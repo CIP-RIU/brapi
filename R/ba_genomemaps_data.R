@@ -19,29 +19,34 @@
 #' @family genomemaps
 #' @family genotyping
 #' @export
-ba_genomemaps_data <- function(con = NULL, mapDbId = "0", linkageGroupId = "0", page = 0,
-                               pageSize = 30, rclass = "tibble") {
-
-    ba_check(con, FALSE, "maps/id/positions")
-    stopifnot(is.character(mapDbId))
-    stopifnot(is.character(linkageGroupId))
-    check_paging(pageSize, page)
-    check_rclass(rclass)
-
-    brp <- get_brapi(con)
-    maps_positions_list <- paste0(brp, "maps/", mapDbId, "/positions/?")
-    linkageGroupId <- paste("linkageGroupId=", linkageGroupId, "&", sep = "") %>%
-      paste(collapse = "")
-    page <- ifelse(is.numeric(page), paste0("page=", page, "&"), "")
-    pageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
-    maps_positions_list <- paste0(maps_positions_list, page, pageSize, linkageGroupId)
-    try({
-        res <- brapiGET(maps_positions_list, con = con)
-        res <- httr::content(res, "text", encoding = "UTF-8")
-        if (rclass == "vector")
-            rclass <- "tibble"
-        out <- dat2tbl(res, rclass)
-        class(out) <- c(class(out), "ba_genomemaps_data")
-        out
-    })
+ba_genomemaps_data <- function(con = NULL,
+                               mapDbId = "0",
+                               linkageGroupId = "0",
+                               page = 0,
+                               pageSize = 30,
+                               rclass = "tibble") {
+  ba_check(con = con, verbose = FALSE, brapi_calls = "maps/id/positions")
+  stopifnot(is.character(mapDbId))
+  stopifnot(is.character(linkageGroupId))
+  check_paging(pageSize = pageSize, page = page)
+  check_rclass(rclass = rclass)
+  # fetch the url of the brapi implementation of the database
+  brp <- get_brapi(brapi = con)
+  # generate the call url
+  maps_positions_list <- paste0(brp, "maps/", mapDbId, "/positions/?")
+  linkageGroupId <- paste("linkageGroupId=", linkageGroupId, "&", sep = "") %>% paste(collapse = "")
+  page <- ifelse(is.numeric(page), paste0("page=", page, "&"), "")
+  pageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
+  # modify the call url to include pagenation and linkageGroupId
+  maps_positions_list <- paste0(maps_positions_list, page, pageSize, linkageGroupId)
+  try({
+    res <- brapiGET(url = maps_positions_list, con = con)
+    res <- httr::content(x = res, as = "text", encoding = "UTF-8")
+    if (rclass == "vector") {
+      rclass <- "tibble"
+    }
+    out <- dat2tbl(res = res, rclass = rclass)
+    class(out) <- c(class(out), "ba_genomemaps_data")
+    out
+  })
 }

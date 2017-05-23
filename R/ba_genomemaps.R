@@ -28,13 +28,15 @@ ba_genomemaps <- function(con = NULL,
   stopifnot(is.character(type))
   check_paging(pageSize = pageSize, page = page)
   check_rclass(rclass = rclass)
-
+  # fetch the url of the brapi implementation of the database
   brp <- get_brapi(brapi = con)
+  # generate the call url
   genomemaps_list <- paste0(brp, "maps/?")
   species <- ifelse(species != "all", paste0("species=", species, "&"), "")
   type <- ifelse(type != "all", paste0("type=", type, "&"), "")
   page <- ifelse(is.numeric(page), paste0("page=", page, "&"), "")
   pageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
+  # modify the call url to include pagenation
   genomemaps_list <- paste0(genomemaps_list, page, pageSize, species, type)
   try({
     res <- brapiGET(url = genomemaps_list, con = con)

@@ -15,21 +15,26 @@
 #' @family germplasmattributes
 #' @family genotyping
 #' @export
-ba_germplasmattributes_categories <- function(con = NULL, page = 0, pageSize = 10, rclass = "tibble") {
-    ba_check(con, FALSE)
-    check_paging(pageSize, page)
-    check_rclass(rclass)
-    
-    brp <- get_brapi(con)
-    attributes_categories_list <- paste0(brp, "attributes/categories/")
-    if (is.numeric(page) & is.numeric(pageSize)) {
-        attributes_categories_list <- paste0(attributes_categories_list, "?page=", page, "&pageSize=", pageSize)
-    }
-    try({
-        res <- brapiGET(attributes_categories_list, con = con)
-        res <- httr::content(res, "text", encoding = "UTF-8")
-        out <- dat2tbl(res, rclass)
-        class(out) <- c(class(out), "ba_germplasmattributes_categories")
-        return(out)
-    })
+ba_germplasmattributes_categories <- function(con = NULL,
+                                              page = 0,
+                                              pageSize = 10,
+                                              rclass = "tibble") {
+  ba_check(con = con, verbose = FALSE)
+  check_paging(pageSize = pageSize, page = page)
+  check_rclass(rclass = rclass)
+  # fetch the url of the brapi implementation of the database
+  brp <- get_brapi(brapi = con)
+  # generate the specific brapi call url
+  attributes_categories_list <- paste0(brp, "attributes/categories/")
+  # modify the specific brapi call url for pagenation
+  if (is.numeric(page) & is.numeric(pageSize)) {
+      attributes_categories_list <- paste0(attributes_categories_list, "?page=", page, "&pageSize=", pageSize)
+  }
+  try({
+    res <- brapiGET(url = attributes_categories_list, con = con)
+    res <- httr::content(x = res, as = "text", encoding = "UTF-8")
+    out <- dat2tbl(res = res, rclass = rclass)
+    class(out) <- c(class(out), "ba_germplasmattributes_categories")
+    return(out)
+  })
 }

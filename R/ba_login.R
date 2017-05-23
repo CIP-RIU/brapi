@@ -14,42 +14,44 @@
 #' @family brapiutils
 #' @export
 ba_login <- function(con) {
-    stopifnot(is.ba_con(con))
-    brapi <- con
-    # Check for internet connection
-    ba_can_internet()
-    # Set authentication URL
-    callpath <- "token"
-    omc <- brapi$multicrop
-    brapi$multicrop <- FALSE
-    callurl <- paste0(get_brapi(brapi), callpath)
-    brapi$multicrop <- omc
-    dat <- list(grant_type = "password", username = brapi$user, password = brapi$password, client_id = "")
-    ba_message(jsonlite::toJSON(dat, pretty = TRUE))
-    # Make POST call for submitting form data
-    resp <- httr::POST(url = callurl, body = dat, encode = ifelse(brapi$bms == TRUE, "json", "form"))
-    # Check response status
-    if (resp$status_code == 401) {
-        # Status Unauthorized
-        httr::stop_for_status(resp, task = "authenticate. Check your username and password!")
+  stopifnot(is.ba_con(con))
+  brapi <- con
+  # Check for internet connection
+  ba_can_internet()
+  # Set authentication URL
+  callpath <- "token"
+  # save old multicrop value
+  omc <- brapi$multicrop
+  brapi$multicrop <- FALSE
+  # generate brapi call specific url
+  callurl <- paste0(get_brapi(brapi = brapi), callpath)
+  # set multicrop to its old multicrop value
+  brapi$multicrop <- omc
+  dat <- list(username = brapi$user,
+              password = brapi$password,
+              grant_type = "password",
+              client_id = "")
+  ba_message(msg = jsonlite::toJSON(x = dat, pretty = TRUE))
+  # Make POST call for submitting form data
+  resp <- httr::POST(url = callurl, body = dat, encode = ifelse(brapi$bms == TRUE, "json", "form"))
+  # Check response status
+  if (resp$status_code == 401) {
+    # Status Unauthorized
+    httr::stop_for_status(x = resp, task = "authenticate. Check your username and password!")
+  } else {
+    # Status other than unauthorized
+    if (resp$status_code != 200) {
+      # Status other than Unauthorized and OK
+      httr::stop_for_status(x = resp)
     } else {
-        # Status other than unauthorized
-        if (resp$status_code != 200) {
-            # Status other than Unauthorized and OK
-            httr::stop_for_status(resp)
-        } else {
-            # Status OK Extract token out of resp(onse) from POST call
-            xout <- httr::content(resp)
-            token <- xout$access_token
-            brapi$token <- token
-            brapi$expires_in <- httr::content(resp)$expires_in
-            
-            
-            ba_message(jsonlite::toJSON(xout, pretty = TRUE))
-            
-            message("Authenticated!")
-        }
+      # Status OK Extract token out of resp(onse) from POST call
+      xout <- httr::content(x = resp)
+      token <- xout$access_token
+      brapi$token <- token
+      brapi$expires_in <- httr::content(x = resp)$expires_in
+      ba_message(jsonlite::toJSON(x = xout, pretty = TRUE))
+      message("Authenticated!")
     }
-    ## Return brapi object with
-    return(brapi)
+  }
+  return(brapi)
 }

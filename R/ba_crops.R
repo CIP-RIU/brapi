@@ -14,24 +14,24 @@
 ba_crops <- function(con = NULL, rclass = "tibble") {
   stopifnot(is.ba_con(obj = con))
   check_rclass(rclass = rclass)
-
+  # temporarily store the multicrop argument in omc (oldmulticrop)
   omc <- con$multicrop
   con$multicrop <- FALSE
   ba_check(con = con, verbose = FALSE, brapi_calls = "crops")
+  # generate the brapi call url
   crops_list <- paste0(get_brapi(brapi = con), "crops")
   rclass <- df2tibble(rclass = rclass)
-
   out <- try({
     res <- brapiGET(url = crops_list, con = con)
-    res <- httr::content(res, "text", encoding = "UTF-8")
-    out <- dat2tbl(res, rclass)
+    res <- httr::content(x = res, as = "text", encoding = "UTF-8")
+    out <- dat2tbl(res = res, rclass = rclass)
     if (any(c("tbl_df", "data.frame") %in% class(out))) {
       names(out)[1] <- "crops"
     }
     class(out) <- c(class(out), "ba_crops")
     out
   })
-
+  # reset multicrop argument in con object to omc (oldmulticrop) value
   con$multicrop <- omc
   return(out)
 }

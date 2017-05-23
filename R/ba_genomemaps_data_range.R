@@ -22,37 +22,44 @@
 #' @family genomemaps
 #' @family genotyping
 #' @export
-ba_genomemaps_data_range <- function(con = NULL, mapDbId = "1", linkageGroupId = "1",
-                                     min = 1, max = 1000, page = 0, pageSize = 30, rclass = "tibble") {
-
-    ba_check(con, FALSE, "maps/id/positions/id")
-    stopifnot(is.character(mapDbId))
-    stopifnot(is.character(linkageGroupId))
-    stopifnot(is.numeric(min))
-    stopifnot(is.numeric(max))
-    stopifnot(max > min)
-    check_paging(pageSize, page)
-    check_rclass(rclass)
-
-    brp <- get_brapi(con)
-    maps_positions_range_list <- paste0(brp, "maps/", mapDbId, "/positions/", linkageGroupId, "/?")
-    amin <- ifelse(is.numeric(min), paste0("min=", min, "&"), "")
-    amax <- ifelse(is.numeric(max), paste0("max=", max, "&"), "")
-
-    ppage <- ifelse(is.numeric(page), paste0("page=", page, ""), "")
-    ppageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
-    if (pageSize >= 10000) {
-        ppage <- ""
-        ppageSize <- ""
+ba_genomemaps_data_range <- function(con = NULL,
+                                     mapDbId = "1",
+                                     linkageGroupId = "1",
+                                     min = 1,
+                                     max = 1000,
+                                     page = 0,
+                                     pageSize = 30,
+                                     rclass = "tibble") {
+  ba_check(con = con, verbose = FALSE, brapi_calls = "maps/id/positions/id")
+  stopifnot(is.character(mapDbId))
+  stopifnot(is.character(linkageGroupId))
+  stopifnot(is.numeric(min))
+  stopifnot(is.numeric(max))
+  stopifnot(max > min)
+  check_paging(pageSize = pageSize, page = page)
+  check_rclass(rclass = rclass)
+  # fetch the url of the brapi implementation of the database
+  brp <- get_brapi(brapi = con)
+  # generate the brapi call url
+  maps_positions_range_list <- paste0(brp, "maps/", mapDbId, "/positions/", linkageGroupId, "/?")
+  amin <- ifelse(is.numeric(min), paste0("min=", min, "&"), "")
+  amax <- ifelse(is.numeric(max), paste0("max=", max, "&"), "")
+  ppage <- ifelse(is.numeric(page), paste0("page=", page, ""), "")
+  ppageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
+  if (pageSize >= 10000) {
+    ppage <- ""
+    ppageSize <- ""
+  }
+  # modify the brapi call url for ordered range and pagenation
+  maps_positions_range_list <- paste0(maps_positions_range_list, amin, amax, ppageSize, ppage)
+  try({
+    res <- brapiGET(url = maps_positions_range_list, con = con)
+    res <- httr::content(x = res, as = "text", encoding = "UTF-8")
+    if (rclass == "vector") {
+      rclass <- "tibble"
     }
-    maps_positions_range_list <- paste0(maps_positions_range_list, amin, amax, ppageSize, ppage)
-    try({
-        res <- brapiGET(maps_positions_range_list, con = con)
-        res <- httr::content(res, "text", encoding = "UTF-8")
-        if (rclass == "vector")
-            rclass <- "tibble"
-        out <- dat2tbl(res, rclass)
-        class(out) <- c(class(out), "ba_genomemaps_data_range")
-        return(out)
-    })
+    out <- dat2tbl(res = res, rclass = rclass)
+    class(out) <- c(class(out), "ba_genomemaps_data_range")
+    return(out)
+  })
 }
