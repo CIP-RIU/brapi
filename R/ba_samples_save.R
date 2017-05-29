@@ -13,22 +13,20 @@
 #' @import tidyjson
 #' @family phenotyping
 #' @export
-ba_samples_save <- function(con = NULL, sampleData = list()) {
-    ba_check(con, FALSE, "samples")
-    stopifnot(is.list(sampleData))
-    
-    stopifnot(all(c("plotId", "plantId", "takenBy", "sampleDate", "sampleType", "tissueType", "notes") %in% names(sampleData)))
-    
-    brp <- get_brapi(con)
-    call_samples <- paste0(brp, "samples/")
-    
-    try({
-        res <- brapiPUT(call_samples, sampleData, con = con)
-        res <- httr::content(res)
-        out <- res$result$sampleId
-        
-        if (!is.null(out)) 
-            class(out) <- c(class(out), "ba_samples")
-        return(out)
-    })
+ba_samples_save <- function(con = NULL,
+                            sampleData = list()) {
+  ba_check(con = con, verbose = FALSE, brapi_calls = "samples")
+  stopifnot(is.list(sampleData))
+  stopifnot(all(c("plotId", "plantId", "takenBy", "sampleDate", "sampleType", "tissueType", "notes") %in% names(sampleData)))
+  brp <- get_brapi(brapi = con)
+  call_samples <- paste0(brp, "samples/")
+  try({
+    res <- brapiPUT(url = call_samples, body = sampleData, con = con)
+    res <- httr::content(x = res)
+    out <- res$result$sampleId
+    if (!is.null(out)) {
+      class(out) <- c(class(out), "ba_samples")
+    }
+    return(out)
+  })
 }
