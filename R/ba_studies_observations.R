@@ -18,30 +18,31 @@
 #' @family studies
 #' @family phenotyping
 #' @export
-ba_studies_observations <- function(con = NULL, studyDbId = "1", observationVariableDbId = as.character(1:3), page = 0, pageSize = 1000, rclass = "tibble") {
-    ba_check(con, FALSE, "studies/id/observations")
-    stopifnot(is.character(studyDbId))
-    stopifnot(is.character(observationVariableDbId))
-    check_paging(pageSize, page)
-    check_rclass(rclass)
-    
-    brp <- get_brapi(con)
-    studies_observations_list <- paste0(brp, "studies/", studyDbId, "/observations/?")
-    
-    observationVariableDbId <- paste0("observationVariableDbIds=", paste(observationVariableDbId, collapse = ","), "&")
-    page <- ifelse(is.numeric(page), paste0("page=", page), "")
-    pageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
-    
-    studies_observations_list <- paste0(studies_observations_list, observationVariableDbId, pageSize, page)
-    
-    try({
-        res <- brapiGET(studies_observations_list, con = con)
-        res <- httr::content(res, "text", encoding = "UTF-8")
-        out <- NULL
-        if (rclass %in% c("json", "list", "tibble", "data.frame")) {
-            out <- dat2tbl(res, rclass)
-        }
-        class(out) <- c(class(out), "ba_studies_observations")
-        return(out)
-    })
+ba_studies_observations <- function(con = NULL,
+                                    studyDbId = "1",
+                                    observationVariableDbId = as.character(1:3),
+                                    page = 0,
+                                    pageSize = 1000,
+                                    rclass = "tibble") {
+  ba_check(con = con, verbose = FALSE, brapi_calls = "studies/id/observations")
+  stopifnot(is.character(studyDbId))
+  stopifnot(is.character(observationVariableDbId))
+  check_paging(pageSize = pageSize, page = page)
+  check_rclass(rclass = rclass)
+  brp <- get_brapi(brapi = con)
+  studies_observations_list <- paste0(brp, "studies/", studyDbId, "/observations/?")
+  observationVariableDbId <- paste0("observationVariableDbIds=", paste(observationVariableDbId, collapse = ","), "&")
+  page <- ifelse(is.numeric(page), paste0("page=", page), "")
+  pageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
+  studies_observations_list <- paste0(studies_observations_list, observationVariableDbId, pageSize, page)
+  try({
+    res <- brapiGET(url = studies_observations_list, con = con)
+    res <- httr::content(x = res, as = "text", encoding = "UTF-8")
+    out <- NULL
+    if (rclass %in% c("json", "list", "tibble", "data.frame")) {
+      out <- dat2tbl(res = res, rclass = rclass)
+    }
+    class(out) <- c(class(out), "ba_studies_observations")
+    return(out)
+  })
 }

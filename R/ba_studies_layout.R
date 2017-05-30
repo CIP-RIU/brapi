@@ -15,24 +15,25 @@
 #' @family studies
 #' @family phenotyping
 #' @export
-ba_studies_layout <- function(con = NULL, studyDbId = "1", rclass = "tibble") {
-    ba_check(con, FALSE, "studies/id/layout")
-    stopifnot(is.character(studyDbId))
-    check_rclass(rclass)
-    
-    brp <- get_brapi(con)
-    studies_layout_list <- paste0(brp, "studies/", studyDbId, "/layout/")
-    try({
-        res <- brapiGET(studies_layout_list, con = con)
-        res <- httr::content(res, "text", encoding = "UTF-8")
-        out <- NULL
-        if (rclass %in% c("json", "list")) {
-            out <- dat2tbl(res, rclass)
-        }
-        if (rclass %in% c("tibble", "data.frame")) {
-            out <- lyt2tbl(res, rclass)
-        }
-        class(out) <- c(class(out), "ba_studies_layout")
-        return(out)
-    })
+ba_studies_layout <- function(con = NULL,
+                              studyDbId = "1",
+                              rclass = "tibble") {
+  ba_check(con = con, verbose =  FALSE, brapi_calls = "studies/id/layout")
+  stopifnot(is.character(studyDbId))
+  check_rclass(rclass = rclass)
+  brp <- get_brapi(brapi = con)
+  studies_layout_list <- paste0(brp, "studies/", studyDbId, "/layout/")
+  try({
+    res <- brapiGET(url = studies_layout_list, con = con)
+    res <- httr::content(x = res, as = "text", encoding = "UTF-8")
+    out <- NULL
+    if (rclass %in% c("json", "list")) {
+      out <- dat2tbl(res = res, rclass = rclass)
+    }
+    if (rclass %in% c("tibble", "data.frame")) {
+      out <- lyt2tbl(res = res, rclass = rclass)
+    }
+    class(out) <- c(class(out), "ba_studies_layout")
+    return(out)
+  })
 }
