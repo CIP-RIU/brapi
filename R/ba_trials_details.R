@@ -15,23 +15,25 @@
 #' @family trials
 #' @family phenotyping
 #' @export
-ba_trials_details <- function(con = NULL, trialDbId = "any", rclass = "tibble") {
-    ba_check(con, FALSE, "trials/id")
-    brp <- get_brapi(con)
-    stopifnot(is.character(trialDbId))
-    check_rclass(rclass)
-    
-    ptrials <- paste0(brp, "trials/", trialDbId)
-    
-    try({
-        res <- brapiGET(ptrials, con = con)
-        res <- httr::content(res, "text", encoding = "UTF-8")
-        out <- NULL
-        if (rclass %in% c("list", "json")) 
-            out <- dat2tbl(res, rclass)
-        if (rclass %in% c("data.frame", "tibble")) 
-            out <- trl2tbl(res, rclass)
-        class(out) <- c(class(out), "ba_trials_details")
-        return(out)
-    })
+ba_trials_details <- function(con = NULL,
+                              trialDbId = "any",
+                              rclass = "tibble") {
+  ba_check(con = con, verbose = FALSE, brapi_calls = "trials/id")
+  brp <- get_brapi(brapi = con)
+  stopifnot(is.character(trialDbId))
+  check_rclass(rclass = rclass)
+  ptrials <- paste0(brp, "trials/", trialDbId)
+  try({
+    res <- brapiGET(url = ptrials, con = con)
+    res <- httr::content(x = res, as = "text", encoding = "UTF-8")
+    out <- NULL
+    if (rclass %in% c("list", "json")) {
+      out <- dat2tbl(res = res, rclass = rclass)
+    }
+    if (rclass %in% c("data.frame", "tibble")) {
+      out <- trl2tbl(res = res, rclass = rclass)
+    }
+    class(out) <- c(class(out), "ba_trials_details")
+    return(out)
+  })
 }
