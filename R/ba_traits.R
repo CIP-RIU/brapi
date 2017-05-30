@@ -14,30 +14,28 @@
 #' @family traits
 #' @family brapicore
 #' @export
-ba_traits <- function(con = NULL, page = 0, pageSize = 1000, rclass = "tibble") {
-    ba_check(con, FALSE, "traits")
-    check_paging(pageSize, page)
-    check_rclass(rclass)
-    
-    brp <- get_brapi(con)
-    traits <- paste0(brp, "traits/?")
-    
-    ppage <- paste0("page=", page, "")
-    ppageSize <- paste0("pageSize=", pageSize, "&")
-    traits <- paste0(traits, ppageSize, ppage)
-    
-    try({
-        res <- brapiGET(traits, con = con)
-        res <- httr::content(res, "text", encoding = "UTF-8")
-        out <- dat2tbl(res, rclass)
-        
-        if (rclass %in% c("data.frame", "tibble")) {
-            if ("observationVariables" %in% colnames(out)) {
-                out$observationVariables <- sapply(out$observationVariables, paste, collapse = "; ")
-            }
-        }
-        
-        class(out) <- c(class(out), "ba_traits")
-        return(out)
-    })
+ba_traits <- function(con = NULL,
+                      page = 0,
+                      pageSize = 1000,
+                      rclass = "tibble") {
+  ba_check(con = con, verbose = FALSE, brapi_calls = "traits")
+  check_paging(pageSize = pageSize, page = page)
+  check_rclass(rclass = rclass)
+  brp <- get_brapi(brapi = con)
+  traits <- paste0(brp, "traits/?")
+  ppage <- paste0("page=", page, "")
+  ppageSize <- paste0("pageSize=", pageSize, "&")
+  traits <- paste0(traits, ppageSize, ppage)
+  try({
+    res <- brapiGET(url = traits, con = con)
+    res <- httr::content(x = res, as = "text", encoding = "UTF-8")
+    out <- dat2tbl(res = res, rclass = rclass)
+    if (rclass %in% c("data.frame", "tibble")) {
+      if ("observationVariables" %in% colnames(out)) {
+        out$observationVariables <- sapply(X = out$observationVariables, FUN = paste, collapse = "; ")
+      }
+    }
+    class(out) <- c(class(out), "ba_traits")
+    return(out)
+  })
 }
