@@ -12,7 +12,7 @@
 \item{...}{other print parameters}
 }
 \description{
-describe method for an object of class brapi_con, which will only display the crop,  database address:port and user
+describe method for an object of class brapi_con, which will only display the crop, database address:port and user
 }
 \examples{
 if (interactive()) {

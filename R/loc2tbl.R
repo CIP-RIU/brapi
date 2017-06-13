@@ -2,48 +2,57 @@ loc2tbl <- function(res, rclass, con) {
   lst <- jsonlite::fromJSON(txt = res)
   dat <- jsonlite::toJSON(x = lst$result$data)
   dat <- jsonlite::fromJSON(txt = dat, simplifyDataFrame = TRUE)
+
+  addinfo <- "additionalInfo"
+  if (con$bms) {
+    addinfo <- "attributes"
+  }
   field_list <- c("locationDbId",
                   "locationType",
                   "name",
                   "abbreviation",
                   "countryCode",
+                  "countryName",
                   "latitude",
                   "longitude",
-                  "altitude")
+                  "altitude",
+                  addinfo)
   dat <- complement_missing_fields(DF = dat, field_vector = field_list)
-  addinfo <- "additionalInfo"
-  if (con$bms) {
-    addinfo <- "attributes"
-  }
-  xnms <- c(field_list, addinfo)
+  #xnms <- c(field_list, addinfo)
   # Complete any missing columns TODO
-  dat <- dat[, xnms]
+  #dat <- dat[, xnms]
   has_add_cols <- FALSE
   if (length(dat[addinfo][[addinfo]]) == 0) {
     has_add_cols <- FALSE
   } else {
-    has_add_cols <- !(dat[addinfo][[addinfo]] %>% is.null) & !all(length(dat[[addinfo]][[1]]) == 0)
+    has_add_cols <- !all(dat[addinfo][[addinfo]] %>% is.na) & !all(length(dat[[addinfo]][[1]]) == 0)
   }
   if (has_add_cols) {
   # get all var names
-    addinf <- dat[, names(dat[addinfo])]
-    add_field_list <- c(names(dat), names(lst$result$data[, addinfo])) %>% unique
+    #addinf <- dat[, names(dat[addinfo])]
+    #addinf <- jsonlite::toJSON(dat[, names(dat[addinfo])])
+    #addinf <- jsonlite::fromJSON(addinf, simplifyDataFrame = TRUE)
+    add_field_list <- sapply(dat[, names(dat[addinfo])], names) %>% unlist %>% c %>% unique()
     # idx <- which(names(df) == addinf)
     # add_field_list <- add_field_list[-idx]
-    dat[addinfo] <- NULL
-    dat <- cbind(dat, addinf)
+
+    #dat[addinfo] <- NULL
+    #dat <- cbind(dat, addinf)
+
     df <- complement_missing_fields(DF = dat, field_vector = add_field_list)
+    df[[addinfo]] <- NULL
     # nms <- lapply(X = addinf, FUN = names) %>% unlist %>% unique()
     #
     # df <- as.data.frame(x = matrix(NA, ncol = length(nms), nrow = nrow(dat)), stringsAsFactors = FALSE)
     # names(df) <- nms
-    # n <- nrow(dat)
-    # for (i in 1:n) {
-    #     if (ncol(addinf[[i]]) > 0) {
-    #         df[i, names(addinf[[i]])] <- addinf[[i]]
-    #     }
+    n <- nrow(dat)
+    for (i in 1:n) {
+        #if (ncol(dat[[i]]) > 0) {
+            rec <- lst$result$data[i, addinfo][[1]]
+            df[i, names(rec)] <- rec
+        #}
     #
-    # }
+    }
     # if (ncol(df) > 0) {
     #     df <- cbind(dat, df)
     # } else {

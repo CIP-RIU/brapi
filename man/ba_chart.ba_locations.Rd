@@ -12,7 +12,7 @@
 \item{...}{other plot parameters}
 }
 \description{
-method for an object of class brapi_locations, which will only display the crop,  database address:port and user
+method for an object of class brapi_locations, which will only display the crop, database address:port and user
 }
 \examples{
 if (interactive()) {

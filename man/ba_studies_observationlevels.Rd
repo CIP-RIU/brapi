@@ -15,7 +15,12 @@ ba_studies_observationlevels(con = NULL, rclass = "vector")
 a vector of crop names or NULL
 }
 \description{
-Call to retrieve the list of supported observation levels. Observation levels indicate the granularity level at which the measurements are taken. The values are used to supply the observationLevel parameter in the observation unit details call.
+Call to retrieve the list of supported observation levels.
+}
+\details{
+Observation levels indicate the granularity level at which the measurements
+are taken. The values are used to supply the observationLevel parameter in
+the observation unit details call.
 }
 \examples{
 if (interactive()) {

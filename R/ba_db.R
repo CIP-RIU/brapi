@@ -10,7 +10,7 @@
 ba_db <- function() {
   bms_test <- as.ba_db(secure = FALSE,
                        protocol = "http://",
-                       db = "130.211.151.218",
+                       db = "52.72.188.136",
                        port = 48080,
                        apipath = "bmsapi",
                        multicrop = TRUE,
