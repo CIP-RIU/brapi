@@ -18,6 +18,7 @@ loc2tbl <- function(res, rclass, con) {
                   "altitude",
                   addinfo)
   dat <- complement_missing_fields(DF = dat, field_vector = field_list)
+  df <- dat
   #xnms <- c(field_list, addinfo)
   # Complete any missing columns TODO
   #dat <- dat[, xnms]
@@ -59,7 +60,7 @@ loc2tbl <- function(res, rclass, con) {
     #     df <- dat[, 1:8]
     # }
   } else {
-    df <- dat[, 1:9]
+    df <- dat[, 1:10]
   }
   # for (i in 1:ncol(df)) {
   #   if (is.numeric(df[, i])) {
