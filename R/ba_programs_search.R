@@ -25,7 +25,7 @@ ba_programs_search <- function(con = NULL,
                                objective = "any",
                                leadPerson = "any",
                                rclass = "tibble") {
-  ba_check(con = con, verbose = FALSE, brapi_calss = "programs-search")
+  ba_check(con = con, verbose = FALSE, brapi_class = "programs-search")
   stopifnot(is.character(programDbId))
   stopifnot(is.character(name))
   stopifnot(is.character(abbreviation))
