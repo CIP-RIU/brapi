@@ -6,7 +6,7 @@ output: github_document
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 --------------------------------------------------------------
-This package is under development. It has not yet been exhaustively tested for all calls neither. Usage may also still change. If you have suggestions please use the issue tracker.
+| This development of this package has been passed to the repository github/CIP-RIU.|
 ------------------------------------------------------------------------
 
 ```{r, echo = FALSE}

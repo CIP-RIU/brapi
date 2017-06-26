@@ -5,6 +5,7 @@ Authors@R: c(
   person("Reinhard", "Simon", email = "rsimon64@gmail.com", role = c("aut", "cre")),
   person("Maikel", "Verouden", role = c("aut", "ctb"),
     email = "Maikel.Verouden@wur.nl"))
+Maintainer: Ivan Perez <i.perez@cgiar.org>
 Description: Implements the Breeding API (www.brapi.org) with the exception of the polling mechanism as for the allelematrix call.
 Depends:
     R (>= 3.2.4)
