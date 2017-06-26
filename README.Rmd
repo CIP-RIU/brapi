@@ -5,10 +5,8 @@ output: github_document
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
---------------------------------------------------------------
-| This development of this package has been passed to the repository github/CIP-RIU.|
-------------------------------------------------------------------------
-
+|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| This development of this package has been passed to the repository github/CIP-RIU. |
 ```{r, echo = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
