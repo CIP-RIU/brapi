@@ -17,7 +17,7 @@ This package is under development. It has not yet been exhaustively tested for a
 
 ## Sandbox testing server
 
-To eaes local testing the package has now a companion package with a localized simple testing server implementing the BrAPI v1 protocol. To start this server use in an R session:
+To ease local testing the package has now a companion package with a localized simple testing server implementing the BrAPI v1 protocol. To start this server use in an R session:
 
 ```{r eval=FALSE}
 
