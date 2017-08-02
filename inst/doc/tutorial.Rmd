@@ -17,7 +17,7 @@ This package is under development. It has not yet been exhaustively tested for a
 
 ## Sandbox testing server
 
-To eaes local testing the package has now a companion package with a localized simple testing server implementing the BrAPI v1 protocol. To start this server use in an R session:
+To ease local testing the package has now a companion package with a localized simple testing server implementing the BrAPI v1 protocol. To start this server use in an R session:
 
 ```{r eval=FALSE}
 
@@ -65,7 +65,7 @@ Quick start in RStudio: Ctrl + Shift + T
 
 # NEW: return tables
 
-- all R functions using the brapi have a new parameter: rclass which can have up to five different values: json, list, data.frame, tibble, vector. The default value is tibble for most functions - that is it will alwways return a table. Vector is default for very small return objects like in the case of 'crops'.
+- all R functions using the brapi have a new parameter: rclass which can have up to five different values: json, list, data.frame, tibble, vector. The default value is tibble for most functions - that is it will always return a table. Vector is default for very small return objects like in the case of 'crops'.
 
 - also: all R functions are checked against the list of calls provided by the server. That is: if a certain server does not implement all calls the corresponding R functions will not 'insist' calling it.
 
