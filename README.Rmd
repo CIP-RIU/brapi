@@ -4,10 +4,8 @@ output: github_document
 
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+# The development and maintenance of this package has been passed to the repository github/CIP-RIU. 
 
---------------------------------------------------------------
-This package is under development. It has not yet been exhaustively tested for all calls neither. Usage may also still change. If you have suggestions please use the issue tracker.
-------------------------------------------------------------------------
 
 ```{r, echo = FALSE}
 knitr::opts_chunk$set(
