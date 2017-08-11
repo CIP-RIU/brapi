@@ -20,7 +20,7 @@ devtools::install_github("CIP-RIU/brapi")
 How to use the package
 ----------------------
 
-See [tutorial](https://github.com/CIP_RIU/brapi/blob/master/inst/doc/tutorial.Rmd).
+See [tutorial](https://github.com/CIP-RIU/brapi/blob/master/inst/doc/tutorial.Rmd).
 
 Documentation of JSON response/requests
 ---------------------------------------
