@@ -31,7 +31,7 @@ ba_programs <- function(con = NULL,
   check_rclass(rclass = rclass)
   brp <- get_brapi(brapi = con)
   pprograms <- paste0(brp, "programs/?")
-  pprogramName <- ifelse(programName != "any", paste0("programName=", programName, "&"), "")
+  pprogramName <- ifelse(programName != "any", paste0("programName=", gsub(" ", "%20", programName), "&"), "")
   pabbreviation <- ifelse(abbreviation != "any", paste0("abbreviation=", abbreviation, "&"), "")
   ppage <- ifelse(is.numeric(page), paste0("page=", page, ""), "")
   ppageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
