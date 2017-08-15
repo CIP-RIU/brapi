@@ -28,7 +28,7 @@ ba_trials <- function(con = NULL,
                       sortBy = "none",
                       sortOrder = "asc",
                       page = 0,
-                      pageSize = 1000,
+                      pageSize = 10000,
                       rclass = "tibble") {
   ba_check(con = con, verbose = FALSE, brapi_calls = "trials")
   stopifnot(is.character(programDbId))
@@ -40,25 +40,32 @@ ba_trials <- function(con = NULL,
   check_rclass(rclass = rclass)
   brp <- get_brapi(brapi = con)
   ptrials <- paste0(brp, "trials/?")
-  programDbId <- paste0("programDbId=", programDbId, "&")
-  locationDbId <- paste0("locationDbId=", locationDbId, "&")
-  active <- paste0("active=", active, "&")
-  sortBy <- paste0("sortBy=", sortBy, "&")
-  sortOrder <- paste0("sortOrder=", sortOrder, "&")
-  page <- ifelse(is.numeric(page), paste0("page=", page, ""), "")
-  pageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
+  pprogramDbId <- ifelse(programDbId != "any", paste0("programDbId=", programDbId, "&"), "")
+  #programDbId <- paste0("locationDbId=", locationDbId, "&")
+  plocationDbId <- ifelse(locationDbId != "any", paste0("locationDbId=", locationDbId, "&"), "")
+  #locationDbId <- paste0("locationDbId=", locationDbId, "&")
+  pactive <- paste0("active=", active, "&")
+  psortBy <- ifelse(sortBy != "none", paste0("sortBy=", sortBy, "&"), "")
+  psortOrder <- paste0("sortOrder=", sortOrder, "&")
+  ppage <- ifelse(is.numeric(page), paste0("page=", page, ""), "")
+  ppageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
+  if (pageSize == 10000) {
+    ppage <- ""
+    ppageSize <- ""
+  }
   ptrials <- paste0(ptrials,
-                    programDbId,
-                    locationDbId,
-                    active,
-                    sortBy,
-                    sortOrder,
-                    pageSize,
-                    page)
+                    pprogramDbId,
+                    plocationDbId,
+                    pactive,
+                    psortBy,
+                    psortOrder,
+                    ppageSize,
+                    ppage)
   try({
     res <- brapiGET(url = ptrials, con = con)
     res <- httr::content(x = res, as = "text", encoding = "UTF-8")
     out <- NULL
+### THIS NEEDS TO BE CHECKED!!! ----
     if (rclass %in% c("list", "json")) {
       out <- dat2tbl(res = res, rclass = rclass)
     }
