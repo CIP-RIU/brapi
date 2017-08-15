@@ -36,7 +36,7 @@ R -e "brapiTS::mock_server()"
 The server must be started in a R session separate from the one use for the BrAPI calls.
 The server uses by default the port 2021. This can be changed by using the port parameter: brapi::mock_server(80).
 
-The mock server package 'brapiTS' is available [here](https://github.com/c5sire/brapiTS).
+The mock server package 'brapiTS' is available [here](https://github.com/CIP-RIU/brapiTS).
 
 # Starting the connection
 
