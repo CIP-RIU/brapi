@@ -39,7 +39,8 @@ ba_trials <- function(con = NULL,
   check_paging(pageSize = pageSize, page = page)
   check_rclass(rclass = rclass)
   brp <- get_brapi(brapi = con)
-  ptrials <- paste0(brp, "trials/?")
+  # ptrials <- paste0(brp, "trials/?") # TO BE CONSIDERED FOR VERSION 2
+  ptrials <- paste0(brp, "trials?")
   pprogramDbId <- ifelse(programDbId != "any", paste0("programDbId=", programDbId, "&"), "")
   #programDbId <- paste0("locationDbId=", locationDbId, "&")
   plocationDbId <- ifelse(locationDbId != "any", paste0("locationDbId=", locationDbId, "&"), "")
@@ -53,14 +54,16 @@ ba_trials <- function(con = NULL,
     ppage <- ""
     ppageSize <- ""
   }
-  ptrials <- paste0(ptrials,
-                    pprogramDbId,
-                    plocationDbId,
-                    pactive,
-                    psortBy,
-                    psortOrder,
-                    ppageSize,
-                    ppage)
+  ptrials <- sub("&$",
+                 "",
+                 paste0(ptrials,
+                        pprogramDbId,
+                        plocationDbId,
+                        pactive,
+                        psortBy,
+                        psortOrder,
+                        ppageSize,
+                        ppage))
   try({
     res <- brapiGET(url = ptrials, con = con)
     res <- httr::content(x = res, as = "text", encoding = "UTF-8")
