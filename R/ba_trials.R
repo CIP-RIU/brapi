@@ -44,7 +44,7 @@ ba_trials <- function(con = NULL,
   #programDbId <- paste0("locationDbId=", locationDbId, "&")
   plocationDbId <- ifelse(locationDbId != "any", paste0("locationDbId=", locationDbId, "&"), "")
   #locationDbId <- paste0("locationDbId=", locationDbId, "&")
-  pactive <- paste0("active=", active, "&")
+  pactive <- paste0("active=", tolower(active), "&")
   psortBy <- ifelse(sortBy != "none", paste0("sortBy=", sortBy, "&"), "")
   psortOrder <- paste0("sortOrder=", sortOrder, "&")
   ppage <- ifelse(is.numeric(page), paste0("page=", page, ""), "")
