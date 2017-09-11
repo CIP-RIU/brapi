@@ -2,7 +2,6 @@
 output: github_document
 ---
 
-
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 # The development and maintenance of this package has been passed to the repository github/CIP-RIU. 
 
@@ -26,17 +25,17 @@ It can be installed using:
 
 ```{r, eval=FALSE}
 install.packages("devtools")
-devtools::install_github("c5sire/brapi")
+devtools::install_github("CIP-RIU/brapi")
 ```
 
 
 ## How to use the package
 
-See [tutorial](https://github.com/c5sire/brapi/blob/master/inst/doc/tutorial.Rmd).
+See [tutorial](https://github.com/CIP-RIU/brapi/blob/master/inst/doc/tutorial.Rmd).
 
 ## Documentation of JSON response/requests
 
-Follow the links in the table below or see the inst/apidocs directory for examples: [apidocs](https://github.com/c5sire/brapi/blob/master/inst/apidocs/README.md)
+Follow the links in the table below or see the inst/apidocs directory for examples: [apidocs](https://github.com/CIP-RIU/brapi/blob/master/inst/apidocs/README.md)
 
 ## Implementation status
 
@@ -60,7 +59,7 @@ Out of `r nrow(calls_data)` BrAPI calls currently **`r nrow(res)` (`r pct`%)** a
 ```{r, echo=FALSE}
 
 
-res[, 3] <- paste0("[", res[, 3], "](https://github.com/c5sire/brapi/blob/master/inst/apidocs/", res[, 3], ".md)") 
+res[, 3] <- paste0("[", res[, 3], "](https://github.com/CIP-RIU/brapi/blob/master/inst/apidocs/", res[, 3], ".md)") 
 
 res[, 2] <- paste0("[", res[, 2], "](https://github.com/plantbreeding/API/blob/master/Specification/", res[, 1], "/", 
                    res[, 2], ".md)") 
@@ -69,8 +68,6 @@ res[, 1] <- paste0("[", res[, 1], "](https://github.com/plantbreeding/API/blob/m
 knitr::kable(res, row.names = FALSE)
 
 ```
-
-
 
 ```{r eval=FALSE, echo=FALSE}
 rp =covr::package_coverage()
@@ -84,7 +81,3 @@ mdfiles <- list.files(".", "*.Rmd")
 sapply(mdfiles, knitr::knit)
 setwd(owd)
 ```
-
-
-
-
