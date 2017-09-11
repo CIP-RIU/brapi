@@ -13,9 +13,6 @@ knitr::opts_chunk$set(
   fig.path = "README-"
 )
 ```
-[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/c5sire/brapi?branch=master&svg=true)](https://ci.appveyor.com/project/c5sire/brapi)
-[![Travis-CI Mac Build Status](https://travis-ci.org/c5sire/brapi.svg?branch=master&label=Mac%20OSX)](https://travis-ci.org/c5sire/brapi)
-[![Coverage Status](https://img.shields.io/codecov/c/github/c5sire/brapi/master.svg)](https://codecov.io/github/c5sire/brapi?branch=master)
 
 # README
 
@@ -35,44 +32,44 @@ See [tutorial](https://github.com/CIP-RIU/brapi/blob/master/inst/doc/tutorial.Rm
 
 ## Documentation of JSON response/requests
 
-Follow the links in the table below or see the inst/apidocs directory for examples: [apidocs](https://github.com/CIP-RIU/brapi/blob/master/inst/apidocs/README.md)
+See the inst/apidocs directory for examples: [apidocs](https://github.com/CIP-RIU/brapi/blob/master/inst/apidocs/README.md)
 
 ## Implementation status
 
 ```{r, echo=FALSE}
-calls_data = tryCatch({
-  read.csv(system.file("apps/brapi/data/calls.csv", package = "brapi"),
-           stringsAsFactors = FALSE)
-  
-}, error = function(e) {
-  NULL
-}
-)
-
-res <- calls_data[stringr::str_detect(calls_data$client.brapi, "x"), c(1, 7, 8)]
-
-pct <- round(nrow(res) / nrow(calls_data) * 100, 1)
+# calls_data = tryCatch({
+#   read.csv(system.file("apidocs/calls.csv", package = "brapi"),
+#            stringsAsFactors = FALSE)
+#   
+# }, error = function(e) {
+#   NULL
+# }
+# )
+# 
+# 
+# 
+# res <- calls_data[stringr::str_detect(calls_data$client.brapi, "x"), c(1, 7, 8)]
+# 
+# pct <- round(nrow(res) / nrow(calls_data) * 100, 1)
 ```
-
-Out of `r nrow(calls_data)` BrAPI calls currently **`r nrow(res)` (`r pct`%)** are implemented in this package.
 
 ```{r, echo=FALSE}
 
 
-res[, 3] <- paste0("[", res[, 3], "](https://github.com/CIP-RIU/brapi/blob/master/inst/apidocs/", res[, 3], ".md)") 
+#res[, 3] <- paste0("[", res[, 3], "](https://github.com/CIP-RIU/brapi/blob/master/inst/apidocs/", res[, 3], ".md)") 
 
-res[, 2] <- paste0("[", res[, 2], "](https://github.com/plantbreeding/API/blob/master/Specification/", res[, 1], "/", 
-                   res[, 2], ".md)") 
-res[, 1] <- paste0("[", res[, 1], "](https://github.com/plantbreeding/API/blob/master/Specification/", res[, 1], ")") 
+#res[, 2] <- paste0("[", res[, 2], "](https://github.com/plantbreeding/API/blob/master/Specification/", res[, 1], "/", 
+#                   res[, 2], ".md)") 
+#res[, 1] <- paste0("[", res[, 1], "](https://github.com/plantbreeding/API/blob/master/Specification/", res[, 1], ")") 
 
-knitr::kable(res, row.names = FALSE)
+#knitr::kable(res, row.names = FALSE)
 
 ```
 
 ```{r eval=FALSE, echo=FALSE}
-rp =covr::package_coverage()
+#rp =covr::package_coverage()
 
-covr::report(rp)
+#covr::report(rp)
 
 ###########################
 owd <- getwd()
