@@ -6,7 +6,7 @@
 \usage{
 ba_trials(con = NULL, programDbId = "any", locationDbId = "any",
   active = TRUE, sortBy = "none", sortOrder = "asc", page = 0,
-  pageSize = 1000, rclass = "tibble")
+  pageSize = 10000, rclass = "tibble")
 }
 \arguments{
 \item{con}{list, brapi connection object}
