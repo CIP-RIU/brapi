@@ -3,7 +3,7 @@
 #' lists trials available on a brapi server
 #'
 #' @param con list, brapi connection object
-#' @param rclass character; default: tibble
+#' @param rclass character; ; default: tibble other possible values list/json/data.frame
 #' @param page integer; default 0
 #' @param pageSize integer; default 1000
 #' @param programDbId character; default: 'any'; otherwise an identifier

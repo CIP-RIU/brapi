@@ -12,7 +12,7 @@ ba_studies_table(con = NULL, studyDbId = "1", format = "json",
 
 \item{studyDbId}{character; default: 1}
 
-\item{format}{character; one of: json, csv, tsv. Defasult: json}
+\item{format}{character; one of: json, csv, tsv. Default: json}
 
 \item{rclass}{character; default: tibble}
 }
