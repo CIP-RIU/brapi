@@ -14,8 +14,7 @@
 
 # Coveralls
 
-[![Coverage Status](https://coveralls.io/repos/github/CIP-RIU/brapi/badge.svg?branch=master)](https://coveralls.io/github/CIP-RIU/brapi?branch=master)
-
+[![Coverage Status](https://coveralls.io/repos/github/CIP-RIU/brapi/badge.svg)](https://coveralls.io/github/CIP-RIU/brapi)
 
 An R package to use the [Breeding API (BrAPI)](http://docs.brapi.apiary.io) for accessing plant breeding data.
 
