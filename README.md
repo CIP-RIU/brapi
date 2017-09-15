@@ -2,12 +2,9 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 brapi
 ---------------------
-[![Build status](https://ci.appveyor.com/api/projects/status/7qsrpldj8g3m3lu3?svg=true)]
-(https://ci.appveyor.com/project/cipriuhq/brapi)
-[![Build Status](https://travis-ci.org/CIP-RIU/brapi.svg?branch=master)]
-(https://travis-ci.org/CIP-RIU/brapi)
-[![Coverage Status](https://coveralls.io/repos/github/CIP-RIU/brapi/badge.svg)]
-(https://coveralls.io/github/CIP-RIU/brapi)
+[![Build status](https://ci.appveyor.com/api/projects/status/7qsrpldj8g3m3lu3?svg=true)](https://ci.appveyor.com/project/cipriuhq/brapi)
+[![Build Status](https://travis-ci.org/CIP-RIU/brapi.svg?branch=master)](https://travis-ci.org/CIP-RIU/brapi)
+[![Coverage Status](https://coveralls.io/repos/github/CIP-RIU/brapi/badge.svg)](https://coveralls.io/github/CIP-RIU/brapi)
 
 The official repository of the Breeding API i in R . This R package use the [Breeding API (BrAPI)](http://docs.brapi.apiary.io) for accessing plant breeding data. This version is still under development, to see all details about the current implementation see the tutorial below.
 
