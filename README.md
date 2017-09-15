@@ -12,6 +12,11 @@
 # Travis CI
 [![Build Status](https://travis-ci.org/CIP-RIU/brapi.svg?branch=master)](https://travis-ci.org/CIP-RIU/brapi)
 
+# Coveralls
+
+[![Coverage Status](https://coveralls.io/repos/github/CIP-RIU/brapi/badge.svg?branch=master)](https://coveralls.io/github/CIP-RIU/brapi?branch=master)
+
+
 An R package to use the [Breeding API (BrAPI)](http://docs.brapi.apiary.io) for accessing plant breeding data.
 
 It can be installed using:
