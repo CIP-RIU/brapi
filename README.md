@@ -9,6 +9,9 @@ brapi
 The official repository of the Breeding API i in R . This R package use the [Breeding API (BrAPI)](http://docs.brapi.apiary.io) for accessing plant breeding data. This version is still under development, to see all details about the current implementation see the tutorial below.
 
 
+###### Important Note
+This repository continue and preserve original functionalities of [brapi](https://github.com/c5sire/brapi).
+
 It can be installed using:
 
 ``` r
