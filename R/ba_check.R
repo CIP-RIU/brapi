@@ -16,14 +16,13 @@ ba_check <- function(con = NULL, verbose = TRUE, brapi_calls = "any") {
   stopifnot(is.ba_con(con))
   stopifnot(is.logical(verbose))
   stopifnot(is.character(brapi_calls))
-  brapi <- con
-  if (is.null(brapi)) {
-    stop("BrAPI connection object is NULL. Use brapi::connect()")
+  if (is.null(con)) {
+    stop("BrAPI connection object is NULL. Use brapi::ba_connect()")
   }
-  url <- brapi$db
+  url <- con$db
   # check for localhost
-  if (stringr::str_detect(string = brapi$db, pattern = "127")) {
-    url <- paste0(brapi$db, ":", brapi$port, "/brapi/v1/")
+  if (stringr::str_detect(string = con$db, pattern = "127")) {
+    url <- paste0(con$db, ":", con$port, "/brapi/v1/")
     status <- 600
     status <- try({
       httr::GET(url = url)$status_code
@@ -37,7 +36,7 @@ ba_check <- function(con = NULL, verbose = TRUE, brapi_calls = "any") {
   }
   if (verbose) {
     message("BrAPI connection ok.")
-    message(paste(brapi, collapse = "\n"))
+    message(paste(con, collapse = "\n"))
   }
   return(TRUE)
 }

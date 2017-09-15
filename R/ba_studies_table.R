@@ -5,7 +5,7 @@
 #' @param rclass character; default: tibble
 #' @param studyDbId character; default: 1
 #' @param con list; brapi connection object
-#' @param format character; one of: json, csv, tsv. Defasult: json
+#' @param format character; one of: json, csv, tsv. Default: json
 #'
 #' @author Reinhard Simon
 #' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Studies/StudyObservationUnitsAsTable.md}{github}

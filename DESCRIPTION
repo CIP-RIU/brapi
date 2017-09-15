@@ -2,9 +2,9 @@ Package: brapi
 Title: Client to Access Breeding Databases Using BrAPI
 Version: 0.9.0
 Authors@R: c(
-  person("Omar", "Benites", email = "o.benites@cgiar.org", role = c("aut", "ctb"))
-  person("Maikel", "Verouden", role = c("aut", "ctb")  email = "Maikel.Verouden@wur.nl")
-  person("Reinhard", "Simon", email = "rsimon64@gmail.com", role = c("aut", "cre"))
+  person("Omar", "Benites", email = "o.benites@cgiar.org", role = c("aut", "ctb")),
+  person("Maikel", "Verouden", role = c("aut", "ctb") , email = "Maikel.Verouden@wur.nl"),
+  person("Reinhard", "Simon", email = "rsimon64@gmail.com", role = c("aut", "cre")),
   person("Ivan", "Perez", email = "i.perez@cgiar.org", role = c("aut", "ctb")),
   person("International Potato Center", role = c("cph"))
   )
