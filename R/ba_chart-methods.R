@@ -8,6 +8,7 @@
 #' @author Reinhard Simon
 #' @family brapiutils
 #' @export
+#'
 ba_chart.ba_locations <- function(x, ...) {
   prms <- list(...)
   chart_type <- ifelse(!is.null(prms$chart_type), prms$chart_type, "plot")
@@ -47,6 +48,7 @@ ba_chart.ba_locations <- function(x, ...) {
 #' @author Reinhard Simon
 #' @family brapiutils
 #' @export
+#'
 ba_chart.ba_genomemaps <- function(x, ...) {
   prms <- list(...)
   stopifnot(!is.null(x$markerCount & !is.null(x$mapDbId)))
@@ -75,6 +77,7 @@ ba_chart.ba_genomemaps <- function(x, ...) {
 #' @author Reinhard Simon
 #' @family brapiutils
 #' @export
+#'
 ba_chart.ba_genomemaps_details <- function(x, ...) {
   prms <- list(...)
   chart_type <- ifelse(!is.null(prms$chart_type), prms$chart_type, "plot")

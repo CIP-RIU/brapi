@@ -1,9 +1,15 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# The development and maintenance of this package has been handed over to the repository github/CIP-RIU. 
+# The official repository for the Breeding API implemenation in R 
 
-[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/c5sire/brapi?branch=master&svg=true)](https://ci.appveyor.com/project/c5sire/brapi) [![Travis-CI Mac Build Status](https://travis-ci.org/c5sire/brapi.svg?branch=master&label=Mac%20OSX)](https://travis-ci.org/c5sire/brapi) [![Coverage Status](https://img.shields.io/codecov/c/github/c5sire/brapi/master.svg)](https://codecov.io/github/c5sire/brapi?branch=master)
+## This version is still under development. We are working to implement all the functionalities of BraPi in this R-package :) .
+
+
+# Appeveyor
+[![Build status](https://ci.appveyor.com/api/projects/status/7qsrpldj8g3m3lu3?svg=true)](https://ci.appveyor.com/project/cipriuhq/brapi)
+
+
 
 README
 ======
