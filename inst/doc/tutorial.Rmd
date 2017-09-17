@@ -22,7 +22,7 @@ Here we use as an example the sweetpotatobase.org database since it has currentl
 The package comes with a list of known databases (white list). Both the white list and the handle can be printed in summary form to the console.
 The $ sign can be used to access individual slots and overwrite values. This can also be used as a template to configure a handle to another brapi compliant database.
 
-```{r}
+```{r, message=TRUE, warning=TRUE}
 
 library(brapi)
 
