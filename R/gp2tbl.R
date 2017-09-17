@@ -48,11 +48,6 @@ gp2tbl <- function(res) {
                                  subtaxaAuthority = tidyjson::jstring("subtaxaAuthority"),
                                  acquisitionDate = tidyjson::jstring("acquisitionDate"),
                                  donors = tidyjson::jstring("donors")) %>%
-         # tidyjson::enter_object("donors") %>%
-         # tidyjson::gather_array() %>%
-         # tidyjson::spread_values(donors.donorAccessionNumber = tidyjson::jstring("donorAccessionNumber"),
-         #                         donors.donorInstituteCode = tidyjson::jstring("donorInstituteCode"),
-         #                         donors.germplasmPUI = tidyjson::jstring("germplasmPUI")) %>%
          dplyr::select(germplasmDbId,
                        defaultDisplayName,
                        accessionNumber,
@@ -73,9 +68,6 @@ gp2tbl <- function(res) {
                        subtaxa,
                        subtaxaAuthority,
                        donors,
-                       # donors.donorAccessionNumber,
-                       # donors.donorInstituteCode,
-                       # donors.germplasmPUI,
                        acquisitionDate)
 
   # workaround for the moment: TODO find better way using tidyjson
