@@ -1,6 +1,6 @@
 Package: brapi
 Title: Client to Access Breeding Databases Using BrAPI
-Version: 0.9.0
+Version: 0.9.9016
 Authors@R: c(
   person("Reinhard", "Simon", email = "rsimon64@gmail.com", role = c("aut", "cre")),
   person("Maikel", "Verouden", role = c("aut", "ctb"),
@@ -14,5 +14,5 @@ LazyData: true
 RoxygenNote: 6.0.1
 Imports: httr, jsonlite, Rcpp, stringi, stringr, progress, curl, magrittr, tibble,
     dplyr, httpuv, utils, tidyjson, readr, tidyr, DBI, crayon
-Suggests: knitr, rmarkdown, testthat, covr, maps, assertthat, xtable
+Suggests: knitr, rmarkdown, testthat, covr, maps, assertthat, xtable, DT
 VignetteBuilder: knitr

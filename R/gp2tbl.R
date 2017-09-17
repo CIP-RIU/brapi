@@ -22,6 +22,7 @@ gp2tbl <- function(res) {
   donors.donorInstituteCode <- NULL
   donors.germplasmPUI <- NULL
   acquisitionDate <- NULL
+  donors <- NULL
   out <- res %>%
          as.character %>%
          tidyjson::enter_object("result") %>%
