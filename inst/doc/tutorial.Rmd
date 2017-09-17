@@ -53,7 +53,7 @@ crops
 
 ## Switching on information on server connectiviy
 
-In many cases when exploring a new database it will be useful to know any feedback from the server. The package provides a switch that allows to turn on or off such log information.
+In many cases when exploring a new database it will be useful to get any feedback from the server. The package provides a switch that allows to turn on or off such log information.
 
 ```{r}
 ba_show_info(TRUE)
@@ -68,14 +68,14 @@ ba_calls(sp_base)
 ba_show_info(FALSE)
 ```
 
-As you notice, the table is presented as a tibble. This has the advantage that it fits on the screen always even though there may be big tables. But sometimes it may be useful to just print out the whole table. How to do that is the topic of the next section.
+As you notice, the table is presented as a tibble. This has the advantage that it fits on the screen always even though there are big tables. But sometimes it may be useful to just print out the whole table. How to do that is the topic of the next section.
 
 ## Function design
 
-All functions always have two parameters: the first is always the database handle or connection details ('con'), the last is always the R class of the returned object. Mosst parameters should be of class 'character'. Exceptions are: the con parameter is always a list; the parameters 'page' and 'pageSize' if applicable are integers. For details see individual functions.
+All functions always have two parameters: the first is always the database handle or connection details ('con'), the last is always the R class of the returned object. Most parameters should be of class 'character'. Exceptions are: the con parameter is always a list; the parameters 'page' and 'pageSize' if applicable are integers. For details see individual functions.
 
 ## Output formats
-This is by default a tibble. However, there a several others supported. An alternative is the 'data.frame'. In addition and mainly for debugging purposes you can set the value to 'json' which will return the full response json object; or you can set it to 'list' which will return a list equivalent.
+This is by default a tibble. However, there are several others supported. An alternative is the 'data.frame'. In addition and mainly for debugging purposes you can set the value to 'json' which will return the full response json object; or you can set it to 'list' which will return a list equivalent.
 
 So, let's just print out the whole data.frame.
 ```{r}
