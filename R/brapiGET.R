@@ -7,16 +7,18 @@ brapiGET <- function(url, format = "json", con = NULL) {
   tryCatch({
     if (is.ba_status_ok(resp = res)) {
       out <- httr::content(x = res, as = "text", encoding = "UTF-8")
-      # Get JSON
-      # if (format == "json") {
-      #   # x <- jsonlite::fromJSON(txt = out)
-      #   # TODO test if 'metadata' slot exists
-      #   # if (exists('metadata', where = x)) {
-      #   #   out <- x$metadata$status
-      #   #   Check if status object has any key-value
-      #   #   pairs show_server_status_messages(out)
-      #   # }
-      # }
+      # Get metadata
+        x <- jsonlite::fromJSON(txt = out)
+        # TODO test if 'metadata' slot exists
+        if (exists('metadata', where = x)) {
+          lst <- x$metadata$status
+          #Check if status object has any key-value pairs
+          info <- ifelse(exists("info", where = lst), paste(lst$info[!is.na(lst$info)], collapse = "\n\r"), "")
+          success<- ifelse(exists("success", where = lst), paste(lst$success[!is.na(lst$success)], collapse = "\n\r"), "")
+          error<- ifelse(exists("error", where = lst), paste(lst$error[!is.na(lst$error)], collapse = "\n\r"), "")
+          msg <- list(info = info, success = success, error = error)
+          show_server_status_messages(msg)
+        }
     }
   }, error = function(e) stop(paste0(e, "\n\nMalformed request.")))
   return(res)
