@@ -44,6 +44,8 @@ trl2tbl <- function(res, rclass) {
                   locationDbId)
   out$additionalInfo = sapply(out$additionalInfo, function(x) ifelse(x == "list()", "", paste(x, collapse = ", ")))
 
+  # TODO: still find a better way to deal with additionalInfo!
+
   if (rclass == "tibble") {
     out <- tibble::as_tibble(out)
   }
