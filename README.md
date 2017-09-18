@@ -22,12 +22,9 @@ devtools::install_github("CIP-RIU/brapi")
 How to use the package
 ----------------------
 
-See [tutorial](https://github.com/CIP-RIU/brapi/blob/master/inst/doc/tutorial.Rmd).
+See [tutorial](https://github.com/c5sire/brapi/blob/master/inst/doc/tutorial.Rmd).
 
 Documentation of JSON response/requests
 ---------------------------------------
 
-See the inst/apidocs directory for examples: [apidocs](https://github.com/CIP-RIU/brapi/blob/master/inst/apidocs/README.md)
-
-Implementation status
----------------------
+See the inst/apidocs directory for examples: [apidocs](https://github.com/c5sire/brapi/blob/master/inst/apidocs/README.md)

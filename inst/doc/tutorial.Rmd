@@ -13,61 +13,108 @@ vignette: >
 This package is under development. It has not yet been exhaustively tested for all calls neither. Usage may also still change. If you have suggestions please use the issue tracker.
 --------------------------------------------------------------
 
-# NEW
+# Get started with real data
 
-## Sandbox testing server
+Here we use as an example the sweetpotatobase.org database since it has currently one of the most complete implementations. Also, data are public and no login credentials are needed. It is part of the white list of the internal databases, too. So no further knowledge of configuration details are needed.
 
-To ease local testing the package has now a companion package with a localized simple testing server implementing the BrAPI v1 protocol. To start this server use in an R session:
+## Get the database handle
 
-```{r eval=FALSE}
+The package comes with a list of known databases (white list). Both the white list and the handle can be printed in summary form to the console.
+The $ sign can be used to access individual slots and overwrite values. This can also be used as a template to configure a handle to another brapi compliant database.
 
-brapiTS::mock_server()
+```{r, message=TRUE, warning=TRUE}
 
-```
-
-or on the command line in an MS-DOS box
-
-```{r eval=FALSE}
-
-R -e "brapiTS::mock_server()"
-
-```
-
-The server must be started in a R session separate from the one use for the BrAPI calls.
-The server uses by default the port 2021. This can be changed by using the port parameter: brapi::mock_server(80).
-
-The mock server package 'brapiTS' is available [here](https://github.com/CIP-RIU/brapiTS).
-
-# Starting the connection
-
-```{r eval=FALSE}
 library(brapi)
 
-con = ba_connect() # the standard parameter will work connect to a running local mock server
+white_list <- ba_db()
 
-# Optionally: authenticate yourself
+# print names of databases from whitelist
+white_list
 
-con = ba_connect(user = "user", password = "password") %>% ba_login()
+sp_base <- ba_db()$sweetpotatobase
 
-ba_crops(con) # which crops are available
-
-ba_calls(con) # which calls are available
-
+# print summary of sp_base object
+sp_base
 
 ```
 
+## Listing available crops
 
-# NEW: Testing the calls
+This is interesting if you have multicrop databases. In the case of sweetpotatobase there is only one crop on that server.
 
-BrAPI calls are now being extensively tested using the testthat framework. The local tests are being executed against the local mock_server instance. If not present a warning message will be displayed.
+```{r}
+crops <- ba_crops(sp_base)
 
-Quick start in RStudio: Ctrl + Shift + T
+# We only expect one crop here: sweetpotato
 
-# NEW: return tables
+crops
 
-- all R functions using the brapi have a new parameter: rclass which can have up to five different values: json, list, data.frame, tibble, vector. The default value is tibble for most functions - that is it will always return a table. Vector is default for very small return objects like in the case of 'crops'.
+```
 
-- also: all R functions are checked against the list of calls provided by the server. That is: if a certain server does not implement all calls the corresponding R functions will not 'insist' calling it.
+## Switching on information on server connectiviy
+
+In many cases when exploring a new database it will be useful to get any feedback from the server. The package provides a switch that allows to turn on or off such log information.
+
+```{r}
+ba_show_info(TRUE)
+```
+
+## Listing available calls
+
+The brapi community and standard allows currently a large degree of freedom on implementation of individual parts of the standard (or calls). One call lists the functionality supported by the server.
+
+```{r}
+ba_calls(sp_base)
+ba_show_info(FALSE)
+```
+
+As you notice, the table is presented as a tibble. This has the advantage that it fits on the screen always even though there are big tables. But sometimes it may be useful to just print out the whole table. How to do that is the topic of the next section.
+
+## Function design
+
+All functions always have two parameters: the first is always the database handle or connection details ('con'), the last is always the R class of the returned object. Most parameters should be of class 'character'. Exceptions are: the con parameter is always a list; the parameters 'page' and 'pageSize' if applicable are integers. For details see individual functions.
+
+## Output formats
+This is by default a tibble. However, there are several others supported. An alternative is the 'data.frame'. In addition and mainly for debugging purposes you can set the value to 'json' which will return the full response json object; or you can set it to 'list' which will return a list equivalent.
+
+So, let's just print out the whole data.frame.
+```{r}
+ba_calls(con = sp_base, rclass = "data.frame")
+```
+
+## Getting phenotypic data
+
+The brapi models trial data in a three layer hierarchy: a) breeding program which has b) trials that c) may consist of one or more studies at one or more locations. A study at one location is also often referred to as a fieldbook.
+
+### Which breeding programs are there?
+
+```{r}
+ba_programs(sp_base, rclass = "data.frame")
+```
+
+
+### Which studies are there?
+
+```{r}
+ba_studies_search(sp_base, programDbId = "140")
+```
+
+### Get a study (or fieldbook)
+
+```{r, message=FALSE, warning=FALSE}
+dt = ba_studies_table(sp_base, studyDbId = "162")
+```
+
+```{r, echo=FALSE}
+library(DT)
+datatable(
+  dt,
+  options=list(pageLength = 5, scrollX = TRUE)
+  )
+```
+
+
+
 
 
 

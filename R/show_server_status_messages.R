@@ -1,13 +1,24 @@
 show_server_status_messages <- function(out) {
-  n <- nrow(out)
-  if (!is.null(n)) {
-    if (n > 0) {
-      # if so: cycle through and print a message for each!
-      ba_message(msg = "Status messages")
-      for (i in 1:n) {
-        msg <- paste0("BrAPI server warning code -> ", out[i, "code"], ": ", out[i, "message"], "")
-        ba_message(msg = msg)
-      }
+
+  ba_message(crayon::yellow("Status details from Server:"))
+
+  if(all(out$info == "", out$success == "", out$error =="")) {
+    ba_message(crayon::yellow("None."))
+  } else {
+
+    if (out$info != "") {
+      ba_message(crayon::blue("\nInfos"))
+      ba_message(crayon::blue(out$info))
     }
+    if (out$success != "") {
+      ba_message(crayon::green("\nSuccesses:"))
+      ba_message(crayon::green(out$success))
+    }
+    if (out$error != "") {
+      ba_message(crayon::red("\nErrors:"))
+      ba_message(crayon::red(out$error))
+    }
+
   }
+
 }

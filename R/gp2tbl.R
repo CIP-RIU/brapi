@@ -22,11 +22,12 @@ gp2tbl <- function(res) {
   donors.donorInstituteCode <- NULL
   donors.germplasmPUI <- NULL
   acquisitionDate <- NULL
+  donors <- NULL
   out <- res %>%
          as.character %>%
          tidyjson::enter_object("result") %>%
          tidyjson::enter_object("data") %>%
-         tidyjson::gather_array %>%
+         tidyjson::gather_array() %>%
          tidyjson::spread_values(germplasmDbId = tidyjson::jnumber("germplasmDbId"),
                                  defaultDisplayName = tidyjson::jstring("defaultDisplayName"),
                                  accessionNumber = tidyjson::jstring("accessionNumber"),
@@ -46,12 +47,8 @@ gp2tbl <- function(res) {
                                  speciesAuthority = tidyjson::jstring("speciesAuthority"),
                                  subtaxa = tidyjson::jstring("subtaxa"),
                                  subtaxaAuthority = tidyjson::jstring("subtaxaAuthority"),
-                                 acquisitionDate = tidyjson::jstring("acquisitionDate")) %>%
-         tidyjson::enter_object("donors") %>%
-         tidyjson::gather_array %>%
-         tidyjson::spread_values(donors.donorAccessionNumber = tidyjson::jstring("donorAccessionNumber"),
-                                 donors.donorInstituteCode = tidyjson::jstring("donorInstituteCode"),
-                                 donors.germplasmPUI = tidyjson::jstring("germplasmPUI")) %>%
+                                 acquisitionDate = tidyjson::jstring("acquisitionDate"),
+                                 donors = tidyjson::jstring("donors")) %>%
          dplyr::select(germplasmDbId,
                        defaultDisplayName,
                        accessionNumber,
@@ -71,9 +68,11 @@ gp2tbl <- function(res) {
                        speciesAuthority,
                        subtaxa,
                        subtaxaAuthority,
-                       donors.donorAccessionNumber,
-                       donors.donorInstituteCode,
-                       donors.germplasmPUI,
+                       donors,
                        acquisitionDate)
+
+  # workaround for the moment: TODO find better way using tidyjson
+  out$donors = sapply(out$donors, function(x) ifelse(x == "list()", "", paste(x, collapse = ", ")))
+  out$synonyms = sapply(out$synonyms, function(x) ifelse(x == "list()", "", paste(x, collapse = ", ")))
   return(out)
 }

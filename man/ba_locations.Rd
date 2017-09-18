@@ -22,7 +22,10 @@ ba_locations(con = NULL, locationType = "all", page = 0, pageSize = 100,
 rclass as defined
 }
 \description{
-lists locations available on a brapi server
+Lists locations available on a brapi server.
+}
+\note{
+All standard attributes are always listed. However, attributes in the additionalInfo only when at least one record has data.
 }
 \examples{
 if (interactive()) {
