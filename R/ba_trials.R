@@ -3,7 +3,7 @@
 #' lists trials available on a brapi server
 #'
 #' @param con list, brapi connection object
-#' @param rclass character; default: tibble
+#' @param rclass character; ; default: tibble other possible values list/json/data.frame
 #' @param page integer; default 0
 #' @param pageSize integer; default 1000
 #' @param programDbId character; default: 'any'; otherwise an identifier
@@ -68,7 +68,6 @@ ba_trials <- function(con = NULL,
     res <- brapiGET(url = ptrials, con = con)
     res <- httr::content(x = res, as = "text", encoding = "UTF-8")
     out <- NULL
-### THIS NEEDS TO BE CHECKED!!! ----
     if (rclass %in% c("list", "json")) {
       out <- dat2tbl(res = res, rclass = rclass)
     }
