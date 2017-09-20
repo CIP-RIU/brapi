@@ -68,7 +68,6 @@ ba_trials <- function(con = NULL,
     res <- brapiGET(url = ptrials, con = con)
     res <- httr::content(x = res, as = "text", encoding = "UTF-8")
     out <- NULL
-### THIS NEEDS TO BE CHECKED!!! ----
     if (rclass %in% c("list", "json")) {
       out <- dat2tbl(res = res, rclass = rclass)
     }
