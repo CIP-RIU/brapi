@@ -10,6 +10,7 @@ library(magrittr)
 con <- ba_connect()
 
 json <- ba_crops(con, rclass = "json")
+print(json)
 ```
 
 ### Response

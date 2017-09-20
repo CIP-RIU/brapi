@@ -3,9 +3,12 @@ Title: Client to Access Breeding Databases Using BrAPI
 Version: 0.9.9016
 Authors@R: c(
   person("Reinhard", "Simon", email = "rsimon64@gmail.com", role = c("aut", "cre")),
-  person("Maikel", "Verouden", role = c("aut", "ctb"),
-    email = "Maikel.Verouden@wur.nl"))
-Maintainer: Ivan Perez <i.perez@cgiar.org>
+  person("Maikel", "Verouden", role = c("aut", "ctb") , email = "Maikel.Verouden@wur.nl"),
+  person("Ivan", "Perez", email = "i.perez@cgiar.org", role = c("aut", "ctb")),
+  person("International Potato Center", role = c("cph"))
+  )
+Maintainer: Ivan Perez <i.perez@cgiar.org>   
+            Omar Benites <o.benites@cgiar.org>
 Description: Implements the Breeding API (www.brapi.org) with the exception of the polling mechanism as for the allelematrix call.
 Depends:
     R (>= 3.2.4)

@@ -8,6 +8,7 @@
 #' @example inst/examples/ex-chart.R
 #' @family brapiutils
 #' @export
+#'
 ba_chart <- function(x, ...) {
   return(UseMethod("ba_chart", x))
 }
@@ -22,6 +23,7 @@ ba_chart <- function(x, ...) {
 #' @example inst/examples/ex-describe.R
 #' @family brapiutils
 #' @export
+#'
 ba_describe <- function(x, ...) {
   return(UseMethod("ba_describe", x))
 }
