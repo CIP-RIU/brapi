@@ -1,4 +1,4 @@
-
+# Retrieve the url where BrAPI has been implemented
 get_brapi <- function(brapi = NULL) {
   if (is.null(brapi)) return(NULL)
   if (!is.null(brapi$apipath)) {
