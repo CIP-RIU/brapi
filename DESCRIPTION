@@ -15,4 +15,5 @@ RoxygenNote: 6.0.1
 Imports: httr, jsonlite, Rcpp, stringi, stringr, progress, curl, magrittr, tibble,
     dplyr, httpuv, utils, tidyjson, readr, tidyr, DBI, crayon
 Suggests: knitr, rmarkdown, testthat, covr, maps, assertthat, xtable, DT
+Remote: jeremystan/tidyjson
 VignetteBuilder: knitr
