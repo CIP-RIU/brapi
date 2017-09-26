@@ -25,7 +25,7 @@ ba_trials(con = NULL, programDbId = "any", locationDbId = "any",
 
 \item{pageSize}{integer; default 1000}
 
-\item{rclass}{character; default: tibble}
+\item{rclass}{character; ; default: tibble other possible values list/json/data.frame}
 }
 \value{
 rclass as defined

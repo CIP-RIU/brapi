@@ -1,7 +1,10 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-The development and maintenance of this package has been passed to the repository github/CIP-RIU.
-=================================================================================================
+The official repository for the Breeding API (BraPi)implemenation in R
+======================================================================
+
+This version is still under development. The implementation sometimes changes minor details.
+--------------------------------------------------------------------------------------------
 
 README
 ======
@@ -23,4 +26,11 @@ See [tutorial](https://github.com/c5sire/brapi/blob/master/inst/doc/tutorial.Rmd
 Documentation of JSON response/requests
 ---------------------------------------
 
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD Follow the links in the table below or see the inst/apidocs directory for examples: [apidocs](https://github.com/c5sire/brapi/blob/master/inst/apidocs/README.md) ======= See the inst/apidocs directory for examples: [apidocs](https://github.com/c5sire/brapi/blob/master/inst/apidocs/README.md)
+
+\#\# Implementation status
+==========================
+
 See the inst/apidocs directory for examples: [apidocs](https://github.com/c5sire/brapi/blob/master/inst/apidocs/README.md)
+
+> > > > > > > upstream/master
