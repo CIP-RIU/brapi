@@ -25,12 +25,16 @@ ba_studies_table <- function(con = NULL,
   stopifnot(format %in% c("json", "tsv", "csv"))
   check_rclass(rclass =  rclass)
   brp <- get_brapi(brapi = con)
-  studies_table <- paste0(brp, "studies/", studyDbId, "/table/?")
+  # studies_table <- paste0(brp, "studies/", studyDbId, "/table/?") # TO BE CONSIDERED FOR VERSION 2
+  studies_table <- paste0(brp, "studies/", studyDbId, "/table?")
   if (rclass %in% c("data.frame", "tibble") & format == "json") {
     format <- "csv"
   }
   pformat <- ifelse(format %in% c("json", "csv", "tsv"), paste0("format=", format, "&"), "")
-  studies_table <- paste0(studies_table, pformat)
+  studies_table <- sub("&$",
+                       "",
+                       paste0(studies_table,
+                              pformat))
   try({
     res <- brapiGET(url = studies_table, con = con)
     res <- httr::content(x = res, as = "text", encoding = "UTF-8")
@@ -40,12 +44,22 @@ ba_studies_table <- function(con = NULL,
     }
     if (rclass %in% c("data.frame", "tibble")) {
       if (format == "csv") {
+        if (con$bms == TRUE) {
+          out <- read.csv(textConnection(res))
+          colnames(out) <- gsub("\\.", "|", colnames(out))
+        } else {
         url <- jsonlite::fromJSON(txt = res)$metadata$datafiles[1]
         out <- readr::read_csv(file = url, progress = TRUE)
+        }
       }
       if (format == "tsv") {
+        if (con$bms == TRUE) {
+          out <- read.delim(textConnection(res))
+          colnames(out) <- gsub("\\.", "|", colnames(out))
+        } else {
         url <- jsonlite::fromJSON(txt = res)$metadata$datafiles[1]
         out <- readr::read_tsv(file = url, progress = TRUE)
+        }
       }
       if (rclass == "data.frame") {
         class(out) <- "data.frame"
