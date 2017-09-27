@@ -30,16 +30,23 @@ ba_programs <- function(con = NULL,
   check_paging(pageSize = pageSize, page = page)
   check_rclass(rclass = rclass)
   brp <- get_brapi(brapi = con)
-  pprograms <- paste0(brp, "programs/?")
+  # pprograms <- paste0(brp, "programs/?") # TO BE CONSIDERED v2
+  pprograms <- paste0(brp, "programs?")
   pprogramName <- ifelse(programName != "any", paste0("programName=", gsub(" ", "%20", programName), "&"), "")
   pabbreviation <- ifelse(abbreviation != "any", paste0("abbreviation=", abbreviation, "&"), "")
-  ppage <- ifelse(is.numeric(page), paste0("page=", page, ""), "")
+  ppage <- ifelse(is.numeric(page), paste0("page=", page, "&"), "")
   ppageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
   if (pageSize == 10000) {
     ppage <- ""
     ppageSize <- ""
   }
-  pprograms <- paste0(pprograms, pprogramName, pabbreviation, ppageSize, ppage)
+  pprograms <- sub("[?&]$",
+                   "",
+                   paste0(pprograms,
+                          pprogramName,
+                          pabbreviation,
+                          ppageSize,
+                          ppage))
   try({
     res <- brapiGET(url = pprograms, con = con)
     res <- httr::content(x = res, as = "text", encoding = "UTF-8")
