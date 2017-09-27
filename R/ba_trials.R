@@ -54,7 +54,7 @@ ba_trials <- function(con = NULL,
     ppage <- ""
     ppageSize <- ""
   }
-  ptrials <- sub("&$",
+  ptrials <- sub("[?&]$",
                  "",
                  paste0(ptrials,
                         pprogramDbId,
