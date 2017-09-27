@@ -7,8 +7,7 @@ Authors@R: c(
   person("Ivan", "Perez", email = "i.perez@cgiar.org", role = c("aut", "ctb")),
   person("International Potato Center", role = c("cph"))
   )
-Maintainer: Ivan Perez <i.perez@cgiar.org>   
-            Omar Benites <o.benites@cgiar.org>
+Maintainer: Ivan Perez <i.perez@cgiar.org>
 Description: Implements the Breeding API (www.brapi.org) with the exception of the polling mechanism as for the allelematrix call.
 Depends:
     R (>= 3.2.4)
