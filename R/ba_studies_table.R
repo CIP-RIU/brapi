@@ -33,7 +33,7 @@ ba_studies_table <- function(con = NULL,
     format <- "csv"
   }
   pformat <- ifelse(format %in% c("json", "csv", "tsv"), paste0("format=", format, "&"), "")
-  studies_table <- sub("&$",
+  studies_table <- sub("[?&]$",
                        "",
                        paste0(studies_table,
                               pformat))
