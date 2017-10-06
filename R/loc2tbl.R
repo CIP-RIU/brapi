@@ -4,9 +4,9 @@ loc2tbl <- function(res, rclass, con) {
   dat <- jsonlite::fromJSON(txt = dat, simplifyDataFrame = TRUE)
 
   addinfo <- "additionalInfo"
-  if (con$bms) {
-    addinfo <- "attributes"
-  }
+  # if (con$bms) {
+  #   addinfo <- "attributes"
+  # }
   field_list <- c("locationDbId",
                   "locationType",
                   "name",
