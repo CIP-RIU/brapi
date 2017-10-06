@@ -20,7 +20,7 @@
 #' @export
 ba_locations <- function(con = NULL,
                          locationType = "all",
-                         page = 0,
+                         page = 1,
                          pageSize = 100,
                          rclass = "tibble") {
   ba_check(con = con, verbose = FALSE, brapi_calls = "locations")
@@ -30,16 +30,22 @@ ba_locations <- function(con = NULL,
   # fetch the url of the brapi implementation of the database
   brp <- get_brapi(brapi = con)
   # generate the brapi call specific url
-  locations_list <- paste0(brp, "locations/?")
-  plocationType <- ifelse(locationType != "all", paste0("locationType=", locationType, "&"), "")
-  ppage <- ifelse(is.numeric(page), paste0("page=", page, ""), "")
+  # locations_list <- paste0(brp, "locations/?") # TO BE CONSIDERED FOR VERSION 2
+  locations_list <- paste0(brp, "locations?")
+  plocationType <- ifelse(locationType != "all", paste0("locationType=", gsub(" ", "%20", locationType), "&"), "")
+  ppage <- ifelse(is.numeric(page), paste0("page=", page, "&"), "")
   ppageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
   if (pageSize == 1e+06) {
     ppage <- ""
     ppageSize <- ""
   }
   # modify brapi call specific url to include locationType and pagenation
-  locations_list <- paste0(locations_list, plocationType, ppageSize, ppage)
+  locations_list <- sub("[?&]$",
+                        "",
+                        paste0(locations_list,
+                               ppage,
+                               ppageSize,
+                               plocationType))
   try({
     res <- brapiGET(url = locations_list, con = con)
     res <- httr::content(x = res, as = "text", encoding = "UTF-8")
