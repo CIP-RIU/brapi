@@ -20,7 +20,7 @@
 #' @export
 ba_locations <- function(con = NULL,
                          locationType = "all",
-                         page = 1,
+                         page = 0,
                          pageSize = 100,
                          rclass = "tibble") {
   ba_check(con = con, verbose = FALSE, brapi_calls = "locations")
