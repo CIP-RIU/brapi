@@ -1,5 +1,6 @@
 # Files to be ignored in the local and remote git repository
 # R specific files
+brapi.Rproj
 .Rproj.user
 .Rhistory
 .RData
