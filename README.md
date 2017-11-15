@@ -1,9 +1,9 @@
 
-[![Build status](https://ci.appveyor.com/api/projects/status/bxwa9k9xbo4i7h2d?svg=true)](https://ci.appveyor.com/project/c5sire/brapi) [![Build Status](https://travis-ci.org/c5sire/brapi.svg?branch=master)](https://travis-ci.org/CIP-RIU/brapi) [![Coverage Status](https://coveralls.io/repos/github/c5sire/brapi/badge.svg)](https://coveralls.io/github/CIP-RIU/brapi)
+[![Build status](https://ci.appveyor.com/api/projects/status/bxwa9k9xbo4i7h2d?svg=true)](https://ci.appveyor.com/project/c5sire/brapi) [![Build Status](https://travis-ci.org/c5sire/brapi.svg?branch=master)](https://travis-ci.org/c5sire/brapi) [![Coverage Status](https://coveralls.io/repos/github/c5sire/brapi/badge.svg)](https://coveralls.io/github/c5sire/brapi)
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-The official repository for the Breeding API (BrAPI) implemenation in R
-=======================================================================
+BrAPI R package
+===============
 
 This version is still under development. The implementation sometimes changes minor details.
 --------------------------------------------------------------------------------------------
