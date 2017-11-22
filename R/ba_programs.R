@@ -7,7 +7,7 @@
 #' @param con list, brapi connection object
 #' @param page integer requested page number, default = 0 (1st page)
 #' @param rclass character, default: tibble
-#' @param pageSize integer, items per page (default = 100)
+#' @param pageSize integer, items per page (default = 1000)
 #' @param programName character; default: any
 #' @param abbreviation character; default: any
 #'
@@ -22,7 +22,7 @@ ba_programs <- function(con = NULL,
                         programName = "any",
                         abbreviation = "any",
                         page = 0,
-                        pageSize = 10000,
+                        pageSize = 1000,
                         rclass = "tibble") {
   ba_check(con = con, verbose = FALSE, brapi_calls = "programs")
   stopifnot(is.character(programName))
@@ -36,7 +36,7 @@ ba_programs <- function(con = NULL,
   pabbreviation <- ifelse(abbreviation != "any", paste0("abbreviation=", abbreviation, "&"), "")
   ppage <- ifelse(is.numeric(page), paste0("page=", page, "&"), "")
   ppageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
-  if (pageSize == 10000) {
+  if (page == 0 & pageSize == 1000) {
     ppage <- ""
     ppageSize <- ""
   }
