@@ -28,7 +28,7 @@ ba_trials <- function(con = NULL,
                       sortBy = "none",
                       sortOrder = "asc",
                       page = 0,
-                      pageSize = 10000,
+                      pageSize = 1000,
                       rclass = "tibble") {
   ba_check(con = con, verbose = FALSE, brapi_calls = "trials")
   stopifnot(is.character(programDbId))
@@ -50,7 +50,7 @@ ba_trials <- function(con = NULL,
   psortOrder <- paste0("sortOrder=", sortOrder, "&")
   ppage <- ifelse(is.numeric(page), paste0("page=", page, ""), "")
   ppageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
-  if (pageSize == 10000) {
+  if (page == 0 & pageSize == 1000) {
     ppage <- ""
     ppageSize <- ""
   }
