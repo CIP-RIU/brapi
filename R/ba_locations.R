@@ -8,7 +8,7 @@
 #' @param rclass character; default: tibble
 #' @param locationType character, list of data types
 #' @param page integer; default 0
-#' @param pageSize integer; default 100
+#' @param pageSize integer; default 1000
 #'
 #' @author Reinhard Simon
 #' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Locations/ListLocations.md}{github}
