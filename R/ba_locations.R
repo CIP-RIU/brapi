@@ -21,7 +21,7 @@
 ba_locations <- function(con = NULL,
                          locationType = "all",
                          page = 0,
-                         pageSize = 100,
+                         pageSize = 1000,
                          rclass = "tibble") {
   ba_check(con = con, verbose = FALSE, brapi_calls = "locations")
   stopifnot(is.character(locationType))
@@ -35,7 +35,7 @@ ba_locations <- function(con = NULL,
   plocationType <- ifelse(locationType != "all", paste0("locationType=", gsub(" ", "%20", locationType), "&"), "")
   ppage <- ifelse(is.numeric(page), paste0("page=", page, "&"), "")
   ppageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
-  if (pageSize == 1e+06) {
+  if (page == 0 & pageSize == 1000) {
     ppage <- ""
     ppageSize <- ""
   }
