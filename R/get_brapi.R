@@ -7,7 +7,7 @@ get_brapi <- function(brapi = NULL) {
   if (brapi$secure) {
     brapi$protocol <- "https://"
   }
-  port <- ifelse(brapi$port == 80 || brapi$port == 8080, "", paste0(":", brapi$port))
+  port <- ifelse(brapi$port == 80, "", paste0(":", brapi$port))
   if (brapi$multicrop) {
     url <- paste0(brapi$protocol, brapi$db, port, brapi$apipath, "/", brapi$crop, "/brapi/v1/")
   } else {
