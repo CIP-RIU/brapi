@@ -8,6 +8,7 @@
 #'
 #' If the brapi_db parameter is used it will override the other parameters; except user, password and session.
 #'
+#'
 #' @param brapiDb brapiDb R object for brapi databases created by as.ba_db [default: NULL]
 #' @param secure logical TRUE/FALSE
 #' @param protocol string; default: http:// (else: https://)
@@ -15,9 +16,9 @@
 #' @param port integer; default: 80
 #' @param apipath character; default NULL
 #' @param multicrop logical; default FALSE
-#' @param crop string; default: ''
-#' @param user string; default: user
-#' @param password string; default: password
+#' @param crop string; default: '' (empty)
+#' @param user string; default: '' (empty)
+#' @param password string; default: '' (empty)
 #' @param token string; default: '' (empty)
 #' @param granttype string
 #' @param clientid string: default: rbrapi
@@ -36,8 +37,8 @@ ba_connect <- function(brapiDb = NULL,
                        apipath = NULL,
                        multicrop = FALSE,
                        crop = "sweetpotato",
-                       user = "user",
-                       password = "password",
+                       user = "",
+                       password = "",
                        token = "",
                        granttype = "password",
                        clientid = "rbrapi",
@@ -86,5 +87,6 @@ ba_connect <- function(brapiDb = NULL,
                   calls = "")
     class(brapi) <- c(class(brapi), "ba", "ba_con")
   }
+
   return(brapi)
 }

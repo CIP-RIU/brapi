@@ -6,8 +6,8 @@
 \usage{
 ba_connect(brapiDb = NULL, secure = FALSE, protocol = "http://",
   db = "127.0.0.1", port = 2021, apipath = NULL, multicrop = FALSE,
-  crop = "sweetpotato", user = "user", password = "password",
-  token = "", granttype = "password", clientid = "rbrapi", bms = FALSE)
+  crop = "sweetpotato", user = "", password = "", token = "",
+  granttype = "password", clientid = "rbrapi", bms = FALSE)
 }
 \arguments{
 \item{brapiDb}{brapiDb R object for brapi databases created by as.ba_db [default: NULL]}
@@ -24,11 +24,11 @@ ba_connect(brapiDb = NULL, secure = FALSE, protocol = "http://",
 
 \item{multicrop}{logical; default FALSE}
 
-\item{crop}{string; default: ''}
+\item{crop}{string; default: '' (empty)}
 
-\item{user}{string; default: user}
+\item{user}{string; default: '' (empty)}
 
-\item{password}{string; default: password}
+\item{password}{string; default: '' (empty)}
 
 \item{token}{string; default: '' (empty)}
 

@@ -39,12 +39,12 @@ See [tutorial](https://github.com/c5sire/brapi/blob/master/inst/doc/tutorial.Rmd
 
 
 Follow the links in the table below or see the inst/apidocs directory for examples: [apidocs](https://github.com/c5sire/brapi/blob/master/inst/apidocs/README.md)
-=======
+
 See the inst/apidocs directory for examples: [apidocs](https://github.com/c5sire/brapi/blob/master/inst/apidocs/README.md)
 
 
 ## Implementation status
-=======
+
 See the inst/apidocs directory for examples: [apidocs](https://github.com/c5sire/brapi/blob/master/inst/apidocs/README.md)
 
 
