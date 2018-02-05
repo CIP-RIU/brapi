@@ -72,7 +72,7 @@ ba_trials <- function(con = NULL,
       out <- dat2tbl(res = res, rclass = rclass)
     }
     if (rclass %in% c("data.frame", "tibble")) {
-      out <- trl2tbl(res = res, rclass = rclass)
+      out <- trl2tbl2(res = res, rclass = rclass)
     }
     class(out) <- c(class(out), "ba_trials")
     return(out)
