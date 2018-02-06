@@ -28,15 +28,20 @@ ba_germplasm_markerprofiles <- function(con = NULL,
     res <- httr::content(x = res, as = "text", encoding = "UTF-8")
     out <- NULL
     ms2tbl <- function(res) {
-      markerProfiles <- NULL
-      res <- res %>%
-             as.character %>%
-             tidyjson::enter_object("result") %>%
-             tidyjson::spread_values(germplasmDbId = tidyjson::jnumber("germplasmDbId")) %>%
-             tidyjson::enter_object("markerProfiles") %>%
-             tidyjson::gather_array %>%
-             tidyjson::append_values_number("markerProfiles") %>%
-             dplyr::select(germplasmDbId, markerProfiles)
+      lst <- tryCatch(
+        jsonlite::fromJSON(txt = res)
+      )
+
+      assertthat::assert_that("result" %in% names(lst), msg = "The json return object lacks a result element.")
+      dat <- jsonlite::toJSON(x = lst$result)
+      df <- jsonlite::fromJSON(txt = dat, simplifyDataFrame = TRUE, flatten = TRUE)
+
+      assertthat::assert_that(all(c("germplasmDbId", "markerprofileDbIds") %in% names(df)),
+                              msg = "The json return object lacks germplasmDbId and markerprofileDbIds.")
+      assertthat::assert_that(length(df$markerprofileDbIds) > 0,
+          "No markerprofileDbIdas")
+      res <-  as.data.frame(cbind(germplasmDbId = rep(df$germplasmDbId, length(df$markerprofileDbIds)),
+                            markerProfiles = df$markerprofileDbIds), stringsAsFactors = FALSE)
       return(res)
     }
     if (rclass %in% c("json", "list")) {
