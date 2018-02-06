@@ -1,78 +1,53 @@
 gp2tbl <- function(res) {
-  germplasmDbId <- NULL
-  defaultDisplayName <- NULL
-  accessionNumber <- NULL
-  germplasmName <- NULL
-  germplasmPUI <- NULL
-  pedigree <- NULL
-  seedSource <- NULL
-  synonyms <- NULL
-  commonCropName <- NULL
-  instituteCode <- NULL
-  instituteName <- NULL
-  biologicalStatusOfAccessionCode <- NULL
-  countryOfOriginCode <- NULL
-  typeOfGermplasmStorageCode <- NULL
-  genus <- NULL
-  species <- NULL
-  speciesAuthority <- NULL
-  subtaxa <- NULL
-  subtaxaAuthority <- NULL
-  donors.donorAccessionNumber <- NULL
-  donors.donorInstituteCode <- NULL
-  donors.germplasmPUI <- NULL
-  acquisitionDate <- NULL
-  donors <- NULL
-  out <- res %>%
-         as.character %>%
-         tidyjson::enter_object("result") %>%
-         tidyjson::enter_object("data") %>%
-         tidyjson::gather_array() %>%
-         tidyjson::spread_values(germplasmDbId = tidyjson::jnumber("germplasmDbId"),
-                                 defaultDisplayName = tidyjson::jstring("defaultDisplayName"),
-                                 accessionNumber = tidyjson::jstring("accessionNumber"),
-                                 germplasmName = tidyjson::jstring("germplasmName"),
-                                 germplasmPUI = tidyjson::jstring("germplasmPUI"),
-                                 pedigree = tidyjson::jstring("pedigree"),
-                                 seedSource = tidyjson::jstring("seedSource"),
-                                 synonyms = tidyjson::jstring("synonyms"),
-                                 commonCropName = tidyjson::jstring("commonCropName"),
-                                 instituteCode = tidyjson::jstring("instituteCode"),
-                                 instituteName = tidyjson::jstring("instituteName"),
-                                 biologicalStatusOfAccessionCode = tidyjson::jnumber("biologicalStatusOfAccessionCode"),
-                                 countryOfOriginCode = tidyjson::jstring("countryOfOriginCode"),
-                                 typeOfGermplasmStorageCode = tidyjson::jnumber("typeOfGermplasmStorageCode"),
-                                 genus = tidyjson::jstring("genus"),
-                                 species = tidyjson::jstring("species"),
-                                 speciesAuthority = tidyjson::jstring("speciesAuthority"),
-                                 subtaxa = tidyjson::jstring("subtaxa"),
-                                 subtaxaAuthority = tidyjson::jstring("subtaxaAuthority"),
-                                 acquisitionDate = tidyjson::jstring("acquisitionDate"),
-                                 donors = tidyjson::jstring("donors")) %>%
-         dplyr::select(germplasmDbId,
-                       defaultDisplayName,
-                       accessionNumber,
-                       germplasmName,
-                       germplasmPUI,
-                       pedigree,
-                       seedSource,
-                       synonyms,
-                       commonCropName,
-                       instituteCode,
-                       instituteName,
-                       biologicalStatusOfAccessionCode,
-                       countryOfOriginCode,
-                       typeOfGermplasmStorageCode,
-                       genus,
-                       species,
-                       speciesAuthority,
-                       subtaxa,
-                       subtaxaAuthority,
-                       donors,
-                       acquisitionDate)
 
-  # workaround for the moment: TODO find better way using tidyjson
-  out$donors = sapply(out$donors, function(x) ifelse(x == "list()", "", paste(x, collapse = ", ")))
-  out$synonyms = sapply(out$synonyms, function(x) ifelse(x == "list()", "", paste(x, collapse = ", ")))
+  lst <- tryCatch(
+    jsonlite::fromJSON(txt = res)
+  )
+
+  assertthat::assert_that("data" %in% names(lst$result), msg = "The json return object lacks a data element.")
+  dat <- jsonlite::toJSON(x = lst$result$data)
+
+  df <- jsonlite::fromJSON(txt = dat, simplifyDataFrame = TRUE, flatten = TRUE)
+  assertthat::validate_that(nrow(df) > 0, msg = "The json return object lacks a data element.")
+
+  # join synonymms, taxonIds, donors
+
+  join_all <- function(dat2) {
+    join_slaves <- function(dat2, slave) {
+      assertthat::validate_that(slave %in% names(dat2),
+                                msg = paste("The json return object lacks a", slave, "element."))
+
+      df2 <- dat2[slave][[1]][[1]]
+      dat2[slave] <- NULL
+      if (!is.data.frame(df2)) return(dat2)
+      #assertthat::validate_that(class(df2) == "data.frame", msg = "The JSON studies element is malformed.")
+
+      #assertthat::validate_that(is.data.frame(df2), msg = "The JSON studies element has no entries.")
+
+
+      df3 <-  dat2[rep(seq_len(nrow(dat2)), each=nrow(df2)),]
+      df <- cbind(df3, df2)
+      row.names(df) <- 1:nrow(df)
+      return(df)
+    }
+
+
+    dat2 <- join_slaves(dat2, "synonyms")
+    dat2 <- join_slaves(dat2, "taxonIds")
+    dat2 <- join_slaves(dat2, "donors")
+    return(dat2)
+  }
+
+
+  out <- join_all(df[1, ])
+
+  n <- nrow(df)
+
+  if(n > 1) {
+    for (i in 2:n) {
+      out <- dplyr::bind_rows(out, join_all(df[i, ]))
+    }
+  }
+
   return(out)
 }

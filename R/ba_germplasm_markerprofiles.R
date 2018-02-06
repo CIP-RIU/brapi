@@ -10,7 +10,6 @@
 #' @example inst/examples/ex-ba_germplasm_markerprofiles.R
 #' @import httr
 #' @import dplyr
-#' @import tidyjson
 #' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Germplasm/GermplasmMarkerprofiles.md}{github}
 #' @family germplasm
 #' @family genotyping

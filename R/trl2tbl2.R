@@ -27,7 +27,7 @@ trl2tbl2 <- function(res, rclass) {
 
   if(n > 1) {
     for (i in 2:n) {
-      out <- dplyr::bind_rows(out, df[i, ])
+      out <- dplyr::bind_rows(out, jointrlstd( df[i, ]))
     }
   }
   out$studies <- NULL
