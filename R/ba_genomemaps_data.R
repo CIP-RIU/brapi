@@ -14,7 +14,6 @@
 #' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/GenomeMaps/GenomeMapData.md}{github}
 #' @return rclass as defined
 #' @import tibble
-#' @import tidyjson
 #' @importFrom magrittr '%>%'
 #' @family genomemaps
 #' @family genotyping

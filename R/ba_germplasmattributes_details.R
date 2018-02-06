@@ -44,29 +44,17 @@ ba_germplasmattributes_details <- function(con = NULL,
     res <- brapiGET(url = germplasm_attributes_list, con = con)
     res <- httr::content(x = res, as = "text", encoding = "UTF-8")
     ms2tbl <- function(res) {
-      attributeDbId <- NULL
-      attributeCode <- NULL
-      attributeName <- NULL
-      value <- NULL
-      dateDetermined <- NULL
-      restbl <- res %>%
-                as.character %>%
-                tidyjson::enter_object("result") %>%
-                tidyjson::spread_values(germplasmDbId = jnumber("germplasmDbId")) %>%
-                tidyjson::enter_object("data") %>%
-                tidyjson::gather_array %>%
-                tidyjson::spread_values(attributeDbId = tidyjson::jnumber("attributeDbId"),
-                                        attributeCode = tidyjson::jstring("attributeCode"),
-                                        attributeName = tidyjson::jstring("attributeName"),
-                                        value = tidyjson::jstring("value"),
-                                        dateDetermined = tidyjson::jstring("dateDetermined")) %>%
-                dplyr::select(germplasmDbId,
-                              attributeDbId,
-                              attributeName,
-                              attributeCode,
-                              value,
-                              dateDetermined)
-      return(restbl)
+      lst <- tryCatch(
+        jsonlite::fromJSON(txt = res)
+      )
+
+      assertthat::assert_that("data" %in% names(lst$result), msg = "The json return object lacks a data element.")
+      dat <- jsonlite::toJSON(x = lst$result$data)
+
+      df <- jsonlite::fromJSON(txt = dat, simplifyDataFrame = TRUE, flatten = TRUE)[[1]]
+      assertthat::validate_that(nrow(df) > 0, msg = "The json return object lacks a data element.")
+
+      return(df)
     }
     if (rclass %in% c("json", "list")) {
       out <- dat2tbl(res = res, rclass = rclass)
