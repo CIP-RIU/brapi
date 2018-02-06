@@ -19,7 +19,7 @@ ba_crops <- function(con = NULL, rclass = "tibble") {
   con$multicrop <- FALSE
   ba_check(con = con, verbose = FALSE, brapi_calls = "crops")
   # generate the brapi call url
-  crops_list <- paste0(get_brapi(brapi = con), "crops")
+  crops_list <- paste0(get_brapi(con = con), "crops")
   rclass <- df2tibble(rclass = rclass)
   out <- try({
     res <- brapiGET(url = crops_list, con = con)

@@ -26,7 +26,7 @@ ba_germplasm_details_study <- function(con = NULL,
   check_paging(pageSize = pageSize, page = page)
   check_rclass(rclass = rclass)
   # fetch url of brapi implementation of the database
-  brp <- get_brapi(brapi = con)
+  brp <- get_brapi(con = con)
   # generate brapi call url
   studies_germplasm_list <- paste0(brp, "studies/", studyDbId, "/germplasm/?")
   page <- ifelse(is.numeric(page), paste0("page=", page), "")

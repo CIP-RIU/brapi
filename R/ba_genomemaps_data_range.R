@@ -39,7 +39,7 @@ ba_genomemaps_data_range <- function(con = NULL,
   check_paging(pageSize = pageSize, page = page)
   check_rclass(rclass = rclass)
   # fetch the url of the brapi implementation of the database
-  brp <- get_brapi(brapi = con)
+  brp <- get_brapi(con = con)
   # generate the brapi call url
   maps_positions_range_list <- paste0(brp, "maps/", mapDbId, "/positions/", linkageGroupId, "/?")
   amin <- ifelse(is.numeric(min), paste0("min=", min, "&"), "")

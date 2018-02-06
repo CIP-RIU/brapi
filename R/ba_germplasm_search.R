@@ -37,7 +37,7 @@ ba_germplasm_search <- function(con = NULL,
   check_paging(pageSize = pageSize, page = page)
   check_rclass(rclass = rclass)
   # fetch the url of the brapi implementation of the database
-  brp <- get_brapi(brapi = con)
+  brp <- get_brapi(con = con)
   # generate the brapi call url
   if (is.numeric(page) & is.numeric(pageSize)) {
     germplasm_search <- paste0(brp, "germplasm-search/?page=", page, "&pageSize=", pageSize)

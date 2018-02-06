@@ -21,7 +21,7 @@ ba_germplasmattributes <- function(con = NULL,
   stopifnot(is.character(attributeCategoryDbId))
   check_rclass(rclass = rclass)
   # fetch the url of the brapi implementation of the database
-  brp <- get_brapi(brapi = con)
+  brp <- get_brapi(con = con)
   # generate the specific brapi call url
   attributes_list <- paste0(brp, "attributes/?attributeCategoryDbId=", attributeCategoryDbId)
   try({

@@ -26,7 +26,7 @@ ba_calls <- function(con = NULL,
   check_rclass(rclass = rclass)
   stopifnot(datatypes %in% c("all", "json", "csv", "tsv"))
   # obtain the brapi url
-  brp <- get_brapi(brapi = con)
+  brp <- get_brapi(con = con)
   # generate the call url
   brapi_calls <- paste0(brp, "calls/?")
   pdatatypes <- ifelse(datatypes == "all", "", paste0("datatypes=", datatypes, "&"))

@@ -14,7 +14,7 @@ ba_db <- function() {
                        port = 48080,
                        apipath = "bmsapi",
                        multicrop = TRUE,
-                       crop = "wheat",
+                       crop = "",
                        user = "",
                        password = "",
                        bms = TRUE)
