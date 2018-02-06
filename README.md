@@ -1,6 +1,4 @@
 
-[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/c5sire/brapi?branch=master&svg=true)](https://ci.appveyor.com/project/c5sire/brapi) [![Travis-CI Build Status](https://travis-ci.org/c5sire/brapi.svg?branch=master)](https://travis-ci.org/c5sire/brapi) [![Coverage Status](https://coveralls.io/repos/github/c5sire/brapi/badge.svg)](https://coveralls.io/github/c5sire/brapi)
-
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 BrAPI R package
 ===============
@@ -29,11 +27,10 @@ Documentation of JSON response/requests
 ---------------------------------------
 
 Follow the links in the table below or see the inst/apidocs directory for examples: [apidocs](https://github.com/c5sire/brapi/blob/master/inst/apidocs/README.md)
-=================================================================================================================================================================
 
 See the inst/apidocs directory for examples: [apidocs](https://github.com/c5sire/brapi/blob/master/inst/apidocs/README.md)
 
-\#\# Implementation status
-==========================
+Implementation status
+---------------------
 
 See the inst/apidocs directory for examples: [apidocs](https://github.com/c5sire/brapi/blob/master/inst/apidocs/README.md)
