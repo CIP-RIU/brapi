@@ -21,7 +21,7 @@ ba_genomemaps_details <- function(con = NULL,
   stopifnot(is.character(mapDbId))
   check_rclass(rclass = rclass)
   # fetch url of brapi implementation of the database
-  brp <- get_brapi(brapi = con)
+  brp <- get_brapi(con = con)
   # generate brapi call url
   maps_list <- paste0(brp, "maps/", mapDbId, "/")
   try({

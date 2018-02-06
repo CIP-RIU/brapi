@@ -29,7 +29,7 @@ ba_genomemaps <- function(con = NULL,
   check_paging(pageSize = pageSize, page = page)
   check_rclass(rclass = rclass)
   # fetch the url of the brapi implementation of the database
-  brp <- get_brapi(brapi = con)
+  brp <- get_brapi(con = con)
   # generate the call url
   genomemaps_list <- paste0(brp, "maps/?")
   species <- ifelse(species != "all", paste0("species=", species, "&"), "")

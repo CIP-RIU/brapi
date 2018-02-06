@@ -31,7 +31,7 @@ ba_genomemaps_data <- function(con = NULL,
   check_paging(pageSize = pageSize, page = page)
   check_rclass(rclass = rclass)
   # fetch the url of the brapi implementation of the database
-  brp <- get_brapi(brapi = con)
+  brp <- get_brapi(con = con)
   # generate the call url
   maps_positions_list <- paste0(brp, "maps/", mapDbId, "/positions/?")
   linkageGroupId <- paste("linkageGroupId=", linkageGroupId, "&", sep = "") %>% paste(collapse = "")

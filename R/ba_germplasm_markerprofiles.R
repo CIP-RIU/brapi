@@ -22,7 +22,7 @@ ba_germplasm_markerprofiles <- function(con = NULL,
   stopifnot(is.character(germplasmDbId))
   check_rclass(rclass = rclass)
   # generate brapi call url
-  germplasm_markerprofiles <- paste0(get_brapi(brapi = con), "germplasm/", germplasmDbId, "/markerprofiles/")
+  germplasm_markerprofiles <- paste0(get_brapi(con = con), "germplasm/", germplasmDbId, "/markerprofiles/")
   try({
     res <- brapiGET(url = germplasm_markerprofiles, con = con)
     res <- httr::content(x = res, as = "text", encoding = "UTF-8")
