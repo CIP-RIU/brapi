@@ -56,6 +56,7 @@ ba_germplasm_markerprofiles <- function(con = NULL,
       out <- ms2tbl(res = res) %>% tibble::as_tibble()
     }
     class(out) <- c(class(out), "ba_germplasm_markerprofiles")
+    show_metadata(con, res)
     return(out)
   })
 }

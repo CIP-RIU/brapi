@@ -38,6 +38,7 @@ ba_studies_observationunits <- function(con = NULL,
       out <- sou2tbl(res = res, rclass = rclass)
     }
     class(out) <- c(class(out), "ba_studies_observationunits")
+    show_metadata(con, res)
     return(out)
   })
 }

@@ -33,6 +33,7 @@ ba_studies_layout <- function(con = NULL,
       out <- lyt2tbl(res = res, rclass = rclass)
     }
     class(out) <- c(class(out), "ba_studies_layout")
+    show_metadata(con, res)
     return(out)
   })
 }

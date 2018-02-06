@@ -74,6 +74,7 @@ ba_trials <- function(con = NULL,
       out <- trl2tbl2(res = res, rclass = rclass)
     }
     class(out) <- c(class(out), "ba_trials")
+    show_metadata(con, res)
     return(out)
   })
 }

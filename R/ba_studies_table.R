@@ -67,6 +67,7 @@ ba_studies_table <- function(con = NULL,
       }
     }
     class(out) <- c(class(out), "ba_studies_table")
+    show_metadata(con, res)
     return(out)
   })
 }

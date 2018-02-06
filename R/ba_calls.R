@@ -52,6 +52,7 @@ ba_calls <- function(con = NULL,
       out$datatypes <- sapply(X = out$datatypes, FUN = paste, collapse = "; ")
     }
     class(out) <- c(class(out), "ba_calls")
+    show_metadata(con, res)
     return(out)
   })
 }

@@ -60,6 +60,8 @@ ba_genomemaps_data_range <- function(con = NULL,
     }
     out <- dat2tbl(res = res, rclass = rclass)
     class(out) <- c(class(out), "ba_genomemaps_data_range")
+
+    show_metadata(con, res)
     return(out)
   })
 }

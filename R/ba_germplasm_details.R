@@ -35,6 +35,8 @@ ba_germplasm_details <- function(con = NULL,
       out <- gp2tbl(res) %>% tibble::as_tibble()
     }
     class(out) <- c(class(out), "ba_germplasm_details")
+
+    show_metadata(con, res)
     return(out)
   })
 }

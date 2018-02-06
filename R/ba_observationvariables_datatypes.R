@@ -27,6 +27,7 @@ ba_observationvariables_datatypes <- function(con = NULL,
       colnames(out) <- "variables_datatypes"
     }
     class(out) <- c(class(out), "ba_observationvariables_datatypes")
+    show_metadata(con, res)
     return(out)
   })
 }

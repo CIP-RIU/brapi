@@ -46,9 +46,11 @@ ba_db <- function() {
                        port = 48080,
                        apipath = "bmsapi",
                        multicrop = TRUE,
-                       crop = "",
+                       crop = "chickpea",
                        user = "",
                        password = "",
+                       granttype = "password",
+                       clientid = "rbrapi",
                        bms = TRUE)
   mgis <- as.ba_db(secure = TRUE,
                    protocol = "https://",

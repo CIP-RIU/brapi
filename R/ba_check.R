@@ -34,6 +34,7 @@ ba_check <- function(con = NULL, verbose = TRUE, brapi_calls = "any") {
     ba_can_internet()
     ba_can_internet(url)
   }
+
   if (verbose) {
     message("BrAPI connection ok.")
     message(paste(con, collapse = "\n"))

@@ -30,6 +30,7 @@ ba_markers_details <- function(con = NULL,
     res <- httr::content(x = res, as = "text", encoding = "UTF-8")
     out <- dat2tbl(res = res , rclass = rclass)
     class(out) <- c(class(out), "ba_markers_details")
+    show_metadata(con, res)
     return(out)
   })
 }

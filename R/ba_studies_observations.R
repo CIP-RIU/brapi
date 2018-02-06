@@ -42,6 +42,7 @@ ba_studies_observations <- function(con = NULL,
       out <- dat2tbl(res = res, rclass = rclass)
     }
     class(out) <- c(class(out), "ba_studies_observations")
+    show_metadata(con, res)
     return(out)
   })
 }

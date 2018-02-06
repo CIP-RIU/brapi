@@ -29,6 +29,7 @@ ba_traits_details <- function(con = NULL,
       out$observationVariables <- sapply(X = out$observationVariables, FUN = paste, collapse = "; ")
     }
     class(out) <- c(class(out), "ba_traits_details")
+    show_metadata(con, res)
     return(out)
   })
 }

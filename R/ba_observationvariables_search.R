@@ -61,6 +61,7 @@ ba_observationvariables_search <- function(con = NULL,
         out <- sov2tbl(res = res, rclass = rclass, variable = TRUE)
       }
       class(out) <- c(class(out), "ba_observationvariables_search")
+      show_metadata(con, res)
       return(out)
     })
 }

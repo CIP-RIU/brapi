@@ -39,6 +39,7 @@ ba_samples <- function(con = NULL,
     if (!is.null(out)) {
       class(out) <- c(class(out), "ba_samples")
     }
+    show_metadata(con, res)
     return(out)
   }, error = function(e) {
     stop(paste0(e, "\n\nMalformed sampleId."))

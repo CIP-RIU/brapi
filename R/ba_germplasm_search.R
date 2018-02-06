@@ -88,5 +88,6 @@ ba_germplasm_search <- function(con = NULL,
       })
   }
   class(out) <- c(class(out), "ba_germplasm_search")
+  show_metadata(con, res)
   return(out)
 }

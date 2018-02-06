@@ -66,6 +66,7 @@ ba_germplasmattributes_details <- function(con = NULL,
       out <- ms2tbl(res = res) %>% tibble::as_tibble()
     }
     class(out) <- c(class(out), "ba_germplasmattributes_details")
+    show_metadata(con, res)
     return(out)
   })
 }

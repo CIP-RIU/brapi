@@ -53,6 +53,8 @@ ba_genomemaps_details <- function(con = NULL,
       attr(out, "metadata") <- as.list(lst$result)
     }
     class(out) <- c(class(out), "ba_genomemaps_details")
+
+    show_metadata(con, res)
     return(out)
   })
 }

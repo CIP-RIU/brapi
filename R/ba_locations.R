@@ -47,8 +47,7 @@ ba_locations <- function(con = NULL,
   try({
     res <- brapiGET(url = locations_list, con = con)
     res <- httr::content(x = res, as = "text", encoding = "UTF-8")
-    pagination <- jsonlite::fromJSON(txt = res,
-                                     simplifyVector = FALSE)$metadata$pagination
+
     out <- NULL
     if (rclass %in% c("json", "list")) {
       out <- dat2tbl(res = res, rclass = rclass)
@@ -59,15 +58,9 @@ ba_locations <- function(con = NULL,
     if (!is.null(out)) {
       class(out) <- c(class(out), "ba_locations")
     }
-    ba_message(msg = paste0("Returning page ",
-                            pagination$currentPage,
-                            " (max. ",
-                            pagination$totalPages - 1,
-                            ") with max. ",
-                            pagination$pageSize,
-                            " locations (out of a total of ",
-                            pagination$totalCount,
-                            ")."))
+
+    show_metadata(con, res)
+
     return(out)
   })
 }

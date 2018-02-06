@@ -65,6 +65,7 @@ ba_markers_search <- function(con = NULL,
     if (rclass == "tibble") {
       out <- tibble::as_tibble(out)
     }
+    show_metadata(con, res)
     class(out) <- c(class(out), "ba_markers_search")
     return(out)
   })

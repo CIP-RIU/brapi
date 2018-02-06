@@ -120,5 +120,6 @@ ba_studies_search <- function(con = NULL,
     })
   }
   class(out) <- c(class(out), "ba_studies_search")
+  show_metadata(con, res)
   return(out)
 }

@@ -64,6 +64,7 @@ ba_markerprofiles_details <- function(con = NULL,
       out <- mpa2tbl(res = res, rclass = rclass)
     }
     class(out) <- c(class(out), "ba_markerprofiles_details")
+    show_metadata(con, res)
     return(out)
   })
 }

@@ -36,6 +36,7 @@ ba_traits <- function(con = NULL,
       }
     }
     class(out) <- c(class(out), "ba_traits")
+    show_metadata(con, res)
     return(out)
   })
 }

@@ -46,6 +46,8 @@ ba_genomemaps_data <- function(con = NULL,
     }
     out <- dat2tbl(res = res, rclass = rclass)
     class(out) <- c(class(out), "ba_genomemaps_data")
-    out
+
+    show_metadata(con, res)
+    return(out)
   })
 }

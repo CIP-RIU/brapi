@@ -101,5 +101,6 @@ ba_markerprofiles_allelematrix_search <- function(con = NULL,
     })
   }
   class(out) <- c(class(out), "ba_markerprofiles_allelematrix_search")
+  show_metadata(con, res)
   return(out)
 }

@@ -44,6 +44,8 @@ ba_germplasm_details_study <- function(con = NULL,
       out <- sgp2tbl(res = res, rclass = rclass)
     }
     class(out) <- c(class(out), "ba_germplasm_details_study")
+
+    show_metadata(con, res)
     return(out)
   })
 }
