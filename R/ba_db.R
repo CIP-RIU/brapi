@@ -140,6 +140,7 @@ ba_db <- function() {
               cassavabase = cassavabase,
               eu_sol = eu_sol,
               germinate_test = germinate,
+              icrisat_prod = icrisat_prod,
               mgis = mgis,
               mockbase = mockbase,
               musabase = musabase,
