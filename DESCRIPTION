@@ -17,5 +17,5 @@ LazyData: true
 RoxygenNote: 6.0.1
 Imports: httr, jsonlite, Rcpp, stringi, stringr, progress, curl, magrittr, tibble,
     dplyr, httpuv, utils,  readr, tidyr, DBI, crayon, assertthat
-Suggests: knitr, rmarkdown, maps, xtable, DT
+Suggests: knitr, rmarkdown, xtable, DT, maps
 VignetteBuilder: knitr
