@@ -40,6 +40,16 @@ ba_db <- function() {
                         multicrop = FALSE,
                         crop = "cactuar",
                         bms = FALSE)
+  icrisat_prod <- as.ba_db(secure = FALSE,
+                       protocol = "http://",
+                       db = "bms.icrisat.org",
+                       port = 48080,
+                       apipath = "bmsapi",
+                       multicrop = TRUE,
+                       crop = "",
+                       user = "",
+                       password = "",
+                       bms = TRUE)
   mgis <- as.ba_db(secure = TRUE,
                    protocol = "https://",
                    db = "www.crop-diversity.org",

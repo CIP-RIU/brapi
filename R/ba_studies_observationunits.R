@@ -35,7 +35,7 @@ ba_studies_observationunits <- function(con = NULL,
       out <- dat2tbl(res = res, rclass = rclass)
     }
     if (rclass %in% c("tibble", "data.frame")) {
-      out <- sou2tbl(res = res, rclass = rclass, observationLevel = observationLevel)
+      out <- sou2tbl(res = res, rclass = rclass)
     }
     class(out) <- c(class(out), "ba_studies_observationunits")
     return(out)
