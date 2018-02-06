@@ -15,8 +15,6 @@
 #' @example inst/examples/ex-ba_locations.R
 #' @return rclass as defined
 #' @import tibble
-#' @import tidyjson
-# @family phenotyping
 #' @export
 ba_locations <- function(con = NULL,
                          locationType = "all",

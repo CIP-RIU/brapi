@@ -12,7 +12,6 @@
 #' @return rclass as defined
 #' @example inst/examples/ex-ba_studies_table.R
 #' @import tibble
-#' @import tidyjson
 #' @import readr
 #' @importFrom utils read.csv read.delim
 #' @family studies

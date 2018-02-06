@@ -9,7 +9,7 @@ ba_studies_details(con = NULL, studiesDbId = "0", rclass = "tibble")
 \arguments{
 \item{con}{brapi connection object}
 
-\item{studiesDbId}{character; default 0; an internal ID for a studies}
+\item{studiesDbId}{character; default 0; an internal ID for a studiess}
 
 \item{rclass}{character; tibble}
 }

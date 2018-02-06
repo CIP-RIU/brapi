@@ -10,7 +10,6 @@
 #' @return rclass as defined
 #' @example inst/examples/ex-ba_observationvariables_datatype.R
 #' @import tibble
-#' @import tidyjson
 #' @family observationvariables
 #' @family brapicore
 #' @export

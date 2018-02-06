@@ -11,7 +11,6 @@
 #' @return rclass as defined
 #' @example inst/examples/ex-ba_trials_details.R
 #' @import tibble
-#' @import tidyjson
 #' @family trials
 #' @family phenotyping
 #' @export

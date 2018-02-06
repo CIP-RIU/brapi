@@ -13,7 +13,6 @@
 #' @return rclass as defined
 #' @example inst/examples/ex-ba_germplasm_details_study.R
 #' @import tibble
-#' @import tidyjson
 #' @family germplasm
 #' @family brapicore
 #' @export

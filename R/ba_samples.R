@@ -11,7 +11,6 @@
 #' @example inst/examples/ex-ba_samples.R
 #' @return rclass as defined
 #' @import tibble
-#' @import tidyjson
 #' @family phenotyping
 #' @export
 ba_samples <- function(con = NULL,

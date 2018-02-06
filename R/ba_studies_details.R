@@ -4,8 +4,7 @@
 #'
 #' @param con brapi connection object
 #' @param rclass character; tibble
-#' @param studiesDbId character; default 0; an internal ID for a studies
-#' @import tidyjson
+#' @param studiesDbId character; default 0; an internal ID for a studiess
 #' @import dplyr
 #' @author Reinhard Simon
 #' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Studies/StudyDetails.md}{github}

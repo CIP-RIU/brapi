@@ -11,7 +11,6 @@
 #' @return boolean
 #' @example inst/examples/ex-ba_studies_table_save.R
 #' @import tibble
-#' @import tidyjson
 #' @family studies
 #' @family phenotyping
 #' @export

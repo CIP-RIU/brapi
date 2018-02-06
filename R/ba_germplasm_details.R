@@ -5,7 +5,6 @@
 #' @param con brapi connection object
 #' @param rclass character; tibble
 #' @param germplasmDbId string; default 0; an internal ID for a germplasm
-#' @import tidyjson
 #' @import dplyr
 #' @author Reinhard Simon
 #' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Germplasm/GermplasmDetailsByGermplasmDbId.md}{github}

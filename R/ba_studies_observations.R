@@ -14,7 +14,6 @@
 #' @return rclass as defined
 #' @example inst/examples/ex-ba_studies_observations.R
 #' @import tibble
-#' @import tidyjson
 #' @family studies
 #' @family phenotyping
 #' @export

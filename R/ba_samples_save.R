@@ -9,8 +9,6 @@
 #' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Samples/TakeASample.md}{github}
 #' @example inst/examples/ex-ba_samples_save.R
 #' @return character a unique sample ID assigned by the server
-
-#' @import tidyjson
 #' @family phenotyping
 #' @export
 ba_samples_save <- function(con = NULL,
