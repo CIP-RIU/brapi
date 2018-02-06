@@ -29,7 +29,7 @@ ba_programs <- function(con = NULL,
   stopifnot(is.character(abbreviation))
   check_paging(pageSize = pageSize, page = page)
   check_rclass(rclass = rclass)
-  brp <- get_brapi(brapi = con)
+  brp <- get_brapi(con = con)
   # pprograms <- paste0(brp, "programs/?") # TO BE CONSIDERED v2
   pprograms <- paste0(brp, "programs?")
   pprogramName <- ifelse(programName != "any", paste0("programName=", gsub(" ", "%20", programName), "&"), "")

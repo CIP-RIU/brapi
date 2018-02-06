@@ -28,7 +28,7 @@ ba_studies_observations <- function(con = NULL,
   stopifnot(is.character(observationVariableDbId))
   check_paging(pageSize = pageSize, page = page)
   check_rclass(rclass = rclass)
-  brp <- get_brapi(brapi = con)
+  brp <- get_brapi(con = con)
   studies_observations_list <- paste0(brp, "studies/", studyDbId, "/observations/?")
   observationVariableDbId <- paste0("observationVariableDbIds=", paste(observationVariableDbId, collapse = ","), "&")
   page <- ifelse(is.numeric(page), paste0("page=", page), "")

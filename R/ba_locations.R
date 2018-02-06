@@ -26,7 +26,7 @@ ba_locations <- function(con = NULL,
   check_paging(pageSize = pageSize, page = page)
   check_rclass(rclass = rclass)
   # fetch the url of the brapi implementation of the database
-  brp <- get_brapi(brapi = con)
+  brp <- get_brapi(con = con)
   # generate the brapi call specific url
   # locations_list <- paste0(brp, "locations/?") # TO BE CONSIDERED FOR VERSION 2
   locations_list <- paste0(brp, "locations?")

@@ -20,7 +20,7 @@ ba_studies_layout <- function(con = NULL,
   ba_check(con = con, verbose =  FALSE, brapi_calls = "studies/id/layout")
   stopifnot(is.character(studyDbId))
   check_rclass(rclass = rclass)
-  brp <- get_brapi(brapi = con)
+  brp <- get_brapi(con = con)
   studies_layout_list <- paste0(brp, "studies/", studyDbId, "/layout/")
   try({
     res <- brapiGET(url = studies_layout_list, con = con)

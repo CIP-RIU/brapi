@@ -23,7 +23,7 @@ ba_studies_observationunits <- function(con = NULL,
   stopifnot(is.character(studyDbId))
   stopifnot(observationLevel %in% c("plot", "plant"))
   check_rclass(rclass = rclass)
-  brp <- get_brapi(brapi = con)
+  brp <- get_brapi(con = con)
   studies_observationunits_list <- paste0(brp, "studies/", studyDbId, "/observationunits/?")
   observationLevel <- ifelse(observationLevel == "plant", "observationLevel=plant", "observationLevel=plot")
   studies_observationunits_list <- paste0(studies_observationunits_list, observationLevel)

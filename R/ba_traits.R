@@ -21,7 +21,7 @@ ba_traits <- function(con = NULL,
   ba_check(con = con, verbose = FALSE, brapi_calls = "traits")
   check_paging(pageSize = pageSize, page = page)
   check_rclass(rclass = rclass)
-  brp <- get_brapi(brapi = con)
+  brp <- get_brapi(con = con)
   traits <- paste0(brp, "traits/?")
   ppage <- paste0("page=", page, "")
   ppageSize <- paste0("pageSize=", pageSize, "&")

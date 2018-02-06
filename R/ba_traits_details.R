@@ -19,7 +19,7 @@ ba_traits_details <- function(con = NULL,
   ba_check(con = con, verbose = FALSE, brapi_calls = "traits")
   stopifnot(is.character(traitDbId))
   check_rclass(rclass = rclass)
-  brp <- get_brapi(brapi = con)
+  brp <- get_brapi(con = con)
   traits <- paste0(brp, "traits/", traitDbId)
   try({
     res <- brapiGET(url = traits, con = con)

@@ -33,7 +33,7 @@ ba_programs_search <- function(con = NULL,
   stopifnot(is.character(leadPerson))
   check_rclass(rclass)
   # fetch url of the brapi implementation of the database
-  brp <- get_brapi(brapi = con)
+  brp <- get_brapi(con = con)
   # generate specific brapi call url
   pprograms <- paste0(brp, "programs-search/")
   try({

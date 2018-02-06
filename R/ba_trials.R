@@ -37,7 +37,7 @@ ba_trials <- function(con = NULL,
   stopifnot(is.character(sortOrder))
   check_paging(pageSize = pageSize, page = page)
   check_rclass(rclass = rclass)
-  brp <- get_brapi(brapi = con)
+  brp <- get_brapi(con = con)
   # ptrials <- paste0(brp, "trials/?") # TO BE CONSIDERED FOR VERSION 2
   ptrials <- paste0(brp, "trials?")
   pprogramDbId <- ifelse(programDbId != "any", paste0("programDbId=", programDbId, "&"), "")

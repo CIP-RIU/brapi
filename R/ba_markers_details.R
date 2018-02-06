@@ -23,7 +23,7 @@ ba_markers_details <- function(con = NULL,
   ba_check(con = con, verbose = FALSE, brapi_calls = "markers/id")
   stopifnot(is.character(markerDbId))
   check_rclass(rclass = rclass)
-  brp <- get_brapi(brapi = con)
+  brp <- get_brapi(con = con)
   markers <- paste0(brp, "markers/", markerDbId)
   try({
     res <- brapiGET(url = markers, con = con)

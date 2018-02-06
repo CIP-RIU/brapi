@@ -43,7 +43,7 @@ ba_phenotypes_search <- function(con = NULL,
   stopifnot(is.character(observationLevel))
   check_paging(pageSize = pageSize, page = page)
   check_rclass(rclass = rclass)
-  brp <- get_brapi(brapi = con)
+  brp <- get_brapi(con = con)
   pvariables <- paste0(brp, "phenotypes-search/")
   try({
     body <- list(germplasmDbIds = germplasmDbIds,

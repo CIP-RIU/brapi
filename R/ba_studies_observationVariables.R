@@ -20,7 +20,7 @@ ba_studies_observationvariables <- function(con = NULL,
   ba_check(con = con, verbose = FALSE, brapi_calls = "studies/id/observationVariables")
   stopifnot(is.character(studyDbId))
   check_rclass(rclass = rclass)
-  brp <- get_brapi(brapi = con)
+  brp <- get_brapi(con = con)
   studies_observationVariables_list <- paste0(brp, "studies/", studyDbId, "/observationVariables/?")
   try({
     res <- brapiGET(url = studies_observationVariables_list, con = con)

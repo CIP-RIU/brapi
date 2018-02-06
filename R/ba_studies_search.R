@@ -37,7 +37,7 @@ ba_studies_search <- function(con = NULL,
                               pageSize = 1000,
                               rclass = "tibble") {
   ba_check(con = con, verbose = FALSE, brapi_calls = "studies-search")
-  brp <- get_brapi(brapi = con)
+  brp <- get_brapi(con = con)
   stopifnot(is.character(studyType))
   stopifnot(is.character(programDbId))
   stopifnot(is.character(locationDbId))

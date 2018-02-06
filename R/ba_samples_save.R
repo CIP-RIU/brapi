@@ -16,7 +16,7 @@ ba_samples_save <- function(con = NULL,
   ba_check(con = con, verbose = FALSE, brapi_calls = "samples")
   stopifnot(is.list(sampleData))
   stopifnot(all(c("plotId", "plantId", "takenBy", "sampleDate", "sampleType", "tissueType", "notes") %in% names(sampleData)))
-  brp <- get_brapi(brapi = con)
+  brp <- get_brapi(con = con)
   call_samples <- paste0(brp, "samples/")
   try({
     res <- brapiPUT(url = call_samples, body = sampleData, con = con)

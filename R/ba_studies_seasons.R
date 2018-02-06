@@ -21,7 +21,7 @@ ba_studies_seasons <- function(con = NULL,
                                pageSize = 1000,
                                rclass = "tibble") {
   ba_check(con = con, verbose = FALSE, brapi_calls = "seasons")
-  brp <- get_brapi(brapi = con)
+  brp <- get_brapi(con = con)
   stopifnot(is.numeric(year))
   check_paging(pageSize = pageSize, page = page)
   check_rclass(rclass = rclass)

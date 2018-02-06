@@ -22,7 +22,7 @@ ba_studies_studytypes <- function(con = NULL,
   ba_check(con = con, verbose = FALSE, brapi_calls = "studyTypes")
   check_paging(pageSize = pageSize, page = page)
   check_rclass(rclass = rclass)
-  brp <- get_brapi(brapi = con)
+  brp <- get_brapi(con = con)
   pstudyTypes <- paste0(brp, "studyTypes/?")
   page <- ifelse(is.numeric(page), paste0("page=", page, "&"), "")
   pageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")

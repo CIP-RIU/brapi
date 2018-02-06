@@ -51,7 +51,7 @@ ba_markerprofiles_allelematrix_search <- function(con = NULL,
   check_paging(pageSize = pageSize, page = page)
   check_rclass(rclass = rclass)
   # fetch the url of the brapi implementation of the database
-  brp <- get_brapi(brapi = con)
+  brp <- get_brapi(con = con)
   # generate the brapi call specific url
   pallelematrix_search <- paste0(brp, "allelematrix-search/?")
   pmarkerprofileDbId <- paste0("markerprofileDbId=", markerprofileDbId, "&") %>% paste(collapse = "")

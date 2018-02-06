@@ -21,7 +21,7 @@ ba_observationvariables_ontologies <- function(con = NULL,
   ba_check(con = con, verbose = FALSE, brapi_calls = "ontologies")
   check_paging(pageSize = pageSize, page = page)
   check_rclass(rclass = rclass)
-  brp <- get_brapi(brapi = con)
+  brp <- get_brapi(con = con)
   variables_ontologies <- paste0(brp, "ontologies/?")
   ppage <- paste0("page=", page, "")
   ppageSize <- paste0("pageSize=", pageSize, "&")

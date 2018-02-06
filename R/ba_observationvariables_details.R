@@ -20,7 +20,7 @@ ba_observationvariables_details <- function(con = NULL,
   ba_check(con = con, verbose = FALSE, brapi_calls = "variables/id")
   stopifnot(is.character(observationVariableDbId))
   check_rclass(rclass = rclass)
-  brp <- get_brapi(brapi = con)
+  brp <- get_brapi(con = con)
   brapi_variables_details <- paste0(brp, "variables/", observationVariableDbId)
   try({
     res <- brapiGET(url = brapi_variables_details, con = con)

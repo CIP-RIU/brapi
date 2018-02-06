@@ -20,7 +20,7 @@ ba_studies_details <- function(con = NULL,
   ba_check(con = con, verbose = FALSE, brapi_calls = "studies/id")
   stopifnot(is.character(studiesDbId))
   check_rclass(rclass = rclass)
-  studies <- paste0(get_brapi(brapi = con), "studies/", studiesDbId, "/")
+  studies <- paste0(get_brapi(con = con), "studies/", studiesDbId, "/")
   try({
     res <- brapiGET(url = studies, con = con)
     out <- NULL

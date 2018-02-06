@@ -1,5 +1,5 @@
 ## ---- message=TRUE, warning=TRUE-----------------------------------------
-#library(DT)
+
 library(brapi)
 
 white_list <- ba_db()

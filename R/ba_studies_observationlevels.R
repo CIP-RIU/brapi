@@ -19,7 +19,7 @@ ba_studies_observationlevels <- function(con = NULL,
                                          rclass = "vector") {
   ba_check(con = con, verbose = FALSE, brapi_calls = "observationLevels")
   check_rclass(rclass = rclass)
-  observationLevels_List <- paste0(get_brapi(brapi = con), "observationLevels")
+  observationLevels_List <- paste0(get_brapi(con = con), "observationLevels")
   try({
     res <- brapiGET(url = observationLevels_List, con = con)
     res <- httr::content(x = res, as = "text", encoding = "UTF-8")

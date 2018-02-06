@@ -17,7 +17,7 @@ ba_observationvariables_datatypes <- function(con = NULL,
                                               rclass = "tibble") {
   ba_check(con = con, verbose = FALSE, brapi_calls = "variables/datatypes")
   check_rclass(rclass = rclass)
-  brp <- get_brapi(brapi = con)
+  brp <- get_brapi(con = con)
   variables_datatypes_list <- paste0(brp, "variables/datatypes/")
   try({
     res <- brapiGET(url = variables_datatypes_list, con = con)

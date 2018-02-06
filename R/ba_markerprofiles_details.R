@@ -39,7 +39,7 @@ ba_markerprofiles_details <- function(con = NULL,
   stopifnot(is.character(sepUnphased))
   check_paging(pageSize = pageSize, page = page)
   check_rclass(rclass = rclass)
-  brp <- get_brapi(brapi = con)
+  brp <- get_brapi(con = con)
   markerprofiles_alleles <- paste0(brp, "markerprofiles/", markerprofilesDbId, "/?")
   expandHomozygotes <- ifelse(expandHomozygotes != "", paste0("expandHomozygotes=", expandHomozygotes, "&"), "")
   sepPhased <- ifelse(sepPhased != "", paste0("sepPhased=", sepPhased, "&"), "")

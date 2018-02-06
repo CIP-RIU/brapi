@@ -20,7 +20,7 @@ ba_samples <- function(con = NULL,
   stopifnot(is.character(sampleId))
   stopifnot(sampleId != "")
   check_rclass(rclass = rclass)
-  brp <- get_brapi(brapi = con)
+  brp <- get_brapi(con = con)
   call_samples <- paste0(brp, "samples/", sampleId)
   tryCatch({
     res <- brapiGET(url = call_samples, con = con)

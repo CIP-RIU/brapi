@@ -37,7 +37,7 @@ ba_markers_search <- function(con = NULL,
   stopifnot(include == "synonyms")
   check_paging(pageSize = pageSize, page = page)
   check_rclass(rclass = rclass)
-  brp <- get_brapi(brapi = con)
+  brp <- get_brapi(con = con)
   marker_search <- paste0(brp, "markers/?")
   page <- ifelse(is.numeric(page), paste0("page=", page, "&"), "")
   pageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")

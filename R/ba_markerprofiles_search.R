@@ -39,7 +39,7 @@ ba_markerprofiles_search <- function(con = NULL,
   stopifnot(is.character(methodDbId))
   check_paging(pageSize = pageSize, page = page)
   check_rclass(rclass = rclass)
-  brp <- get_brapi(brapi = con)
+  brp <- get_brapi(con = con)
   pmarkerprofiles <- paste0(brp, "markerprofiles/?")
   pgermplasmDbId <- paste0("germplasm=", germplasmDbId, "&") %>% paste(collapse = "")
   pextractDbId <- paste0("extract=", extractDbId, "&") %>% paste(collapse = "")

@@ -20,7 +20,7 @@ ba_studies_table_save <- function(con = NULL,
   ba_check(con = con, verbose = FALSE, brapi_calls = "studies/id/table")
   stopifnot(is.character(studyDbId))
   stopifnot(is.data.frame(study_table))
-  brp <- get_brapi(brapi = con)
+  brp <- get_brapi(con = con)
   studies_table <- paste0(brp, "studies/", studyDbId, "/table/")
   try({
     metadata <- list(pagination = list(pageSize = 0, currentPage = 0, totalCount = 0, totalPages = 0),

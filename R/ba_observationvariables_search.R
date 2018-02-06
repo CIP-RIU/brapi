@@ -41,7 +41,7 @@ ba_observationvariables_search <- function(con = NULL,
     stopifnot(is.character(datatypes))
     stopifnot(is.character(traitClasses))
     check_rclass(rclass = rclass)
-    brp <- get_brapi(brapi = con)
+    brp <- get_brapi(con = con)
     pvariables <- paste0(brp, "variables-search/")
     try({
       res <- brapiPOST(pvariables, body, con = con)

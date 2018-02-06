@@ -55,7 +55,7 @@ ba_studies_observationunits_save <- function(con = NULL,
               result = list(transactionDbId = transactionDbId,
                             commit = tolower(as.character(commit)),
                             data = obs))
-  brp <- get_brapi(brapi = con)
+  brp <- get_brapi(con = con)
   call_samples <- paste0(brp, "studies/", studyDbId, "/observationunits?observationLevel=", observationLevel)
   try({
     brapiPOST(url = call_samples, body = dat, con = con)

@@ -26,7 +26,7 @@ ba_observationvariables <- function(con = NULL,
   stopifnot(is.character(traitClass))
   check_paging(pageSize = pageSize, page = page)
   check_rclass(rclass = rclass)
-  brp <- get_brapi(brapi = con)
+  brp <- get_brapi(con = con)
   brapi_variables <- paste0(brp, "variables/?")
   ptraitClass <- paste0("traitClass=", traitClass, "&")
   ppage <- paste0("page=", page, "")
