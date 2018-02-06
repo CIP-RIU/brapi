@@ -23,7 +23,10 @@ ba_studies_table_save <- function(con = NULL,
   brp <- get_brapi(con = con)
   studies_table <- paste0(brp, "studies/", studyDbId, "/table/")
   try({
-    metadata <- list(pagination = list(pageSize = 0, currentPage = 0, totalCount = 0, totalPages = 0),
+    metadata <- list(pagination = list(pageSize = 0,
+                                       currentPage = 0,
+                                       totalCount = 0,
+                                       totalPages = 0),
                      status = list(),
                      datafiles = list())
     result <- list(headerRow = colnames(study_table),
@@ -32,7 +35,9 @@ ba_studies_table_save <- function(con = NULL,
     req <- list(metadata = metadata, result = result)
     dat <- jsonlite::toJSON(x = req, pretty = TRUE)
     ba_message(msg = dat)
-    brapiPOST(url = studies_table, body = dat, con = con)
+    brapiPOST(url = studies_table,
+              body = dat,
+              con = con)
     return(invisible(TRUE))
   })
 }
