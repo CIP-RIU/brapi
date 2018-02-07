@@ -4,12 +4,12 @@
 \alias{ba_studies_details}
 \title{ba_studies_details}
 \usage{
-ba_studies_details(con = NULL, studiesDbId = "0", rclass = "tibble")
+ba_studies_details(con = NULL, studyDbId = "0", rclass = "tibble")
 }
 \arguments{
 \item{con}{brapi connection object}
 
-\item{studiesDbId}{character; default 0; an internal ID for a studiess}
+\item{studyDbId}{character; default 0; an internal ID for a study}
 
 \item{rclass}{character; tibble}
 }
@@ -62,5 +62,5 @@ Other phenotyping: \code{\link{ba_samples_save}},
   \code{\link{ba_trials_details}}, \code{\link{ba_trials}}
 }
 \author{
-Reinhard Simon
+Reinhard Simon, Maikel Verouden
 }

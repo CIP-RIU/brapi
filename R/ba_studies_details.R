@@ -4,9 +4,9 @@
 #'
 #' @param con brapi connection object
 #' @param rclass character; tibble
-#' @param studiesDbId character; default 0; an internal ID for a studiess
+#' @param studyDbId character; default 0; an internal ID for a study
 #' @import dplyr
-#' @author Reinhard Simon
+#' @author Reinhard Simon, Maikel Verouden
 #' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Studies/StudyDetails.md}{github}
 #' @return data.frame
 #' @example inst/examples/ex-ba_studies_details.R
@@ -14,17 +14,19 @@
 #' @family phenotyping
 #' @export
 ba_studies_details <- function(con = NULL,
-                               studiesDbId = "0",
+                               studyDbId = "0",
                                rclass = "tibble") {
-
   ba_check(con = con, verbose = FALSE, brapi_calls = "studies/id")
-  stopifnot(is.character(studiesDbId))
+  stopifnot(is.character(studyDbId))
   check_rclass(rclass = rclass)
-  studies <- paste0(get_brapi(con = con), "studies/", studiesDbId, "/")
+  brp <- get_brapi(con = con)
+  studies <- sub("[/?&]$",
+                 "",
+                 paste0(brp, "studies/", studyDbId, "/"))
   try({
     res <- brapiGET(url = studies, con = con)
     out <- NULL
-    if (is.ba_status_ok(res)) {
+    if (is.ba_status_ok(resp = res)) {
       res <- httr::content(x = res, as = "text", encoding = "UTF-8")
       if (rclass %in% c("json", "list")) {
         out <- dat2tbl(res = res, rclass = rclass)
@@ -34,7 +36,7 @@ ba_studies_details <- function(con = NULL,
       }
       class(out) <- c(class(out), "ba_studies_details")
     }
-    show_metadata(con, res)
+    #show_metadata(con, res)
     return(out)
   })
 }
