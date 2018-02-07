@@ -23,6 +23,9 @@ if (interactive()) {
 
 }
 }
+\author{
+Reinhard Simon
+}
 \seealso{
 Other brapiutils: \code{\link{as.ba_db}},
   \code{\link{ba_can_internet}},
@@ -37,6 +40,4 @@ Other brapiutils: \code{\link{as.ba_db}},
   \code{\link{print.ba_con}},
   \code{\link{print.ba_db_list}}
 }
-\author{
-Reinhard Simon
-}
+

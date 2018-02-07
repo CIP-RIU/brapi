@@ -33,15 +33,13 @@ if (interactive()) {
 
 }
 }
+\author{
+Reinhard Simon
+}
 \references{
 \href{https://github.com/plantbreeding/API/blob/master/Specification/Germplasm/GermplasmPedigree.md}{github}
 }
 \seealso{
-Other germplasm: \code{\link{ba_germplasm_details_study}},
-  \code{\link{ba_germplasm_details}},
-  \code{\link{ba_germplasm_markerprofiles}},
-  \code{\link{ba_germplasm_search}}
-
 Other brapicore: \code{\link{ba_calls}},
   \code{\link{ba_crops}},
   \code{\link{ba_germplasm_details_study}},
@@ -56,7 +54,10 @@ Other brapicore: \code{\link{ba_calls}},
   \code{\link{ba_programs_search}},
   \code{\link{ba_programs}},
   \code{\link{ba_traits_details}}, \code{\link{ba_traits}}
+
+Other germplasm: \code{\link{ba_germplasm_details_study}},
+  \code{\link{ba_germplasm_details}},
+  \code{\link{ba_germplasm_markerprofiles}},
+  \code{\link{ba_germplasm_search}}
 }
-\author{
-Reinhard Simon
-}
+

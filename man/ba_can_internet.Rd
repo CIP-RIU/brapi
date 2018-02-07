@@ -45,3 +45,4 @@ Other brapiutils: \code{\link{as.ba_db}},
   \code{\link{print.ba_con}},
   \code{\link{print.ba_db_list}}
 }
+

@@ -30,12 +30,13 @@ if (interactive()) {
   # ba_trials_details(con = con, ...)
 }
 }
+\author{
+Reinhard Simon
+}
 \references{
 \url{https://github.com/plantbreeding/API/blob/master/Specification/Trials/GetTrialById.md}(github)
 }
 \seealso{
-Other trials: \code{\link{ba_trials}}
-
 Other phenotyping: \code{\link{ba_samples_save}},
   \code{\link{ba_samples}},
   \code{\link{ba_studies_details}},
@@ -50,7 +51,7 @@ Other phenotyping: \code{\link{ba_samples_save}},
   \code{\link{ba_studies_studytypes}},
   \code{\link{ba_studies_table_save}},
   \code{\link{ba_studies_table}}, \code{\link{ba_trials}}
+
+Other trials: \code{\link{ba_trials}}
 }
-\author{
-Reinhard Simon
-}
+

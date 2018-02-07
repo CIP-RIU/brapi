@@ -30,12 +30,13 @@ if (interactive()) {
   # ba_markers_details(con = con, ...)
 }
 }
+\author{
+Reinhard Simon
+}
 \references{
 \href{https://github.com/plantbreeding/API/blob/master/Specification/Markers/MarkerDetailsByMarkerDbId.md}{github}
 }
 \seealso{
-Other markers: \code{\link{ba_markers_search}}
-
 Other genotyping: \code{\link{ba_genomemaps_data_range}},
   \code{\link{ba_genomemaps_data}},
   \code{\link{ba_genomemaps_details}},
@@ -49,7 +50,7 @@ Other genotyping: \code{\link{ba_genomemaps_data_range}},
   \code{\link{ba_markerprofiles_details}},
   \code{\link{ba_markerprofiles_search}},
   \code{\link{ba_markers_search}}
+
+Other markers: \code{\link{ba_markers_search}}
 }
-\author{
-Reinhard Simon
-}
+

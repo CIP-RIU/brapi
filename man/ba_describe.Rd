@@ -27,6 +27,9 @@ if (interactive()) {
   lcs \%>\% ba_describe
 }
 }
+\author{
+Reinhard Simon
+}
 \seealso{
 Other brapiutils: \code{\link{as.ba_db}},
   \code{\link{ba_can_internet}},
@@ -40,6 +43,4 @@ Other brapiutils: \code{\link{as.ba_db}},
   \code{\link{is.ba_con}}, \code{\link{print.ba_con}},
   \code{\link{print.ba_db_list}}
 }
-\author{
-Reinhard Simon
-}
+
