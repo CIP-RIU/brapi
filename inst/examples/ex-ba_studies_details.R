@@ -1,10 +1,10 @@
 if (interactive()) {
   library(brapi)
 
-  # make sure brapiTS::mock_server() is running in a separate process
+  # Need to connect to a database with genetic data
 
-  con <- ba_connect()
+  # con <- ba_db()$xxxxx
 
-  ba_studies_details(con, studiesDbId = "1")
+  # ba_studies_details(con = con, ...)
 
 }

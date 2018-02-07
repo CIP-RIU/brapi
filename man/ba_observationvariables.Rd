@@ -27,14 +27,12 @@ lists brapi_variables available on a brapi server
 \examples{
 if (interactive()) {
   library(brapi)
-  library(magrittr)
 
-  # make sure brapiTS::mock_server() is running in a separate process
+  # Need to connect to a database with genetic data
 
-  con <- ba_connect()
+  # con <- ba_db()$xxxxx
 
-  ba_observationvariables(con)
-
+  # ba_observationvariables(con = con, ...)
 }
 }
 \references{

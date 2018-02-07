@@ -19,9 +19,9 @@ if (interactive()) {
   library(brapi)
   library(magrittr)
 
-  # make sure brapiTS::mock_server() is running in a separate process
+  ba_can_internet()
 
-  con <- ba_connect()
+  con <- ba_db()$sweetpotatobase
 
   lcs <- ba_locations(con)
   lcs \%>\% ba_describe

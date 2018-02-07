@@ -36,14 +36,12 @@ Lists markers as result of a search.
 \examples{
 if (interactive()) {
   library(brapi)
-  library(magrittr)
 
-  # make sure brapiTS::mock_server() is running in a separate process
+  # Need to connect to a database with genetic data
 
-  con <- ba_connect()
+  # con <- ba_db()$xxxxx
 
-  ba_markerprofiles_details(con, "3")
-
+  # ba_markerprofiles_details(con = con, ...)
 }
 }
 \references{

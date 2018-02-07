@@ -19,14 +19,15 @@ if (interactive()) {
   library(brapi)
   library(magrittr)
 
-  # make sure brapiTS::mock_server() is running in a separate process
+  # Need to connect to a database with genetic data
 
-  con <- ba_connect()
+  # con <- ba_db()$xxxxx
 
-  gmd <- ba_genomemaps_details(con, mapDbId = "1")
-  gmd \%>\% ba_chart
+  # gmd <- ba_genome_maps_details(con = con, ...)
 
-  dev.off()
+  # gmd \%>\% ba_chart
+
+  # dev.off()
 }
 }
 \seealso{

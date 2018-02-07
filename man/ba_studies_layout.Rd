@@ -23,13 +23,11 @@ lists studies_layout available on a brapi server
 if (interactive()) {
   library(brapi)
 
+  # Need to connect to a database with genetic data
 
-  # make sure brapiTS::mock_server() is running in a separate process
+  # con <- ba_db()$xxxxx
 
-  con <- ba_connect()
-
-  ba_studies_layout(con, studyDbId = "1")
-
+  # ba_studies_layout(con = con, ...)
 }
 }
 \references{

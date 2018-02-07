@@ -23,14 +23,11 @@ Gets minimal marker profile data from database using database internal id
 \examples{
 if (interactive()) {
   library(brapi)
-  library(magrittr)
+  # Need to connect to a database with genetic data
 
-  # make sure brapiTS::mock_server() is running in a separate process
+  # con <- ba_db()$xxxxx
 
-  con <- ba_connect()
-
-  ba_germplasm_markerprofiles(con)
-
+  # ba_germplasm_markerprofiles(con = con, ...)
 }
 }
 \references{

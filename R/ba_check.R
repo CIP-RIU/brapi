@@ -28,7 +28,7 @@ ba_check <- function(con = NULL, verbose = TRUE, brapi_calls = "any") {
       httr::GET(url = url)$status_code
     })
     if (status == 600) {
-      stop("Cannot connect to mock server. Use other connection details or start the mock server.")
+      stop("Cannot connect to server. Use other connection details.")
     }
   } else {
     ba_can_internet()

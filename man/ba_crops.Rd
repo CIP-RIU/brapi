@@ -19,8 +19,13 @@ lists crops available in a database
 }
 \examples{
 if (interactive()) {
-      con <- ba_connect()
-      ba_crops(con)
+  library(brapi)
+
+  # Need to connect to a database with genetic data
+
+  # con <- ba_db()$xxxxx
+
+  # ba_crops(con = con, ...)
 }
 }
 \references{

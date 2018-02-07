@@ -3,16 +3,14 @@ if (interactive()) {
   library(magrittr)
   library(maps)
 
-  # make sure brapiTS::mock_server() is running in a separate process
+  library(brapi)
 
-  con <- ba_connect()
+  # Need to connect to a database with genetic data
 
-  # Example 1
-  bl <- ba_locations(con)
-  bl %>% ba_chart()
-  dev.off()
+  # con <- ba_db()$xxxxx
 
-  # Example 2
-  bl %>% ba_chart(chart_type = "map")
-  dev.off()
+  # bbl <- ba_locations(con = con, ...)
+
+  # ba_chart(bbl)
+  # dev.off()
 }

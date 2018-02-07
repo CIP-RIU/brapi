@@ -23,14 +23,11 @@ germplasmattributes call.
 \examples{
 if (interactive()) {
   library(brapi)
-  library(magrittr)
+  # Need to connect to a database with genetic data
 
-  # make sure brapiTS::mock_server() is running in a separate process
+  # con <- ba_db()$xxxxx
 
-  con <- ba_connect()
-
-  ba_germplasmattributes(con)
-
+  # ba_germplasmattributes(con = con, ...)
 }
 }
 \references{

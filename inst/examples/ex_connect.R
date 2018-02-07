@@ -1,4 +1,9 @@
 if (interactive()) {
-      con <- ba_connect()
-      con
+  library(brapi)
+
+  # Need to connect to a database with genetic data
+
+  # con <- ba_db()$xxxxx
+
+  # ba_connect(con = con, ...)
 }
