@@ -53,8 +53,13 @@ If the brapi_db parameter is used it will override the other parameters; except 
 }
 \examples{
 if (interactive()) {
-      con <- ba_connect()
-      con
+  library(brapi)
+
+  # Need to connect to a database with genetic data
+
+  # con <- ba_db()$xxxxx
+
+  # ba_connect(con = con, ...)
 }
 }
 \seealso{

@@ -25,12 +25,11 @@ lists brapi_traits available on a brapi server
 if (interactive()) {
   library(brapi)
 
-  # make sure brapiTS::mock_server() is running in a separate process
+  # Need to connect to a database with genetic data
 
-  con <- ba_connect()
+  # con <- ba_db()$xxxxx
 
-  ba_traits(con)
-
+  # ba_traitscon = con, ...)
 }
 }
 \references{

@@ -28,8 +28,11 @@ lists calls available on a brapi server
 if (interactive()) {
   library(brapi)
 
-  con <- ba_connect()
-  ba_calls(con)
+  # Need to connect to a database with genetic data
+
+  # con <- ba_db()$xxxxx
+
+  # ba_calls(con = con, ...)
 }
 }
 \references{

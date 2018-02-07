@@ -20,13 +20,12 @@ lists variables_datatypes available on a brapi server
 \examples{
 if (interactive()) {
   library(brapi)
-  library(magrittr)
 
-  # make sure brapiTS::mock_server() is running in a separate process
+  # Need to connect to a database with genetic data
 
-  con <- ba_connect()
+  # con <- ba_db()$xxxxx
 
-  ba_observationvariables_datatypes(con)
+  # ba_observationvariables_datatype(con = con, ...)
 
 }
 }

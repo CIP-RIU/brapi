@@ -33,12 +33,11 @@ BRAPI discussion: Should this return also the crop?
 if (interactive()) {
   library(brapi)
 
-  # make sure brapiTS::mock_server() is running in a separate process
+  # Need to connect to a database with genetic data
 
-  con <- ba_connect()
+  # con <- ba_db()$xxxxx
 
-  ba_programs(con)
-
+  # ba_programs(con = con, ...)
 }
 }
 \references{

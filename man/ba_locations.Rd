@@ -30,12 +30,11 @@ All standard attributes are always listed. However, attributes in the additional
 \examples{
 if (interactive()) {
   library(brapi)
+  # Need to connect to a database with genetic data
 
-  # make sure brapiTS::mock_server() is running in a separate process
+  # con <- ba_db()$xxxxx
 
-  con <- ba_connect()
-
-  ba_locations(con)
+  # ba_locations(con = con, ...)
 
 }
 }

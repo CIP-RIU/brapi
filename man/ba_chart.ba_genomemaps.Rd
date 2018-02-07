@@ -17,17 +17,14 @@ print method for an object of class brapi_brapi_genomemaps, which will only disp
 \examples{
 if (interactive()) {
   library(brapi)
-  library(magrittr)
 
-  # make sure brapiTS::mock_server() is running in a separate process
+  # Need to connect to a database with genetic data
 
-  con <- ba_connect()
+  # con <- ba_db()$xxxxx
 
-  # example 1
-  gm <- ba_genomemaps(con)
-  gm \%>\% ba_chart
+  # gm <- ba_genome_maps(con = con, ...)
 
-  dev.off()
+  # chart(gm)
 }
 }
 \seealso{
