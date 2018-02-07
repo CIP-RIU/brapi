@@ -1,23 +1,10 @@
 if (interactive()) {
   library(brapi)
-  library(magrittr)
 
-  # make sure brapiTS::mock_server() is running in a separate process
+  # Need to connect to a database with genetic data
 
-  con <- ba_connect() %>% ba_login()
+  # con <- ba_db()$xxxxx
 
-  sampleData <- list(
-    plantId = 1,
-    plotId = 1,
-    takenBy = "RS",
-    sampleDate = "01",
-    sampleType = "x",
-    tissueType = "tt",
-    notes = "notes"
-  )
-
-  ba_samples_save(con, sampleData)
-
-  # Note: the test server from brapiTS does not store the table. It only does some simple checking.
+  # ba_samples_save(con = con, ...)
 
 }

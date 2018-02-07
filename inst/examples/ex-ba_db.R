@@ -1,13 +1,9 @@
 if (interactive()) {
   library(brapi)
-  library(magrittr)
+  # make sure you are connected to the internet
 
-  # make sure brapiTS::mock_server() is running in a separate process
+  con <- ba_db()$sweetpotatobase
 
-  bdb <- ba_db()
-
-  print(bdb)
-
-  bdb$mockbase %>% print
+  con
 
 }

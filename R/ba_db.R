@@ -62,13 +62,6 @@ ba_db <- function() {
                    user = "",
                    password = "",
                    bms = FALSE)
-  mockbase <- as.ba_db(secure = FALSE,
-                       protocol = "http://",
-                       db = "127.0.0.1",
-                       port = 2021,
-                       multicrop = FALSE,
-                       crop = "sweetpotato",
-                       bms = FALSE)
   musabase <- as.ba_db(secure = TRUE,
                        protocol = "https://",
                        db = "musabase.org",

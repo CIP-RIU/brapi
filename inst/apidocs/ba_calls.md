@@ -25,7 +25,7 @@ The following object is masked from 'package:tidyr':
 ```
 
 ```r
-# make sure brapiTS::mock_server() is running in a separate process
+
 con <- ba_connect()
 
 json <- ba_calls(con, pageSize = 3,  rclass = "json")

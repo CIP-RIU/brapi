@@ -1,9 +1,9 @@
 if (interactive()) {
   library(brapi)
 
-  # make sure brapiTS::mock_server() is running in a separate process
+  # make sure you are connected to the internet
 
-  con <- ba_connect()
+  con <- ba_db()$sweetpotatobase
 
   ba_check(con)
 }
