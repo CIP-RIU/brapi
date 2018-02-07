@@ -1,3 +1,8 @@
+# brapi 0.9.9036
+
+- Removed tidyjson
+- Removed references to brapiTS mock server
+- Moved main repo to CIP-RIU
 
 
 # brapi 0.0.9.9016 2017-09-17
@@ -11,33 +16,15 @@
 
 ## NEW Sandbox testing server
 
-To eaes local testing the package has now a companion package with a localized simple testing server implementing the BrAPI v1 protocol. To start this server use in an R session:
+To eaes local testing the package has was a companion package with a localized simple testing server implementing the BrAPI v1 protocol. Since Feb 2018 it is discontinued.
 
-```{r eval=FALSE}
-
-brapiTS::mock_server()
-
-```
-
-or on the command line in an MS-DOS box
-
-```{r eval=FALSE}
-
-R -e "brapiTS::mock_server()"
-
-```
 
 The server must be started in a R session separate from the one use for the BrAPI calls.
 The server uses by default the port 2021. This can be changed by using the port parameter: brapi::mock_server(80).
 
-Soon, the mock_server function will be moved to its own package 'brapiTS'.
+**This server was discontinued.** 
 
-# Starting the connection
 
-```{r eval=FALSE}
-library(brapi)
-
-con = ba_connect() # the standard parameter will work connect to a running local mock server
 
 # Optionally: authenticate yourself
 
