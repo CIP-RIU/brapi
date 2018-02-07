@@ -137,7 +137,6 @@ ba_db <- function() {
               germinate_test = germinate,
               icrisat_prod = icrisat_prod,
               mgis = mgis,
-              mockbase = mockbase,
               musabase = musabase,
               ricebase = ricebase,
               snpseek = snpseek,

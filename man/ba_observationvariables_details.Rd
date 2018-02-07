@@ -28,7 +28,9 @@ if (interactive()) {
 
   # con <- ba_db()$xxxxx
 
-  # ba_observationvariables_details(con = con, ...)}
+  # ba_observationvariables_details(con = con, ...)
+
+}
 }
 \references{
 \href{https://github.com/plantbreeding/API/blob/master/Specification/ObservationVariables/VariableDetails.md}{github}

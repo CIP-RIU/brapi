@@ -5,4 +5,6 @@ if (interactive()) {
 
   # con <- ba_db()$xxxxx
 
-  # ba_observationvariables_details(con = con, ...)}
+  # ba_observationvariables_details(con = con, ...)
+
+}
