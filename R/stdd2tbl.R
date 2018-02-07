@@ -4,19 +4,19 @@ stdd2tbl <- function(res, rclass) {
     return(NULL)
   }
   dat <- jsonlite::toJSON(x = lst$result)
-  dat <- jsonlite::fromJSON(x = dat, simplifyDataFrame = TRUE, flatten = TRUE)
+  dat <- jsonlite::fromJSON(txt = dat, simplifyDataFrame = TRUE, flatten = TRUE)
   contacts <- dat$contacts
   dat$contacts <- NULL
   location <- dat$location
   if (length(location$additionalInfo) == 0) {
     location$additionalInfo <- NULL
   }
-  location <- as.data.frame(x = location)
+  location <- data.frame(unlist(location))#as.data.frame(x = location)
   dat$location <- NULL
   additionalInfo <- dat$additionalInfo
   additionalInfo <- as.data.frame(x = additionalInfo)
   dat$additionalInfo <- NULL
-  if(length(location) == 0) {
+  if (length(location) == 0) {
     location <- cbind(studyDbId = rep(x = dat$studyDbId, times = nrow(location)), location)
     names(location)[2:ncol(location)] <- paste("location", names(location)[2:ncol(location)], sep = ".")
     dat <- merge(x = dat, y = location)
