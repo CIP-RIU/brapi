@@ -2,6 +2,7 @@
 
 - Removed tidyjson
 - Removed references to brapiTS mock server
+- Removed apidocs folder
 - Moved main repo to CIP-RIU
 
 
