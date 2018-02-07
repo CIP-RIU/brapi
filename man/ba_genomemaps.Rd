@@ -37,6 +37,9 @@ if (interactive()) {
 
 }
 }
+\author{
+Reinhard Simon
+}
 \references{
 \href{https://github.com/plantbreeding/API/blob/master/Specification/GenomeMaps/ListOfGenomeMaps.md}{github}
 }
@@ -59,6 +62,4 @@ Other genotyping: \code{\link{ba_genomemaps_data_range}},
   \code{\link{ba_markers_details}},
   \code{\link{ba_markers_search}}
 }
-\author{
-Reinhard Simon
-}
+

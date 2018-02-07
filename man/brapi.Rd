@@ -11,3 +11,4 @@ The specific objective is to provide an Application Programming Interface (API) 
 programmatically using a RESTful approach. The brapi R package accesses the API and transforms the data responses
 into tables. This project is simply meant as a container to organize publications.
 }
+

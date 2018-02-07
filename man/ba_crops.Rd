@@ -28,6 +28,9 @@ if (interactive()) {
   # ba_crops(con = con, ...)
 }
 }
+\author{
+Reinhard Simon
+}
 \references{
 \href{https://github.com/plantbreeding/API/blob/master/Specification/Crops/ListCrops.md}{github}
 }
@@ -47,6 +50,4 @@ Other brapicore: \code{\link{ba_calls}},
   \code{\link{ba_programs}},
   \code{\link{ba_traits_details}}, \code{\link{ba_traits}}
 }
-\author{
-Reinhard Simon
-}
+

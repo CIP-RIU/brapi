@@ -49,6 +49,9 @@ if (interactive()) {
   # ba_phenotypes_search(con = con, ...)
 }
 }
+\author{
+Reinhard Simon
+}
 \references{
 \href{https://github.com/plantbreeding/API/blob/master/Specification/Phenotypes/PhenotypeSearch.md}{github}
 }
@@ -68,6 +71,4 @@ Other brapicore: \code{\link{ba_calls}},
   \code{\link{ba_programs}},
   \code{\link{ba_traits_details}}, \code{\link{ba_traits}}
 }
-\author{
-Reinhard Simon
-}
+

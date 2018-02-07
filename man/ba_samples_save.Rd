@@ -29,6 +29,9 @@ if (interactive()) {
 
 }
 }
+\author{
+Reinhard Simon
+}
 \references{
 \href{https://github.com/plantbreeding/API/blob/master/Specification/Samples/TakeASample.md}{github}
 }
@@ -48,6 +51,4 @@ Other phenotyping: \code{\link{ba_samples}},
   \code{\link{ba_studies_table}},
   \code{\link{ba_trials_details}}, \code{\link{ba_trials}}
 }
-\author{
-Reinhard Simon
-}
+

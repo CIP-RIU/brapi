@@ -32,14 +32,13 @@ if (interactive()) {
 
 }
 }
+\author{
+Reinhard Simon
+}
 \references{
 \href{https://github.com/plantbreeding/API/blob/master/Specification/ObservationVariables/VariableDetails.md}{github}
 }
 \seealso{
-Other observationvariables: \code{\link{ba_observationvariables_datatypes}},
-  \code{\link{ba_observationvariables_ontologies}},
-  \code{\link{ba_observationvariables}}
-
 Other brapicore: \code{\link{ba_calls}},
   \code{\link{ba_crops}},
   \code{\link{ba_germplasm_details_study}},
@@ -54,7 +53,9 @@ Other brapicore: \code{\link{ba_calls}},
   \code{\link{ba_programs_search}},
   \code{\link{ba_programs}},
   \code{\link{ba_traits_details}}, \code{\link{ba_traits}}
+
+Other observationvariables: \code{\link{ba_observationvariables_datatypes}},
+  \code{\link{ba_observationvariables_ontologies}},
+  \code{\link{ba_observationvariables}}
 }
-\author{
-Reinhard Simon
-}
+

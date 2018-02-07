@@ -53,6 +53,9 @@ if (interactive()) {
   print(con)
 }
 }
+\author{
+Reinhard Simon, Maikel Verouden
+}
 \seealso{
 Other brapiutils: \code{\link{ba_can_internet}},
   \code{\link{ba_chart.ba_genomemaps_details}},
@@ -66,6 +69,4 @@ Other brapiutils: \code{\link{ba_can_internet}},
   \code{\link{print.ba_con}},
   \code{\link{print.ba_db_list}}
 }
-\author{
-Reinhard Simon, Maikel Verouden
-}
+

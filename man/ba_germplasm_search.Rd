@@ -42,6 +42,9 @@ if (interactive()) {
 
 }
 }
+\author{
+Reinhard Simon
+}
 \references{
 \href{https://github.com/plantbreeding/API/blob/master/Specification/Germplasm/GermplasmSearchGET.md}{github}
 }
@@ -80,6 +83,4 @@ Other germplasm: \code{\link{ba_germplasm_details_study}},
   \code{\link{ba_germplasm_markerprofiles}},
   \code{\link{ba_germplasm_pedigree}}
 }
-\author{
-Reinhard Simon
-}
+
