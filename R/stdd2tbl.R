@@ -5,35 +5,10 @@ stdd2tbl <- function(res, rclass) {
   }
   dat <- jsonlite::toJSON(x = lst$result)
   dat <- jsonlite::fromJSON(txt = dat, simplifyDataFrame = TRUE, flatten = TRUE)
-  contacts <- dat$contacts
-  dat$contacts <- NULL
-  location <- dat$location
-  if (length(location$additionalInfo) == 0) {
-    location$additionalInfo <- NULL
-  }
-  location <- data.frame(unlist(location))#as.data.frame(x = location)
-  dat$location <- NULL
-  additionalInfo <- dat$additionalInfo
-  additionalInfo <- as.data.frame(x = additionalInfo)
-  dat$additionalInfo <- NULL
-  if (length(location) == 0) {
-    location <- cbind(studyDbId = rep(x = dat$studyDbId, times = nrow(location)), location)
-    names(location)[2:ncol(location)] <- paste("location", names(location)[2:ncol(location)], sep = ".")
-    dat <- merge(x = dat, y = location)
-    dat$location.studyDbId <- NULL
-  }
-  if (length(contacts) != 0) {
-    contacts <- cbind(studyDbId = rep(x = dat$studyDbId, times = nrow(contacts)), contacts)
-    names(contacts)[2:ncol(contacts)] <- paste("contacts", names(contacts)[2:ncol(contacts)], sep = ".")
-    dat <- merge(x = dat, y = contacts)
-    dat$contacts.studyDbId <- NULL
-  }
-  if (length(additionalInfo) != 0) {
-    additionalInfo <- cbind(studyDbId = rep(x = dat$studyDbId, times = nrow(additionalInfo)), additionalInfo)
-    names(additionalInfo)[2:ncol(additionalInfo)] <- paste("additionalInfo", names(additionalInfo)[2:ncol(additionalInfo)], sep = ".")
-    dat <- merge(dat, additionalInfo)
-    dat$additionalInfo.studyDbId <- NULL
-  }
+  dat <- as.data.frame(t(as.matrix(unlist(dat))), stringsAsFactors = FALSE)
+  dat$location.longitude <- ifelse("location.longitude" %in% names(dat), as.numeric(dat$location.longitude), NA)
+  dat$location.latitude <- ifelse("location.latitude" %in% names(dat), as.numeric(dat$location.latitude), NA)
+  dat$location.altitude <- ifelse("location.altitude" %in% names(dat), as.numeric(dat$location.altitude), NA)
   if (rclass == "tibble") {
     dat <- tibble::as_tibble(x = dat)
   }
