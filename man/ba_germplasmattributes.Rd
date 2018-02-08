@@ -30,13 +30,13 @@ if (interactive()) {
   # ba_germplasmattributes(con = con, ...)
 }
 }
-\author{
-Reinhard Simon
-}
 \references{
 \href{https://github.com/plantbreeding/API/blob/master/Specification/GermplasmAttributes/ListAttributesByAttributeCategoryDbId.md}{github}
 }
 \seealso{
+Other germplasmattributes: \code{\link{ba_germplasmattributes_categories}},
+  \code{\link{ba_germplasmattributes_details}}
+
 Other genotyping: \code{\link{ba_genomemaps_data_range}},
   \code{\link{ba_genomemaps_data}},
   \code{\link{ba_genomemaps_details}},
@@ -50,8 +50,7 @@ Other genotyping: \code{\link{ba_genomemaps_data_range}},
   \code{\link{ba_markerprofiles_search}},
   \code{\link{ba_markers_details}},
   \code{\link{ba_markers_search}}
-
-Other germplasmattributes: \code{\link{ba_germplasmattributes_categories}},
-  \code{\link{ba_germplasmattributes_details}}
 }
-
+\author{
+Reinhard Simon
+}

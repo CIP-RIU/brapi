@@ -40,9 +40,6 @@ if (interactive()) {
   # ba_programs(con = con, ...)
 }
 }
-\author{
-Reinhard Simon
-}
 \references{
 \href{https://github.com/plantbreeding/API/blob/master/Specification/Programs/ListPrograms.md}{github}
 }
@@ -62,4 +59,6 @@ Other brapicore: \code{\link{ba_calls}},
   \code{\link{ba_programs_search}},
   \code{\link{ba_traits_details}}, \code{\link{ba_traits}}
 }
-
+\author{
+Reinhard Simon
+}

@@ -4,6 +4,7 @@
 - Removed references to brapiTS mock server
 - Removed apidocs folder
 - Moved main repo to CIP-RIU
+- Adding new tests based on real databases
 
 
 # brapi 0.0.9.9016 2017-09-17

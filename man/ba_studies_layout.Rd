@@ -30,13 +30,21 @@ if (interactive()) {
   # ba_studies_layout(con = con, ...)
 }
 }
-\author{
-Reinhard Simon
-}
 \references{
 \href{https://github.com/plantbreeding/API/blob/master/Specification/Studies/PlotLayoutDetails.md}{github}
 }
 \seealso{
+Other studies: \code{\link{ba_studies_details}},
+  \code{\link{ba_studies_observationlevels}},
+  \code{\link{ba_studies_observations}},
+  \code{\link{ba_studies_observationunits}},
+  \code{\link{ba_studies_observationvariables}},
+  \code{\link{ba_studies_search}},
+  \code{\link{ba_studies_seasons}},
+  \code{\link{ba_studies_studytypes}},
+  \code{\link{ba_studies_table_save}},
+  \code{\link{ba_studies_table}}
+
 Other phenotyping: \code{\link{ba_samples_save}},
   \code{\link{ba_samples}},
   \code{\link{ba_studies_details}},
@@ -51,16 +59,7 @@ Other phenotyping: \code{\link{ba_samples_save}},
   \code{\link{ba_studies_table_save}},
   \code{\link{ba_studies_table}},
   \code{\link{ba_trials_details}}, \code{\link{ba_trials}}
-
-Other studies: \code{\link{ba_studies_details}},
-  \code{\link{ba_studies_observationlevels}},
-  \code{\link{ba_studies_observations}},
-  \code{\link{ba_studies_observationunits}},
-  \code{\link{ba_studies_observationvariables}},
-  \code{\link{ba_studies_search}},
-  \code{\link{ba_studies_seasons}},
-  \code{\link{ba_studies_studytypes}},
-  \code{\link{ba_studies_table_save}},
-  \code{\link{ba_studies_table}}
 }
-
+\author{
+Reinhard Simon
+}

@@ -32,13 +32,12 @@ if (interactive()) {
   # ba_traitscon = con, ...)
 }
 }
-\author{
-Reinhard Simon
-}
 \references{
 \href{https://github.com/plantbreeding/API/blob/master/Specification/Traits/ListAllTraits.md}{github}
 }
 \seealso{
+Other traits: \code{\link{ba_traits_details}}
+
 Other brapicore: \code{\link{ba_calls}},
   \code{\link{ba_crops}},
   \code{\link{ba_germplasm_details_study}},
@@ -54,7 +53,7 @@ Other brapicore: \code{\link{ba_calls}},
   \code{\link{ba_programs_search}},
   \code{\link{ba_programs}},
   \code{\link{ba_traits_details}}
-
-Other traits: \code{\link{ba_traits_details}}
 }
-
+\author{
+Reinhard Simon
+}

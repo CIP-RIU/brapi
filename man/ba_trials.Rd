@@ -44,13 +44,12 @@ if (interactive()) {
   # ba_trials(con = con, ...)
 }
 }
-\author{
-Reinhard Simon
-}
 \references{
 \href{https://github.com/plantbreeding/API/blob/master/Specification/Trials/ListTrialSummaries.md}{github}
 }
 \seealso{
+Other trials: \code{\link{ba_trials_details}}
+
 Other phenotyping: \code{\link{ba_samples_save}},
   \code{\link{ba_samples}},
   \code{\link{ba_studies_details}},
@@ -66,7 +65,7 @@ Other phenotyping: \code{\link{ba_samples_save}},
   \code{\link{ba_studies_table_save}},
   \code{\link{ba_studies_table}},
   \code{\link{ba_trials_details}}
-
-Other trials: \code{\link{ba_trials_details}}
 }
-
+\author{
+Reinhard Simon
+}

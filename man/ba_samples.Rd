@@ -30,9 +30,6 @@ if (interactive()) {
   # ba_samples(con = con, ...)
 }
 }
-\author{
-Reinhard Simon
-}
 \references{
 \href{https://github.com/plantbreeding/API/blob/master/Specification/Samples/RetrieveSampleMetadata.md}{github}
 }
@@ -52,4 +49,6 @@ Other phenotyping: \code{\link{ba_samples_save}},
   \code{\link{ba_studies_table}},
   \code{\link{ba_trials_details}}, \code{\link{ba_trials}}
 }
-
+\author{
+Reinhard Simon
+}

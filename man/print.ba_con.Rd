@@ -14,9 +14,6 @@
 \description{
 print method for an object of class brapi_con, which will only display the crop,  database address:port and user
 }
-\author{
-Reinhard Simon, Maikel Verouden
-}
 \seealso{
 Other brapiutils: \code{\link{as.ba_db}},
   \code{\link{ba_can_internet}},
@@ -30,4 +27,6 @@ Other brapiutils: \code{\link{as.ba_db}},
   \code{\link{ba_logout}}, \code{\link{is.ba_con}},
   \code{\link{print.ba_db_list}}
 }
-
+\author{
+Reinhard Simon, Maikel Verouden
+}

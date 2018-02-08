@@ -30,13 +30,15 @@ if (interactive()) {
   # ba_germplasm_markerprofiles(con = con, ...)
 }
 }
-\author{
-Reinhard Simon
-}
 \references{
 \href{https://github.com/plantbreeding/API/blob/master/Specification/Germplasm/GermplasmMarkerprofiles.md}{github}
 }
 \seealso{
+Other germplasm: \code{\link{ba_germplasm_details_study}},
+  \code{\link{ba_germplasm_details}},
+  \code{\link{ba_germplasm_pedigree}},
+  \code{\link{ba_germplasm_search}}
+
 Other genotyping: \code{\link{ba_genomemaps_data_range}},
   \code{\link{ba_genomemaps_data}},
   \code{\link{ba_genomemaps_details}},
@@ -50,10 +52,7 @@ Other genotyping: \code{\link{ba_genomemaps_data_range}},
   \code{\link{ba_markerprofiles_search}},
   \code{\link{ba_markers_details}},
   \code{\link{ba_markers_search}}
-
-Other germplasm: \code{\link{ba_germplasm_details_study}},
-  \code{\link{ba_germplasm_details}},
-  \code{\link{ba_germplasm_pedigree}},
-  \code{\link{ba_germplasm_search}}
 }
-
+\author{
+Reinhard Simon
+}

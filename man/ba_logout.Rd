@@ -25,9 +25,6 @@ if (interactive()) {
   # ba_logout(con = con)
 }
 }
-\author{
-Reinhard Simon
-}
 \references{
 \href{https://github.com/plantbreeding/API/blob/master/Specification/Authentication/Authentication.md}{github}
 }
@@ -44,4 +41,6 @@ Other brapiutils: \code{\link{as.ba_db}},
   \code{\link{is.ba_con}}, \code{\link{print.ba_con}},
   \code{\link{print.ba_db_list}}
 }
-
+\author{
+Reinhard Simon
+}
