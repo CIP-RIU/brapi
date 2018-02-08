@@ -6,6 +6,7 @@
 #' are taken. The values are used to supply the observationLevel parameter in
 #' the observation unit details call.
 #'
+#'
 #' @param con brapi connection object
 #' @param rclass character; default is FALSE; whether to display the raw list object or not
 #' @author Reinhard Simon

@@ -2,12 +2,16 @@
 #'
 #' lists studies_observations available on a brapi server
 #'
+#' @note This call must have set a specific identifier. The default is an empty string.
+#'      If not changed to an identifier present in the database this will result in an error.
+#'
+#'
 #' @param con brapi connection object
 #' @param rclass character; default: tibble
 #' @param page integer; default 0
 #' @param pageSize integer; default 1000
-#' @param studyDbId character; default: 1
-#' @param observationVariableDbId character; default: 1:3
+#' @param studyDbId character; default: ''
+#' @param observationVariableDbId character; default: ''
 #'
 #' @author Reinhard Simon
 #' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Studies/GetObservationUnitsByObservationVariableIds.md}{github}
@@ -18,13 +22,14 @@
 #' @family phenotyping
 #' @export
 ba_studies_observations <- function(con = NULL,
-                                    studyDbId = "1",
-                                    observationVariableDbId = as.character(1:3),
+                                    studyDbId = "",
+                                    observationVariableDbId = "",
                                     page = 0,
                                     pageSize = 1000,
                                     rclass = "tibble") {
   ba_check(con = con, verbose = FALSE, brapi_calls = "studies/id/observations")
   stopifnot(is.character(studyDbId))
+  stopifnot(studyDbId != "")
   stopifnot(is.character(observationVariableDbId))
   check_paging(pageSize = pageSize, page = page)
   check_rclass(rclass = rclass)

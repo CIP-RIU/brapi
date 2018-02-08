@@ -4,16 +4,16 @@
 \alias{ba_studies_observations}
 \title{ba_studies_observations}
 \usage{
-ba_studies_observations(con = NULL, studyDbId = "1",
-  observationVariableDbId = as.character(1:3), page = 0, pageSize = 1000,
+ba_studies_observations(con = NULL, studyDbId = "",
+  observationVariableDbId = "", page = 0, pageSize = 1000,
   rclass = "tibble")
 }
 \arguments{
 \item{con}{brapi connection object}
 
-\item{studyDbId}{character; default: 1}
+\item{studyDbId}{character; default: ''}
 
-\item{observationVariableDbId}{character; default: 1:3}
+\item{observationVariableDbId}{character; default: ''}
 
 \item{page}{integer; default 0}
 
@@ -26,6 +26,10 @@ rclass as defined
 }
 \description{
 lists studies_observations available on a brapi server
+}
+\note{
+This call must have set a specific identifier. The default is an empty string.
+     If not changed to an identifier present in the database this will result in an error.
 }
 \examples{
 if (interactive()) {
