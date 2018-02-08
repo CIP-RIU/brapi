@@ -1,4 +1,4 @@
-
+context("locations")
 
 con <- ba_db()$sweetpotatobase
 

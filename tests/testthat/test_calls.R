@@ -1,3 +1,4 @@
+context("calls")
 
 con <- ba_db()$sweetpotatobase
 

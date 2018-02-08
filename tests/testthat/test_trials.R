@@ -1,3 +1,5 @@
+context("trials")
+
 con <- ba_db()$sweetpotatobase
 
 test_that("Trials are present", {

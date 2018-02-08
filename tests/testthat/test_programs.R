@@ -1,3 +1,5 @@
+context("programs")
+
 con <- ba_db()$sweetpotatobase
 
 test_that("Programs are present", {

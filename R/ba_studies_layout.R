@@ -2,6 +2,9 @@
 #'
 #' lists studies_layout available on a brapi server
 #'
+#' @note This call must have set a specific identifier. The default is an empty string.
+#'      If not changed to an identifier present in the database this will result in an error.
+#'
 #' @param con brapi connection object
 #' @param rclass character; default: tibble
 #' @param studyDbId character; default: ''

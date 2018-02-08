@@ -1,3 +1,4 @@
+context("genomemaps")
 
 con <- ba_db()$germinate_test
 
