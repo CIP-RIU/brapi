@@ -2,6 +2,8 @@
 #'
 #' lists studies_studytypes available on a brapi server
 #'
+#' @note Tested against: sweetpotatobase
+#'
 #' @param con list, brapi connection object
 #' @param page integer; default 0
 #' @param pageSize integer; default 1000

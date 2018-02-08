@@ -24,6 +24,9 @@ data.frame
 \description{
 lists the studies seasons and years
 }
+\note{
+Tested against: sweetpotatobase
+}
 \examples{
 if (interactive()) {
   library(brapi)

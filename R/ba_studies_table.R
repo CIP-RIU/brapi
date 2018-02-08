@@ -2,8 +2,14 @@
 #'
 #' lists studies_table available on a brapi server
 #'
+#' @note Tested against: sweetpotatobase
+#'
+#' @note This call must have set a specific identifier. The default is an empty string.
+#'      If not changed to an identifier present in the database this will result in an error.
+#'
+#'
 #' @param rclass character; default: tibble
-#' @param studyDbId character; default: 1
+#' @param studyDbId character; default: ''
 #' @param con list; brapi connection object
 #' @param format character; one of: json, csv, tsv. Default: json
 #'
@@ -18,11 +24,12 @@
 #' @family phenotyping
 #' @export
 ba_studies_table <- function(con = NULL,
-                             studyDbId = "1",
+                             studyDbId = "",
                              format = "json",
                              rclass = "tibble") {
   ba_check(con = con, verbose = FALSE, brapi_calls = "studies/id/table")
   stopifnot(is.character(studyDbId))
+  stopifnot(studyDbId != "")
   stopifnot(format %in% c("json", "tsv", "csv"))
   check_rclass(rclass =  rclass)
   brp <- get_brapi(con = con)

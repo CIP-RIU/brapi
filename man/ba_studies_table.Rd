@@ -4,13 +4,13 @@
 \alias{ba_studies_table}
 \title{ba_studies_table}
 \usage{
-ba_studies_table(con = NULL, studyDbId = "1", format = "json",
+ba_studies_table(con = NULL, studyDbId = "", format = "json",
   rclass = "tibble")
 }
 \arguments{
 \item{con}{list; brapi connection object}
 
-\item{studyDbId}{character; default: 1}
+\item{studyDbId}{character; default: ''}
 
 \item{format}{character; one of: json, csv, tsv. Default: json}
 
@@ -21,6 +21,12 @@ rclass as defined
 }
 \description{
 lists studies_table available on a brapi server
+}
+\note{
+Tested against: sweetpotatobase
+
+This call must have set a specific identifier. The default is an empty string.
+     If not changed to an identifier present in the database this will result in an error.
 }
 \examples{
 if (interactive()) {

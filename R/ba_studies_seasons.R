@@ -2,6 +2,8 @@
 #'
 #' lists the studies seasons and years
 #'
+#' @note Tested against: sweetpotatobase
+#'
 #' @param con list, brapi connection object
 #' @param year integer
 #' @param page integer requested page number

@@ -22,6 +22,9 @@ rclass as defined
 \description{
 lists studies_studytypes available on a brapi server
 }
+\note{
+Tested against: sweetpotatobase
+}
 \examples{
 if (interactive()) {
   library(brapi)
