@@ -1,5 +1,3 @@
-context("Crops call")
-
 con <- ba_db()$sweetpotatobase
 
 test_that("Crops are present", {

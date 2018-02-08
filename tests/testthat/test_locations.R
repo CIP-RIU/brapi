@@ -1,4 +1,4 @@
-context("Locations call")
+
 
 con <- ba_db()$sweetpotatobase
 
