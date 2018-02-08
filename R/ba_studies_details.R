@@ -18,6 +18,7 @@ ba_studies_details <- function(con = NULL,
                                rclass = "tibble") {
   ba_check(con = con, verbose = FALSE, brapi_calls = "studies/id")
   stopifnot(is.character(studyDbId))
+  stopifnot(studyDbId != "")
   check_rclass(rclass = rclass)
   brp <- get_brapi(con = con)
   studies <- sub("[/?&]$",
