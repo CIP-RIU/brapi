@@ -2,6 +2,9 @@
 #'
 #' Gets studies details given an id.
 #'
+#' @note This call must have set a specific identifier. The default is an empty string.
+#'      If not changed to an identifier present in the database this will result in an error.
+#'
 #' @param con brapi connection object
 #' @param rclass character; tibble
 #' @param studyDbId character; default ''; an internal ID for a study
