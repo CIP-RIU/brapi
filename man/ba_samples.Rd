@@ -11,7 +11,7 @@ ba_samples(con = NULL, sampleDbId = "", rclass = "tibble")
 
 \item{sampleDbId}{character, mandatory argument}
 
-\item{rclass}{character; default: "tibble" possible other values: "json"/"list"/"data.frame"/"vector"}
+\item{rclass}{character; default: "tibble" possible other values: "json"/"list"/"data.frame"}
 }
 \value{
 rclass as defined
