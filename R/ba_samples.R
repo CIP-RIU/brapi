@@ -3,8 +3,8 @@
 #' Get sample metadata available on a brapi server
 #'
 #' @param con list, brapi connection object
-#' @param rclass character; default: tibble
-#' @param sampleId character
+#' @param rclass character; default: "tibble" possible other values: "json"/"list"/"data.frame"/"vector"
+#' @param sampleDbId character, mandatory argument
 #'
 #' @author Reinhard Simon
 #' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Samples/RetrieveSampleMetadata.md}{github}
@@ -14,14 +14,14 @@
 #' @family phenotyping
 #' @export
 ba_samples <- function(con = NULL,
-                       sampleId = "",
+                       sampleDbId = "",
                        rclass = "tibble") {
   ba_check(con = con, verbose = FALSE, brapi_calls = "samples")
-  stopifnot(is.character(sampleId))
-  stopifnot(sampleId != "")
+  stopifnot(is.character(sampleDbId))
+  stopifnot(sampleDbId != "")
   check_rclass(rclass = rclass)
   brp <- get_brapi(con = con)
-  call_samples <- paste0(brp, "samples/", sampleId)
+  call_samples <- paste0(brp, "samples/", sampleDbId)
   tryCatch({
     res <- brapiGET(url = call_samples, con = con)
     res <- httr::content(x = res, as = "text", encoding = "UTF-8")
@@ -42,6 +42,6 @@ ba_samples <- function(con = NULL,
     show_metadata(con, res)
     return(out)
   }, error = function(e) {
-    stop(paste0(e, "\n\nMalformed sampleId."))
+    stop(paste0(e, "\n\nMalformed sampleDbId."))
   })
 }
