@@ -2,16 +2,20 @@
 #'
 #' lists trials available on a brapi server
 #'
+#' @note This call must have set a specific identifier. The default is an empty string.
+#'      If not changed to an identifier present in the database this will result in an error.
+#'
+#'
 #' @param con brapi connection object
-#' @param studyType character; default: any
-#' @param programDbId character; default: any
-#' @param locationDbId  character; default: any
-#' @param seasonDbId  character; default: any
-#' @param germplasmDbIds  character; default: any
-#' @param observationVariableDbIds  character; default: any
-#' @param active  character; default: any
-#' @param sortBy  character; default: any
-#' @param sortOrder  character; default: any
+#' @param studyType character; default: ''
+#' @param programDbId character; default: ''
+#' @param locationDbId  character; default: ''
+#' @param seasonDbId  character; default: ''
+#' @param germplasmDbIds  character; default: ''
+#' @param observationVariableDbIds  character; default: ''
+#' @param active  character; default: ''
+#' @param sortBy  character; default: ''
+#' @param sortOrder  character; default: ''
 #' @param page integer; default: 1000
 #' @param pageSize integer; default: 0
 #' @param rclass character; default: tibble
@@ -24,15 +28,15 @@
 #' @family phenotyping
 #' @export
 ba_studies_search <- function(con = NULL,
-                              studyType = "any",
-                              programDbId = "any",
-                              locationDbId = "any",
-                              seasonDbId = "any",
-                              germplasmDbIds = "any",
-                              observationVariableDbIds = "any",
-                              active = "any",
-                              sortBy = "any",
-                              sortOrder = "any",
+                              studyType = "",
+                              programDbId = "",
+                              locationDbId = "",
+                              seasonDbId = "",
+                              germplasmDbIds = "",
+                              observationVariableDbIds = "",
+                              active = "",
+                              sortBy = "",
+                              sortOrder = "",
                               page = 0,
                               pageSize = 1000,
                               rclass = "tibble") {
