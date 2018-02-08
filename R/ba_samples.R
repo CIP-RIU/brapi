@@ -3,8 +3,8 @@
 #' Get sample metadata available on a brapi server
 #'
 #' @param con list, brapi connection object
-#' @param rclass character; default: tibble
-#' @param sampleDbId character
+#' @param rclass character; default: "tibble" possible other values: "json"/"list"/"data.frame"/"vector"
+#' @param sampleDbId character, mandatory argument
 #'
 #' @author Reinhard Simon
 #' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Samples/RetrieveSampleMetadata.md}{github}
