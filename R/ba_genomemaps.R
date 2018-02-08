@@ -2,10 +2,14 @@
 #'
 #' Get list of maps
 #'
+#' @note This call must have set a specific identifier. The default is an empty string.
+#'      If not changed to an identifier present in the database this will result in an error.
+#'
+#'
 #' @param con brapi connection object
 #' @param rclass character; default: tibble
 #' @param species character; default:
-#' @param type character, default: all
+#' @param type character, default: ''
 #' @param page integer; default 0
 #' @param pageSize integer; default 30
 #'
@@ -18,8 +22,8 @@
 #' @family genotyping
 #' @export
 ba_genomemaps <- function(con = NULL,
-                          species = "all",
-                          type = "all",
+                          species = "",
+                          type = "",
                           page = 0,
                           pageSize = 30,
                           rclass = "tibble") {

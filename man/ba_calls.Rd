@@ -4,7 +4,7 @@
 \alias{ba_calls}
 \title{ba_calls}
 \usage{
-ba_calls(con = NULL, datatypes = "all", pageSize = 50, page = 0,
+ba_calls(con = NULL, datatypes = "csv", pageSize = 50, page = 0,
   rclass = "tibble")
 }
 \arguments{

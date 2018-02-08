@@ -16,7 +16,7 @@
 #' @family brapicore
 #' @export
 ba_calls <- function(con = NULL,
-                     datatypes = "all",
+                     datatypes = "csv",
                      pageSize = 50,
                      page = 0,
                      rclass = "tibble") {

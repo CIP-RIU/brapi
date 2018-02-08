@@ -4,7 +4,7 @@
 \alias{ba_genomemaps}
 \title{ba_genomemaps}
 \usage{
-ba_genomemaps(con = NULL, species = "all", type = "all", page = 0,
+ba_genomemaps(con = NULL, species = "", type = "", page = 0,
   pageSize = 30, rclass = "tibble")
 }
 \arguments{
@@ -12,7 +12,7 @@ ba_genomemaps(con = NULL, species = "all", type = "all", page = 0,
 
 \item{species}{character; default:}
 
-\item{type}{character, default: all}
+\item{type}{character, default: ''}
 
 \item{page}{integer; default 0}
 
@@ -25,6 +25,10 @@ rclass as defined
 }
 \description{
 Get list of maps
+}
+\note{
+This call must have set a specific identifier. The default is an empty string.
+     If not changed to an identifier present in the database this will result in an error.
 }
 \examples{
 if (interactive()) {
