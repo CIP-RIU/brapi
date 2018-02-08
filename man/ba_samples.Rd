@@ -4,14 +4,14 @@
 \alias{ba_samples}
 \title{ba_samples}
 \usage{
-ba_samples(con = NULL, sampleId = "", rclass = "tibble")
+ba_samples(con = NULL, sampleDbId = "", rclass = "tibble")
 }
 \arguments{
 \item{con}{list, brapi connection object}
 
-\item{sampleId}{character}
+\item{sampleDbId}{character, mandatory argument}
 
-\item{rclass}{character; default: tibble}
+\item{rclass}{character; default: "tibble" possible other values: "json"/"list"/"data.frame"/"vector"}
 }
 \value{
 rclass as defined

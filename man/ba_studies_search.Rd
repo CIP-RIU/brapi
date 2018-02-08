@@ -4,31 +4,31 @@
 \alias{ba_studies_search}
 \title{ba_studies_search}
 \usage{
-ba_studies_search(con = NULL, studyType = "any", programDbId = "any",
-  locationDbId = "any", seasonDbId = "any", germplasmDbIds = "any",
-  observationVariableDbIds = "any", active = "any", sortBy = "any",
-  sortOrder = "any", page = 0, pageSize = 1000, rclass = "tibble")
+ba_studies_search(con = NULL, studyType = "", programDbId = "",
+  locationDbId = "", seasonDbId = "", germplasmDbIds = "",
+  observationVariableDbIds = "", active = "", sortBy = "",
+  sortOrder = "", page = 0, pageSize = 1000, rclass = "tibble")
 }
 \arguments{
 \item{con}{brapi connection object}
 
-\item{studyType}{character; default: any}
+\item{studyType}{character; default: ''}
 
-\item{programDbId}{character; default: any}
+\item{programDbId}{character; default: ''}
 
-\item{locationDbId}{character; default: any}
+\item{locationDbId}{character; default: ''}
 
-\item{seasonDbId}{character; default: any}
+\item{seasonDbId}{character; default: ''}
 
-\item{germplasmDbIds}{character; default: any}
+\item{germplasmDbIds}{character; default: ''}
 
-\item{observationVariableDbIds}{character; default: any}
+\item{observationVariableDbIds}{character; default: ''}
 
-\item{active}{character; default: any}
+\item{active}{character; default: ''}
 
-\item{sortBy}{character; default: any}
+\item{sortBy}{character; default: ''}
 
-\item{sortOrder}{character; default: any}
+\item{sortOrder}{character; default: ''}
 
 \item{page}{integer; default: 1000}
 
@@ -41,6 +41,10 @@ rclass as defined
 }
 \description{
 lists trials available on a brapi server
+}
+\note{
+This call must have set a specific identifier. The default is an empty string.
+     If not changed to an identifier present in the database this will result in an error.
 }
 \examples{
 if (interactive()) {
