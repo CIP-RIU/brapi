@@ -21,7 +21,9 @@ ba_samples <- function(con = NULL,
   stopifnot(sampleDbId != "")
   check_rclass(rclass = rclass)
   brp <- get_brapi(con = con)
-  call_samples <- paste0(brp, "samples/", sampleDbId)
+  call_samples <- sub("[/?&]$",
+                      "",
+                      paste0(brp, "samples/", sampleDbId, "/"))
   tryCatch({
     res <- brapiGET(url = call_samples, con = con)
     res <- httr::content(x = res, as = "text", encoding = "UTF-8")
