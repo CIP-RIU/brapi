@@ -14,3 +14,10 @@ test_that("Calls output formats work", {
   expect_that("data.frame" %in% class(res), is_true())
 
 })
+
+test_that("Calls page parameters work", {
+
+  res <- ba_calls(con = con, pageSize = 1000)
+  expect_that(nrow(res) == 10, is_true())
+
+})

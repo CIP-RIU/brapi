@@ -8,7 +8,7 @@ show_pagination <- function(res) {
                           pagination$totalPages - 1,
                           ") with max. ",
                           pagination$pageSize,
-                          " locations (out of a total of ",
+                          " items (out of a total of ",
                           pagination$totalCount,
                           ")."))
 
