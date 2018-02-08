@@ -16,16 +16,10 @@ print method for an object of class brapi_con, which will only display the crop,
 }
 \seealso{
 Other brapiutils: \code{\link{as.ba_db}},
-  \code{\link{ba_can_internet}},
-  \code{\link{ba_chart.ba_genomemaps_details}},
-  \code{\link{ba_chart.ba_genomemaps}},
-  \code{\link{ba_chart.ba_locations}},
-  \code{\link{ba_chart}}, \code{\link{ba_check}},
+  \code{\link{ba_can_internet}}, \code{\link{ba_check}},
   \code{\link{ba_connect}}, \code{\link{ba_db}},
-  \code{\link{ba_describe.ba_locations}},
-  \code{\link{ba_describe}}, \code{\link{ba_login}},
-  \code{\link{ba_logout}}, \code{\link{is.ba_con}},
-  \code{\link{print.ba_db_list}}
+  \code{\link{ba_login}}, \code{\link{ba_logout}},
+  \code{\link{is.ba_con}}, \code{\link{print.ba_db_list}}
 }
 \author{
 Reinhard Simon, Maikel Verouden
