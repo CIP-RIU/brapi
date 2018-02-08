@@ -2,6 +2,8 @@
 #'
 #' lists brapi_traits available on a brapi server
 #'
+#' @note Tested against: sweetpotatobase
+#'
 #' @param rclass character; default: tibble
 #' @param con list; brapi connection object
 #' @param page integer; default 0

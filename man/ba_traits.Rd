@@ -21,6 +21,9 @@ rclass as defined
 \description{
 lists brapi_traits available on a brapi server
 }
+\note{
+Tested against: sweetpotatobase
+}
 \examples{
 if (interactive()) {
   library(brapi)

@@ -19,6 +19,9 @@ rclass as defined
 \description{
 Get sample metadata available on a brapi server
 }
+\note{
+Tested against: BMS
+}
 \examples{
 if (interactive()) {
   library(brapi)
