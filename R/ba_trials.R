@@ -21,11 +21,11 @@
 #' @family phenotyping
 #' @export
 ba_trials <- function(con = NULL,
-                      programDbId = "any",
-                      locationDbId = "any",
+                      programDbId = "",
+                      locationDbId = "",
                       active = TRUE,
-                      sortBy = "none",
-                      sortOrder = "asc",
+                      sortBy = "",
+                      sortOrder = "",
                       page = 0,
                       pageSize = 1000,
                       rclass = "tibble") {

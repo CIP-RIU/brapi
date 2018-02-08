@@ -4,8 +4,8 @@
 \alias{ba_trials}
 \title{ba_trials}
 \usage{
-ba_trials(con = NULL, programDbId = "any", locationDbId = "any",
-  active = TRUE, sortBy = "none", sortOrder = "asc", page = 0,
+ba_trials(con = NULL, programDbId = "", locationDbId = "",
+  active = TRUE, sortBy = "", sortOrder = "", page = 0,
   pageSize = 1000, rclass = "tibble")
 }
 \arguments{

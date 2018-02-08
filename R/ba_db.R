@@ -8,6 +8,14 @@
 #' @family brapiutils
 #' @export
 ba_db <- function() {
+  apiary <- as.ba_db(secure = TRUE,
+                          protocol = "https://",
+                          db = "private-anon-f133f3ec50-brapi.apiary-mock.com",
+                          port = 80,
+                          multicrop = FALSE,
+                          crop = "wheat",
+                          bms = FALSE)
+
   bms_test <- as.ba_db(secure = FALSE,
                        protocol = "http://",
                        db = "34.226.132.187",
@@ -131,7 +139,8 @@ ba_db <- function() {
                       multicrop = FALSE,
                       crop = "yam",
                       bms = FALSE)
-  out <- list(bms_test = bms_test,
+  out <- list(apiary = apiary,
+              bms_test = bms_test,
               cassavabase = cassavabase,
               eu_sol = eu_sol,
               germinate_test = germinate,
