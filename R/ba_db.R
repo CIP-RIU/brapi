@@ -33,6 +33,13 @@ ba_db <- function() {
                           multicrop = FALSE,
                           crop = "cassava",
                           bms = FALSE)
+  cropontology  <- as.ba_db(secure = FALSE,
+                            protocol = "http://",
+                            db = "cropontology.org",
+                            port = 80,
+                            multicrop = FALSE,
+                            crop = "",
+                            bms = FALSE)
   eu_sol <- as.ba_db(secure = TRUE,
                      protocol = "https://",
                      db = "www.eu-sol.wur.nl",
@@ -142,6 +149,7 @@ ba_db <- function() {
   out <- list(apiary = apiary,
               bms_test = bms_test,
               cassavabase = cassavabase,
+              cropontology = cropontology,
               eu_sol = eu_sol,
               germinate_test = germinate,
               icrisat_prod = icrisat_prod,
