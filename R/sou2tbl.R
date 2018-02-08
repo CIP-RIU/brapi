@@ -14,8 +14,13 @@ sou2tbl <- function(res,
   # join synonymms, taxonIds, donors
 
   join_all <- function(dat2) {
-    dat2 <- join_slaves(dat2, "observationUnitXref")
-    dat2 <- join_slaves(dat2, "observations")
+    if("observationsUnitXref" %in% names(dat2)) {
+      dat2 <- join_slaves(dat2, "observationUnitXref")
+    }
+    if("observations" %in% names(dat2)) {
+      dat2 <- join_slaves(dat2, "observations")
+    }
+
     return(dat2)
   }
 

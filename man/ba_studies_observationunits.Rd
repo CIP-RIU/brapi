@@ -4,13 +4,13 @@
 \alias{ba_studies_observationunits}
 \title{ba_studies_observationunits}
 \usage{
-ba_studies_observationunits(con = NULL, studyDbId = "1",
+ba_studies_observationunits(con = NULL, studyDbId = "",
   observationLevel = "plot", rclass = "tibble")
 }
 \arguments{
 \item{con}{list, brapi connection object}
 
-\item{studyDbId}{character; default: 1}
+\item{studyDbId}{character; default: ''}
 
 \item{observationLevel}{character; default: plot; alternative: plant}
 
@@ -21,6 +21,10 @@ rclass as defined
 }
 \description{
 lists studies_observationunits available on a brapi server
+}
+\note{
+This call must have set a specific identifier. The default is an empty string.
+     If not changed to an identifier present in the database this will result in an error.
 }
 \examples{
 if (interactive()) {

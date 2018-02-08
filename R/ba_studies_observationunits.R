@@ -5,7 +5,11 @@
 #' @param con list, brapi connection object
 #' @param rclass character; default: tibble
 #' @param observationLevel character; default: plot; alternative: plant
-#' @param studyDbId character; default: 1
+#' @param studyDbId character; default: ''
+#'
+#' @note This call must have set a specific identifier. The default is an empty string.
+#'      If not changed to an identifier present in the database this will result in an error.
+#'
 #'
 #' @author Reinhard Simon
 #' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Studies/ObservationUnitDetails.md}{github}
@@ -16,11 +20,12 @@
 #' @family phenotyping
 #' @export
 ba_studies_observationunits <- function(con = NULL,
-                                        studyDbId = "1",
+                                        studyDbId = "",
                                         observationLevel = "plot",
                                         rclass = "tibble") {
   ba_check(con = con, verbose = FALSE, brapi_calls = "studies/id/observationunits")
   stopifnot(is.character(studyDbId))
+  stopifnot(studyDbId !="")
   stopifnot(observationLevel %in% c("plot", "plant"))
   check_rclass(rclass = rclass)
   brp <- get_brapi(con = con)
