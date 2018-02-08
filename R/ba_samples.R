@@ -2,6 +2,8 @@
 #'
 #' Get sample metadata available on a brapi server
 #'
+#' @note Tested against: BMS
+#'
 #' @param con list, brapi connection object
 #' @param rclass character; default: "tibble" possible other values: "json"/"list"/"data.frame"/"vector"
 #' @param sampleDbId character, mandatory argument
@@ -33,6 +35,7 @@ ba_samples <- function(con = NULL,
     }
     if (rclass %in% c("tibble", "data.frame")) {
       out <- jsonlite::fromJSON(txt = res, simplifyDataFrame = TRUE)$result %>%
+             lapply(FUN = function(x) {x <- ifelse(is.null(x), "", x)}) %>%
              tibble::as_tibble()
       if (rclass == "data.frame") {
         out <- as.data.frame(x = out)
@@ -41,7 +44,6 @@ ba_samples <- function(con = NULL,
     if (!is.null(out)) {
       class(out) <- c(class(out), "ba_samples")
     }
-    show_metadata(con, res)
     return(out)
   }, error = function(e) {
     stop(paste0(e, "\n\nMalformed sampleDbId."))
