@@ -4,7 +4,7 @@
 #'
 #' @param rclass character; default: tibble
 #' @param con list; brapi connection object
-#' @param traitDbId character; default 1
+#' @param traitDbId character; default ''
 #' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Traits/TraitDetails.md}{github}
 #' @author Reinhard Simon
 #' @return rclass as defined
@@ -14,7 +14,7 @@
 #' @family brapicore
 #' @export
 ba_traits_details <- function(con = NULL,
-                              traitDbId = "1",
+                              traitDbId = "",
                               rclass = "tibble") {
   ba_check(con = con, verbose = FALSE, brapi_calls = "traits")
   stopifnot(is.character(traitDbId))

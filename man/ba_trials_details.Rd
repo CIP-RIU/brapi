@@ -4,12 +4,12 @@
 \alias{ba_trials_details}
 \title{ba_trials_details}
 \usage{
-ba_trials_details(con = NULL, trialDbId = "any", rclass = "tibble")
+ba_trials_details(con = NULL, trialDbId = "", rclass = "tibble")
 }
 \arguments{
 \item{con}{brapi connection object}
 
-\item{trialDbId}{character; default: 'any'; otherwise an identifier}
+\item{trialDbId}{character; default: ''; otherwise an identifier}
 
 \item{rclass}{string; default: tibble}
 }

@@ -4,7 +4,7 @@
 #'
 #' @param con brapi connection object
 #' @param rclass string; default: tibble
-#' @param trialDbId character; default: 'any'; otherwise an identifier
+#' @param trialDbId character; default: ''; otherwise an identifier
 #'
 #' @author Reinhard Simon
 #' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/Trials/GetTrialById.md}(github)
@@ -15,7 +15,7 @@
 #' @family phenotyping
 #' @export
 ba_trials_details <- function(con = NULL,
-                              trialDbId = "any",
+                              trialDbId = "",
                               rclass = "tibble") {
   ba_check(con = con, verbose = FALSE, brapi_calls = "trials/id")
   brp <- get_brapi(con = con)
