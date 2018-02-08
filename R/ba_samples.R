@@ -5,10 +5,10 @@
 #' @note Tested against: BMS
 #'
 #' @param con list, brapi connection object
-#' @param rclass character; default: "tibble" possible other values: "json"/"list"/"data.frame"/"vector"
+#' @param rclass character; default: "tibble" possible other values: "json"/"list"/"data.frame"
 #' @param sampleDbId character, mandatory argument
 #'
-#' @author Reinhard Simon
+#' @author Reinhard Simon, Maikel Verouden
 #' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Samples/RetrieveSampleMetadata.md}{github}
 #' @example inst/examples/ex-ba_samples.R
 #' @return rclass as defined

@@ -11,7 +11,7 @@ ba_samples(con = NULL, sampleDbId = "", rclass = "tibble")
 
 \item{sampleDbId}{character, mandatory argument}
 
-\item{rclass}{character; default: "tibble" possible other values: "json"/"list"/"data.frame"/"vector"}
+\item{rclass}{character; default: "tibble" possible other values: "json"/"list"/"data.frame"}
 }
 \value{
 rclass as defined
@@ -53,5 +53,5 @@ Other phenotyping: \code{\link{ba_samples_save}},
   \code{\link{ba_trials_details}}, \code{\link{ba_trials}}
 }
 \author{
-Reinhard Simon
+Reinhard Simon, Maikel Verouden
 }
