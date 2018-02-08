@@ -4,7 +4,7 @@
 #'
 #' @param con brapi connection object
 #' @param rclass character; tibble
-#' @param studyDbId character; default 0; an internal ID for a study
+#' @param studyDbId character; default ''; an internal ID for a study
 #' @import dplyr
 #' @author Reinhard Simon, Maikel Verouden
 #' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Studies/StudyDetails.md}{github}
@@ -14,7 +14,7 @@
 #' @family phenotyping
 #' @export
 ba_studies_details <- function(con = NULL,
-                               studyDbId = "0",
+                               studyDbId = "",
                                rclass = "tibble") {
   ba_check(con = con, verbose = FALSE, brapi_calls = "studies/id")
   stopifnot(is.character(studyDbId))

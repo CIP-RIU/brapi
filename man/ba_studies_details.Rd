@@ -4,12 +4,12 @@
 \alias{ba_studies_details}
 \title{ba_studies_details}
 \usage{
-ba_studies_details(con = NULL, studyDbId = "0", rclass = "tibble")
+ba_studies_details(con = NULL, studyDbId = "", rclass = "tibble")
 }
 \arguments{
 \item{con}{brapi connection object}
 
-\item{studyDbId}{character; default 0; an internal ID for a study}
+\item{studyDbId}{character; default ''; an internal ID for a study}
 
 \item{rclass}{character; tibble}
 }
