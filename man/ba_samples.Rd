@@ -19,6 +19,9 @@ rclass as defined
 \description{
 Get sample metadata available on a brapi server
 }
+\note{
+Tested against: BMS
+}
 \examples{
 if (interactive()) {
   library(brapi)
@@ -50,5 +53,5 @@ Other phenotyping: \code{\link{ba_samples_save}},
   \code{\link{ba_trials_details}}, \code{\link{ba_trials}}
 }
 \author{
-Reinhard Simon
+Reinhard Simon, Maikel Verouden
 }
