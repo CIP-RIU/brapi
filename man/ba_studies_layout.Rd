@@ -4,12 +4,12 @@
 \alias{ba_studies_layout}
 \title{ba_studies_layout}
 \usage{
-ba_studies_layout(con = NULL, studyDbId = "1", rclass = "tibble")
+ba_studies_layout(con = NULL, studyDbId = "", rclass = "tibble")
 }
 \arguments{
 \item{con}{brapi connection object}
 
-\item{studyDbId}{character; default: 1}
+\item{studyDbId}{character; default: ''}
 
 \item{rclass}{character; default: tibble}
 }

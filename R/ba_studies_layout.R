@@ -4,7 +4,7 @@
 #'
 #' @param con brapi connection object
 #' @param rclass character; default: tibble
-#' @param studyDbId character; default: 1
+#' @param studyDbId character; default: ''
 #'
 #' @author Reinhard Simon
 #' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Studies/PlotLayoutDetails.md}{github}
@@ -15,7 +15,7 @@
 #' @family phenotyping
 #' @export
 ba_studies_layout <- function(con = NULL,
-                              studyDbId = "1",
+                              studyDbId = "",
                               rclass = "tibble") {
   ba_check(con = con, verbose =  FALSE, brapi_calls = "studies/id/layout")
   stopifnot(is.character(studyDbId))

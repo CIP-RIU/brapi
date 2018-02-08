@@ -35,6 +35,11 @@ ba_trials <- function(con = NULL,
   stopifnot(is.logical(active))
   stopifnot(is.character(sortBy))
   stopifnot(is.character(sortOrder))
+
+  if(programDbId == "") {
+    message("Consider specifying other parameters like 'pogramDbId'!\n")
+  }
+
   check_paging(pageSize = pageSize, page = page)
   check_rclass(rclass = rclass)
   brp <- get_brapi(con = con)
