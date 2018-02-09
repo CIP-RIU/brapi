@@ -7,7 +7,8 @@
 ba_studies_search(con = NULL, studyType = "", programDbId = "",
   locationDbId = "", seasonDbId = "", germplasmDbIds = "",
   observationVariableDbIds = "", active = "", sortBy = "",
-  sortOrder = "", page = 0, pageSize = 1000, rclass = "tibble")
+  sortOrder = "", page = 0, pageSize = 1000, verb = "GET",
+  rclass = "tibble")
 }
 \arguments{
 \item{con}{brapi connection object}
@@ -34,6 +35,8 @@ ba_studies_search(con = NULL, studyType = "", programDbId = "",
 
 \item{pageSize}{integer; default: 0}
 
+\item{verb}{character; default: 'GET' (or 'POST')}
+
 \item{rclass}{character; default: tibble}
 }
 \value{
@@ -45,6 +48,8 @@ lists trials available on a brapi server
 \note{
 This call must have set a specific identifier. The default is an empty string.
      If not changed to an identifier present in the database this will result in an error.
+
+Tested against: sweetpotatobase
 }
 \examples{
 if (interactive()) {

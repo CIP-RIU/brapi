@@ -5,6 +5,8 @@
 #' @note This call must have set a specific identifier. The default is an empty string.
 #'      If not changed to an identifier present in the database this will result in an error.
 #'
+#' @note Tested against: sweetpotatobase
+#'
 #'
 #' @param con brapi connection object
 #' @param studyType character; default: ''
@@ -18,6 +20,7 @@
 #' @param sortOrder  character; default: ''
 #' @param page integer; default: 1000
 #' @param pageSize integer; default: 0
+#' @param verb character; default: 'GET' (or 'POST')
 #' @param rclass character; default: tibble
 #' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Studies/ListStudySummaries.md}{github}
 #' @author Reinhard Simon
@@ -39,6 +42,7 @@ ba_studies_search <- function(con = NULL,
                               sortOrder = "",
                               page = 0,
                               pageSize = 1000,
+                              verb = 'GET',
                               rclass = "tibble") {
   ba_check(con = con, verbose = FALSE, brapi_calls = "studies-search")
   brp <- get_brapi(con = con)
@@ -54,15 +58,15 @@ ba_studies_search <- function(con = NULL,
   check_paging(pageSize = pageSize, page = page)
   check_rclass(rclass = rclass)
   pstudies_search <- paste0(brp, "studies-search/?")
-  pstudyType <- ifelse(studyType == "any", "", paste0("studyType=", studyType, "&"))
-  pprogramDbId <- ifelse(programDbId == "any", "", paste0("programDbId=", programDbId, "&"))
-  plocationDbId <- ifelse(locationDbId == "any", "", paste0("locationDbId=", locationDbId, "&"))
-  pseasonDbId <- ifelse(seasonDbId == "any", "", paste0("seasonDbId=", seasonDbId, "&"))
-  pgermplasmDbIds <- ifelse(germplasmDbIds == "any", "", paste0("germplasmDbIds=", germplasmDbIds, "&") %>% paste0(collapse = ""))
-  pobservationVariableDbIds <- ifelse(observationVariableDbIds == "any", "", paste0("observationVariableDbIds=", observationVariableDbIds, "&") %>% paste(collapse = ""))
-  pactive <- ifelse(active == "any", "", paste0("active=", active, "&"))
-  psortBy <- ifelse(sortBy == "any", "", paste0("sortBy=", sortBy, "&"))
-  psortOrder <- ifelse(sortOrder == "any", "", paste0("sortOrder=", sortOrder, "&"))
+  pstudyType <- ifelse(studyType == "", "", paste0("studyType=", studyType, "&"))
+  pprogramDbId <- ifelse(programDbId == "", "", paste0("programDbId=", programDbId, "&"))
+  plocationDbId <- ifelse(locationDbId == "", "", paste0("locationDbId=", locationDbId, "&"))
+  pseasonDbId <- ifelse(seasonDbId == "", "", paste0("seasonDbId=", seasonDbId, "&"))
+  pgermplasmDbIds <- ifelse(germplasmDbIds == "", "", paste0("germplasmDbIds=", germplasmDbIds, "&") %>% paste0(collapse = ""))
+  pobservationVariableDbIds <- ifelse(observationVariableDbIds == "", "", paste0("observationVariableDbIds=", observationVariableDbIds, "&") %>% paste(collapse = ""))
+  pactive <- ifelse(active == "", "", paste0("active=", active, "&"))
+  psortBy <- ifelse(sortBy == "", "", paste0("sortBy=", sortBy, "&"))
+  psortOrder <- ifelse(sortOrder == "", "", paste0("sortOrder=", sortOrder, "&"))
   ppage <- ifelse(is.numeric(page), paste0("page=", page, ""), "")
   ppageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
   pstudies_search <- paste0(pstudies_search,
@@ -79,7 +83,7 @@ ba_studies_search <- function(con = NULL,
                             ppage)
   nurl <- nchar(pstudies_search)
   out <- NULL
-  if (nurl <= 2000) {
+  if (nurl <= 2000 & verb == 'GET') {
     message("Using GET")
     out <- try({
       res <- brapiGET(url = pstudies_search, con = con)
@@ -93,7 +97,9 @@ ba_studies_search <- function(con = NULL,
       }
       out
     })
-  } else {
+  }
+
+  if (nurl > 2000 | verb == 'POST') {
     message("Using POST")
     x1 <- as.list(germplasmDbIds)
     names(x1)[1:length(germplasmDbIds)] <- "germplasmDbIds"

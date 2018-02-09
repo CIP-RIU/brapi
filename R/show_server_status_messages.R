@@ -2,6 +2,11 @@ show_server_status_messages <- function(out) {
 
   ba_message(crayon::yellow("Status details from Server:"))
 
+  if(any(is.na(out$info), is.na(out$success))) {
+    ba_message(crayon::yellow("None."))
+    return()
+  }
+
   if(all(out$info == "", out$success == "", out$error =="")) {
     ba_message(crayon::yellow("None."))
   } else {
