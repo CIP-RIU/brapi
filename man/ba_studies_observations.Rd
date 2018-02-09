@@ -30,6 +30,8 @@ lists studies_observations available on a brapi server
 \note{
 This call must have set a specific identifier. The default is an empty string.
      If not changed to an identifier present in the database this will result in an error.
+
+Tested against: sweetpotatobase
 }
 \examples{
 if (interactive()) {
