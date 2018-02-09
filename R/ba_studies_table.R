@@ -2,18 +2,18 @@
 #'
 #' lists studies_table available on a brapi server
 #'
-#' @note Tested against: sweetpotatobase
+#' This function must have set a specific study identifier. The default is an empty
+#' string. If not changed to an study identifier present in the database this will
+#' result in an error.
 #'
-#' @note This call must have set a specific identifier. The default is an empty string.
-#'      If not changed to an identifier present in the database this will result in an error.
+#' @note Tested against: sweetpotatobase, BMS
 #'
-#'
-#' @param rclass character; default: tibble
+#' @param rclass character; default: "tibble" possible other values: "json"/"list"/"data.frame"
 #' @param studyDbId character; default: ''
 #' @param con list; brapi connection object
 #' @param format character; one of: json, csv, tsv. Default: json
 #'
-#' @author Reinhard Simon
+#' @author Reinhard Simon, Maikel Verouden
 #' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Studies/StudyObservationUnitsAsTable.md}{github}
 #' @return rclass as defined
 #' @example inst/examples/ex-ba_studies_table.R
@@ -39,7 +39,7 @@ ba_studies_table <- function(con = NULL,
     format <- "csv"
   }
   pformat <- ifelse(format %in% c("json", "csv", "tsv"), paste0("format=", format, "&"), "")
-  studies_table <- sub("[?&]$",
+  studies_table <- sub("[/?&]$",
                        "",
                        paste0(studies_table,
                               pformat))

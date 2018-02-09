@@ -9,13 +9,16 @@ ba_crops(con = NULL, rclass = "tibble")
 \arguments{
 \item{con}{brapi connection object}
 
-\item{rclass}{logical; default is FALSE; whether to display the raw list object or not}
+\item{rclass}{character; default: "tibble" possible other values: "vector"/"json"/"list"/"data.frame"}
 }
 \value{
 a vector of crop names or NULL
 }
 \description{
 lists crops available in a database
+}
+\note{
+Tested against: sweetpotatobase, BMS
 }
 \examples{
 if (interactive()) {
@@ -48,5 +51,5 @@ Other brapicore: \code{\link{ba_calls}},
   \code{\link{ba_traits_details}}, \code{\link{ba_traits}}
 }
 \author{
-Reinhard Simon
+Reinhard Simon, Maikel Verouden
 }

@@ -18,6 +18,9 @@ Login into a brapi compatible database.
 \details{
 Caches a session token and informs of success or failure.
 }
+\note{
+Tested against: sweetpotatobase, BMS
+}
 \examples{
 if (interactive()) {
   library(brapi)

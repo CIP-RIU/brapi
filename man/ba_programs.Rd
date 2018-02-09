@@ -18,7 +18,7 @@ ba_programs(con = NULL, programName = "any", abbreviation = "any",
 
 \item{pageSize}{integer, items per page (default = 1000)}
 
-\item{rclass}{character, default: tibble}
+\item{rclass}{character; default: "tibble" possible other values: "json"/"list"/"data.frame"}
 }
 \value{
 rclass
@@ -28,6 +28,9 @@ lists the breeding programs
 }
 \details{
 BRAPI discussion: Should this return also the crop?
+}
+\note{
+Tested against: sweetpotatobase, BMS
 }
 \examples{
 if (interactive()) {
@@ -60,5 +63,5 @@ Other brapicore: \code{\link{ba_calls}},
   \code{\link{ba_traits_details}}, \code{\link{ba_traits}}
 }
 \author{
-Reinhard Simon
+Reinhard Simon, Maikel Verouden
 }

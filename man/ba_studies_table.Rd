@@ -14,7 +14,7 @@ ba_studies_table(con = NULL, studyDbId = "", format = "json",
 
 \item{format}{character; one of: json, csv, tsv. Default: json}
 
-\item{rclass}{character; default: tibble}
+\item{rclass}{character; default: "tibble" possible other values: "json"/"list"/"data.frame"}
 }
 \value{
 rclass as defined
@@ -22,11 +22,13 @@ rclass as defined
 \description{
 lists studies_table available on a brapi server
 }
+\details{
+This function must have set a specific study identifier. The default is an empty
+string. If not changed to an study identifier present in the database this will
+result in an error.
+}
 \note{
-Tested against: sweetpotatobase
-
-This call must have set a specific identifier. The default is an empty string.
-     If not changed to an identifier present in the database this will result in an error.
+Tested against: sweetpotatobase, BMS
 }
 \examples{
 if (interactive()) {
@@ -70,5 +72,5 @@ Other phenotyping: \code{\link{ba_samples_save}},
   \code{\link{ba_trials_details}}, \code{\link{ba_trials}}
 }
 \author{
-Reinhard Simon
+Reinhard Simon, Maikel Verouden
 }

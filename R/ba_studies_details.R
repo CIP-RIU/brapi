@@ -2,11 +2,14 @@
 #'
 #' Gets studies details given an id.
 #'
-#' @note This call must have set a specific identifier. The default is an empty string.
-#'      If not changed to an identifier present in the database this will result in an error.
+#' This function must have set a specific study identifier. The default is an empty
+#' string. If not changed to an study identifier present in the database this will
+#' result in an error.
+#'
+#' @note Tested against: sweetpotatobase, BMS
 #'
 #' @param con brapi connection object
-#' @param rclass character; tibble
+#' @param rclass character; default: "tibble" possible other values: "json"/"list"/"data.frame"
 #' @param studyDbId character; default ''; an internal ID for a study
 #' @import dplyr
 #' @author Reinhard Simon, Maikel Verouden

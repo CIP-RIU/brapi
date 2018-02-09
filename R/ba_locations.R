@@ -2,15 +2,18 @@
 #'
 #' Lists locations available on a brapi server.
 #'
-#' @note All standard attributes are always listed. However, attributes in the additionalInfo only when at least one record has data.
+#' All standard attributes are always listed. However, attributes in the additionalInfo
+#' only when at least one record has data.
+#'
+#' @note Tested against: sweetpotatobase, BMS
 #'
 #' @param con brapi connection object
-#' @param rclass character; default: tibble
+#' @param rclass character; default: "tibble" possible other values: "json"/"list"/"data.frame"
 #' @param locationType character, list of data types
 #' @param page integer; default 0
 #' @param pageSize integer; default 1000
 #'
-#' @author Reinhard Simon
+#' @author Reinhard Simon, Maikel Verouden
 #' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Locations/ListLocations.md}{github}
 #' @example inst/examples/ex-ba_locations.R
 #' @return rclass as defined
@@ -38,7 +41,7 @@ ba_locations <- function(con = NULL,
     ppageSize <- ""
   }
   # modify brapi call specific url to include locationType and pagenation
-  locations_list <- sub("[?&]$",
+  locations_list <- sub("[/?&]$",
                         "",
                         paste0(locations_list,
                                ppage,
@@ -58,9 +61,7 @@ ba_locations <- function(con = NULL,
     if (!is.null(out)) {
       class(out) <- c(class(out), "ba_locations")
     }
-
     show_metadata(con, res)
-
     return(out)
   })
 }

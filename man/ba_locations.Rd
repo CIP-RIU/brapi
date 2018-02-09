@@ -16,7 +16,7 @@ ba_locations(con = NULL, locationType = "all", page = 0,
 
 \item{pageSize}{integer; default 1000}
 
-\item{rclass}{character; default: tibble}
+\item{rclass}{character; default: "tibble" possible other values: "json"/"list"/"data.frame"}
 }
 \value{
 rclass as defined
@@ -24,8 +24,12 @@ rclass as defined
 \description{
 Lists locations available on a brapi server.
 }
+\details{
+All standard attributes are always listed. However, attributes in the additionalInfo
+only when at least one record has data.
+}
 \note{
-All standard attributes are always listed. However, attributes in the additionalInfo only when at least one record has data.
+Tested against: sweetpotatobase, BMS
 }
 \examples{
 if (interactive()) {
@@ -42,5 +46,5 @@ if (interactive()) {
 \href{https://github.com/plantbreeding/API/blob/master/Specification/Locations/ListLocations.md}{github}
 }
 \author{
-Reinhard Simon
+Reinhard Simon, Maikel Verouden
 }

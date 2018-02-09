@@ -25,13 +25,16 @@ ba_trials(con = NULL, programDbId = "", locationDbId = "",
 
 \item{pageSize}{integer; default 1000}
 
-\item{rclass}{character; ; default: tibble other possible values list/json/data.frame}
+\item{rclass}{character; default: "tibble" possible other values: "json"/"list"/"data.frame"}
 }
 \value{
 rclass as defined
 }
 \description{
 lists trials available on a brapi server
+}
+\note{
+Tested against: sweetpotatobase, BMS
 }
 \examples{
 if (interactive()) {
@@ -67,5 +70,5 @@ Other phenotyping: \code{\link{ba_samples_save}},
   \code{\link{ba_trials_details}}
 }
 \author{
-Reinhard Simon
+Reinhard Simon, Maikel Verouden
 }

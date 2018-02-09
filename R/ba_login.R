@@ -4,6 +4,8 @@
 #'
 #' Caches a session token and informs of success or failure.
 #'
+#' @note Tested against: sweetpotatobase, BMS
+#'
 #' @param con A required object of class 'brapi_con'.
 #'
 #' @return The object of class 'brapi_con' with the authentication token filled.

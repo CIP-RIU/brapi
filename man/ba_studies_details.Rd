@@ -11,7 +11,7 @@ ba_studies_details(con = NULL, studyDbId = "", rclass = "tibble")
 
 \item{studyDbId}{character; default ''; an internal ID for a study}
 
-\item{rclass}{character; tibble}
+\item{rclass}{character; default: "tibble" possible other values: "json"/"list"/"data.frame"}
 }
 \value{
 data.frame
@@ -19,9 +19,13 @@ data.frame
 \description{
 Gets studies details given an id.
 }
+\details{
+This function must have set a specific study identifier. The default is an empty
+string. If not changed to an study identifier present in the database this will
+result in an error.
+}
 \note{
-This call must have set a specific identifier. The default is an empty string.
-     If not changed to an identifier present in the database this will result in an error.
+Tested against: sweetpotatobase, BMS
 }
 \examples{
 if (interactive()) {

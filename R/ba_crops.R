@@ -3,9 +3,11 @@
 #' lists crops available in a database
 #'
 #' @param con brapi connection object
-#' @param rclass logical; default is FALSE; whether to display the raw list object or not
+#' @param rclass character; default: "tibble" possible other values: "vector"/"json"/"list"/"data.frame"
 #'
-#' @author Reinhard Simon
+#' @note Tested against: sweetpotatobase, BMS
+#'
+#' @author Reinhard Simon, Maikel Verouden
 #' @return a vector of crop names or NULL
 #' @example inst/examples/ex_crops.R
 #' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Crops/ListCrops.md}{github}

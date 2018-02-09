@@ -2,8 +2,10 @@
 #'
 #' lists trials available on a brapi server
 #'
+#' @note Tested against: sweetpotatobase, BMS
+#'
 #' @param con list, brapi connection object
-#' @param rclass character; ; default: tibble other possible values list/json/data.frame
+#' @param rclass character; default: "tibble" possible other values: "json"/"list"/"data.frame"
 #' @param page integer; default 0
 #' @param pageSize integer; default 1000
 #' @param programDbId character; default: 'any'; otherwise an identifier
@@ -12,7 +14,7 @@
 #' @param sortBy character; default: 'none'; otherwise a name from the first level entry names of the return object.
 #' @param sortOrder character; default: 'asc'; otherwise 'desc'
 #'
-#' @author Reinhard Simon
+#' @author Reinhard Simon, Maikel Verouden
 #' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Trials/ListTrialSummaries.md}{github}
 #' @return rclass as defined
 #' @example inst/examples/ex-ba_trials.R
@@ -35,11 +37,9 @@ ba_trials <- function(con = NULL,
   stopifnot(is.logical(active))
   stopifnot(is.character(sortBy))
   stopifnot(is.character(sortOrder))
-
-  if(programDbId == "") {
+  if (programDbId == "") {
     message("Consider specifying other parameters like 'pogramDbId'!\n")
   }
-
   check_paging(pageSize = pageSize, page = page)
   check_rclass(rclass = rclass)
   brp <- get_brapi(con = con)
@@ -58,7 +58,7 @@ ba_trials <- function(con = NULL,
     ppage <- ""
     ppageSize <- ""
   }
-  ptrials <- sub("[?&]$",
+  ptrials <- sub("[/?&]$",
                  "",
                  paste0(ptrials,
                         pprogramDbId,
