@@ -33,4 +33,4 @@ In case you get this error while you extract information from BTI databases (mus
 Error in value[[3L]](cond) : 
   Error in is.ba_status_ok(resp = res): Internal Server Error (HTTP 500). Failed to connect due internal server error.
 ```
-It is due to severs are under maintenance.
+It is due to BTI severs are under maintenance.
