@@ -25,3 +25,12 @@ How to use the package
 ----------------------
 
 See [tutorial](https://github.com/CIP-RIU/brapi/blob/master/inst/doc/tutorial.Rmd).
+
+
+# Note
+In case you get this error while you extract information from BTI databases (musabse, cassavabase, yambase, among others):
+```
+Error in value[[3L]](cond) : 
+  Error in is.ba_status_ok(resp = res): Internal Server Error (HTTP 500). Failed to connect due internal server error.
+```
+It is due to BTI severs are under maintenance.
