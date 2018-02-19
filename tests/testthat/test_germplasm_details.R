@@ -15,3 +15,4 @@ test_that("Germplasm_details results are present", {
   expect_that(nrow(res) == 1, is_true())
 
 })
+
