@@ -17,8 +17,13 @@ trl2tbl2 <- function(res, rclass) {
     assertthat::validate_that(nrow(df2) > 0, msg = "The JSON studies element has no entries.")
     dat2$studies <- NULL
 
-    df3 <-  dat2[rep(seq_len(nrow(dat2)), each=nrow(df2)),]
-    df <- cbind(df3, df2)
+    if (nrow(df2) > 0) {
+      df3 <-  dat2[rep(seq_len(nrow(dat2)), each=nrow(df2)),]
+      df <- cbind(df3, df2)
+    } else {
+      df <- dat2
+    }
+
     row.names(df) <- 1:nrow(df)
     return(df)
   }
@@ -27,7 +32,9 @@ trl2tbl2 <- function(res, rclass) {
 
   if(n > 1) {
     for (i in 2:n) {
-      out <- dplyr::bind_rows(out, jointrlstd( df[i, ]))
+      jn <- jointrlstd( df[i, ])
+      #print(jn)
+      out <- dplyr::bind_rows(out, jn)
     }
   }
   out$studies <- NULL

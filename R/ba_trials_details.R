@@ -30,7 +30,7 @@ ba_trials_details <- function(con = NULL,
       out <- dat2tbl(res = res, rclass = rclass)
     }
     if (rclass %in% c("data.frame", "tibble")) {
-      out <- trl2tbl2(res = res, rclass = rclass)
+      out <- trld2tbl2(res = res)
     }
     class(out) <- c(class(out), "ba_trials_details")
     show_metadata(con, res)
