@@ -8,8 +8,8 @@ gp2tbl <- function(res) {
   dat <- jsonlite::toJSON(x = lst$result)
 
   df <- jsonlite::fromJSON(txt = dat, simplifyDataFrame = TRUE, flatten = TRUE)
-  if (length(df$donors) == 0) df$donors = ""
-  if (length(df$synonyms) == 0) df$synonyms = ""
+  if (length(df$donors) == 0) df$donors <- ""
+  if (length(df$synonyms) == 0) df$synonyms <- ""
 
   df <- as.data.frame(df, stringsAsFactors = FALSE)
   #assertthat::validate_that(nrow(df) > 0, msg = "The json return object lacks a data element.")

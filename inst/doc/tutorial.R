@@ -38,7 +38,7 @@ ba_programs(sp_base, rclass = "data.frame")
 ba_studies_search(sp_base, programDbId = "140")
 
 ## ---- message=FALSE, warning=FALSE---------------------------------------
-dt = ba_studies_table(sp_base, studyDbId = "162")
+dt <- ba_studies_table(sp_base, studyDbId = "162")
 
 ## ---- echo=FALSE---------------------------------------------------------
 library(DT)

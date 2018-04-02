@@ -39,7 +39,8 @@ ba_genomemaps <- function(con = NULL,
   species <- ifelse(species != "all", paste0("species=", species, "&"), "")
   type <- ifelse(type != "all", paste0("type=", type, "&"), "")
   page <- ifelse(is.numeric(page), paste0("page=", page, "&"), "")
-  pageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
+  pageSize <- ifelse(is.numeric(pageSize),
+                     paste0("pageSize=", pageSize, "&"), "")
   # modify the call url to include pagenation
   genomemaps_list <- paste0(genomemaps_list, page, pageSize, species, type)
   try({

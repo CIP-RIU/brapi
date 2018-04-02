@@ -29,9 +29,11 @@ ba_calls <- function(con = NULL,
   brp <- get_brapi(con = con)
   # generate the call url
   brapi_calls <- paste0(brp, "calls/?")
-  pdatatypes <- ifelse(datatypes == "all", "", paste0("datatypes=", datatypes, "&"))
+  pdatatypes <- ifelse(datatypes == "all", "",
+                       paste0("datatypes=", datatypes, "&"))
   ppage <- ifelse(is.numeric(page), paste0("page=", page, ""), "")
-  ppageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
+  ppageSize <- ifelse(is.numeric(pageSize),
+                      paste0("pageSize=", pageSize, "&"), "")
   if (pageSize >= 1000) {
     ppage <- ""
     ppageSize <- ""
@@ -48,8 +50,8 @@ ba_calls <- function(con = NULL,
     res <- httr::content(x = res, as = "text", encoding = "UTF-8")
     out <- dat2tbl(res = res, rclass = rclass)
     if (rclass %in% c("data.frame", "tibble")) {
-      out$methods <- sapply(X = out$methods, FUN = paste, collapse = "; ")
-      out$datatypes <- sapply(X = out$datatypes, FUN = paste, collapse = "; ")
+      out$methods <- vapply(X = out$methods, FUN = paste, FUN.VALUE = "", collapse = "; ")
+      out$datatypes <- vapply(X = out$datatypes, FUN = paste, FUN.VALUE = "",  collapse = "; ")
     }
     class(out) <- c(class(out), "ba_calls")
     show_metadata(con, res)
