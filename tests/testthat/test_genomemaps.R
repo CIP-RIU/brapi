@@ -1,6 +1,6 @@
 context("genomemaps")
 
-con <- ba_db()$germinate_test
+con <- ba_db()$testserver
 
 test_that("Genomemaps are present", {
 

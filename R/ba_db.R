@@ -165,6 +165,7 @@ ba_db <- function() {
               ricebase = ricebase,
               snpseek = snpseek,
               sweetpotatobase = sweetpotatobase,
+              testserver = testserver,
               t3s = t3s,
               tto = tto,
               ttw = ttw,

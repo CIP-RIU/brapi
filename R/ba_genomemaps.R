@@ -36,8 +36,8 @@ ba_genomemaps <- function(con = NULL,
   brp <- get_brapi(con = con)
   # generate the call url
   genomemaps_list <- paste0(brp, "maps/?")
-  species <- ifelse(species != "all", paste0("species=", species, "&"), "")
-  type <- ifelse(type != "all", paste0("type=", type, "&"), "")
+  species <- ifelse(species != "", paste0("species=", species, "&"), "")
+  type <- ifelse(type != "", paste0("type=", type, "&"), "")
   page <- ifelse(is.numeric(page), paste0("page=", page, "&"), "")
   pageSize <- ifelse(is.numeric(pageSize),
                      paste0("pageSize=", pageSize, "&"), "")

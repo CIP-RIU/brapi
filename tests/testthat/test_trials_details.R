@@ -1,4 +1,4 @@
-context("tirals_details")
+context("trials_details")
 
 con <- ba_db()$sweetpotatobase
 
