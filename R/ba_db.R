@@ -109,6 +109,13 @@ ba_db <- function() {
                               multicrop = FALSE,
                               crop = "sweetpotato",
                               bms = FALSE)
+  testserver <- as.ba_db(secure = TRUE,
+                      protocol = "https://",
+                      db = "test-server.brapi.org",
+                      port = 80,
+                      multicrop = FALSE,
+                      crop = "crop1",
+                      bms = FALSE)
   t3s <- as.ba_db(secure = TRUE,
                   protocol = "https://",
                   db = "t3sandbox.org",
