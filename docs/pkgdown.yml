@@ -1,0 +1,6 @@
+pandoc: 1.19.2.1
+pkgdown: 0.1.0.9000
+pkgdown_sha: 3a6077977555168d5a6d7a3dd586810971903b09
+articles:
+  tutorial: tutorial.html
+
