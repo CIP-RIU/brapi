@@ -13,7 +13,8 @@ Description: Implements the Breeding API version 1.1 (www.brapi.org) with the
     exception of the polling mechanism as for the allelematrix call.
 Depends:
     R (>= 3.2.4)
-BugReports: https://github.com/CIP-RIU/brapi/issues    
+BugReports: https://github.com/CIP-RIU/brapi/issues
+URL: https://github.com/CIP-RIU/brapi/
 License: GPL-3
 LazyData: true
 RoxygenNote: 6.0.1
