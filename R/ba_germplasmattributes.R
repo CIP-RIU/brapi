@@ -23,13 +23,15 @@ ba_germplasmattributes <- function(con = NULL,
   # fetch the url of the brapi implementation of the database
   brp <- get_brapi(con = con)
   # generate the specific brapi call url
-  attributes_list <- paste0(brp, "attributes/?attributeCategoryDbId=", attributeCategoryDbId)
+  attributes_list <- paste0(brp, "attributes/?attributeCategoryDbId=",
+                            attributeCategoryDbId)
   try({
     res <- brapiGET(url = attributes_list, con = con)
     res <- httr::content(x = res, as = "text", encoding = "UTF-8")
     out <- dat2tbl(res = res, rclass = rclass)
     if (rclass %in% c("tibble", "data.frame")) {
-        out$values <- sapply(X = out$values, FUN = paste, collapse = "; ")
+        out$values <- vapply(X = out$values, FUN = paste,
+                             FUN.VALUE = character(), collapse = "; ")
     }
     class(out) <- c(class(out), "ba_germplasmattributes")
     show_metadata(con, res)

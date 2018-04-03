@@ -27,7 +27,8 @@ ba_studies_studytypes <- function(con = NULL,
   brp <- get_brapi(con = con)
   pstudyTypes <- paste0(brp, "studyTypes/?")
   page <- ifelse(is.numeric(page), paste0("page=", page, "&"), "")
-  pageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
+  pageSize <- ifelse(is.numeric(pageSize),
+                     paste0("pageSize=", pageSize, "&"), "")
   pstudyTypes <- paste0(pstudyTypes, pageSize, page)
   try({
     res <- brapiGET(url = pstudyTypes, con = con)

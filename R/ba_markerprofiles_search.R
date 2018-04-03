@@ -41,14 +41,21 @@ ba_markerprofiles_search <- function(con = NULL,
   check_rclass(rclass = rclass)
   brp <- get_brapi(con = con)
   pmarkerprofiles <- paste0(brp, "markerprofiles/?")
-  pgermplasmDbId <- paste0("germplasm=", germplasmDbId, "&") %>% paste(collapse = "")
-  pextractDbId <- paste0("extract=", extractDbId, "&") %>% paste(collapse = "")
-  pstudyDbId <- ifelse(studyDbId != "", paste0("studyDbId=", studyDbId, "&"), "")
-  psampleDbId <- ifelse(sampleDbId != "", paste0("sample=", sampleDbId, "&"), "")
-  pmethodDbId <- ifelse(methodDbId != "", paste0("method=", methodDbId, "&"), "")
+  pgermplasmDbId <- paste0("germplasm=", germplasmDbId, "&") %>%
+    paste(collapse = "")
+  pextractDbId <- paste0("extract=", extractDbId, "&") %>%
+    paste(collapse = "")
+  pstudyDbId <- ifelse(studyDbId != "", paste0("studyDbId=",
+                                               studyDbId, "&"), "")
+  psampleDbId <- ifelse(sampleDbId != "", paste0("sample=",
+                                                 sampleDbId, "&"), "")
+  pmethodDbId <- ifelse(methodDbId != "", paste0("method=",
+                                                 methodDbId, "&"), "")
   ppage <- ifelse(is.numeric(page), paste0("page=", page, ""), "")
-  ppageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
-  rclass <- ifelse(rclass %in% c("tibble", "data.frame", "json", "list"), rclass, "tibble")
+  ppageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=",
+                                                   pageSize, "&"), "")
+  rclass <- ifelse(rclass %in% c("tibble", "data.frame", "json", "list"),
+                   rclass, "tibble")
   pmarkerprofiles <- paste0(pmarkerprofiles,
                             pgermplasmDbId,
                             pstudyDbId,

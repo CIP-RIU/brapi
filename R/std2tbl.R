@@ -9,7 +9,8 @@ std2tbl <- function(res, rclass) {
   colnames(x) <- paste0("additionalInfo.", colnames(x))
   dat$additionalInfo <- NULL
   dat <- cbind(dat, x)
-  dat$seasons <- lapply(X = dat$seasons, FUN = paste, collapse = "; ") %>% unlist
+  dat$seasons <- lapply(X = dat$seasons, FUN = paste,
+                        collapse = "; ") %>% unlist
   out <- dat
   if (rclass == "tibble")
       out <- tibble::as_tibble(x = dat)

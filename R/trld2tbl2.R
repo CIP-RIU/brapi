@@ -3,7 +3,8 @@ trld2tbl2 <- function(res) {
     jsonlite::fromJSON(txt = res)
   )
 
-  assertthat::assert_that("result" %in% names(lst), msg = "The json return object lacks a result element.")
+  assertthat::assert_that("result" %in% names(lst),
+                        msg = "The json return object lacks a result element.")
   dat <- jsonlite::toJSON(x = lst$result)
 
   df <- jsonlite::fromJSON(txt = dat, simplifyDataFrame = TRUE, flatten = TRUE)
@@ -13,7 +14,8 @@ trld2tbl2 <- function(res) {
     if (length(df$additionalInfo) == 0 || ncol(df$additionalInfo) == 0) {
       df$additionalInfo <- ""
     } else {
-      names(df$additionalInfo) <- paste("additionalInfo", names(df$additionalInfo), sep = ".")
+      names(df$additionalInfo) <- paste("additionalInfo",
+                                        names(df$additionalInfo), sep = ".")
     }
   }
   std <- NULL
@@ -23,7 +25,8 @@ trld2tbl2 <- function(res) {
   }
 
   df <- as.data.frame(df, stringsAsFactors = FALSE)
-  names(df) <- stringr::str_replace_all(names(df), "additionalInfo.additionalInfo.", "additionalInfo.")
+  names(df) <- stringr::str_replace_all(names(df),
+                  "additionalInfo.additionalInfo.", "additionalInfo.")
 
   if (!is.null(std)) {
     df3 <-  df[rep(seq_len(nrow(df)), each=nrow(std)),]

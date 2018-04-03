@@ -30,7 +30,8 @@ ba_studies_seasons <- function(con = NULL,
   seasons_list <- paste0(brp, "seasons/?")
   year <- ifelse(year != 0, paste0("year=", year, "&"), "")
   page <- ifelse(is.numeric(page), paste0("page=", page, "&"), "")
-  pageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
+  pageSize <- ifelse(is.numeric(pageSize),
+                     paste0("pageSize=", pageSize, "&"), "")
   seasons_list <- paste0(seasons_list, page, pageSize, year)
   try({
     res <- brapiGET(url = seasons_list, con = con)

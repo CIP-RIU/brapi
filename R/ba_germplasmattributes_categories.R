@@ -28,7 +28,8 @@ ba_germplasmattributes_categories <- function(con = NULL,
   attributes_categories_list <- paste0(brp, "attributes/categories/")
   # modify the specific brapi call url for pagenation
   if (is.numeric(page) & is.numeric(pageSize)) {
-      attributes_categories_list <- paste0(attributes_categories_list, "?page=", page, "&pageSize=", pageSize)
+      attributes_categories_list <- paste0(
+        attributes_categories_list, "?page=", page, "&pageSize=", pageSize)
   }
   try({
     res <- brapiGET(url = attributes_categories_list, con = con)

@@ -26,7 +26,8 @@ ba_traits_details <- function(con = NULL,
     res <- httr::content(x = res, as = "text", encoding = "UTF-8")
     out <- dat2tbl(res = res, rclass = rclass)
     if (rclass %in% c("data.frame", "tibble")) {
-      out$observationVariables <- sapply(X = out$observationVariables, FUN = paste, collapse = "; ")
+      out$observationVariables <- sapply(X = out$observationVariables,
+                                         FUN = paste, collapse = "; ")
     }
     class(out) <- c(class(out), "ba_traits_details")
     show_metadata(con, res)

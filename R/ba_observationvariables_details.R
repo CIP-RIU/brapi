@@ -15,7 +15,7 @@
 #'
 #' @export
 ba_observationvariables_details <- function(con = NULL,
-                                            observationVariableDbId = "MO_123:0100621",
+                                    observationVariableDbId = "MO_123:0100621",
                                             rclass = "tibble") {
   ba_check(con = con, verbose = FALSE, brapi_calls = "variables/id")
   stopifnot(is.character(observationVariableDbId))

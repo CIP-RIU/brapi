@@ -14,7 +14,7 @@
 #' @family brapicore
 #' @export
 ba_germplasm_details <- function(con = NULL,
-                                 germplasmDbId = "0",
+                                 germplasmDbId = "",
                                  rclass = "tibble") {
   ba_check(con = con, verbose = FALSE, brapi_calls = "germplasm/id")
   stopifnot(is.character(germplasmDbId))

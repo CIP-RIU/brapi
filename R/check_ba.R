@@ -49,7 +49,8 @@ check_ba <- function(secure = FALSE,
     stop("The clientid argument can only be a character string.")
   }
   if (!is.logical(bms)) {
-    stop("The bms argument argument can only be a logical value (TRUE or FALSE).")
+    stop("The bms argument argument can only be a logical value
+         (TRUE or FALSE).")
   }
   return(invisible(TRUE))
 }

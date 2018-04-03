@@ -50,8 +50,10 @@ ba_calls <- function(con = NULL,
     res <- httr::content(x = res, as = "text", encoding = "UTF-8")
     out <- dat2tbl(res = res, rclass = rclass)
     if (rclass %in% c("data.frame", "tibble")) {
-      out$methods <- vapply(X = out$methods, FUN = paste, FUN.VALUE = "", collapse = "; ")
-      out$datatypes <- vapply(X = out$datatypes, FUN = paste, FUN.VALUE = "",  collapse = "; ")
+      out$methods <- vapply(X = out$methods, FUN = paste, FUN.VALUE = "",
+                            collapse = "; ")
+      out$datatypes <- vapply(X = out$datatypes, FUN = paste, FUN.VALUE = "",
+                              collapse = "; ")
     }
     class(out) <- c(class(out), "ba_calls")
     show_metadata(con, res)

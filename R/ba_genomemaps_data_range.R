@@ -41,17 +41,20 @@ ba_genomemaps_data_range <- function(con = NULL,
   # fetch the url of the brapi implementation of the database
   brp <- get_brapi(con = con)
   # generate the brapi call url
-  maps_positions_range_list <- paste0(brp, "maps/", mapDbId, "/positions/", linkageGroupId, "/?")
+  maps_positions_range_list <- paste0(brp, "maps/", mapDbId,
+                                  "/positions/", linkageGroupId, "/?")
   amin <- ifelse(is.numeric(min), paste0("min=", min, "&"), "")
   amax <- ifelse(is.numeric(max), paste0("max=", max, "&"), "")
   ppage <- ifelse(is.numeric(page), paste0("page=", page, ""), "")
-  ppageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
+  ppageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=",
+                                                   pageSize, "&"), "")
   if (pageSize >= 10000) {
     ppage <- ""
     ppageSize <- ""
   }
   # modify the brapi call url for ordered range and pagenation
-  maps_positions_range_list <- paste0(maps_positions_range_list, amin, amax, ppageSize, ppage)
+  maps_positions_range_list <- paste0(maps_positions_range_list, amin,
+                                      amax, ppageSize, ppage)
   try({
     res <- brapiGET(url = maps_positions_range_list, con = con)
     res <- httr::content(x = res, as = "text", encoding = "UTF-8")

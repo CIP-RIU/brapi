@@ -34,10 +34,13 @@ ba_programs <- function(con = NULL,
   brp <- get_brapi(con = con)
   # pprograms <- paste0(brp, "programs/?") # TO BE CONSIDERED v2
   pprograms <- paste0(brp, "programs?")
-  pprogramName <- ifelse(programName != "any", paste0("programName=", gsub(" ", "%20", programName), "&"), "")
-  pabbreviation <- ifelse(abbreviation != "any", paste0("abbreviation=", abbreviation, "&"), "")
+  pprogramName <- ifelse(programName != "any", paste0("programName=",
+                                  gsub(" ", "%20", programName), "&"), "")
+  pabbreviation <- ifelse(abbreviation != "any", paste0("abbreviation=",
+                                                    abbreviation, "&"), "")
   ppage <- ifelse(is.numeric(page), paste0("page=", page, "&"), "")
-  ppageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
+  ppageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=",
+                                                   pageSize, "&"), "")
   if (page == 0 & pageSize == 1000) {
     ppage <- ""
     ppageSize <- ""

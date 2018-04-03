@@ -25,7 +25,8 @@ ba_germplasm_pedigree <- function(con = NULL,
   stopifnot(notation == "purdue")
   check_rclass(rclass = rclass)
   # generate brapi call url
-  germplasm_pedigree <- paste0(get_brapi(con = con), "germplasm/", germplasmDbId, "/pedigree/?notation=", notation)
+  germplasm_pedigree <- paste0(get_brapi(con = con), "germplasm/",
+                        germplasmDbId, "/pedigree/?notation=", notation)
   try({
     res <- brapiGET(url = germplasm_pedigree, con = con)
     res <- httr::content(x = res, as = "text", encoding = "UTF-8")

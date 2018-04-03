@@ -5,11 +5,13 @@ sou2tbl <- function(res,
     jsonlite::fromJSON(txt = res)
   )
 
-  assertthat::assert_that("data" %in% names(lst$result), msg = "The json return object lacks a data element.")
+  assertthat::assert_that("data" %in% names(lst$result),
+                          msg = "The json return object lacks a data element.")
   dat <- jsonlite::toJSON(x = lst$result$data)
 
   df <- jsonlite::fromJSON(txt = dat, simplifyDataFrame = TRUE, flatten = TRUE)
-  assertthat::validate_that(nrow(df) > 0, msg = "The json return object lacks a data element.")
+  assertthat::validate_that(nrow(df) > 0,
+                          msg = "The json return object lacks a data element.")
 
   # join synonymms, taxonIds, donors
 

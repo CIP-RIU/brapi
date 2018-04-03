@@ -50,19 +50,29 @@ ba_markerprofiles_allelematrix_search <- function(con = NULL,
   stopifnot(format %in% c("json", "tsv", "csv"))
   check_paging(pageSize = pageSize, page = page)
   check_rclass(rclass = rclass)
-  # fetch the url of the brapi implementation of the database
+
   brp <- get_brapi(con = con)
-  # generate the brapi call specific url
+
   pallelematrix_search <- paste0(brp, "allelematrix-search/?")
-  pmarkerprofileDbId <- paste0("markerprofileDbId=", markerprofileDbId, "&") %>% paste(collapse = "")
-  pmarkerDbId <- paste0("markerDbId=", markerDbId, "&") %>% paste(collapse = "")
-  pexpandHomozygotes <- ifelse(expandHomozygotes != "", paste0("expandHomozygotes=", tolower(expandHomozygotes), "&"), "")
-  psepPhased <- ifelse(sepPhased != "", paste0("sepPhased=", sepPhased, "&"), "")
-  psepUnphased <- ifelse(sepUnphased != "", paste0("sepUnphased=", sepUnphased, "&"), "")
+  pmarkerprofileDbId <- paste0("markerprofileDbId=",
+                               markerprofileDbId, "&") %>% paste(collapse = "")
+  pmarkerDbId <- paste0("markerDbId=", markerDbId, "&") %>%
+    paste(collapse = "")
+  pexpandHomozygotes <- ifelse(expandHomozygotes != "",
+                               paste0("expandHomozygotes=",
+                                tolower(expandHomozygotes), "&"), "")
+  psepPhased <- ifelse(sepPhased != "", paste0("sepPhased=",
+                                               sepPhased, "&"), "")
+  psepUnphased <- ifelse(sepUnphased != "",
+                         paste0("sepUnphased=", sepUnphased, "&"), "")
   ppage <- ifelse(is.numeric(page), paste0("page=", page, ""), "")
-  ppageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
-  rclass <- ifelse(rclass %in% c("tibble", "data.frame", "json", "list"), rclass, "tibble")
-  pformat <- ifelse(format %in% c("json", "csv", "tsv"), paste0("format=", format, "&"), "")
+  ppageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=",
+                                                   pageSize, "&"), "")
+  rclass <- ifelse(rclass %in%
+                     c("tibble", "data.frame", "json", "list"),
+                   rclass, "tibble")
+  pformat <- ifelse(format %in% c("json", "csv", "tsv"),
+                    paste0("format=", format, "&"), "")
   pallelematrix_search <- paste0(pallelematrix_search,
                                  pmarkerprofileDbId,
                                  pmarkerDbId,

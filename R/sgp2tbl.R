@@ -4,7 +4,8 @@ sgp2tbl <- function(res, rclass) {
   df <- jsonlite::fromJSON(txt = dat, simplifyDataFrame = TRUE, flatten = TRUE)
   df$synonyms <- lapply(X = df$synonyms, FUN = paste, collapse = "; ")
   df <- as.data.frame(x = cbind(studyDbId = rep(lst$result$studyDbId, nrow(df)),
-                                trialName = rep(lst$result$trialName, nrow(df)), df),
+                                trialName = rep(lst$result$trialName, nrow(df)),
+                                df),
                       stringsAsFactors = FALSE)
   if (rclass == "tibble") {
     df <- tibble::as_tibble(x = df)

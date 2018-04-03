@@ -5,17 +5,21 @@ is.ba_status_ok <- function(resp) {
   }
   if (resp$status_code %in% c(400)) {
     httr::stop_for_status(x = resp$status_code,
-                          task = "get result due to invalid request. Revise your parameters")
+          task = "get result due to invalid request.
+          Revise your parameters")
   }
   if (resp$status_code %in% c(401)) {
     httr::stop_for_status(x = resp$status_code,
-                          task = "connect due to invalid/expired token, use brapi_auth to obtain/update your token")
+          task = "connect due to invalid/expired token,
+          use brapi_auth to obtain/update your token")
   }
   if (resp$status_code %in% c(403, 404)) {
-    httr::stop_for_status(x = resp$status_code, task = "connect due to url/BrAPI call not implemented")
+    httr::stop_for_status(x = resp$status_code,
+          task = "connect due to url/BrAPI call not implemented")
   }
   if (resp$status_code %in% c(500, 501)) {
-    httr::stop_for_status(x = resp$status_code, task = "connect due internal server error")
+    httr::stop_for_status(x = resp$status_code,
+          task = "connect due internal server error")
   }
   return(FALSE)
 }

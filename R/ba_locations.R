@@ -31,11 +31,15 @@ ba_locations <- function(con = NULL,
   # fetch the url of the brapi implementation of the database
   brp <- get_brapi(con = con)
   # generate the brapi call specific url
-  # locations_list <- paste0(brp, "locations/?") # TO BE CONSIDERED FOR VERSION 2
+  # locations_list <- paste0(brp, "locations/?")
+  # TO BE CONSIDERED FOR VERSION 2
   locations_list <- paste0(brp, "locations?")
-  plocationType <- ifelse(locationType != "all", paste0("locationType=", gsub(" ", "%20", locationType), "&"), "")
+  plocationType <- ifelse(locationType != "all",
+                          paste0("locationType=",
+                                gsub(" ", "%20", locationType), "&"), "")
   ppage <- ifelse(is.numeric(page), paste0("page=", page, "&"), "")
-  ppageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
+  ppageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize,
+                                                   "&"), "")
   if (page == 0 & pageSize == 1000) {
     ppage <- ""
     ppageSize <- ""

@@ -40,13 +40,20 @@ ba_markerprofiles_details <- function(con = NULL,
   check_paging(pageSize = pageSize, page = page)
   check_rclass(rclass = rclass)
   brp <- get_brapi(con = con)
-  markerprofiles_alleles <- paste0(brp, "markerprofiles/", markerprofilesDbId, "/?")
-  expandHomozygotes <- ifelse(expandHomozygotes != "", paste0("expandHomozygotes=", expandHomozygotes, "&"), "")
-  sepPhased <- ifelse(sepPhased != "", paste0("sepPhased=", sepPhased, "&"), "")
-  sepUnphased <- ifelse(sepUnphased != "", paste0("sepUnphased=", sepUnphased, "&"), "")
+  markerprofiles_alleles <- paste0(brp, "markerprofiles/",
+                                   markerprofilesDbId, "/?")
+  expandHomozygotes <- ifelse(expandHomozygotes != "",
+                          paste0("expandHomozygotes=", expandHomozygotes,
+                                 "&"), "")
+  sepPhased <- ifelse(sepPhased != "", paste0("sepPhased=",
+                                              sepPhased, "&"), "")
+  sepUnphased <- ifelse(sepUnphased != "", paste0("sepUnphased=",
+                                                  sepUnphased, "&"), "")
   page <- ifelse(is.numeric(page), paste0("page=", page, ""), "")
-  pageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
-  rclass <- ifelse(rclass %in% c("tibble", "data.frame", "json", "list"), rclass, "tibble")
+  pageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize,
+                                                  "&"), "")
+  rclass <- ifelse(rclass %in% c("tibble", "data.frame", "json", "list"),
+                   rclass, "tibble")
   markerprofiles_alleles <- paste0(markerprofiles_alleles,
                                    expandHomozygotes,
                                    sepPhased,
@@ -58,7 +65,8 @@ ba_markerprofiles_details <- function(con = NULL,
     res <- httr::content(x = res, as = "text", encoding = "UTF-8")
     out <- NULL
     if (rclass %in% c("json", "list")) {
-      out <- dat2tbl(res = res, rclass = rclass, brapi_class = "brapi_markerprofiles_alleles")
+      out <- dat2tbl(res = res, rclass = rclass,
+                     brapi_class = "brapi_markerprofiles_alleles")
     }
     if (rclass %in% c("data.frame", "tibble")) {
       out <- mpa2tbl(res = res, rclass = rclass)

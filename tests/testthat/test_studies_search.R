@@ -28,7 +28,8 @@ test_that("Studies_search are present using POST", {
 
 test_that("Output is transformed", {
 
-  res <- ba_studies_search(con = con, programDbId = "140", verb = 'POST', rclass = "json")
+  res <- ba_studies_search(con = con, programDbId = "140", verb = 'POST',
+                           rclass = "json")
   expect_that("json" %in%  class(res), is_true())
 
 })

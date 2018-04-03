@@ -58,17 +58,27 @@ ba_studies_search <- function(con = NULL,
   check_paging(pageSize = pageSize, page = page)
   check_rclass(rclass = rclass)
   pstudies_search <- paste0(brp, "studies-search/?")
-  pstudyType <- ifelse(studyType == "", "", paste0("studyType=", studyType, "&"))
-  pprogramDbId <- ifelse(programDbId == "", "", paste0("programDbId=", programDbId, "&"))
-  plocationDbId <- ifelse(locationDbId == "", "", paste0("locationDbId=", locationDbId, "&"))
-  pseasonDbId <- ifelse(seasonDbId == "", "", paste0("seasonDbId=", seasonDbId, "&"))
-  pgermplasmDbIds <- ifelse(germplasmDbIds == "", "", paste0("germplasmDbIds=", germplasmDbIds, "&") %>% paste0(collapse = ""))
-  pobservationVariableDbIds <- ifelse(observationVariableDbIds == "", "", paste0("observationVariableDbIds=", observationVariableDbIds, "&") %>% paste(collapse = ""))
+  pstudyType <- ifelse(studyType == "", "",
+                       paste0("studyType=", studyType, "&"))
+  pprogramDbId <- ifelse(programDbId == "", "",
+                         paste0("programDbId=", programDbId, "&"))
+  plocationDbId <- ifelse(locationDbId == "", "",
+                          paste0("locationDbId=", locationDbId, "&"))
+  pseasonDbId <- ifelse(seasonDbId == "", "",
+                        paste0("seasonDbId=", seasonDbId, "&"))
+  pgermplasmDbIds <- ifelse(germplasmDbIds == "", "",
+        paste0("germplasmDbIds=", germplasmDbIds, "&") %>%
+          paste0(collapse = ""))
+  pobservationVariableDbIds <- ifelse(observationVariableDbIds == "", "",
+        paste0("observationVariableDbIds=",
+               observationVariableDbIds, "&") %>% paste(collapse = ""))
   pactive <- ifelse(active == "", "", paste0("active=", active, "&"))
   psortBy <- ifelse(sortBy == "", "", paste0("sortBy=", sortBy, "&"))
-  psortOrder <- ifelse(sortOrder == "", "", paste0("sortOrder=", sortOrder, "&"))
+  psortOrder <- ifelse(sortOrder == "", "",
+                       paste0("sortOrder=", sortOrder, "&"))
   ppage <- ifelse(is.numeric(page), paste0("page=", page, ""), "")
-  ppageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
+  ppageSize <- ifelse(is.numeric(pageSize),
+                      paste0("pageSize=", pageSize, "&"), "")
   pstudies_search <- paste0(pstudies_search,
                             pstudyType,
                             pprogramDbId,

@@ -33,12 +33,13 @@ ba_studies_table <- function(con = NULL,
   stopifnot(format %in% c("json", "tsv", "csv"))
   check_rclass(rclass =  rclass)
   brp <- get_brapi(con = con)
-  # studies_table <- paste0(brp, "studies/", studyDbId, "/table/?") # TO BE CONSIDERED FOR VERSION 2
+
   studies_table <- paste0(brp, "studies/", studyDbId, "/table?")
   if (rclass %in% c("data.frame", "tibble") & format == "json") {
     format <- "csv"
   }
-  pformat <- ifelse(format %in% c("json", "csv", "tsv"), paste0("format=", format, "&"), "")
+  pformat <- ifelse(format %in% c("json", "csv", "tsv"),
+                    paste0("format=", format, "&"), "")
   studies_table <- sub("[/?&]$",
                        "",
                        paste0(studies_table,

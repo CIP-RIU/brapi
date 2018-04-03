@@ -41,7 +41,7 @@ ba_login <- function(con) {
   if (resp$status_code == 401) {
     # Status Unauthorized
     httr::stop_for_status(x = resp,
-                          task = "authenticate. Check your username and password!")
+              task = "authenticate. Check your username and password!")
   } else {
     # Status other than unauthorized
     if (resp$status_code != 200) {

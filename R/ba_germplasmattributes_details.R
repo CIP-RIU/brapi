@@ -48,11 +48,14 @@ ba_germplasmattributes_details <- function(con = NULL,
         jsonlite::fromJSON(txt = res)
       )
 
-      assertthat::assert_that("data" %in% names(lst$result), msg = "The json return object lacks a data element.")
+      assertthat::assert_that("data" %in% names(lst$result),
+                  msg = "The json return object lacks a data element.")
       dat <- jsonlite::toJSON(x = lst$result$data)
 
-      df <- jsonlite::fromJSON(txt = dat, simplifyDataFrame = TRUE, flatten = TRUE)[[1]]
-      assertthat::validate_that(nrow(df) > 0, msg = "The json return object lacks a data element.")
+      df <- jsonlite::fromJSON(txt = dat, simplifyDataFrame = TRUE,
+                               flatten = TRUE)[[1]]
+      assertthat::validate_that(nrow(df) > 0,
+                  msg = "The json return object lacks a data element.")
 
       return(df)
     }

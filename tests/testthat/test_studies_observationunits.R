@@ -12,7 +12,8 @@ test_that("Studies_details are present", {
 
 test_that("Output is transformed", {
 
-  res <- ba_studies_observationunits(con = con, studyDbId = "148", rclass = "json")
+  res <- ba_studies_observationunits(con = con, studyDbId = "148",
+                                     rclass = "json")
   expect_that("json" %in%  class(res), is_true())
 
 })

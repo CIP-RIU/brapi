@@ -30,7 +30,8 @@ ba_studies_table_save <- function(con = NULL,
                      status = list(),
                      datafiles = list())
     result <- list(headerRow = colnames(study_table),
-                   observationVariableDbIds = colnames(study_table)[4:ncol(study_table)],
+                   observationVariableDbIds =
+                     colnames(study_table)[4:ncol(study_table)],
                    data = sapply(X = study_table, FUN = as.character))
     req <- list(metadata = metadata, result = result)
     dat <- jsonlite::toJSON(x = req, pretty = TRUE)

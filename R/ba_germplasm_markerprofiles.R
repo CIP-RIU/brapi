@@ -21,7 +21,8 @@ ba_germplasm_markerprofiles <- function(con = NULL,
   stopifnot(is.character(germplasmDbId))
   check_rclass(rclass = rclass)
   # generate brapi call url
-  germplasm_markerprofiles <- paste0(get_brapi(con = con), "germplasm/", germplasmDbId, "/markerprofiles/")
+  germplasm_markerprofiles <- paste0(get_brapi(con = con), "germplasm/",
+                                     germplasmDbId, "/markerprofiles/")
   try({
     res <- brapiGET(url = germplasm_markerprofiles, con = con)
     res <- httr::content(x = res, as = "text", encoding = "UTF-8")
@@ -31,23 +32,31 @@ ba_germplasm_markerprofiles <- function(con = NULL,
         jsonlite::fromJSON(txt = res)
       )
 
-      assertthat::assert_that("result" %in% names(lst), msg = "The json return object lacks a result element.")
+      assertthat::assert_that("result" %in% names(lst),
+                    msg = "The json return object lacks a result element.")
       dat <- jsonlite::toJSON(x = lst$result)
-      df <- jsonlite::fromJSON(txt = dat, simplifyDataFrame = TRUE, flatten = TRUE)
+      df <- jsonlite::fromJSON(txt = dat, simplifyDataFrame = TRUE,
+                               flatten = TRUE)
 
-      assertthat::assert_that(all(c("germplasmDbId", "markerprofileDbIds") %in% names(df)),
-                              msg = "The json return object lacks germplasmDbId and markerprofileDbIds.")
+      assertthat::assert_that(all(c("germplasmDbId",
+                                    "markerprofileDbIds") %in%
+                                    names(df)),
+            msg = "The json return object lacks germplasmDbId and
+            markerprofileDbIds.")
       assertthat::assert_that(length(df$markerprofileDbIds) > 0,
           "No markerprofileDbIdas")
-      res <-  as.data.frame(cbind(germplasmDbId = rep(df$germplasmDbId, length(df$markerprofileDbIds)),
-                            markerProfiles = df$markerprofileDbIds), stringsAsFactors = FALSE)
+      res <-  as.data.frame(cbind(germplasmDbId = rep(df$germplasmDbId,
+                                              length(df$markerprofileDbIds)),
+                            markerProfiles = df$markerprofileDbIds),
+                            stringsAsFactors = FALSE)
       return(res)
     }
     if (rclass %in% c("json", "list")) {
       out <- dat2tbl(res = res, rclass = rclass)
     }
     if (rclass == "vector") {
-      out <- jsonlite::fromJSON(txt = res, simplifyVector = FALSE)$result$markerProfiles %>% unlist
+      out <- jsonlite::fromJSON(txt = res,
+                    simplifyVector = FALSE)$result$markerProfiles %>% unlist
     }
     if (rclass == "data.frame") {
       out <- ms2tbl(res = res)

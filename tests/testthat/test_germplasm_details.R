@@ -4,7 +4,7 @@ con <- ba_db()$sweetpotatobase
 
 test_that("Germplasm_details results are present", {
 
-  res <- ba_germplasm_details(con = con)
+  res <- ba_germplasm_details(con = con, germplasmDbId = "0")
   expect_that(ncol(res) == 0, is_true())
 
 })

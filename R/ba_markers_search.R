@@ -40,13 +40,19 @@ ba_markers_search <- function(con = NULL,
   brp <- get_brapi(con = con)
   marker_search <- paste0(brp, "markers/?")
   page <- ifelse(is.numeric(page), paste0("page=", page, "&"), "")
-  pageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
-  matchMethod <- ifelse(matchMethod %in% c("exact", "case_insensitive", "wildcard"), paste0("matchMethod=", matchMethod, "&"), "")
-  include <- ifelse(include %in% c("synonyms", "none"), paste0("include=", include, "&"), "")
+  pageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=",
+                                                  pageSize, "&"), "")
+  matchMethod <- ifelse(matchMethod %in%
+                      c("exact", "case_insensitive", "wildcard"),
+                      paste0("matchMethod=", matchMethod, "&"), "")
+  include <- ifelse(include %in% c("synonyms", "none"), paste0("include=",
+                                                        include, "&"), "")
   name <- ifelse(name != "", paste0("name=", name, "&"), "")
   type <- ifelse(type != "", paste0("type=", type, "&"), "")
-  rclass <- ifelse(rclass %in% c("tibble", "data.frame", "json", "list"), rclass, "tibble")
-  marker_search <- paste0(marker_search, name, type, matchMethod, include, pageSize, page)
+  rclass <- ifelse(rclass %in% c("tibble", "data.frame", "json", "list"),
+                   rclass, "tibble")
+  marker_search <- paste0(marker_search, name, type, matchMethod,
+                          include, pageSize, page)
   try({
     res <- brapiGET(url = marker_search, con = con)
     res <- httr::content(x = res, as = "text", encoding = "UTF-8")
@@ -54,13 +60,15 @@ ba_markers_search <- function(con = NULL,
       out <- dat2tbl(res = res, rclass = rclass)
     }
     if (rclass %in% c("data.frame", "tibble")) {
-      out <- jsonlite::fromJSON(txt = res, simplifyDataFrame = TRUE, flatten = TRUE)
+      out <- jsonlite::fromJSON(txt = res, simplifyDataFrame = TRUE,
+                                flatten = TRUE)
       meta <- out$metadata
       out <- out$result$data
       attr(out, "metadata") <- meta
       out$synonyms <- sapply(X = out$synonyms, FUN = paste, collapse = "; ")
       out$refAlt <- sapply(X = out$refAlt, FUN = paste, collapse = "; ")
-      out$analysisMethods <- sapply(X = out$analysisMethods, FUN = paste, collapse = "; ")
+      out$analysisMethods <- sapply(X = out$analysisMethods,
+                                    FUN = paste, collapse = "; ")
     }
     if (rclass == "tibble") {
       out <- tibble::as_tibble(out)

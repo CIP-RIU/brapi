@@ -35,11 +35,15 @@ ba_studies_observations <- function(con = NULL,
   check_paging(pageSize = pageSize, page = page)
   check_rclass(rclass = rclass)
   brp <- get_brapi(con = con)
-  studies_observations_list <- paste0(brp, "studies/", studyDbId, "/observations/?")
-  observationVariableDbId <- paste0("observationVariableDbIds=", paste(observationVariableDbId, collapse = ","), "&")
+  studies_observations_list <- paste0(brp, "studies/", studyDbId,
+                                      "/observations/?")
+  observationVariableDbId <- paste0("observationVariableDbIds=",
+                paste(observationVariableDbId, collapse = ","), "&")
   page <- ifelse(is.numeric(page), paste0("page=", page), "")
-  pageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
-  studies_observations_list <- paste0(studies_observations_list, observationVariableDbId, pageSize, page)
+  pageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=",
+                                                  pageSize, "&"), "")
+  studies_observations_list <- paste0(studies_observations_list,
+                                observationVariableDbId, pageSize, page)
   try({
     res <- brapiGET(url = studies_observations_list, con = con)
     res <- httr::content(x = res, as = "text", encoding = "UTF-8")

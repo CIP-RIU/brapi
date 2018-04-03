@@ -40,16 +40,20 @@ ba_germplasm_search <- function(con = NULL,
   brp <- get_brapi(con = con)
   # generate the brapi call url
   if (is.numeric(page) & is.numeric(pageSize)) {
-    germplasm_search <- paste0(brp, "germplasm-search/?page=", page, "&pageSize=", pageSize)
+    germplasm_search <- paste0(brp, "germplasm-search/?page=", page,
+                               "&pageSize=", pageSize)
   }
   if (germplasmName != "none") {
-    germplasm_search <- paste0(germplasm_search, "&germplasmName=", germplasmName)
+    germplasm_search <- paste0(germplasm_search, "&germplasmName=",
+                               germplasmName)
   }
   if (germplasmDbId > 0) {
-    germplasm_search <- paste0(brp, "germplasm-search/?germplasmDbId=", germplasmDbId)
+    germplasm_search <- paste0(brp, "germplasm-search/?germplasmDbId=",
+                               germplasmDbId)
   }
   if (germplasmPUI != "none") {
-    germplasm_search <- paste0(brp, "germplasm-search/?germplasmPUI=", germplasmPUI)
+    germplasm_search <- paste0(brp, "germplasm-search/?germplasmPUI=",
+                               germplasmPUI)
   }
   if (method == "POST") {
     body <- list(germplasmDbId = germplasmDbId,

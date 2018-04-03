@@ -23,15 +23,19 @@ ba_studies_observationunits <- function(con = NULL,
                                         studyDbId = "",
                                         observationLevel = "plot",
                                         rclass = "tibble") {
-  ba_check(con = con, verbose = FALSE, brapi_calls = "studies/id/observationunits")
+  ba_check(con = con, verbose = FALSE, brapi_calls =
+             "studies/id/observationunits")
   stopifnot(is.character(studyDbId))
   stopifnot(studyDbId !="")
   stopifnot(observationLevel %in% c("plot", "plant"))
   check_rclass(rclass = rclass)
   brp <- get_brapi(con = con)
-  studies_observationunits_list <- paste0(brp, "studies/", studyDbId, "/observationunits/?")
-  observationLevel <- ifelse(observationLevel == "plant", "observationLevel=plant", "observationLevel=plot")
-  studies_observationunits_list <- paste0(studies_observationunits_list, observationLevel)
+  studies_observationunits_list <- paste0(brp, "studies/",
+                                      studyDbId, "/observationunits/?")
+  observationLevel <- ifelse(observationLevel == "plant",
+                        "observationLevel=plant", "observationLevel=plot")
+  studies_observationunits_list <- paste0(
+    studies_observationunits_list, observationLevel)
   try({
     res <- brapiGET(url = studies_observationunits_list, con = con)
     res <- httr::content(x = res, as = "text", encoding = "UTF-8")

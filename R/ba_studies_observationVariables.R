@@ -21,12 +21,14 @@
 ba_studies_observationvariables <- function(con = NULL,
                                             studyDbId = "",
                                             rclass = "tibble") {
-  ba_check(con = con, verbose = FALSE, brapi_calls = "studies/id/observationVariables")
+  ba_check(con = con, verbose = FALSE, brapi_calls =
+             "studies/id/observationVariables")
   stopifnot(is.character(studyDbId))
   stopifnot(studyDbId != "")
   check_rclass(rclass = rclass)
   brp <- get_brapi(con = con)
-  studies_observationVariables_list <- paste0(brp, "studies/", studyDbId, "/observationVariables/?")
+  studies_observationVariables_list <- paste0(brp, "studies/",
+                                      studyDbId, "/observationVariables/?")
   try({
     res <- brapiGET(url = studies_observationVariables_list, con = con)
     res <- httr::content(x = res, as = "text", encoding = "UTF-8")

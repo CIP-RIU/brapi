@@ -45,7 +45,8 @@ ba_observationvariables_search <- function(con = NULL,
     pvariables <- paste0(brp, "variables-search/")
     try({
       res <- brapiPOST(pvariables, body, con = con)
-      body <- list(observationVariableDbIds = observationVariableDbIds %>% as.list(),
+      body <- list(observationVariableDbIds = observationVariableDbIds %>%
+                     as.list(),
                    ontologyXrefs = ontologyXrefs,
                    scaleDbIds = scaleDbIds,
                    names = names,

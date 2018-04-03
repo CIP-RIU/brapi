@@ -34,7 +34,8 @@ ba_traits <- function(con = NULL,
     out <- dat2tbl(res = res, rclass = rclass)
     if (rclass %in% c("data.frame", "tibble")) {
       if ("observationVariables" %in% colnames(out)) {
-        out$observationVariables <- sapply(X = out$observationVariables, FUN = paste, collapse = "; ")
+        out$observationVariables <- sapply(X = out$observationVariables,
+                                           FUN = paste, collapse = "; ")
       }
     }
     class(out) <- c(class(out), "ba_traits")

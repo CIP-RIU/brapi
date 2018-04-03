@@ -43,17 +43,20 @@ ba_trials <- function(con = NULL,
   check_paging(pageSize = pageSize, page = page)
   check_rclass(rclass = rclass)
   brp <- get_brapi(con = con)
-  # ptrials <- paste0(brp, "trials/?") # TO BE CONSIDERED FOR VERSION 2
+
   ptrials <- paste0(brp, "trials?")
-  pprogramDbId <- ifelse(programDbId != "any", paste0("programDbId=", programDbId, "&"), "")
-  #programDbId <- paste0("locationDbId=", locationDbId, "&")
-  plocationDbId <- ifelse(locationDbId != "any", paste0("locationDbId=", locationDbId, "&"), "")
-  #locationDbId <- paste0("locationDbId=", locationDbId, "&")
+  pprogramDbId <- ifelse(programDbId != "any",
+                    paste0("programDbId=", programDbId, "&"), "")
+
+  plocationDbId <- ifelse(locationDbId != "any",
+                    paste0("locationDbId=", locationDbId, "&"), "")
+
   pactive <- paste0("active=", tolower(active), "&")
   psortBy <- ifelse(sortBy != "none", paste0("sortBy=", sortBy, "&"), "")
   psortOrder <- paste0("sortOrder=", sortOrder, "&")
   ppage <- ifelse(is.numeric(page), paste0("page=", page, ""), "")
-  ppageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
+  ppageSize <- ifelse(is.numeric(pageSize),
+                      paste0("pageSize=", pageSize, "&"), "")
   if (page == 0 & pageSize == 1000) {
     ppage <- ""
     ppageSize <- ""

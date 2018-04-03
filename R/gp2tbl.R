@@ -4,7 +4,6 @@ gp2tbl <- function(res) {
     jsonlite::fromJSON(txt = res)
   )
 
-  #assertthat::assert_that("data" %in% names(lst$result), msg = "The json return object lacks a data element.")
   dat <- jsonlite::toJSON(x = lst$result)
 
   df <- jsonlite::fromJSON(txt = dat, simplifyDataFrame = TRUE, flatten = TRUE)
@@ -12,9 +11,6 @@ gp2tbl <- function(res) {
   if (length(df$synonyms) == 0) df$synonyms <- ""
 
   df <- as.data.frame(df, stringsAsFactors = FALSE)
-  #assertthat::validate_that(nrow(df) > 0, msg = "The json return object lacks a data element.")
-
-  # join synonymms, taxonIds, donors
 
   join_all <- function(dat2) {
     dat2 <- join_slaves(dat2, "synonyms")

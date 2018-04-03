@@ -30,7 +30,8 @@ ba_germplasm_details_study <- function(con = NULL,
   # generate brapi call url
   studies_germplasm_list <- paste0(brp, "studies/", studyDbId, "/germplasm/?")
   page <- ifelse(is.numeric(page), paste0("page=", page), "")
-  pageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize, "&"), "")
+  pageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=",
+                                                  pageSize, "&"), "")
   # modify brapi call url to include pagenation
   studies_germplasm_list <- paste0(studies_germplasm_list, pageSize, page)
   try({

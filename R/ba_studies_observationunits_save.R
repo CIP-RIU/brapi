@@ -49,14 +49,17 @@ ba_studies_observationunits_save <- function(con = NULL,
       obs[[i]]$observations[[j]] <- as.list(recs[j, ])
     }
   }
-  dat <- list(metadata = list(pagination = list(pageSize = 0, currentPage = 0, totalCount = 0, totalPages = 0),
+  dat <- list(metadata = list(pagination = list(pageSize = 0,
+                            currentPage = 0, totalCount = 0, totalPages = 0),
                               status = list(),
                               datafiles = list()),
               result = list(transactionDbId = transactionDbId,
                             commit = tolower(as.character(commit)),
                             data = obs))
   brp <- get_brapi(con = con)
-  call_samples <- paste0(brp, "studies/", studyDbId, "/observationunits?observationLevel=", observationLevel)
+  call_samples <- paste0(brp, "studies/", studyDbId,
+                         "/observationunits?observationLevel=",
+                         observationLevel)
   try({
     brapiPOST(url = call_samples, body = dat, con = con)
     return(TRUE)

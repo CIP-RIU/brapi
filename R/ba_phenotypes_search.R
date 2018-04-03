@@ -74,11 +74,14 @@ ba_phenotypes_search <- function(con = NULL,
           }
       }
       out2 <- cbind(observationUnitDbId = nid, out2)
-      names(out2)[2:ncol(out2)] <- paste0("observations.", names(out2)[2:ncol(out2)])
+      names(out2)[2:ncol(out2)] <- paste0("observations.",
+                                          names(out2)[2:ncol(out2)])
       out3 <- merge(x = out1, y = out2, by = "observationUnitDbId")
       out3$observations <- NULL
       out <- out3
-      trt <- as.data.frame(x = cbind(treatments.factor = rep("", nrow(out)), treatments.modality = rep("", nrow(out))),
+      trt <- as.data.frame(x = cbind(treatments.factor = rep("",
+                              nrow(out)),
+                              treatments.modality = rep("", nrow(out))),
                            stringsAsFactors = FALSE)
       for (i in 1:nrow(out)) {
           if (length(out$treatments[[i]]) == 2) {
