@@ -10,3 +10,5 @@
 ^\.DS_Store
 ^\.lintr
 ^\.docs
+^docs
+^\.httr-oauth$

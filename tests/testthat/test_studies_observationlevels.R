@@ -1,6 +1,6 @@
 context("studies_observationlevels")
 
-con <- ba_db()$sweetpotatobase
+con <- ba_db()$testserver
 
 test_that("Studies_observationlevels are present", {
 

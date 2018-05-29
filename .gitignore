@@ -5,16 +5,13 @@
 .Rhistory
 .RData
 .Ruserdata
-
 # Apple generated map metadata files
 .DS_Store
-
 # Project folders or files to be ignored during development to prevent creation
 # of a huge git repo
-
 # do not uncomment the following; these directories/files are needed for
 # the automated testing servers
-
 # NAMESPACE
 # man/
 # inst/doc
+.httr-oauth
