@@ -5,14 +5,14 @@
 \title{ba_germplasmattributes_details}
 \usage{
 ba_germplasmattributes_details(con = NULL, germplasmDbId = "1",
-  attributeList = "1", page = 0, pageSize = 10, rclass = "tibble")
+  attributeList = "", page = 0, pageSize = 10, rclass = "tibble")
 }
 \arguments{
 \item{con}{brapi connection object}
 
 \item{germplasmDbId}{character; default: 1.}
 
-\item{attributeList}{character vector; default: 1.}
+\item{attributeList}{character vector; default: ''.}
 
 \item{page}{integer; default: 0.}
 

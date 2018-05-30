@@ -66,7 +66,7 @@ ba_phenotypes_search <- function(con = NULL,
       out1 <- out$result$data
       n <- nrow(out1)
       nr <- sapply(X = out1$observations, FUN = nrow)
-      nid <- rep(x = out1$observationUnitDbId, times = nr)
+      nid <- rep.int(x = out1$observationUnitDbId, times = nr)
       out2 <- out1$observations[[1]]
       if (n > 1) {
           for (i in 2:n) {

@@ -5,7 +5,7 @@
 #' @param con brapi connection object
 #' @param rclass character; default: tibble; or else: json, list, data.frame.
 #' @param germplasmDbId character; default: 1.
-#' @param attributeList character vector; default: 1.
+#' @param attributeList character vector; default: ''.
 #' @param page integer; default: 0.
 #' @param pageSize integer; default: 10.
 #'
@@ -19,7 +19,7 @@
 #' @export
 ba_germplasmattributes_details <- function(con = NULL,
                                            germplasmDbId = "1",
-                                           attributeList = "1",
+                                           attributeList = "",
                                            page = 0,
                                            pageSize = 10,
                                            rclass = "tibble") {
@@ -31,21 +31,23 @@ ba_germplasmattributes_details <- function(con = NULL,
   # fetch the url of the brapi implementation of the database
   brp <- get_brapi(con = con)
   # generate the specific brapi call url
+  pattributeList <- ifelse(attributeList != "", paste("attributeList=", attributeList, collapse = ",", sep=""), "")
   germplasm_attributes_list <- paste0(brp,
                                       "germplasm/",
                                       germplasmDbId,
-                                      "/attributes/?attributeList=",
-                                      paste(attributeList, collapse = ","),
+                                      "/attributes/?",
+                                      pattributeList,
+
                                       "&page=",
                                       page,
                                       "&pageSize=",
                                       pageSize)
   try({
     res <- brapiGET(url = germplasm_attributes_list, con = con)
-    res <- httr::content(x = res, as = "text", encoding = "UTF-8")
+    res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
     ms2tbl <- function(res) {
       lst <- tryCatch(
-        jsonlite::fromJSON(txt = res)
+        jsonlite::fromJSON(txt = res2)
       )
 
       assertthat::assert_that("data" %in% names(lst$result),
@@ -54,19 +56,19 @@ ba_germplasmattributes_details <- function(con = NULL,
 
       df <- jsonlite::fromJSON(txt = dat, simplifyDataFrame = TRUE,
                                flatten = TRUE)[[1]]
-      assertthat::validate_that(nrow(df) > 0,
-                  msg = "The json return object lacks a data element.")
+      # assertthat::validate_that(nrow(df) > 0,
+      #             msg = "The json return object lacks a data element.")
 
       return(df)
     }
     if (rclass %in% c("json", "list")) {
-      out <- dat2tbl(res = res, rclass = rclass)
+      out <- dat2tbl(res = res2, rclass = rclass)
     }
     if (rclass == "data.frame") {
-      out <- ms2tbl(res = res)
+      out <- ms2tbl(res = res2)
     }
     if (rclass == "tibble") {
-      out <- ms2tbl(res = res) %>% tibble::as_tibble()
+      out <- ms2tbl(res = res2) %>% tibble::as_tibble()
     }
     class(out) <- c(class(out), "ba_germplasmattributes_details")
     show_metadata(res)
