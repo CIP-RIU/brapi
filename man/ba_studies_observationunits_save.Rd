@@ -5,7 +5,7 @@
 \title{ba_studies_observationunits_save}
 \usage{
 ba_studies_observationunits_save(con = NULL, studyDbId = "",
-  unitData = NULL, observationLevel = "plot", transactionDbId = "1234",
+  unitData = NULL, observationLevel = "plot", transactionDbId = "",
   commit = TRUE)
 }
 \arguments{
