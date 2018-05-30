@@ -23,10 +23,10 @@ ba_studies_observationlevels <- function(con = NULL,
   observationLevels_List <- paste0(get_brapi(con = con), "observationLevels")
   try({
     res <- brapiGET(url = observationLevels_List, con = con)
-    res <- httr::content(x = res, as = "text", encoding = "UTF-8")
-    out <- dat2tbl(res = res, rclass = rclass)
+    res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
+    out <- dat2tbl(res = res2, rclass = rclass)
     class(out) <- c(class(out), "ba_studies_observationlevels")
-    show_metadata(con, res)
+    show_metadata(res)
     return(out)
   })
 }

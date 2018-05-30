@@ -26,16 +26,16 @@ ba_genomemaps_details <- function(con = NULL,
   maps_list <- paste0(brp, "maps/", mapDbId, "/")
   try({
     res <- brapiGET(url = maps_list, con = con)
-    res <- httr::content(x = res, as = "text", encoding = "UTF-8")
+    res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
     if (rclass == "vector") {
       rclass <- "tibble"
     }
     out <- NULL
     if (rclass %in% c("json", "list")) {
-      out <- dat2tbl(res, rclass)
+      out <- dat2tbl(res2, rclass)
     }
     if (rclass %in% c("data.frame", "tibble")) {
-      lst <- jsonlite::fromJSON(txt = res)
+      lst <- jsonlite::fromJSON(txt = res2)
       dat <- jsonlite::toJSON(x = lst$result$linkageGroups)
       if (rclass == "data.frame") {
         out <- jsonlite::fromJSON(txt = dat, simplifyDataFrame = TRUE)
@@ -54,7 +54,7 @@ ba_genomemaps_details <- function(con = NULL,
     }
     class(out) <- c(class(out), "ba_genomemaps_details")
 
-    show_metadata(con, res)
+    show_metadata(res)
     return(out)
   })
 }

@@ -100,7 +100,7 @@ ba_phenotypes_search <- function(con = NULL,
       }
     }
     class(out) <- c(class(out), "ba_phenotypes_search")
-    show_metadata(con, res)
+    show_metadata(res)
     return(out)
   })
 }

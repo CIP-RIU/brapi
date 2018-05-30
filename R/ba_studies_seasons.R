@@ -35,10 +35,10 @@ ba_studies_seasons <- function(con = NULL,
   seasons_list <- paste0(seasons_list, page, pageSize, year)
   try({
     res <- brapiGET(url = seasons_list, con = con)
-    res <- httr::content(x = res, as = "text", encoding = "UTF-8")
-    out <- dat2tbl(res = res, rclass = rclass)
+    res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
+    out <- dat2tbl(res = res2, rclass = rclass)
     class(out) <- c(class(out), "ba_studies_seasons")
-    show_metadata(con, res)
+    show_metadata(res)
     return(out)
   })
 }

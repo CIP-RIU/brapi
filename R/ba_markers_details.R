@@ -27,10 +27,10 @@ ba_markers_details <- function(con = NULL,
   markers <- paste0(brp, "markers/", markerDbId)
   try({
     res <- brapiGET(url = markers, con = con)
-    res <- httr::content(x = res, as = "text", encoding = "UTF-8")
-    out <- dat2tbl(res = res , rclass = rclass)
+    res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
+    out <- dat2tbl(res = res2 , rclass = rclass)
     class(out) <- c(class(out), "ba_markers_details")
-    show_metadata(con, res)
+    show_metadata(res)
     return(out)
   })
 }

@@ -24,16 +24,16 @@ ba_trials_details <- function(con = NULL,
   ptrials <- paste0(brp, "trials/", trialDbId)
   try({
     res <- brapiGET(url = ptrials, con = con)
-    res <- httr::content(x = res, as = "text", encoding = "UTF-8")
+    res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
     out <- NULL
     if (rclass %in% c("list", "json")) {
-      out <- dat2tbl(res = res, rclass = rclass)
+      out <- dat2tbl(res = res2, rclass = rclass)
     }
     if (rclass %in% c("data.frame", "tibble")) {
-      out <- trld2tbl2(res = res)
+      out <- trld2tbl2(res = res2)
     }
     class(out) <- c(class(out), "ba_trials_details")
-    show_metadata(con, res)
+    show_metadata(res)
     return(out)
   })
 }

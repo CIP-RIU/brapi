@@ -45,14 +45,14 @@ ba_genomemaps <- function(con = NULL,
   genomemaps_list <- paste0(genomemaps_list, page, pageSize, species, type)
   try({
     res <- brapiGET(url = genomemaps_list, con = con)
-    res <- httr::content(x = res, as = "text", encoding = "UTF-8")
+    res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
     if (rclass == "vector") {
       rclass <- "tibble"
     }
-    out <- dat2tbl(res = res, rclass = rclass)
+    out <- dat2tbl(res = res2, rclass = rclass)
     class(out) <- c(class(out), "ba_genomemaps")
 
-    show_metadata(con, res)
+    show_metadata(res)
     return(out)
   })
 }

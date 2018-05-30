@@ -30,8 +30,8 @@ ba_traits <- function(con = NULL,
   traits <- paste0(traits, ppageSize, ppage)
   try({
     res <- brapiGET(url = traits, con = con)
-    res <- httr::content(x = res, as = "text", encoding = "UTF-8")
-    out <- dat2tbl(res = res, rclass = rclass)
+    res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
+    out <- dat2tbl(res = res2, rclass = rclass)
     if (rclass %in% c("data.frame", "tibble")) {
       if ("observationVariables" %in% colnames(out)) {
         out$observationVariables <- sapply(X = out$observationVariables,
@@ -39,7 +39,7 @@ ba_traits <- function(con = NULL,
       }
     }
     class(out) <- c(class(out), "ba_traits")
-    show_metadata(con, res)
+    show_metadata(res)
     return(out)
   })
 }

@@ -47,8 +47,8 @@ ba_calls <- function(con = NULL,
     res <- brapiGET(url = brapi_calls, con = con)
     out <- NULL
     # parse the GET response
-    res <- httr::content(x = res, as = "text", encoding = "UTF-8")
-    out <- dat2tbl(res = res, rclass = rclass)
+    res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
+    out <- dat2tbl(res = res2, rclass = rclass)
     if (rclass %in% c("data.frame", "tibble")) {
       out$methods <- vapply(X = out$methods, FUN = paste, FUN.VALUE = "",
                             collapse = "; ")
@@ -56,7 +56,7 @@ ba_calls <- function(con = NULL,
                               collapse = "; ")
     }
     class(out) <- c(class(out), "ba_calls")
-    show_metadata(con, res)
+    show_metadata(res)
     return(out)
   })
 }

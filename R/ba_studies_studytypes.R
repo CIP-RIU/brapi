@@ -32,10 +32,10 @@ ba_studies_studytypes <- function(con = NULL,
   pstudyTypes <- paste0(pstudyTypes, pageSize, page)
   try({
     res <- brapiGET(url = pstudyTypes, con = con)
-    res <- httr::content(x = res, as = "text", encoding = "UTF-8")
-    out <- dat2tbl(res = res, rclass = rclass)
+    res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
+    out <- dat2tbl(res = res2, rclass = rclass)
     class(out) <- c(class(out), "ba_studies_studytypes")
-    show_metadata(con, res)
+    show_metadata(res)
     return(out)
   })
 }

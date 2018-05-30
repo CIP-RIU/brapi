@@ -55,12 +55,12 @@ ba_markers_search <- function(con = NULL,
                           include, pageSize, page)
   try({
     res <- brapiGET(url = marker_search, con = con)
-    res <- httr::content(x = res, as = "text", encoding = "UTF-8")
+    res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
     if (rclass %in% c("json", "list")) {
-      out <- dat2tbl(res = res, rclass = rclass)
+      out <- dat2tbl(res = res2, rclass = rclass)
     }
     if (rclass %in% c("data.frame", "tibble")) {
-      out <- jsonlite::fromJSON(txt = res, simplifyDataFrame = TRUE,
+      out <- jsonlite::fromJSON(txt = res2, simplifyDataFrame = TRUE,
                                 flatten = TRUE)
       meta <- out$metadata
       out <- out$result$data
@@ -73,7 +73,7 @@ ba_markers_search <- function(con = NULL,
     if (rclass == "tibble") {
       out <- tibble::as_tibble(out)
     }
-    show_metadata(con, res)
+    show_metadata(res)
     class(out) <- c(class(out), "ba_markers_search")
     return(out)
   })

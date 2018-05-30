@@ -23,20 +23,20 @@ ba_germplasm_details <- function(con = NULL,
   germplasm <- paste0(get_brapi(con = con), "germplasm/", germplasmDbId, "/")
   try({
     res <- brapiGET(url = germplasm, con = con)
-    res <- httr::content(x = res, as = "text", encoding = "UTF-8")
+    res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
     out <- NULL
     if (rclass %in% c("json", "list")) {
-      out <- dat2tbl(res = res, rclass = rclass)
+      out <- dat2tbl(res = res2, rclass = rclass)
     }
     if (rclass == "data.frame") {
-      out <- gp2tbl(res)
+      out <- gp2tbl(res2)
     }
     if (rclass == "tibble") {
-      out <- gp2tbl(res) %>% tibble::as_tibble()
+      out <- gp2tbl(res2) %>% tibble::as_tibble()
     }
     class(out) <- c(class(out), "ba_germplasm_details")
 
-    show_metadata(con, res)
+    show_metadata(res)
     return(out)
   })
 }

@@ -34,7 +34,7 @@ ba_germplasmattributes <- function(con = NULL,
                              FUN.VALUE = character(), collapse = "; ")
     }
     class(out) <- c(class(out), "ba_germplasmattributes")
-    show_metadata(con, res)
+    show_metadata(res)
     return(out)
   })
 }

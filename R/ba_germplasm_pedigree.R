@@ -49,7 +49,7 @@ ba_germplasm_pedigree <- function(con = NULL,
              as.data.frame()
     }
     class(out) <- c(class(out), "ba_germplasm_pedigree")
-    show_metadata(con, res)
+    show_metadata(res)
     return(out)
   })
 }

@@ -54,10 +54,10 @@ ba_programs <- function(con = NULL,
                           ppage))
   try({
     res <- brapiGET(url = pprograms, con = con)
-    res <- httr::content(x = res, as = "text", encoding = "UTF-8")
-    out <- dat2tbl(res = res, rclass = rclass)
+    res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
+    out <- dat2tbl(res = res2, rclass = rclass)
     class(out) <- c(class(out), "ba_programs")
-    show_metadata(con, res)
+    show_metadata(res)
     return(out)
   })
 }

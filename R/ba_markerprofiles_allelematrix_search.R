@@ -54,16 +54,16 @@ ba_markerprofiles_allelematrix_search <- function(con = NULL,
   brp <- get_brapi(con = con)
 
   pallelematrix_search <- paste0(brp, "allelematrix-search/?")
-  pmarkerprofileDbId <- paste0("markerprofileDbId=",
-                               markerprofileDbId, "&") %>% paste(collapse = "")
-  pmarkerDbId <- paste0("markerDbId=", markerDbId, "&") %>%
-    paste(collapse = "")
-  pexpandHomozygotes <- ifelse(expandHomozygotes != "",
+  pmarkerprofileDbId <- ifelse(markerprofileDbId != "", paste0("markerprofileDbId=",
+                               markerprofileDbId, "&") %>% paste(collapse = ""), "")
+  pmarkerDbId <- ifelse(markerDbId != "", paste0("markerDbId=", markerDbId, "&") %>%
+    paste(collapse = ""), "")
+  pexpandHomozygotes <- ifelse(expandHomozygotes == TRUE,
                                paste0("expandHomozygotes=",
                                 tolower(expandHomozygotes), "&"), "")
-  psepPhased <- ifelse(sepPhased != "", paste0("sepPhased=",
+  psepPhased <- ifelse(sepPhased != "|", paste0("sepPhased=",
                                                sepPhased, "&"), "")
-  psepUnphased <- ifelse(sepUnphased != "",
+  psepUnphased <- ifelse(sepUnphased != "/",
                          paste0("sepUnphased=", sepUnphased, "&"), "")
   ppage <- ifelse(is.numeric(page), paste0("page=", page, ""), "")
   ppageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=",
@@ -71,7 +71,7 @@ ba_markerprofiles_allelematrix_search <- function(con = NULL,
   rclass <- ifelse(rclass %in%
                      c("tibble", "data.frame", "json", "list"),
                    rclass, "tibble")
-  pformat <- ifelse(format %in% c("json", "csv", "tsv"),
+  pformat <- ifelse(!(format %in% c("json", "csv", "tsv")) ,
                     paste0("format=", format, "&"), "")
   pallelematrix_search <- paste0(pallelematrix_search,
                                  pmarkerprofileDbId,
@@ -111,6 +111,6 @@ ba_markerprofiles_allelematrix_search <- function(con = NULL,
     })
   }
   class(out) <- c(class(out), "ba_markerprofiles_allelematrix_search")
-  show_metadata(con, res)
+  show_metadata(res)
   return(out)
 }

@@ -70,8 +70,8 @@ ba_markerprofiles_search <- function(con = NULL,
     ba_message(msg = "Using GET")
     out <- try({
       res <- brapiGET(url = pmarkerprofiles, con = con)
-      res <- httr::content(x = res, as = "text", encoding = "UTF-8")
-      dat2tbl(res = res, rclass = rclass)
+      res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
+      dat2tbl(res = res2, rclass = rclass)
     })
   }
   if (nurl > 2000) {
@@ -92,11 +92,11 @@ ba_markerprofiles_search <- function(con = NULL,
     out <- try({
       pmarkerprofiles <- paste0(brp, "markerprofiles-search/")
       res <- brapiPOST(url = pmarkerprofiles, body, con)
-      res <- httr::content(x = res, as = "text", encoding = "UTF-8")
-      dat2tbl(res = res, rclass = rclass)
+      res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
+      dat2tbl(res = res2, rclass = rclass)
     })
   }
   class(out) <- c(class(out), "ba_markerprofiles_search")
-  show_metadata(con, res)
+  show_metadata(res)
   return(out)
 }

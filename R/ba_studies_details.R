@@ -34,16 +34,16 @@ ba_studies_details <- function(con = NULL,
     res <- brapiGET(url = studies, con = con)
     out <- NULL
     if (is.ba_status_ok(resp = res)) {
-      res <- httr::content(x = res, as = "text", encoding = "UTF-8")
+      res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
       if (rclass %in% c("json", "list")) {
-        out <- dat2tbl(res = res, rclass = rclass)
+        out <- dat2tbl(res = res2, rclass = rclass)
       }
       if (rclass %in% c("data.frame", "tibble")) {
-        out <- stdd2tbl(res = res, rclass = rclass)
+        out <- stdd2tbl(res = res2, rclass = rclass)
       }
       class(out) <- c(class(out), "ba_studies_details")
     }
-    #show_metadata(con, res)
+    show_metadata(res)
     return(out)
   })
 }

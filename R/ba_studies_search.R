@@ -97,13 +97,13 @@ ba_studies_search <- function(con = NULL,
     message("Using GET")
     out <- try({
       res <- brapiGET(url = pstudies_search, con = con)
-      res <- httr::content(x = res, as = "text", encoding = "UTF-8")
+      res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
       out <- NULL
       if (rclass %in% c("list", "json")) {
-        out <- dat2tbl(res = res, rclass = rclass)
+        out <- dat2tbl(res = res2, rclass = rclass)
       }
       if (rclass %in% c("data.frame", "tibble")) {
-        out <- std2tbl(res = res, rclass = rclass)
+        out <- std2tbl(res = res2, rclass = rclass)
       }
       out
     })
@@ -128,18 +128,18 @@ ba_studies_search <- function(con = NULL,
     out <- try({
       pstudies_search <- paste0(brp, "studies-search/?")
       res <- brapiPOST(url = pstudies_search, body = body, con = con)
-      res <- httr::content(x = res, as = "text", encoding = "UTF-8")
+      res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
       out <- NULL
       if (rclass %in% c("list", "json")) {
-        out <- dat2tbl(res = res, rclass = rclass)
+        out <- dat2tbl(res = res2, rclass = rclass)
       }
       if (rclass %in% c("data.frame", "tibble")) {
-        out <- std2tbl(res, rclass)
+        out <- std2tbl(res2, rclass)
       }
       out
     })
   }
   class(out) <- c(class(out), "ba_studies_search")
-  show_metadata(con, res)
+  show_metadata(res)
   return(out)
 }

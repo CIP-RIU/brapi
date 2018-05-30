@@ -46,7 +46,7 @@ ba_germplasm_details_study <- function(con = NULL,
     }
     class(out) <- c(class(out), "ba_germplasm_details_study")
 
-    show_metadata(con, res)
+    show_metadata(res)
     return(out)
   })
 }

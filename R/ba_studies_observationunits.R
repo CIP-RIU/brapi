@@ -38,16 +38,16 @@ ba_studies_observationunits <- function(con = NULL,
     studies_observationunits_list, observationLevel)
   try({
     res <- brapiGET(url = studies_observationunits_list, con = con)
-    res <- httr::content(x = res, as = "text", encoding = "UTF-8")
+    res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
     out <- NULL
     if (rclass %in% c("json", "list")) {
-      out <- dat2tbl(res = res, rclass = rclass)
+      out <- dat2tbl(res = res2, rclass = rclass)
     }
     if (rclass %in% c("tibble", "data.frame")) {
-      out <- sou2tbl(res = res, rclass = rclass)
+      out <- sou2tbl(res = res2, rclass = rclass)
     }
     class(out) <- c(class(out), "ba_studies_observationunits")
-    show_metadata(con, res)
+    show_metadata(res)
     return(out)
   })
 }

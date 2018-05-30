@@ -43,7 +43,7 @@ ba_observationvariables <- function(con = NULL,
         out <- sov2tbl(res = res, rclass = rclass, variable = TRUE)
     }
     class(out) <- c(class(out), "ba_observationvariables")
-    show_metadata(con, res)
+    show_metadata(res)
     return(out)
   })
 }

@@ -46,13 +46,13 @@ ba_studies_observations <- function(con = NULL,
                                 observationVariableDbId, pageSize, page)
   try({
     res <- brapiGET(url = studies_observations_list, con = con)
-    res <- httr::content(x = res, as = "text", encoding = "UTF-8")
+    res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
     out <- NULL
     if (rclass %in% c("json", "list", "tibble", "data.frame")) {
-      out <- dat2tbl(res = res, rclass = rclass)
+      out <- dat2tbl(res = res2, rclass = rclass)
     }
     class(out) <- c(class(out), "ba_studies_observations")
-    show_metadata(con, res)
+    show_metadata(res)
     return(out)
   })
 }
