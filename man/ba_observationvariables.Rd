@@ -4,13 +4,13 @@
 \alias{ba_observationvariables}
 \title{ba_observationvariables}
 \usage{
-ba_observationvariables(con = NULL, traitClass = "all", page = 0,
+ba_observationvariables(con = NULL, traitClass = "", page = 0,
   pageSize = 1000, rclass = "tibble")
 }
 \arguments{
 \item{con}{list; brapi connection object}
 
-\item{traitClass}{character; default 'all'}
+\item{traitClass}{character; default ''}
 
 \item{page}{integer; default 0}
 
