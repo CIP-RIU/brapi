@@ -16,7 +16,7 @@
 #' @import httr
 #' @import progress
 #' @importFrom magrittr '%>%'
-#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/MarkerProfiles/MarkerProfileData.md}{github}
+#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/MarkerProfiles/}{github}
 #'
 #' @return data.frame
 #' @example inst/examples/ex-ba_markerprofiles_details.R
@@ -26,7 +26,7 @@
 ba_markerprofiles_details <- function(con = NULL,
                                       markerprofilesDbId = "",
                                       expandHomozygotes = FALSE,
-                                      unknownString = "N",
+                                      unknownString = "-",
                                       sepPhased = "|",
                                       sepUnphased = "/",
                                       page = 0,
@@ -34,6 +34,7 @@ ba_markerprofiles_details <- function(con = NULL,
                                       rclass = "tibble") {
   ba_check(con = con, verbose = FALSE, brapi_calls = "markerprofiles/id/")
   stopifnot(is.character(markerprofilesDbId))
+  stopifnot(markerprofilesDbId != "")
   stopifnot(is.logical(expandHomozygotes))
   stopifnot(is.character(sepPhased))
   stopifnot(is.character(sepUnphased))
@@ -42,12 +43,15 @@ ba_markerprofiles_details <- function(con = NULL,
   brp <- get_brapi(con = con)
   markerprofiles_alleles <- paste0(brp, "markerprofiles/",
                                    markerprofilesDbId, "/?")
-  expandHomozygotes <- ifelse(expandHomozygotes != "",
+  unknownString <- ifelse(unknownString != "-",
+                              paste0("unknownString=", unknownString,
+                                     "&"), "")
+  expandHomozygotes <- ifelse(expandHomozygotes == TRUE,
                           paste0("expandHomozygotes=", expandHomozygotes,
                                  "&"), "")
-  sepPhased <- ifelse(sepPhased != "", paste0("sepPhased=",
+  sepPhased <- ifelse(sepPhased != "|", paste0("sepPhased=",
                                               sepPhased, "&"), "")
-  sepUnphased <- ifelse(sepUnphased != "", paste0("sepUnphased=",
+  sepUnphased <- ifelse(sepUnphased != "/", paste0("sepUnphased=",
                                                   sepUnphased, "&"), "")
   page <- ifelse(is.numeric(page), paste0("page=", page, ""), "")
   pageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize,
@@ -62,14 +66,14 @@ ba_markerprofiles_details <- function(con = NULL,
                                    page)
   try({
     res <- brapiGET(url = markerprofiles_alleles, con = con)
-    res <- httr::content(x = res, as = "text", encoding = "UTF-8")
+    res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
     out <- NULL
     if (rclass %in% c("json", "list")) {
-      out <- dat2tbl(res = res, rclass = rclass,
+      out <- dat2tbl(res = res2, rclass = rclass,
                      brapi_class = "brapi_markerprofiles_alleles")
     }
     if (rclass %in% c("data.frame", "tibble")) {
-      out <- mpa2tbl(res = res, rclass = rclass)
+      out <- mpa2tbl(res = res2, rclass = rclass)
     }
     class(out) <- c(class(out), "ba_markerprofiles_details")
     show_metadata(res)

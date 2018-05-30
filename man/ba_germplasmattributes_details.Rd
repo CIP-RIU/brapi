@@ -4,13 +4,13 @@
 \alias{ba_germplasmattributes_details}
 \title{ba_germplasmattributes_details}
 \usage{
-ba_germplasmattributes_details(con = NULL, germplasmDbId = "1",
+ba_germplasmattributes_details(con = NULL, germplasmDbId = "",
   attributeList = "", page = 0, pageSize = 10, rclass = "tibble")
 }
 \arguments{
 \item{con}{brapi connection object}
 
-\item{germplasmDbId}{character; default: 1.}
+\item{germplasmDbId}{character; default: ''.}
 
 \item{attributeList}{character vector; default: ''.}
 

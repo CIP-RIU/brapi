@@ -19,7 +19,7 @@ ba_studies_observationunits_save <- function(con = NULL,
                                              studyDbId = "",
                                              unitData = NULL,
                                              observationLevel = "plot",
-                                             transactionDbId = "1234",
+                                             transactionDbId = "",
                                              commit = TRUE) {
   ba_check(con, FALSE, "samples")
   stopifnot(is.character(studyDbId))

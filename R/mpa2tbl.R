@@ -1,6 +1,6 @@
 mpa2tbl <- function(res, rclass = "tibble") {
   lst <- jsonlite::fromJSON(txt = res)
-  dat <- jsonlite::toJSON(x = lst$result$data$data)
+  dat <- jsonlite::toJSON(x = lst$result$data)
   dba <- jsonlite::fromJSON(txt = dat)
   udb <- unlist(dba)
   udb <- udb[!is.na(udb)] %>% as.data.frame(stringsAsFactors = FALSE)

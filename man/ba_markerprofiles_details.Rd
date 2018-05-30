@@ -5,7 +5,7 @@
 \title{ba_markerprofiles_details}
 \usage{
 ba_markerprofiles_details(con = NULL, markerprofilesDbId = "",
-  expandHomozygotes = FALSE, unknownString = "N", sepPhased = "|",
+  expandHomozygotes = FALSE, unknownString = "-", sepPhased = "|",
   sepUnphased = "/", page = 0, pageSize = 10000, rclass = "tibble")
 }
 \arguments{
@@ -45,7 +45,7 @@ if (interactive()) {
 }
 }
 \references{
-\href{https://github.com/plantbreeding/API/blob/master/Specification/MarkerProfiles/MarkerProfileData.md}{github}
+\href{https://github.com/plantbreeding/API/blob/master/Specification/MarkerProfiles/}{github}
 }
 \seealso{
 Other markerprofiles: \code{\link{ba_markerprofiles_allelematrix_search}},
