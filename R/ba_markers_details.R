@@ -3,7 +3,7 @@
 #' Lists markers as result of a search.
 #'
 #' @param con brapi connection object
-#' @param markerDbId character; marker id; default: 0
+#' @param markerDbId character; marker id; default: ''
 #' @param rclass character; default: tibble
 #'
 #' @author Reinhard Simon
@@ -18,7 +18,7 @@
 #' @family genotyping
 #' @export
 ba_markers_details <- function(con = NULL,
-                               markerDbId = "0",
+                               markerDbId = "",
                                rclass = "tibble") {
   ba_check(con = con, verbose = FALSE, brapi_calls = "markers/id")
   stopifnot(is.character(markerDbId))

@@ -4,7 +4,7 @@
 #'
 #' @param rclass character; default: tibble
 #' @param con list; brapi connection object
-#' @param observationVariableDbId character; default 'CO_334:0100622'; from test server.
+#' @param observationVariableDbId character; default ''; from test server.
 #' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/ObservationVariables/VariableDetails.md}{github}
 #' @author Reinhard Simon
 #' @return rclass as defined
@@ -15,22 +15,24 @@
 #'
 #' @export
 ba_observationvariables_details <- function(con = NULL,
-                                    observationVariableDbId = "MO_123:0100621",
+                                    observationVariableDbId = "",
                                             rclass = "tibble") {
   ba_check(con = con, verbose = FALSE, brapi_calls = "variables/id")
   stopifnot(is.character(observationVariableDbId))
   check_rclass(rclass = rclass)
   brp <- get_brapi(con = con)
-  brapi_variables_details <- paste0(brp, "variables/", observationVariableDbId)
+  brapi_variables_details <- ifelse(observationVariableDbId != "",
+                                    paste0(brp, "variables/", observationVariableDbId),
+                                    paste0(brp, "variables/"))
   try({
     res <- brapiGET(url = brapi_variables_details, con = con)
-    res <- httr::content(x = res, as = "text", encoding = "UTF-8")
+    res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
     out <- NULL
     if (rclass %in% c("json", "list")) {
-      out <- dat2tbl(res = res, rclass = rclass)
+      out <- dat2tbl(res = res2, rclass = rclass)
     }
     if (rclass %in% c("tibble", "data.frame")) {
-        out <- sov2tbl(res = res, rclass =  rclass, variable = TRUE)
+        out <- sov2tbl(res = res2, rclass =  rclass, variable = TRUE)
     }
     class(out) <- c(class(out), "ba_observationvariables_details")
     show_metadata(res)

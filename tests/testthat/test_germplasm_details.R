@@ -1,18 +1,10 @@
 context("germplasm_details")
 
-con <- ba_db()$sweetpotatobase
+con <- ba_db()$testserver
 
 test_that("Germplasm_details results are present", {
 
-  res <- ba_germplasm_details(con = con, germplasmDbId = "0")
-  expect_that(ncol(res) == 0, is_true())
+  res <- ba_germplasm_details(con = con, germplasmDbId = "1")
+  expect_that(nrow(res) == 4, is_true())
 
 })
-
-test_that("Germplasm_details results are present", {
-
-  res <- ba_germplasm_details(con = con, germplasmDbId = "55767")
-  expect_that(nrow(res) == 1, is_true())
-
-})
-

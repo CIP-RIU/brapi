@@ -4,13 +4,13 @@
 \alias{ba_germplasm_markerprofiles}
 \title{ba_germplasm_markerprofiles}
 \usage{
-ba_germplasm_markerprofiles(con = NULL, germplasmDbId = "3",
+ba_germplasm_markerprofiles(con = NULL, germplasmDbId = "",
   rclass = "tibble")
 }
 \arguments{
 \item{con}{brapi connection object}
 
-\item{germplasmDbId}{integer}
+\item{germplasmDbId}{character}
 
 \item{rclass}{character, default: list; alternative: vector}
 }

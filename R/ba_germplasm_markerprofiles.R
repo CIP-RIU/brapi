@@ -3,7 +3,7 @@
 #' Gets minimal marker profile data from database using database internal id
 #'
 #' @param con brapi connection object
-#' @param germplasmDbId integer
+#' @param germplasmDbId character
 #' @param rclass character, default: list; alternative: vector
 #' @author Reinhard Simon
 #' @return list of marker profile ids
@@ -15,7 +15,7 @@
 #' @family genotyping
 #' @export
 ba_germplasm_markerprofiles <- function(con = NULL,
-                                        germplasmDbId = "3",
+                                        germplasmDbId = "",
                                         rclass = "tibble") {
   ba_check(con = con, verbose = FALSE)
   stopifnot(is.character(germplasmDbId))
@@ -25,11 +25,11 @@ ba_germplasm_markerprofiles <- function(con = NULL,
                                      germplasmDbId, "/markerprofiles/")
   try({
     res <- brapiGET(url = germplasm_markerprofiles, con = con)
-    res <- httr::content(x = res, as = "text", encoding = "UTF-8")
+    res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
     out <- NULL
     ms2tbl <- function(res) {
       lst <- tryCatch(
-        jsonlite::fromJSON(txt = res)
+        jsonlite::fromJSON(txt = res2)
       )
 
       assertthat::assert_that("result" %in% names(lst),
@@ -43,26 +43,26 @@ ba_germplasm_markerprofiles <- function(con = NULL,
                                     names(df)),
             msg = "The json return object lacks germplasmDbId and
             markerprofileDbIds.")
-      assertthat::assert_that(length(df$markerprofileDbIds) > 0,
-          "No markerprofileDbIdas")
-      res <-  as.data.frame(cbind(germplasmDbId = rep(df$germplasmDbId,
+      assertthat::assert_that((length(df$markerprofileDbIds) >= 1),
+          msg = "No markerprofileDbIdas")
+      res3 <-  as.data.frame(cbind(germplasmDbId = rep(df$germplasmDbId,
                                               length(df$markerprofileDbIds)),
                             markerProfiles = df$markerprofileDbIds),
                             stringsAsFactors = FALSE)
-      return(res)
+      return(res3)
     }
     if (rclass %in% c("json", "list")) {
-      out <- dat2tbl(res = res, rclass = rclass)
+      out <- dat2tbl(res = res2, rclass = rclass)
     }
     if (rclass == "vector") {
-      out <- jsonlite::fromJSON(txt = res,
+      out <- jsonlite::fromJSON(txt = res2,
                     simplifyVector = FALSE)$result$markerProfiles %>% unlist
     }
     if (rclass == "data.frame") {
-      out <- ms2tbl(res = res)
+      out <- ms2tbl(res = res2)
     }
     if (rclass == "tibble") {
-      out <- ms2tbl(res = res) %>% tibble::as_tibble()
+      out <- ms2tbl(res = res2) %>% tibble::as_tibble()
     }
     class(out) <- c(class(out), "ba_germplasm_markerprofiles")
     show_metadata(res)

@@ -21,8 +21,8 @@ ba_observationvariables_datatypes <- function(con = NULL,
   variables_datatypes_list <- paste0(brp, "variables/datatypes/")
   try({
     res <- brapiGET(url = variables_datatypes_list, con = con)
-    res <- httr::content(x = res, as = "text", encoding = "UTF-8")
-    out <- dat2tbl(res = res, rclass = rclass)
+    res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
+    out <- dat2tbl(res = res2, rclass = rclass)
     if (rclass %in% c("data.frame", "tibble")) {
       colnames(out) <- "variables_datatypes"
     }

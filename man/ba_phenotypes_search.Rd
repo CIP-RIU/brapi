@@ -4,27 +4,27 @@
 \alias{ba_phenotypes_search}
 \title{ba_phenotypes_search}
 \usage{
-ba_phenotypes_search(con = NULL, germplasmDbIds = "any",
-  observationVariableDbIds = "any", studyDbIds = "any",
-  locationDbIds = "any", programDbIds = "any", seasonDbIds = "any",
-  observationLevel = "any", pageSize = 100, page = 0, rclass = "tibble")
+ba_phenotypes_search(con = NULL, germplasmDbIds = "",
+  observationVariableDbIds = "", studyDbIds = "", locationDbIds = "",
+  programDbIds = "", seasonDbIds = "", observationLevel = "",
+  pageSize = 100, page = 0, rclass = "tibble")
 }
 \arguments{
 \item{con}{brapi list, connection object}
 
-\item{germplasmDbIds}{vector of character; default: any}
+\item{germplasmDbIds}{vector of character; default: ''}
 
-\item{observationVariableDbIds}{vector of character; default: any}
+\item{observationVariableDbIds}{vector of character; default: ''}
 
-\item{studyDbIds}{vector of character; default: any}
+\item{studyDbIds}{vector of character; default: ''}
 
-\item{locationDbIds}{vector of character; default: any}
+\item{locationDbIds}{vector of character; default: ''}
 
-\item{programDbIds}{vector of character; default: any}
+\item{programDbIds}{vector of character; default: ''}
 
-\item{seasonDbIds}{vector of character; default: any}
+\item{seasonDbIds}{vector of character; default: ''}
 
-\item{observationLevel}{vector of character; default: any}
+\item{observationLevel}{vector of character; default: ''}
 
 \item{pageSize}{integer default: 100}
 

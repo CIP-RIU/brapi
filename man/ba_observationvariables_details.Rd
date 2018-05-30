@@ -4,13 +4,13 @@
 \alias{ba_observationvariables_details}
 \title{ba_observationvariables_details}
 \usage{
-ba_observationvariables_details(con = NULL,
-  observationVariableDbId = "MO_123:0100621", rclass = "tibble")
+ba_observationvariables_details(con = NULL, observationVariableDbId = "",
+  rclass = "tibble")
 }
 \arguments{
 \item{con}{list; brapi connection object}
 
-\item{observationVariableDbId}{character; default 'CO_334:0100622'; from test server.}
+\item{observationVariableDbId}{character; default ''; from test server.}
 
 \item{rclass}{character; default: tibble}
 }

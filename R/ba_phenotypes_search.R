@@ -4,13 +4,13 @@
 #'
 #'
 #' @param con brapi list, connection object
-#' @param germplasmDbIds  vector of character; default: any
-#' @param observationVariableDbIds  vector of character; default: any
-#' @param studyDbIds  vector of character; default: any
-#' @param locationDbIds  vector of character; default: any
-#' @param programDbIds  vector of character; default: any
-#' @param seasonDbIds  vector of character; default: any
-#' @param observationLevel  vector of character; default: any
+#' @param germplasmDbIds  vector of character; default: ''
+#' @param observationVariableDbIds  vector of character; default: ''
+#' @param studyDbIds  vector of character; default: ''
+#' @param locationDbIds  vector of character; default: ''
+#' @param programDbIds  vector of character; default: ''
+#' @param seasonDbIds  vector of character; default: ''
+#' @param observationLevel  vector of character; default: ''
 #' @param pageSize integer default: 100
 #' @param page integer default: 0
 #' @param rclass character; default: tibble
@@ -23,13 +23,13 @@
 #' @family brapicore
 #' @export
 ba_phenotypes_search <- function(con = NULL,
-                                 germplasmDbIds = "any",
-                                 observationVariableDbIds = "any",
-                                 studyDbIds = "any",
-                                 locationDbIds = "any",
-                                 programDbIds = "any",
-                                 seasonDbIds = "any",
-                                 observationLevel = "any",
+                                 germplasmDbIds = "",
+                                 observationVariableDbIds = "",
+                                 studyDbIds = "",
+                                 locationDbIds = "",
+                                 programDbIds = "",
+                                 seasonDbIds = "",
+                                 observationLevel = "",
                                  pageSize = 100,
                                  page = 0,
                                  rclass = "tibble") {
@@ -56,13 +56,13 @@ ba_phenotypes_search <- function(con = NULL,
                  pageSize = pageSize,
                  page = page)
     res <- brapiPOST(url = pvariables, body = body, con = con)
-    res <- httr::content(x = res, as = "text", encoding = "UTF-8")
+    res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
     out <- NULL
     if (rclass %in% c("json", "list")) {
-      out <- dat2tbl(res = res, rclass = rclass)
+      out <- dat2tbl(res = res2, rclass = rclass)
     }
     if (rclass %in% c("tibble", "data.frame")) {
-      out <- jsonlite::fromJSON(txt = res, simplifyDataFrame = TRUE)
+      out <- jsonlite::fromJSON(txt = res2, simplifyDataFrame = TRUE)
       out1 <- out$result$data
       n <- nrow(out1)
       nr <- sapply(X = out1$observations, FUN = nrow)
