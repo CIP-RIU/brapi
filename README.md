@@ -12,7 +12,7 @@ Status](https://travis-ci.org/CIP-RIU/brapi.svg?branch=master)](https://travis-c
 [![Coverage
 Status](https://img.shields.io/codecov/c/github/CIP-RIU/brapi/master.svg)](https://codecov.io/github/CIP-RIU/brapi?branch=master)
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/brapi)](https://cran.r-project.org/package=brapi)
-[![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 
 ## This version is still under development. The implementation sometimes changes minor details.
 

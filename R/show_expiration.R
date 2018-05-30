@@ -1,13 +1,14 @@
 
 #' ba_show_expiration
 #'
-#' @param con
+#' @param con brapi connection
 #'
 #' @export
 #'
 #' @examples
 #'
 #' library(brapi)
+#'
 #' if (interactive()) {
 #'   con <- ba_db()$testserver
 #'   ba_show_expiration(con)

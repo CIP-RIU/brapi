@@ -7,7 +7,7 @@
 ba_show_expiration(con)
 }
 \arguments{
-\item{con}{}
+\item{con}{brapi connection}
 }
 \description{
 ba_show_expiration
@@ -15,6 +15,7 @@ ba_show_expiration
 \examples{
 
 library(brapi)
+
 if (interactive()) {
   con <- ba_db()$testserver
   ba_show_expiration(con)

@@ -84,7 +84,7 @@ ba_connect <- function(brapiDb = NULL,
                   calls = "")
     class(brapi) <- c(class(brapi), "ba", "ba_con")
   }
-  ba_show_expiration(con)
+  ba_show_expiration(brapi)
 
   return(brapi)
 }
