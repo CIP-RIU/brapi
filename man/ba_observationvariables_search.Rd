@@ -4,29 +4,33 @@
 \alias{ba_observationvariables_search}
 \title{ba_observationvariables_search}
 \usage{
-ba_observationvariables_search(con = NULL, observationVariableDbIds = "any",
-  ontologyXrefs = "any", ontologyDbIds = "any", methodDbIds = "any",
-  scaleDbIds = "any", names = "any", datatypes = "any",
-  traitClasses = "any", rclass = "tibble")
+ba_observationvariables_search(con = NULL, datatypes = "",
+  methodDbIds = "", names = "", observationVariableDbIds = "",
+  ontologyXrefs = "", ontologyDbIds = "", page = 0, pageSize = 1000,
+  scaleDbIds = "", traitClasses = "", rclass = "tibble")
 }
 \arguments{
 \item{con}{brapi list; connection object}
 
-\item{observationVariableDbIds}{vector of character; default: any}
+\item{datatypes}{vector of character; default: ''}
 
-\item{ontologyXrefs}{vector of character; default: any}
+\item{methodDbIds}{vector of character; default: ''}
 
-\item{ontologyDbIds}{vector of character; default: any}
+\item{names}{vector of character; default: ''}
 
-\item{methodDbIds}{vector of character; default: any}
+\item{observationVariableDbIds}{vector of character; default: ''}
 
-\item{scaleDbIds}{vector of character; default: any}
+\item{ontologyXrefs}{vector of character; default: ''}
 
-\item{names}{vector of character; default: any}
+\item{ontologyDbIds}{vector of character; default: ''}
 
-\item{datatypes}{vector of character; default: any}
+\item{page}{integer; default: 0}
 
-\item{traitClasses}{vector of character; default: any}
+\item{pageSize}{integer, default: 1000}
+
+\item{scaleDbIds}{vector of character; default: ''}
+
+\item{traitClasses}{vector of character; default: ''}
 
 \item{rclass}{character; default: tibble}
 }
