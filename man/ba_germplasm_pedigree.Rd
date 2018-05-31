@@ -4,15 +4,15 @@
 \alias{ba_germplasm_pedigree}
 \title{ba_germplasm_pedigree}
 \usage{
-ba_germplasm_pedigree(con = NULL, germplasmDbId = "0",
-  notation = "purdue", rclass = "tibble")
+ba_germplasm_pedigree(con = NULL, germplasmDbId = "", notation = "",
+  rclass = "tibble")
 }
 \arguments{
 \item{con}{brapi connection object}
 
-\item{germplasmDbId}{integer; default 0}
+\item{germplasmDbId}{character; default ''}
 
-\item{notation}{character; default: purdue format}
+\item{notation}{character; optional, recommended value: purdue format. Default: ''}
 
 \item{rclass}{character; default: tibble}
 }
