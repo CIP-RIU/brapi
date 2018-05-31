@@ -1,29 +1,18 @@
 show_server_status_messages <- function(out) {
 
+  out <- out$metadata$status %>% unlist %>% as.list()
   ba_message(crayon::yellow("Status details from Server:"))
 
-  if(any(is.na(out$info), is.na(out$success))) {
-    ba_message(crayon::yellow("None."))
-    return()
+  show_message <- function(msg_type, msg_Title, msg_color) {
+    ba_message(msg_color(paste0("\n", msg_Title,":")))
+    sapply(out[names(out) == msg_type] %>% unlist, msg_color) %>%
+      as.character %>%
+      paste0("\n") %>%
+      ba_message()
   }
 
-  if(all(out$info == "", out$success == "", out$error =="")) {
-    ba_message(crayon::yellow("None."))
-  } else {
-
-    if (out$info != "") {
-      ba_message(crayon::blue("\nInfos"))
-      ba_message(crayon::blue(out$info))
-    }
-    if (out$success != "") {
-      ba_message(crayon::green("\nSuccesses:"))
-      ba_message(crayon::green(out$success))
-    }
-    if (out$error != "") {
-      ba_message(crayon::red("\nErrors:"))
-      ba_message(crayon::red(out$error))
-    }
-
-  }
+  show_message("info", "Infos", crayon::blue)
+  show_message("success", "Successes", crayon::green)
+  show_message("error", "Errors", crayon::red)
 
 }
