@@ -4,15 +4,16 @@
 \alias{ba_genomemaps_data_range}
 \title{ba_genomemaps_data_range}
 \usage{
-ba_genomemaps_data_range(con = NULL, mapDbId = "1", linkageGroupId = "1",
-  min = 1, max = 1000, page = 0, pageSize = 30, rclass = "tibble")
+ba_genomemaps_data_range(con = NULL, mapDbId = "1",
+  linkageGroupName = "1", min = 1, max = 1000, page = 0,
+  pageSize = 30, rclass = "tibble")
 }
 \arguments{
 \item{con}{brapi connection object}
 
 \item{mapDbId}{character; default 0}
 
-\item{linkageGroupId}{character; default 1}
+\item{linkageGroupName}{character; default 1}
 
 \item{min}{integer; default 1}
 

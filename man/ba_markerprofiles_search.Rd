@@ -5,8 +5,8 @@
 \title{ba_markerprofiles_search}
 \usage{
 ba_markerprofiles_search(con = NULL, germplasmDbId = "", studyDbId = "",
-  sampleDbId = "", extractDbId = "", methodDbId = "all", page = 0,
-  pageSize = 10000, method = "GET", rclass = "tibble")
+  sampleDbId = "", extractDbId = "", methodDbId = "", page = 0,
+  pageSize = 10000, rclass = "tibble")
 }
 \arguments{
 \item{con}{brapi connection object}
@@ -19,7 +19,7 @@ ba_markerprofiles_search(con = NULL, germplasmDbId = "", studyDbId = "",
 
 \item{extractDbId}{character; default: ''}
 
-\item{methodDbId}{string; default: unknown}
+\item{methodDbId}{string; default: ''}
 
 \item{page}{integer; default: 0}
 

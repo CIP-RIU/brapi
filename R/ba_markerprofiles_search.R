@@ -7,7 +7,7 @@
 #' @param studyDbId character; default ''
 #' @param sampleDbId character; default: ''
 #' @param extractDbId character; default: ''
-#' @param methodDbId string; default: unknown
+#' @param methodDbId string; default: ''
 #' @param page integer; default: 0
 #' @param pageSize integer; default 1000
 #' @param rclass character; default: tibble
@@ -28,10 +28,10 @@ ba_markerprofiles_search <- function(con = NULL,
                                      studyDbId = "",
                                      sampleDbId = "",
                                      extractDbId = "",
-                                     methodDbId = "all",
+                                     methodDbId = "",
                                      page = 0,
                                      pageSize = 10000,
-                                     method = "GET",
+
                                      rclass = "tibble") {
   ba_check(con = con, verbose = FALSE, brapi_calls = "markerprofiles")
   stopifnot(is.character(germplasmDbId))
@@ -67,7 +67,7 @@ ba_markerprofiles_search <- function(con = NULL,
                             ppage)
   out <- NULL
 
-  ba_message(msg = "Using GET")
+
   out <- try({
     res <- brapiGET(url = pmarkerprofiles, con = con)
     res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")

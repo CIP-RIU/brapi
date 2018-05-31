@@ -4,15 +4,15 @@
 \alias{ba_genomemaps_data}
 \title{ba_genomemaps_data}
 \usage{
-ba_genomemaps_data(con = NULL, mapDbId = "0", linkageGroupId = "0",
+ba_genomemaps_data(con = NULL, mapDbId = "", linkageGroupName = "",
   page = 0, pageSize = 30, rclass = "tibble")
 }
 \arguments{
 \item{con}{brapi connection object}
 
-\item{mapDbId}{character; default 0}
+\item{mapDbId}{character; default ''}
 
-\item{linkageGroupId}{character; default 0}
+\item{linkageGroupName}{character; default ''}
 
 \item{page}{integer; default 0}
 

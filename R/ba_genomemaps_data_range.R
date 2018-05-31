@@ -9,7 +9,7 @@
 #' @param page integer; default 0
 #' @param pageSize character; default 30
 #' @param mapDbId character; default 0
-#' @param linkageGroupId character; default 1
+#' @param linkageGroupName character; default 1
 #' @param min integer; default 1
 #' @param max integer; default 1000
 #'
@@ -24,7 +24,7 @@
 #' @export
 ba_genomemaps_data_range <- function(con = NULL,
                                      mapDbId = "1",
-                                     linkageGroupId = "1",
+                                     linkageGroupName = "1",
                                      min = 1,
                                      max = 1000,
                                      page = 0,
@@ -32,7 +32,7 @@ ba_genomemaps_data_range <- function(con = NULL,
                                      rclass = "tibble") {
   ba_check(con = con, verbose = FALSE, brapi_calls = "maps/id/positions/id")
   stopifnot(is.character(mapDbId))
-  stopifnot(is.character(linkageGroupId))
+  stopifnot(is.character(linkageGroupName))
   stopifnot(is.numeric(min))
   stopifnot(is.numeric(max))
   stopifnot(max > min)
@@ -42,7 +42,7 @@ ba_genomemaps_data_range <- function(con = NULL,
   brp <- get_brapi(con = con)
   # generate the brapi call url
   maps_positions_range_list <- paste0(brp, "maps/", mapDbId,
-                                  "/positions/", linkageGroupId, "/?")
+                                  "/positions/", linkageGroupName, "/?")
   amin <- ifelse(is.numeric(min), paste0("min=", min, "&"), "")
   amax <- ifelse(is.numeric(max), paste0("max=", max, "&"), "")
   ppage <- ifelse(is.numeric(page), paste0("page=", page, ""), "")
@@ -57,11 +57,11 @@ ba_genomemaps_data_range <- function(con = NULL,
                                       amax, ppageSize, ppage)
   try({
     res <- brapiGET(url = maps_positions_range_list, con = con)
-    res <- httr::content(x = res, as = "text", encoding = "UTF-8")
+    res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
     if (rclass == "vector") {
       rclass <- "tibble"
     }
-    out <- dat2tbl(res = res, rclass = rclass)
+    out <- dat2tbl(res = res2, rclass = rclass)
     class(out) <- c(class(out), "ba_genomemaps_data_range")
 
     show_metadata(res)
