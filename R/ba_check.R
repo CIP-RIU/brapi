@@ -20,6 +20,12 @@ ba_check <- function(con = NULL, verbose = TRUE, brapi_calls = "any") {
     stop("BrAPI connection object is NULL. Use brapi::ba_connect()")
   }
   url <- con$db
+  if(brapi_calls != "calls") {
+    if(!(brapi_calls %in% ba_calls(con)$call)) {
+      message("Call not implemented according to calls result..")
+    }
+  }
+
   # check for localhost
   if (stringr::str_detect(string = con$db, pattern = "127")) {
     url <- paste0(con$db, ":", con$port, "/brapi/v1/")
@@ -27,6 +33,10 @@ ba_check <- function(con = NULL, verbose = TRUE, brapi_calls = "any") {
     status <- try({
       httr::GET(url = url)$status_code
     })
+    if (status == 404) {
+      stop("Call not implemented.")
+    }
+
     if (status == 600) {
       stop("Cannot connect to server. Use other connection details.")
     }

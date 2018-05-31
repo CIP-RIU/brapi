@@ -4,22 +4,26 @@
 \alias{ba_programs_search}
 \title{ba_programs_search}
 \usage{
-ba_programs_search(con = NULL, programDbId = "any", name = "any",
-  abbreviation = "any", objective = "any", leadPerson = "any",
-  rclass = "tibble")
+ba_programs_search(con = NULL, abbreviation = "", leadPerson = "",
+  name = "", objective = "", page = 0, pageSize = 1000,
+  programDbId = "", rclass = "tibble")
 }
 \arguments{
 \item{con}{list, brapi connection object}
 
-\item{programDbId}{character; default: any}
+\item{abbreviation}{character; default: ''}
 
-\item{name}{character; default: any}
+\item{leadPerson}{character; default: ''}
 
-\item{abbreviation}{character; default: any}
+\item{name}{character; default: ''}
 
-\item{objective}{character; default: any}
+\item{objective}{character; default: ''}
 
-\item{leadPerson}{character; default: any}
+\item{page}{integer; default: 0}
+
+\item{pageSize}{integer, default: 1000}
+
+\item{programDbId}{character; default: ''}
 
 \item{rclass}{character; default: tibble}
 }

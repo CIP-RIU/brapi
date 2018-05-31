@@ -115,10 +115,10 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>ba_observationvariables_search</span>(<span class='kw'>con</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>observationVariableDbIds</span> <span class='kw'>=</span> <span class='st'>"any"</span>,
-  <span class='kw'>ontologyXrefs</span> <span class='kw'>=</span> <span class='st'>"any"</span>, <span class='kw'>ontologyDbIds</span> <span class='kw'>=</span> <span class='st'>"any"</span>, <span class='kw'>methodDbIds</span> <span class='kw'>=</span> <span class='st'>"any"</span>,
-  <span class='kw'>scaleDbIds</span> <span class='kw'>=</span> <span class='st'>"any"</span>, <span class='kw'>names</span> <span class='kw'>=</span> <span class='st'>"any"</span>, <span class='kw'>datatypes</span> <span class='kw'>=</span> <span class='st'>"any"</span>,
-  <span class='kw'>traitClasses</span> <span class='kw'>=</span> <span class='st'>"any"</span>, <span class='kw'>rclass</span> <span class='kw'>=</span> <span class='st'>"tibble"</span>)</pre>
+    <pre class="usage"><span class='fu'>ba_observationvariables_search</span>(<span class='kw'>con</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>datatypes</span> <span class='kw'>=</span> <span class='st'>""</span>,
+  <span class='kw'>methodDbIds</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>names</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>observationVariableDbIds</span> <span class='kw'>=</span> <span class='st'>""</span>,
+  <span class='kw'>ontologyXrefs</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>ontologyDbIds</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>page</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>pageSize</span> <span class='kw'>=</span> <span class='fl'>1000</span>,
+  <span class='kw'>scaleDbIds</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>traitClasses</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>rclass</span> <span class='kw'>=</span> <span class='st'>"tibble"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -128,36 +128,44 @@
       <td><p>brapi list; connection object</p></td>
     </tr>
     <tr>
-      <th>observationVariableDbIds</th>
-      <td><p>vector of character; default: any</p></td>
-    </tr>
-    <tr>
-      <th>ontologyXrefs</th>
-      <td><p>vector of character; default: any</p></td>
-    </tr>
-    <tr>
-      <th>ontologyDbIds</th>
-      <td><p>vector of character; default: any</p></td>
+      <th>datatypes</th>
+      <td><p>vector of character; default: ''</p></td>
     </tr>
     <tr>
       <th>methodDbIds</th>
-      <td><p>vector of character; default: any</p></td>
-    </tr>
-    <tr>
-      <th>scaleDbIds</th>
-      <td><p>vector of character; default: any</p></td>
+      <td><p>vector of character; default: ''</p></td>
     </tr>
     <tr>
       <th>names</th>
-      <td><p>vector of character; default: any</p></td>
+      <td><p>vector of character; default: ''</p></td>
     </tr>
     <tr>
-      <th>datatypes</th>
-      <td><p>vector of character; default: any</p></td>
+      <th>observationVariableDbIds</th>
+      <td><p>vector of character; default: ''</p></td>
+    </tr>
+    <tr>
+      <th>ontologyXrefs</th>
+      <td><p>vector of character; default: ''</p></td>
+    </tr>
+    <tr>
+      <th>ontologyDbIds</th>
+      <td><p>vector of character; default: ''</p></td>
+    </tr>
+    <tr>
+      <th>page</th>
+      <td><p>integer; default: 0</p></td>
+    </tr>
+    <tr>
+      <th>pageSize</th>
+      <td><p>integer, default: 1000</p></td>
+    </tr>
+    <tr>
+      <th>scaleDbIds</th>
+      <td><p>vector of character; default: ''</p></td>
     </tr>
     <tr>
       <th>traitClasses</th>
-      <td><p>vector of character; default: any</p></td>
+      <td><p>vector of character; default: ''</p></td>
     </tr>
     <tr>
       <th>rclass</th>

@@ -115,9 +115,9 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>ba_programs_search</span>(<span class='kw'>con</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>programDbId</span> <span class='kw'>=</span> <span class='st'>"any"</span>, <span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"any"</span>,
-  <span class='kw'>abbreviation</span> <span class='kw'>=</span> <span class='st'>"any"</span>, <span class='kw'>objective</span> <span class='kw'>=</span> <span class='st'>"any"</span>, <span class='kw'>leadPerson</span> <span class='kw'>=</span> <span class='st'>"any"</span>,
-  <span class='kw'>rclass</span> <span class='kw'>=</span> <span class='st'>"tibble"</span>)</pre>
+    <pre class="usage"><span class='fu'>ba_programs_search</span>(<span class='kw'>con</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>abbreviation</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>leadPerson</span> <span class='kw'>=</span> <span class='st'>""</span>,
+  <span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>objective</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>page</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>pageSize</span> <span class='kw'>=</span> <span class='fl'>1000</span>,
+  <span class='kw'>programDbId</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>rclass</span> <span class='kw'>=</span> <span class='st'>"tibble"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -127,24 +127,32 @@
       <td><p>list, brapi connection object</p></td>
     </tr>
     <tr>
-      <th>programDbId</th>
-      <td><p>character; default: any</p></td>
-    </tr>
-    <tr>
-      <th>name</th>
-      <td><p>character; default: any</p></td>
-    </tr>
-    <tr>
       <th>abbreviation</th>
-      <td><p>character; default: any</p></td>
-    </tr>
-    <tr>
-      <th>objective</th>
-      <td><p>character; default: any</p></td>
+      <td><p>character; default: ''</p></td>
     </tr>
     <tr>
       <th>leadPerson</th>
-      <td><p>character; default: any</p></td>
+      <td><p>character; default: ''</p></td>
+    </tr>
+    <tr>
+      <th>name</th>
+      <td><p>character; default: ''</p></td>
+    </tr>
+    <tr>
+      <th>objective</th>
+      <td><p>character; default: ''</p></td>
+    </tr>
+    <tr>
+      <th>page</th>
+      <td><p>integer; default: 0</p></td>
+    </tr>
+    <tr>
+      <th>pageSize</th>
+      <td><p>integer, default: 1000</p></td>
+    </tr>
+    <tr>
+      <th>programDbId</th>
+      <td><p>character; default: ''</p></td>
     </tr>
     <tr>
       <th>rclass</th>
