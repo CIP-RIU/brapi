@@ -6,7 +6,7 @@
 #' @param rclass character; default: tibble
 #' @param page integer; default 0
 #' @param pageSize integer; default 1000
-#' @param studyDbId character; default: 123
+#' @param studyDbId character; default: ''
 #'
 #' @author Reinhard Simon
 #' @references \url{https://github.com/plantbreeding/API/blob/master/Specification/Germplasm/GermplasmDetailsListByStudyDbId.md}
@@ -17,12 +17,13 @@
 #' @family brapicore
 #' @export
 ba_germplasm_details_study <- function(con = NULL,
-                                       studyDbId = "123",
+                                       studyDbId = "",
                                        page = 0,
                                        pageSize = 1000,
                                        rclass = "tibble") {
   ba_check(con = con, verbose = FALSE, brapi_calls = "studies/id/germplasm")
   stopifnot(is.character(studyDbId))
+  stopifnot(studyDbId != '')
   check_paging(pageSize = pageSize, page = page)
   check_rclass(rclass = rclass)
   # fetch url of brapi implementation of the database
@@ -36,13 +37,13 @@ ba_germplasm_details_study <- function(con = NULL,
   studies_germplasm_list <- paste0(studies_germplasm_list, pageSize, page)
   try({
     res <- brapiGET(url = studies_germplasm_list, con = con)
-    res <- httr::content(x = res, as = "text", encoding = "UTF-8")
+    res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
     out <- NULL
     if (rclass %in% c("json", "list")) {
-      out <- dat2tbl(res, rclass)
+      out <- dat2tbl(res2, rclass)
     }
     if (rclass %in% c("tibble", "data.frame")) {
-      out <- sgp2tbl(res = res, rclass = rclass)
+      out <- sgp2tbl(res = res2, rclass = rclass)
     }
     class(out) <- c(class(out), "ba_germplasm_details_study")
 

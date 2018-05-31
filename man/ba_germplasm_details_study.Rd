@@ -4,13 +4,13 @@
 \alias{ba_germplasm_details_study}
 \title{ba_germplasm_details_study}
 \usage{
-ba_germplasm_details_study(con = NULL, studyDbId = "123", page = 0,
+ba_germplasm_details_study(con = NULL, studyDbId = "", page = 0,
   pageSize = 1000, rclass = "tibble")
 }
 \arguments{
 \item{con}{brapi connection object}
 
-\item{studyDbId}{character; default: 123}
+\item{studyDbId}{character; default: ''}
 
 \item{page}{integer; default 0}
 
