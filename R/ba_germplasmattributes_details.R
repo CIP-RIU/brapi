@@ -66,7 +66,7 @@ ba_germplasmattributes_details <- function(con = NULL,
       out <- dat2tbl(res = res2, rclass = rclass)
     }
     if (rclass == "data.frame") {
-      out <- ms2tbl(res = res2)
+      out <- ms2tbl(res = res2)%>% tibble::as_tibble() %>% as.data.frame()
     }
     if (rclass == "tibble") {
       out <- ms2tbl(res = res2) %>% tibble::as_tibble()

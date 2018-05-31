@@ -47,10 +47,7 @@ ba_germplasm_search <- function(con = NULL,
     germplasm_search <- paste0(germplasm_search, "&germplasmName=",
                                germplasmName)
   }
-  if (germplasmDbId > 0) {
-    germplasm_search <- paste0(brp, "germplasm-search/?germplasmDbId=",
-                               germplasmDbId)
-  }
+
   if (germplasmPUI != "none") {
     germplasm_search <- paste0(brp, "germplasm-search/?germplasmPUI=",
                                germplasmPUI)
@@ -79,17 +76,6 @@ ba_germplasm_search <- function(con = NULL,
       res <- brapiPOST(url = germplasm_search, body = body, con = con)
       res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
       get_data(res2, '2')
-      # out <- NULL
-      # if (rclass %in% c("json", "list")) {
-      #   out <- dat2tbl(res = res2, rclass = rclass)
-      # }
-      # if (rclass == "data.frame") {
-      #   out <- gp2tbl(res = res2)
-      # }
-      # if (rclass == "tibble") {
-      #   out <- gp2tbl(res = res2) %>% tibble::as_tibble()
-      # }
-      # out
     })
   } else {
     out <- try({
