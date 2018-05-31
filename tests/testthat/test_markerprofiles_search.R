@@ -8,3 +8,4 @@ test_that("Calls are present", {
   expect_that(nrow(res) == 3, is_true())
 
 })
+

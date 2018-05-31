@@ -6,7 +6,7 @@
 \usage{
 ba_markerprofiles_search(con = NULL, germplasmDbId = "", studyDbId = "",
   sampleDbId = "", extractDbId = "", methodDbId = "all", page = 0,
-  pageSize = 10000, rclass = "tibble")
+  pageSize = 10000, method = "GET", rclass = "tibble")
 }
 \arguments{
 \item{con}{brapi connection object}

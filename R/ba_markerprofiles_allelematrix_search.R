@@ -82,34 +82,11 @@ ba_markerprofiles_allelematrix_search <- function(con = NULL,
                                  pformat,
                                  ppageSize,
                                  ppage)
-  nurl <- nchar(pallelematrix_search)
-  if (nurl <= 2000) {
-    message("Using GET")
-    out <- try({
-      res <- brapiGET(url = pallelematrix_search, con = con)
-      ams2tbl(res = res, format = format, rclass = rclass)
-    })
-  }
-  if (nurl > 2000) {
-    message("Using POST")
-    x1 <- as.list(markerprofileDbId)
-    names(x1)[1:length(markerprofileDbId)] <- "markerprofileDbId"
-    x2 <- as.list(markerDbId)
-    names(x2)[1:length(markerDbId)] <- "markerDbId"
-    body <- list(expandHomozygotes = expandHomozygotes %>% tolower(),
-                 unknownString = unknownString,
-                 sepPhased = sepPhased,
-                 sepUnphased = sepUnphased,
-                 format = format,
-                 page = page,
-                 pageSize = pageSize)
-    body <- c(x1, x2, body)
-    out <- try({
-      pallelematrix_search <- paste0(brp, "allelematrix-search/?")
-      res <- brapiPOST(url = pallelematrix_search, body = body, con = con)
-      ams2tbl(res = res, format = format, rclass = rclass)
-    })
-  }
+  out <- try({
+    res <- brapiGET(url = pallelematrix_search, con = con)
+    ams2tbl(res = res, format = format, rclass = rclass)
+  })
+
   class(out) <- c(class(out), "ba_markerprofiles_allelematrix_search")
   show_metadata(res)
   return(out)

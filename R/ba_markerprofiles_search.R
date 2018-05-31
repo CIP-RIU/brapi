@@ -31,6 +31,7 @@ ba_markerprofiles_search <- function(con = NULL,
                                      methodDbId = "all",
                                      page = 0,
                                      pageSize = 10000,
+                                     method = "GET",
                                      rclass = "tibble") {
   ba_check(con = con, verbose = FALSE, brapi_calls = "markerprofiles")
   stopifnot(is.character(germplasmDbId))
@@ -65,37 +66,14 @@ ba_markerprofiles_search <- function(con = NULL,
                             ppageSize,
                             ppage)
   out <- NULL
-  nurl <- nchar(pmarkerprofiles)
-  if (nurl <= 2000) {
-    ba_message(msg = "Using GET")
-    out <- try({
-      res <- brapiGET(url = pmarkerprofiles, con = con)
-      res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
-      dat2tbl(res = res2, rclass = rclass)
-    })
-  }
-  if (nurl > 2000) {
-    ba_message(msg = "Using POST")
-    x1 <- as.list(germplasmDbId)
-    names(x1)[1:length(germplasmDbId)] <- "germplasm"
-    x2 <- NULL
-    if (extractDbId != "") {
-      x2 <- as.list(extractDbId)
-      names(x2)[1:length(extractDbId)] <- "extract"
-    }
-    body <- list(studyDbId = studyDbId,
-                 sample = sampleDbId,
-                 method = methodDbId,
-                 page = page,
-                 pageSize = pageSize)
-    body <- c(x1, x2, body)
-    out <- try({
-      pmarkerprofiles <- paste0(brp, "markerprofiles-search/")
-      res <- brapiPOST(url = pmarkerprofiles, body, con)
-      res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
-      dat2tbl(res = res2, rclass = rclass)
-    })
-  }
+
+  ba_message(msg = "Using GET")
+  out <- try({
+    res <- brapiGET(url = pmarkerprofiles, con = con)
+    res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
+    dat2tbl(res = res2, rclass = rclass)
+  })
+
   class(out) <- c(class(out), "ba_markerprofiles_search")
   show_metadata(res)
   return(out)
