@@ -3,9 +3,9 @@
 #' Lists germplasmm as result of a search.
 #'
 #' @param con brapi connection object
-#' @param germplasmDbId character default 0
-#' @param germplasmName character default: none
-#' @param germplasmPUI character default: none
+#' @param germplasmDbId character default ''
+#' @param germplasmName character default: ''
+#' @param germplasmPUI character default: ''
 #' @param pageSize integer default: 0
 #' @param page integer default: 10
 #' @param rclass character; default: tibble
@@ -23,9 +23,9 @@
 #' @family germplasm
 #' @export
 ba_germplasm_search <- function(con = NULL,
-                                germplasmDbId = "0",
-                                germplasmName = "none",
-                                germplasmPUI = "none",
+                                germplasmDbId = "",
+                                germplasmName = "",
+                                germplasmPUI = "",
                                 page = 0,
                                 pageSize = 10,
                                 method = "GET",
@@ -55,6 +55,19 @@ ba_germplasm_search <- function(con = NULL,
     germplasm_search <- paste0(brp, "germplasm-search/?germplasmPUI=",
                                germplasmPUI)
   }
+
+  get_data <- function(res2, typ = '1' )  {
+    out <- dat2tbl(res = res2, rclass = rclass)
+    if (rclass == "data.frame") {
+      out <- gp2tbl(res2, typ)
+    }
+    if (rclass == "tibble") {
+      out <- gp2tbl(res2, typ) %>% tibble::as_tibble()
+    }
+    out
+  }
+
+
   if (method == "POST") {
     body <- list(germplasmDbId = germplasmDbId,
                  germplasmName = germplasmName,
@@ -65,30 +78,25 @@ ba_germplasm_search <- function(con = NULL,
       germplasm_search <- paste0(brp, "germplasm-search/")
       res <- brapiPOST(url = germplasm_search, body = body, con = con)
       res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
-      out <- NULL
-      if (rclass %in% c("json", "list")) {
-        out <- dat2tbl(res = res2, rclass = rclass)
-      }
-      if (rclass == "data.frame") {
-        out <- gp2tbl(res = res2)
-      }
-      if (rclass == "tibble") {
-        out <- gp2tbl(res = res2) %>% tibble::as_tibble()
-      }
-      out
+      get_data(res2, '2')
+      # out <- NULL
+      # if (rclass %in% c("json", "list")) {
+      #   out <- dat2tbl(res = res2, rclass = rclass)
+      # }
+      # if (rclass == "data.frame") {
+      #   out <- gp2tbl(res = res2)
+      # }
+      # if (rclass == "tibble") {
+      #   out <- gp2tbl(res = res2) %>% tibble::as_tibble()
+      # }
+      # out
     })
   } else {
     out <- try({
       res <- brapiGET(url = germplasm_search, con = con)
-          res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
-          out <- dat2tbl(res = res2, rclass = rclass)
-          if (rclass == "data.frame") {
-              out <- gp2tbl(res2)
-          }
-          if (rclass == "tibble") {
-              out <- gp2tbl(res2) %>% tibble::as_tibble()
-          }
-          out
+      res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
+
+      get_data(res2)
       })
   }
   class(out) <- c(class(out), "ba_germplasm_search")

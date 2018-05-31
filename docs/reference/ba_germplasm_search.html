@@ -115,9 +115,9 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>ba_germplasm_search</span>(<span class='kw'>con</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>germplasmDbId</span> <span class='kw'>=</span> <span class='st'>"0"</span>,
-  <span class='kw'>germplasmName</span> <span class='kw'>=</span> <span class='st'>"none"</span>, <span class='kw'>germplasmPUI</span> <span class='kw'>=</span> <span class='st'>"none"</span>, <span class='kw'>page</span> <span class='kw'>=</span> <span class='fl'>0</span>,
-  <span class='kw'>pageSize</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"GET"</span>, <span class='kw'>rclass</span> <span class='kw'>=</span> <span class='st'>"tibble"</span>)</pre>
+    <pre class="usage"><span class='fu'>ba_germplasm_search</span>(<span class='kw'>con</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>germplasmDbId</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>germplasmName</span> <span class='kw'>=</span> <span class='st'>""</span>,
+  <span class='kw'>germplasmPUI</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>page</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>pageSize</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"GET"</span>,
+  <span class='kw'>rclass</span> <span class='kw'>=</span> <span class='st'>"tibble"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -128,15 +128,15 @@
     </tr>
     <tr>
       <th>germplasmDbId</th>
-      <td><p>character default 0</p></td>
+      <td><p>character default ''</p></td>
     </tr>
     <tr>
       <th>germplasmName</th>
-      <td><p>character default: none</p></td>
+      <td><p>character default: ''</p></td>
     </tr>
     <tr>
       <th>germplasmPUI</th>
-      <td><p>character default: none</p></td>
+      <td><p>character default: ''</p></td>
     </tr>
     <tr>
       <th>page</th>

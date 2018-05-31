@@ -1,10 +1,15 @@
-gp2tbl <- function(res) {
+gp2tbl <- function(res, type = '1') {
 
   lst <- tryCatch(
     jsonlite::fromJSON(txt = res)
   )
 
-  dat <- jsonlite::toJSON(x = lst$result)
+  if (type == '1') {
+    dat <- jsonlite::toJSON(x = lst$result)
+  } else {
+    dat <- jsonlite::toJSON(x = lst$result$data)
+  }
+
 
   df <- jsonlite::fromJSON(txt = dat, simplifyDataFrame = TRUE, flatten = TRUE)
   donors <- synonyms <- taxonIds <- list()

@@ -4,18 +4,18 @@
 \alias{ba_germplasm_search}
 \title{ba_germplasm_search}
 \usage{
-ba_germplasm_search(con = NULL, germplasmDbId = "0",
-  germplasmName = "none", germplasmPUI = "none", page = 0,
-  pageSize = 10, method = "GET", rclass = "tibble")
+ba_germplasm_search(con = NULL, germplasmDbId = "", germplasmName = "",
+  germplasmPUI = "", page = 0, pageSize = 10, method = "GET",
+  rclass = "tibble")
 }
 \arguments{
 \item{con}{brapi connection object}
 
-\item{germplasmDbId}{character default 0}
+\item{germplasmDbId}{character default ''}
 
-\item{germplasmName}{character default: none}
+\item{germplasmName}{character default: ''}
 
-\item{germplasmPUI}{character default: none}
+\item{germplasmPUI}{character default: ''}
 
 \item{page}{integer default: 10}
 
