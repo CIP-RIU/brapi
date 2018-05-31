@@ -99,8 +99,7 @@ ba_observationvariables_search <- function(con = NULL,
           body[[i]] <- NULL
         }
       }
-      message("Query params:")
-      message(str(body))
+
       res <- brapiPOST(url = pvariables, body = body, con = con)
       res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
       out <- NULL

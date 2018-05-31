@@ -1,7 +1,5 @@
 show_server_status_messages <- function(out) {
 
-  out <- out$metadata$status %>% unlist %>% as.list()
-  ba_message(crayon::yellow("Status details from Server:"))
 
   show_message <- function(msg_type, msg_Title, msg_color) {
     ba_message(msg_color(paste0("\n", msg_Title,":")))
@@ -11,8 +9,13 @@ show_server_status_messages <- function(out) {
       ba_message()
   }
 
-  show_message("info", "Infos", crayon::blue)
-  show_message("success", "Successes", crayon::green)
-  show_message("error", "Errors", crayon::red)
+  if(getOption("brapi_info", default = FALSE) == FALSE) {
+    out <- out$metadata$status %>% unlist %>% as.list()
+    ba_message(crayon::yellow("Status details from Server:"))
+
+    show_message("info", "Infos", crayon::blue)
+    show_message("success", "Successes", crayon::green)
+    show_message("error", "Errors", crayon::red)
+  }
 
 }

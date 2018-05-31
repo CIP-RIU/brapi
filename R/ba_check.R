@@ -20,11 +20,11 @@ ba_check <- function(con = NULL, verbose = TRUE, brapi_calls = "any") {
     stop("BrAPI connection object is NULL. Use brapi::ba_connect()")
   }
   url <- con$db
-  if(brapi_calls != "calls") {
-    if(!(brapi_calls %in% ba_calls(con)$call)) {
-      message("Call not implemented according to calls result..")
-    }
-  }
+  # if(brapi_calls != "calls") {
+  #   if(!(brapi_calls %in% ba_calls(con)$call)) {
+  #     message("Call not implemented according to calls result..")
+  #   }
+  # }
 
   # check for localhost
   if (stringr::str_detect(string = con$db, pattern = "127")) {
@@ -46,8 +46,8 @@ ba_check <- function(con = NULL, verbose = TRUE, brapi_calls = "any") {
   }
 
   if (verbose) {
-    message("BrAPI connection ok.")
-    message(paste(con, collapse = "\n"))
+    ba_message("BrAPI connection ok.")
+    ba_message(paste(con, collapse = "\n"))
   }
   return(TRUE)
 }

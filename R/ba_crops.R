@@ -25,9 +25,9 @@ ba_crops <- function(con = NULL, rclass = "tibble") {
   rclass <- df2tibble(rclass = rclass)
   out <- try({
     res <- brapiGET(url = crops_list, con = con)
-    res <- httr::content(x = res, as = "text", encoding = "UTF-8")
-    out <- dat2tbl(res = res, rclass = rclass)
-    if (any(c("tbl_df", "data.frame") %in% class(out))) {
+    res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
+    out <- dat2tbl(res = res2, rclass = rclass)
+    if (any(class(out) %in% c("tbl_df", "data.frame"))) {
       names(out)[1] <- "crops"
       out[1] <- tolower(out[1])
     }

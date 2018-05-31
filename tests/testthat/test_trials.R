@@ -9,6 +9,15 @@ test_that("Trials are present", {
 
 })
 
+test_that("Param checks work", {
+
+  testthat::expect_message({
+    res <- ba_trials(con = con, programDbId = "")
+  })
+
+})
+
+
 test_that("Output is transformed", {
 
   res <- ba_trials(con = con, programDbId = "140", rclass = "json")
