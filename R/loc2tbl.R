@@ -1,4 +1,4 @@
-loc2tbl <- function(res, rclass, con) {
+loc2tbl <- function(res, rclass, con = NULL) {
   lst <- jsonlite::fromJSON(txt = res)
   dat <- jsonlite::toJSON(x = lst$result$data)
   dat <- jsonlite::fromJSON(txt = dat, simplifyDataFrame = TRUE)
