@@ -10,13 +10,13 @@ ba_calls(con = NULL, datatype = "csv", pageSize = 1000, page = 0,
 \arguments{
 \item{con}{brapi connection object}
 
+\item{datatype}{string, list of data types}
+
 \item{pageSize}{integer; default = 1000}
 
 \item{page}{integer; default = 0}
 
 \item{rclass}{string; default: tibble}
-
-\item{datatypes}{string, list of data types}
 }
 \value{
 rclass as defined
