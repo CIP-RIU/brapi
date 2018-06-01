@@ -27,6 +27,8 @@ Lists locations available on a brapi server.
 \details{
 All standard attributes are always listed. However, attributes in the additionalInfo
 only when at least one record has data.
+
+V1.2: same
 }
 \note{
 Tested against: sweetpotatobase, BMS

@@ -1,6 +1,8 @@
 #' ba_calls
 #'
-#' lists calls available on a brapi server
+#' lists calls available on a brapi server.
+#'
+#' TODO v1.2: deprecate this and add ba_commonCropNames. The new function won't have datatype parameter.
 #'
 #' @param rclass string; default: tibble
 #' @param datatypes string, list of data types
@@ -16,8 +18,8 @@
 #' @family brapicore
 #' @export
 ba_calls <- function(con = NULL,
-                     datatypes = "csv",
-                     pageSize = 50,
+                     datatype = "csv",
+                     pageSize = 1000,
                      page = 0,
                      rclass = "tibble") {
   # argument checking

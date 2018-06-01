@@ -4,25 +4,28 @@
 \alias{ba_calls}
 \title{ba_calls}
 \usage{
-ba_calls(con = NULL, datatypes = "csv", pageSize = 50, page = 0,
+ba_calls(con = NULL, datatype = "csv", pageSize = 1000, page = 0,
   rclass = "tibble")
 }
 \arguments{
 \item{con}{brapi connection object}
-
-\item{datatypes}{string, list of data types}
 
 \item{pageSize}{integer; default = 1000}
 
 \item{page}{integer; default = 0}
 
 \item{rclass}{string; default: tibble}
+
+\item{datatypes}{string, list of data types}
 }
 \value{
 rclass as defined
 }
 \description{
-lists calls available on a brapi server
+lists calls available on a brapi server.
+}
+\details{
+TODO v1.2: deprecate this and add ba_commonCropNames. The new function won't have datatype parameter.
 }
 \examples{
 if (interactive()) {

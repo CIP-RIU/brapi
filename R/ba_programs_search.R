@@ -2,6 +2,7 @@
 #'
 #' searches the breeding programs
 #'
+#' V1.2: same
 #'
 #' @param con list, brapi connection object
 #'
