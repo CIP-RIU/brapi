@@ -14,7 +14,9 @@ test_that(" are present", {
 
 test_that(" out formats work", {
 
-  out <- res %>% brapi:::baps2rclass("tibble")
+  out <- ba_phenotypes_search(con = con, pageSize = 1,
+                              observationVariableDbIds = "77809",
+                              rclass = "tibble")
   expect_true("tbl_df" %in% class(out))
 
   out <- res %>% brapi:::baps2rclass("list")
