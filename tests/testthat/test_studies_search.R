@@ -27,4 +27,7 @@ test_that("POST works", {
   res <- ba_studies_search(con = con, verb = 'POST')
   expect_that(nrow(res) >= 340, is_true())
 
+  res <- ba_studies_search(con = con, rclass = "json", verb = "POST")
+  expect_that("json" %in% class(res) , is_true())
+
 })
