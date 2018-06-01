@@ -10,7 +10,7 @@
 ba_db <- function() {
   apiary <- as.ba_db(secure = TRUE,
                           protocol = "https://",
-                          db = "private-anon-f133f3ec50-brapi.apiary-mock.com",
+                          db = "private-anon-3d3307a632-brapi.apiary-mock.com",
                           port = 80,
                           multicrop = FALSE,
                           crop = "wheat",
