@@ -39,7 +39,7 @@ ba_genomemaps_details <- function(con = NULL,
       dat <- jsonlite::toJSON(x = lst$result$linkageGroups)
       if (rclass == "data.frame") {
         out <- jsonlite::fromJSON(txt = dat, simplifyDataFrame = TRUE)
-        out <- out[[1]]
+        out <- out[[1]] %>% tibble::as_tibble() %>% as.data.frame()
       } else {
         out <- jsonlite::fromJSON(txt = dat, simplifyDataFrame = TRUE)  #%>%
         if (class(out) == "list") {

@@ -54,12 +54,12 @@ ba_germplasm_markerprofiles <- function(con = NULL,
     if (rclass %in% c("json", "list")) {
       out <- dat2tbl(res = res2, rclass = rclass)
     }
-    if (rclass == "vector") {
-      out <- jsonlite::fromJSON(txt = res2,
-                    simplifyVector = FALSE)$result$markerProfiles %>% unlist
-    }
+
     if (rclass == "data.frame") {
       out <- ms2tbl(res = res2)
+    }
+    if (rclass == "vector") {
+      out <- ms2tbl(res = res2)[, 2]
     }
     if (rclass == "tibble") {
       out <- ms2tbl(res = res2) %>% tibble::as_tibble()
