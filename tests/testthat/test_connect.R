@@ -1,6 +1,6 @@
 context("connect")
 
-testthat::skip_on_cran()
+#testthat::skip_on_cran()
 
 con <- ba_db()$testserver
 

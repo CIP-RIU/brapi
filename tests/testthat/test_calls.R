@@ -1,5 +1,6 @@
 context("calls")
-testthat::skip_on_cran()
+#testthat::skip_on_cran()
+
 con <- ba_db()$testserver
 
 test_that("Calls are present", {

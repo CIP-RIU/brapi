@@ -39,5 +39,11 @@ test_that("Parameters work", {
   expect_error({
     res <- brapi:::is.ba_status_ok(resp)
   })
+
+  resp$status_code = 911
+
+  expect_false({
+    brapi:::is.ba_status_ok(resp)
+  })
 })
 
