@@ -8,13 +8,13 @@ test_that("Parameters work", {
     ba_check(NULL)
   })
 
-  expect_error({
-    con$db = "128"
+  expect_message({
+    con$db = "127"
     ba_check(con)
   })
 
 
-  expect_error({
+  expect_message({
     ba_check(con, verbose = TRUE)
   })
 
