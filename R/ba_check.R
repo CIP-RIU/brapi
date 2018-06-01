@@ -16,9 +16,7 @@ ba_check <- function(con = NULL, verbose = TRUE, brapi_calls = "any") {
   stopifnot(is.ba_con(con))
   stopifnot(is.logical(verbose))
   stopifnot(is.character(brapi_calls))
-  if (is.null(con)) {
-    stop("BrAPI connection object is NULL. Use brapi::ba_connect()")
-  }
+
   url <- con$db
 
   ba_can_internet()
