@@ -1,12 +1,11 @@
 context("show_expiration")
 
-con <- ba_db()$testserver
-ba_show_info(TRUE)
-
 test_that("Calls are present", {
 
-
   expect_message({
+    con <- list()
+    con$expires_in = 3600
+    ba_show_info(TRUE)
     ba_show_expiration(con = con)
   })
 

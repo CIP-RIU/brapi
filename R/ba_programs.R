@@ -2,7 +2,7 @@
 #'
 #' lists the breeding programs
 #'
-#' BRAPI discussion: Should this return also the crop?
+#' V1.2: same
 #'
 #' @note Tested against: sweetpotatobase, BMS
 #'

@@ -33,6 +33,9 @@ rclass
 \description{
 searches the breeding programs
 }
+\details{
+V1.2: same
+}
 \examples{
 if (interactive()) {
   library(brapi)

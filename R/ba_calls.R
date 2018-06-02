@@ -1,9 +1,11 @@
 #' ba_calls
 #'
-#' lists calls available on a brapi server
+#' lists calls available on a brapi server.
+#'
+#' TODO v1.2: deprecate this and add ba_commonCropNames. The new function won't have datatype parameter.
 #'
 #' @param rclass string; default: tibble
-#' @param datatypes string, list of data types
+#' @param datatype string, list of data types
 #' @param con brapi connection object
 #' @param pageSize integer; default = 1000
 #' @param page integer; default = 0
@@ -16,32 +18,32 @@
 #' @family brapicore
 #' @export
 ba_calls <- function(con = NULL,
-                     datatypes = "csv",
-                     pageSize = 50,
+                     datatype = "csv",
+                     pageSize = 1000,
                      page = 0,
                      rclass = "tibble") {
   # argument checking
   ba_check(con = con, verbose = FALSE, brapi_calls = "calls")
   check_paging(pageSize = pageSize, page = page)
   check_rclass(rclass = rclass)
-  stopifnot(datatypes %in% c("all", "json", "csv", "tsv"))
+  stopifnot(datatype %in% c("all", "json", "csv", "tsv"))
   # obtain the brapi url
   brp <- get_brapi(con = con)
   # generate the call url
   brapi_calls <- paste0(brp, "calls/?")
-  pdatatypes <- ifelse(datatypes == "all", "",
-                       paste0("datatypes=", datatypes, "&"))
+  pdatatype <- ifelse(datatype == "", "",
+                       paste0("datatypes=", datatype, "&"))
   ppage <- ifelse(is.numeric(page), paste0("page=", page, ""), "")
   ppageSize <- ifelse(is.numeric(pageSize),
                       paste0("pageSize=", pageSize, "&"), "")
   if (pageSize >= 1000) {
     ppage <- ""
     ppageSize <- ""
-    datatypes <- ""
+    pdatatype <- ""
     brapi_calls <- paste0(brp, "calls/?")
   }
   # modify the call url with pagenation
-  brapi_calls <- paste0(brapi_calls, pdatatypes, ppageSize, ppage)
+  brapi_calls <- paste0(brapi_calls, pdatatype, ppageSize, ppage)
   try({
     # make the brapi GET call with the generated call url
     res <- brapiGET(url = brapi_calls, con = con)

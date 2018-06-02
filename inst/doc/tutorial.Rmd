@@ -25,6 +25,7 @@ The $ sign can be used to access individual slots and overwrite values. This can
 ```{r, message=TRUE, warning=TRUE}
 
 library(brapi)
+library(magrittr)
 
 white_list <- ba_db()
 
@@ -102,7 +103,8 @@ ba_studies_search(sp_base, programDbId = "140")
 ### Get a study (or fieldbook)
 
 ```{r, message=FALSE, warning=FALSE}
-dt = ba_studies_table(sp_base, studyDbId = "162")
+dt = ba_studies_table(sp_base, 
+                      studyDbId = "162")
 ```
 
 ```{r, echo=FALSE}

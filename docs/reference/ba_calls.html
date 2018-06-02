@@ -30,7 +30,7 @@
 
 <meta property="og:title" content="ba_calls — ba_calls" />
 
-<meta property="og:description" content="lists calls available on a brapi server" />
+<meta property="og:description" content="lists calls available on a brapi server." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -111,11 +111,11 @@
 
     <div class="ref-description">
     
-    <p>lists calls available on a brapi server</p>
+    <p>lists calls available on a brapi server.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>ba_calls</span>(<span class='kw'>con</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>datatypes</span> <span class='kw'>=</span> <span class='st'>"csv"</span>, <span class='kw'>pageSize</span> <span class='kw'>=</span> <span class='fl'>50</span>, <span class='kw'>page</span> <span class='kw'>=</span> <span class='fl'>0</span>,
+    <pre class="usage"><span class='fu'>ba_calls</span>(<span class='kw'>con</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>datatype</span> <span class='kw'>=</span> <span class='st'>"csv"</span>, <span class='kw'>pageSize</span> <span class='kw'>=</span> <span class='fl'>1000</span>, <span class='kw'>page</span> <span class='kw'>=</span> <span class='fl'>0</span>,
   <span class='kw'>rclass</span> <span class='kw'>=</span> <span class='st'>"tibble"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -126,7 +126,7 @@
       <td><p>brapi connection object</p></td>
     </tr>
     <tr>
-      <th>datatypes</th>
+      <th>datatype</th>
       <td><p>string, list of data types</p></td>
     </tr>
     <tr>
@@ -146,6 +146,10 @@
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>rclass as defined</p>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>TODO v1.2: deprecate this and add ba_commonCropNames. The new function won't have datatype parameter.</p>
     
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
@@ -186,6 +190,8 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
 
       <li><a href="#references">References</a></li>
 
