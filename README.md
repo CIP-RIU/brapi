@@ -16,6 +16,14 @@ Status](https://img.shields.io/codecov/c/github/CIP-RIU/brapi/master.svg)](https
 
 ## This version is still under development. The implementation sometimes changes minor details.
 
+## Current support is only for BrAPI version 1.1.
+
+For independent checks against database you may use
+<http://webapps.ipk-gatersleben.de/brapivalidator>.
+
+It seems several databases may not currently be fully accessible due to
+protocol changes.
+
 # README
 
 An R package to use the [Breeding API
