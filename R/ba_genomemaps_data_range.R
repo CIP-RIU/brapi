@@ -10,8 +10,8 @@
 #' @param pageSize character; default 30
 #' @param mapDbId character; default 0
 #' @param linkageGroupName character; default 1
-#' @param min integer; default 1
-#' @param max integer; default 1000
+#' @param min character; default ''
+#' @param max character; default ''
 #'
 #' @author Reinhard Simon
 #' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/GenomeMaps/GenomeMapDataByRangeOnLinkageGroup.md}{github}
@@ -25,17 +25,16 @@
 ba_genomemaps_data_range <- function(con = NULL,
                                      mapDbId = "1",
                                      linkageGroupName = "1",
-                                     min = 1,
-                                     max = 1000,
+                                     min = "",
+                                     max = "",
                                      page = 0,
                                      pageSize = 30,
                                      rclass = "tibble") {
   ba_check(con = con, verbose = FALSE, brapi_calls = "maps/id/positions/id")
   stopifnot(is.character(mapDbId))
   stopifnot(is.character(linkageGroupName))
-  stopifnot(is.numeric(min))
-  stopifnot(is.numeric(max))
-  stopifnot(max > min)
+
+
   check_paging(pageSize = pageSize, page = page)
   check_rclass(rclass = rclass)
   # fetch the url of the brapi implementation of the database

@@ -5,12 +5,12 @@ con <- ba_db()$testserver
 test_that("Germplasm_details results are present", {
 
   res <- ba_germplasm_details(con = con, germplasmDbId = "1")
-  expect_that(nrow(res) == 4, is_true())
+  expect_that(nrow(res) == 8, is_true())
 
 })
 
 
-test_that("Out formats worl", {
+test_that("Out formats work", {
 
   res <- ba_germplasm_details(con = con, germplasmDbId = "1", rclass = "json")
   expect_that("json" %in% class(res), is_true())

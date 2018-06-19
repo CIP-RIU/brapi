@@ -32,7 +32,7 @@ ba_germplasm_details <- function(con = NULL,
       out <- gp2tbl(res2)
     }
     if (rclass == "tibble") {
-      out <- gp2tbl(res2) %>% tibble::as_tibble()
+      out <- gp2tbl(res2) %>% tibble::as_tibble(validate = FALSE)
     }
     class(out) <- c(class(out), "ba_germplasm_details")
 
