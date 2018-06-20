@@ -11,7 +11,7 @@ trld2tbl2 <- function(res) {
   # handle two special cases: empty 'additionalInfo' and empty 'studies'
 
   if ("additionalInfo" %in% names(df)) {
-    if (length(df$additionalInfo) == 0 || ncol(df$additionalInfo) == 0) {
+    if (length(df$additionalInfo) == 0 ) {
       df$additionalInfo <- ""
     } else {
       names(df$additionalInfo) <- paste("additionalInfo",

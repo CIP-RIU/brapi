@@ -5,7 +5,9 @@
         You are using version ",
         utils::packageVersion("brapi"), "\n\n")
   txt <- paste(
-    "Please note that current support is only for BrAPI version 1.1!\n
+    "Please note that current support is complete for BrAPI version 1.1.\n
+     Please note that current support is partially complete for BrAPI version 1.2
+      - the additional calls in version 1.2 are not yet supported.\n
     If you find issues please \n
     - turn on comments with ba_show_info()\n.
     - You can double check against the database by copy/paste of the reported BrAPI URL\n
