@@ -1,11 +1,11 @@
 context("studies_seasons")
 
-con <- ba_db()$sweetpotatobase
+con <- ba_db()$testserver
 
 test_that("Studies_seasons are present", {
 
   res <- ba_studies_seasons(con = con)
-  expect_that("2010" %in% res$year, is_true())
+  expect_that( nrow(res) > 0, is_true())
 
 })
 

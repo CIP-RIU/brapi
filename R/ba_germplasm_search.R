@@ -85,6 +85,10 @@ ba_germplasm_search <- function(con = NULL,
       get_data(res2)
       })
   }
+  nms <- names(out)
+  if (all(stringr::str_detect(nms, "data."))) {
+    names(out) <- stringr::str_replace_all(nms, "data.", "")
+  }
   class(out) <- c(class(out), "ba_germplasm_search")
   show_metadata(res)
   return(out)

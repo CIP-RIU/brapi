@@ -1,4 +1,4 @@
-context("studies_layout")
+context("sp studies_layout")
 
 con <- ba_db()$sweetpotatobase
 

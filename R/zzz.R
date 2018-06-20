@@ -8,6 +8,8 @@
     "Please note that current support is complete for BrAPI version 1.1.\n
      Please note that current support is partially complete for BrAPI version 1.2
       - the additional calls in version 1.2 are not yet supported.\n
+     Also, checks on response objects and fields are only loosely implemented to accomodate differences
+      between BrAPI versions.
     If you find issues please \n
     - turn on comments with ba_show_info()\n.
     - You can double check against the database by copy/paste of the reported BrAPI URL\n

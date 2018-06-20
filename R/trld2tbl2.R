@@ -18,21 +18,25 @@ trld2tbl2 <- function(res) {
                                         names(df$additionalInfo), sep = ".")
     }
   }
-  std <- NULL
-  if (!is.null(df$studies)) {
-    std <- df$studies
-    df$studies <- NULL
+  # std <- NULL
+  # if (!is.null(df$studies)) {
+  #   std <- df$studies
+  #   df$studies <- NULL
+  # }
+
+  for (i in 1:length(df)) {
+    if (length(df[[i]]) == 0) df[[i]] <- ''
   }
 
   df <- as.data.frame(df, stringsAsFactors = FALSE)
   names(df) <- stringr::str_replace_all(names(df),
                   "additionalInfo.additionalInfo.", "additionalInfo.")
 
-  if (!is.null(std)) {
-    df3 <-  df[rep(seq_len(nrow(df)), each=nrow(std)),]
-    df <- cbind(df3, std)
-    row.names(df) <- 1:nrow(df)
-  }
+  # if (!is.null(std)) {
+  #   df3 <-  df[rep(seq_len(nrow(df)), each=nrow(std)),]
+  #   df <- cbind(df3, std)
+  #   row.names(df) <- 1:nrow(df)
+  # }
 
   return(df)
 }
