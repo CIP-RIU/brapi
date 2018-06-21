@@ -37,9 +37,20 @@ ba_germplasm_pedigree <- function(con = NULL,
       lst <- jsonlite::fromJSON(txt = res)
       dat <- jsonlite::toJSON(x = lst$result)
       res3 <- jsonlite::fromJSON(txt = dat, simplifyDataFrame = TRUE)
+      for (i in 1:length(res3)) {
+        if (length(res3[[i]]) == 0) res[[i]] <- ''
+      }
       # Set null length list-type elements to ''
       for (i in 1:length(res3)) {
         if (length(res3[[i]]) == 0) res3[[i]] <- ""
+      }
+      if (length(res3$siblings) > 1) {
+        siblings <- res3$siblings
+        names(siblings) <- paste0('siblings.', names(siblings))
+        res3$siblings <- NULL
+        res3 <- tibble::as.tibble(res3)
+        res3 <- cbind(res3, siblings)
+        siblings <- NULL
       }
       attr(res3, "metadata") <- lst$metadata
       return(res3)

@@ -4,7 +4,7 @@
 \alias{ba_studies_table}
 \title{ba_studies_table}
 \usage{
-ba_studies_table(con = NULL, studyDbId = "", format = "json",
+ba_studies_table(con = NULL, studyDbId = "", format = "csv",
   rclass = "tibble")
 }
 \arguments{
@@ -12,7 +12,7 @@ ba_studies_table(con = NULL, studyDbId = "", format = "json",
 
 \item{studyDbId}{character; default: ''}
 
-\item{format}{character; one of: json, csv, tsv. Default: json}
+\item{format}{character; one of: json, csv, tsv. Default: csv}
 
 \item{rclass}{character; default: "tibble" possible other values: "json"/"list"/"data.frame"}
 }

@@ -23,6 +23,7 @@ ba_germplasmattributes_details <- function(con = NULL,
                                            page = 0,
                                            pageSize = 10,
                                            rclass = "tibble") {
+  .Deprecated('ba_germplasm_attributes')
   ba_check(con = con, verbose = FALSE)
   stopifnot(is.character(germplasmDbId))
   stopifnot(germplasmDbId != "")

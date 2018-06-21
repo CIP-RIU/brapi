@@ -14,9 +14,12 @@ Status](https://img.shields.io/codecov/c/github/CIP-RIU/brapi/master.svg)](https
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/brapi)](https://cran.r-project.org/package=brapi)
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 
-## This version is still under development. The implementation sometimes changes minor details.
+This version is still under development. The implementation sometimes
+changes minor details.
 
-## Current support is only for BrAPI version 1.1.
+Current support is mainly for BrAPI version 1.1.
+
+Support for version 1.2 is underway.
 
 For independent checks against database you may use
 <http://webapps.ipk-gatersleben.de/brapivalidator>.
@@ -28,6 +31,7 @@ protocol changes.
 
 An R package to use the [Breeding API
 (BrAPI)](http://docs.brapi.apiary.io) for accessing plant breeding data.
+See the [documentation](https://cip-riu.github.io/brapi/) for details.
 
 It can be installed using:
 

@@ -11,7 +11,7 @@
 #' @param rclass character; default: "tibble" possible other values: "json"/"list"/"data.frame"
 #' @param studyDbId character; default: ''
 #' @param con list; brapi connection object
-#' @param format character; one of: json, csv, tsv. Default: json
+#' @param format character; one of: json, csv, tsv. Default: csv
 #'
 #' @author Reinhard Simon, Maikel Verouden
 #' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Studies/StudyObservationUnitsAsTable.md}{github}
@@ -25,7 +25,7 @@
 #' @export
 ba_studies_table <- function(con = NULL,
                              studyDbId = "",
-                             format = "json",
+                             format = "csv",
                              rclass = "tibble") {
   ba_check(con = con, verbose = FALSE, brapi_calls = "studies/id/table")
   stopifnot(is.character(studyDbId))
@@ -46,6 +46,7 @@ ba_studies_table <- function(con = NULL,
                               pformat))
   try({
     res <- brapiGET(url = studies_table, con = con)
+  })
     res <- httr::content(x = res, as = "text", encoding = "UTF-8")
     out <- NULL
     if (rclass %in% c("json", "list")) {
@@ -56,6 +57,8 @@ ba_studies_table <- function(con = NULL,
         res2 <- jsonlite::fromJSON(txt = res)$result
         out <- res2$data
         out <- tibble::as.tibble(out)
+        if(length(res2$headerRow) != length(colnames(out)))
+          stop('Header row length does not coincide with column count. Contact database provider.')
         colnames(out) <- res2$headerRow
       }
       if (format == "csv") {
@@ -82,5 +85,5 @@ ba_studies_table <- function(con = NULL,
     }
     class(out) <- c(class(out), "ba_studies_table")
     return(out)
-  })
+
 }

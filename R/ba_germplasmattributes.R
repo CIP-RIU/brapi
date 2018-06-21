@@ -17,6 +17,7 @@
 ba_germplasmattributes <- function(con = NULL,
                                    attributeCategoryDbId = "0",
                                    rclass = "tibble") {
+
   ba_check(con = con, verbose = FALSE)
   stopifnot(is.character(attributeCategoryDbId))
   check_rclass(rclass = rclass)

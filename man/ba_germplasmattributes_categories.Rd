@@ -36,13 +36,15 @@ if (interactive()) {
 \href{https://github.com/plantbreeding/API/blob/master/Specification/GermplasmAttributes/ListAttributeCategories.md}{github}
 }
 \seealso{
-Other germplasmattributes: \code{\link{ba_germplasmattributes_details}},
+Other germplasmattributes: \code{\link{ba_germplasm_attributes}},
+  \code{\link{ba_germplasmattributes_details}},
   \code{\link{ba_germplasmattributes}}
 
 Other genotyping: \code{\link{ba_genomemaps_data_range}},
   \code{\link{ba_genomemaps_data}},
   \code{\link{ba_genomemaps_details}},
   \code{\link{ba_genomemaps}},
+  \code{\link{ba_germplasm_attributes}},
   \code{\link{ba_germplasm_markerprofiles}},
   \code{\link{ba_germplasm_search}},
   \code{\link{ba_germplasmattributes_details}},

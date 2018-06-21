@@ -1,4 +1,4 @@
-context("markerprofiles_search")
+context("ts markerprofiles_search")
 
 con <- ba_db()$testserver
 

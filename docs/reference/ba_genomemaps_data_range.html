@@ -58,7 +58,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">brapi</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.9.1</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.9.4</span>
       </span>
     </div>
 
@@ -116,8 +116,8 @@
     </div>
 
     <pre class="usage"><span class='fu'>ba_genomemaps_data_range</span>(<span class='kw'>con</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>mapDbId</span> <span class='kw'>=</span> <span class='st'>"1"</span>,
-  <span class='kw'>linkageGroupName</span> <span class='kw'>=</span> <span class='st'>"1"</span>, <span class='kw'>min</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>max</span> <span class='kw'>=</span> <span class='fl'>1000</span>, <span class='kw'>page</span> <span class='kw'>=</span> <span class='fl'>0</span>,
-  <span class='kw'>pageSize</span> <span class='kw'>=</span> <span class='fl'>30</span>, <span class='kw'>rclass</span> <span class='kw'>=</span> <span class='st'>"tibble"</span>)</pre>
+  <span class='kw'>linkageGroupName</span> <span class='kw'>=</span> <span class='st'>"1"</span>, <span class='kw'>min</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>max</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>page</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>pageSize</span> <span class='kw'>=</span> <span class='fl'>30</span>,
+  <span class='kw'>rclass</span> <span class='kw'>=</span> <span class='st'>"tibble"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -136,11 +136,11 @@
     </tr>
     <tr>
       <th>min</th>
-      <td><p>integer; default 1</p></td>
+      <td><p>character; default ''</p></td>
     </tr>
     <tr>
       <th>max</th>
-      <td><p>integer; default 1000</p></td>
+      <td><p>character; default ''</p></td>
     </tr>
     <tr>
       <th>page</th>
@@ -176,6 +176,7 @@
 <p>Other genotyping: <code><a href='ba_genomemaps_data.html'>ba_genomemaps_data</a></code>,
   <code><a href='ba_genomemaps_details.html'>ba_genomemaps_details</a></code>,
   <code><a href='ba_genomemaps.html'>ba_genomemaps</a></code>,
+  <code><a href='ba_germplasm_attributes.html'>ba_germplasm_attributes</a></code>,
   <code><a href='ba_germplasm_markerprofiles.html'>ba_germplasm_markerprofiles</a></code>,
   <code><a href='ba_germplasm_search.html'>ba_germplasm_search</a></code>,
   <code><a href='ba_germplasmattributes_categories.html'>ba_germplasmattributes_categories</a></code>,
