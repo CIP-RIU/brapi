@@ -45,6 +45,8 @@ ba_phenotypes_search <- function(con = NULL,
   check_rclass(rclass = rclass)
   brp <- get_brapi(con = con)
   pvariables <- paste0(brp, "phenotypes-search/")
+
+
   try({
     body <- list(germplasmDbId = germplasmDbIds,
                  observationVariableDbId = observationVariableDbIds,

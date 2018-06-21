@@ -1,4 +1,8 @@
-# brapi 0.9.9036
+# brapi 0.9.5
+
+- Tests are now against the brapi test server for version 1.2
+
+# brapi 0.0.9.9036
 
 - Removed tidyjson
 - Removed references to brapiTS mock server

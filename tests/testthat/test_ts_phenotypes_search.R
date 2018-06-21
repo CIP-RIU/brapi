@@ -1,29 +1,23 @@
-context("phenotypes_search")
+context("ts phenotypes_search")
 
-con <- ba_db()$musabase
-res <- ba_phenotypes_search(con = con, pageSize = 1,
-                            observationVariableDbIds = "77809",
-                            rclass = "json")
+con <- ba_db()$testserver
+
 
 test_that(" are present", {
 
-
-  expect_true('ba_phenotypes_search' %in% class(res))
+  res <- ba_phenotypes_search(con = con)
+  expect_true(nrow(res) == 154)
 
 })
 
 test_that(" out formats work", {
 
   out <- ba_phenotypes_search(con = con, pageSize = 1,
-                              observationVariableDbIds = "77809",
+                              observationVariableDbIds = "MO_123:100002",
                               rclass = "tibble")
   expect_true("tbl_df" %in% class(out))
 
-  out <- res %>% brapi:::baps2rclass("list")
-  expect_true("list" %in% class(out))
 
-  out <- res %>% brapi:::baps2rclass("data.frame")
-  expect_true("data.frame" %in% class(out))
 
 })
 
