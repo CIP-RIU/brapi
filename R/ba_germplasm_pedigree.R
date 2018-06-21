@@ -34,9 +34,13 @@ ba_germplasm_pedigree <- function(con = NULL,
     res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
     out <- NULL
     ms2tbl <- function(res) {
-      lst <- jsonlite::fromJSON(txt = res2)
+      lst <- jsonlite::fromJSON(txt = res)
       dat <- jsonlite::toJSON(x = lst$result)
       res3 <- jsonlite::fromJSON(txt = dat, simplifyDataFrame = TRUE)
+      # Set null length list-type elements to ''
+      for (i in 1:length(res3)) {
+        if (length(res3[[i]]) == 0) res3[[i]] <- ""
+      }
       attr(res3, "metadata") <- lst$metadata
       return(res3)
     }

@@ -1,12 +1,11 @@
-context("calls")
-#testthat::skip_on_cran()
+context("sp calls")
 
-con <- ba_db()$testserver
+con <- ba_db()$sweetpotatobase
 
 test_that("Calls are present", {
 
   res <- ba_calls(con = con, datatype = "csv", pageSize = 100)
-  expect_that(nrow(res) == 54, is_true())
+  expect_that(nrow(res) >= 48, is_true())
 
 })
 
@@ -17,9 +16,3 @@ test_that("Calls output formats work", {
 
 })
 
-test_that("Calls page parameters work", {
-
-  res <- ba_calls(con = con, datatype = "csv", pageSize = 1000)
-  expect_that(nrow(res) == 54, is_true())
-
-})

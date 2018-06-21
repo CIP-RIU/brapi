@@ -1,11 +1,12 @@
 context("studies_table")
 
+# Brapi test server does not return correct header row, so using sweetpotatobase for the moment!
 con <- ba_db()$sweetpotatobase
 
 test_that("Studies_table are present", {
 
   res <- ba_studies_table(con = con, studyDbId = "148")
-  expect_that(nrow(res) == 21, is_true())
+  expect_that(nrow(res) >= 8, is_true())
 
 })
 
@@ -28,13 +29,13 @@ test_that("Studies_table are presented as data.frame", {
 test_that("Studies_table are requested as csv", {
 
   res <- ba_studies_table(con = con, studyDbId = "148", format = "csv")
-  expect_that(nrow(res) == 21, is_true())
+  expect_that(nrow(res) >= 8, is_true())
 
 })
 
 test_that("Studies_table are requested as tsv", {
 
   res <- ba_studies_table(con = con, studyDbId = "148", format = "tsv")
-  expect_that(nrow(res) == 21, is_true())
+  expect_that(nrow(res) >= 8, is_true())
 
 })

@@ -35,9 +35,9 @@ ba_studies_table <- function(con = NULL,
   brp <- get_brapi(con = con)
 
   studies_table <- paste0(brp, "studies/", studyDbId, "/table?")
-  if (rclass %in% c("data.frame", "tibble") & format == "json") {
-    format <- "csv"
-  }
+  # if (rclass %in% c("data.frame", "tibble") & format == "json") {
+  #   format <- "csv"
+  # }
   pformat <- ifelse(format %in% c("json", "csv", "tsv"),
                     paste0("format=", format, "&"), "")
   studies_table <- sub("[/?&]$",
@@ -52,6 +52,12 @@ ba_studies_table <- function(con = NULL,
         out <- dat2tbl(res = res, rclass = rclass)
     }
     if (rclass %in% c("data.frame", "tibble")) {
+      if (format == "json") {
+        res2 <- jsonlite::fromJSON(txt = res)$result
+        out <- res2$data
+        out <- tibble::as.tibble(out)
+        colnames(out) <- res2$headerRow
+      }
       if (format == "csv") {
         if (con$bms == TRUE) {
           out <- read.csv(textConnection(res))

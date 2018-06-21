@@ -1,16 +1,16 @@
-context("germplasm_details")
+context("sp germplasm_details")
 
-con <- ba_db()$testserver
+con <- ba_db()$sweetpotatobase
 
 test_that("Germplasm_details results are present", {
 
-  res <- ba_germplasm_details(con = con, germplasmDbId = "1")
-  expect_that(nrow(res) == 4, is_true())
+  res <- ba_germplasm_details(con = con, germplasmDbId = "103412")
+  expect_that(nrow(res) >= 1, is_true())
 
 })
 
 
-test_that("Out formats worl", {
+test_that("Out formats work", {
 
   res <- ba_germplasm_details(con = con, germplasmDbId = "1", rclass = "json")
   expect_that("json" %in% class(res), is_true())

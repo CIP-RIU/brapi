@@ -17,6 +17,12 @@ output: github_document
 
 ## This version is still under development. The implementation sometimes changes minor details.
 
+## Current support is only for BrAPI version 1.1.
+
+For independent checks against database you may use http://webapps.ipk-gatersleben.de/brapivalidator.
+
+It seems several databases may not currently be fully accessible due to protocol changes. 
+
 ```{r, echo = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,

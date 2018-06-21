@@ -19,10 +19,13 @@ gp2tbl <- function(res, type = '1') {
   donors <- as.list(df$donors)
   typeOfGermplasmStorageCode <- df$typeOfGermplasmStorageCode
 
-  df$donors <- NULL
-  df$taxonIds <- NULL
-  df$synonyms <- NULL
-  df$typeOfGermplasmStorageCode <- NULL
+  if(length(df$donors) == 0) df$donors <- NULL
+  if(length(df$taxonIds) == 0) df$taxonIds <- NULL
+  if(length(df$synonyms) == 0) df$synonyms <- NULL
+  if(length(df$typeOfGermplasmStorageCode) == 0) df$typeOfGermplasmStorageCode <- NULL
+
+  if(length(df$instituteName) == 0) df$instituteName <- NULL
+  if(length(df$speciesAuthority) == 0) df$speciesAuthority <- NULL
 
   df <- as.data.frame(df, stringsAsFactors = FALSE)
 
@@ -38,7 +41,7 @@ gp2tbl <- function(res, type = '1') {
     if (nrow(al) == 0) return(df)
     names(al) <- paste0(prefix, ".", names(al))
     df <- rep_df(df, nrow(al))
-    as.data.frame(cbind(df, al, stringsAsFactors = FALSE))
+    as.data.frame(cbind(df, al), stringsAsFactors = FALSE)
   }
 
   df <- join_df(df, as.data.frame(donors), "donors")

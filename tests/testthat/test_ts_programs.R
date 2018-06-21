@@ -1,11 +1,11 @@
 context("programs")
 
-con <- ba_db()$sweetpotatobase
+con <- ba_db()$testserver
 
 test_that("Programs are present", {
 
   res <- ba_programs(con = con)
-  expect_that("Ghana" %in% res$name, is_true())
+  expect_true( nrow(res) >= 6 )
 
 })
 

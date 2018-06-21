@@ -9,6 +9,6 @@ test_that("programs_search results are present", {
   # Neither testserver nor sweepotatobase do so.
 
   res <- ba_programs_search(con = con, pageSize = 3)
-  expect_that(nrow(res) == 0, is_true())
+  expect_that(nrow(res) >= 1, is_true())
 
 })
