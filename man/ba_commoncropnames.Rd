@@ -20,7 +20,7 @@ Lists supported crops in a database
 \note{
 Tested against: test-server
 
-BrAPI Version: 1.2, 1.3
+BrAPI Version: 1.2
 
 BrAPI Status:
 }

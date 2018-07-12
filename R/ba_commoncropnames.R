@@ -6,7 +6,7 @@
 #' @param rclass character; default: "tibble" possible other values: "vector"/"json"/"list"/"data.frame"
 #'
 #' @note Tested against: test-server
-#' @note BrAPI Version: 1.2, 1.3
+#' @note BrAPI Version: 1.2
 #' @note BrAPI Status:
 #'
 #' @author Reinhard Simon, Maikel Verouden
