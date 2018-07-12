@@ -12,7 +12,7 @@
 #' @param rclass character, class ot the object to be returned,  default: "tibble"
 #'               possible other values: "json"/"list"/"data.frame"
 #'
-#' @note Tested against: test-server
+#' @note Tested against: sweetpotatobase, test-server
 #' @note BrAPI Version: 1.0, 1.1, 1.2
 #' @note BrAPI Status:
 #'

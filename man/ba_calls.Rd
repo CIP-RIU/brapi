@@ -30,7 +30,7 @@ lists calls available on a brapi server.
 TODO v1.2: deprecate this and add ba_commonCropNames. The new function won't have datatype parameter.
 }
 \note{
-Tested against: test-server
+Tested against: sweetpotatobase, test-server
 
 BrAPI Version: 1.0, 1.1, 1.2
 
