@@ -6,11 +6,13 @@
 #' @param rclass character; default: "tibble" possible other values: "vector"/"json"/"list"/"data.frame"
 #'
 #' @note Tested against: sweetpotatobase, BMS
+#' @note BrAPI Version: 1.1
+#' @note BrAPI Status: deprecated
 #'
 #' @author Reinhard Simon, Maikel Verouden
 #' @return a vector of crop names or NULL
 #' @example inst/examples/ex_crops.R
-#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Crops/ListCrops.md}{github}
+#' @references \href{https://github.com/plantbreeding/API/blob/V1.1/Specification/Crops/ListCrops.md}{github}
 #' @family brapicore
 #' @export
 ba_crops <- function(con = NULL, rclass = "tibble") {
