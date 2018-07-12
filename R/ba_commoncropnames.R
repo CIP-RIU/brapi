@@ -21,9 +21,11 @@ ba_commoncropnames <- function(con = NULL, rclass = "tibble") {
   # temporarily store the multicrop argument in omc (oldmulticrop)
   omc <- con$multicrop
   con$multicrop <- FALSE
-  ba_check(con = con, verbose = FALSE, brapi_calls = "crops")
+  ba_check(con = con, verbose = FALSE, brapi_calls = "commonCropNames")
   # generate the brapi call url
   crops_list <- paste0(get_brapi(con = con), "commonCropNames")
+  # store original rclass, needed when equal to data.frame
+  orclass <- rclass
   rclass <- df2tibble(rclass = rclass)
   out <- try({
     res <- brapiGET(url = crops_list, con = con)
@@ -35,6 +37,7 @@ ba_commoncropnames <- function(con = NULL, rclass = "tibble") {
     }
     if (rclass == "list") out$result$data <- tolower(out$result$data )
     if (rclass == "vector") out <- tolower(out)
+    if (orclass == "data.frame") out <- as.data.frame(out)
 
     class(out) <- c(class(out), "ba_crops")
     out
