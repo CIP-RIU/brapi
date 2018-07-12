@@ -10,13 +10,13 @@ ba_programs(con = NULL, programName = "any", abbreviation = "any",
 \arguments{
 \item{con}{list, brapi connection object}
 
-\item{programName}{character; default: any}
+\item{programName}{character; default: "any"}
 
-\item{abbreviation}{character; default: any}
+\item{abbreviation}{character; default: "any"}
 
-\item{page}{integer requested page number, default = 0 (1st page)}
+\item{page}{integer requested page number, default: 0 (1st page)}
 
-\item{pageSize}{integer, items per page (default = 1000)}
+\item{pageSize}{integer, items per page, default: 1000}
 
 \item{rclass}{character; default: "tibble" possible other values: "json"/"list"/"data.frame"}
 }

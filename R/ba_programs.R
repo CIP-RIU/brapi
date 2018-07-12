@@ -7,11 +7,11 @@
 #' @note Tested against: sweetpotatobase, BMS
 #'
 #' @param con list, brapi connection object
-#' @param page integer requested page number, default = 0 (1st page)
+#' @param page integer requested page number, default: 0 (1st page)
 #' @param rclass character; default: "tibble" possible other values: "json"/"list"/"data.frame"
-#' @param pageSize integer, items per page (default = 1000)
-#' @param programName character; default: any
-#' @param abbreviation character; default: any
+#' @param pageSize integer, items per page, default: 1000
+#' @param programName character; default: "any"
+#' @param abbreviation character; default: "any"
 #'
 #' @import httr
 #' @author Reinhard Simon, Maikel Verouden

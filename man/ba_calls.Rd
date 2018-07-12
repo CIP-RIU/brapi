@@ -8,24 +8,33 @@ ba_calls(con = NULL, datatype = "csv", pageSize = 1000, page = 0,
   rclass = "tibble")
 }
 \arguments{
-\item{con}{brapi connection object}
+\item{con}{list, brapi connection object}
 
-\item{datatype}{string, list of data types}
+\item{datatype}{character, list of data types default: "csv" other
+possible values: "all"/"json"/"tsv"}
 
-\item{pageSize}{integer; default = 1000}
+\item{pageSize}{integer, items per page to be returned, default: 1000}
 
-\item{page}{integer; default = 0}
+\item{page}{integer, the requested page to be returend, default: 0 (1st page)}
 
-\item{rclass}{string; default: tibble}
+\item{rclass}{character, class ot the object to be returned,  default: "tibble"
+possible other values: "json"/"list"/"data.frame"}
 }
 \value{
-rclass as defined
+An object of class as defined by rclass containing all the implemented BrAPI calls.
 }
 \description{
 lists calls available on a brapi server.
 }
 \details{
 TODO v1.2: deprecate this and add ba_commonCropNames. The new function won't have datatype parameter.
+}
+\note{
+Tested against: test-server
+
+BrAPI Version: 1.0, 1.1, 1.2
+
+BrAPI Status:
 }
 \examples{
 if (interactive()) {
@@ -39,7 +48,7 @@ if (interactive()) {
 }
 }
 \references{
-\href{https://github.com/plantbreeding/API/blob/master/Specification/Calls/Calls.md}{github}
+\href{https://github.com/plantbreeding/API/tree/master/Specification/Calls}{github}
 }
 \seealso{
 Other brapicore: \code{\link{ba_commoncropnames}},
@@ -59,5 +68,5 @@ Other brapicore: \code{\link{ba_commoncropnames}},
   \code{\link{ba_traits_details}}, \code{\link{ba_traits}}
 }
 \author{
-Reinhard Simon
+Reinhard Simon, Maikel Verouden
 }
