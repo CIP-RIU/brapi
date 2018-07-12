@@ -44,7 +44,7 @@ Other observationvariables: \code{\link{ba_observationvariables_datatypes}},
   \code{\link{ba_observationvariables_ontologies}}
 
 Other brapicore: \code{\link{ba_calls}},
-  \code{\link{ba_crops}},
+  \code{\link{ba_commoncropnames}}, \code{\link{ba_crops}},
   \code{\link{ba_germplasm_details_study}},
   \code{\link{ba_germplasm_details}},
   \code{\link{ba_germplasm_pedigree}},

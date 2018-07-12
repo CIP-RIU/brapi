@@ -19,6 +19,10 @@ lists crops available in a database
 }
 \note{
 Tested against: sweetpotatobase, BMS
+
+BrAPI Version: 1.1
+
+BrAPI Status: deprecated
 }
 \examples{
 if (interactive()) {
@@ -32,10 +36,11 @@ if (interactive()) {
 }
 }
 \references{
-\href{https://github.com/plantbreeding/API/blob/master/Specification/Crops/ListCrops.md}{github}
+\href{https://github.com/plantbreeding/API/blob/V1.1/Specification/Crops/ListCrops.md}{github}
 }
 \seealso{
 Other brapicore: \code{\link{ba_calls}},
+  \code{\link{ba_commoncropnames}},
   \code{\link{ba_germplasm_details_study}},
   \code{\link{ba_germplasm_details}},
   \code{\link{ba_germplasm_pedigree}},
