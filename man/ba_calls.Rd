@@ -10,31 +10,33 @@ ba_calls(con = NULL, datatype = "csv", pageSize = 1000, page = 0,
 \arguments{
 \item{con}{list, brapi connection object}
 
-\item{datatype}{character, list of data types default: "csv" other
+\item{datatype}{character, list of data types; default: "csv", other
 possible values: "all"/"json"/"tsv"}
 
-\item{pageSize}{integer, items per page to be returned, default: 1000}
+\item{pageSize}{integer, items per page to be returned; default: 1000}
 
-\item{page}{integer, the requested page to be returend, default: 0 (1st page)}
+\item{page}{integer, the requested page to be returend; default: 0 (1st page)}
 
-\item{rclass}{character, class ot the object to be returned,  default: "tibble"
-possible other values: "json"/"list"/"data.frame"}
+\item{rclass}{character, class of the object to be returned;  default: "tibble"
+, possible other values: "json"/"list"/"data.frame"}
 }
 \value{
-An object of class as defined by rclass containing all the implemented BrAPI calls.
+An object of class as defined by rclass containing all the implemented
+        BrAPI calls.
 }
 \description{
-lists calls available on a brapi server.
+Returns calls available on a brapi server.
 }
 \details{
-TODO v1.2: deprecate this and add ba_commonCropNames. The new function won't have datatype parameter.
+TODO v1.2: deprecate this and add ba_commonCropNames. The new function won't
+have datatype parameter.
 }
 \note{
 Tested against: sweetpotatobase, test-server
 
 BrAPI Version: 1.0, 1.1, 1.2
 
-BrAPI Status:
+BrAPI Status: active
 }
 \examples{
 if (interactive()) {

@@ -1,27 +1,30 @@
 #' ba_calls
 #'
-#' lists calls available on a brapi server.
+#' Returns calls available on a brapi server.
 #'
-#' TODO v1.2: deprecate this and add ba_commonCropNames. The new function won't have datatype parameter.
+#' TODO v1.2: deprecate this and add ba_commonCropNames. The new function won't
+#' have datatype parameter.
 #'
 #' @param con list, brapi connection object
-#' @param datatype character, list of data types default: "csv" other
+#' @param datatype character, list of data types; default: "csv", other
 #'                 possible values: "all"/"json"/"tsv"
-#' @param pageSize integer, items per page to be returned, default: 1000
-#' @param page integer, the requested page to be returend, default: 0 (1st page)
-#' @param rclass character, class ot the object to be returned,  default: "tibble"
-#'               possible other values: "json"/"list"/"data.frame"
+#' @param pageSize integer, items per page to be returned; default: 1000
+#' @param page integer, the requested page to be returend; default: 0 (1st page)
+#' @param rclass character, class of the object to be returned;  default: "tibble"
+#'               , possible other values: "json"/"list"/"data.frame"
+#'
+#' @return An object of class as defined by rclass containing all the implemented
+#'         BrAPI calls.
 #'
 #' @note Tested against: sweetpotatobase, test-server
 #' @note BrAPI Version: 1.0, 1.1, 1.2
-#' @note BrAPI Status:
+#' @note BrAPI Status: active
 #'
 #' @author Reinhard Simon, Maikel Verouden
-#' @example inst/examples/ex_calls.R
 #' @references \href{https://github.com/plantbreeding/API/tree/master/Specification/Calls}{github}
-#' @return An object of class as defined by rclass containing all the implemented BrAPI calls.
-#' @import tibble
 #' @family brapicore
+#' @example inst/examples/ex_calls.R
+#' @import tibble
 #' @export
 ba_calls <- function(con = NULL,
                      datatype = "csv",
