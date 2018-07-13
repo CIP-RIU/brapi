@@ -22,7 +22,7 @@
 #' @return An object of class as defined by rclass containing the breeding
 #'         programs matching the search criteria.
 #'
-#' @note Tested against: test-server (unexpected results though)
+#' @note Tested against: test-server (unexpected results, see details section)
 #' @note BrAPI Version: 1.0, 1.1, 1.2
 #' @note BrAPI Status: active
 #'

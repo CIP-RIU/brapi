@@ -43,7 +43,7 @@ Testing against test-server always returns all programs in the test
          implementation error of the BrAPI call on the database side.
 }
 \note{
-Tested against: test-server (unexpected results though)
+Tested against: test-server (unexpected results, see details section)
 
 BrAPI Version: 1.0, 1.1, 1.2
 
