@@ -5,36 +5,49 @@
 \title{ba_programs_search}
 \usage{
 ba_programs_search(con = NULL, abbreviation = "", leadPerson = "",
-  name = "", objective = "", page = 0, pageSize = 1000,
-  programDbId = "", rclass = "tibble")
+  name = "", objective = "", programDbId = "", page = 0,
+  pageSize = 1000, rclass = "tibble")
 }
 \arguments{
 \item{con}{list, brapi connection object}
 
-\item{abbreviation}{character; default: ''}
+\item{abbreviation}{character, search by program abbreviation; default: ""}
 
-\item{leadPerson}{character; default: ''}
+\item{leadPerson}{character, search by program leader name; default: ""}
 
-\item{name}{character; default: ''}
+\item{name}{character, search by program name; default: ""}
 
-\item{objective}{character; default: ''}
+\item{objective}{character, search by program objective, default: ""}
 
-\item{page}{integer; default: 0}
+\item{programDbId}{character, search by program database identifier
+(programDbId), default: ""}
 
-\item{pageSize}{integer, default: 1000}
+\item{page}{integer, the requested page to be returend; default: 0 (1st page)}
 
-\item{programDbId}{character; default: ''}
+\item{pageSize}{integer, items per page to be returned; default: 1000}
 
-\item{rclass}{character; default: tibble}
+\item{rclass}{character, class of the object to be returned;  default: "tibble"
+, possible other values: "json"/"list"/"data.frame"}
 }
 \value{
-rclass
+An object of class as defined by rclass containing the breeding
+        programs matching the search criteria.
 }
 \description{
-searches the breeding programs
+Search breeding programs via a POST method
 }
 \details{
-V1.2: same
+Testing against test-server always returns all programs in the test
+         server example. One would expect info on only one program, when
+         programDbId = "1" is specified as function argument. Could be an
+         implementation error of the BrAPI call on the database side.
+}
+\note{
+Tested against: test-server (unexpected results though)
+
+BrAPI Version: 1.0, 1.1, 1.2
+
+BrAPI Status: active
 }
 \examples{
 if (interactive()) {
@@ -48,7 +61,7 @@ if (interactive()) {
 }
 }
 \references{
-\href{https://github.com/plantbreeding/API/blob/master/Specification/Programs/ProgramSearch.md}{github}
+\href{https://github.com/plantbreeding/API/tree/master/Specification/Programs}{github}
 }
 \seealso{
 Other brapicore: \code{\link{ba_calls}},
@@ -67,5 +80,5 @@ Other brapicore: \code{\link{ba_calls}},
   \code{\link{ba_traits_details}}, \code{\link{ba_traits}}
 }
 \author{
-Reinhard Simon
+Reinhard Simon, Maikel Verouden
 }

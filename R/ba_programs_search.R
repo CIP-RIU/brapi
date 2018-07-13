@@ -1,36 +1,45 @@
 #' ba_programs_search
 #'
-#' searches the breeding programs
-#'
-#' V1.2: same
+#' Search breeding programs via a POST method
 #'
 #' @param con list, brapi connection object
+#' @param abbreviation character, search by program abbreviation; default: ""
+#' @param leadPerson character, search by program leader name; default: ""
+#' @param name character, search by program name; default: ""
+#' @param objective character, search by program objective, default: ""
+#' @param programDbId character, search by program database identifier
+#'                    (programDbId), default: ""
+#' @param pageSize integer, items per page to be returned; default: 1000
+#' @param page integer, the requested page to be returend; default: 0 (1st page)
+#' @param rclass character, class of the object to be returned;  default: "tibble"
+#'               , possible other values: "json"/"list"/"data.frame"
 #'
-#' @param abbreviation character; default: ''
-#' @param leadPerson character; default: ''
-#' @param name character; default: ''
-#' @param objective character; default: ''
-#' @param page integer; default: 0
-#' @param pageSize integer, default: 1000
-#' @param programDbId character; default: ''
+#' @details Testing against test-server always returns all programs in the test
+#'          server example. One would expect info on only one program, when
+#'          programDbId = "1" is specified as function argument. Could be an
+#'          implementation error of the BrAPI call on the database side.
 #'
-#' @param rclass character; default: tibble
+#' @return An object of class as defined by rclass containing the breeding
+#'         programs matching the search criteria.
 #'
-#' @import httr
-#' @author Reinhard Simon
-#' @return rclass
-#' @example inst/examples/ex-ba_programs_search.R
-#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Programs/ProgramSearch.md}{github}
+#' @note Tested against: test-server (unexpected results though)
+#' @note BrAPI Version: 1.0, 1.1, 1.2
+#' @note BrAPI Status: active
+#'
+#' @author Reinhard Simon, Maikel Verouden
+#' @references \href{https://github.com/plantbreeding/API/tree/master/Specification/Programs}{github}
 #' @family brapicore
+#' @example inst/examples/ex-ba_programs_search.R
+#' @import httr
 #' @export
 ba_programs_search <- function(con = NULL,
                                abbreviation = "",
                                leadPerson = "",
                                name = "",
                                objective = "",
+                               programDbId = "",
                                page = 0,
                                pageSize = 1000,
-                               programDbId = "",
                                rclass = "tibble") {
   ba_check(con = con, verbose = FALSE, brapi_calls = "programs-search")
   stopifnot(is.character(programDbId))
@@ -44,7 +53,7 @@ ba_programs_search <- function(con = NULL,
   # fetch url of the brapi implementation of the database
   brp <- get_brapi(con = con)
   # generate specific brapi call url
-  pprograms <- paste0(brp, "programs-search/")
+  pprograms <- paste0(brp, "programs-search")
   try({
     body <- list(abbreviation =
                    ifelse(abbreviation != '',
@@ -74,7 +83,7 @@ ba_programs_search <- function(con = NULL,
                           '')
     )
     for (i in length(body):1) {
-      if(body[[i]] == '') {
+      if (body[[i]] == '') {
         body[[i]] <- NULL
       }
     }
