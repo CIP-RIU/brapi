@@ -2,9 +2,6 @@
 #'
 #' Returns calls available on a brapi server.
 #'
-#' TODO v1.2: deprecate this and add ba_commonCropNames. The new function won't
-#' have datatype parameter.
-#'
 #' @param con list, brapi connection object
 #' @param datatype character, list of data types; default: "csv", other
 #'                 possible values: "all"/"json"/"tsv"
@@ -12,6 +9,9 @@
 #' @param page integer, the requested page to be returend; default: 0 (1st page)
 #' @param rclass character, class of the object to be returned;  default: "tibble"
 #'               , possible other values: "json"/"list"/"data.frame"
+#'
+#' @details TODO v1.2: deprecate this and add ba_commonCropNames. The new
+#'          function won't have datatype parameter.
 #'
 #' @return An object of class as defined by rclass containing all the implemented
 #'         BrAPI calls.
