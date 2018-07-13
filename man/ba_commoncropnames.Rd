@@ -7,22 +7,23 @@
 ba_commoncropnames(con = NULL, rclass = "tibble")
 }
 \arguments{
-\item{con}{brapi connection object}
+\item{con}{list, brapi connection object}
 
-\item{rclass}{character; default: "tibble" possible other values: "vector"/"json"/"list"/"data.frame"}
+\item{rclass}{character, class of the object to be returned;  default: "tibble"
+, possible other values: "json"/"list"/"data.frame"}
 }
 \value{
-a vector of crop names or NULL
+an object, as specified by rclass, with crop names or NULL
 }
 \description{
-Lists supported crops in a database
+List supported crops in a database.
 }
 \note{
 Tested against: test-server
 
 BrAPI Version: 1.2
 
-BrAPI Status:
+BrAPI Status: active
 }
 \examples{
 if (interactive()) {
@@ -32,7 +33,7 @@ if (interactive()) {
 
   # con <- ba_db()$xxxxx
 
-  # ba_crops(con = con, ...)
+  # ba_commoncropnames(con = con, ...)
 }
 }
 \references{
