@@ -10,27 +10,30 @@ ba_programs(con = NULL, programName = "any", abbreviation = "any",
 \arguments{
 \item{con}{list, brapi connection object}
 
-\item{programName}{character; default: "any"}
+\item{programName}{character, filter by program name; default: "any"}
 
-\item{abbreviation}{character; default: "any"}
+\item{abbreviation}{character, filter by program abbreviation; default: "any"}
 
-\item{page}{integer requested page number, default: 0 (1st page)}
+\item{page}{integer, the requested page to be returend; default: 0 (1st page)}
 
-\item{pageSize}{integer, items per page, default: 1000}
+\item{pageSize}{integer, items per page to be returned; default: 1000}
 
-\item{rclass}{character; default: "tibble" possible other values: "json"/"list"/"data.frame"}
+\item{rclass}{character, class of the object to be returned;  default: "tibble"
+, possible other values: "json"/"list"/"data.frame"}
 }
 \value{
-rclass
+An object of class as defined by rclass containing the breeding
+        programs.
 }
 \description{
-lists the breeding programs
-}
-\details{
-V1.2: same
+Retrieve a list of the breeding programs.
 }
 \note{
-Tested against: sweetpotatobase, BMS
+Tested against: BMS, sweetpotatobase, test-server
+
+BrAPI Version: 1.0, 1.1, 1.2
+
+BrAPI Status: active
 }
 \examples{
 if (interactive()) {

@@ -1,24 +1,27 @@
 #' ba_programs
 #'
-#' lists the breeding programs
-#'
-#' V1.2: same
-#'
-#' @note Tested against: sweetpotatobase, BMS
+#' Retrieve a list of the breeding programs.
 #'
 #' @param con list, brapi connection object
-#' @param page integer requested page number, default: 0 (1st page)
-#' @param rclass character; default: "tibble" possible other values: "json"/"list"/"data.frame"
-#' @param pageSize integer, items per page, default: 1000
-#' @param programName character; default: "any"
-#' @param abbreviation character; default: "any"
+#' @param programName character, filter by program name; default: "any"
+#' @param abbreviation character, filter by program abbreviation; default: "any"
+#' @param pageSize integer, items per page to be returned; default: 1000
+#' @param page integer, the requested page to be returend; default: 0 (1st page)
+#' @param rclass character, class of the object to be returned;  default: "tibble"
+#'               , possible other values: "json"/"list"/"data.frame"
 #'
-#' @import httr
+#' @return An object of class as defined by rclass containing the breeding
+#'         programs.
+#'
+#' @note Tested against: BMS, sweetpotatobase, test-server
+#' @note BrAPI Version: 1.0, 1.1, 1.2
+#' @note BrAPI Status: active
+#'
 #' @author Reinhard Simon, Maikel Verouden
-#' @return rclass
-#' @example inst/examples/ex-ba_programs.R
 #' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Programs/ListPrograms.md}{github}
 #' @family brapicore
+#' @example inst/examples/ex-ba_programs.R
+#' @import httr
 #' @export
 ba_programs <- function(con = NULL,
                         programName = "any",
@@ -37,7 +40,7 @@ ba_programs <- function(con = NULL,
   pprogramName <- ifelse(programName != "any", paste0("programName=",
                                   gsub(" ", "%20", programName), "&"), "")
   pabbreviation <- ifelse(abbreviation != "any", paste0("abbreviation=",
-                                                    abbreviation, "&"), "")
+                                  gsub(" ", "%20", abbreviation), "&"), "")
   ppage <- ifelse(is.numeric(page), paste0("page=", page, "&"), "")
   ppageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=",
                                                    pageSize, "&"), "")
