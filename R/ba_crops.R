@@ -6,7 +6,7 @@
 #' @param rclass character; default: "tibble" possible other values: "vector"/"json"/"list"/"data.frame"
 #'
 #' @note Tested against: sweetpotatobase, BMS
-#' @note BrAPI Version: 1.1
+#' @note BrAPI Version: 1.0, 1.1
 #' @note BrAPI Status: deprecated
 #'
 #' @author Reinhard Simon, Maikel Verouden
