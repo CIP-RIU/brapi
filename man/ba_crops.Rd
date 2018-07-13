@@ -19,7 +19,7 @@ an object, as specified by rclass, with crop names or NULL
 List supported crops in a database.
 }
 \note{
-Tested against: sweetpotatobase, BMS
+Tested against: BMS, sweetpotatobase, test-server
 
 BrAPI Version: 1.0, 1.1
 

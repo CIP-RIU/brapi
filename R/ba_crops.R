@@ -8,7 +8,7 @@
 #'
 #' @return an object, as specified by rclass, with crop names or NULL
 #'
-#' @note Tested against: sweetpotatobase, BMS
+#' @note Tested against: BMS, sweetpotatobase, test-server
 #' @note BrAPI Version: 1.0, 1.1
 #' @note BrAPI Status: deprecated
 #'
