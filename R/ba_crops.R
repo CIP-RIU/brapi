@@ -1,19 +1,21 @@
 #' ba_crops
 #'
-#' lists crops available in a database
+#' List supported crops in a database.
 #'
-#' @param con brapi connection object
-#' @param rclass character; default: "tibble" possible other values: "vector"/"json"/"list"/"data.frame"
+#' @param con list, brapi connection object
+#' @param rclass character, class of the object to be returned;  default: "tibble"
+#'               , possible other values: "json"/"list"/"data.frame"
+#'
+#' @return an object, as specified by rclass, with crop names or NULL
 #'
 #' @note Tested against: sweetpotatobase, BMS
 #' @note BrAPI Version: 1.0, 1.1
 #' @note BrAPI Status: deprecated
 #'
 #' @author Reinhard Simon, Maikel Verouden
-#' @return a vector of crop names or NULL
-#' @example inst/examples/ex_crops.R
 #' @references \href{https://github.com/plantbreeding/API/blob/V1.1/Specification/Crops/ListCrops.md}{github}
 #' @family brapicore
+#' @example inst/examples/ex-ba_crops.R
 #' @export
 ba_crops <- function(con = NULL, rclass = "tibble") {
   stopifnot(is.ba_con(obj = con))
