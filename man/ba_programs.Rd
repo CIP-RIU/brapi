@@ -47,7 +47,7 @@ if (interactive()) {
 }
 }
 \references{
-\href{https://github.com/plantbreeding/API/blob/master/Specification/Programs/ListPrograms.md}{github}
+\href{https://github.com/plantbreeding/API/tree/master/Specification/Programs}{github}
 }
 \seealso{
 Other brapicore: \code{\link{ba_calls}},
