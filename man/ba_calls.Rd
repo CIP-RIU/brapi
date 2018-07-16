@@ -27,10 +27,6 @@ An object of class as defined by rclass containing all the implemented
 \description{
 Returns calls available on a brapi server.
 }
-\details{
-TODO v1.2: deprecate this and add ba_commonCropNames. The new
-         function won't have datatype parameter.
-}
 \note{
 Tested against: sweetpotatobase, test-server
 

@@ -10,9 +10,6 @@
 #' @param rclass character, class of the object to be returned;  default: "tibble"
 #'               , possible other values: "json"/"list"/"data.frame"
 #'
-#' @details TODO v1.2: deprecate this and add ba_commonCropNames. The new
-#'          function won't have datatype parameter.
-#'
 #' @return An object of class as defined by rclass containing all the implemented
 #'         BrAPI calls.
 #'
