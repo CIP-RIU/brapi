@@ -3,12 +3,18 @@
 #' Retrieve a list of the breeding programs.
 #'
 #' @param con list, brapi connection object
-#' @param programName character, filter by program name; default: "any"
-#' @param abbreviation character, filter by program abbreviation; default: "any"
+#' @param programName character, filter programs by program name; default: "any"
+#' @param abbreviation character, filter programs by program abbreviation;
+#'                     default: "any"
+#' @param commonCropName character, filter programs by commonCropName; default:
+#'                       "any"
 #' @param pageSize integer, items per page to be returned; default: 1000
 #' @param page integer, the requested page to be returend; default: 0 (1st page)
 #' @param rclass character, class of the object to be returned;  default: "tibble"
 #'               , possible other values: "json"/"list"/"data.frame"
+#'
+#' @details Filtering by commonCropName has not be tested yet, because none of
+#'          the databases support this feature yet!
 #'
 #' @return An object of class as defined by rclass containing the breeding
 #'         programs.
@@ -26,21 +32,26 @@
 ba_programs <- function(con = NULL,
                         programName = "any",
                         abbreviation = "any",
+                        commonCropName = "any",
                         page = 0,
                         pageSize = 1000,
                         rclass = "tibble") {
   ba_check(con = con, verbose = FALSE, brapi_calls = "programs")
   stopifnot(is.character(programName))
   stopifnot(is.character(abbreviation))
+  stopifnot(is.character(commonCropName))
   check_paging(pageSize = pageSize, page = page)
   check_rclass(rclass = rclass)
   brp <- get_brapi(con = con)
-  # pprograms <- paste0(brp, "programs/?") # TO BE CONSIDERED v2
   pprograms <- paste0(brp, "programs?")
   pprogramName <- ifelse(programName != "any", paste0("programName=",
                                   gsub(" ", "%20", programName), "&"), "")
   pabbreviation <- ifelse(abbreviation != "any", paste0("abbreviation=",
                                   gsub(" ", "%20", abbreviation), "&"), "")
+  pcommonCropName <- ifelse(commonCropName != "any",
+                            paste0("commonCropName=",
+                                   gsub(" ", "%20", commonCropName), "&"),
+                            "")
   ppage <- ifelse(is.numeric(page), paste0("page=", page, "&"), "")
   ppageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=",
                                                    pageSize, "&"), "")
@@ -53,6 +64,7 @@ ba_programs <- function(con = NULL,
                    paste0(pprograms,
                           pprogramName,
                           pabbreviation,
+                          pcommonCropName,
                           ppageSize,
                           ppage))
   try({

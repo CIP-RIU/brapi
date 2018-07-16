@@ -5,14 +5,18 @@
 \title{ba_programs}
 \usage{
 ba_programs(con = NULL, programName = "any", abbreviation = "any",
-  page = 0, pageSize = 1000, rclass = "tibble")
+  commonCropName = "any", page = 0, pageSize = 1000, rclass = "tibble")
 }
 \arguments{
 \item{con}{list, brapi connection object}
 
-\item{programName}{character, filter by program name; default: "any"}
+\item{programName}{character, filter programs by program name; default: "any"}
 
-\item{abbreviation}{character, filter by program abbreviation; default: "any"}
+\item{abbreviation}{character, filter programs by program abbreviation;
+default: "any"}
+
+\item{commonCropName}{character, filter programs by commonCropName; default:
+"any"}
 
 \item{page}{integer, the requested page to be returend; default: 0 (1st page)}
 
@@ -27,6 +31,10 @@ An object of class as defined by rclass containing the breeding
 }
 \description{
 Retrieve a list of the breeding programs.
+}
+\details{
+Filtering by commonCropName has not be tested yet, because none of
+         the databases support this feature yet!
 }
 \note{
 Tested against: BMS, sweetpotatobase, test-server
