@@ -5,26 +5,31 @@
 \title{ba_programs_search}
 \usage{
 ba_programs_search(con = NULL, abbreviation = "", leadPerson = "",
-  name = "", objective = "", programDbId = "", page = 0,
-  pageSize = 1000, rclass = "tibble")
+  name = "", objective = "", programDbId = "", commonCropName = "",
+  pageSize = 1000, page = 0, rclass = "tibble")
 }
 \arguments{
 \item{con}{list, brapi connection object}
 
-\item{abbreviation}{character, search by program abbreviation; default: ""}
+\item{abbreviation}{character, search programs by program abbreviation;
+default: ""}
 
-\item{leadPerson}{character, search by program leader name; default: ""}
+\item{leadPerson}{character, search programs by program leader name; default:
+""}
 
-\item{name}{character, search by program name; default: ""}
+\item{name}{character, search programs by program name; default: ""}
 
-\item{objective}{character, search by program objective, default: ""}
+\item{objective}{character, search programs by program objective, default: ""}
 
-\item{programDbId}{character, search by program database identifier
+\item{programDbId}{character, search programs by program database identifier
 (programDbId), default: ""}
 
-\item{page}{integer, the requested page to be returend; default: 0 (1st page)}
+\item{commonCropName}{character, search programs by commonCropName; default:
+""}
 
 \item{pageSize}{integer, items per page to be returned; default: 1000}
+
+\item{page}{integer, the requested page to be returend; default: 0 (1st page)}
 
 \item{rclass}{character, class of the object to be returned;  default: "tibble"
 , possible other values: "json"/"list"/"data.frame"}

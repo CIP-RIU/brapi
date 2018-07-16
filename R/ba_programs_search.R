@@ -3,12 +3,16 @@
 #' Search breeding programs via a POST method
 #'
 #' @param con list, brapi connection object
-#' @param abbreviation character, search by program abbreviation; default: ""
-#' @param leadPerson character, search by program leader name; default: ""
-#' @param name character, search by program name; default: ""
-#' @param objective character, search by program objective, default: ""
-#' @param programDbId character, search by program database identifier
+#' @param abbreviation character, search programs by program abbreviation;
+#'                     default: ""
+#' @param leadPerson character, search programs by program leader name; default:
+#'                   ""
+#' @param name character, search programs by program name; default: ""
+#' @param objective character, search programs by program objective, default: ""
+#' @param programDbId character, search programs by program database identifier
 #'                    (programDbId), default: ""
+#' @param commonCropName character, search programs by commonCropName; default:
+#'                       ""
 #' @param pageSize integer, items per page to be returned; default: 1000
 #' @param page integer, the requested page to be returend; default: 0 (1st page)
 #' @param rclass character, class of the object to be returned;  default: "tibble"
@@ -38,8 +42,9 @@ ba_programs_search <- function(con = NULL,
                                name = "",
                                objective = "",
                                programDbId = "",
-                               page = 0,
+                               commonCropName = "",
                                pageSize = 1000,
+                               page = 0,
                                rclass = "tibble") {
   ba_check(con = con, verbose = FALSE, brapi_calls = "programs-search")
   stopifnot(is.character(programDbId))
@@ -47,7 +52,7 @@ ba_programs_search <- function(con = NULL,
   stopifnot(is.character(abbreviation))
   stopifnot(is.character(objective))
   stopifnot(is.character(leadPerson))
-
+  stopifnot(is.character(commonCropName))
   check_paging(pageSize, page)
   check_rclass(rclass)
   # fetch url of the brapi implementation of the database
@@ -56,34 +61,42 @@ ba_programs_search <- function(con = NULL,
   pprograms <- paste0(brp, "programs-search")
   try({
     body <- list(abbreviation =
-                   ifelse(abbreviation != '',
+                   ifelse(abbreviation != "",
                           abbreviation,
-                          ''),
+                          ""),
                  leadPerson =
-                   ifelse(leadPerson != '',
+                   ifelse(leadPerson != "",
                           leadPerson,
-                          ''),
+                          ""),
                  name =
-                   ifelse(name != '',
+                   ifelse(name != "",
                           name,
-                          ''),
+                          ""),
                  objective =
-                   ifelse(objective != '',
+                   ifelse(objective != "",
                           objective,
-                          ''),
+                          ""),
+                 programDbId =
+                   ifelse(programDbId != "",
+                          programDbId,
+                          ""),
+                 commonCropName =
+                   ifelse(commonCropName != "",
+                          commonCropName,
+                          ""),
                  pageSize =
-                   ifelse(pageSize != '',
+                   ifelse(pageSize != "",
                           pageSize %>%
                             as.integer(),
-                          ''),
+                          ""),
                  page =
-                   ifelse(page != '',
+                   ifelse(page != "",
                           page %>%
                             as.integer(),
-                          '')
+                          "")
     )
     for (i in length(body):1) {
-      if (body[[i]] == '') {
+      if (body[[i]] == "") {
         body[[i]] <- NULL
       }
     }
