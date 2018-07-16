@@ -94,13 +94,12 @@ ba_programs_search <- function(con = NULL,
                           page %>%
                             as.integer(),
                           "")
-    )
+                 )
     for (i in length(body):1) {
       if (body[[i]] == "") {
         body[[i]] <- NULL
       }
     }
-
     res <- brapiPOST(url = pprograms, body = body, con = con)
     res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
     out <- dat2tbl(res = res2, rclass = rclass)
