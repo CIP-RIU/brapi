@@ -39,7 +39,7 @@ ba_commoncropnames <- function(con = NULL, rclass = "tibble") {
     }
     if (rclass == "list") out$result$data <- tolower(out$result$data )
     if (rclass == "vector") out <- tolower(out)
-    if (orclass == "data.frame") out <- as.data.frame(out)
+    if (rclass == "data.frame") out <- as.data.frame(out)
 
     class(out) <- c(class(out), "ba_crops")
     out
