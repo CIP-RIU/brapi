@@ -34,7 +34,7 @@ ba_commoncropnames <- function(con = NULL, rclass = "tibble") {
     res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
     out <- dat2tbl(res = res2, rclass = rclass)
     if (any(class(out) %in% c("tbl_df", "data.frame"))) {
-      names(out)[1] <- "crops"
+      names(out)[1] <- "commonCropNames"
       out$crops <- tolower(out$crops)
     }
     if (rclass == "list") out$result$data <- tolower(out$result$data )
