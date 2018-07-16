@@ -4,14 +4,14 @@
 \alias{ba_calls}
 \title{ba_calls}
 \usage{
-ba_calls(con = NULL, datatype = "csv", pageSize = 1000, page = 0,
+ba_calls(con = NULL, datatype = "all", pageSize = 1000, page = 0,
   rclass = "tibble")
 }
 \arguments{
 \item{con}{list, brapi connection object}
 
-\item{datatype}{character, list of data types; default: "csv", other
-possible values: "all"/"json"/"tsv"}
+\item{datatype}{character, filter implemented brapi calls by supported data
+type, e.g. "csv", "tsv" or "xls"; default: "all"}
 
 \item{pageSize}{integer, items per page to be returned; default: 1000}
 

@@ -3,8 +3,8 @@
 #' Returns calls available on a brapi server.
 #'
 #' @param con list, brapi connection object
-#' @param datatype character, list of data types; default: "csv", other
-#'                 possible values: "all"/"json"/"tsv"
+#' @param datatype character, filter implemented brapi calls by supported data
+#'                 type, e.g. "csv", "tsv" or "xls"; default: "all"
 #' @param pageSize integer, items per page to be returned; default: 1000
 #' @param page integer, the requested page to be returend; default: 0 (1st page)
 #' @param rclass character, class of the object to be returned;  default: "tibble"
@@ -27,7 +27,7 @@
 #' @import tibble
 #' @export
 ba_calls <- function(con = NULL,
-                     datatype = "csv",
+                     datatype = "all",
                      pageSize = 1000,
                      page = 0,
                      rclass = "tibble") {
@@ -35,12 +35,14 @@ ba_calls <- function(con = NULL,
   ba_check(con = con, verbose = FALSE, brapi_calls = "calls")
   check_paging(pageSize = pageSize, page = page)
   check_rclass(rclass = rclass)
-  stopifnot(datatype %in% c("all", "json", "csv", "tsv"))
+  if (!is.character(datatype)) {
+    stop("The datatype argument should be of class 'character'.")
+  }
   # obtain the brapi url
   brp <- get_brapi(con = con)
   brapi_calls <- paste0(brp, "calls?")
-  pdatatype <- ifelse(datatype == "", "",
-                       paste0("datatypes=", datatype, "&"))
+  pdatatype <- ifelse(datatype == "all", "",
+                      paste0("datatype=", datatype, "&"))
   ppage <- ifelse(is.numeric(page), paste0("page=", page, "&"), "")
   ppageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=",
                                                    pageSize, "&"), "")
