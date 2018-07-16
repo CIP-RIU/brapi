@@ -35,11 +35,11 @@ ba_crops <- function(con = NULL, rclass = "tibble") {
     out <- dat2tbl(res = res2, rclass = rclass)
     if (any(class(out) %in% c("tbl_df", "data.frame"))) {
       names(out)[1] <- "crops"
-      out$crops <- tolower(out$crops)
+      # out$crops <- tolower(out$crops)
     }
-    if (rclass == "list") out$result$data <- tolower(out$result$data )
-    if (rclass == "vector") out <- tolower(out)
-    if (orclass == "data.frame") out <- as.data.frame(out)
+    # if (rclass == "list") out$result$data <- tolower(out$result$data )
+    # if (rclass == "vector") out <- tolower(out)
+    # if (orclass == "data.frame") out <- as.data.frame(out)
 
     class(out) <- c(class(out), "ba_crops")
     out
