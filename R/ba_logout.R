@@ -2,16 +2,20 @@
 #'
 #' Logout from a brapi compatible database.
 #'
+#' @param con list, brapi connection object
 #'
-#' @param con A required object of class 'brapi_con'.
+#' @return The list object of class 'brapi_con' with the authentication token
+#'         removed.
 #'
-#' @return The object of class 'brapi_con' with the authentication token removed.
+#' @note Tested against: sweetpotatobase
+#' @note BrAPI Version: 1.0, 1.1, 1.2
+#' @note BrAPI Status: active
 #'
-#' @author Reinhard Simon
-#' @example inst/examples/ex-ba_logout.R
-#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Authentication/Authentication.md}{github}
-#' @import httr
+#' @author Reinhard Simon, Maikel Verouden
+#' @references \href{https://github.com/plantbreeding/API/tree/master/Specification/Authentication}{github}
 #' @family brapiutils
+#' @example inst/examples/ex-ba_logout.R
+#' @import httr
 #' @export
 ba_logout <- function(con) {
   stopifnot(is.ba_con(con))
@@ -30,7 +34,7 @@ ba_logout <- function(con) {
                        body = dat,
                        encode = ifelse(con$bms == TRUE, "json", "form"))
   # Status other than unauthorized
-  if (resp$status_code != 201) {
+  if (resp$status_code != 200) {
     # Status other than Unauthorized and OK
     con$token <- ""
     httr::stop_for_status(x = resp)

@@ -7,13 +7,21 @@
 ba_logout(con)
 }
 \arguments{
-\item{con}{A required object of class 'brapi_con'.}
+\item{con}{list, brapi connection object}
 }
 \value{
-The object of class 'brapi_con' with the authentication token removed.
+The list object of class 'brapi_con' with the authentication token
+        removed.
 }
 \description{
 Logout from a brapi compatible database.
+}
+\note{
+Tested against: sweetpotatobase
+
+BrAPI Version: 1.0, 1.1, 1.2
+
+BrAPI Status: active
 }
 \examples{
 if (interactive()) {
@@ -26,7 +34,7 @@ if (interactive()) {
 }
 }
 \references{
-\href{https://github.com/plantbreeding/API/blob/master/Specification/Authentication/Authentication.md}{github}
+\href{https://github.com/plantbreeding/API/tree/master/Specification/Authentication}{github}
 }
 \seealso{
 Other brapiutils: \code{\link{as.ba_db}},
@@ -37,5 +45,5 @@ Other brapiutils: \code{\link{as.ba_db}},
   \code{\link{print.ba_db_list}}
 }
 \author{
-Reinhard Simon
+Reinhard Simon, Maikel Verouden
 }
