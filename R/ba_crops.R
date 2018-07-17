@@ -4,7 +4,7 @@
 #'
 #' @param con list, brapi connection object
 #' @param rclass character, class of the object to be returned;  default: "tibble"
-#'               , possible other values: "json"/"list"/"data.frame"
+#'               , possible other values: "json"/"list"/"vector"/"data.frame"
 #'
 #' @return an object, as specified by rclass, with crop names or NULL
 #'
@@ -39,7 +39,7 @@ ba_crops <- function(con = NULL, rclass = "tibble") {
     }
     # if (rclass == "list") out$result$data <- tolower(out$result$data )
     # if (rclass == "vector") out <- tolower(out)
-    # if (orclass == "data.frame") out <- as.data.frame(out)
+    if (orclass == "data.frame") out <- as.data.frame(out)
 
     class(out) <- c(class(out), "ba_crops")
     out

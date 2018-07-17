@@ -10,7 +10,7 @@ ba_commoncropnames(con = NULL, rclass = "tibble")
 \item{con}{list, brapi connection object}
 
 \item{rclass}{character, class of the object to be returned;  default: "tibble"
-, possible other values: "json"/"list"/"data.frame"}
+, possible other values: "json"/"list"/"vector"/"data.frame"}
 }
 \value{
 an object, as specified by rclass, with crop names or NULL
