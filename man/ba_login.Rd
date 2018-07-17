@@ -7,10 +7,10 @@
 ba_login(con)
 }
 \arguments{
-\item{con}{A required object of class 'brapi_con'.}
+\item{con}{list, brapi connection object}
 }
 \value{
-The object of class 'brapi_con' with the authentication token filled.
+The list object of class 'brapi_con' with the authentication token filled.
 }
 \description{
 Login into a brapi compatible database.
@@ -19,7 +19,11 @@ Login into a brapi compatible database.
 Caches a session token and informs of success or failure.
 }
 \note{
-Tested against: sweetpotatobase, BMS
+Tested against: BMS, sweetpotatobase
+
+BrAPI Version: 1.0, 1.1, 1.2
+
+BrAPI Status: active
 }
 \examples{
 if (interactive()) {
@@ -32,7 +36,7 @@ if (interactive()) {
 }
 }
 \references{
-\href{https://github.com/plantbreeding/API/blob/master/Specification/Authentication/Authentication.md}{github}
+\href{https://github.com/plantbreeding/API/tree/master/Specification/Authentication}{github}
 }
 \seealso{
 Other brapiutils: \code{\link{as.ba_db}},

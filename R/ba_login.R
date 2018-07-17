@@ -2,18 +2,21 @@
 #'
 #' Login into a brapi compatible database.
 #'
-#' Caches a session token and informs of success or failure.
+#' @param con list, brapi connection object
 #'
-#' @note Tested against: sweetpotatobase, BMS
+#' @details Caches a session token and informs of success or failure.
 #'
-#' @param con A required object of class 'brapi_con'.
+#' @return The list object of class 'brapi_con' with the authentication token filled.
 #'
-#' @return The object of class 'brapi_con' with the authentication token filled.
-#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Authentication/Authentication.md}{github}
+#' @note Tested against: BMS, sweetpotatobase
+#' @note BrAPI Version: 1.0, 1.1, 1.2
+#' @note BrAPI Status: active
+#'
 #' @author Reinhard Simon, Maikel Verouden
+#' @references \href{https://github.com/plantbreeding/API/tree/master/Specification/Authentication}{github}
+#' @family brapiutils
 #' @example inst/examples/ex-ba_login.R
 #' @import httr
-#' @family brapiutils
 #' @export
 ba_login <- function(con) {
   stopifnot(is.ba_con(con))
