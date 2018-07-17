@@ -5,8 +5,8 @@ con <- ba_db()$testserver
 
 test_that(" ts Calls are present", {
 
-  res <- ba_calls(con = con, datatype = "csv", pageSize = 100)
-  # expect_true(nrow(res) >= 65)
+  res <- ba_calls(con = con, pageSize = 100)
+  expect_true(nrow(res) >= 65)
   expect_true(length(attr(res, "metadata")) == 3)
 
 })

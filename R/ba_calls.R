@@ -57,10 +57,7 @@ ba_calls <- function(con = NULL,
   try({
     # make the brapi GET call with the generated call url
     res <- brapiGET(url = brapi_calls, con = con)
-    out <- NULL
-    datatypes <- NULL
-    methods <- NULL
-    versions <- NULL
+
     # parse the GET response
     res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
     out <- dat2tbl(res = res2, rclass = rclass)
@@ -71,7 +68,6 @@ ba_calls <- function(con = NULL,
                             collapse = "; ")
       out$versions <- vapply(X = out$versions, FUN = paste, FUN.VALUE = "",
                             collapse = "; ")
-      out <- dplyr::select(out, call, datatypes, methods, versions)
     }
     class(out) <- c(class(out), "ba_calls")
     show_metadata(res)
