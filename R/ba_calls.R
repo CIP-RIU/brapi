@@ -58,6 +58,9 @@ ba_calls <- function(con = NULL,
     # make the brapi GET call with the generated call url
     res <- brapiGET(url = brapi_calls, con = con)
     out <- NULL
+    datatypes <- NULL
+    methods <- NULL
+    versions <- NULL
     # parse the GET response
     res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
     out <- dat2tbl(res = res2, rclass = rclass)

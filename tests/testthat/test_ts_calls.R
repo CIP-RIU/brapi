@@ -1,12 +1,13 @@
-context("calls")
+context("ts calls")
 #testthat::skip_on_cran()
 
 con <- ba_db()$testserver
 
-test_that("Calls are present", {
+test_that(" ts Calls are present", {
 
   res <- ba_calls(con = con, datatype = "csv", pageSize = 100)
-  expect_that(nrow(res) == 65, is_true())
+  # expect_true(nrow(res) >= 65)
+  expect_true(length(attr(res, "metadata")) == 3)
 
 })
 

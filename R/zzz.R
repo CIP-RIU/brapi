@@ -5,9 +5,8 @@
         You are using version ",
         utils::packageVersion("brapi"), "\n\n")
   txt <- paste(
-    "Please note that current supports 44/44 BrAPI calls of version 1.1.\n
-     Please note that current support is partially complete for BrAPI version 1.2
-      - the additional calls in version 1.2 are not yet supported.\n
+    "Please note that current supports 45/65 BrAPI calls of version 1.2.\n
+
      Also, checks on response objects and fields are only loosely implemented to accomodate differences
       between BrAPI versions.
     If you find issues please \n
