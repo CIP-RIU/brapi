@@ -31,11 +31,13 @@ res <- '{
 }
 }'
 
+con <- ba_db()$testserver
+res <- ba_locations(con = con, rclass = "json")
 
 test_that(" no additionalInfo works", {
   out <- brapi:::loc2tbl(res, "tibble")
-  expect_true(ncol(out) == 10)
-  expect_true(nrow(out) == 1)
+  expect_true(ncol(out) >= 10)
+  expect_true(nrow(out) >= 1)
 })
 
 
