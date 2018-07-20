@@ -13,7 +13,7 @@ ba_crops(con = NULL, rclass = "tibble")
 , possible other values: "json"/"list"/"vector"/"data.frame"}
 }
 \value{
-an object, as specified by rclass, with crop names or NULL
+an object of class as specified by rclass with crop names or NULL
 }
 \description{
 List supported crops in a database.

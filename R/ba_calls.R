@@ -6,7 +6,7 @@
 #' @param datatype character, filter implemented brapi calls by supported data
 #'                 type, e.g. "csv", "tsv" or "xls"; default: "all"
 #' @param pageSize integer, items per page to be returned; default: 1000
-#' @param page integer, the requested page to be returend; default: 0 (1st page)
+#' @param page integer, the requested page to be returned; default: 0 (1st page)
 #' @param rclass character, class of the object to be returned;  default: "tibble"
 #'               , possible other values: "json"/"list"/"data.frame"
 #'

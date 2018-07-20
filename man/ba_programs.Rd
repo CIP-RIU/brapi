@@ -18,7 +18,7 @@ default: "any"}
 \item{commonCropName}{character, filter programs by commonCropName; default:
 "any"}
 
-\item{page}{integer, the requested page to be returend; default: 0 (1st page)}
+\item{page}{integer, the requested page to be returned; default: 0 (1st page)}
 
 \item{pageSize}{integer, items per page to be returned; default: 1000}
 

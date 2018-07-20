@@ -15,7 +15,7 @@ type, e.g. "csv", "tsv" or "xls"; default: "all"}
 
 \item{pageSize}{integer, items per page to be returned; default: 1000}
 
-\item{page}{integer, the requested page to be returend; default: 0 (1st page)}
+\item{page}{integer, the requested page to be returned; default: 0 (1st page)}
 
 \item{rclass}{character, class of the object to be returned;  default: "tibble"
 , possible other values: "json"/"list"/"data.frame"}
