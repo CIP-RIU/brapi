@@ -13,6 +13,8 @@ loc2tbl <- function(res, rclass, con = NULL) {
                   "latitude",
                   "longitude",
                   "altitude",
+                  "instituteName",
+                  "instituteAddress",
                   addinfo)
   dat <- complement_missing_fields(DF = dat, field_vector = field_list)
   df <- dat
@@ -24,23 +26,29 @@ loc2tbl <- function(res, rclass, con = NULL) {
       !all(length(dat[[addinfo]][[1]]) == 0)
   }
   if (has_add_cols) {
-    add_field_list <- sapply(dat[, names(dat[addinfo])], names) %>%
-      unlist %>% c %>% unique()
-
+    add_field_list <- names(dat[, names(dat[addinfo])]) %>% unique
     df <- complement_missing_fields(DF = dat,
                                     field_vector = add_field_list)
     df[[addinfo]] <- NULL
-    n <- nrow(dat)
-    for (i in 1:n) {
-            rec <- lst$result$data[i, addinfo][[1]]
-            df[i, names(rec)] <- rec
-    }
   } else {
-    df <- dat[, 1:10]
+    df <- dat[, setdiff(field_list, addinfo)]
+    #df <- dat[, 1:11]
   }
-  df$latitude <- as.numeric(df$latitude)
-  df$longitude <- as.numeric(df$longitude)
-  df$altitude <- as.integer(df$altitude)
+  if (!is.null(df$latitude)) {
+    df$latitude <- as.numeric(df$latitude)
+  }
+  if (!is.null(df$longitude)) {
+    df$longitude <- as.numeric(df$longitude)
+  }
+  if (!is.null(df$altitude)) {
+    df$altitude <- as.integer(df$altitude)
+  }
+  if (!is.null(df$instituteName)) {
+    df$instituteName <- as.character(df$instituteName)
+  }
+  if (!is.null(df$instituteAddress)) {
+    df$instituteAddress <- as.character(df$instituteAddress)
+  }
   df[addinfo] <- NULL
   if (rclass == "tibble") {
     df <- tibble::as_tibble(df)
