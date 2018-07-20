@@ -1,6 +1,5 @@
-show_metadata <- function( res) {
+show_metadata <- function(res) {
   #cat(str(res))
   res <- httr::content(res, "text")
   show_pagination(res)
-
 }
