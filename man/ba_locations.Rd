@@ -4,22 +4,23 @@
 \alias{ba_locations}
 \title{ba_locations}
 \usage{
-ba_locations(con = NULL, locationType = "all", page = 0,
-  pageSize = 1000, rclass = "tibble")
+ba_locations(con = NULL, locationType = "all", pageSize = 1000,
+  page = 0, rclass = "tibble")
 }
 \arguments{
-\item{con}{brapi connection object}
+\item{con}{list, brapi connection object}
 
-\item{locationType}{character, list of data types}
+\item{locationType}{character, filter locotion type specified.}
 
-\item{page}{integer; default 0}
+\item{pageSize}{integer, items per page to be returned; default: 1000}
 
-\item{pageSize}{integer; default 1000}
+\item{page}{integer, the requested page to be returned; default: 0 (1st page)}
 
-\item{rclass}{character; default: "tibble" possible other values: "json"/"list"/"data.frame"}
+\item{rclass}{character, class of the object to be returned;  default: "tibble"
+, possible other values: "json"/"list"/"data.frame"}
 }
 \value{
-rclass as defined
+An object of class as defined by rclass containing locations.
 }
 \description{
 Lists locations available on a brapi server.
@@ -27,11 +28,13 @@ Lists locations available on a brapi server.
 \details{
 All standard attributes are always listed. However, attributes in the additionalInfo
 only when at least one record has data.
-
-V1.2: same
 }
 \note{
-Tested against: sweetpotatobase, BMS
+Tested against: BMS, sweetpotatobase, test-server
+
+BrAPI Version: 1.0, 1.1, 1.2
+
+BrAPI Status: active
 }
 \examples{
 if (interactive()) {
@@ -45,7 +48,7 @@ if (interactive()) {
 }
 }
 \references{
-\href{https://github.com/plantbreeding/API/blob/master/Specification/Locations/ListLocations.md}{github}
+\href{https://github.com/plantbreeding/API/tree/master/Specification/Locations}{github}
 }
 \author{
 Reinhard Simon, Maikel Verouden

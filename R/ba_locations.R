@@ -2,29 +2,31 @@
 #'
 #' Lists locations available on a brapi server.
 #'
-#' All standard attributes are always listed. However, attributes in the additionalInfo
+#' @param con list, brapi connection object
+#' @param locationType character, filter locotion type specified.
+#' @param pageSize integer, items per page to be returned; default: 1000
+#' @param page integer, the requested page to be returned; default: 0 (1st page)
+#' @param rclass character, class of the object to be returned;  default: "tibble"
+#'               , possible other values: "json"/"list"/"data.frame"
+#'
+#' @details All standard attributes are always listed. However, attributes in the additionalInfo
 #' only when at least one record has data.
 #'
-#' V1.2: same
+#' @return An object of class as defined by rclass containing locations.
 #'
-#' @note Tested against: sweetpotatobase, BMS
-#'
-#' @param con brapi connection object
-#' @param rclass character; default: "tibble" possible other values: "json"/"list"/"data.frame"
-#' @param locationType character, list of data types
-#' @param page integer; default 0
-#' @param pageSize integer; default 1000
+#' @note Tested against: BMS, sweetpotatobase, test-server
+#' @note BrAPI Version: 1.0, 1.1, 1.2
+#' @note BrAPI Status: active
 #'
 #' @author Reinhard Simon, Maikel Verouden
-#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Locations/ListLocations.md}{github}
+#' @references \href{https://github.com/plantbreeding/API/tree/master/Specification/Locations}{github}
 #' @example inst/examples/ex-ba_locations.R
-#' @return rclass as defined
 #' @import tibble
 #' @export
 ba_locations <- function(con = NULL,
                          locationType = "all",
-                         page = 0,
                          pageSize = 1000,
+                         page = 0,
                          rclass = "tibble") {
   ba_check(con = con, verbose = FALSE, brapi_calls = "locations")
   stopifnot(is.character(locationType))
@@ -33,30 +35,27 @@ ba_locations <- function(con = NULL,
   # fetch the url of the brapi implementation of the database
   brp <- get_brapi(con = con)
   # generate the brapi call specific url
-  # locations_list <- paste0(brp, "locations/?")
-  # TO BE CONSIDERED FOR VERSION 2
   locations_list <- paste0(brp, "locations?")
   plocationType <- ifelse(locationType != "all",
                           paste0("locationType=",
                                 gsub(" ", "%20", locationType), "&"), "")
-  ppage <- ifelse(is.numeric(page), paste0("page=", page, "&"), "")
   ppageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize,
                                                    "&"), "")
-  if (page == 0 & pageSize == 1000) {
-    ppage <- ""
+  ppage <- ifelse(is.numeric(page), paste0("page=", page, "&"), "")
+  if (pageSize == 1000 & page == 0) {
     ppageSize <- ""
+    ppage <- ""
   }
   # modify brapi call specific url to include locationType and pagenation
   locations_list <- sub("[/?&]$",
                         "",
                         paste0(locations_list,
-                               ppage,
+                               plocationType,
                                ppageSize,
-                               plocationType))
+                               ppage))
   try({
     res <- brapiGET(url = locations_list, con = con)
     res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
-
     out <- NULL
     if (rclass %in% c("json", "list")) {
       out <- dat2tbl(res = res2, rclass = rclass)
