@@ -1,8 +1,8 @@
 if (interactive()) {
   library(brapi)
-  # Need to connect to a database with genetic data
 
-  # con <- ba_db()$xxxxx
+  con <- ba_db()$testserver
 
-  # ba_germplasm_markerprofiles(con = con, ...)
+  ba_germplasm_markerprofiles(con, germplasmDbId = "1")
+
 }
