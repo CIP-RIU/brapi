@@ -3,7 +3,7 @@
 #' Lists locations available on a brapi server.
 #'
 #' @param con list, brapi connection object
-#' @param locationType character, filter locotion type specified.
+#' @param locationType character, filter by a specified location type.
 #' @param pageSize integer, items per page to be returned; default: 1000
 #' @param page integer, the requested page to be returned; default: 0 (1st page)
 #' @param rclass character, class of the object to be returned;  default: "tibble"

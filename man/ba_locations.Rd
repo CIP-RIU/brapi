@@ -10,7 +10,7 @@ ba_locations(con = NULL, locationType = "all", pageSize = 1000,
 \arguments{
 \item{con}{list, brapi connection object}
 
-\item{locationType}{character, filter locotion type specified.}
+\item{locationType}{character, filter by a specified location type.}
 
 \item{pageSize}{integer, items per page to be returned; default: 1000}
 
