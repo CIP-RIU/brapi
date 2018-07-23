@@ -34,6 +34,17 @@ BrAPI Version: 1.0, 1.1, 1.2
 
 BrAPI Status: active
 }
+\examples{
+if (interactive()) {
+  library(brapi)
+  # Need to connect to a database with genetic data
+
+  con <- ba_db()$testserver
+
+  loc <- ba_locations_details(con = con, "1")
+
+}
+}
 \references{
 \href{https://github.com/plantbreeding/API/tree/master/Specification/Locations}{github}
 }
