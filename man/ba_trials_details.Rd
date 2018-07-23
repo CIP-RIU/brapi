@@ -23,11 +23,9 @@ lists trials_details available on a brapi server
 if (interactive()) {
   library(brapi)
 
-  # Need to connect to a database with genetic data
+  con <- ba_db()$testserver
 
-  # con <- ba_db()$xxxxx
-
-  # ba_trials_details(con = con, ...)
+  ba_trials_details(con, trialDbId = "101")
 }
 }
 \references{

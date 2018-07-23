@@ -25,7 +25,7 @@ if (interactive()) {
 
   con <- ba_db()$testserver
 
-  ba_traits_details(con, traitDbId = "1", rclass = "json")
+  ba_traits_details(con, traitDbId = "1")
 }
 }
 \references{

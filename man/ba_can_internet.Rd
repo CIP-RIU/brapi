@@ -25,7 +25,7 @@ if (interactive()) {
 
   # or use an alternative
 
-  ba_can_internet("www.amazon.com")
+  ba_can_internet("www.google.com")
 
 }
 }
