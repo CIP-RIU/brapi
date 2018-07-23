@@ -5,8 +5,12 @@ dat2tbl <- function(res, rclass = "tibble", brapi_class = "ba", result_level = "
   lst <- jsonlite::fromJSON(txt = res)
   if(result_level == "data") {
     dat <- jsonlite::toJSON(x = lst$result$data)
-  } else {
+  }
+  if(result_level == "result"){
     dat <- jsonlite::toJSON(x = lst$result)
+  }
+  if(result_level == "progeny"){
+    dat <- jsonlite::toJSON(x = lst$result$progeny)
   }
 
   if (rclass == "list") {
