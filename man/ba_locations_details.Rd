@@ -10,7 +10,7 @@ ba_locations_details(con = NULL, locationDbId = "", rclass = "tibble")
 \item{con}{list, brapi connection object}
 
 \item{locationDbId}{character, the internal database identifier for a
-location of which the details are to be retrieved.}
+location of which the details are to be retrieved}
 
 \item{rclass}{character, class of the object to be returned;  default: "tibble"
 , possible other values: "json"/"list"/"data.frame"}
