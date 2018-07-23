@@ -10,7 +10,8 @@ ba_locations_details(con = NULL, locationDbId = "", rclass = "tibble")
 \item{con}{list, brapi connection object}
 
 \item{locationDbId}{character, the internal database identifier for a
-location of which the details are to be retrieved}
+location of which the details are to be retrieved;
+REQUIRED ARGUMENT with default: ""}
 
 \item{rclass}{character, class of the object to be returned;  default: "tibble"
 , possible other values: "json"/"list"/"data.frame"}
@@ -20,7 +21,7 @@ An object of class as defined by rclass containing the location
         details.
 }
 \description{
-Gets details for a location given by an id.
+Gets details for a location given by a required database identifier.
 }
 \details{
 All standard attributes are always listed. However, attributes in the additionalInfo
