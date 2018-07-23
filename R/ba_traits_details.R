@@ -24,7 +24,7 @@ ba_traits_details <- function(con = NULL,
   try({
     res <- brapiGET(url = traits, con = con)
     res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
-    out <- dat2tbl(res = res2, rclass = rclass)
+    out <- dat2tbl(res = res2, rclass = rclass, result_level = "result")
     if (rclass %in% c("data.frame", "tibble")) {
       out$observationVariables <- sapply(X = out$observationVariables,
                                          FUN = paste, collapse = "; ")

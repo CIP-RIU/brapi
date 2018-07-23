@@ -27,12 +27,10 @@ lists studies_germplasm available on a brapi server
 \examples{
 if (interactive()) {
   library(brapi)
-  # Need to connect to a database with genetic data
 
-  # con <- ba_db()$xxxxx
+  con <- ba_db()$testserver
 
-  # ba_germplasm_details_study(con = con, ...)
-
+  ba_germplasm_details_study(con, "1001")
 }
 }
 \references{

@@ -28,7 +28,7 @@ if (interactive()) {
 
   # make sure you are connected to the internet
 
-  con <- ba_db()$sweetpotatobase
+  con <- ba_db()$testserver
 
   ba_check(con)
 }

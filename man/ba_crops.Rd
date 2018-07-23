@@ -29,11 +29,9 @@ BrAPI Status: deprecated
 if (interactive()) {
   library(brapi)
 
-  # Need to connect to a database with genetic data
+  con <-  ba_db()$testserver
 
-  # con <- ba_db()$xxxxx
-
-  # ba_crops(con = con, ...)
+  ba_crops(con = con)
 }
 }
 \references{

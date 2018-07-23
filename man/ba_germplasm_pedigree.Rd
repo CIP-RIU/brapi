@@ -25,11 +25,10 @@ Gets minimal pedigree data from database using database internal id
 \examples{
 if (interactive()) {
   library(brapi)
-  # Need to connect to a database with genetic data
 
-  # con <- ba_db()$xxxxx
+  con <- ba_db()$testserver
 
-  # ba_germplasm_pedigree(con = con, ...)
+  ba_germplasm_pedigree(con, germplasmDbId = "1")
 
 }
 }

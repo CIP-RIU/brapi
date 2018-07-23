@@ -46,12 +46,10 @@ The handling of long-running responses via asynch status messages is not yet imp
 \examples{
 if (interactive()) {
   library(brapi)
-  # Need to connect to a database with genetic data
 
-  # con <- ba_db()$xxxxx
+  con <- ba_db()$testserver
 
-  # ba_markerprofiles_allelematrix_search(con = con, ...)
-
+  ba_markerprofiles_allelematrix_search(con)
 }
 }
 \references{

@@ -24,11 +24,9 @@ lists brapi_variables_details available on a brapi server
 if (interactive()) {
   library(brapi)
 
-  # Need to connect to a database with genetic data
+  con <- ba_db()$testserver
 
-  # con <- ba_db()$xxxxx
-
-  # ba_observationvariables_details(con = con, ...)
+  ba_observationvariables_details(con)
 
 }
 }

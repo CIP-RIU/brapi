@@ -1,9 +1,14 @@
-dat2tbl <- function(res, rclass = "tibble", brapi_class = "ba") {
+dat2tbl <- function(res, rclass = "tibble", brapi_class = "ba", result_level = "data") {
   if (rclass == "json") {
     return(jsonlite::prettify(txt = res))
   }
   lst <- jsonlite::fromJSON(txt = res)
-  dat <- jsonlite::toJSON(x = lst$result$data)
+  if(result_level == "data") {
+    dat <- jsonlite::toJSON(x = lst$result$data)
+  } else {
+    dat <- jsonlite::toJSON(x = lst$result)
+  }
+
   if (rclass == "list") {
     return(jsonlite::fromJSON(txt = res, simplifyVector = FALSE))
   }

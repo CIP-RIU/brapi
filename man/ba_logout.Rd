@@ -26,11 +26,11 @@ BrAPI Status: active
 \examples{
 if (interactive()) {
   library(brapi)
-  # Need to connect to a database with genetic data
 
-  # con <- ba_db()$xxxxx
+  con <- ba_db()$testserver
 
-  # ba_logout(con = con)
+  #ba_logout(con)
+
 }
 }
 \references{

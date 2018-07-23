@@ -34,11 +34,11 @@ Lists germplasmm as result of a search.
 \examples{
 if (interactive()) {
   library(brapi)
-  # Need to connect to a database with genetic data
 
-  # con <- ba_db()$xxxxx
+  con <- ba_db()$testserver
 
-  # ba_germplasm_search(con = con, ...)
+  ba_germplasm_search(con, "1")
+
 
 }
 }

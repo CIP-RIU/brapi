@@ -29,11 +29,11 @@ germplasm_attibutes call.
 \examples{
 if (interactive()) {
   library(brapi)
-  # Need to connect to a database with genetic data
 
-  # con <- ba_db()$xxxxx
+  con <- ba_db()$testserver
 
-  # ba_germplasmattributes_details(con = con, ...)
+  ba_germplasmattributes_details(con, germplasmDbId = "1")
+
 }
 }
 \references{

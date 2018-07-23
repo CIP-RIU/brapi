@@ -28,11 +28,9 @@ This call must have set a specific identifier. The default is an empty string.
 if (interactive()) {
   library(brapi)
 
-  # Need to connect to a database with genetic data
+  con <- ba_db()$testserver
 
-  # con <- ba_db()$xxxxx
-
-  # ba_studies_observationunitvariables(con = con, ...)
+  ba_studies_observationvariables(con, studyDbId = "1001")
 }
 }
 \references{

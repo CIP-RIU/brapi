@@ -1,9 +1,7 @@
 if (interactive()) {
   library(brapi)
 
-  # Need to connect to a database with genetic data
+  con <- ba_db()$sweetpotatobase
 
-  # con <- ba_db()$xxxxx
-
-  # ba_studies_table(con = con, ...)
+  ba_studies_table(con, studyDbId = "1207")
 }

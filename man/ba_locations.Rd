@@ -39,11 +39,11 @@ BrAPI Status: active
 \examples{
 if (interactive()) {
   library(brapi)
-  # Need to connect to a database with genetic data
 
-  # con <- ba_db()$xxxxx
+  con <- ba_db()$testserver
 
-  # ba_locations(con = con, ...)
+  ba_locations(con)
+
 
 }
 }
