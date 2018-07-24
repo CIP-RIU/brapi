@@ -28,6 +28,17 @@ BrAPI Version: 1.2
 
 BrAPI Status: active
 }
+\examples{
+if (interactive()) {
+  library(brapi)
+
+  con <- ba_db()$testserver
+
+  ba_germplasm_breedingmethods_details(con, "bm1")
+
+
+}
+}
 \references{
 \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Germplasm/BreedingMethods_BreedingMethodDbId_GET.md}{github}
 }

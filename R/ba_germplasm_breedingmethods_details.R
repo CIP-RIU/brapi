@@ -15,7 +15,7 @@
 #'
 #' @author Reinhard Simon, Maikel Verouden
 #' @references \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Germplasm/BreedingMethods_BreedingMethodDbId_GET.md}{github}
-#' @example inst/examples/ex-ba_breedingmethods_details.R
+#' @example inst/examples/ex-ba_germplasm_breedingmethods_details.R
 #' @import tibble
 #' @export
 ba_germplasm_breedingmethods_details <- function(con = NULL,
