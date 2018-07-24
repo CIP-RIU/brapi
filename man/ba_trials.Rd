@@ -5,36 +5,45 @@
 \title{ba_trials}
 \usage{
 ba_trials(con = NULL, programDbId = "", locationDbId = "",
-  active = TRUE, sortBy = "", sortOrder = "", page = 0,
-  pageSize = 1000, rclass = "tibble")
+  active = "any", sortBy = "", sortOrder = "", pageSize = 1000,
+  page = 0, rclass = "tibble")
 }
 \arguments{
 \item{con}{list, brapi connection object}
 
-\item{programDbId}{character; default: 'any'; otherwise an identifier}
+\item{programDbId}{character; program filter to only return trials associated
+with given program database identifier; default: ""}
 
-\item{locationDbId}{character; default: 'any'; otherwise an identifier}
+\item{locationDbId}{character, location filter to only return trails associated
+with given location databas identifier; default: ""}
 
-\item{active}{logical; default: 'TRUE'; otherwise TRUE or FALSE}
+\item{active}{logical; filter active status; default: "any", other possible
+values TRUE/FALSE}
 
-\item{sortBy}{character; default: 'none'; otherwise a name from the first level entry names of the return object.}
+\item{sortBy}{character; name of the field to sort by; default: ""}
 
-\item{sortOrder}{character; default: 'asc'; otherwise 'desc'}
+\item{sortOrder}{character; sort order direction; default: "", possible values
+"asc"/"desc"}
 
-\item{page}{integer; default 0}
+\item{pageSize}{integer, items per page to be returned; default: 1000}
 
-\item{pageSize}{integer; default 1000}
+\item{page}{integer, the requested page to be returned; default: 0 (1st page)}
 
-\item{rclass}{character; default: "tibble" possible other values: "json"/"list"/"data.frame"}
+\item{rclass}{character, class of the object to be returned;  default: "tibble"
+, possible other values: "json"/"list"/"data.frame"}
 }
 \value{
-rclass as defined
+An object of class as defined by rclass containing tiral summaries.
 }
 \description{
-lists trials available on a brapi server
+Lists trial summaries available on a brapi server
 }
 \note{
-Tested against: sweetpotatobase, BMS
+Tested against: BMS, sweetpotatobase, test-server
+
+BrAPI Version: 1.0, 1.1, 1.2
+
+BrAPI Status: active
 }
 \examples{
 if (interactive()) {
@@ -46,7 +55,7 @@ if (interactive()) {
 }
 }
 \references{
-\href{https://github.com/plantbreeding/API/blob/master/Specification/Trials/ListTrialSummaries.md}{github}
+\href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Trials/ListTrialSummaries.md}{github}
 }
 \seealso{
 Other trials: \code{\link{ba_trials_details}}

@@ -7,17 +7,28 @@
 ba_trials_details(con = NULL, trialDbId = "", rclass = "tibble")
 }
 \arguments{
-\item{con}{brapi connection object}
+\item{con}{list, brapi connection object}
 
-\item{trialDbId}{character; default: ''; otherwise an identifier}
+\item{trialDbId}{character, the internal database identifier for a trial of
+which the summary details are to be retreived; \strong{REQUIRED
+ARGUMENT} with default: ""}
 
-\item{rclass}{string; default: tibble}
+\item{rclass}{character, class of the object to be returned;  default: "tibble"
+, possible other values: "json"/"list"/"data.frame"}
 }
 \value{
-rclass as defined
+An object of class as defined by rclass containing the trial summary
+        details.
 }
 \description{
-lists trials_details available on a brapi server
+List trial summary details for a given trial database identifier.
+}
+\note{
+Tested against: sweetpotatobase, test-server
+
+BrAPI Version: 1.0, 1.1, 1.2
+
+BrAPI Status: active
 }
 \examples{
 if (interactive()) {
@@ -29,7 +40,7 @@ if (interactive()) {
 }
 }
 \references{
-\url{https://github.com/plantbreeding/API/blob/master/Specification/Trials/GetTrialById.md}(github)
+\url{https://github.com/plantbreeding/API/blob/V1.2/Specification/Trials/GetTrialById.md}(github)
 }
 \seealso{
 Other trials: \code{\link{ba_trials}}
@@ -50,5 +61,5 @@ Other phenotyping: \code{\link{ba_samples_save}},
   \code{\link{ba_studies_table}}, \code{\link{ba_trials}}
 }
 \author{
-Reinhard Simon
+Reinhard Simon, Maikel Verouden
 }
