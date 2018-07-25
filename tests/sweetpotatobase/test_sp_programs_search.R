@@ -1,12 +1,14 @@
-context("ts programs_search")
+context("sp programs_search")
 
 
-con <- ba_db()$testserver
+con <- ba_db()$sweetpotatobase
 
 test_that("programs_search results are present", {
 
   #TODO find a server that implements it.
   # Neither testserver nor sweepotatobase do so.
+
+  skip("Not implemented.")
 
   res <- ba_programs_search(con = con, pageSize = 3)
   expect_that(nrow(res) >= 1, is_true())

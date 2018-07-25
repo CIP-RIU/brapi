@@ -1,6 +1,6 @@
-context("ts programs")
+context("sp programs")
 
-con <- ba_db()$testserver
+con <- ba_db()$sweetpotatobase
 
 test_that("Programs are present", {
 

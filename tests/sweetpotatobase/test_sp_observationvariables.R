@@ -1,11 +1,11 @@
-context("observationvariables")
+context("sp observationvariables")
 
-con <- ba_db()$testserver
+con <- ba_db()$sweetpotatobase
 
 test_that(" are present", {
 
   res <- ba_observationvariables(con = con)
-  expect_that(nrow(res) == 5, is_true())
+  expect_that(nrow(res) >= 235, is_true())
 
 })
 

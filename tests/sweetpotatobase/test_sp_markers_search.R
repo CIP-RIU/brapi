@@ -1,8 +1,10 @@
-context("markers_search")
+context("sp markers_search")
 
-con <- ba_db()$testserver
+con <- ba_db()$sweetpotatobase
 
 test_that("Calls are present", {
+
+  skip("Not implemented.")
 
   res <- ba_markers_search(con = con)
   expect_that(nrow(res) == 22, is_true())
@@ -10,6 +12,8 @@ test_that("Calls are present", {
 })
 
 test_that("Out formats work", {
+
+  skip("Not implemented.")
 
   res <- ba_markers_search(con = con, rclass = "json")
   expect_that("json" %in% class(res), is_true())
