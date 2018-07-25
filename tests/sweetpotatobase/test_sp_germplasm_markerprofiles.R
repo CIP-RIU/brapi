@@ -1,6 +1,6 @@
-context("germplasm_markerprofiles")
+context("sp germplasm_markerprofiles")
 
-con <- ba_db()$testserver
+con <- ba_db()$sweetpotatobase
 
 test_that(" are present", {
 
