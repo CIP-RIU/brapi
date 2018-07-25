@@ -1,8 +1,10 @@
-context("ts locations details")
+context("sp locations details")
 
-con <- ba_db()$testserver
+con <- ba_db()$sweetpotatobase
 
 test_that("Location is present", {
+
+  skip("Not Implemented")
 
   loc <- ba_locations_details(con = con, "1")
   expect_that(nrow(loc) == 1, is_true())
@@ -11,6 +13,8 @@ test_that("Location is present", {
 })
 
 test_that("Locations output formats work", {
+
+  skip("Not Implemented")
 
   loc <- ba_locations_details(con = con, "1", rclass = "json")
   expect_that("json" %in% class(loc), is_true())

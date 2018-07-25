@@ -1,4 +1,4 @@
-#' ba_markerprofiles_allelematrix_search
+#' ba_markerprofiles_allelematrices_search
 #'
 #' Gets markers in matrix format. If the format parameter is set to either csv or tsv the returned object
 #' is always a tibble object. If the format parameter is 'json' (default) the rclass parameter can be used
@@ -19,17 +19,17 @@
 #' @param rclass character; default: tibble
 #'
 #' @author Reinhard Simon
-#' @example inst/examples/ex-ba_markerprofiles_allelematrix_search.R
+#' @example inst/examples/ex-ba_markerprofiles_allelematrices_search.R
 #' @import httr
 #' @import progress
 #' @importFrom magrittr '%>%'
-#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/MarkerProfiles/MarkerProfileAlleleMatrix.md}{github}
+#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/MarkerProfiles/MarkerProfileAlleleMatrices.md}{github}
 #'
 #' @return data.frame
 #' @family markerprofiles
 #' @family genotyping
 #' @export
-ba_markerprofiles_allelematrix_search <- function(con = NULL,
+ba_markerprofiles_allelematrices_search <- function(con = NULL,
                                                   markerprofileDbId = "",
                                                   markerDbId = "",
                                                   expandHomozygotes = FALSE,
@@ -40,8 +40,7 @@ ba_markerprofiles_allelematrix_search <- function(con = NULL,
                                                   page = 0,
                                                   pageSize = 10000,
                                                   rclass = "tibble") {
-  .Deprecated("ba_markerprofiles_allelematrices_search")
-  ba_check(con = con, verbose = FALSE, brapi_calls = "allelematrix-search")
+  ba_check(con = con, verbose = FALSE, brapi_calls = "allelematrices-search")
   stopifnot(is.character(markerprofileDbId))
   stopifnot(is.character(markerDbId))
   stopifnot(is.logical(expandHomozygotes))
@@ -54,7 +53,7 @@ ba_markerprofiles_allelematrix_search <- function(con = NULL,
 
   brp <- get_brapi(con = con)
 
-  pallelematrix_search <- paste0(brp, "allelematrix-search/?")
+  pallelematrix_search <- paste0(brp, "allelematrices-search/?")
   pmarkerprofileDbId <- ifelse(markerprofileDbId != "", paste0("markerprofileDbId=",
                                markerprofileDbId, "&") %>% paste(collapse = ""), "")
   pmarkerDbId <- ifelse(markerDbId != "", paste0("markerDbId=", markerDbId, "&") %>%
@@ -88,7 +87,7 @@ ba_markerprofiles_allelematrix_search <- function(con = NULL,
     ams2tbl(res = res, format = format, rclass = rclass)
   })
 
-  class(out) <- c(class(out), "ba_markerprofiles_allelematrix_search")
+  class(out) <- c(class(out), "ba_markerprofiles_allelematrices_search")
   show_metadata(res)
   return(out)
 }
