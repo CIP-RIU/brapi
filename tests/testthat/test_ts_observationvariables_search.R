@@ -1,4 +1,4 @@
-context("observationvariables_search")
+context("ts observationvariables_search")
 
 
 con <- ba_db()$testserver

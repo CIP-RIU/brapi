@@ -1,4 +1,4 @@
-context("markerprofiles_allelematrix_search")
+context("ts markerprofiles_allelematrix_search")
 
 con <- ba_db()$testserver
 

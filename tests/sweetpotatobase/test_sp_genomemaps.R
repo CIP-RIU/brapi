@@ -1,6 +1,6 @@
 context("sp genomemaps")
 
-con <- ba_db()$testserver
+con <- ba_db()$sweetpotatobase
 
 test_that("Genomemaps are present", {
 

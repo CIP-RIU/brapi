@@ -1,4 +1,4 @@
-context("germplasm_markerprofiles")
+context("ts germplasm_markerprofiles")
 
 con <- ba_db()$testserver
 

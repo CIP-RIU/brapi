@@ -1,4 +1,4 @@
-context("studies_observationlevels")
+context("ts studies_observationlevels")
 
 con <- ba_db()$testserver
 

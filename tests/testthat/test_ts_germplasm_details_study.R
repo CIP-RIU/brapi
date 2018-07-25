@@ -1,4 +1,4 @@
-context("germplasm_details_study")
+context("ts germplasm_details_study")
 
 con <- ba_db()$testserver
 

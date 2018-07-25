@@ -1,4 +1,4 @@
-context("locations")
+context("ts locations")
 
 con <- ba_db()$testserver
 
