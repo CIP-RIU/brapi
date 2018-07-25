@@ -28,7 +28,7 @@ An object of class as defined by rclass containing all the implemented
 Returns calls available on a brapi server.
 }
 \note{
-Tested against: sweetpotatobase, test-server
+Tested against: BMS, sweetpotatobase, test-server
 
 BrAPI Version: 1.0, 1.1, 1.2
 
