@@ -1,4 +1,4 @@
-context("genomemaps")
+context("ts genomemaps")
 
 con <- ba_db()$testserver
 
