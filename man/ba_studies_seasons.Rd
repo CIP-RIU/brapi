@@ -4,28 +4,34 @@
 \alias{ba_studies_seasons}
 \title{ba_studies_seasons}
 \usage{
-ba_studies_seasons(con = NULL, year = 0, page = 0, pageSize = 1000,
+ba_studies_seasons(con = NULL, year = 0, pageSize = 1000, page = 0,
   rclass = "tibble")
 }
 \arguments{
 \item{con}{list, brapi connection object}
 
-\item{year}{integer}
+\item{year}{integer, filter by specified year; default: 0}
 
-\item{page}{integer requested page number}
+\item{pageSize}{integer, items per page to be returned; default: 1000}
 
-\item{pageSize}{items per page}
+\item{page}{integer, the requested page to be returned; default: 0 (1st page)}
 
-\item{rclass}{character; one of tibble (default), json, list or data.frame}
+\item{rclass}{character, class of the object to be returned;  default: "tibble"
+, possible other values: "json"/"list"/"data.frame"}
 }
 \value{
-data.frame
+An object of class as defined by rclass containing all seasons (or
+        years).
 }
 \description{
-lists the studies seasons and years
+Retrieve all seasons (or years) on a brapi server.
 }
 \note{
-Tested against: sweetpotatobase
+Tested against: sweetpotato, test-server
+
+BrAPI Version: 1.0, 1.1, 1.2
+
+BrAPI Status: active
 }
 \examples{
 if (interactive()) {
@@ -37,7 +43,7 @@ if (interactive()) {
 }
 }
 \references{
-\href{https://github.com/plantbreeding/API/blob/master/Specification/Studies/ListSeasons.md}{github}
+\href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Studies/Seasons_GET.md}{github}
 }
 \seealso{
 Other studies: \code{\link{ba_studies_details}},
@@ -67,5 +73,5 @@ Other phenotyping: \code{\link{ba_samples_save}},
   \code{\link{ba_trials_details}}, \code{\link{ba_trials}}
 }
 \author{
-Reinhard Simon
+Reinhard Simon, Maikel Verouden
 }
