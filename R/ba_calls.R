@@ -13,7 +13,7 @@
 #' @return An object of class as defined by rclass containing all the implemented
 #'         BrAPI calls.
 #'
-#' @note Tested against: sweetpotatobase, test-server
+#' @note Tested against: BMS, sweetpotatobase, test-server
 #' @note BrAPI Version: 1.0, 1.1, 1.2
 #' @note BrAPI Status: active
 #'
@@ -35,6 +35,9 @@ ba_calls <- function(con = NULL,
   if (!is.character(datatype)) {
     stop("The datatype argument should be of class 'character'.")
   }
+  # temporarily store the multicrop argument in omc (oldmulticrop)
+  omc <- con$multicrop
+  con$multicrop <- FALSE
   # obtain the brapi url
   brp <- get_brapi(con = con)
   brapi_calls <- paste0(brp, "calls?")
@@ -71,6 +74,8 @@ ba_calls <- function(con = NULL,
     }
     class(out) <- c(class(out), "ba_calls")
     show_metadata(res)
+    # reset multicrop argument in con object to omc (oldmulticrop) value
+    con$multicrop <- omc
     return(out)
   })
 }
