@@ -1,11 +1,11 @@
-context("studies_observationvariables")
+context("ts studies_observationvariables")
 
 con <- ba_db()$testserver
 
 test_that("Studies_details are present", {
 
   res <- ba_studies_observationvariables(con = con, studyDbId = "1001")
-  expect_that(nrow(res) == 8, is_true())
+  expect_that(nrow(res) >= 4, is_true())
 
 })
 
