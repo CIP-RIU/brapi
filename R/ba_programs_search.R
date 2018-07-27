@@ -8,9 +8,9 @@
 #' @param leadPerson character, search programs by program leader name; default:
 #'                   ""
 #' @param name character, search programs by program name; default: ""
-#' @param objective character, search programs by program objective, default: ""
-#' @param programDbId character, search programs by program database identifier
-#'                    (programDbId), default: ""
+#' @param objective character, search programs by program objective; default: ""
+#' @param programDbId character, search programs by program database identifier;
+#'                    default: ""
 #' @param commonCropName character, search programs by commonCropName; default:
 #'                       ""
 #' @param pageSize integer, items per page to be returned; default: 1000

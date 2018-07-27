@@ -6,7 +6,8 @@
 #' @param rclass character, class of the object to be returned;  default: "tibble"
 #'               , possible other values: "json"/"list"/"vector"/"data.frame"
 #'
-#' @return an object of class as specified by rclass with crop names or NULL
+#' @return an object of class as specified by rclass with common crop names or
+#'         NULL
 #'
 #' @note Tested against: test-server
 #' @note BrAPI Version: 1.2
