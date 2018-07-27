@@ -6,8 +6,8 @@
 #' @param programName character, filter programs by program name; default: "any"
 #' @param abbreviation character, filter programs by program abbreviation;
 #'                     default: "any"
-#' @param commonCropName character, filter programs by commonCropName; default:
-#'                       "any"
+#' @param commonCropName character, filter programs by a common crop name;
+#'                       default: "any"
 #' @param pageSize integer, items per page to be returned; default: 1000
 #' @param page integer, the requested page to be returned; default: 0 (1st page)
 #' @param rclass character, class of the object to be returned;  default: "tibble"
