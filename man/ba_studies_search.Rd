@@ -43,7 +43,7 @@ ba_studies_search(con = NULL, studyType = "", programDbId = "",
 rclass as defined
 }
 \description{
-lists trials available on a brapi server
+Search studies on a brapi server via a GET or POST method
 }
 \note{
 This call must have set a specific identifier. The default is an empty string.

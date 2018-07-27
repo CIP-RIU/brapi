@@ -1,12 +1,11 @@
 #' ba_studies_search
 #'
-#' lists trials available on a brapi server
+#' Search studies on a brapi server via a GET or POST method
 #'
 #' @note This call must have set a specific identifier. The default is an empty string.
 #'      If not changed to an identifier present in the database this will result in an error.
 #'
 #' @note Tested against: sweetpotatobase
-#'
 #'
 #' @param con brapi connection object
 #' @param studyType character; default: ''
