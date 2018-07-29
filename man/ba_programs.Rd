@@ -15,8 +15,8 @@ ba_programs(con = NULL, programName = "any", abbreviation = "any",
 \item{abbreviation}{character, filter programs by program abbreviation;
 default: "any"}
 
-\item{commonCropName}{character, filter programs by commonCropName; default:
-"any"}
+\item{commonCropName}{character, filter programs by a common crop name;
+default: "any"}
 
 \item{page}{integer, the requested page to be returned; default: 0 (1st page)}
 

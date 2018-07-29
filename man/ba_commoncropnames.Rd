@@ -13,7 +13,8 @@ ba_commoncropnames(con = NULL, rclass = "tibble")
 , possible other values: "json"/"list"/"vector"/"data.frame"}
 }
 \value{
-an object of class as specified by rclass with crop names or NULL
+an object of class as specified by rclass with common crop names or
+        NULL
 }
 \description{
 List supported crops in a database.

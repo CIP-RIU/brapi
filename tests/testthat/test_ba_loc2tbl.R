@@ -1,4 +1,4 @@
-context("phenotypes_search")
+context("loc2tbl")
 
 res <- '{
     "metadata": {

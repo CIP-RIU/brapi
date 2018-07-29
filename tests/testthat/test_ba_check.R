@@ -11,17 +11,11 @@ test_that("Parameters work", {
     ba_check(NULL)
   })
 
-  # TODO: revise the following: does not raise a message or error on Travis
 
   expect_message({
     ba_show_info(TRUE)
     res <- ba_check(con, verbose = TRUE)
   })
-  #
-  #
-  # expect_message({
-  #   ba_check(con, verbose = TRUE)
-  # })
 
 })
 

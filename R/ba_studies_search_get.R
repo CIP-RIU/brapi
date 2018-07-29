@@ -10,7 +10,7 @@
 #' @param programDbId character, search studies by an internal program database
 #'                    identifier; default: ""
 #' @param commonCropName character, search for studies by a common crop name;
-#'                       default: "any"
+#'                       default: ""
 #' @param locationDbId character, search for studies by an internal location
 #'                     database identifier; default: ""
 #' @param seasonDbId  character, search for studies by an internal season
@@ -26,7 +26,7 @@
 #'                                  separated string of internal observation
 #'                                  variable database identifiers (e.g. "15,100"
 #'                                  ), have been measured; default: ""
-#' @param active  logical; search studies by active status; default: "any",
+#' @param active  logical; search studies by active status; default: "",
 #'                other possible values TRUE/FALSE
 #' @param sortBy character; name of the field to sort by; default: ""
 #' @param sortOrder character; sort order direction; default: "", possible values
@@ -47,25 +47,32 @@
 #' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Studies/ListStudySummaries.md}{github}
 #' @family studies
 #' @family phenotyping
-#' @example inst/examples/ex-ba_studies_search.R
+# @example inst/examples/ex-ba_studies_search.R
+
+#' @note Tested against: sweetpotatobase, test-server
+#' @note BrAPI Version: 1.0, 1.1, 1.2
+#' @note BrAPI Status: active
+
+#'
 #' @import tibble
 #' @export
-ba_studies_search <- function(con = NULL,
+ba_studies_search_get <- function(con = NULL,
                               studyDbId = "",
                               trialDbId = "",
                               programDbId = "",
-                              commonCropName = "any",
+                              commonCropName = "",
                               locationDbId = "",
                               seasonDbId = "",
                               studyType = "",
                               germplasmDbIds = "",
                               observationVariableDbIds = "",
-                              active = "any",
+                              active = "",
                               sortBy = "",
                               sortOrder = "",
                               pageSize = 1000,
                               page = 0,
                               rclass = "tibble") {
+  .Deprecated("ba_studies_search")
   ba_check(con = con, verbose = FALSE, brapi_calls = "studies-search-get")
   stopifnot(is.character(studyType))
   stopifnot(is.character(programDbId))
@@ -115,7 +122,7 @@ ba_studies_search <- function(con = NULL,
                             ppage)
   nurl <- nchar(pstudies_search)
   out <- NULL
-  if (nurl <= 2000 & verb == 'GET') {
+  if (nurl <= 2000) {
     message("Using GET")
     out <- try({
       res <- brapiGET(url = pstudies_search, con = con)
@@ -131,37 +138,17 @@ ba_studies_search <- function(con = NULL,
     })
   }
 
-  if (nurl > 2000 | verb == 'POST') {
-    message("Using POST")
-    x1 <- as.list(germplasmDbIds)
-    names(x1)[1:length(germplasmDbIds)] <- "germplasmDbIds"
-    x2 <- as.list(observationVariableDbIds)
-    names(x2)[1:length(observationVariableDbIds)] <- "observationVariableDbIds"
-    body <- list(studyType = studyType,
-                 programDbId = programDbId,
-                 locationDbId = locationDbId,
-                 seasonDbId = seasonDbId,
-                 active = active,
-                 sortBy = sortBy,
-                 sortOrder = sortOrder,
-                 page = page,
-                 pageSize = pageSize)
-    body <- c(x1, x2, body)
-    out <- try({
-      pstudies_search <- paste0(brp, "studies-search/?")
-      res <- brapiPOST(url = pstudies_search, body = body, con = con)
-      res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
-      out <- NULL
-      if (rclass %in% c("list", "json")) {
-        out <- dat2tbl(res = res2, rclass = rclass)
-      }
-      if (rclass %in% c("data.frame", "tibble")) {
-        out <- std2tbl(res2, rclass)
-      }
-      out
-    })
+  if (nurl > 2000 ) {
+    message("URL too long. Use ba_studies_search_post.")
   }
-  class(out) <- c(class(out), "ba_studies_search")
+  if(!is.null(out)) {
+    class(out) <- c(class(out), "ba_studies_search_get")
+
+  } else {
+    message("Server did not return a result!
+            Check your query parameters or contact the server administrator.")
+  }
+
   show_metadata(res)
   return(out)
 }

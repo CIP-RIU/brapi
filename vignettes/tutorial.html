@@ -12,7 +12,7 @@
 
 <meta name="author" content="Reinhard Simon" />
 
-<meta name="date" content="2018-06-19" />
+<meta name="date" content="2018-07-29" />
 
 <title>Basic Tutorial</title>
 
@@ -280,7 +280,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 
 <h1 class="title toc-ignore">Basic Tutorial</h1>
 <h4 class="author"><em>Reinhard Simon</em></h4>
-<h4 class="date"><em>2018-06-19</em></h4>
+<h4 class="date"><em>2018-07-29</em></h4>
 
 
 
@@ -341,7 +341,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <pre><code>## # A tibble: 1 x 1
 ##   crops      
 ##   &lt;chr&gt;      
-## 1 sweetpotato</code></pre>
+## 1 SweetPotato</code></pre>
 </div>
 <div id="switching-on-information-on-server-connectiviy" class="section level2">
 <h2>Switching on information on server connectiviy</h2>
@@ -352,35 +352,34 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <h2>Listing available calls</h2>
 <p>The brapi community and standard allows currently a large degree of freedom on implementation of individual parts of the standard (or calls). One call lists the functionality supported by the server.</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw">ba_calls</span>(sp_base)</a></code></pre></div>
-<pre><code>## URL call was: https://sweetpotatobase.org/brapi/v1/calls/?</code></pre>
+<pre><code>## URL call was: https://sweetpotatobase.org/brapi/v1/calls</code></pre>
 <pre><code>## Waiting for response from server: ...</code></pre>
 <pre><code>## Server status:  ok!</code></pre>
 <pre><code>## Status details from Server:</code></pre>
 <pre><code>## 
 ## Infos:</code></pre>
-<pre><code>## BrAPI base call found with page=0, pageSize=10
-## Loading CXGN::BrAPI::v1::Calls</code></pre>
+<pre><code>## </code></pre>
 <pre><code>## 
 ## Successes:</code></pre>
-<pre><code>## Calls result constructed</code></pre>
+<pre><code>## </code></pre>
 <pre><code>## 
 ## Errors:</code></pre>
 <pre><code>## </code></pre>
 <pre><code>## No encoding supplied: defaulting to UTF-8.</code></pre>
 <pre><code>## Returning page 0 (max. 0) with max. 1000 items (out of a total of 48).</code></pre>
 <pre><code>## # A tibble: 48 x 4
-##    versions  methods      datatypes call                                  
-##  * &lt;list&gt;    &lt;chr&gt;        &lt;chr&gt;     &lt;chr&gt;                                 
-##  1 &lt;chr [1]&gt; POST; DELETE json      token                                 
-##  2 &lt;chr [1]&gt; GET          json      calls                                 
-##  3 &lt;chr [1]&gt; GET          json      observationlevels                     
-##  4 &lt;chr [1]&gt; GET; POST    json      germplasm-search                      
-##  5 &lt;chr [1]&gt; GET          json      germplasm/{germplasmDbId}             
-##  6 &lt;chr [2]&gt; GET          json      germplasm/{germplasmDbId}/pedigree    
-##  7 &lt;chr [2]&gt; GET          json      germplasm/{germplasmDbId}/progeny     
-##  8 &lt;chr [1]&gt; GET          json      germplasm/{germplasmDbId}/markerprofi~
-##  9 &lt;chr [1]&gt; GET          json      germplasm/{germplasmDbId}/attributes  
-## 10 &lt;chr [1]&gt; GET          json      attributes                            
+##    versions methods      datatypes call                                    
+##  * &lt;chr&gt;    &lt;chr&gt;        &lt;chr&gt;     &lt;chr&gt;                                   
+##  1 1.0; 1.2 POST; DELETE json      token                                   
+##  2 1.0; 1.2 GET          json      calls                                   
+##  3 1.0; 1.2 GET          json      observationlevels                       
+##  4 1.0; 1.2 GET; POST    json      germplasm-search                        
+##  5 1.0; 1.2 GET          json      germplasm/{germplasmDbId}               
+##  6 1.0; 1.2 GET          json      germplasm/{germplasmDbId}/pedigree      
+##  7 1.0; 1.2 GET          json      germplasm/{germplasmDbId}/progeny       
+##  8 1.0; 1.2 GET          json      germplasm/{germplasmDbId}/markerprofiles
+##  9 1.0; 1.2 GET          json      germplasm/{germplasmDbId}/attributes    
+## 10 1.0; 1.2 GET          json      attributes                              
 ## # ... with 38 more rows</code></pre>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1"><span class="kw">ba_show_info</span>(<span class="ot">FALSE</span>)</a></code></pre></div>
 <p>As you notice, the table is presented as a tibble. This has the advantage that it fits on the screen always even though there are big tables. But sometimes it may be useful to just print out the whole table. How to do that is the topic of the next section.</p>
@@ -396,54 +395,54 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1"><span class="kw">ba_calls</span>(<span class="dt">con =</span> sp_base, <span class="dt">rclass =</span> <span class="st">&quot;data.frame&quot;</span>)</a></code></pre></div>
 <pre><code>## No encoding supplied: defaulting to UTF-8.</code></pre>
 <pre><code>##    versions      methods           datatypes
-## 1       1.0 POST; DELETE                json
-## 2       1.0          GET                json
-## 3       1.0          GET                json
-## 4       1.0    GET; POST                json
-## 5       1.0          GET                json
-## 6  1.0, 1.2          GET                json
-## 7  1.0, 1.2          GET                json
-## 8       1.0          GET                json
-## 9       1.0          GET                json
-## 10      1.0          GET                json
-## 11      1.0          GET                json
-## 12      1.0          GET                json
-## 13      1.0          GET                json
-## 14      1.0          GET                json
-## 15      1.0    GET; POST json; tsv; csv; xls
-## 16      1.0    GET; POST json; tsv; csv; xls
-## 17      1.0    GET; POST                json
-## 18      1.0          GET                json
-## 19      1.0    GET; POST                json
-## 20      1.0    GET; POST                json
-## 21      1.0    GET; POST                json
-## 22      1.0          GET                json
-## 23      1.0    GET; POST                json
-## 24      1.0          GET                json
-## 25      1.0          GET                json
-## 26      1.0          GET                json
-## 27      1.0          GET                json
-## 28      1.0          GET json; csv; xls; tsv
-## 29      1.0          GET                json
-## 30      1.0          GET                json
-## 31      1.0    GET; POST                json
-## 32      1.0    GET; POST                json
-## 33      1.0    GET; POST                json
-## 34      1.0    GET; POST                json
-## 35      1.0          GET                json
-## 36      1.0          GET                json
-## 37      1.0          GET                json
-## 38      1.0          GET                json
-## 39      1.0          GET                json
-## 40      1.0          GET                json
-## 41      1.0          GET                json
-## 42      1.0          GET                json
-## 43      1.0          GET                json
-## 44      1.0          GET                json
-## 45      1.0          GET                json
-## 46      1.0    GET; POST                json
-## 47      1.0    GET; POST                json
-## 48      1.0          GET                json
+## 1  1.0; 1.2 POST; DELETE                json
+## 2  1.0; 1.2          GET                json
+## 3  1.0; 1.2          GET                json
+## 4  1.0; 1.2    GET; POST                json
+## 5  1.0; 1.2          GET                json
+## 6  1.0; 1.2          GET                json
+## 7  1.0; 1.2          GET                json
+## 8  1.0; 1.2          GET                json
+## 9  1.0; 1.2          GET                json
+## 10 1.0; 1.2          GET                json
+## 11 1.0; 1.2          GET                json
+## 12 1.0; 1.2          GET                json
+## 13 1.0; 1.2          GET                json
+## 14 1.0; 1.2          GET                json
+## 15 1.0; 1.2    GET; POST json; tsv; csv; xls
+## 16 1.0; 1.2    GET; POST json; tsv; csv; xls
+## 17 1.0; 1.2    GET; POST                json
+## 18 1.0; 1.2          GET                json
+## 19 1.0; 1.2    GET; POST                json
+## 20 1.0; 1.2    GET; POST                json
+## 21 1.0; 1.2    GET; POST                json
+## 22 1.0; 1.2          GET                json
+## 23 1.0; 1.2    GET; POST                json
+## 24 1.0; 1.2          GET                json
+## 25 1.0; 1.2          GET                json
+## 26 1.0; 1.2          GET                json
+## 27 1.0; 1.2          GET                json
+## 28 1.0; 1.2          GET json; csv; xls; tsv
+## 29 1.0; 1.2          GET                json
+## 30 1.0; 1.2          GET                json
+## 31 1.0; 1.2    GET; POST                json
+## 32 1.0; 1.2    GET; POST                json
+## 33 1.0; 1.2    GET; POST                json
+## 34 1.0; 1.2    GET; POST                json
+## 35 1.0; 1.2          GET                json
+## 36 1.0; 1.2          GET                json
+## 37 1.0; 1.2          GET                json
+## 38 1.0; 1.2          GET                json
+## 39 1.0; 1.2          GET                json
+## 40 1.0; 1.2          GET                json
+## 41 1.0; 1.2          GET                json
+## 42 1.0; 1.2          GET                json
+## 43 1.0; 1.2          GET                json
+## 44 1.0; 1.2          GET                json
+## 45 1.0; 1.2          GET                json
+## 46 1.0; 1.2    GET; POST                json
+## 47 1.0; 1.2    GET; POST                json
+## 48 1.0; 1.2          GET                json
 ##                                        call
 ## 1                                     token
 ## 2                                     calls
@@ -502,56 +501,59 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1"><span class="kw">ba_programs</span>(sp_base, <span class="dt">rclass =</span> <span class="st">&quot;data.frame&quot;</span>)</a></code></pre></div>
 <pre><code>## No encoding supplied: defaulting to UTF-8.</code></pre>
 <pre><code>##    commonCropName leadPerson       name programDbId abbreviation
-## 1     SweetPotato            Mozambique         135             
-## 2     SweetPotato                Uganda         137             
-## 3     SweetPotato                 Ghana         140             
-## 4     SweetPotato                  NCSU         132             
+## 1     SweetPotato                  NCSU         132             
+## 2     SweetPotato            Mozambique         135             
+## 3     SweetPotato                Uganda         137             
+## 4     SweetPotato                 Ghana         140             
 ## 5     SweetPotato                  Lima         167             
 ## 6     SweetPotato             GT4SP-CIP         293             
 ## 7     SweetPotato                 Kenya        1264             
-## 8     SweetPotato                   RAB        1282             
-## 9     SweetPotato                 INERA        1286             
-## 10    SweetPotato                  AARC        1288             
+## 8     SweetPotato                  CNRA        1281             
+## 9     SweetPotato                   RAB        1282             
+## 10    SweetPotato                  BARS        1283             
 ##                            objective
-## 1                         Mozambique
-## 2                             Uganda
-## 3                              Ghana
-## 4  NCSU Sweetpotato Breeding Program
+## 1  NCSU Sweetpotato Breeding Program
+## 2                         Mozambique
+## 3                             Uganda
+## 4                              Ghana
 ## 5   Sweetpotato Breeding program CIP
 ## 6     Genomics Tools for Sweetpotato
 ## 7              Demo Breeding Program
-## 8                             Rubona
-## 9                        Ouagadougou
-## 10                           Hawassa</code></pre>
+## 8                             Bouake
+## 9                             Rubona
+## 10                           Thyolo</code></pre>
 </div>
 <div id="which-studies-are-there" class="section level3">
 <h3>Which studies are there?</h3>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1"><span class="kw">ba_studies_search</span>(sp_base, <span class="dt">programDbId =</span> <span class="st">&quot;140&quot;</span>)</a></code></pre></div>
-<pre><code>## Using GET</code></pre>
+<pre><code>## Warning: 'ba_studies_search_post' is deprecated.
+## Use 'ba_studies_search' instead.
+## See help(&quot;Deprecated&quot;)</code></pre>
+<pre><code>## [1] &quot;https://sweetpotatobase.org/brapi/v1/studies-search/&quot;</code></pre>
 <pre><code>## No encoding supplied: defaulting to UTF-8.</code></pre>
-<pre><code>## # A tibble: 210 x 15
-##    seasons active programName name         locationDbId trialDbId endDate 
-##  * &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;       &lt;chr&gt;        &lt;chr&gt;        &lt;chr&gt;     &lt;chr&gt;   
-##  1 2015    &quot;&quot;     Ghana       15FOD07Tono  18           230       2015-Ju~
-##  2 2015    &quot;&quot;     Ghana       15FOD07Wa    26           230       2015-Ju~
-##  3 2015    &quot;&quot;     Ghana       15HST03Ny    28           230       2015-Ju~
-##  4 2015    &quot;&quot;     Ghana       15HST04Wa    26           230       &lt;NA&gt;    
-##  5 2015    &quot;&quot;     Ghana       15ayt7SP_Im~ 16           230       &lt;NA&gt;    
-##  6 2016    &quot;&quot;     Ghana       16CIP-Ghana~ 16           232       2016-Au~
-##  7 2016    &quot;&quot;     Ghana       16CIP-Ghana~ 22           232       2016-Ma~
-##  8 2010    &quot;&quot;     Ghana       2010ASPGH_A~ 38           284       2010-Ma~
-##  9 2010    &quot;&quot;     Ghana       2010ASPGH_A~ 16           284       2010-Ap~
-## 10 2010    &quot;&quot;     Ghana       2010ASPGH_A~ 39           284       2010-Ju~
-## # ... with 200 more rows, and 8 more variables: trialName &lt;chr&gt;,
-## #   locationName &lt;chr&gt;, programDbId &lt;chr&gt;, startDate &lt;chr&gt;,
-## #   studyDbId &lt;chr&gt;, studyType &lt;chr&gt;, additionalInfo.design &lt;chr&gt;,
+<pre><code>## # A tibble: 388 x 15
+##    seasons active programName name  locationDbId studyType trialDbId
+##  * &lt;chr&gt;   &lt;lgl&gt;  &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;     &lt;chr&gt;    
+##  1 2015    TRUE   NCSU        15AD~ 12           Advanced~ &quot;&quot;       
+##  2 2015    TRUE   Ghana       15FO~ 18           &lt;NA&gt;      230      
+##  3 2015    TRUE   Ghana       15FO~ 26           &lt;NA&gt;      230      
+##  4 2015    TRUE   Ghana       15HS~ 28           &lt;NA&gt;      230      
+##  5 2015    TRUE   Ghana       15HS~ 26           &lt;NA&gt;      230      
+##  6 2015    TRUE   Ghana       15ay~ 16           Advanced~ 230      
+##  7 2016    TRUE   Uganda      16Ap~ 52           phenotyp~ 1221     
+##  8 2018    TRUE   Uganda      16Ap~ 15           phenotyp~ 1221     
+##  9 2018    TRUE   Uganda      16Ap~ 14           phenotyp~ 1221     
+## 10 2016    TRUE   Uganda      16BB~ 52           phenotyp~ 1221     
+## # ... with 378 more rows, and 8 more variables: locationName &lt;chr&gt;,
+## #   programDbId &lt;chr&gt;, studyDbId &lt;chr&gt;, endDate &lt;chr&gt;, trialName &lt;chr&gt;,
+## #   startDate &lt;chr&gt;, additionalInfo.design &lt;chr&gt;,
 ## #   additionalInfo.description &lt;chr&gt;</code></pre>
 </div>
 <div id="get-a-study-or-fieldbook" class="section level3">
 <h3>Get a study (or fieldbook)</h3>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1"><span class="co"># Currently not working!!!</span></a>
-<a class="sourceLine" id="cb33-2" data-line-number="2"><span class="co">#dt = ba_studies_table(sp_base, </span></a>
-<a class="sourceLine" id="cb33-3" data-line-number="3"><span class="co">#                      studyDbId = &quot;151&quot;)</span></a></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="co"># Currently not working!!!</span></a>
+<a class="sourceLine" id="cb34-2" data-line-number="2"><span class="co">#dt = ba_studies_table(sp_base, </span></a>
+<a class="sourceLine" id="cb34-3" data-line-number="3"><span class="co">#                      studyDbId = &quot;151&quot;)</span></a></code></pre></div>
 </div>
 </div>
 </div>

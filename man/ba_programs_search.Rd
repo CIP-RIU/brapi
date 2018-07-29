@@ -19,10 +19,10 @@ default: ""}
 
 \item{name}{character, search programs by program name; default: ""}
 
-\item{objective}{character, search programs by program objective, default: ""}
+\item{objective}{character, search programs by program objective; default: ""}
 
-\item{programDbId}{character, search programs by program database identifier
-(programDbId), default: ""}
+\item{programDbId}{character, search programs by program database identifier;
+default: ""}
 
 \item{commonCropName}{character, search programs by commonCropName; default:
 ""}
