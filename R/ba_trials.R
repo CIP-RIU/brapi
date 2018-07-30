@@ -42,7 +42,7 @@ ba_trials <- function(con = NULL,
   ba_check(con = con, verbose = FALSE, brapi_calls = "trials")
   stopifnot(is.character(programDbId))
   stopifnot(is.character(locationDbId))
-  stopifnot(is.logical(active)  || active == "any")
+  stopifnot(is.logical(active) || active == "any")
   stopifnot(is.character(sortBy))
   stopifnot(is.character(sortOrder))
   if (programDbId == "") {
