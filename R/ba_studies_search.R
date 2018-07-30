@@ -36,7 +36,7 @@
 #' @note Tested against: sweetpotatobase, test-server
 #' @note BrAPI Version: 1.0, 1.1, 1.2, (1.3)
 #' @note BrAPI Status: active
-#' @note in versio 1.3 only one call will replace the studies_search_get and studies_search_post.
+#' @note in version 1.3 only one call will replace the studies_search_get and studies_search_post.
 #' Since its parameters are most similar to the _post version, it is recommended to use the _post
 #' or this version.
 
@@ -45,7 +45,6 @@
 #' @family phenotyping
 #' @export
 ba_studies_search <- function(con = NULL,
-
                               studyDbIds = "",
                               trialDbIds = "",
                               programDbIds = "",
@@ -63,10 +62,8 @@ ba_studies_search <- function(con = NULL,
                               sortOrder = "",
                               page = 0,
                               pageSize = 1000,
-
                               rclass = "tibble") {
   ba_studies_search_post(con = con,
-
                          studyDbIds = studyDbIds,
                          trialDbIds = trialDbIds,
                          programDbIds = programDbIds,
@@ -84,7 +81,5 @@ ba_studies_search <- function(con = NULL,
                          sortOrder = sortOrder,
                          page = page,
                          pageSize = pageSize,
-
-                         rclass = rclass
-                         )
+                         rclass = rclass)
 }
