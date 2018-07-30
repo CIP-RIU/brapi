@@ -45,6 +45,10 @@ comma separated string of study names (e.g. ); default: ""}
 supplied as a comma separated string of study locations
 (e.g. ); default: ""}
 
+\item{programNames}{character; search for studies by program names, supplied
+as a comma separated string of program names (e.g. );
+default: ""}
+
 \item{commonCropName}{character, search for studies by a common crop name;
 default: ""}
 
@@ -73,10 +77,6 @@ other possible values TRUE/FALSE}
 
 \item{rclass}{character, class of the object to be returned;  default: "tibble"
 , possible other values: "json"/"list"/"data.frame"}
-
-\item{progamNames}{character; search for studies by program names, supplied
-as a comma separated string of program names (e.g. );
-default: ""}
 }
 \value{
 An object of class as defined by rclass containing the studies and

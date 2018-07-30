@@ -26,7 +26,7 @@
 #' @param studyLocations character; search for studies by study locations,
 #'                       supplied as a comma separated string of study locations
 #'                       (e.g. ); default: ""
-#' @param progamNames character; search for studies by program names, supplied
+#' @param programNames character; search for studies by program names, supplied
 #'                    as a comma separated string of program names (e.g. );
 #'                    default: ""
 #' @param commonCropName character, search for studies by a common crop name;
