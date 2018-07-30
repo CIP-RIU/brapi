@@ -7,7 +7,7 @@
 ba_studies_search_get(con = NULL, studyDbId = "", trialDbId = "",
   programDbId = "", commonCropName = "", locationDbId = "",
   seasonDbId = "", studyType = "", germplasmDbIds = "",
-  observationVariableDbIds = "", active = "", sortBy = "",
+  observationVariableDbIds = "", active = "any", sortBy = "",
   sortOrder = "", pageSize = 1000, page = 0, rclass = "tibble")
 }
 \arguments{

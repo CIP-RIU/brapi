@@ -60,7 +60,7 @@ ba_studies_search_get <- function(con = NULL,
                                   studyType = "",
                                   germplasmDbIds = "",
                                   observationVariableDbIds = "",
-                                  active = "",
+                                  active = "any",
                                   sortBy = "",
                                   sortOrder = "",
                                   pageSize = 1000,
@@ -68,7 +68,7 @@ ba_studies_search_get <- function(con = NULL,
                                   rclass = "tibble") {
   # .Deprecated("ba_studies_search")
   ba_check(con = con, verbose = FALSE, brapi_calls = "studies-search-get")
-  stopifnot(is.character(studyDbid))
+  stopifnot(is.character(studyDbId))
   stopifnot(is.character(trialDbId))
   stopifnot(is.character(programDbId))
   stopifnot(is.character(commonCropName))
