@@ -6,7 +6,7 @@ std2tbl <- function(res, rclass) {
   dat <- jsonlite::toJSON(x = lst$result$data)
   dat <- jsonlite::fromJSON(txt = dat)
   x <- dat$additionalInfo
-  colnames(x) <- paste0("additionalInfo.", colnames(x))
+  # colnames(x) <- paste0("additionalInfo.", colnames(x))
   dat$additionalInfo <- NULL
   dat <- cbind(dat, x)
   dat$seasons <- lapply(X = dat$seasons, FUN = paste,

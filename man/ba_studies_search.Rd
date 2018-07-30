@@ -12,65 +12,102 @@ ba_studies_search(con = NULL, studyDbIds = "", trialDbIds = "",
   sortOrder = "", page = 0, pageSize = 1000, rclass = "tibble")
 }
 \arguments{
-\item{con}{brapi connection object}
+\item{con}{list, brapi connection object}
 
-\item{studyDbIds}{character; default: ''}
+\item{studyDbIds}{character, search for study details of specified studies,
+supplied as a comma separated string of internal study
+database identifiers (e.g. "1,5,19"); default: ""}
 
-\item{trialDbIds}{character; default: ''}
+\item{trialDbIds}{character, search for studies and  details of specified
+trials, supplied as a comma separated string of internal
+trial database identifiers (e.g. "15,12,19"); default: ""}
 
-\item{programDbIds}{character; default: ''}
+\item{programDbIds}{character, search for studies and details of specified
+programs, supplied as a comma separated string of
+internal program database identifiers (e.g. "15,12,19");
+default: ""}
 
-\item{locationDbIds}{character; default: ''}
+\item{locationDbIds}{character, search for studies and detaisl of specified
+locations, supplied as a comma separated string of
+internal location database identifiers (e.g. "13,23,45");
+default:""}
 
-\item{seasonDbId}{character; default: ''}
+\item{seasonDbId}{character, search for studies by an internal season
+database identifier; default: ""}
 
-\item{studyType}{character; default: ''}
+\item{studyType}{character; search for studies and details based on a study
+type e.g. "Nursery", "Trial" or "Genotype"; default: ""}
 
-\item{studyNames}{character; default: ''}
+\item{studyNames}{character, search for studies by study names, supplies as a
+comma separated string of study names (e.g. ); default: ""}
 
-\item{studyLocations}{character; default: ''}
+\item{studyLocations}{character; search for studies by study locations,
+supplied as a comma separated string of study locations
+(e.g. ); default: ""}
 
-\item{programNames}{character; default: ''}
+\item{commonCropName}{character, search for studies by a common crop name;
+default: ""}
 
-\item{commonCropName}{character; default: ''}
+\item{germplasmDbIds}{character; search for studies where specified
+germplasms, supplied as a comma separated string of
+internal gerplasm database identifiers (e.g. "1,12,
+281"), have been used/tested; default: ""}
 
-\item{germplasmDbIds}{character; default: ''}
+\item{observationVariableDbIds}{character; search for studies where specified
+observation variables, supplied as a comma
+separated string of internal observation
+variable database identifiers (e.g. "15,100"
+), have been measured; default: ""}
 
-\item{observationVariableDbIds}{character; default: ''}
+\item{active}{logical; search studies by active status; default: "",
+other possible values TRUE/FALSE}
 
-\item{active}{character; default: ''}
+\item{sortBy}{character; name of the field to sort by; default: ""}
 
-\item{sortBy}{character; default: ''}
+\item{sortOrder}{character; sort order direction; default: "", possible values
+"asc"/"desc"}
 
-\item{sortOrder}{character; default: ''}
+\item{page}{integer, the requested page to be returned; default: 0 (1st page)}
 
-\item{page}{integer; default: 1000}
+\item{pageSize}{integer, items per page to be returned; default: 1000}
 
-\item{pageSize}{integer; default: 0}
+\item{rclass}{character, class of the object to be returned;  default: "tibble"
+, possible other values: "json"/"list"/"data.frame"}
 
-\item{rclass}{character; default: tibble}
+\item{progamNames}{character; search for studies by program names, supplied
+as a comma separated string of program names (e.g. );
+default: ""}
 }
 \value{
-rclass as defined
+An object of class as defined by rclass containing the studies and
+        details fulfilling the search criteria.
 }
 \description{
 Search studies on a brapi server via a GET or POST method
 }
 \note{
-This call must have set a specific identifier. The default is an empty string.
-     If not changed to an identifier present in the database this will result in an error.
-
-Tested against: sweetpotatobase
-
 Tested against: sweetpotatobase, test-server
 
 BrAPI Version: 1.0, 1.1, 1.2, (1.3)
 
 BrAPI Status: active
 
-in versio 1.3 only one call will replace the studies_search_get and studies_search_post.
-Since its parameters are most similar to the _post version, it is recommended to use the _post
-or this version.
+In version 1.3 only one call will replace the studies_search_get and
+      studies_search_post. Since its parameters are most similar to the _post
+      version, it is recommended to use the _post or this version.
+
+This call must have set a specific identifier. The default is an empty
+      string. If not changed to an identifier present in the database this
+      will result in an error.
+}
+\examples{
+if (interactive()) {
+  library(brapi)
+
+  con <- ba_db()$testserver
+
+  ba_studies_search(con)
+}
 }
 \references{
 \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Studies/StudiesSearch_POST.md}{github}
@@ -107,5 +144,5 @@ Other phenotyping: \code{\link{ba_samples_save}},
   \code{\link{ba_trials_details}}, \code{\link{ba_trials}}
 }
 \author{
-Reinhard Simon
+Reinhard Simon, Maikel Verouden
 }
