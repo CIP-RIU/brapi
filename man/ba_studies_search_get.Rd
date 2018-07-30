@@ -32,7 +32,7 @@ database identifier; default: ""}
 database identifier; default: ""}
 
 \item{studyType}{character; search for studies based on a study type e.g.
-Nursery, Trial or Genotype; default: ""}
+"Nursery", "Trial" or "Genotype"; default: ""}
 
 \item{germplasmDbIds}{character; search for studies where specified
 germplasms, supplied as a comma separated string of
@@ -45,7 +45,7 @@ separated string of internal observation
 variable database identifiers (e.g. "15,100"
 ), have been measured; default: ""}
 
-\item{active}{logical; search studies by active status; default: "",
+\item{active}{logical; search studies by active status; default: "any",
 other possible values TRUE/FALSE}
 
 \item{sortBy}{character; name of the field to sort by; default: ""}
@@ -68,20 +68,14 @@ An object of class as defined by rclass containing the studies and
 Search for study details on a brapi server via a GET method
 }
 \note{
-Tested against: sweetpotatobase, test-server
-
-BrAPI Version: 1.0, 1.1, 1.2
-
-BrAPI Status: active
-
-Tested against: sweetpotatobase, test-server
+Tested against: test-server
 
 BrAPI Version: 1.0, 1.1, 1.2
 
 BrAPI Status: active
 }
 \references{
-\href{https://github.com/plantbreeding/API/blob/master/Specification/Studies/ListStudySummaries.md}{github}
+\href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Studies/StudiesSearch_GET.md}{github}
 }
 \seealso{
 Other studies: \code{\link{ba_studies_details}},
@@ -115,5 +109,5 @@ Other phenotyping: \code{\link{ba_samples_save}},
   \code{\link{ba_trials_details}}, \code{\link{ba_trials}}
 }
 \author{
-Reinhard Simon
+Reinhard Simon, Maikel Verouden
 }

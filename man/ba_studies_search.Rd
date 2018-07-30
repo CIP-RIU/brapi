@@ -68,7 +68,7 @@ BrAPI Version: 1.0, 1.1, 1.2, (1.3)
 
 BrAPI Status: active
 
-in versio 1.3 only one call will replace the studies_search_get and studies_search_post.
+in version 1.3 only one call will replace the studies_search_get and studies_search_post.
 Since its parameters are most similar to the _post version, it is recommended to use the _post
 or this version.
 }
