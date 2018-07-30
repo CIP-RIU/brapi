@@ -69,8 +69,11 @@ ba_calls <- function(con = NULL,
                               collapse = "; ")
       out$methods <- vapply(X = out$methods, FUN = paste, FUN.VALUE = "",
                             collapse = "; ")
-      out$versions <- vapply(X = out$versions, FUN = paste, FUN.VALUE = "",
-                            collapse = "; ")
+      if(!is.null(out$versions)) {
+        out$versions <- vapply(X = out$versions, FUN = paste, FUN.VALUE = "",
+                               collapse = "; ")
+      }
+
     }
     class(out) <- c(class(out), "ba_calls")
     show_metadata(res)
