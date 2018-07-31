@@ -42,13 +42,11 @@ An object of class as defined by rclass containing the breeding
 Search breeding programs via a POST method
 }
 \details{
-Testing against test-server always returns all programs in the test
-         server example. One would expect info on only one program, when
-         programDbId = "1" is specified as function argument. Could be an
-         implementation error of the BrAPI call on the database side.
+Searching by commonCropName has not be tested yet, because none of
+         the databases support this feature yet (not even the test-server)!
 }
 \note{
-Tested against: test-server (unexpected results, see details section)
+Tested against: test-server
 
 BrAPI Version: 1.0, 1.1, 1.2
 

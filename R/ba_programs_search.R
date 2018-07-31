@@ -18,15 +18,13 @@
 #' @param rclass character, class of the object to be returned;  default: "tibble"
 #'               , possible other values: "json"/"list"/"data.frame"
 #'
-#' @details Testing against test-server always returns all programs in the test
-#'          server example. One would expect info on only one program, when
-#'          programDbId = "1" is specified as function argument. Could be an
-#'          implementation error of the BrAPI call on the database side.
+#' @details Searching by commonCropName has not be tested yet, because none of
+#'          the databases support this feature yet (not even the test-server)!
 #'
 #' @return An object of class as defined by rclass containing the breeding
 #'         programs matching the search criteria.
 #'
-#' @note Tested against: test-server (unexpected results, see details section)
+#' @note Tested against: test-server
 #' @note BrAPI Version: 1.0, 1.1, 1.2
 #' @note BrAPI Status: active
 #'
@@ -60,40 +58,30 @@ ba_programs_search <- function(con = NULL,
   # generate specific brapi call url
   pprograms <- paste0(brp, "programs-search")
   try({
-    body <- list(abbreviation =
-                   ifelse(abbreviation != "",
-                          abbreviation,
-                          ""),
-                 leadPerson =
-                   ifelse(leadPerson != "",
-                          leadPerson,
-                          ""),
-                 name =
-                   ifelse(name != "",
-                          name,
-                          ""),
-                 objective =
-                   ifelse(objective != "",
-                          objective,
-                          ""),
-                 programDbId =
-                   ifelse(programDbId != "",
-                          programDbId,
-                          ""),
-                 commonCropName =
-                   ifelse(commonCropName != "",
-                          commonCropName,
-                          ""),
-                 pageSize =
-                   ifelse(pageSize != "",
-                          pageSize %>%
-                            as.integer(),
-                          ""),
-                 page =
-                   ifelse(page != "",
-                          page %>%
-                            as.integer(),
-                          "")
+    body <- list(abbreviation = ifelse(abbreviation != "",
+                                       abbreviation,
+                                       ""),
+                 leadPerson = ifelse(leadPerson != "",
+                                     leadPerson,
+                                     ""),
+                 name = ifelse(name != "",
+                               name,
+                               ""),
+                 objective = ifelse(objective != "",
+                                    objective,
+                                    ""),
+                 programDbId = ifelse(programDbId != "",
+                                      programDbId,
+                                      ""),
+                 commonCropName = ifelse(commonCropName != "",
+                                         commonCropName,
+                                         ""),
+                 pageSize = ifelse(pageSize != "",
+                                   pageSize %>% as.integer(),
+                                   ""),
+                 page = ifelse(page != "",
+                               page %>% as.integer(),
+                               "")
                  )
     for (i in length(body):1) {
       if (body[[i]] == "") {
