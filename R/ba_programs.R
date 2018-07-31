@@ -14,7 +14,7 @@
 #'               , possible other values: "json"/"list"/"data.frame"
 #'
 #' @details Filtering by commonCropName has not be tested yet, because none of
-#'          the databases support this feature yet!
+#'          the databases support this feature yet (not even the test-server)!
 #'
 #' @return An object of class as defined by rclass containing the breeding
 #'         programs.

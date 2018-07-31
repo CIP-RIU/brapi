@@ -34,7 +34,7 @@ Retrieve a list of the breeding programs.
 }
 \details{
 Filtering by commonCropName has not be tested yet, because none of
-         the databases support this feature yet!
+         the databases support this feature yet (not even the test-server)!
 }
 \note{
 Tested against: BMS, sweetpotatobase, test-server
