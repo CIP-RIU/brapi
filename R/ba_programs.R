@@ -33,8 +33,8 @@ ba_programs <- function(con = NULL,
                         programName = "any",
                         abbreviation = "any",
                         commonCropName = "any",
-                        page = 0,
                         pageSize = 1000,
+                        page = 0,
                         rclass = "tibble") {
   ba_check(con = con, verbose = FALSE, brapi_calls = "programs")
   stopifnot(is.character(programName))

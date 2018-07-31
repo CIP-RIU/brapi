@@ -5,7 +5,7 @@
 \title{ba_programs}
 \usage{
 ba_programs(con = NULL, programName = "any", abbreviation = "any",
-  commonCropName = "any", page = 0, pageSize = 1000, rclass = "tibble")
+  commonCropName = "any", pageSize = 1000, page = 0, rclass = "tibble")
 }
 \arguments{
 \item{con}{list, brapi connection object}
@@ -18,9 +18,9 @@ default: "any"}
 \item{commonCropName}{character, filter programs by a common crop name;
 default: "any"}
 
-\item{page}{integer, the requested page to be returned; default: 0 (1st page)}
-
 \item{pageSize}{integer, items per page to be returned; default: 1000}
+
+\item{page}{integer, the requested page to be returned; default: 0 (1st page)}
 
 \item{rclass}{character, class of the object to be returned;  default: "tibble"
 , possible other values: "json"/"list"/"data.frame"}
