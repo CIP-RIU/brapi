@@ -97,7 +97,7 @@ ba_studies_search_get <- function(con = NULL,
   pseasonDbId <- ifelse(seasonDbId == "", "",
                         paste0("seasonDbId=", seasonDbId, "&"))
   pstudyType <- ifelse(studyType == "", "",
-                       paste0("studyType=", studyType, "&"))
+                       paste0("studyType=", gsub(" ", "%20", studyType), "&"))
   pgermplasmDbIds <- ifelse(germplasmDbIds == "", "",
                             paste0("germplasmDbIds=", germplasmDbIds, "&") %>%
                             paste0(collapse = ""))
