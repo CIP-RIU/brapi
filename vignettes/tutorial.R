@@ -15,14 +15,6 @@ sp_base
 
 
 ## ------------------------------------------------------------------------
-crops <- ba_crops(sp_base)
-
-# We only expect one crop here: sweetpotato
-
-crops
-
-
-## ------------------------------------------------------------------------
 ba_show_info(TRUE)
 
 ## ------------------------------------------------------------------------
@@ -36,7 +28,7 @@ ba_calls(con = sp_base, rclass = "data.frame")
 ba_programs(sp_base, rclass = "data.frame")
 
 ## ------------------------------------------------------------------------
-ba_studies_search(sp_base, programDbId = "140")
+ba_studies_search_get(sp_base, programDbId = "140")
 
 ## ---- message=FALSE, warning=FALSE---------------------------------------
 # Currently not working!!!

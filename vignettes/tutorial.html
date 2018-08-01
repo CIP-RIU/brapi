@@ -12,7 +12,7 @@
 
 <meta name="author" content="Reinhard Simon" />
 
-<meta name="date" content="2018-07-29" />
+<meta name="date" content="2018-08-01" />
 
 <title>Basic Tutorial</title>
 
@@ -280,7 +280,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 
 <h1 class="title toc-ignore">Basic Tutorial</h1>
 <h4 class="author"><em>Reinhard Simon</em></h4>
-<h4 class="date"><em>2018-07-29</em></h4>
+<h4 class="date"><em>2018-08-01</em></h4>
 
 
 
@@ -330,28 +330,15 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 ## Addres:Port = sweetpotatobase.org:80
 ## User =</code></pre>
 </div>
-<div id="listing-available-crops" class="section level2">
-<h2>Listing available crops</h2>
-<p>This is interesting if you have multicrop databases. In the case of sweetpotatobase there is only one crop on that server.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">crops &lt;-<span class="st"> </span><span class="kw">ba_crops</span>(sp_base)</a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co"># We only expect one crop here: sweetpotato</span></a>
-<a class="sourceLine" id="cb5-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb5-5" data-line-number="5">crops</a></code></pre></div>
-<pre><code>## # A tibble: 1 x 1
-##   crops      
-##   &lt;chr&gt;      
-## 1 SweetPotato</code></pre>
-</div>
 <div id="switching-on-information-on-server-connectiviy" class="section level2">
 <h2>Switching on information on server connectiviy</h2>
 <p>In many cases when exploring a new database it will be useful to get any feedback from the server. The package provides a switch that allows to turn on or off such log information.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw">ba_show_info</span>(<span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">ba_show_info</span>(<span class="ot">TRUE</span>)</a></code></pre></div>
 </div>
 <div id="listing-available-calls" class="section level2">
 <h2>Listing available calls</h2>
 <p>The brapi community and standard allows currently a large degree of freedom on implementation of individual parts of the standard (or calls). One call lists the functionality supported by the server.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw">ba_calls</span>(sp_base)</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">ba_calls</span>(sp_base)</a></code></pre></div>
 <pre><code>## URL call was: https://sweetpotatobase.org/brapi/v1/calls</code></pre>
 <pre><code>## Waiting for response from server: ...</code></pre>
 <pre><code>## Server status:  ok!</code></pre>
@@ -381,7 +368,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 ##  9 1.0; 1.2 GET          json      germplasm/{germplasmDbId}/attributes    
 ## 10 1.0; 1.2 GET          json      attributes                              
 ## # ... with 38 more rows</code></pre>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1"><span class="kw">ba_show_info</span>(<span class="ot">FALSE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="kw">ba_show_info</span>(<span class="ot">FALSE</span>)</a></code></pre></div>
 <p>As you notice, the table is presented as a tibble. This has the advantage that it fits on the screen always even though there are big tables. But sometimes it may be useful to just print out the whole table. How to do that is the topic of the next section.</p>
 </div>
 <div id="function-design" class="section level2">
@@ -392,7 +379,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <h2>Output formats</h2>
 <p>This is by default a tibble. However, there are several others supported. An alternative is the ‘data.frame’. In addition and mainly for debugging purposes you can set the value to ‘json’ which will return the full response json object; or you can set it to ‘list’ which will return a list equivalent.</p>
 <p>So, let’s just print out the whole data.frame.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1"><span class="kw">ba_calls</span>(<span class="dt">con =</span> sp_base, <span class="dt">rclass =</span> <span class="st">&quot;data.frame&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1"><span class="kw">ba_calls</span>(<span class="dt">con =</span> sp_base, <span class="dt">rclass =</span> <span class="st">&quot;data.frame&quot;</span>)</a></code></pre></div>
 <pre><code>## No encoding supplied: defaulting to UTF-8.</code></pre>
 <pre><code>##    versions      methods           datatypes
 ## 1  1.0; 1.2 POST; DELETE                json
@@ -498,7 +485,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <p>The brapi models trial data in a three layer hierarchy: a) breeding program which has b) trials that c) may consist of one or more studies at one or more locations. A study at one location is also often referred to as a fieldbook.</p>
 <div id="which-breeding-programs-are-there" class="section level3">
 <h3>Which breeding programs are there?</h3>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1"><span class="kw">ba_programs</span>(sp_base, <span class="dt">rclass =</span> <span class="st">&quot;data.frame&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1"><span class="kw">ba_programs</span>(sp_base, <span class="dt">rclass =</span> <span class="st">&quot;data.frame&quot;</span>)</a></code></pre></div>
 <pre><code>## No encoding supplied: defaulting to UTF-8.</code></pre>
 <pre><code>##    commonCropName leadPerson       name programDbId abbreviation
 ## 1     SweetPotato                  NCSU         132             
@@ -525,35 +512,31 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 </div>
 <div id="which-studies-are-there" class="section level3">
 <h3>Which studies are there?</h3>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1"><span class="kw">ba_studies_search</span>(sp_base, <span class="dt">programDbId =</span> <span class="st">&quot;140&quot;</span>)</a></code></pre></div>
-<pre><code>## Warning: 'ba_studies_search_post' is deprecated.
-## Use 'ba_studies_search' instead.
-## See help(&quot;Deprecated&quot;)</code></pre>
-<pre><code>## [1] &quot;https://sweetpotatobase.org/brapi/v1/studies-search/&quot;</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1"><span class="kw">ba_studies_search_get</span>(sp_base, <span class="dt">programDbId =</span> <span class="st">&quot;140&quot;</span>)</a></code></pre></div>
+<pre><code>## Using GET</code></pre>
 <pre><code>## No encoding supplied: defaulting to UTF-8.</code></pre>
-<pre><code>## # A tibble: 388 x 15
-##    seasons active programName name  locationDbId studyType trialDbId
-##  * &lt;chr&gt;   &lt;lgl&gt;  &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;     &lt;chr&gt;    
-##  1 2015    TRUE   NCSU        15AD~ 12           Advanced~ &quot;&quot;       
-##  2 2015    TRUE   Ghana       15FO~ 18           &lt;NA&gt;      230      
-##  3 2015    TRUE   Ghana       15FO~ 26           &lt;NA&gt;      230      
-##  4 2015    TRUE   Ghana       15HS~ 28           &lt;NA&gt;      230      
-##  5 2015    TRUE   Ghana       15HS~ 26           &lt;NA&gt;      230      
-##  6 2015    TRUE   Ghana       15ay~ 16           Advanced~ 230      
-##  7 2016    TRUE   Uganda      16Ap~ 52           phenotyp~ 1221     
-##  8 2018    TRUE   Uganda      16Ap~ 15           phenotyp~ 1221     
-##  9 2018    TRUE   Uganda      16Ap~ 14           phenotyp~ 1221     
-## 10 2016    TRUE   Uganda      16BB~ 52           phenotyp~ 1221     
-## # ... with 378 more rows, and 8 more variables: locationName &lt;chr&gt;,
-## #   programDbId &lt;chr&gt;, studyDbId &lt;chr&gt;, endDate &lt;chr&gt;, trialName &lt;chr&gt;,
-## #   startDate &lt;chr&gt;, additionalInfo.design &lt;chr&gt;,
-## #   additionalInfo.description &lt;chr&gt;</code></pre>
+<pre><code>## # A tibble: 10 x 15
+##    seasons active programName name  locationDbId trialDbId endDate
+##  * &lt;chr&gt;   &lt;lgl&gt;  &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;     &lt;chr&gt;  
+##  1 2015    TRUE   Ghana       15FO~ 18           230       2015-J~
+##  2 2015    TRUE   Ghana       15FO~ 26           230       2015-J~
+##  3 2015    TRUE   Ghana       15HS~ 28           230       2015-J~
+##  4 2015    TRUE   Ghana       15HS~ 26           230       &lt;NA&gt;   
+##  5 2015    TRUE   Ghana       15ay~ 16           230       &lt;NA&gt;   
+##  6 2016    TRUE   Ghana       16CI~ 16           232       2016-A~
+##  7 2016    TRUE   Ghana       16CI~ 22           232       2016-M~
+##  8 2010    TRUE   Ghana       2010~ 38           284       2010-M~
+##  9 2010    TRUE   Ghana       2010~ 16           284       2010-A~
+## 10 2010    TRUE   Ghana       2010~ 39           284       2010-J~
+## # ... with 8 more variables: trialName &lt;chr&gt;, locationName &lt;chr&gt;,
+## #   programDbId &lt;chr&gt;, startDate &lt;chr&gt;, studyDbId &lt;chr&gt;, studyType &lt;chr&gt;,
+## #   design &lt;chr&gt;, description &lt;chr&gt;</code></pre>
 </div>
 <div id="get-a-study-or-fieldbook" class="section level3">
 <h3>Get a study (or fieldbook)</h3>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="co"># Currently not working!!!</span></a>
-<a class="sourceLine" id="cb34-2" data-line-number="2"><span class="co">#dt = ba_studies_table(sp_base, </span></a>
-<a class="sourceLine" id="cb34-3" data-line-number="3"><span class="co">#                      studyDbId = &quot;151&quot;)</span></a></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1"><span class="co"># Currently not working!!!</span></a>
+<a class="sourceLine" id="cb31-2" data-line-number="2"><span class="co">#dt = ba_studies_table(sp_base, </span></a>
+<a class="sourceLine" id="cb31-3" data-line-number="3"><span class="co">#                      studyDbId = &quot;151&quot;)</span></a></code></pre></div>
 </div>
 </div>
 </div>
