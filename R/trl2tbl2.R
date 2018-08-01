@@ -46,6 +46,8 @@ trl2tbl2 <- function(res, rclass) {
   }
   # remove duplicated rows
   out <- out[!duplicated(out), ]
+  # reset row name numbering in case row have been removed
+  rownames(out) <- 1:nrow(out)
   if (rclass == "tibble") {
     out <- tibble::as_tibble(out)
   }
