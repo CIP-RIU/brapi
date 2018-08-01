@@ -3,46 +3,56 @@
 #' Search for study details on a brapi server via a POST method
 #'
 #' @param con list, brapi connection object
-#' @param studyDbIds character, search for study details of specified studies,
-#'                   supplied as a comma separated string of internal study
-#'                   database identifiers (e.g. "1,5,19"); default: ""
-#' @param trialDbIds character, search for studies and  details of specified
-#'                   trials, supplied as a comma separated string of internal
-#'                   trial database identifiers (e.g. "15,12,19"); default: ""
-#' @param programDbIds character, search for studies and details of specified
-#'                     programs, supplied as a comma separated string of
-#'                     internal program database identifiers (e.g. "15,12,19");
-#'                     default: ""
-#' @param locationDbIds character, search for studies and detaisl of specified
-#'                      locations, supplied as a comma separated string of
-#'                      internal location database identifiers (e.g. "13,23,45");
-#'                      default:""
-#' @param seasonDbId  character, search for studies by an internal season
-#'                    database identifier; default: ""
+#' @param studyDbIds character vector, search for study details of specified
+#'                   studies, supplied as a comma separated character vector of
+#'                   internal study database identifiers e.g. c("35","345");
+#'                   default: ""
+#' @param trialDbIds character vector, search for studies and  details of
+#'                   specified trials, supplied as a comma separated character
+#'                   vector of internal trial database identifiers e.g.
+#'                   c("7","8"); default: ""
+#' @param programDbIds character vector, search for studies and details of
+#'                     specified programs, supplied as a comma separated
+#'                     character vector of internal program database identifiers
+#'                     e.g. c("27","58"); default: ""
+#' @param locationDbIds character vector, search for studies and details of
+#'                      specified locations, supplied as a comma separated
+#'                      character vector of internal location database
+#'                      identifiers e.g. c("23","33"); default:""
+#' @param seasonDbId character vector, search for studies and details by
+#'                   specified seasons, supplied as a comma separated character
+#'                   vector of internal season database identifiers e.g.
+#'                   c("237","238"); default: ""
 #' @param studyType character; search for studies and details based on a study
-#'                  type e.g. "Nursery", "Trial" or "Genotype"; default: ""
-#' @param studyNames character, search for studies by study names, supplies as a
-#'                   comma separated string of study names (e.g. ); default: ""
-#' @param studyLocations character; search for studies by study locations,
-#'                       supplied as a comma separated string of study locations
-#'                       (e.g. ); default: ""
-#' @param programNames character; search for studies by program names, supplied
-#'                    as a comma separated string of program names (e.g. );
-#'                    default: ""
-#' @param commonCropName character, search for studies by a common crop name;
+#'                  type e.g. "Nursery", or "Yield Trial"; default: ""
+#' @param studyNames character vector, search for studies by study names,
+#'                   supplied as a comma separated character vector of study
+#'                   names e.g. c("Study A", "Study B"); default: ""
+#' @param studyLocations character vector; search for studies by study
+#'                       locations, supplied as a comma separated character
+#'                       vector of study locations e.g. c("Kenya","Zimbabwe");
 #'                       default: ""
-#' @param germplasmDbIds  character; search for studies where specified
-#'                        germplasms, supplied as a comma separated string of
-#'                        internal gerplasm database identifiers (e.g. "1,12,
-#'                        281"), have been used/tested; default: ""
-#' @param observationVariableDbIds  character; search for studies where specified
-#'                                  observation variables, supplied as a comma
-#'                                  separated string of internal observation
-#'                                  variable database identifiers (e.g. "15,100"
-#'                                  ), have been measured; default: ""
-#' @param active  logical; search studies by active status; default: "",
-#'                other possible values TRUE/FALSE
-#' @param sortBy character; name of the field to sort by; default: ""
+#' @param programNames character vector; search for studies by program names,
+#'                     supplied as a comma separated character vector of program
+#'                     names e.g. c("Test Program","Program2");
+#'                    default: ""
+#' @param commonCropName character, search for studies by a common crop name
+#'                       e.g. "wheat"; default: ""
+#' @param germplasmDbIds character vector; search for studies where specified
+#'                       germplasms, supplied as a comma separated character
+#'                       vector of internal gerplasm database identifiers e.g.
+#'                       c("CML123","CWL123"), have been used/tested; default:
+#'                       ""
+#' @param observationVariableDbIds character vector; search for studies where
+#'                                 specified observation variables, supplied as
+#'                                 a comma separated character vector of
+#'                                 internal observation variable database
+#'                                 identifiers e.g. c("CO-PH-123:,"Var-123"),
+#'                                 have been measured; default: ""
+#' @param active logical; search studies by active status; default: "any",
+#'               other possible values TRUE/FALSE
+#' @param sortBy character; name of the field to sort by e.g. "studyDbId";
+#'               default: ""
 #' @param sortOrder character; sort order direction; default: "", possible values
 #'                  "asc"/"desc"
 #' @param pageSize integer, items per page to be returned; default: 1000
@@ -77,14 +87,13 @@ ba_studies_search_post <- function(con = NULL,
                                    commonCropName = "",
                                    germplasmDbIds = "",
                                    observationVariableDbIds = "",
-                                   active = "",
+                                   active = "any",
                                    sortBy = "",
                                    sortOrder = "",
                                    page = 0,
                                    pageSize = 1000,
                                    rclass = "tibble") {
   ba_check(con = con, verbose = FALSE, brapi_calls = "studies-search")
-  brp <- get_brapi(con = con)
   stopifnot(is.character(studyDbIds))
   stopifnot(is.character(trialDbIds))
   stopifnot(is.character(programDbIds))
@@ -96,45 +105,46 @@ ba_studies_search_post <- function(con = NULL,
   stopifnot(is.character(commonCropName))
   stopifnot(is.character(germplasmDbIds))
   stopifnot(is.character(observationVariableDbIds))
-  stopifnot(is.character(active))
+  stopifnot(is.logical(active) || active == "any")
   stopifnot(is.character(sortBy))
   stopifnot(is.character(sortOrder))
   check_paging(pageSize = pageSize, page = page)
   check_rclass(rclass = rclass)
 
-  out <- NULL
+  brp <- get_brapi(con = con)
+  pstudies_search <- paste0(brp, "studies-search")
 
   body <- list(
-    studyDbIds = studyDbIds,
-    trialDbIds = trialDbIds,
-    programDbIds = programDbIds,
-    locationDbIds = locationDbIds,
-    seasonDbId = seasonDbId,
-    studyType = studyType,
-    studyNames = studyNames,
-    studyLocations = studyLocations,
-    programNames = programNames,
-    commonCropName = commonCropName,
-    germplasmDbIds = germplasmDbIds,
-    observationVariableDbIds = observationVariableDbIds,
-    active = active,
-    sortBy = sortBy,
-    sortOrder = sortOrder,
-    page = page,
-    pageSize = pageSize
+    studyDbIds = ifelse(studyDbIds != "", studyDbIds, ""),
+    trialDbIds = ifelse(trialDbIds != "", trialDbIds, ""),
+    programDbIds = ifelse(programDbIds != "", programDbIds, ""),
+    locationDbIds = ifelse(locationDbIds != "", locationDbIds, ""),
+    seasonDbId = ifelse(seasonDbId != "", seasonDbId, ""),
+    studyType = ifelse(studyType != "", studyType, ""),
+    studyNames = ifelse(studyNames != "", studyNames, ""),
+    studyLocations = ifelse(studyLocations != "", studyLocations, ""),
+    programNames = ifelse(programNames != "", programNames, ""),
+    commonCropName = ifelse(commonCropName != "", commonCropName, ""),
+    germplasmDbIds = ifelse(germplasmDbIds != "", germplasmDbIds, ""),
+    observationVariableDbIds = ifelse(observationVariableDbIds != "",
+                                      observationVariableDbIds,
+                                      ""),
+    active = ifelse(active != "any", tolower(active), ""),
+    sortBy = ifelse(sortBy != "", sortBy, ""),
+    sortOrder = ifelse(sortOrder != "", sortOrder, ""),
+    pageSize = ifelse(pageSize != "", pageSize %>% as.integer(), ""),
+    page = ifelse(page != "", page %>% as.integer(), "")
   )
-
-  for (i in length(body)) {
-    if (length(body[i]) == 0) body[i] <- NULL
+  for (i in length(body):1) {
+    if (all(body[[i]] == "")) {
+      body[[i]] <- NULL
+    }
   }
-  #print(str(body))
-
+  out <- NULL
   out <- try({
-    pstudies_search <- paste0(brp, "studies-search")
-    print(pstudies_search)
+    # print(pstudies_search)
     res <- brapiPOST(url = pstudies_search, body = body, con = con)
     res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
-    out <- NULL
     if (rclass %in% c("list", "json")) {
       out <- dat2tbl(res = res2, rclass = rclass)
     }

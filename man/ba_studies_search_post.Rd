@@ -8,65 +8,75 @@ ba_studies_search_post(con = NULL, studyDbIds = "", trialDbIds = "",
   programDbIds = "", locationDbIds = "", seasonDbId = "",
   studyType = "", studyNames = "", studyLocations = "",
   programNames = "", commonCropName = "", germplasmDbIds = "",
-  observationVariableDbIds = "", active = "", sortBy = "",
+  observationVariableDbIds = "", active = "any", sortBy = "",
   sortOrder = "", page = 0, pageSize = 1000, rclass = "tibble")
 }
 \arguments{
 \item{con}{list, brapi connection object}
 
-\item{studyDbIds}{character, search for study details of specified studies,
-supplied as a comma separated string of internal study
-database identifiers (e.g. "1,5,19"); default: ""}
-
-\item{trialDbIds}{character, search for studies and  details of specified
-trials, supplied as a comma separated string of internal
-trial database identifiers (e.g. "15,12,19"); default: ""}
-
-\item{programDbIds}{character, search for studies and details of specified
-programs, supplied as a comma separated string of
-internal program database identifiers (e.g. "15,12,19");
+\item{studyDbIds}{character vector, search for study details of specified
+studies, supplied as a comma separated character vector of
+internal study database identifiers e.g. c("35","345");
 default: ""}
 
-\item{locationDbIds}{character, search for studies and detaisl of specified
-locations, supplied as a comma separated string of
-internal location database identifiers (e.g. "13,23,45");
-default:""}
+\item{trialDbIds}{character vector, search for studies and  details of
+specified trials, supplied as a comma separated character
+vector of internal trial database identifiers e.g.
+c("7","8"); default: ""}
 
-\item{seasonDbId}{character, search for studies by an internal season
-database identifier; default: ""}
+\item{programDbIds}{character vector, search for studies and details of
+specified programs, supplied as a comma separated
+character vector of internal program database identifiers
+e.g. c("27","58"); default: ""}
+
+\item{locationDbIds}{character vector, search for studies and details of
+specified locations, supplied as a comma separated
+character vector of internal location database
+identifiers e.g. c("23","33"); default:""}
+
+\item{seasonDbId}{character vector, search for studies and details by
+specified seasons, supplied as a comma separated character
+vector of internal season database identifiers e.g.
+c("237","238"); default: ""}
 
 \item{studyType}{character; search for studies and details based on a study
-type e.g. "Nursery", "Trial" or "Genotype"; default: ""}
+type e.g. "Nursery", or "Yield Trial"; default: ""}
 
-\item{studyNames}{character, search for studies by study names, supplies as a
-comma separated string of study names (e.g. ); default: ""}
+\item{studyNames}{character vector, search for studies by study names,
+supplied as a comma separated character vector of study
+names e.g. c("Study A", "Study B"); default: ""}
 
-\item{studyLocations}{character; search for studies by study locations,
-supplied as a comma separated string of study locations
-(e.g. ); default: ""}
-
-\item{programNames}{character; search for studies by program names, supplied
-as a comma separated string of program names (e.g. );
+\item{studyLocations}{character vector; search for studies by study
+locations, supplied as a comma separated character
+vector of study locations e.g. c("Kenya","Zimbabwe");
 default: ""}
 
-\item{commonCropName}{character, search for studies by a common crop name;
+\item{programNames}{character vector; search for studies by program names,
+ supplied as a comma separated character vector of program
+ names e.g. c("Test Program","Program2");
 default: ""}
 
-\item{germplasmDbIds}{character; search for studies where specified
-germplasms, supplied as a comma separated string of
-internal gerplasm database identifiers (e.g. "1,12,
-281"), have been used/tested; default: ""}
+\item{commonCropName}{character, search for studies by a common crop name
+e.g. "wheat"; default: ""}
 
-\item{observationVariableDbIds}{character; search for studies where specified
-observation variables, supplied as a comma
-separated string of internal observation
-variable database identifiers (e.g. "15,100"
-), have been measured; default: ""}
+\item{germplasmDbIds}{character vector; search for studies where specified
+germplasms, supplied as a comma separated character
+vector of internal gerplasm database identifiers e.g.
+c("CML123","CWL123"), have been used/tested; default:
+""}
 
-\item{active}{logical; search studies by active status; default: "",
+\item{observationVariableDbIds}{character vector; search for studies where
+specified observation variables, supplied as
+a comma separated character vector of
+internal observation variable database
+identifiers e.g. c("CO-PH-123:,"Var-123"),
+have been measured; default: ""}
+
+\item{active}{logical; search studies by active status; default: "any",
 other possible values TRUE/FALSE}
 
-\item{sortBy}{character; name of the field to sort by; default: ""}
+\item{sortBy}{character; name of the field to sort by e.g. "studyDbId";
+default: ""}
 
 \item{sortOrder}{character; sort order direction; default: "", possible values
 "asc"/"desc"}

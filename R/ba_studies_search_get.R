@@ -17,15 +17,17 @@
 #'                    database identifier; default: ""
 #' @param studyType character; search for studies based on a study type e.g.
 #'                  "Nursery", "Trial" or "Genotype"; default: ""
-#' @param germplasmDbIds  character; search for studies where specified
-#'                        germplasms, supplied as a comma separated string of
-#'                        internal gerplasm database identifiers (e.g. "1,12,
-#'                        281"), have been used/tested; default: ""
-#' @param observationVariableDbIds  character; search for studies where specified
-#'                                  observation variables, supplied as a comma
-#'                                  separated string of internal observation
-#'                                  variable database identifiers (e.g. "15,100"
-#'                                  ), have been measured; default: ""
+#' @param germplasmDbIds character vector; search for studies where specified
+#'                       germplasms, supplied as a comma separated character
+#'                       vector of internal gerplasm database identifiers e.g.
+#'                       c("CML123","CWL123"), have been used/tested; default:
+#'                       ""
+#' @param observationVariableDbIds character vector; search for studies where
+#'                                 specified observation variables, supplied as
+#'                                 a comma separated character vector of
+#'                                 internal observation variable database
+#'                                 identifiers e.g. c("CO-PH-123:,"Var-123"),
+#'                                 have been measured; default: ""
 #' @param active  logical; search studies by active status; default: "any",
 #'                other possible values TRUE/FALSE
 #' @param sortBy character; name of the field to sort by; default: ""
@@ -98,13 +100,24 @@ ba_studies_search_get <- function(con = NULL,
                         paste0("seasonDbId=", seasonDbId, "&"))
   pstudyType <- ifelse(studyType == "", "",
                        paste0("studyType=", gsub(" ", "%20", studyType), "&"))
-  pgermplasmDbIds <- ifelse(germplasmDbIds == "", "",
-                            paste0("germplasmDbIds=", germplasmDbIds, "&") %>%
-                            paste0(collapse = ""))
-  pobservationVariableDbIds <- ifelse(observationVariableDbIds == "", "",
+  pgermplasmDbIds <- ifelse(all(germplasmDbIds == ""),
+                            "",
+                            paste0("germplasmDbIds=",
+                                   gsub(pattern = ",$",
+                                        replacement = "",
+                                        x = paste0(germplasmDbIds,
+                                                   sep = ",",
+                                                   collapse = "")),
+                                   "&"))
+  pobservationVariableDbIds <- ifelse(all(observationVariableDbIds == ""),
+                                      "",
                                       paste0("observationVariableDbIds=",
-                                             observationVariableDbIds, "&") %>%
-                                      paste(collapse = ""))
+                                             gsub(pattern = ",$",
+                                                  replacement = "",
+                                                  x = paste0(observationVariableDbIds,
+                                                             sep = ",",
+                                                             collapse = "")),
+                                             "&"))
   pactive <- ifelse(active != "any", paste0("active=", tolower(active), "&"), "")
   psortBy <- ifelse(sortBy == "", "", paste0("sortBy=", sortBy, "&"))
   psortOrder <- ifelse(sortOrder == "", "",

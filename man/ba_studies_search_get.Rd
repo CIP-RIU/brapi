@@ -34,16 +34,18 @@ database identifier; default: ""}
 \item{studyType}{character; search for studies based on a study type e.g.
 "Nursery", "Trial" or "Genotype"; default: ""}
 
-\item{germplasmDbIds}{character; search for studies where specified
-germplasms, supplied as a comma separated string of
-internal gerplasm database identifiers (e.g. "1,12,
-281"), have been used/tested; default: ""}
+\item{germplasmDbIds}{character vector; search for studies where specified
+germplasms, supplied as a comma separated character
+vector of internal gerplasm database identifiers e.g.
+c("CML123","CWL123"), have been used/tested; default:
+""}
 
-\item{observationVariableDbIds}{character; search for studies where specified
-observation variables, supplied as a comma
-separated string of internal observation
-variable database identifiers (e.g. "15,100"
-), have been measured; default: ""}
+\item{observationVariableDbIds}{character vector; search for studies where
+specified observation variables, supplied as
+a comma separated character vector of
+internal observation variable database
+identifiers e.g. c("CO-PH-123:,"Var-123"),
+have been measured; default: ""}
 
 \item{active}{logical; search studies by active status; default: "any",
 other possible values TRUE/FALSE}
