@@ -32,9 +32,7 @@ ba_locations_details <- function(con = NULL,
   stopifnot(locationDbId != "")
   check_rclass(rclass = rclass)
   brp <- get_brapi(con = con)
-  location_detail <- sub("[/?&]$",
-                         "",
-                         paste0(brp, "locations/", locationDbId, "/"))
+  location_detail <- paste0(brp, "locations/", locationDbId)
   try({
     res <- brapiGET(url = location_detail, con = con)
     res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
