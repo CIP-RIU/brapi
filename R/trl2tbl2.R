@@ -28,11 +28,11 @@ trl2tbl2 <- function(res, rclass) {
     return(df)
   }
 
-  out <- jointrlstd(df[1, ])
+  out <- jointrlstd(dat2 = df[1, ])
   n <- nrow(df)
   if (n > 1) {
     for (i in 2:n) {
-      jn <- jointrlstd( df[i, ])
+      jn <- jointrlstd(dat2 = df[i, ])
       #print(jn)
       out <- dplyr::bind_rows(out, jn)
     }
@@ -44,6 +44,8 @@ trl2tbl2 <- function(res, rclass) {
                           replacement = "",
                           x = colnames(out))
   }
+  # remove duplicated rows
+  out <- out[!duplicated(out), ]
   if (rclass == "tibble") {
     out <- tibble::as_tibble(out)
   }
