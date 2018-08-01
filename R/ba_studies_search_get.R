@@ -150,7 +150,7 @@ ba_studies_search_get <- function(con = NULL,
       out
     })
   }
-  if (nurl > 2000 ) {
+  if (nurl > 2000) {
     message("URL too long. Use ba_studies_search_post.")
   }
   if (!is.null(out)) {
