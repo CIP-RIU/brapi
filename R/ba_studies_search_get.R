@@ -103,28 +103,28 @@ ba_studies_search_get <- function(con = NULL,
   pgermplasmDbIds <- ifelse(all(germplasmDbIds == ""),
                             "",
                             paste0("germplasmDbIds=",
-                                   gsub(pattern = ",$",
-                                        replacement = "",
-                                        x = paste0(germplasmDbIds,
-                                                   sep = ",",
-                                                   collapse = "")),
+                                   sub(pattern = ",$",
+                                       replacement = "",
+                                       x = paste0(germplasmDbIds,
+                                                  sep = ",",
+                                                  collapse = "")),
                                    "&"))
   pobservationVariableDbIds <- ifelse(all(observationVariableDbIds == ""),
                                       "",
                                       paste0("observationVariableDbIds=",
-                                             gsub(pattern = ",$",
-                                                  replacement = "",
-                                                  x = paste0(observationVariableDbIds,
-                                                             sep = ",",
-                                                             collapse = "")),
+                                             sub(pattern = ",$",
+                                                 replacement = "",
+                                                 x = paste0(observationVariableDbIds,
+                                                            sep = ",",
+                                                            collapse = "")),
                                              "&"))
   pactive <- ifelse(active != "any", paste0("active=", tolower(active), "&"), "")
   psortBy <- ifelse(sortBy == "", "", paste0("sortBy=", sortBy, "&"))
   psortOrder <- ifelse(sortOrder == "", "",
                        paste0("sortOrder=", sortOrder, "&"))
-  ppage <- ifelse(is.numeric(page), paste0("page=", page, ""), "")
   ppageSize <- ifelse(is.numeric(pageSize),
                       paste0("pageSize=", pageSize, "&"), "")
+  ppage <- ifelse(is.numeric(page), paste0("page=", page, "&"), "")
   if (page == 0 & pageSize == 1000) {
     ppage <- ""
     ppageSize <- ""
@@ -132,20 +132,20 @@ ba_studies_search_get <- function(con = NULL,
   pstudies_search <- sub("[/?&]$",
                          "",
                          paste0(pstudies_search,
-                            pstudyDbId,
-                            ptrialDbId,
-                            pprogramDbId,
-                            pcommonCropName,
-                            plocationDbId,
-                            pseasonDbId,
-                            pstudyType,
-                            pgermplasmDbIds,
-                            pobservationVariableDbIds,
-                            pactive,
-                            psortBy,
-                            psortOrder,
-                            ppageSize,
-                            ppage))
+                                pstudyDbId,
+                                ptrialDbId,
+                                pprogramDbId,
+                                pcommonCropName,
+                                plocationDbId,
+                                pseasonDbId,
+                                pstudyType,
+                                pgermplasmDbIds,
+                                pobservationVariableDbIds,
+                                pactive,
+                                psortBy,
+                                psortOrder,
+                                ppageSize,
+                                ppage))
   nurl <- nchar(pstudies_search)
   out <- NULL
   if (nurl <= 2000) {
