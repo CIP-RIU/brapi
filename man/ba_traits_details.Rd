@@ -38,7 +38,6 @@ Other brapicore: \code{\link{ba_calls}},
   \code{\link{ba_commoncropnames}},
   \code{\link{ba_crops-deprecated}},
   \code{\link{ba_germplasm_details_study-deprecated}},
-  \code{\link{ba_germplasm_details_study}},
   \code{\link{ba_germplasm_details}},
   \code{\link{ba_germplasm_pedigree}},
   \code{\link{ba_germplasm_progeny}},
@@ -50,7 +49,9 @@ Other brapicore: \code{\link{ba_calls}},
   \code{\link{ba_observationvariables}},
   \code{\link{ba_phenotypes_search}},
   \code{\link{ba_programs_search}},
-  \code{\link{ba_programs}}, \code{\link{ba_traits}}
+  \code{\link{ba_programs}},
+  \code{\link{ba_studies_germplasm_details}},
+  \code{\link{ba_traits}}
 }
 \author{
 Reinhard Simon

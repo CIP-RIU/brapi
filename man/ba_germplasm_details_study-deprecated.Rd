@@ -4,8 +4,8 @@
 \alias{ba_germplasm_details_study-deprecated}
 \title{ba_germplasm_details_study}
 \usage{
-ba_germplasm_details_study(con = NULL, studyDbId = "", page = 0,
-  pageSize = 1000, rclass = "tibble")
+ba_germplasm_details_study(con = NULL, studyDbId = "", pageSize = 1000,
+  page = 0, rclass = "tibble")
 }
 \arguments{
 \item{con}{list, brapi connection object}
@@ -50,17 +50,16 @@ if (interactive()) {
 \seealso{
 \code{\link{brapi-deprecated}}
 
-Other germplasm: \code{\link{ba_germplasm_details_study}},
-  \code{\link{ba_germplasm_details}},
+Other germplasm: \code{\link{ba_germplasm_details}},
   \code{\link{ba_germplasm_markerprofiles}},
   \code{\link{ba_germplasm_pedigree}},
   \code{\link{ba_germplasm_progeny}},
-  \code{\link{ba_germplasm_search}}
+  \code{\link{ba_germplasm_search}},
+  \code{\link{ba_studies_germplasm_details}}
 
 Other brapicore: \code{\link{ba_calls}},
   \code{\link{ba_commoncropnames}},
   \code{\link{ba_crops-deprecated}},
-  \code{\link{ba_germplasm_details_study}},
   \code{\link{ba_germplasm_details}},
   \code{\link{ba_germplasm_pedigree}},
   \code{\link{ba_germplasm_progeny}},
@@ -73,6 +72,7 @@ Other brapicore: \code{\link{ba_calls}},
   \code{\link{ba_phenotypes_search}},
   \code{\link{ba_programs_search}},
   \code{\link{ba_programs}},
+  \code{\link{ba_studies_germplasm_details}},
   \code{\link{ba_traits_details}}, \code{\link{ba_traits}}
 }
 \author{

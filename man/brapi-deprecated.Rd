@@ -9,8 +9,8 @@
 \usage{
 ba_crops(con = NULL, rclass = "tibble")
 
-ba_germplasm_details_study(con = NULL, studyDbId = "", page = 0,
-  pageSize = 1000, rclass = "tibble")
+ba_germplasm_details_study(con = NULL, studyDbId = "",
+  pageSize = 1000, page = 0, rclass = "tibble")
 }
 \description{
 These functions still work but will be removed (defunct) in a future version.
