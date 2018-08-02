@@ -96,7 +96,7 @@ An object of class as defined by rclass containing the studies and
 Search for study details on a brapi server via a POST method
 }
 \note{
-Tested against: sweetpotatobase, test-server
+Tested against: test-server
 
 BrAPI Version: 1.0, 1.1, 1.2
 
