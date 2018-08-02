@@ -13,7 +13,7 @@
 #' @note BrAPI Status: active
 #'
 #' @author Reinhard Simon, Maikel Verouden
-#' @references \href{https://github.com/plantbreeding/API/tree/master/Specification/Authentication}{github}
+#' @references \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Authentication/Authentication.md}{github}
 #' @family brapiutils
 #' @example inst/examples/ex-ba_login.R
 #' @import httr

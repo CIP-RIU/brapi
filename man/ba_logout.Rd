@@ -34,7 +34,7 @@ if (interactive()) {
 }
 }
 \references{
-\href{https://github.com/plantbreeding/API/tree/master/Specification/Authentication}{github}
+\href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Authentication/Authentication.md}{github}
 }
 \seealso{
 Other brapiutils: \code{\link{as.ba_db}},
