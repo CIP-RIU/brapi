@@ -60,6 +60,7 @@ Other brapicore: \code{\link{ba_calls}},
   \code{\link{ba_phenotypes_search}},
   \code{\link{ba_programs_search}},
   \code{\link{ba_programs}},
+  \code{\link{ba_studies_germplasm_details}},
   \code{\link{ba_traits_details}}, \code{\link{ba_traits}}
 
 Other genotyping: \code{\link{ba_genomemaps_data_range}},
@@ -82,7 +83,8 @@ Other germplasm: \code{\link{ba_germplasm_details_study}},
   \code{\link{ba_germplasm_details}},
   \code{\link{ba_germplasm_markerprofiles}},
   \code{\link{ba_germplasm_pedigree}},
-  \code{\link{ba_germplasm_progeny}}
+  \code{\link{ba_germplasm_progeny}},
+  \code{\link{ba_studies_germplasm_details}}
 }
 \author{
 Reinhard Simon

@@ -26,7 +26,7 @@
 #' @example inst/examples/ex-ba_studies_germplasm_details.R
 #' @import tibble
 #' @export
-ba_germplasm_details_study <- function(con = NULL,
+ba_studies_germplasm_details <- function(con = NULL,
                                        studyDbId = "",
                                        page = 0,
                                        pageSize = 1000,
