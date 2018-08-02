@@ -1,6 +1,6 @@
 #' ba_studies_search
 #'
-#' Search studies on a brapi server via a GET or POST method
+#' Search studies on a brapi server via a GET or POST method.
 #'
 #' @param con list, brapi connection object
 #' @param studyDbIds character vector, search for study details of specified

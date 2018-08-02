@@ -67,7 +67,7 @@ An object of class as defined by rclass containing the studies and
         details fulfilling the search criteria.
 }
 \description{
-Search for study details on a brapi server via a GET method
+Search for study details on a brapi server via a GET method.
 }
 \note{
 Tested against: test-server

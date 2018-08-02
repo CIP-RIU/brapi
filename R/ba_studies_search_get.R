@@ -1,6 +1,6 @@
 #' ba_studies_search_get
 #'
-#' Search for study details on a brapi server via a GET method
+#' Search for study details on a brapi server via a GET method.
 #'
 #' @param con list, brapi connection object
 #' @param studyDbId character, search for study details by an internal study
