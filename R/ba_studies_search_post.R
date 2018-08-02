@@ -141,6 +141,7 @@ ba_studies_search_post <- function(con = NULL,
     }
   }
   out <- NULL
+  message("Using POST")
   out <- try({
     # print(pstudies_search)
     res <- brapiPOST(url = pstudies_search, body = body, con = con)
