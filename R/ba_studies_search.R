@@ -3,46 +3,56 @@
 #' Search studies on a brapi server via a GET or POST method
 #'
 #' @param con list, brapi connection object
-#' @param studyDbIds character, search for study details of specified studies,
-#'                   supplied as a comma separated string of internal study
-#'                   database identifiers (e.g. "1,5,19"); default: ""
-#' @param trialDbIds character, search for studies and  details of specified
-#'                   trials, supplied as a comma separated string of internal
-#'                   trial database identifiers (e.g. "15,12,19"); default: ""
-#' @param programDbIds character, search for studies and details of specified
-#'                     programs, supplied as a comma separated string of
-#'                     internal program database identifiers (e.g. "15,12,19");
-#'                     default: ""
-#' @param locationDbIds character, search for studies and detaisl of specified
-#'                      locations, supplied as a comma separated string of
-#'                      internal location database identifiers (e.g. "13,23,45");
-#'                      default:""
-#' @param seasonDbId  character, search for studies by an internal season
-#'                    database identifier; default: ""
+#' @param studyDbIds character vector, search for study details of specified
+#'                   studies, supplied as a comma separated character vector of
+#'                   internal study database identifiers e.g. c("35", "345");
+#'                   default: ""
+#' @param trialDbIds character vector, search for studies and  details of
+#'                   specified trials, supplied as a comma separated character
+#'                   vector of internal trial database identifiers e.g.
+#'                   c("7", "8"); default: ""
+#' @param programDbIds character vector, search for studies and details of
+#'                     specified programs, supplied as a comma separated
+#'                     character vector of internal program database identifiers
+#'                     e.g. c("27", "58"); default: ""
+#' @param locationDbIds character vector, search for studies and details of
+#'                      specified locations, supplied as a comma separated
+#'                      character vector of internal location database
+#'                      identifiers e.g. c("23", "33"); default:""
+#' @param seasonDbId character vector, search for studies and details by
+#'                   specified seasons, supplied as a comma separated character
+#'                   vector of internal season database identifiers e.g.
+#'                   c("237", "238"); default: ""
 #' @param studyType character; search for studies and details based on a study
-#'                  type e.g. "Nursery", "Trial" or "Genotype"; default: ""
-#' @param studyNames character, search for studies by study names, supplies as a
-#'                   comma separated string of study names (e.g. ); default: ""
-#' @param studyLocations character; search for studies by study locations,
-#'                       supplied as a comma separated string of study locations
-#'                       (e.g. ); default: ""
-#' @param programNames character; search for studies by program names, supplied
-#'                    as a comma separated string of program names (e.g. );
-#'                    default: ""
-#' @param commonCropName character, search for studies by a common crop name;
+#'                  type e.g. "Nursery", or "Yield Trial"; default: ""
+#' @param studyNames character vector, search for studies by study names,
+#'                   supplied as a comma separated character vector of study
+#'                   names e.g. c("Study A", "Study B"); default: ""
+#' @param studyLocations character vector; search for studies by study
+#'                       locations, supplied as a comma separated character
+#'                       vector of study locations e.g. c("Kenya", "Zimbabwe");
 #'                       default: ""
-#' @param germplasmDbIds  character; search for studies where specified
-#'                        germplasms, supplied as a comma separated string of
-#'                        internal gerplasm database identifiers (e.g. "1,12,
-#'                        281"), have been used/tested; default: ""
-#' @param observationVariableDbIds  character; search for studies where specified
-#'                                  observation variables, supplied as a comma
-#'                                  separated string of internal observation
-#'                                  variable database identifiers (e.g. "15,100"
-#'                                  ), have been measured; default: ""
-#' @param active  logical; search studies by active status; default: "",
-#'                other possible values TRUE/FALSE
-#' @param sortBy character; name of the field to sort by; default: ""
+#' @param programNames character vector; search for studies by program names,
+#'                     supplied as a comma separated character vector of program
+#'                     names e.g. c("Test Program", "Program2");
+#'                    default: ""
+#' @param commonCropName character, search for studies by a common crop name
+#'                       e.g. "wheat"; default: ""
+#' @param germplasmDbIds character vector; search for studies where specified
+#'                       germplasms, supplied as a comma separated character
+#'                       vector of internal gerplasm database identifiers e.g.
+#'                       c("CML123", "CWL123"), have been used/tested; default:
+#'                       ""
+#' @param observationVariableDbIds character vector; search for studies where
+#'                                 specified observation variables, supplied as
+#'                                 a comma separated character vector of
+#'                                 internal observation variable database
+#'                                 identifiers e.g. c("CO-PH-123", "Var-123"),
+#'                                 have been measured; default: ""
+#' @param active logical; search studies by active status; default: "any",
+#'               other possible values TRUE/FALSE
+#' @param sortBy character; name of the field to sort by e.g. "studyDbId";
+#'               default: ""
 #' @param sortOrder character; sort order direction; default: "", possible values
 #'                  "asc"/"desc"
 #' @param pageSize integer, items per page to be returned; default: 1000
@@ -53,7 +63,7 @@
 #' @return An object of class as defined by rclass containing the studies and
 #'         details fulfilling the search criteria.
 #'
-#' @note Tested against: sweetpotatobase, test-server
+#' @note Tested against: test-server
 #' @note BrAPI Version: 1.0, 1.1, 1.2, (1.3)
 #' @note BrAPI Status: active
 #' @note In version 1.3 only one call will replace the studies_search_get and
@@ -84,7 +94,7 @@ ba_studies_search <- function(con = NULL,
                               commonCropName = "",
                               germplasmDbIds = "",
                               observationVariableDbIds = "",
-                              active = "",
+                              active = "any",
                               sortBy = "",
                               sortOrder = "",
                               page = 0,
