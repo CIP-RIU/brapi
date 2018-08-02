@@ -15,7 +15,6 @@ ba_db <- function() {
                           multicrop = FALSE,
                           crop = "wheat",
                           bms = FALSE)
-
   bms_test <- as.ba_db(secure = FALSE,
                        protocol = "http://",
                        db = "34.226.132.187",
@@ -31,7 +30,7 @@ ba_db <- function() {
                           db = "cassavabase.org",
                           port = 80,
                           multicrop = FALSE,
-                          crop = "cassava",
+                          crop = "Cassava",
                           bms = FALSE)
   cropontology  <- as.ba_db(secure = FALSE,
                             protocol = "http://",
@@ -51,9 +50,9 @@ ba_db <- function() {
                         protocol = "https://",
                         db = "ics.hutton.ac.uk",
                         port = 80,
-                        apipath = "germinate-demo/cactuar",
+                        apipath = "germinate-demo/cactuar-devel",
                         multicrop = FALSE,
-                        crop = "cactuar",
+                        crop = "Cactuar",
                         bms = FALSE)
   icrisat_prod <- as.ba_db(secure = FALSE,
                        protocol = "http://",
@@ -107,7 +106,7 @@ ba_db <- function() {
                               db = "sweetpotatobase.org",
                               port = 80,
                               multicrop = FALSE,
-                              crop = "sweetpotato",
+                              crop = "SweetPotato",
                               bms = FALSE)
   testserver <- as.ba_db(secure = TRUE,
                       protocol = "https://",
