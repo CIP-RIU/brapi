@@ -80,7 +80,8 @@ BrAPI Status: active
 \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Studies/StudiesSearch_GET.md}{github}
 }
 \seealso{
-Other studies: \code{\link{ba_studies_details}},
+Other studies: \code{\link{ba_germplasm_details_study}},
+  \code{\link{ba_studies_details}},
   \code{\link{ba_studies_layout}},
   \code{\link{ba_studies_observationlevels}},
   \code{\link{ba_studies_observations}},

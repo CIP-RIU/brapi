@@ -46,7 +46,8 @@ if (interactive()) {
 \href{https://github.com/plantbreeding/API/blob/master/Specification/Studies/GetObservationUnitsByObservationVariableIds.md}{github}
 }
 \seealso{
-Other studies: \code{\link{ba_studies_details}},
+Other studies: \code{\link{ba_germplasm_details_study}},
+  \code{\link{ba_studies_details}},
   \code{\link{ba_studies_layout}},
   \code{\link{ba_studies_observationlevels}},
   \code{\link{ba_studies_observationunits}},
