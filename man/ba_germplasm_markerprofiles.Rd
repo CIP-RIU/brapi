@@ -34,11 +34,12 @@ if (interactive()) {
 \href{https://github.com/plantbreeding/API/blob/master/Specification/Germplasm/GermplasmMarkerprofiles.md}{github}
 }
 \seealso{
-Other germplasm: \code{\link{ba_germplasm_details_study}},
+Other germplasm: \code{\link{ba_germplasm_details_study-deprecated}},
   \code{\link{ba_germplasm_details}},
   \code{\link{ba_germplasm_pedigree}},
   \code{\link{ba_germplasm_progeny}},
-  \code{\link{ba_germplasm_search}}
+  \code{\link{ba_germplasm_search}},
+  \code{\link{brapi-deprecated}}
 
 Other genotyping: \code{\link{ba_genomemaps_data_range}},
   \code{\link{ba_genomemaps_data}},

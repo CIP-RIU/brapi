@@ -48,7 +48,7 @@ if (interactive()) {
 \seealso{
 Other brapicore: \code{\link{ba_calls}},
   \code{\link{ba_crops-deprecated}},
-  \code{\link{ba_germplasm_details_study}},
+  \code{\link{ba_germplasm_details_study-deprecated}},
   \code{\link{ba_germplasm_details}},
   \code{\link{ba_germplasm_pedigree}},
   \code{\link{ba_germplasm_progeny}},
@@ -79,11 +79,12 @@ Other genotyping: \code{\link{ba_genomemaps_data_range}},
   \code{\link{ba_markers_details}},
   \code{\link{ba_markers_search}}
 
-Other germplasm: \code{\link{ba_germplasm_details_study}},
+Other germplasm: \code{\link{ba_germplasm_details_study-deprecated}},
   \code{\link{ba_germplasm_details}},
   \code{\link{ba_germplasm_markerprofiles}},
   \code{\link{ba_germplasm_pedigree}},
-  \code{\link{ba_germplasm_progeny}}
+  \code{\link{ba_germplasm_progeny}},
+  \code{\link{brapi-deprecated}}
 }
 \author{
 Reinhard Simon

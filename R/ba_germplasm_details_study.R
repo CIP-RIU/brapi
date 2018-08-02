@@ -24,6 +24,10 @@
 #' @family brapicore
 #' @example inst/examples/ex-ba_germplasm_details_study.R
 #' @import tibble
+#'
+#' @templateVar fun ba_germplasm_details_study
+#' @template template-depr_fun
+#'
 #' @export
 ba_germplasm_details_study <- function(con = NULL,
                                        studyDbId = "",

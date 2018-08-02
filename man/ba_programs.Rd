@@ -59,7 +59,7 @@ if (interactive()) {
 \seealso{
 Other brapicore: \code{\link{ba_calls}},
   \code{\link{ba_crops-deprecated}},
-  \code{\link{ba_germplasm_details_study}},
+  \code{\link{ba_germplasm_details_study-deprecated}},
   \code{\link{ba_germplasm_details}},
   \code{\link{ba_germplasm_pedigree}},
   \code{\link{ba_germplasm_progeny}},
