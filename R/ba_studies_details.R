@@ -4,7 +4,7 @@
 #'
 #' @param con list, brapi connection object
 #' @param studyDbId character, the internal database identifier for a study of
-#'                  which the study detials are to be retrieved e.g. "1001";
+#'                  which the study details are to be retrieved e.g. "1001";
 #'                  \strong{REQUIRED ARGUMENT} with default: ""
 #' @param rclass character, class of the object to be returned;  default: "tibble"
 #'               , possible other values: "json"/"list"/"data.frame"

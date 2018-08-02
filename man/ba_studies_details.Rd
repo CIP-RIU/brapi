@@ -10,7 +10,7 @@ ba_studies_details(con = NULL, studyDbId = "", rclass = "tibble")
 \item{con}{list, brapi connection object}
 
 \item{studyDbId}{character, the internal database identifier for a study of
-which the study detials are to be retrieved e.g. "1001";
+which the study details are to be retrieved e.g. "1001";
 \strong{REQUIRED ARGUMENT} with default: ""}
 
 \item{rclass}{character, class of the object to be returned;  default: "tibble"
@@ -48,7 +48,8 @@ if (interactive()) {
 \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Studies/Studies_GET.md}{github}
 }
 \seealso{
-Other studies: \code{\link{ba_studies_layout}},
+Other studies: \code{\link{ba_germplasm_details_study}},
+  \code{\link{ba_studies_layout}},
   \code{\link{ba_studies_observationlevels}},
   \code{\link{ba_studies_observations}},
   \code{\link{ba_studies_observationunits}},
