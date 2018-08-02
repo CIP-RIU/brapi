@@ -4,8 +4,8 @@
 #'
 #' @param con list, brapi connection object
 #' @param studyDbId character, the internal database identifier for a study of
-#'                  which the study detials are to be retrieved; \strong{REQUIRED
-#'                  ARGUMENT} with default: ""
+#'                  which the study detials are to be retrieved e.g. "1001";
+#'                  \strong{REQUIRED ARGUMENT} with default: ""
 #' @param rclass character, class of the object to be returned;  default: "tibble"
 #'               , possible other values: "json"/"list"/"data.frame"
 #'
@@ -15,7 +15,7 @@
 #'
 #' @return An object of class as defined by rclass containing the study details.
 #'
-#' @note Tested against: BMS, sweetpotatobase, test-server
+#' @note Tested against: sweetpotatobase, test-server
 #' @note BrAPI Version: 1.0, 1.1, 1.2
 #' @note BrAPI Status: active
 #'

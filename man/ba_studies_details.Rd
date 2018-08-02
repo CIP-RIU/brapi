@@ -10,8 +10,8 @@ ba_studies_details(con = NULL, studyDbId = "", rclass = "tibble")
 \item{con}{list, brapi connection object}
 
 \item{studyDbId}{character, the internal database identifier for a study of
-which the study detials are to be retrieved; \strong{REQUIRED
-ARGUMENT} with default: ""}
+which the study detials are to be retrieved e.g. "1001";
+\strong{REQUIRED ARGUMENT} with default: ""}
 
 \item{rclass}{character, class of the object to be returned;  default: "tibble"
 , possible other values: "json"/"list"/"data.frame"}
@@ -28,7 +28,7 @@ This function must have set a specific study identifier. The default
          the database this will result in an error.
 }
 \note{
-Tested against: BMS, sweetpotatobase, test-server
+Tested against: sweetpotatobase, test-server
 
 BrAPI Version: 1.0, 1.1, 1.2
 
