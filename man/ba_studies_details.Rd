@@ -7,25 +7,32 @@
 ba_studies_details(con = NULL, studyDbId = "", rclass = "tibble")
 }
 \arguments{
-\item{con}{brapi connection object}
+\item{con}{list, brapi connection object}
 
-\item{studyDbId}{character; default ''; an internal ID for a study}
+\item{studyDbId}{character, the internal database identifier for a study of
+which the study detials are to be retrieved; \strong{REQUIRED
+ARGUMENT} with default: ""}
 
-\item{rclass}{character; default: "tibble" possible other values: "json"/"list"/"data.frame"}
+\item{rclass}{character, class of the object to be returned;  default: "tibble"
+, possible other values: "json"/"list"/"data.frame"}
 }
 \value{
-data.frame
+An object of class as defined by rclass containing the study details.
 }
 \description{
-Gets studies details given an id.
+Gets study details given an internal database identifier.
 }
 \details{
-This function must have set a specific study identifier. The default is an empty
-string. If not changed to an study identifier present in the database this will
-result in an error.
+This function must have set a specific study identifier. The default
+         is an empty string. If not changed to an study identifier present in
+         the database this will result in an error.
 }
 \note{
-Tested against: sweetpotatobase, BMS
+Tested against: BMS, sweetpotatobase, test-server
+
+BrAPI Version: 1.0, 1.1, 1.2
+
+BrAPI Status: active
 }
 \examples{
 if (interactive()) {
@@ -38,7 +45,7 @@ if (interactive()) {
 }
 }
 \references{
-\href{https://github.com/plantbreeding/API/blob/master/Specification/Studies/StudyDetails.md}{github}
+\href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Studies/Studies_GET.md}{github}
 }
 \seealso{
 Other studies: \code{\link{ba_studies_layout}},

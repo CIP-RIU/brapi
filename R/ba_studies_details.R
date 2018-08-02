@@ -1,23 +1,30 @@
 #' ba_studies_details
 #'
-#' Gets studies details given an id.
+#' Gets study details given an internal database identifier.
 #'
-#' This function must have set a specific study identifier. The default is an empty
-#' string. If not changed to an study identifier present in the database this will
-#' result in an error.
+#' @param con list, brapi connection object
+#' @param studyDbId character, the internal database identifier for a study of
+#'                  which the study detials are to be retrieved; \strong{REQUIRED
+#'                  ARGUMENT} with default: ""
+#' @param rclass character, class of the object to be returned;  default: "tibble"
+#'               , possible other values: "json"/"list"/"data.frame"
 #'
-#' @note Tested against: sweetpotatobase, BMS
+#' @details This function must have set a specific study identifier. The default
+#'          is an empty string. If not changed to an study identifier present in
+#'          the database this will result in an error.
 #'
-#' @param con brapi connection object
-#' @param rclass character; default: "tibble" possible other values: "json"/"list"/"data.frame"
-#' @param studyDbId character; default ''; an internal ID for a study
-#' @import dplyr
+#' @return An object of class as defined by rclass containing the study details.
+#'
+#' @note Tested against: BMS, sweetpotatobase, test-server
+#' @note BrAPI Version: 1.0, 1.1, 1.2
+#' @note BrAPI Status: active
+#'
 #' @author Reinhard Simon, Maikel Verouden
-#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Studies/StudyDetails.md}{github}
-#' @return data.frame
-#' @example inst/examples/ex-ba_studies_details.R
+#' @references \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Studies/Studies_GET.md}{github}
 #' @family studies
 #' @family phenotyping
+#' @example inst/examples/ex-ba_studies_details.R
+#' @import dplyr
 #' @export
 ba_studies_details <- function(con = NULL,
                                studyDbId = "",
@@ -27,9 +34,7 @@ ba_studies_details <- function(con = NULL,
   stopifnot(studyDbId != "")
   check_rclass(rclass = rclass)
   brp <- get_brapi(con = con)
-  studies <- sub("[/?&]$",
-                 "",
-                 paste0(brp, "studies/", studyDbId, "/"))
+  studies <- paste0(brp, "studies/", studyDbId)
   try({
     res <- brapiGET(url = studies, con = con)
     out <- NULL
