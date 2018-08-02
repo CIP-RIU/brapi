@@ -4,7 +4,8 @@
 \alias{ba_locations_details}
 \title{ba_locations_details}
 \usage{
-ba_locations_details(con = NULL, locationDbId = "", rclass = "tibble")
+ba_locations_details(con = NULL, locationDbId = "",
+  rclass = "tibble")
 }
 \arguments{
 \item{con}{list, brapi connection object}

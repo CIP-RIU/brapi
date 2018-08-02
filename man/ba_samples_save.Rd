@@ -53,3 +53,4 @@ Other phenotyping: \code{\link{ba_samples}},
 \author{
 Reinhard Simon
 }
+\concept{phenotyping}

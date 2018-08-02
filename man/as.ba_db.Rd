@@ -5,8 +5,8 @@
 \title{as.ba_db}
 \usage{
 as.ba_db(secure = FALSE, protocol = "http://", db = "127.0.0.1",
-  port = 80, apipath = NULL, multicrop = FALSE, crop = "", user = "",
-  password = "", token = "", granttype = "password",
+  port = 80, apipath = NULL, multicrop = FALSE, crop = "",
+  user = "", password = "", token = "", granttype = "password",
   clientid = "rbrapi", bms = FALSE)
 }
 \arguments{
@@ -64,3 +64,4 @@ Other brapiutils: \code{\link{ba_can_internet}},
 \author{
 Reinhard Simon, Maikel Verouden
 }
+\concept{brapiutils}

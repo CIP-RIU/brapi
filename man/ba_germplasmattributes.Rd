@@ -56,3 +56,5 @@ Other genotyping: \code{\link{ba_genomemaps_data_range}},
 \author{
 Reinhard Simon
 }
+\concept{genotyping}
+\concept{germplasmattributes}

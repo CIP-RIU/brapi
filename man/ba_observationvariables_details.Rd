@@ -4,8 +4,8 @@
 \alias{ba_observationvariables_details}
 \title{ba_observationvariables_details}
 \usage{
-ba_observationvariables_details(con = NULL, observationVariableDbId = "",
-  rclass = "tibble")
+ba_observationvariables_details(con = NULL,
+  observationVariableDbId = "", rclass = "tibble")
 }
 \arguments{
 \item{con}{list; brapi connection object}
@@ -57,3 +57,5 @@ Other brapicore: \code{\link{ba_calls}},
 \author{
 Reinhard Simon
 }
+\concept{brapicore}
+\concept{observationvariables}

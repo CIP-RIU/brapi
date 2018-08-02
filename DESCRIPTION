@@ -17,7 +17,7 @@ BugReports: https://github.com/CIP-RIU/brapi/issues
 URL: https://CIP-RIU.github.io/brapi
 License: GPL-3
 LazyData: true
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.0
 Imports:
     httr,
     jsonlite,

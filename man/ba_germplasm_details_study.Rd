@@ -3,7 +3,6 @@
 %   R/ba_studies_germplasm_details.R
 \name{ba_germplasm_details_study}
 \alias{ba_germplasm_details_study}
-\alias{ba_germplasm_details_study}
 \title{ba_germplasm_details_study}
 \usage{
 ba_germplasm_details_study(con = NULL, studyDbId = "", page = 0,
@@ -149,3 +148,6 @@ Reinhard Simon
 
 Reinhard Simon, Maikel Verouden
 }
+\concept{brapicore}
+\concept{germplasm}
+\concept{studies}

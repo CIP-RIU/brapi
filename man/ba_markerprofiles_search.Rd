@@ -4,9 +4,9 @@
 \alias{ba_markerprofiles_search}
 \title{ba_markerprofiles_search}
 \usage{
-ba_markerprofiles_search(con = NULL, germplasmDbId = "", studyDbId = "",
-  sampleDbId = "", extractDbId = "", methodDbId = "", page = 0,
-  pageSize = 10000, rclass = "tibble")
+ba_markerprofiles_search(con = NULL, germplasmDbId = "",
+  studyDbId = "", sampleDbId = "", extractDbId = "",
+  methodDbId = "", page = 0, pageSize = 10000, rclass = "tibble")
 }
 \arguments{
 \item{con}{brapi connection object}
@@ -71,3 +71,5 @@ Other genotyping: \code{\link{ba_genomemaps_data_range}},
 \author{
 Reinhard Simon
 }
+\concept{genotyping}
+\concept{markerprofiles}

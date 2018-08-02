@@ -58,3 +58,4 @@ Other brapicore: \code{\link{ba_calls}},
 \author{
 Reinhard Simon, Maikel Verouden
 }
+\concept{brapicore}

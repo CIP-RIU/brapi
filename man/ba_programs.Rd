@@ -5,7 +5,8 @@
 \title{ba_programs}
 \usage{
 ba_programs(con = NULL, programName = "any", abbreviation = "any",
-  commonCropName = "any", pageSize = 1000, page = 0, rclass = "tibble")
+  commonCropName = "any", pageSize = 1000, page = 0,
+  rclass = "tibble")
 }
 \arguments{
 \item{con}{list, brapi connection object}
@@ -75,3 +76,4 @@ Other brapicore: \code{\link{ba_calls}},
 \author{
 Reinhard Simon, Maikel Verouden
 }
+\concept{brapicore}

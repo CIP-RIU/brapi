@@ -60,3 +60,5 @@ Other brapicore: \code{\link{ba_calls}},
 \author{
 Reinhard Simon
 }
+\concept{brapicore}
+\concept{observationvariables}

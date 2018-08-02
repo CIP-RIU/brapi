@@ -4,7 +4,8 @@
 \alias{ba_studies_table_save}
 \title{ba_studies_table_save}
 \usage{
-ba_studies_table_save(con = NULL, studyDbId = "1", study_table = NULL)
+ba_studies_table_save(con = NULL, studyDbId = "1",
+  study_table = NULL)
 }
 \arguments{
 \item{con}{list; brapi connection object}
@@ -69,3 +70,5 @@ Other phenotyping: \code{\link{ba_samples_save}},
 \author{
 Reinhard Simon
 }
+\concept{phenotyping}
+\concept{studies}

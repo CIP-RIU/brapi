@@ -4,8 +4,8 @@
 \alias{ba_observationvariables_ontologies}
 \title{ba_observationvariables_ontologies}
 \usage{
-ba_observationvariables_ontologies(con = NULL, page = 0, pageSize = 1000,
-  rclass = "tibble")
+ba_observationvariables_ontologies(con = NULL, page = 0,
+  pageSize = 1000, rclass = "tibble")
 }
 \arguments{
 \item{con}{list; brapi connection object; default = NULL}
@@ -58,3 +58,5 @@ Other brapicore: \code{\link{ba_calls}},
 \author{
 Reinhard Simon
 }
+\concept{brapicore}
+\concept{observationvariables}

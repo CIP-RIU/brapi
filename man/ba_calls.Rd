@@ -67,3 +67,4 @@ Other brapicore: \code{\link{ba_commoncropnames}},
 \author{
 Reinhard Simon, Maikel Verouden
 }
+\concept{brapicore}

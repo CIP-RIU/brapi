@@ -5,8 +5,8 @@
 \title{ba_genomemaps_data_range}
 \usage{
 ba_genomemaps_data_range(con = NULL, mapDbId = "1",
-  linkageGroupName = "1", min = "", max = "", page = 0, pageSize = 30,
-  rclass = "tibble")
+  linkageGroupName = "1", min = "", max = "", page = 0,
+  pageSize = 30, rclass = "tibble")
 }
 \arguments{
 \item{con}{brapi connection object}
@@ -70,3 +70,5 @@ Other genotyping: \code{\link{ba_genomemaps_data}},
 \author{
 Reinhard Simon
 }
+\concept{genomemaps}
+\concept{genotyping}

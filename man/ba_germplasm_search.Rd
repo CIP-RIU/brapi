@@ -4,9 +4,9 @@
 \alias{ba_germplasm_search}
 \title{ba_germplasm_search}
 \usage{
-ba_germplasm_search(con = NULL, germplasmDbId = "", germplasmName = "",
-  germplasmPUI = "", page = 0, pageSize = 10, method = "GET",
-  rclass = "tibble")
+ba_germplasm_search(con = NULL, germplasmDbId = "",
+  germplasmName = "", germplasmPUI = "", page = 0, pageSize = 10,
+  method = "GET", rclass = "tibble")
 }
 \arguments{
 \item{con}{brapi connection object}
@@ -87,3 +87,6 @@ Other germplasm: \code{\link{ba_germplasm_details_study}},
 \author{
 Reinhard Simon
 }
+\concept{brapicore}
+\concept{genotyping}
+\concept{germplasm}

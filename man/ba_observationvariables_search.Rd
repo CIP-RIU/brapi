@@ -6,8 +6,9 @@
 \usage{
 ba_observationvariables_search(con = NULL, datatypes = "",
   methodDbIds = "", names = "", observationVariableDbIds = "",
-  ontologyXrefs = "", ontologyDbIds = "", page = 0, pageSize = 1000,
-  scaleDbIds = "", traitClasses = "", rclass = "tibble")
+  ontologyXrefs = "", ontologyDbIds = "", page = 0,
+  pageSize = 1000, scaleDbIds = "", traitClasses = "",
+  rclass = "tibble")
 }
 \arguments{
 \item{con}{brapi list; connection object}
@@ -73,3 +74,4 @@ Other brapicore: \code{\link{ba_calls}},
 \author{
 Reinhard Simon
 }
+\concept{brapicore}

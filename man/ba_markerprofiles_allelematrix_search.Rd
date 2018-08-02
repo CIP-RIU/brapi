@@ -4,10 +4,10 @@
 \alias{ba_markerprofiles_allelematrix_search}
 \title{ba_markerprofiles_allelematrix_search}
 \usage{
-ba_markerprofiles_allelematrix_search(con = NULL, markerprofileDbId = "",
-  markerDbId = "", expandHomozygotes = FALSE, unknownString = "-",
-  sepPhased = "|", sepUnphased = "/", format = "json", page = 0,
-  pageSize = 10000, rclass = "tibble")
+ba_markerprofiles_allelematrix_search(con = NULL,
+  markerprofileDbId = "", markerDbId = "", expandHomozygotes = FALSE,
+  unknownString = "-", sepPhased = "|", sepUnphased = "/",
+  format = "json", page = 0, pageSize = 10000, rclass = "tibble")
 }
 \arguments{
 \item{con}{brapi connection object}
@@ -79,3 +79,5 @@ Other genotyping: \code{\link{ba_genomemaps_data_range}},
 \author{
 Reinhard Simon
 }
+\concept{genotyping}
+\concept{markerprofiles}

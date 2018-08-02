@@ -4,7 +4,8 @@
 \alias{ba_germplasm_details}
 \title{ba_germplasm_details}
 \usage{
-ba_germplasm_details(con = NULL, germplasmDbId = "", rclass = "tibble")
+ba_germplasm_details(con = NULL, germplasmDbId = "",
+  rclass = "tibble")
 }
 \arguments{
 \item{con}{brapi connection object}
@@ -57,3 +58,5 @@ Other brapicore: \code{\link{ba_calls}},
 \author{
 Reinhard Simon
 }
+\concept{brapicore}
+\concept{germplasm}
