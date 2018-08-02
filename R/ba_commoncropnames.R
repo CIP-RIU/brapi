@@ -1,6 +1,6 @@
-#' ba_commoncropnames
+#' @title ba_commoncropnames
 #'
-#' List supported crops in a database.
+#' @description List supported crops in a database.
 #'
 #' @param con list, brapi connection object
 #' @param rclass character, class of the object to be returned;  default: "tibble"
@@ -17,11 +17,6 @@
 #' @references \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Crops/CommonCropNames_GET.md}{github}
 #' @family brapicore
 #' @example inst/examples/ex-ba_commoncropnames.R
-#'
-#' @templateVar old ba_crops
-#' @templateVar new ba_commoncropnames
-#' @template template-depr_pkg
-#'
 #' @export
 ba_commoncropnames <- function(con = NULL, rclass = "tibble") {
   stopifnot(is.ba_con(obj = con))

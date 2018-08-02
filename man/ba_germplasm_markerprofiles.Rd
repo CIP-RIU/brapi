@@ -35,11 +35,11 @@ if (interactive()) {
 }
 \seealso{
 Other germplasm: \code{\link{ba_germplasm_details_study-deprecated}},
+  \code{\link{ba_germplasm_details_study}},
   \code{\link{ba_germplasm_details}},
   \code{\link{ba_germplasm_pedigree}},
   \code{\link{ba_germplasm_progeny}},
-  \code{\link{ba_germplasm_search}},
-  \code{\link{brapi-deprecated}}
+  \code{\link{ba_germplasm_search}}
 
 Other genotyping: \code{\link{ba_genomemaps_data_range}},
   \code{\link{ba_genomemaps_data}},

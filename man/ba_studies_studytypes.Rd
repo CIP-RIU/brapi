@@ -38,7 +38,8 @@ if (interactive()) {
 \href{https://github.com/plantbreeding/API/blob/master/Specification/Studies/ListStudyTypes.md}{github}
 }
 \seealso{
-Other studies: \code{\link{ba_studies_details}},
+Other studies: \code{\link{ba_germplasm_details_study}},
+  \code{\link{ba_studies_details}},
   \code{\link{ba_studies_layout}},
   \code{\link{ba_studies_observationlevels}},
   \code{\link{ba_studies_observations}},
@@ -49,8 +50,7 @@ Other studies: \code{\link{ba_studies_details}},
   \code{\link{ba_studies_search}},
   \code{\link{ba_studies_seasons}},
   \code{\link{ba_studies_table_save}},
-  \code{\link{ba_studies_table}},
-  \code{\link{brapi-deprecated}}
+  \code{\link{ba_studies_table}}
 
 Other phenotyping: \code{\link{ba_samples_save}},
   \code{\link{ba_samples}},

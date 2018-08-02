@@ -20,6 +20,12 @@
 #'
 #' @templateVar fun ba_crops
 #' @template template-depr_fun
+NULL
+
+#'
+#' @templateVar old ba_crops
+#' @templateVar new ba_commoncropnames
+#' @template template-depr_pkg
 #'
 #' @export
 ba_crops <- function(con = NULL, rclass = "tibble") {

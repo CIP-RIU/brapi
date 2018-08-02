@@ -1,6 +1,6 @@
-#' ba_studies_germplasm_details
+#' @title ba_studies_germplasm_details
 #'
-#' Gets germplasm details for a specific study available on a brapi server.
+#' @description Gets germplasm details for a specific study available on a brapi server.
 #'
 #' @param con list, brapi connection object
 #' @param studyDbId character, the internal database identifier for a study of
@@ -25,11 +25,6 @@
 #' @family brapicore
 #' @example inst/examples/ex-ba_studies_germplasm_details.R
 #' @import tibble
-#'
-#' @templateVar old ba_germplasm_details_study
-#' @templateVar new ba_studies_germplasm_details
-#' @template template-depr_pkg
-#'
 #' @export
 ba_germplasm_details_study <- function(con = NULL,
                                        studyDbId = "",
