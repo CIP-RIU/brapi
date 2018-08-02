@@ -13,7 +13,7 @@
 #' @note BrAPI Status: deprecated
 #'
 #' @author Reinhard Simon, Maikel Verouden
-#' @references \href{https://github.com/plantbreeding/API/blob/V1.1/Specification/Crops/ListCrops.md}{github}
+#' @references \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Crops/ListCrops_Deprecated.md}{github}
 #' @family brapicore
 #' @example inst/examples/ex-ba_crops.R
 #' @export

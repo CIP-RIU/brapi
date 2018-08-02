@@ -44,7 +44,7 @@ if (interactive()) {
 }
 }
 \references{
-\href{https://github.com/plantbreeding/API/tree/master/Specification/Calls}{github}
+\href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Calls/Calls.md}{github}
 }
 \seealso{
 Other brapicore: \code{\link{ba_commoncropnames}},

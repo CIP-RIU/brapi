@@ -18,7 +18,7 @@
 #' @note BrAPI Status: active
 #'
 #' @author Reinhard Simon, Maikel Verouden
-#' @references \href{https://github.com/plantbreeding/API/tree/master/Specification/Calls}{github}
+#' @references \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Calls/Calls.md}{github}
 #' @family brapicore
 #' @example inst/examples/ex_calls.R
 #' @import tibble

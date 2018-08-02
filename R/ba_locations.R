@@ -19,7 +19,7 @@
 #' @note BrAPI Status: active
 #'
 #' @author Reinhard Simon, Maikel Verouden
-#' @references \href{https://github.com/plantbreeding/API/tree/master/Specification/Locations}{github}
+#' @references \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Locations/ListLocations.md}{github}
 #' @example inst/examples/ex-ba_locations.R
 #' @import tibble
 #' @export
