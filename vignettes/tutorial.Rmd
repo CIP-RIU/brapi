@@ -39,19 +39,6 @@ sp_base
 
 ```
 
-## Listing available crops
-
-This is interesting if you have multicrop databases. In the case of sweetpotatobase there is only one crop on that server.
-
-```{r}
-crops <- ba_crops(sp_base)
-
-# We only expect one crop here: sweetpotato
-
-crops
-
-```
-
 ## Switching on information on server connectiviy
 
 In many cases when exploring a new database it will be useful to get any feedback from the server. The package provides a switch that allows to turn on or off such log information.
@@ -97,7 +84,7 @@ ba_programs(sp_base, rclass = "data.frame")
 ### Which studies are there?
 
 ```{r}
-ba_studies_search(sp_base, programDbId = "140")
+ba_studies_search_get(sp_base, programDbId = "140")
 ```
 
 ### Get a study (or fieldbook)
