@@ -47,8 +47,7 @@ if (interactive()) {
 \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Calls/Calls.md}{github}
 }
 \seealso{
-Other brapicore: \code{\link{ba_commoncropnames}},
-  \code{\link{ba_crops}},
+Other brapicore: \code{\link{ba_crops-deprecated}},
   \code{\link{ba_germplasm_details_study}},
   \code{\link{ba_germplasm_details}},
   \code{\link{ba_germplasm_pedigree}},
@@ -62,8 +61,10 @@ Other brapicore: \code{\link{ba_commoncropnames}},
   \code{\link{ba_phenotypes_search}},
   \code{\link{ba_programs_search}},
   \code{\link{ba_programs}},
-  \code{\link{ba_traits_details}}, \code{\link{ba_traits}}
+  \code{\link{ba_traits_details}}, \code{\link{ba_traits}},
+  \code{\link{brapi-deprecated}}
 }
 \author{
 Reinhard Simon, Maikel Verouden
 }
+\concept{brapicore}

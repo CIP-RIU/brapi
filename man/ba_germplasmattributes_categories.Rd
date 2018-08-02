@@ -4,8 +4,8 @@
 \alias{ba_germplasmattributes_categories}
 \title{ba_germplasmattributes_categories}
 \usage{
-ba_germplasmattributes_categories(con = NULL, page = 0, pageSize = 10,
-  rclass = "tibble")
+ba_germplasmattributes_categories(con = NULL, page = 0,
+  pageSize = 10, rclass = "tibble")
 }
 \arguments{
 \item{con}{brapi connection object}
@@ -59,3 +59,5 @@ Other genotyping: \code{\link{ba_genomemaps_data_range}},
 \author{
 Reinhard Simon
 }
+\concept{genotyping}
+\concept{germplasmattributes}

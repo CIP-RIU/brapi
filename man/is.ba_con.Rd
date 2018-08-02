@@ -26,3 +26,4 @@ Other brapiutils: \code{\link{as.ba_db}},
 \author{
 Reinahard Simon, Maikel Verouden
 }
+\concept{brapiutils}

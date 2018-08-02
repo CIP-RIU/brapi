@@ -17,6 +17,11 @@
 #' @references \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Crops/CommonCropNames_GET.md}{github}
 #' @family brapicore
 #' @example inst/examples/ex-ba_commoncropnames.R
+#'
+#' @templateVar old ba_crops
+#' @templateVar new ba_commoncropnames
+#' @template template-depr_pkg
+#'
 #' @export
 ba_commoncropnames <- function(con = NULL, rclass = "tibble") {
   stopifnot(is.ba_con(obj = con))

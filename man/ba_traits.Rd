@@ -40,7 +40,7 @@ if (interactive()) {
 Other traits: \code{\link{ba_traits_details}}
 
 Other brapicore: \code{\link{ba_calls}},
-  \code{\link{ba_commoncropnames}}, \code{\link{ba_crops}},
+  \code{\link{ba_crops-deprecated}},
   \code{\link{ba_germplasm_details_study}},
   \code{\link{ba_germplasm_details}},
   \code{\link{ba_germplasm_pedigree}},
@@ -54,8 +54,11 @@ Other brapicore: \code{\link{ba_calls}},
   \code{\link{ba_phenotypes_search}},
   \code{\link{ba_programs_search}},
   \code{\link{ba_programs}},
-  \code{\link{ba_traits_details}}
+  \code{\link{ba_traits_details}},
+  \code{\link{brapi-deprecated}}
 }
 \author{
 Reinhard Simon
 }
+\concept{brapicore}
+\concept{traits}

@@ -4,9 +4,9 @@
 \alias{ba_germplasm_search}
 \title{ba_germplasm_search}
 \usage{
-ba_germplasm_search(con = NULL, germplasmDbId = "", germplasmName = "",
-  germplasmPUI = "", page = 0, pageSize = 10, method = "GET",
-  rclass = "tibble")
+ba_germplasm_search(con = NULL, germplasmDbId = "",
+  germplasmName = "", germplasmPUI = "", page = 0, pageSize = 10,
+  method = "GET", rclass = "tibble")
 }
 \arguments{
 \item{con}{brapi connection object}
@@ -47,7 +47,7 @@ if (interactive()) {
 }
 \seealso{
 Other brapicore: \code{\link{ba_calls}},
-  \code{\link{ba_commoncropnames}}, \code{\link{ba_crops}},
+  \code{\link{ba_crops-deprecated}},
   \code{\link{ba_germplasm_details_study}},
   \code{\link{ba_germplasm_details}},
   \code{\link{ba_germplasm_pedigree}},
@@ -60,7 +60,8 @@ Other brapicore: \code{\link{ba_calls}},
   \code{\link{ba_phenotypes_search}},
   \code{\link{ba_programs_search}},
   \code{\link{ba_programs}},
-  \code{\link{ba_traits_details}}, \code{\link{ba_traits}}
+  \code{\link{ba_traits_details}}, \code{\link{ba_traits}},
+  \code{\link{brapi-deprecated}}
 
 Other genotyping: \code{\link{ba_genomemaps_data_range}},
   \code{\link{ba_genomemaps_data}},
@@ -87,3 +88,6 @@ Other germplasm: \code{\link{ba_germplasm_details_study}},
 \author{
 Reinhard Simon
 }
+\concept{brapicore}
+\concept{genotyping}
+\concept{germplasm}

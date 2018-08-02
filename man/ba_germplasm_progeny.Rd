@@ -4,7 +4,8 @@
 \alias{ba_germplasm_progeny}
 \title{ba_germplasm_progeny}
 \usage{
-ba_germplasm_progeny(con = NULL, germplasmDbId = "", rclass = "tibble")
+ba_germplasm_progeny(con = NULL, germplasmDbId = "",
+  rclass = "tibble")
 }
 \arguments{
 \item{con}{brapi connection object}
@@ -40,7 +41,7 @@ Other germplasm: \code{\link{ba_germplasm_details_study}},
   \code{\link{ba_germplasm_search}}
 
 Other brapicore: \code{\link{ba_calls}},
-  \code{\link{ba_commoncropnames}}, \code{\link{ba_crops}},
+  \code{\link{ba_crops-deprecated}},
   \code{\link{ba_germplasm_details_study}},
   \code{\link{ba_germplasm_details}},
   \code{\link{ba_germplasm_pedigree}},
@@ -53,8 +54,11 @@ Other brapicore: \code{\link{ba_calls}},
   \code{\link{ba_phenotypes_search}},
   \code{\link{ba_programs_search}},
   \code{\link{ba_programs}},
-  \code{\link{ba_traits_details}}, \code{\link{ba_traits}}
+  \code{\link{ba_traits_details}}, \code{\link{ba_traits}},
+  \code{\link{brapi-deprecated}}
 }
 \author{
 Reinhard Simon
 }
+\concept{brapicore}
+\concept{germplasm}

@@ -81,3 +81,5 @@ Other phenotyping: \code{\link{ba_samples_save}},
 \author{
 Reinhard Simon, Maikel Verouden
 }
+\concept{phenotyping}
+\concept{trials}

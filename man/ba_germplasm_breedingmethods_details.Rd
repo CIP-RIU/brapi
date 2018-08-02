@@ -4,8 +4,8 @@
 \alias{ba_germplasm_breedingmethods_details}
 \title{ba_germplasm_breedingmethods_details}
 \usage{
-ba_germplasm_breedingmethods_details(con = NULL, breedingMethodDbId = "",
-  rclass = "tibble")
+ba_germplasm_breedingmethods_details(con = NULL,
+  breedingMethodDbId = "", rclass = "tibble")
 }
 \arguments{
 \item{con}{list, brapi connection object}

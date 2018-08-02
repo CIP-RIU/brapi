@@ -4,8 +4,8 @@
 \alias{ba_observationvariables_ontologies}
 \title{ba_observationvariables_ontologies}
 \usage{
-ba_observationvariables_ontologies(con = NULL, page = 0, pageSize = 1000,
-  rclass = "tibble")
+ba_observationvariables_ontologies(con = NULL, page = 0,
+  pageSize = 1000, rclass = "tibble")
 }
 \arguments{
 \item{con}{list; brapi connection object; default = NULL}
@@ -40,7 +40,7 @@ Other observationvariables: \code{\link{ba_observationvariables_datatypes}},
   \code{\link{ba_observationvariables}}
 
 Other brapicore: \code{\link{ba_calls}},
-  \code{\link{ba_commoncropnames}}, \code{\link{ba_crops}},
+  \code{\link{ba_crops-deprecated}},
   \code{\link{ba_germplasm_details_study}},
   \code{\link{ba_germplasm_details}},
   \code{\link{ba_germplasm_pedigree}},
@@ -53,8 +53,11 @@ Other brapicore: \code{\link{ba_calls}},
   \code{\link{ba_phenotypes_search}},
   \code{\link{ba_programs_search}},
   \code{\link{ba_programs}},
-  \code{\link{ba_traits_details}}, \code{\link{ba_traits}}
+  \code{\link{ba_traits_details}}, \code{\link{ba_traits}},
+  \code{\link{brapi-deprecated}}
 }
 \author{
 Reinhard Simon
 }
+\concept{brapicore}
+\concept{observationvariables}

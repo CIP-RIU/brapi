@@ -68,3 +68,4 @@ Other brapiutils: \code{\link{as.ba_db}},
 \author{
 Reinhard Simon, Maikel Verouden
 }
+\concept{brapiutils}

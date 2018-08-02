@@ -3,7 +3,6 @@
 %   R/ba_studies_germplasm_details.R
 \name{ba_germplasm_details_study}
 \alias{ba_germplasm_details_study}
-\alias{ba_germplasm_details_study}
 \title{ba_germplasm_details_study}
 \usage{
 ba_germplasm_details_study(con = NULL, studyDbId = "", page = 0,
@@ -93,7 +92,7 @@ Other germplasm: \code{\link{ba_germplasm_details}},
   \code{\link{ba_germplasm_search}}
 
 Other brapicore: \code{\link{ba_calls}},
-  \code{\link{ba_commoncropnames}}, \code{\link{ba_crops}},
+  \code{\link{ba_crops-deprecated}},
   \code{\link{ba_germplasm_details}},
   \code{\link{ba_germplasm_pedigree}},
   \code{\link{ba_germplasm_progeny}},
@@ -106,7 +105,8 @@ Other brapicore: \code{\link{ba_calls}},
   \code{\link{ba_phenotypes_search}},
   \code{\link{ba_programs_search}},
   \code{\link{ba_programs}},
-  \code{\link{ba_traits_details}}, \code{\link{ba_traits}}
+  \code{\link{ba_traits_details}}, \code{\link{ba_traits}},
+  \code{\link{brapi-deprecated}}
 
 Other studies: \code{\link{ba_studies_details}},
   \code{\link{ba_studies_layout}},
@@ -129,7 +129,7 @@ Other germplasm: \code{\link{ba_germplasm_details}},
   \code{\link{ba_germplasm_search}}
 
 Other brapicore: \code{\link{ba_calls}},
-  \code{\link{ba_commoncropnames}}, \code{\link{ba_crops}},
+  \code{\link{ba_crops-deprecated}},
   \code{\link{ba_germplasm_details}},
   \code{\link{ba_germplasm_pedigree}},
   \code{\link{ba_germplasm_progeny}},
@@ -142,10 +142,14 @@ Other brapicore: \code{\link{ba_calls}},
   \code{\link{ba_phenotypes_search}},
   \code{\link{ba_programs_search}},
   \code{\link{ba_programs}},
-  \code{\link{ba_traits_details}}, \code{\link{ba_traits}}
+  \code{\link{ba_traits_details}}, \code{\link{ba_traits}},
+  \code{\link{brapi-deprecated}}
 }
 \author{
 Reinhard Simon
 
 Reinhard Simon, Maikel Verouden
 }
+\concept{brapicore}
+\concept{germplasm}
+\concept{studies}

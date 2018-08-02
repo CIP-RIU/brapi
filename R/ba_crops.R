@@ -1,6 +1,6 @@
-#' ba_crops
+#' @title ba_crops
 #'
-#' List supported crops in a database.
+#' @description List supported crops in a database.
 #'
 #'
 #' @param con list, brapi connection object
@@ -17,6 +17,10 @@
 #' @references \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Crops/ListCrops_Deprecated.md}{github}
 #' @family brapicore
 #' @example inst/examples/ex-ba_crops.R
+#'
+#' @templateVar fun ba_crops
+#' @template template-depr_fun
+#'
 #' @export
 ba_crops <- function(con = NULL, rclass = "tibble") {
   .Deprecated(new = "ba_commoncropnames")

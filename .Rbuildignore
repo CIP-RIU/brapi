@@ -12,3 +12,4 @@
 ^\.docs
 ^docs
 ^\.httr-oauth$
+^\.man-roxygen

@@ -72,3 +72,5 @@ Other phenotyping: \code{\link{ba_samples_save}},
 \author{
 Reinhard Simon
 }
+\concept{phenotyping}
+\concept{studies}
