@@ -3,7 +3,7 @@ sgp2tbl <- function(res, rclass) {
   resultJSON <- jsonlite::toJSON(x = lst$result)
   resultList <- jsonlite::fromJSON(txt = resultJSON, flatten = TRUE)
   dataDF <- resultList$data
-  ### remove duplicated rows
+  # remove duplicated rows
   dataDF <- dataDF[!duplicated(dataDF), ]
   resultList$data <- NULL
   restDF <- as.data.frame(resultList, stringsAsFactors = FALSE)
