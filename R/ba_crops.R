@@ -2,7 +2,6 @@
 #'
 #' List supported crops in a database.
 #'
-#'
 #' @param con list, brapi connection object
 #' @param rclass character, class of the object to be returned;  default: "tibble"
 #'               , possible other values: "json"/"list"/"vector"/"data.frame"
