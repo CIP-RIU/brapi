@@ -43,18 +43,22 @@ ba_studies_germplasm_details <- function(con = NULL,
   ppageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=",
                                                   pageSize, "&"), "")
   ppage <- ifelse(is.numeric(page), paste0("page=", page, "&"), "")
+  if (page == 0 & pageSize == 1000) {
+    ppage <- ""
+    ppageSize <- ""
+  }
   # modify brapi call url to include pagenation
-  callurl <- sub("[/?&]$",
-                 "",
-                 paste0(studies_germplasm_list,
-                        ppageSize,
-                        ppage))
+  callurl <- sub(pattern = "[/?&]$",
+                 replacement = "",
+                 x = paste0(studies_germplasm_list,
+                            ppageSize,
+                            ppage))
   try({
     res <- brapiGET(url = callurl, con = con)
     res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
     out <- NULL
     if (rclass %in% c("json", "list")) {
-      out <- dat2tbl(res2, rclass)
+      out <- dat2tbl(res = res2, rclass = rclass)
     }
     if (rclass %in% c("tibble", "data.frame")) {
       out <- sgp2tbl(res = res2, rclass = rclass)
