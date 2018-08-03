@@ -129,29 +129,29 @@ ba_studies_search_get <- function(con = NULL,
     ppage <- ""
     ppageSize <- ""
   }
-  pstudies_search <- sub("[/?&]$",
-                         "",
-                         paste0(pstudies_search,
-                                pstudyDbId,
-                                ptrialDbId,
-                                pprogramDbId,
-                                pcommonCropName,
-                                plocationDbId,
-                                pseasonDbId,
-                                pstudyType,
-                                pgermplasmDbIds,
-                                pobservationVariableDbIds,
-                                pactive,
-                                psortBy,
-                                psortOrder,
-                                ppageSize,
-                                ppage))
-  nurl <- nchar(pstudies_search)
+  callurl <- sub(pattern = "[/?&]$",
+                 replacement = "",
+                 x = paste0(pstudies_search,
+                            pstudyDbId,
+                            ptrialDbId,
+                            pprogramDbId,
+                            pcommonCropName,
+                            plocationDbId,
+                            pseasonDbId,
+                            pstudyType,
+                            pgermplasmDbIds,
+                            pobservationVariableDbIds,
+                            pactive,
+                            psortBy,
+                            psortOrder,
+                            ppageSize,
+                            ppage))
+  nurl <- nchar(callurl)
   out <- NULL
   if (nurl <= 2000) {
     message("Using GET")
     out <- try({
-      res <- brapiGET(url = pstudies_search, con = con)
+      res <- brapiGET(url = callurl, con = con)
       res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
       out <- NULL
       if (rclass %in% c("list", "json")) {

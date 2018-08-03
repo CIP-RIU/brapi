@@ -47,14 +47,14 @@ ba_locations <- function(con = NULL,
     ppage <- ""
   }
   # modify brapi call specific url to include locationType and pagenation
-  locations_list <- sub("[/?&]$",
-                        "",
-                        paste0(locations_list,
-                               plocationType,
-                               ppageSize,
-                               ppage))
+  callurl <- sub("[/?&]$",
+                 "",
+                 paste0(locations_list,
+                        plocationType,
+                        ppageSize,
+                        ppage))
   try({
-    res <- brapiGET(url = locations_list, con = con)
+    res <- brapiGET(url = callurl, con = con)
     res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
     out <- NULL
     if (rclass %in% c("json", "list")) {

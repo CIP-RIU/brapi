@@ -32,9 +32,9 @@ ba_locations_details <- function(con = NULL,
   stopifnot(locationDbId != "")
   check_rclass(rclass = rclass)
   brp <- get_brapi(con = con)
-  location_detail <- paste0(brp, "locations/", locationDbId)
+  callurl <- paste0(brp, "locations/", locationDbId)
   try({
-    res <- brapiGET(url = location_detail, con = con)
+    res <- brapiGET(url = callurl, con = con)
     res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
     out <- NULL
     if (rclass %in% c("json", "list")) {

@@ -112,7 +112,7 @@ ba_studies_search_post <- function(con = NULL,
   check_rclass(rclass = rclass)
 
   brp <- get_brapi(con = con)
-  pstudies_search <- paste0(brp, "studies-search")
+  callurl <- paste0(brp, "studies-search")
 
   body <- list(
     studyDbIds = as.array(ifelse(studyDbIds != "", studyDbIds, "")),
@@ -143,8 +143,8 @@ ba_studies_search_post <- function(con = NULL,
   out <- NULL
   message("Using POST")
   out <- try({
-    # print(pstudies_search)
-    res <- brapiPOST(url = pstudies_search, body = body, con = con)
+    # print(callurl)
+    res <- brapiPOST(url = callurl, body = body, con = con)
     res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
     if (rclass %in% c("list", "json")) {
       out <- dat2tbl(res = res2, rclass = rclass)

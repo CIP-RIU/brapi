@@ -25,13 +25,13 @@ ba_crops <- function(con = NULL, rclass = "tibble") {
   omc <- con$multicrop
   con$multicrop <- FALSE
   ba_check(con = con, verbose = FALSE, brapi_calls = "crops")
-  # generate the brapi call url
-  crops_list <- paste0(get_brapi(con = con), "crops")
+  brp <- get_brapi(con = con)
+  callurl <- paste0(brp, "crops")
   # store original rclass, needed when equal to data.frame
   orclass <- rclass
   rclass <- df2tibble(rclass = rclass)
   out <- try({
-    res <- brapiGET(url = crops_list, con = con)
+    res <- brapiGET(url = callurl, con = con)
     res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
     out <- dat2tbl(res = res2, rclass = rclass)
     if (any(class(out) %in% c("tbl_df", "data.frame"))) {

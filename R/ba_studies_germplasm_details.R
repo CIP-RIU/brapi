@@ -28,29 +28,29 @@
 #' @export
 ba_studies_germplasm_details <- function(con = NULL,
                                        studyDbId = "",
-                                       page = 0,
                                        pageSize = 1000,
+                                       page = 0,
                                        rclass = "tibble") {
   ba_check(con = con, verbose = FALSE, brapi_calls = "studies/id/germplasm")
   stopifnot(is.character(studyDbId))
-  stopifnot(studyDbId != '')
+  stopifnot(studyDbId != "")
   check_paging(pageSize = pageSize, page = page)
   check_rclass(rclass = rclass)
   # fetch url of brapi implementation of the database
   brp <- get_brapi(con = con)
   # generate brapi call url
   studies_germplasm_list <- paste0(brp, "studies/", studyDbId, "/germplasm?")
-  page <- ifelse(is.numeric(page), paste0("page=", page), "")
-  pageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=",
+  ppageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=",
                                                   pageSize, "&"), "")
+  ppage <- ifelse(is.numeric(page), paste0("page=", page, "&"), "")
   # modify brapi call url to include pagenation
-  studies_germplasm_list <- sub("[/?&]$",
-                                "",
-                                paste0(studies_germplasm_list,
-                                       pageSize,
-                                       page))
+  callurl <- sub("[/?&]$",
+                 "",
+                 paste0(studies_germplasm_list,
+                        ppageSize,
+                        ppage))
   try({
-    res <- brapiGET(url = studies_germplasm_list, con = con)
+    res <- brapiGET(url = callurl, con = con)
     res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
     out <- NULL
     if (rclass %in% c("json", "list")) {

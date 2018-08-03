@@ -59,16 +59,16 @@ ba_programs <- function(con = NULL,
     ppage <- ""
     ppageSize <- ""
   }
-  pprograms <- sub("[/?&]$",
-                   "",
-                   paste0(pprograms,
-                          pprogramName,
-                          pabbreviation,
-                          pcommonCropName,
-                          ppageSize,
-                          ppage))
+  callurl <- sub("[/?&]$",
+                 "",
+                 paste0(pprograms,
+                        pprogramName,
+                        pabbreviation,
+                        pcommonCropName,
+                        ppageSize,
+                        ppage))
   try({
-    res <- brapiGET(url = pprograms, con = con)
+    res <- brapiGET(url = callurl, con = con)
     res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
     out <- dat2tbl(res = res2, rclass = rclass)
     class(out) <- c(class(out), "ba_programs")

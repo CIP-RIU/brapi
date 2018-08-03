@@ -44,13 +44,13 @@ ba_germplasm_details_study <- function(con = NULL,
                                                   pageSize, "&"), "")
   page <- ifelse(is.numeric(page), paste0("page=", page, "&"), "")
   # modify brapi call url to include pagenation
-  studies_germplasm_list <- sub("[/?&]$",
-                                "",
-                                paste0(studies_germplasm_list,
-                                       pageSize,
-                                       page))
+  callurl <- sub(pattern = "[/?&]$",
+                 replacement = "",
+                 x = paste0(studies_germplasm_list,
+                            pageSize,
+                            page))
   try({
-    res <- brapiGET(url = studies_germplasm_list, con = con)
+    res <- brapiGET(url = callurl, con = con)
     res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
     out <- NULL
     if (rclass %in% c("json", "list")) {

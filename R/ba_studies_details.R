@@ -34,9 +34,9 @@ ba_studies_details <- function(con = NULL,
   stopifnot(studyDbId != "")
   check_rclass(rclass = rclass)
   brp <- get_brapi(con = con)
-  studies <- paste0(brp, "studies/", studyDbId)
+  callurl <- paste0(brp, "studies/", studyDbId)
   try({
-    res <- brapiGET(url = studies, con = con)
+    res <- brapiGET(url = callurl, con = con)
     out <- NULL
     if (is.ba_status_ok(resp = res)) {
       res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")

@@ -51,7 +51,7 @@ ba_calls <- function(con = NULL,
     ppageSize <- ""
   }
   # modify the call url with pagenation
-  brapi_calls <- sub("[/?&]$",
+  callurl <- sub("[/?&]$",
                       "",
                       paste0(brapi_calls,
                              pdatatype,
@@ -59,7 +59,7 @@ ba_calls <- function(con = NULL,
                              ppage))
   try({
     # make the brapi GET call with the generated call url
-    res <- brapiGET(url = brapi_calls, con = con)
+    res <- brapiGET(url = callurl, con = con)
 
     # parse the GET response
     res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
