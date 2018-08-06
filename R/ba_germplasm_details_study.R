@@ -1,3 +1,4 @@
+## ba_germplasm_details_study.R
 #' @title ba_germplasm_details_study
 #'
 #' @description Gets germplasm details for a specific study available on a brapi server.
