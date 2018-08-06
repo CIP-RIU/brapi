@@ -27,10 +27,10 @@
 #' @import tibble
 #' @export
 ba_studies_germplasm_details <- function(con = NULL,
-                                       studyDbId = "",
-                                       pageSize = 1000,
-                                       page = 0,
-                                       rclass = "tibble") {
+                                         studyDbId = "",
+                                         pageSize = 1000,
+                                         page = 0,
+                                         rclass = "tibble") {
   ba_check(con = con, verbose = FALSE, brapi_calls = "studies/id/germplasm")
   stopifnot(is.character(studyDbId))
   stopifnot(studyDbId != "")
