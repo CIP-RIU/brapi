@@ -5,11 +5,11 @@ sgp2tbl <- function(res, rclass) {
   dataDF <- resultList$data
   resultList$data <- NULL
   restDF <- as.data.frame(resultList, stringsAsFactors = FALSE)
-  temp <- restDF
+  temp <- NULL
   if (nrow(dataDF) == 1) {
     temp <- restDF
   } else {
-    for (i in 1:(nrow(dataDF) - 1)) {
+    for (i in 1:nrow(dataDF)) {
       temp <- rbind(temp, restDF)
     }
   }
