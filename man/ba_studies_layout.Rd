@@ -4,24 +4,41 @@
 \alias{ba_studies_layout}
 \title{ba_studies_layout}
 \usage{
-ba_studies_layout(con = NULL, studyDbId = "", rclass = "tibble")
+ba_studies_layout(con = NULL, studyDbId = "", pageSize = 1000,
+  page = 0, rclass = "tibble")
 }
 \arguments{
-\item{con}{brapi connection object}
+\item{con}{list, brapi connection object}
 
-\item{studyDbId}{character; default: ''}
+\item{studyDbId}{character, the internal database identifier for a study of
+which the plot layout is to be retrieved e.g. "1001";
+\strong{REQUIRED ARGUMENT} with default: ""}
 
-\item{rclass}{character; default: tibble}
+\item{pageSize}{integer, items per page to be returned; default: 1000}
+
+\item{page}{integer, the requested page to be returned; default: 0 (1st page)}
+
+\item{rclass}{character, class of the object to be returned;  default: "tibble"
+, possible other values: "json"/"list"/"data.frame"}
 }
 \value{
-rclass as defined
+An object of class as defined by rclass containing the plot layout
+        for a requested study.
 }
 \description{
-lists studies_layout available on a brapi server
+Retrieve the plot layout of a specific study available on a brapi server.
+}
+\details{
+This call must have set a specific identifier (studyDbId). The
+         default is an empty string. If not changed to an identifier present
+         in the database this will result in an error.
 }
 \note{
-This call must have set a specific identifier. The default is an empty string.
-     If not changed to an identifier present in the database this will result in an error.
+Tested against: sweetpotatobase, test-server
+
+BrAPI Version: 1.0, 1.1, 1.2
+
+BrAPI Status: active
 }
 \examples{
 if (interactive()) {
@@ -33,7 +50,7 @@ if (interactive()) {
 }
 }
 \references{
-\href{https://github.com/plantbreeding/API/blob/master/Specification/Studies/PlotLayoutDetails.md}{github}
+\href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Studies/Studies_Layout_GET.md}{github}
 }
 \seealso{
 Other studies: \code{\link{ba_studies_details}},
@@ -68,7 +85,7 @@ Other phenotyping: \code{\link{ba_samples_save}},
   \code{\link{ba_trials_details}}, \code{\link{ba_trials}}
 }
 \author{
-Reinhard Simon
+Reinhard Simon, Maikel Verouden
 }
 \concept{phenotyping}
 \concept{studies}

@@ -2,9 +2,6 @@
 #'
 #' Retrieve the plot layout of a specific study available on a brapi server.
 #'
-#' @note This call must have set a specific identifier. The default is an empty string.
-#'      If not changed to an identifier present in the database this will result in an error.
-#'
 #' @param con list, brapi connection object
 #' @param studyDbId character, the internal database identifier for a study of
 #'                  which the plot layout is to be retrieved e.g. "1001";
@@ -13,6 +10,10 @@
 #' @param page integer, the requested page to be returned; default: 0 (1st page)
 #' @param rclass character, class of the object to be returned;  default: "tibble"
 #'               , possible other values: "json"/"list"/"data.frame"
+#'
+#' @details This call must have set a specific identifier (studyDbId). The
+#'          default is an empty string. If not changed to an identifier present
+#'          in the database this will result in an error.
 #'
 #' @return An object of class as defined by rclass containing the plot layout
 #'         for a requested study.
