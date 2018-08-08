@@ -8,7 +8,9 @@ sov2tbl <- function(res,
   dataDF <- resultList$data
   dataDFJSON <- jsonlite::toJSON(x = dataDF)
   # reform flattened dataDF
-  dataDF <- jsonlite::fromJSON(txt = dataDFJSON, simplifyDataFrame = TRUE, flatten = TRUE)
+  dataDF <- jsonlite::fromJSON(txt = dataDFJSON,
+                               simplifyDataFrame = TRUE,
+                               flatten = TRUE)
   dataDF <- as.data.frame(lapply(X = dataDF,
                                  FUN = function(x) {
                                    if (class(x) == "list") {
