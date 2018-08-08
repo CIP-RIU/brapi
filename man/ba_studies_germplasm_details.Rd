@@ -50,6 +50,7 @@ if (interactive()) {
 \seealso{
 Other studies: \code{\link{ba_studies_details}},
   \code{\link{ba_studies_layout}},
+  \code{\link{ba_studies_observationVariables}},
   \code{\link{ba_studies_observationlevels}},
   \code{\link{ba_studies_observations}},
   \code{\link{ba_studies_observationunits}},

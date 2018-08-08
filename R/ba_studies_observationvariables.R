@@ -1,4 +1,4 @@
-#' ba_studies_observationVariables
+#' ba_studies_observationvariables
 #'
 #' Retrieve details of observation variables measured in a specific study.
 #'
@@ -18,27 +18,26 @@
 #'         measured observation variables for a requested study.
 #'
 #' @note Tested against: sweetpotatobase, test-server
-#' @note BrAPI Version: 1.0, 1.1, 1.2
-#' @note BrAPI Status: deprecated
+#' @note BrAPI Version: 1.1, 1.2
+#' @note BrAPI Status: active
 #'
 #' @author Reinhard Simon, Maikel Verouden
-#' @references \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Studies/Studies_ObservationVariables_GET_Deprecated.md}{github}
+#' @references \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Studies/Studies_ObservationVariables_GET.md}{github}
 #' @family studies
 #' @family phenotyping
-#' @example inst/examples/ex-ba_studies_observationVariables.R
+#' @example inst/examples/ex-ba_studies_observationvariables.R
 #' @import tibble
 #' @export
-ba_studies_observationVariables <- function(con = NULL,
+ba_studies_observationvariables <- function(con = NULL,
                                             studyDbId = "",
                                             rclass = "tibble") {
-  .Deprecated(new = "ba_studies_observationvariables")
   ba_check(con = con, verbose = FALSE, brapi_calls =
              "studies/id/observationVariables")
   stopifnot(is.character(studyDbId))
   stopifnot(studyDbId != "")
   check_rclass(rclass = rclass)
   brp <- get_brapi(con = con)
-  callurl <- paste0(brp, "studies/", studyDbId, "/observationVariables")
+  callurl <- paste0(brp, "studies/", studyDbId, "/observationvariables")
   try({
     res <- brapiGET(url = callurl, con = con)
     res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
