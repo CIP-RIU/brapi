@@ -7,6 +7,8 @@
 #'                  which the details of measured observation variables are to
 #'                  be retrieved e.g. "1001"; \strong{REQUIRED ARGUMENT} with
 #'                  default: ""
+#' @param pageSize integer, items per page to be returned; default: 1000
+#' @param page integer, the requested page to be returned; default: 0 (1st page)
 #' @param rclass character, class of the object to be returned;  default: "tibble"
 #'               , possible other values: "json"/"list"/"data.frame"
 #'
@@ -30,14 +32,30 @@
 #' @export
 ba_studies_observationvariables <- function(con = NULL,
                                             studyDbId = "",
+                                            pageSize = 1000,
+                                            page = 0,
                                             rclass = "tibble") {
   ba_check(con = con, verbose = FALSE, brapi_calls =
              "studies/id/observationVariables")
   stopifnot(is.character(studyDbId))
   stopifnot(studyDbId != "")
+  check_paging(pageSize = pageSize, page = page)
   check_rclass(rclass = rclass)
   brp <- get_brapi(con = con)
-  callurl <- paste0(brp, "studies/", studyDbId, "/observationvariables")
+  studies_observationvariables_list <- paste0(brp, "studies/", studyDbId, "/observationvariables?")
+  ppageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=",
+                                                   pageSize, "&"), "")
+  ppage <- ifelse(is.numeric(page), paste0("page=", page, "&"), "")
+  if (page == 0 & pageSize == 1000) {
+    ppage <- ""
+    ppageSize <- ""
+  }
+  # modify brapi call url to include pagenation
+  callurl <- sub(pattern = "[/?&]$",
+                 replacement = "",
+                 x = paste0(studies_observationvariables_list,
+                            ppageSize,
+                            ppage))
   try({
     res <- brapiGET(url = callurl, con = con)
     res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")

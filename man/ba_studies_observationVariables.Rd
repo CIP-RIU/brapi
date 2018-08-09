@@ -5,7 +5,7 @@
 \title{ba_studies_observationVariables}
 \usage{
 ba_studies_observationVariables(con = NULL, studyDbId = "",
-  rclass = "tibble")
+  pageSize = 1000, page = 0, rclass = "tibble")
 }
 \arguments{
 \item{con}{list, brapi connection object}
@@ -14,6 +14,10 @@ ba_studies_observationVariables(con = NULL, studyDbId = "",
 which the details of measured observation variables are to
 be retrieved e.g. "1001"; \strong{REQUIRED ARGUMENT} with
 default: ""}
+
+\item{pageSize}{integer, items per page to be returned; default: 1000}
+
+\item{page}{integer, the requested page to be returned; default: 0 (1st page)}
 
 \item{rclass}{character, class of the object to be returned;  default: "tibble"
 , possible other values: "json"/"list"/"data.frame"}
