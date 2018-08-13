@@ -1,4 +1,4 @@
-#' ba_studies_observationvariables
+#' ba_studies_observationVariables
 #'
 #' Retrieve details of observation variables measured in a specific study.
 #'
@@ -20,21 +20,22 @@
 #'         measured observation variables for a requested study.
 #'
 #' @note Tested against: sweetpotatobase, test-server
-#' @note BrAPI Version: 1.1, 1.2
-#' @note BrAPI Status: active
+#' @note BrAPI Version: 1.0, 1.1, 1.2
+#' @note BrAPI Status: deprecated
 #'
 #' @author Reinhard Simon, Maikel Verouden
-#' @references \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Studies/Studies_ObservationVariables_GET.md}{github}
+#' @references \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Studies/Studies_ObservationVariables_GET_Deprecated.md}{github}
 #' @family studies
 #' @family phenotyping
-#' @example inst/examples/ex-ba_studies_observationvariables.R
+#' @example inst/examples/ex-ba_studies_observationVariables.R
 #' @import tibble
 #' @export
-ba_studies_observationvariables <- function(con = NULL,
+ba_studies_observationVariables <- function(con = NULL,
                                             studyDbId = "",
                                             pageSize = 1000,
                                             page = 0,
                                             rclass = "tibble") {
+  .Deprecated(new = "ba_studies_observationvariables")
   ba_check(con = con, verbose = FALSE, brapi_calls =
              "studies/id/observationVariables")
   stopifnot(is.character(studyDbId))
@@ -42,7 +43,7 @@ ba_studies_observationvariables <- function(con = NULL,
   check_paging(pageSize = pageSize, page = page)
   check_rclass(rclass = rclass)
   brp <- get_brapi(con = con)
-  studies_observationvariables_list <- paste0(brp, "studies/", studyDbId, "/observationvariables?")
+  studies_observationVariables_list <- paste0(brp, "studies/", studyDbId, "/observationVariables?")
   ppageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=",
                                                    pageSize, "&"), "")
   ppage <- ifelse(is.numeric(page), paste0("page=", page, "&"), "")
@@ -53,7 +54,7 @@ ba_studies_observationvariables <- function(con = NULL,
   # modify brapi call url to include pagenation
   callurl <- sub(pattern = "[/?&]$",
                  replacement = "",
-                 x = paste0(studies_observationvariables_list,
+                 x = paste0(studies_observationVariables_list,
                             ppageSize,
                             ppage))
   try({
