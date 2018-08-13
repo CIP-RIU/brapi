@@ -18,7 +18,7 @@ These functions still work but will be removed (defunct) in a future version.
  \code{\link{ba_studies_germplasm_details}} instead.
 }
 \itemize{
- \item \code{\link{ba_studies_observationVariables}}: This function is
+ \item \code{\link{ba_studies_observationvariables}}: This function is
  deprecated, and will be removed in a future version of this package. Use
  \code{\link{ba_studies_observationvariables}} instead.
 }
