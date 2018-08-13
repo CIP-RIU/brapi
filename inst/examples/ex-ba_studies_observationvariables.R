@@ -3,5 +3,5 @@ if (interactive()) {
 
   con <- ba_db()$testserver
 
-  ba_studies_observationvariables(con, studyDbId = "1001")
+  ba_studies_observationVariables(con, studyDbId = "1001")
 }

@@ -47,7 +47,7 @@ if (interactive()) {
 
   con <- ba_db()$testserver
 
-  ba_studies_observationvariables(con, studyDbId = "1001")
+  ba_studies_observationVariables(con, studyDbId = "1001")
 }
 }
 \references{
@@ -57,7 +57,6 @@ if (interactive()) {
 Other studies: \code{\link{ba_studies_details}},
   \code{\link{ba_studies_germplasm_details}},
   \code{\link{ba_studies_layout}},
-  \code{\link{ba_studies_observationVariables}},
   \code{\link{ba_studies_observationlevels}},
   \code{\link{ba_studies_observations}},
   \code{\link{ba_studies_observationunits}},
@@ -73,7 +72,6 @@ Other phenotyping: \code{\link{ba_samples_save}},
   \code{\link{ba_samples}},
   \code{\link{ba_studies_details}},
   \code{\link{ba_studies_layout}},
-  \code{\link{ba_studies_observationVariables}},
   \code{\link{ba_studies_observationlevels}},
   \code{\link{ba_studies_observations}},
   \code{\link{ba_studies_observationunits_save}},
