@@ -1,4 +1,4 @@
-#' ba_studies_observationvariables
+#' ba_studies_observationVariables
 #'
 #' Retrieve details of observation variables measured in a specific study.
 #'
@@ -30,7 +30,7 @@
 #' @example inst/examples/ex-ba_studies_observationVariables.R
 #' @import tibble
 #' @export
-ba_studies_observationvariables <- function(con = NULL,
+ba_studies_observationVariables <- function(con = NULL,
                                             studyDbId = "",
                                             pageSize = 1000,
                                             page = 0,
