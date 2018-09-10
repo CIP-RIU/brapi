@@ -39,6 +39,13 @@ ba_db <- function() {
                             multicrop = FALSE,
                             crop = "",
                             bms = FALSE)
+  demoserver  <- as.ba_db(secure = FALSE,
+                            protocol = "http://",
+                            db = "localhost",
+                            port = 8080,
+                            multicrop = TRUE,
+                            crop = "potato",
+                            bms = FALSE)
   eu_sol <- as.ba_db(secure = TRUE,
                      protocol = "https://",
                      db = "www.eu-sol.wur.nl",
@@ -156,6 +163,7 @@ ba_db <- function() {
               bms_test = bms_test,
               cassavabase = cassavabase,
               cropontology = cropontology,
+              demoserver = demoserver,
               eu_sol = eu_sol,
               germinate_test = germinate,
               icrisat_prod = icrisat_prod,
