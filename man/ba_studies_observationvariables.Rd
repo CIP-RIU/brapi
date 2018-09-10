@@ -27,7 +27,7 @@ An object of class as defined by rclass containing the details of the
         measured observation variables for a requested study.
 }
 \description{
-Retrieve details of observation variables measured in a specific study.
+retrieve details of observation variables measured in a specific study.
 }
 \details{
 This call must have set a specific identifier. The default is an

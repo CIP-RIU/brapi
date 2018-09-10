@@ -24,6 +24,13 @@ rclass as defined
 \description{
 lists brapi_variables available on a brapi server
 }
+\note{
+Tested against: sweetpotatobase, test-server
+
+BrAPI Version: 1.1, 1.2
+
+BrAPI Status: active
+}
 \examples{
 if (interactive()) {
   library(brapi)

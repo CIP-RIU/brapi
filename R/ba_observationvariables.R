@@ -4,18 +4,21 @@
 #'
 #' @param rclass character; default: tibble
 #' @param con list; brapi connection object
+#' @param traitClass character; default ''
 #' @param page integer; default 0
 #' @param pageSize integer; defautlt 1000
-#' @param traitClass character; default ''
+#' @return rclass as defined
+#'
+#' @note Tested against: sweetpotatobase, test-server
+#' @note BrAPI Version: 1.1, 1.2
+#' @note BrAPI Status: active
 #'
 #' @author Reinhard Simon
 #' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/ObservationVariables/VariableList.md}{github}
-#' @return rclass as defined
-#' @example inst/examples/ex-ba_observationvariables.R
-#' @import tibble
 #' @family observationvariables
 #' @family brapicore
-#'
+#' @example inst/examples/ex-ba_observationvariables.R
+#' @import tibble
 #' @export
 ba_observationvariables <- function(con = NULL,
                                     traitClass = "",
@@ -32,8 +35,14 @@ ba_observationvariables <- function(con = NULL,
   ppage <- paste0("page=", page, "")
   ppageSize <- paste0("pageSize=", pageSize, "&")
   brapi_variables <- paste0(brapi_variables, ptraitClass, ppageSize, ppage)
+
+  # modify brapi call url to include pagenation
+  callurl <- sub(pattern = "[/?&]$",
+                 replacement = "",
+                 x = paste0(brapi_variables))
+
   try({
-    res <- brapiGET(url = brapi_variables, con = con)
+    res <- brapiGET(url = callurl, con = con)
     res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
     out <- NULL
     if (rclass %in% c("json", "list")) {
