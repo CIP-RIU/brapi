@@ -23,7 +23,11 @@ rclass as defined
 lists studies_studytypes available on a brapi server
 }
 \note{
-Tested against: sweetpotatobase
+Tested against: sweetpotatobase, testserver
+
+BrAPI Version: 1.1, 1.2
+
+BrAPI Status: active
 }
 \examples{
 if (interactive()) {

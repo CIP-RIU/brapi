@@ -10,7 +10,7 @@ ba_studies_table(con = NULL, studyDbId = "", format = "csv",
 \arguments{
 \item{con}{list; brapi connection object}
 
-\item{studyDbId}{character; default: ''}
+\item{studyDbId}{character; \strong{REQUIRED ARGUMENT} with default: ''}
 
 \item{format}{character; one of: json, csv, tsv. Default: csv}
 
@@ -29,6 +29,10 @@ result in an error.
 }
 \note{
 Tested against: sweetpotatobase, BMS
+
+BrAPI Version: 1.1, 1.2
+
+BrAPI Status: active
 }
 \examples{
 if (interactive()) {
@@ -40,7 +44,7 @@ if (interactive()) {
 }
 }
 \references{
-\href{https://github.com/plantbreeding/API/blob/master/Specification/Studies/StudyObservationUnitsAsTable.md}{github}
+\href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Studies/Studies_Table_GET.md}{github}
 }
 \seealso{
 Other studies: \code{\link{ba_studies_details}},
