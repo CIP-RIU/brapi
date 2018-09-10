@@ -3,10 +3,11 @@
 
 # BrAPI R package
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
+<!-- README.md is generated from README.Rmd. Please edit that file
+ 
+[![Build status](https://ci.appveyor.com/api/projects/status/7qsrpldj8g3m3lu3?svg=true)](https://ci.appveyor.com/project/cipriuhq/brapi)
+ -->
 
-[![Build
-status](https://ci.appveyor.com/api/projects/status/7qsrpldj8g3m3lu3?svg=true)](https://ci.appveyor.com/project/cipriuhq/brapi)
 [![Build
 Status](https://travis-ci.org/CIP-RIU/brapi.svg?branch=master)](https://travis-ci.org/CIP-RIU/brapi)
 [![Coverage
