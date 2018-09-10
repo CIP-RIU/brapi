@@ -20,15 +20,12 @@
 #' @export
 ba_login <- function(con) {
   stopifnot(is.ba_con(con))
-  # Check for internet connection
   ba_can_internet()
-  # Set authentication URL
-  callpath <- "token"
   # save old multicrop value
   omc <- con$multicrop
   con$multicrop <- FALSE
-  # generate brapi call specific url
-  callurl <- paste0(get_brapi(con = con), callpath)
+  brp <- get_brapi(con = con)
+  callurl <- paste0(brp, "token")
   # set multicrop to its old multicrop value
   con$multicrop <- omc
   dat <- list(username = con$user,

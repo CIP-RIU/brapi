@@ -31,8 +31,6 @@ res <- '{
 }
 }'
 
-con <- ba_db()$testserver
-res <- ba_locations(con = con, rclass = "json")
 
 test_that(" no additionalInfo works", {
   out <- brapi:::loc2tbl(res, "tibble")

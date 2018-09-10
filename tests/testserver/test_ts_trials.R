@@ -11,9 +11,8 @@ test_that("Trials are present", {
 
 test_that("Param checks work", {
 
-  testthat::expect_message({
-    res <- ba_trials(con = con, programDbId = "")
-  })
+  res <- ba_trials(con = con, programDbId = "")
+  expect_that(nrow(res) > 9, is_true())
 
 })
 

@@ -69,7 +69,7 @@ ba_trials <- function(con = NULL,
     ppage <- ""
     ppageSize <- ""
   }
-  ptrials <- sub("[/?&]$",
+  callurl <- sub("[/?&]$",
                  "",
                  paste0(ptrials,
                         pprogramDbId,
@@ -80,7 +80,7 @@ ba_trials <- function(con = NULL,
                         ppageSize,
                         ppage))
   try({
-    res <- brapiGET(url = ptrials, con = con)
+    res <- brapiGET(url = callurl, con = con)
     res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
     out <- NULL
     if (rclass %in% c("list", "json")) {

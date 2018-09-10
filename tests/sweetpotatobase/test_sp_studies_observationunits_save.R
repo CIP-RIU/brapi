@@ -4,7 +4,7 @@ con <- ba_db()$testserver
 
 test_that("  are present", {
 
-  expect_message({
+  #expect_message({
     res <- ba_studies_observationunits_save(con = con, studyDbId = "1011",
                                             unitData = as.data.frame(cbind(
                                               observationUnitDbId = 1,
@@ -16,6 +16,7 @@ test_that("  are present", {
                                               value = "1"
                                             ), stringsAsFactors = FALSE)  )
 
-  })
+  #})
+    expect_true(res)
 
 })

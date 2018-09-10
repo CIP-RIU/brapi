@@ -56,7 +56,7 @@ ba_programs_search <- function(con = NULL,
   # fetch url of the brapi implementation of the database
   brp <- get_brapi(con = con)
   # generate specific brapi call url
-  pprograms <- paste0(brp, "programs-search")
+  callurl <- paste0(brp, "programs-search")
   try({
     body <- list(abbreviation = ifelse(abbreviation != "",
                                        abbreviation,
@@ -88,7 +88,7 @@ ba_programs_search <- function(con = NULL,
         body[[i]] <- NULL
       }
     }
-    res <- brapiPOST(url = pprograms, body = body, con = con)
+    res <- brapiPOST(url = callurl, body = body, con = con)
     res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
     out <- dat2tbl(res = res2, rclass = rclass)
     class(out) <- c(class(out), "ba_programs_search")

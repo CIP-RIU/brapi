@@ -30,9 +30,9 @@ ba_trials_details <- function(con = NULL,
   stopifnot(is.character(trialDbId))
   check_rclass(rclass = rclass)
   brp <- get_brapi(con = con)
-  ptrials <- paste0(brp, "trials/", trialDbId)
+  callurl <- paste0(brp, "trials/", trialDbId)
   try({
-    res <- brapiGET(url = ptrials, con = con)
+    res <- brapiGET(url = callurl, con = con)
     res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
     out <- NULL
     if (rclass %in% c("list", "json")) {

@@ -42,14 +42,14 @@ ba_studies_seasons <- function(con = NULL,
     ppage <- ""
     ppageSize <- ""
   }
-  seasons_list <- sub(pattern = "[/?&]$",
-                      replacement = "",
-                      x = paste0(seasons_list,
-                                 pyear,
-                                 ppageSize,
-                                 ppage))
+  callurl <- sub(pattern = "[/?&]$",
+                 replacement = "",
+                 x = paste0(seasons_list,
+                            pyear,
+                            ppageSize,
+                            ppage))
   try({
-    res <- brapiGET(url = seasons_list, con = con)
+    res <- brapiGET(url = callurl, con = con)
     res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
     out <- dat2tbl(res = res2, rclass = rclass)
     class(out) <- c(class(out), "ba_studies_seasons")

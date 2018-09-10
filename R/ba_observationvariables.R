@@ -40,7 +40,7 @@ ba_observationvariables <- function(con = NULL,
         out <- dat2tbl(res = res2, rclass = rclass)
     }
     if (rclass %in% c("tibble", "data.frame")) {
-        out <- sov2tbl(res = res2, rclass = rclass, variable = TRUE)
+        out <- sov2tbl(res = res2, rclass = rclass)
     }
     class(out) <- c(class(out), "ba_observationvariables")
     show_metadata(res)

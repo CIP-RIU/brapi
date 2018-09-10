@@ -40,21 +40,25 @@ ba_germplasm_details_study <- function(con = NULL,
   brp <- get_brapi(con = con)
   # generate brapi call url
   studies_germplasm_list <- paste0(brp, "studies/", studyDbId, "/germplasm?")
-  pageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=",
+  ppageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=",
                                                   pageSize, "&"), "")
-  page <- ifelse(is.numeric(page), paste0("page=", page, "&"), "")
+  ppage <- ifelse(is.numeric(page), paste0("page=", page, "&"), "")
+  if (page == 0 & pageSize == 1000) {
+    ppage <- ""
+    ppageSize <- ""
+  }
   # modify brapi call url to include pagenation
-  studies_germplasm_list <- sub("[/?&]$",
-                                "",
-                                paste0(studies_germplasm_list,
-                                       pageSize,
-                                       page))
+  callurl <- sub(pattern = "[/?&]$",
+                 replacement = "",
+                 x = paste0(studies_germplasm_list,
+                            ppageSize,
+                            ppage))
   try({
-    res <- brapiGET(url = studies_germplasm_list, con = con)
+    res <- brapiGET(url = callurl, con = con)
     res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
     out <- NULL
     if (rclass %in% c("json", "list")) {
-      out <- dat2tbl(res2, rclass)
+      out <- dat2tbl(res = res2, rclass = rclass)
     }
     if (rclass %in% c("tibble", "data.frame")) {
       out <- sgp2tbl(res = res2, rclass = rclass)

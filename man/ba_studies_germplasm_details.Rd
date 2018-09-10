@@ -4,8 +4,8 @@
 \alias{ba_studies_germplasm_details}
 \title{ba_studies_germplasm_details}
 \usage{
-ba_studies_germplasm_details(con = NULL, studyDbId = "", page = 0,
-  pageSize = 1000, rclass = "tibble")
+ba_studies_germplasm_details(con = NULL, studyDbId = "",
+  pageSize = 1000, page = 0, rclass = "tibble")
 }
 \arguments{
 \item{con}{list, brapi connection object}
@@ -14,9 +14,9 @@ ba_studies_germplasm_details(con = NULL, studyDbId = "", page = 0,
 which the germplasm details are to be retrieved e.g. "1001";
 \strong{REQUIRED ARGUMENT} with default: ""}
 
-\item{page}{integer, the requested page to be returned; default: 0 (1st page)}
-
 \item{pageSize}{integer, items per page to be returned; default: 1000}
+
+\item{page}{integer, the requested page to be returned; default: 0 (1st page)}
 
 \item{rclass}{character, class of the object to be returned;  default: "tibble"
 , possible other values: "json"/"list"/"data.frame"}
@@ -53,7 +53,6 @@ Other studies: \code{\link{ba_studies_details}},
   \code{\link{ba_studies_observationlevels}},
   \code{\link{ba_studies_observations}},
   \code{\link{ba_studies_observationunits}},
-  \code{\link{ba_studies_observationvariables}},
   \code{\link{ba_studies_search_get}},
   \code{\link{ba_studies_search_post}},
   \code{\link{ba_studies_search}},

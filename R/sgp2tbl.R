@@ -1,14 +1,24 @@
 sgp2tbl <- function(res, rclass) {
   lst <- jsonlite::fromJSON(txt = res)
-  dat <- jsonlite::toJSON(x = lst$result$data)
-  df <- jsonlite::fromJSON(txt = dat, simplifyDataFrame = TRUE, flatten = TRUE)
-  if("snynonyms" %in% names(df)) {
-    df$synonyms <- lapply(X = df$synonyms, FUN = paste, collapse = "; ")
+  resultJSON <- jsonlite::toJSON(x = lst$result)
+  resultList <- jsonlite::fromJSON(txt = resultJSON, flatten = TRUE)
+  dataDF <- resultList$data
+  resultList$data <- NULL
+  restDF <- as.data.frame(resultList, stringsAsFactors = FALSE)
+  temp <- NULL
+  if (nrow(dataDF) == 1) {
+    temp <- restDF
+  } else {
+    for (i in 1:nrow(dataDF)) {
+      temp <- rbind(temp, restDF)
+    }
   }
-  # df <- as.data.frame(x = cbind(studyDbId = rep(lst$result$studyDbId, nrow(df)),
-  #                               trialName = rep(lst$result$trialName, nrow(df)),
-  #                               df),
-  #                     stringsAsFactors = FALSE)
+  df <- cbind(temp, dataDF)
+  if ("synonyms" %in% names(df)) {
+    df$synonyms <- sapply(X = df$synonyms, FUN = paste0, collapse = "; ")
+  }
+  # remove duplicated rows
+  df <- df[!duplicated(df), ]
   if (rclass == "tibble") {
     df <- tibble::as_tibble(x = df)
   }
