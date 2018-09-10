@@ -2,26 +2,29 @@
 #'
 #' lists studies_table available on a brapi server
 #'
-#' This function must have set a specific study identifier. The default is an empty
+#' @param con list; brapi connection object
+#' @param studyDbId character; \strong{REQUIRED ARGUMENT} with default: ''
+#' @param format character; one of: json, csv, tsv. Default: csv
+#' @param rclass character; default: "tibble" possible other values: "json"/"list"/"data.frame"
+#'
+#' @details This function must have set a specific study identifier. The default is an empty
 #' string. If not changed to an study identifier present in the database this will
 #' result in an error.
+
+#' @return rclass as defined
 #'
 #' @note Tested against: sweetpotatobase, BMS
-#'
-#' @param rclass character; default: "tibble" possible other values: "json"/"list"/"data.frame"
-#' @param studyDbId character; default: ''
-#' @param con list; brapi connection object
-#' @param format character; one of: json, csv, tsv. Default: csv
+#' @note BrAPI Version: 1.1, 1.2
+#' @note BrAPI Status: active
 #'
 #' @author Reinhard Simon, Maikel Verouden
-#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Studies/StudyObservationUnitsAsTable.md}{github}
-#' @return rclass as defined
+#' @references \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Studies/Studies_Table_GET.md}{github}
+#' @family studies
+#' @family phenotyping
 #' @example inst/examples/ex-ba_studies_table.R
 #' @import tibble
 #' @import readr
 #' @importFrom utils read.csv read.delim
-#' @family studies
-#' @family phenotyping
 #' @export
 ba_studies_table <- function(con = NULL,
                              studyDbId = "",
@@ -35,17 +38,16 @@ ba_studies_table <- function(con = NULL,
   brp <- get_brapi(con = con)
 
   studies_table <- paste0(brp, "studies/", studyDbId, "/table?")
-  # if (rclass %in% c("data.frame", "tibble") & format == "json") {
-  #   format <- "csv"
-  # }
+
   pformat <- ifelse(format %in% c("json", "csv", "tsv"),
                     paste0("format=", format, "&"), "")
-  studies_table <- sub("[/?&]$",
+  call_url <- sub("[/?&]$",
                        "",
                        paste0(studies_table,
                               pformat))
+
   try({
-    res <- brapiGET(url = studies_table, con = con)
+    res <- brapiGET(url = call_url, con = con)
   })
     res <- httr::content(x = res, as = "text", encoding = "UTF-8")
     out <- NULL
