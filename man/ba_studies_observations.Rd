@@ -11,7 +11,8 @@ ba_studies_observations(con = NULL, studyDbId = "",
 \arguments{
 \item{con}{brapi connection object}
 
-\item{studyDbId}{character; default: ''}
+\item{studyDbId}{character;  \strong{REQUIRED
+ARGUMENT} with default: ''}
 
 \item{observationVariableDbId}{character; default: ''}
 
@@ -25,13 +26,22 @@ ba_studies_observations(con = NULL, studyDbId = "",
 rclass as defined
 }
 \description{
-lists studies_observations available on a brapi server
+ba_studies_observations
 }
-\note{
+\details{
+lists studies_observations available on a brapi server
+
 This call must have set a specific identifier. The default is an empty string.
      If not changed to an identifier present in the database this will result in an error.
-
+}
+\note{
 Tested against: sweetpotatobase
+
+Tested against: test-server, sweetpotatobase
+
+BrAPI Version: 1.0, 1.1, 1.2
+
+BrAPI Status: active
 }
 \examples{
 if (interactive()) {
@@ -43,7 +53,7 @@ if (interactive()) {
 }
 }
 \references{
-\href{https://github.com/plantbreeding/API/blob/master/Specification/Studies/GetObservationUnitsByObservationVariableIds.md}{github}
+\href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Studies/Studies_Observations_GET.md}{github}
 }
 \seealso{
 Other studies: \code{\link{ba_studies_details}},

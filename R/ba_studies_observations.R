@@ -1,9 +1,5 @@
 #' ba_studies_observations
 #'
-#' lists studies_observations available on a brapi server
-#'
-#' @note This call must have set a specific identifier. The default is an empty string.
-#'      If not changed to an identifier present in the database this will result in an error.
 #'
 #' @note Tested against: sweetpotatobase
 #'
@@ -11,16 +7,27 @@
 #' @param rclass character; default: tibble
 #' @param page integer; default 0
 #' @param pageSize integer; default 1000
-#' @param studyDbId character; default: ''
+#' @param studyDbId character;  \strong{REQUIRED
+#'                  ARGUMENT} with default: ''
 #' @param observationVariableDbId character; default: ''
 #'
-#' @author Reinhard Simon
-#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Studies/GetObservationUnitsByObservationVariableIds.md}{github}
+#' @details lists studies_observations available on a brapi server
+#'
+#' @details This call must have set a specific identifier. The default is an empty string.
+#'      If not changed to an identifier present in the database this will result in an error.
+#'
 #' @return rclass as defined
-#' @example inst/examples/ex-ba_studies_observations.R
-#' @import tibble
+
+#' @note Tested against: test-server, sweetpotatobase
+#' @note BrAPI Version: 1.0, 1.1, 1.2
+#' @note BrAPI Status: active
+#'
+#' @author Reinhard Simon
+#' @references \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Studies/Studies_Observations_GET.md}{github}
 #' @family studies
 #' @family phenotyping
+#' @example inst/examples/ex-ba_studies_observations.R
+#' @import tibble
 #' @export
 ba_studies_observations <- function(con = NULL,
                                     studyDbId = "",
