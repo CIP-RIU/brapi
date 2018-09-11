@@ -3,26 +3,38 @@
 #' lists brapi_traits_details available on a brapi server
 #'
 #' @param rclass character; default: tibble
+#' @param traitDbId character; \strong{REQUIRED ARGUMENT} with default ''
 #' @param con list; brapi connection object
-#' @param traitDbId character; default ''
-#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Traits/TraitDetails.md}{github}
-#' @author Reinhard Simon
+#'
 #' @return rclass as defined
-#' @example inst/examples/ex-ba_traits_details.R
-#' @import tibble
+#'
+#' @note Tested against: sweetpotatobase, testserver
+#' @note BrAPI Version: 1.1, 1.2
+#' @note BrAPI Status: active
+#'
+#' @author Reinhard Simon
+#' @references \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Traits/TraitDetails.md}{github}
 #' @family traits
 #' @family brapicore
+#'
+#' @example inst/examples/ex-ba_traits_details.R
+#'
+#' @import tibble
 #' @export
 ba_traits_details <- function(con = NULL,
                               traitDbId = "",
                               rclass = "tibble") {
   ba_check(con = con, verbose = FALSE, brapi_calls = "traits")
-  stopifnot(is.character(traitDbId))
+  stopifnot(is.character(traitDbId) | traitDbId == "")
   check_rclass(rclass = rclass)
   brp <- get_brapi(con = con)
-  traits <- paste0(brp, "traits/", traitDbId)
+  endpoint <- paste0(brp, "traits/", traitDbId)
+  callurl <- sub(pattern = "[/?&]$",
+                 replacement = "",
+                 x = endpoint)
+
   try({
-    res <- brapiGET(url = traits, con = con)
+    res <- brapiGET(url = callurl, con = con)
     res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
     out <- dat2tbl(res = res2, rclass = rclass, result_level = "result")
     if (rclass %in% c("data.frame", "tibble")) {
