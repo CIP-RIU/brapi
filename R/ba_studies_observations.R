@@ -1,7 +1,7 @@
 #' ba_studies_observations
 #'
-#' retrieve all observations where there are measurements for the given observation
-#' variables.
+#' retrieve all observations of a specific study, where there are measurements
+#' for the given observation variables.
 #'
 #' @param con list, brapi connection object
 #' @param studyDbId character, the internal database identifier for a study of
@@ -32,7 +32,7 @@
 #' @note BrAPI Version: 1.0, 1.1, 1.2
 #' @note BrAPI Status: active
 #'
-#' @author Reinhard Simon
+#' @author Reinhard Simon, Maikel Verouden
 #' @references \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Studies/Studies_Observations_GET.md}{github}
 #' @family studies
 #' @family phenotyping
@@ -49,11 +49,9 @@ ba_studies_observations <- function(con = NULL,
   stopifnot(is.character(studyDbId))
   stopifnot(studyDbId != "")
   stopifnot(is.character(observationVariableDbIds))
-  check_paging(pageSize = pageSize, page = page)
   check_rclass(rclass = rclass)
   brp <- get_brapi(con = con)
-  studies_observations_list <- paste0(brp, "studies/", studyDbId,
-                                      "/observations?")
+  endpoint <- paste0(brp, "studies/", studyDbId, "/observations?")
   pobservationVariableDbIds <- ifelse(all(observationVariableDbIds == ""),
                                       "",
                                       paste0("observationVariableDbIds=",
@@ -63,19 +61,13 @@ ba_studies_observations <- function(con = NULL,
                                                         sep = ",",
                                                         collapse = "")),
                                              "&"))
-  ppageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=",
-                                                   pageSize, "&"), "")
-  ppage <- ifelse(is.numeric(page), paste0("page=", page, "&"), "")
-  if (page == 0 & pageSize == 1000) {
-    ppage <- ""
-    ppageSize <- ""
-  }
+  ppages <- get_ppages(pageSize, page)
   callurl <- sub(pattern = "[/?&]$",
                  replacement = "",
-                 x = paste0(studies_observations_list,
+                 x = paste0(endpoint,
                             pobservationVariableDbIds,
-                            ppageSize,
-                            ppage))
+                            ppages$pageSize,
+                            ppages$page))
   try({
     res <- brapiGET(url = callurl, con = con)
     res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")

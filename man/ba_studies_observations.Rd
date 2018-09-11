@@ -37,8 +37,8 @@ An object of class as defined by rclass containing the observation
         requested study.
 }
 \description{
-retrieve all observations where there are measurements for the given observation
-variables.
+retrieve all observations of a specific study, where there are measurements
+for the given observation variables.
 }
 \details{
 This call must have set a specific identifier. The default is an empty
@@ -97,7 +97,7 @@ Other phenotyping: \code{\link{ba_samples_save}},
   \code{\link{ba_trials_details}}, \code{\link{ba_trials}}
 }
 \author{
-Reinhard Simon
+Reinhard Simon, Maikel Verouden
 }
 \concept{phenotyping}
 \concept{studies}
