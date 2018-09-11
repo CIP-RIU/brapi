@@ -2,36 +2,48 @@
 #'
 #' lists brapi_traits available on a brapi server
 #'
-#' @note Tested against: sweetpotatobase
 #'
-#' @param rclass character; default: tibble
 #' @param con list; brapi connection object
-#' @param page integer; default 0
 #' @param pageSize integer; defautlt 1000
-#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Traits/ListAllTraits.md}{github}
-#' @author Reinhard Simon
+#' @param page integer; default 0
+#' @param rclass character; default: tibble
+#'
+#' @note Tested against: sweetpotatobase, test-server
+#' @note BrAPI Version: 1.1, 1.2
+#' @note BrAPI Status: active
+#'
 #' @return rclass as defined
-#' @example inst/examples/ex-ba_traits.R
-#' @import tibble
+#'
+#' @author Reinhard Simon, Maikel Verouden
+#' @references \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Traits/ListAllTraits.md}{github}
+#'
 #' @family traits
 #' @family brapicore
+#'
+#' @example inst/examples/ex-ba_traits.R
+#'
+#' @import tibble
 #' @export
 ba_traits <- function(con = NULL,
-                      page = 0,
                       pageSize = 1000,
+                      page = 0,
                       rclass = "tibble") {
   ba_check(con = con, verbose = FALSE, brapi_calls = "traits")
-  check_paging(pageSize = pageSize, page = page)
   check_rclass(rclass = rclass)
   brp <- get_brapi(con = con)
   traits <- paste0(brp, "traits/?")
-  ppage <- paste0("page=", page, "")
-  ppageSize <- paste0("pageSize=", pageSize, "&")
-  traits <- paste0(traits, ppageSize, ppage)
+  ppages <- get_ppages(pageSize, page)
+
+  callurl <- sub(pattern = "[/?&]$",
+                 replacement = "",
+                 x = paste0(traits,
+                            ppages$pageSize,
+                            ppages$page))
   try({
-    res <- brapiGET(url = traits, con = con)
+    res <- brapiGET(url = callurl, con = con)
     res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
     out <- dat2tbl(res = res2, rclass = rclass)
+
     if (rclass %in% c("data.frame", "tibble")) {
       if ("observationVariables" %in% colnames(out)) {
         out$observationVariables <- sapply(X = out$observationVariables,

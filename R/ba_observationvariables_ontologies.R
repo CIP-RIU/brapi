@@ -6,40 +6,38 @@
 #' @param pageSize integer; defautlt 1000
 #' @param page integer; default 0
 #' @param rclass character; default: tibble
-
+#'
 #' @return rclass as defined
 #'
 #' @note Tested against: sweetpotatobase, test-server
 #' @note BrAPI Version: 1.1, 1.2
 #' @note BrAPI Status: active
 #'
-#' @author Reinhard Simon
+#' @author Reinhard Simon, Maikel Verouden
 #' @references \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/ObservationVariables/VariableOntologyList.md}{github}
 
 #' @family observationvariables
 #' @family brapicore
 #'
 #' @example inst/examples/ex-ba_observationvariables_ontologies.R
+#'
 #' @import tibble
-
 #' @export
 ba_observationvariables_ontologies <- function(con = NULL,
                                                pageSize = 1000,
                                                page = 0,
                                                rclass = "tibble") {
   ba_check(con = con, verbose = FALSE, brapi_calls = "ontologies")
-  check_paging(pageSize = pageSize, page = page)
   check_rclass(rclass = rclass)
   brp <- get_brapi(con = con)
   variables_ontologies <- paste0(brp, "ontologies/?")
-  ppage <- paste0("page=", page, "")
-  ppageSize <- paste0("pageSize=", pageSize, "&")
+  ppages <- get_ppages(ppageSize, page)
 
   callurl <- sub(pattern = "[/?&]$",
                  replacement = "",
                  x = paste0(variables_ontologies,
-                            ppageSize,
-                            ppage))
+                            ppages$pageSize,
+                            ppages$page))
 
   try({
     res <- brapiGET(url = callurl, con = con)

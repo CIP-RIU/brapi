@@ -25,6 +25,7 @@
 #'
 #' @author Reinhard Simon, Maikel Verouden
 #' @references \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Studies/Studies_ObservationVariables_GET.md}{github}
+#'
 #' @family studies
 #' @family phenotyping
 #' @example inst/examples/ex-ba_studies_observationvariables.R
@@ -39,16 +40,19 @@ ba_studies_observationvariables <- function(con = NULL,
              "studies/id/observationvariables")
   stopifnot(is.character(studyDbId))
   stopifnot(studyDbId != "")
-  check_paging(pageSize = pageSize, page = page)
+
   check_rclass(rclass = rclass)
   brp <- get_brapi(con = con)
   studies_observationvariables_list <- paste0(brp, "studies/", studyDbId, "/observationvariables?")
-  ppageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=",
-                                                   pageSize, "&"), "")
-  ppage <- ifelse(is.numeric(page), paste0("page=", page, "&"), "")
+
   if (page == 0 & pageSize == 1000) {
     ppage <- ""
     ppageSize <- ""
+  } else {
+    check_paging(pageSize = pageSize, page = page)
+    ppageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=",
+                                                     pageSize, "&"), "")
+    ppage <- ifelse(is.numeric(page), paste0("page=", page, "&"), "")
   }
   # modify brapi call url to include pagenation
   callurl <- sub(pattern = "[/?&]$",

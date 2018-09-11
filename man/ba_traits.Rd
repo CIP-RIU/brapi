@@ -4,14 +4,14 @@
 \alias{ba_traits}
 \title{ba_traits}
 \usage{
-ba_traits(con = NULL, page = 0, pageSize = 1000, rclass = "tibble")
+ba_traits(con = NULL, pageSize = 1000, page = 0, rclass = "tibble")
 }
 \arguments{
 \item{con}{list; brapi connection object}
 
-\item{page}{integer; default 0}
-
 \item{pageSize}{integer; defautlt 1000}
+
+\item{page}{integer; default 0}
 
 \item{rclass}{character; default: tibble}
 }
@@ -22,7 +22,11 @@ rclass as defined
 lists brapi_traits available on a brapi server
 }
 \note{
-Tested against: sweetpotatobase
+Tested against: sweetpotatobase, test-server
+
+BrAPI Version: 1.1, 1.2
+
+BrAPI Status: active
 }
 \examples{
 if (interactive()) {
@@ -34,7 +38,7 @@ if (interactive()) {
 }
 }
 \references{
-\href{https://github.com/plantbreeding/API/blob/master/Specification/Traits/ListAllTraits.md}{github}
+\href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Traits/ListAllTraits.md}{github}
 }
 \seealso{
 Other traits: \code{\link{ba_traits_details}}
@@ -58,7 +62,7 @@ Other brapicore: \code{\link{ba_calls}},
   \code{\link{ba_traits_details}}
 }
 \author{
-Reinhard Simon
+Reinhard Simon, Maikel Verouden
 }
 \concept{brapicore}
 \concept{traits}

@@ -64,7 +64,7 @@ Other brapicore: \code{\link{ba_calls}},
   \code{\link{ba_traits_details}}, \code{\link{ba_traits}}
 }
 \author{
-Reinhard Simon
+Reinhard Simon, Maikel Verouden
 }
 \concept{brapicore}
 \concept{observationvariables}
