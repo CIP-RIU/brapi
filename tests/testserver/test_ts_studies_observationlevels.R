@@ -4,7 +4,7 @@ con <- ba_db()$testserver
 
 test_that("Studies_observationlevels are present", {
 
-  res <- ba_studies_observationlevels(con = con)
+  res <- ba_studies_observationlevels(con = con, rclass = "vector")
   expect_that("plot" %in% res, is_true())
 
 })
