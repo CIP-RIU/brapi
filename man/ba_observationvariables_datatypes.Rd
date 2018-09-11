@@ -17,6 +17,13 @@ rclass as defined
 \description{
 lists variables_datatypes available on a brapi server
 }
+\note{
+Tested against: sweetpotatobase, testserver
+
+BrAPI Version: 1.1, 1.2
+
+BrAPI Status: active
+}
 \examples{
 if (interactive()) {
   library(brapi)
@@ -28,7 +35,7 @@ if (interactive()) {
 }
 }
 \references{
-\href{https://github.com/plantbreeding/API/blob/master/Specification/ObservationVariables/VariableDataTypeList.md}{github}
+\href{https://github.com/plantbreeding/API/blob/V1.2/Specification/ObservationVariables/VariableDataTypeList.md}{github}
 }
 \seealso{
 Other observationvariables: \code{\link{ba_observationvariables_details}},
