@@ -5,22 +5,33 @@
 #' @param con object; brapi connection object; default = NULL
 #' @param rclass character; default: tibble
 #'
-#' @author Reinhard Simon
-#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/ObservationVariables/VariableDataTypeList.md}{github}
 #' @return rclass as defined
-#' @example inst/examples/ex-ba_observationvariables_datatype.R
-#' @import tibble
+#'
+#' @note Tested against: sweetpotatobase, testserver
+#' @note BrAPI Version: 1.1, 1.2
+#' @note BrAPI Status: active
+#'
+#' @author Reinhard Simon
+#' @references \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/ObservationVariables/VariableDataTypeList.md}{github}
 #' @family observationvariables
 #' @family brapicore
+#'
+#' @example inst/examples/ex-ba_observationvariables_datatype.R
+#'
+#' @import tibble
 #' @export
 ba_observationvariables_datatypes <- function(con = NULL,
                                               rclass = "tibble") {
   ba_check(con = con, verbose = FALSE, brapi_calls = "variables/datatypes")
   check_rclass(rclass = rclass)
   brp <- get_brapi(con = con)
-  variables_datatypes_list <- paste0(brp, "variables/datatypes/")
+  endpoint <- paste0(brp, "variables/datatypes")
+  callurl <- sub(pattern = "[/?&]$",
+                 replacement = "",
+                 x = endpoint)
+
   try({
-    res <- brapiGET(url = variables_datatypes_list, con = con)
+    res <- brapiGET(url = callurl, con = con)
     res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
     out <- dat2tbl(res = res2, rclass = rclass)
     if (rclass %in% c("data.frame", "tibble")) {

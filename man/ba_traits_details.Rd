@@ -9,7 +9,7 @@ ba_traits_details(con = NULL, traitDbId = "", rclass = "tibble")
 \arguments{
 \item{con}{list; brapi connection object}
 
-\item{traitDbId}{character; default ''}
+\item{traitDbId}{character; \strong{REQUIRED ARGUMENT} with default ''}
 
 \item{rclass}{character; default: tibble}
 }
@@ -18,6 +18,13 @@ rclass as defined
 }
 \description{
 lists brapi_traits_details available on a brapi server
+}
+\note{
+Tested against: sweetpotatobase, testserver
+
+BrAPI Version: 1.1, 1.2
+
+BrAPI Status: active
 }
 \examples{
 if (interactive()) {
@@ -29,7 +36,7 @@ if (interactive()) {
 }
 }
 \references{
-\href{https://github.com/plantbreeding/API/blob/master/Specification/Traits/TraitDetails.md}{github}
+\href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Traits/TraitDetails.md}{github}
 }
 \seealso{
 Other traits: \code{\link{ba_traits}}

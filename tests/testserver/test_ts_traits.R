@@ -9,4 +9,13 @@ test_that("Traits are present", {
 
 })
 
+test_that("paging works", {
+
+  res <- ba_traits(con = con, pageSize = 1)
+  expect_that(nrow(res) == 1, is_true())
+
+  res <- ba_traits(con = con, pageSize = 1, page = 1)
+  expect_that(nrow(res) == 1, is_true())
+
+})
 
