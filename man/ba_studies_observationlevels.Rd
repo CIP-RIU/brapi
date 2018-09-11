@@ -4,15 +4,21 @@
 \alias{ba_studies_observationlevels}
 \title{ba_studies_observationlevels}
 \usage{
-ba_studies_observationlevels(con = NULL, rclass = "vector")
+ba_studies_observationlevels(con = NULL, pageSize = 1000, page = 0,
+  rclass = "tibble")
 }
 \arguments{
 \item{con}{brapi connection object}
 
-\item{rclass}{character; default is FALSE; whether to display the raw list object or not}
+\item{pageSize}{integer, items per page to be returned; default: 1000}
+
+\item{page}{integer, the requested page to be returned; default: 0 (1st page)}
+
+\item{rclass}{character; default is 'tibble'}
 }
 \value{
-a vector of crop names or NULL
+An object of class as defined by rclass containing the details of the
+        measured observation variables for a requested study.
 }
 \description{
 Call to retrieve the list of supported observation levels.
@@ -21,6 +27,13 @@ Call to retrieve the list of supported observation levels.
 Observation levels indicate the granularity level at which the measurements
 are taken. The values are used to supply the observationLevel parameter in
 the observation unit details call.
+}
+\note{
+Tested against: sweetpotatobase, test-server
+
+BrAPI Version: 1.1, 1.2
+
+BrAPI Status: active
 }
 \examples{
 if (interactive()) {
@@ -33,7 +46,7 @@ if (interactive()) {
 }
 }
 \references{
-\href{https://github.com/plantbreeding/API/blob/master/Specification/Studies/ListObservationLevels.md}{github}
+\href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Studies/ObservationLevels_GET.md}{github}
 }
 \seealso{
 Other studies: \code{\link{ba_studies_details}},
@@ -68,7 +81,7 @@ Other phenotyping: \code{\link{ba_samples_save}},
   \code{\link{ba_trials_details}}, \code{\link{ba_trials}}
 }
 \author{
-Reinhard Simon
+Reinhard Simon, Maikel Verouden
 }
 \concept{phenotyping}
 \concept{studies}
