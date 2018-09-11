@@ -6,6 +6,7 @@
 #' @param page integer; default 0
 #' @param pageSize integer; default 1000
 #' @param rclass character; default: tibble
+#'
 #' @return rclass as defined
 #'
 #' @note Tested against: sweetpotatobase, testserver
@@ -26,23 +27,15 @@ ba_studies_studytypes <- function(con = NULL,
                                   pageSize = 1000,
                                   rclass = "tibble") {
   ba_check(con = con, verbose = FALSE, brapi_calls = "studytypes")
-  check_paging(pageSize = pageSize, page = page)
   check_rclass(rclass = rclass)
   brp <- get_brapi(con = con)
-  pstudyTypes <- paste0(brp, "studytypes/?")
-  ppageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=",
-                                                   pageSize, "&"), "")
-  ppage <- ifelse(is.numeric(page), paste0("page=", page, "&"), "")
-  if (page == 0 & pageSize == 1000) {
-    ppage <- ""
-    ppageSize <- ""
-  }
+  ppage <- get_ppages(pageSize, page)
   # modify brapi call url to include pagination
   callurl <- sub(pattern = "[/?&]$",
                  replacement = "",
                  x = paste0(pstudyTypes,
-                            ppageSize,
-                            ppage))
+                            ppage$pageSize,
+                            ppage$page))
 
   try({
     res <- brapiGET(url = callurl, con = con)

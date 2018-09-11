@@ -5,7 +5,7 @@ con <- ba_db()$sweetpotatobase
 test_that("Studies_details are present", {
 
   res <- ba_observationvariables_ontologies(con = con)
-  expect_that(nrow(res) >= 12, is_true())
+  expect_that(nrow(res) >= 10, is_true())
 
 })
 

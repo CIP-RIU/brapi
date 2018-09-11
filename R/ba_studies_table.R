@@ -19,9 +19,12 @@
 #'
 #' @author Reinhard Simon, Maikel Verouden
 #' @references \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Studies/Studies_Table_GET.md}{github}
+#'
 #' @family studies
 #' @family phenotyping
+#'
 #' @example inst/examples/ex-ba_studies_table.R
+#'
 #' @import tibble
 #' @import readr
 #' @importFrom utils read.csv read.delim

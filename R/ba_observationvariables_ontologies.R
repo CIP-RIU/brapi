@@ -31,7 +31,7 @@ ba_observationvariables_ontologies <- function(con = NULL,
   check_rclass(rclass = rclass)
   brp <- get_brapi(con = con)
   variables_ontologies <- paste0(brp, "ontologies/?")
-  ppages <- get_ppages(ppageSize, page)
+  ppages <- get_ppages(pageSize, page)
 
   callurl <- sub(pattern = "[/?&]$",
                  replacement = "",

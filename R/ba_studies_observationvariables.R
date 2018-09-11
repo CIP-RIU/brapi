@@ -45,21 +45,13 @@ ba_studies_observationvariables <- function(con = NULL,
   brp <- get_brapi(con = con)
   studies_observationvariables_list <- paste0(brp, "studies/", studyDbId, "/observationvariables?")
 
-  if (page == 0 & pageSize == 1000) {
-    ppage <- ""
-    ppageSize <- ""
-  } else {
-    check_paging(pageSize = pageSize, page = page)
-    ppageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=",
-                                                     pageSize, "&"), "")
-    ppage <- ifelse(is.numeric(page), paste0("page=", page, "&"), "")
-  }
+  ppages <- get_ppages(pageSize, page)
   # modify brapi call url to include pagenation
   callurl <- sub(pattern = "[/?&]$",
                  replacement = "",
                  x = paste0(studies_observationvariables_list,
-                            ppageSize,
-                            ppage))
+                            ppages$pageSize,
+                            ppages$page))
   try({
     res <- brapiGET(url = callurl, con = con)
     res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
