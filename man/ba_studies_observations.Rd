@@ -5,38 +5,47 @@
 \title{ba_studies_observations}
 \usage{
 ba_studies_observations(con = NULL, studyDbId = "",
-  observationVariableDbId = "", page = 0, pageSize = 1000,
+  observationVariableDbIds = "", pageSize = 1000, page = 0,
   rclass = "tibble")
 }
 \arguments{
-\item{con}{brapi connection object}
+\item{con}{list, brapi connection object}
 
-\item{studyDbId}{character;  \strong{REQUIRED
-ARGUMENT} with default: ''}
+\item{studyDbId}{character, the internal database identifier for a study of
+which the observation measurements for the given observation
+variables are to be retrieved e.g. "1001";
+\strong{REQUIRED ARGUMENT} with default: ""}
 
-\item{observationVariableDbId}{character; default: ''}
+\item{observationVariableDbIds}{character vector; Set of observation variable
+DbIds (combination of trait, unit and method),
+supplied as a comma separated character vector
+of internal observation variable identifiers
+e.g. c("393939","393938"), of which the
+observation measurements for the specified
+studyDbId are retrieved; default: ""}
 
-\item{page}{integer; default 0}
+\item{pageSize}{integer, items per page to be returned; default: 1000}
 
-\item{pageSize}{integer; default 1000}
+\item{page}{integer, the requested page to be returned; default: 0 (1st page)}
 
-\item{rclass}{character; default: tibble}
+\item{rclass}{character, class of the object to be returned;  default: "tibble"
+, possible other values: "json"/"list"/"data.frame"}
 }
 \value{
-rclass as defined
+An object of class as defined by rclass containing the observation
+        measurements of the supplied observation variabble DbIds for a
+        requested study.
 }
 \description{
-ba_studies_observations
+retrieve all observations where there are measurements for the given observation
+variables.
 }
 \details{
-lists studies_observations available on a brapi server
-
-This call must have set a specific identifier. The default is an empty string.
-     If not changed to an identifier present in the database this will result in an error.
+This call must have set a specific identifier. The default is an empty
+         string. If not changed to an identifier present in the database this
+         will result in an error.
 }
 \note{
-Tested against: sweetpotatobase
-
 Tested against: test-server, sweetpotatobase
 
 BrAPI Version: 1.0, 1.1, 1.2
