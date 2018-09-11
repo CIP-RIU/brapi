@@ -3,20 +3,29 @@
 #' lists variables_datatypes available on a brapi server
 #'
 #' @param con list; brapi connection object; default = NULL
-#' @param rclass character; default: tibble
-#' @param page integer; default 0
 #' @param pageSize integer; defautlt 1000
-#' @author Reinhard Simon
-#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/ObservationVariables/VariableOntologyList.md}{github}
+#' @param page integer; default 0
+#' @param rclass character; default: tibble
+
 #' @return rclass as defined
-#' @example inst/examples/ex-ba_observationvariables_ontologies.R
-#' @import tibble
+#'
+#' @note Tested against: sweetpotatobase, test-server
+#' @note BrAPI Version: 1.1, 1.2
+#' @note BrAPI Status: active
+#'
+#' @author Reinhard Simon
+#' @references \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/ObservationVariables/VariableOntologyList.md}{github}
+
 #' @family observationvariables
 #' @family brapicore
+#'
+#' @example inst/examples/ex-ba_observationvariables_ontologies.R
+#' @import tibble
+
 #' @export
 ba_observationvariables_ontologies <- function(con = NULL,
-                                               page = 0,
                                                pageSize = 1000,
+                                               page = 0,
                                                rclass = "tibble") {
   ba_check(con = con, verbose = FALSE, brapi_calls = "ontologies")
   check_paging(pageSize = pageSize, page = page)
@@ -25,9 +34,15 @@ ba_observationvariables_ontologies <- function(con = NULL,
   variables_ontologies <- paste0(brp, "ontologies/?")
   ppage <- paste0("page=", page, "")
   ppageSize <- paste0("pageSize=", pageSize, "&")
-  variables_ontologies <- paste0(variables_ontologies, ppageSize, ppage)
+
+  callurl <- sub(pattern = "[/?&]$",
+                 replacement = "",
+                 x = paste0(variables_ontologies,
+                            ppageSize,
+                            ppage))
+
   try({
-    res <- brapiGET(url = variables_ontologies, con = con)
+    res <- brapiGET(url = callurl, con = con)
     res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
     out <- dat2tbl(res = res2, rclass = rclass)
     class(out) <- c(class(out), "ba_observationvariables_ontologies")

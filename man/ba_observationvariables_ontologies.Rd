@@ -4,15 +4,15 @@
 \alias{ba_observationvariables_ontologies}
 \title{ba_observationvariables_ontologies}
 \usage{
-ba_observationvariables_ontologies(con = NULL, page = 0,
-  pageSize = 1000, rclass = "tibble")
+ba_observationvariables_ontologies(con = NULL, pageSize = 1000,
+  page = 0, rclass = "tibble")
 }
 \arguments{
 \item{con}{list; brapi connection object; default = NULL}
 
-\item{page}{integer; default 0}
-
 \item{pageSize}{integer; defautlt 1000}
+
+\item{page}{integer; default 0}
 
 \item{rclass}{character; default: tibble}
 }
@@ -21,6 +21,13 @@ rclass as defined
 }
 \description{
 lists variables_datatypes available on a brapi server
+}
+\note{
+Tested against: sweetpotatobase, test-server
+
+BrAPI Version: 1.1, 1.2
+
+BrAPI Status: active
 }
 \examples{
 if (interactive()) {
@@ -32,7 +39,7 @@ if (interactive()) {
 }
 }
 \references{
-\href{https://github.com/plantbreeding/API/blob/master/Specification/ObservationVariables/VariableOntologyList.md}{github}
+\href{https://github.com/plantbreeding/API/blob/V1.2/Specification/ObservationVariables/VariableOntologyList.md}{github}
 }
 \seealso{
 Other observationvariables: \code{\link{ba_observationvariables_datatypes}},
