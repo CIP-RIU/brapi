@@ -29,11 +29,12 @@ ba_studies_studytypes <- function(con = NULL,
   ba_check(con = con, verbose = FALSE, brapi_calls = "studytypes")
   check_rclass(rclass = rclass)
   brp <- get_brapi(con = con)
+  endpoint <- paste0(brp, "studytypes?")
   ppage <- get_ppages(pageSize, page)
   # modify brapi call url to include pagination
   callurl <- sub(pattern = "[/?&]$",
                  replacement = "",
-                 x = paste0(pstudyTypes,
+                 x = paste0(endpoint,
                             ppage$pageSize,
                             ppage$page))
 
