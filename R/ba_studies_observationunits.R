@@ -15,7 +15,7 @@
 #' @param pageSize integer, items per page to be returned; default: 1000
 #' @param page integer, the requested page to be returned; default: 0 (1st page)
 #' @param rclass character, class of the object to be returned;  default: "tibble"
-#'               , possible other values: "json"/"list"/"data.frame"
+#'               , possible other values: "data.frame"/"list"/"json"
 #'
 #' @details This call must have set a specific identifier. The default is an empty
 #'          string. If not changed to an identifier present in the database this

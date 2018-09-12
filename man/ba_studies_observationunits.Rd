@@ -27,7 +27,7 @@ respectively; default: "any", other possible value:
 \item{page}{integer, the requested page to be returned; default: 0 (1st page)}
 
 \item{rclass}{character, class of the object to be returned;  default: "tibble"
-, possible other values: "json"/"list"/"data.frame"}
+, possible other values: "data.frame"/"list"/"json"}
 }
 \value{
 An object of class as defined by rclass containing the observation
