@@ -6,8 +6,8 @@
 \usage{
 ba_phenotypes_search(con = NULL, germplasmDbIds = "",
   observationVariableDbIds = "", studyDbIds = "", locationDbIds = "",
-  programDbIds = "", seasonDbIds = "", observationLevel = "",
-  observationTimeStampRangeStart = "",
+  trialDbIds = "", programDbIds = "", seasonDbIds = "",
+  observationLevel = "", observationTimeStampRangeStart = "",
   observationTimeStampRangeEnd = "", pageSize = 1000, page = 0,
   rclass = c("tibble", "data.frame", "list", "json"))
 }
@@ -21,6 +21,8 @@ ba_phenotypes_search(con = NULL, germplasmDbIds = "",
 \item{studyDbIds}{vector of character; default: ''}
 
 \item{locationDbIds}{vector of character; default: ''}
+
+\item{trialDbIds}{vector of character; default: ''}
 
 \item{programDbIds}{vector of character; default: ''}
 
@@ -37,8 +39,6 @@ ba_phenotypes_search(con = NULL, germplasmDbIds = "",
 \item{page}{integer default: 0}
 
 \item{rclass}{character; default: tibble}
-
-\item{trialDbIds}{vector of character; default: ''}
 }
 \value{
 rclass

@@ -33,6 +33,7 @@ ba_phenotypes_search <- function(con = NULL,
                                  observationVariableDbIds = "",
                                  studyDbIds = "",
                                  locationDbIds = "",
+                                 trialDbIds = "",
                                  programDbIds = "",
                                  seasonDbIds = "",
                                  observationLevel = "",
@@ -46,6 +47,7 @@ ba_phenotypes_search <- function(con = NULL,
   stopifnot(is.character(observationVariableDbIds))
   stopifnot(is.character(studyDbIds))
   stopifnot(is.character(locationDbIds))
+  stopifnot(is.character(trialDbIds))
   stopifnot(is.character(programDbIds))
   stopifnot(is.character(seasonDbIds))
   stopifnot(is.character(observationLevel))
@@ -66,6 +68,7 @@ ba_phenotypes_search <- function(con = NULL,
                                                  "")),
       studyDbIds = as.array(ifelse(studyDbIds != "", studyDbIds, "")),
       locationDbIds = as.array(ifelse(locationDbIds != "", locationDbIds, "")),
+      trialDbIds = as.array(ifelse(trialDbIds != "", trialDbIds, "")),
       programDbIds = as.array(ifelse(programDbIds != "", programDbIds, "")),
       seasonDbIds = as.array(ifelse(seasonDbIds != "", seasonDbIds, "")),
       observationLevel = ifelse(observationLevel != "", observationLevel, ""),

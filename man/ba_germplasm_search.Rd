@@ -43,7 +43,7 @@ if (interactive()) {
 }
 }
 \references{
-\href{https://github.com/plantbreeding/API/blob/master/Specification/Germplasm/GermplasmSearchGET.md}{github}
+\href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Germplasm/GermplasmSearch_GET.md}{github}
 }
 \seealso{
 Other brapicore: \code{\link{ba_calls}},

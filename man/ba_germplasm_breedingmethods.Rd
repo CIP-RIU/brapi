@@ -42,7 +42,7 @@ if (interactive()) {
 }
 }
 \references{
-\href{https://github.com/plantbreeding/API/blob/master/Specification/Germplasm/BreedingMethods_GET.yaml}{github}
+\href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Germplasm/BreedingMethods_GET.md}{github}
 }
 \seealso{
 Other germplasm: \code{\link{ba_germplasm_details_study}},

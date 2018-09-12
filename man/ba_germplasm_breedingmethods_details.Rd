@@ -5,12 +5,13 @@
 \title{ba_germplasm_breedingmethods_details}
 \usage{
 ba_germplasm_breedingmethods_details(con = NULL,
-  breedingMethodDbId = "", rclass = "tibble")
+  breedingMethodDbId = "", rclass = c("tibble", "data.frame", "list",
+  "json"))
 }
 \arguments{
 \item{con}{list, brapi connection object}
 
-\item{breedingMethodDbId}{character}
+\item{breedingMethodDbId}{character, \strong{REQUIRED ARGUMENT} with default: ""}
 
 \item{rclass}{character, class of the object to be returned;  default: "tibble"
 , possible other values: "json"/"list"/"data.frame"}
