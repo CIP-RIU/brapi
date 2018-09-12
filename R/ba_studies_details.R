@@ -21,18 +21,23 @@
 #'
 #' @author Reinhard Simon, Maikel Verouden
 #' @references \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Studies/Studies_GET.md}{github}
+#'
 #' @family studies
 #' @family phenotyping
+#'
 #' @example inst/examples/ex-ba_studies_details.R
+#'
 #' @import dplyr
 #' @export
 ba_studies_details <- function(con = NULL,
                                studyDbId = "",
-                               rclass = "tibble") {
+                               rclass = c("tibble", "data.frame", "list", "json")) {
   ba_check(con = con, verbose = FALSE, brapi_calls = "studies/id")
   stopifnot(is.character(studyDbId))
-  stopifnot(studyDbId != "")
-  check_rclass(rclass = rclass)
+  rclass <- match.arg(rclass)
+
+  if (studyDbId == "") stop("Required parameter: studyDbId")
+
   brp <- get_brapi(con = con)
   callurl <- paste0(brp, "studies/", studyDbId)
   try({
