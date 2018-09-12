@@ -34,6 +34,8 @@ ba_studies_details <- function(con = NULL,
                                rclass = c("tibble", "data.frame", "list", "json")) {
   ba_check(con = con, verbose = FALSE, brapi_calls = "studies/id")
   stopifnot(is.character(studyDbId))
+  stopifnot(studyDbId != "")
+
   rclass <- match.arg(rclass)
 
   if (studyDbId == "") stop("Required parameter: studyDbId")
