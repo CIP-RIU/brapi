@@ -1,15 +1,35 @@
 extract_fields <- function(dat, field_names, prefix) {
   field_data <- paste(dat[, field_names], collapse = "; ")
   keep_names <-  names(dat)[!names(dat) %in% field_names]
-  out <- cbind(dat[, keep_names], prefix = field_names)
-  names(out)[ncol()]
+  out <- cbind(dat[, keep_names], prefix = paste(dat[, field_names], collapse = "; "))
+  names(out)[ncol(out)] <- prefix
+  out[, prefix] <- as.character(out[, prefix])
+  out
 }
 
 join_subfields <- function(dat, prefix) {
   field_names <- names(dat)[startsWith(names(dat), prefix = prefix)]
   return(
-    extract_fields(dat, field_names )
+    extract_fields(dat, field_names, prefix )
   )
+}
+
+join_records <- function(dat, prefix, field_sub) {
+  record_group <- names(dat)[startsWith(names(dat), prefix = prefix)]
+  record_n <- stringr::str_extract_all(record_group, "[0-9]{1,3}") %>% unlist %>% as.numeric() %>% max
+  field_rec <- ""
+  for (r in 1:record_n) {
+
+    field_names <- paste(prefix, ".", field_sub, r, sep = "")
+    field_data <- paste( paste(field_sub,  dat[, field_names], sep = ": "), collapse = ", ")
+    field_rec <- paste(field_rec, field_data, sep = "; ")
+  }
+  keep_names <-  names(dat)[!names(dat) %in% record_group]
+  out <- cbind(dat[, keep_names], prefix = field_rec)
+  out$prefix <- as.character(out$prefix)
+  names(out)[ncol(out)] <- prefix
+
+  out
 }
 
 
@@ -31,12 +51,8 @@ stdd2tbl <- function(res, rclass = c("tibble", "json", "list")) {
 
   # joint seasons, contacts and datalinks into one field each
   dat <- join_subfields(dat, "seasons")
-
-  record_group <- names(dat)[startsWith(names(dat), prefix = "contacts")]
-  record_n <- stringr::str_extract_all(record_group, "[0-9]{1,3}") %>% unlist %>% as.numeric() %>% max
-  for (r in 1:record_n) {
-    field_names <- paste("contacts.", c("contactDbId", "email", "instituteName", "name", "orcid", "type" ), r, sep = "")
-  }
+  dat <- join_records(dat, "contacts", c("contactDbId", "email", "instituteName", "name", "orcid", "type" ))
+  dat <- join_records(dat, "dataLinks", c("name", "type", "url"))
 
 
   if (rclass == "tibble") {

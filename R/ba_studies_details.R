@@ -38,6 +38,7 @@ ba_studies_details <- function(con = NULL,
 
   brp <- get_brapi(con = con)
   callurl <- paste0(brp, "studies/", studyDbId)
+
   try({
     res <- brapiGET(url = callurl, con = con)
     out <- NULL
