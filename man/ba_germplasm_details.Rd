@@ -10,15 +10,22 @@ ba_germplasm_details(con = NULL, germplasmDbId = "",
 \arguments{
 \item{con}{brapi connection object}
 
-\item{germplasmDbId}{string; default 0; an internal ID for a germplasm}
+\item{germplasmDbId}{string; \strong{REQUIRED ARGUMENT} with default ''}
 
 \item{rclass}{character; tibble}
 }
 \value{
-list
+rclass as defined
 }
 \description{
 Gets germplasm details given an id.
+}
+\note{
+Tested against: sweetpotatobase, test-server, genesys
+
+BrAPI Version: 1.1, 1.2
+
+BrAPI Status: active
 }
 \examples{
 if (interactive()) {

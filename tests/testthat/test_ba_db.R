@@ -4,7 +4,7 @@ con <- ba_db()
 
 test_that("DBs are present", {
 
-  expect_that(length(con) == 17, is_true())
+  expect_that(length(con) == 18, is_true())
 
 })
 

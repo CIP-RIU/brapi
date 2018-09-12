@@ -12,7 +12,7 @@ gp2tbl <- function(res, type = '1') {
 
 
   df <- jsonlite::fromJSON(txt = dat, simplifyDataFrame = TRUE, flatten = TRUE)
-  donors <- synonyms <- taxonIds <- list()
+  dfdonors <- synonyms <- taxonIds <- list()
   if (length(df$donors) == 0) df$donors <- list()
   if (length(df$synonyms) == 0) df$synonyms <- list()
   taxonIds <- as.list(df$taxonIds)
@@ -27,7 +27,16 @@ gp2tbl <- function(res, type = '1') {
   if(length(df$instituteName) == 0) df$instituteName <- NULL
   if(length(df$speciesAuthority) == 0) df$speciesAuthority <- NULL
 
+  # filter out empty lists by replacing with empty string
+  n <- length(df)
+  for (i in 1:n) {
+    if (class(df[[i]]) == "list" & length(df[[i]]) == 0) {
+      df[[i]] <- ""
+    }
+  }
+
   df <- as.data.frame(df, stringsAsFactors = FALSE)
+
 
   rep_df <- function(df, n) {
     if(n == 1) return(df)

@@ -3,15 +3,24 @@
 #' Gets germplasm details given an id.
 #'
 #' @param con brapi connection object
+#' @param germplasmDbId string; \strong{REQUIRED ARGUMENT} with default ''
 #' @param rclass character; tibble
-#' @param germplasmDbId string; default 0; an internal ID for a germplasm
-#' @import dplyr
+#'
+#' @return rclass as defined
+#'
+#' @note Tested against: sweetpotatobase, test-server, genesys
+#' @note BrAPI Version: 1.1, 1.2
+#' @note BrAPI Status: active
+#'
 #' @author Reinhard Simon
 #' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Germplasm/GermplasmDetailsByGermplasmDbId.md}{github}
-#' @return list
-#' @example inst/examples/ex-ba_germplasm_details.R
+
 #' @family germplasm
 #' @family brapicore
+#'
+#' @example inst/examples/ex-ba_germplasm_details.R
+#'
+#' @import dplyr
 #' @export
 ba_germplasm_details <- function(con = NULL,
                                  germplasmDbId = "",
