@@ -37,7 +37,7 @@ An object of class as defined by rclass containing the observation
         requested study.
 }
 \description{
-retrieve all observations of a specific study, where there are measurements
+Retrieve all observations of a specific study, where there are measurements
 for the given observation variables.
 }
 \details{

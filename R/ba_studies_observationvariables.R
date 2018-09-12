@@ -1,6 +1,6 @@
 #' ba_studies_observationvariables
 #'
-#' retrieve details of observation variables measured in a specific study.
+#' Retrieve details of observation variables measured in a specific study.
 #'
 #' @param con list, brapi connection object
 #' @param studyDbId character, the internal database identifier for a study of

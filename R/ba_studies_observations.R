@@ -1,6 +1,6 @@
 #' ba_studies_observations
 #'
-#' retrieve all observations of a specific study, where there are measurements
+#' Retrieve all observations of a specific study, where there are measurements
 #' for the given observation variables.
 #'
 #' @param con list, brapi connection object
