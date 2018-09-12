@@ -4,31 +4,39 @@
 \alias{ba_studies_table}
 \title{ba_studies_table}
 \usage{
-ba_studies_table(con = NULL, studyDbId = "", format = "csv",
-  rclass = "tibble")
+ba_studies_table(con = NULL, studyDbId = "", format = c("csv", "tsv",
+  "json"), rclass = c("tibble", "data.frame", "json"))
 }
 \arguments{
-\item{con}{list; brapi connection object}
+\item{con}{list, brapi connection object}
 
-\item{studyDbId}{character; \strong{REQUIRED ARGUMENT} with default: ''}
+\item{studyDbId}{character, the internal database identifier for a study of
+which the observation units, including actual trait data,
+are to be retrieved e.g. "1001"; \strong{REQUIRED ARGUMENT}
+with default: ""}
 
-\item{format}{character; one of: json, csv, tsv. Default: csv}
+\item{format}{character, the format parameter will cause the data to be
+dumped to a file in the specified format; default: "csv",
+possible other values: "tsv"/"json"}
 
-\item{rclass}{character; default: "tibble" possible other values: "json"/"list"/"data.frame"}
+\item{rclass}{character, class of the object to be returned; default:
+"tibble", possible other values: "data.frame"/"json"}
 }
 \value{
-rclass as defined
+An object of class as defined by rclass containing the observation
+        units, including trait data, for a requested study.
 }
 \description{
-lists studies_table available on a brapi server
+Retrieve observation units, including actual trait data, as table for a
+specific study.
 }
 \details{
-This function must have set a specific study identifier. The default is an empty
-string. If not changed to an study identifier present in the database this will
-result in an error.
+This function must have set a specific study identifier. The default
+         is an empty string. If not changed to an study identifier present in
+         the database this will result in an error.
 }
 \note{
-Tested against: sweetpotatobase, BMS
+Tested against: BMS, testserver, sweetpotatobase
 
 BrAPI Version: 1.1, 1.2
 
