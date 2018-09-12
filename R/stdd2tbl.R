@@ -15,8 +15,11 @@ join_subfields <- function(dat, prefix) {
 }
 
 join_records <- function(dat, prefix, field_sub) {
+  if (!any(stringr::str_detect(names(dat), prefix))) return(dat)
   record_group <- names(dat)[startsWith(names(dat), prefix = prefix)]
+
   record_n <- stringr::str_extract_all(record_group, "[0-9]{1,3}") %>% unlist %>% as.numeric() %>% max
+  if (record_n < 1) return(dat)
   field_rec <- ""
   for (r in 1:record_n) {
 

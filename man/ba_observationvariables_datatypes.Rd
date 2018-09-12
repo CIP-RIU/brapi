@@ -4,7 +4,8 @@
 \alias{ba_observationvariables_datatypes}
 \title{ba_observationvariables_datatypes}
 \usage{
-ba_observationvariables_datatypes(con = NULL, rclass = "tibble")
+ba_observationvariables_datatypes(con = NULL, rclass = c("tibble",
+  "data.frame", "list", "json"))
 }
 \arguments{
 \item{con}{object; brapi connection object; default = NULL}

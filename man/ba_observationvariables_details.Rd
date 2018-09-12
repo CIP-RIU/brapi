@@ -5,12 +5,13 @@
 \title{ba_observationvariables_details}
 \usage{
 ba_observationvariables_details(con = NULL,
-  observationVariableDbId = "", rclass = "tibble")
+  observationVariableDbId = "", rclass = c("tibble", "data.frame",
+  "list", "json"))
 }
 \arguments{
 \item{con}{list; brapi connection object}
 
-\item{observationVariableDbId}{character; default ''; from test server.}
+\item{observationVariableDbId}{character; \strong{REQUIRED ARGUMENT} with default ''.}
 
 \item{rclass}{character; default: tibble}
 }
@@ -19,6 +20,13 @@ rclass as defined
 }
 \description{
 lists brapi_variables_details available on a brapi server
+}
+\note{
+Tested against: sweetpotatobase, test-server
+
+BrAPI Version: 1.1, 1.2
+
+BrAPI Status: active
 }
 \examples{
 if (interactive()) {
@@ -31,7 +39,7 @@ if (interactive()) {
 }
 }
 \references{
-\href{https://github.com/plantbreeding/API/blob/master/Specification/ObservationVariables/VariableDetails.md}{github}
+\href{https://github.com/plantbreeding/API/blob/V1.2/Specification/ObservationVariables/VariableDetails.md}{github}
 }
 \seealso{
 Other observationvariables: \code{\link{ba_observationvariables_datatypes}},
