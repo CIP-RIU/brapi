@@ -58,12 +58,12 @@ ba_germplasm_search <- function(con = NULL,
   callurl <- sub("[/?&]$",
                  "",
                  paste0(brp,
-                        ifelse(germplasmPUI == "", "", paste0("germplasmPUI=", germplasmPUI)),
-                        ifelse(germplasmDbId == "", "", paste0("germplasmDbId=", germplasmDbId)),
-                        ifelse(germplasmName == "", "", paste0("germplasmName=", germplasmName)),
-                        ifelse(commonCropName == "", "", paste0("commonCropName=", commonCropName)),
+                        ifelse(germplasmPUI == "", "", paste0("germplasmPUI=", germplasmPUI, "&")),
+                        ifelse(germplasmDbId == "", "", paste0("germplasmDbId=", germplasmDbId, "&")),
+                        ifelse(germplasmName == "", "", paste0("germplasmName=", germplasmName, "&")),
+                        ifelse(commonCropName == "", "", paste0("commonCropName=", commonCropName, "&")),
 
-                        ppages$pageSize,
+                        ppages$pageSize, "&",
                         ppages$page))
 
   # if (germplasmPUI != "none") {
