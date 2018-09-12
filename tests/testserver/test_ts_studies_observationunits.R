@@ -4,6 +4,7 @@ con <- ba_db()$testserver
 
 test_that("Studies_details are present", {
 
+  skip("Under revision")
   res <- ba_studies_observationunits(con = con, studyDbId = "1001")
   expect_that(nrow(res) == 4, is_true())
 
@@ -11,6 +12,8 @@ test_that("Studies_details are present", {
 
 
 test_that("Output is transformed", {
+
+  skip("Under revision")
 
   res <- ba_studies_observationunits(con = con, studyDbId = "1001",
                                      rclass = "json")
