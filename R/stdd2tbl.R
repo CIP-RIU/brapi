@@ -27,6 +27,7 @@ join_records <- function(dat, prefix, field_sub) {
   keep_names <-  names(dat)[!names(dat) %in% record_group]
   out <- cbind(dat[, keep_names], prefix = field_rec)
   out$prefix <- as.character(out$prefix)
+  out$prefix <- stringr::str_replace(out$prefix, "; ", "")
   names(out)[ncol(out)] <- prefix
 
   out
