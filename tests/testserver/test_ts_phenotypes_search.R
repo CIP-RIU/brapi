@@ -6,7 +6,7 @@ con <- ba_db()$testserver
 test_that(" are present", {
 
   res <- ba_phenotypes_search(con = con )
-  expect_true(nrow(res) == 154)
+  expect_true(nrow(res) >= 154)
 
 })
 

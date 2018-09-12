@@ -48,7 +48,8 @@ if (interactive()) {
 \href{https://github.com/plantbreeding/API/blob/V1.0/Specification/Germplasm/GermplasmDetailsListByStudyDbId.md}{github}
 }
 \seealso{
-Other germplasm: \code{\link{ba_germplasm_details}},
+Other germplasm: \code{\link{ba_germplasm_breedingmethods}},
+  \code{\link{ba_germplasm_details}},
   \code{\link{ba_germplasm_markerprofiles}},
   \code{\link{ba_germplasm_pedigree}},
   \code{\link{ba_germplasm_progeny}},

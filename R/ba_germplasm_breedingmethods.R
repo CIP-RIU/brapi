@@ -16,20 +16,24 @@
 #'
 #' @author Reinhard Simon, Maikel Verouden
 #' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Germplasm/BreedingMethods_GET.yaml}{github}
+#' @family germplasm
+#'
 #' @example inst/examples/ex-ba_germplasm_breedingmethods.R
+#'
 #' @import tibble
 #' @export
 ba_germplasm_breedingmethods <- function(con = NULL,
                          pageSize = 1000,
                          page = 0,
-                         rclass = "tibble") {
+                         rclass = c("tibble", "data.frame", "list", "json")) {
   ba_check(con = con, verbose = FALSE, brapi_calls = "breedingmethods")
   check_paging(pageSize = pageSize, page = page)
-  check_rclass(rclass = rclass)
+  rclass <- match.arg(rclass)
+
   # fetch the url of the brapi implementation of the database
   brp <- get_brapi(con = con)
   # generate the brapi call specific url
-  callname <- paste0(brp, "breedingmethods?")
+  callurl <- paste0(brp, "breedingmethods?")
   ppageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize,
                                                    "&"), "")
   ppage <- ifelse(is.numeric(page), paste0("page=", page, "&"), "")
@@ -43,7 +47,7 @@ ba_germplasm_breedingmethods <- function(con = NULL,
                                ppageSize,
                                ppage))
   try({
-    res <- brapiGET(url = callname, con = con)
+    res <- brapiGET(url = callurl, con = con)
     res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
     out <- NULL
     if (rclass %in% c("json", "list")) {

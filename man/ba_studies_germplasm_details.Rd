@@ -62,7 +62,8 @@ Other studies: \code{\link{ba_studies_details}},
   \code{\link{ba_studies_table_save}},
   \code{\link{ba_studies_table}}
 
-Other germplasm: \code{\link{ba_germplasm_details_study}},
+Other germplasm: \code{\link{ba_germplasm_breedingmethods}},
+  \code{\link{ba_germplasm_details_study}},
   \code{\link{ba_germplasm_details}},
   \code{\link{ba_germplasm_markerprofiles}},
   \code{\link{ba_germplasm_pedigree}},
