@@ -50,7 +50,7 @@ ba_db <- function() {
                      protocol = "https://",
                      db = "www.genesys-pgr.org",
                      apipath = "",
-                     multicrop = TRUE,
+                     multicrop = FALSE,
                      crop = "pigeonpea",
                      bms = FALSE)
   germinate <- as.ba_db(secure = TRUE,

@@ -4,32 +4,42 @@
 \alias{ba_germplasm_search}
 \title{ba_germplasm_search}
 \usage{
-ba_germplasm_search(con = NULL, germplasmDbId = "",
-  germplasmName = "", germplasmPUI = "", page = 0, pageSize = 10,
-  method = "GET", rclass = "tibble")
+ba_germplasm_search(con = NULL, germplasmPUI = "",
+  germplasmDbId = "", germplasmName = "", commonCropName = "",
+  page = 0, pageSize = 10, rclass = c("tibble", "data.frame", "list",
+  "json"))
 }
 \arguments{
 \item{con}{brapi connection object}
+
+\item{germplasmPUI}{character default: ''}
 
 \item{germplasmDbId}{character default ''}
 
 \item{germplasmName}{character default: ''}
 
-\item{germplasmPUI}{character default: ''}
+\item{commonCropName}{character default: ''}
 
 \item{page}{integer default: 10}
 
 \item{pageSize}{integer default: 0}
 
-\item{method}{string; default 'GET'; alternative 'POST'}
-
 \item{rclass}{character; default: tibble}
 }
 \value{
-tibble
+as defined by rclass
 }
 \description{
 Lists germplasmm as result of a search.
+}
+\note{
+Tested against: test-server
+
+BrAPI Version: 1,0. 1.1, 1.2
+
+BrAPI Status: active
+
+Incomplete: Only GET implemented
 }
 \examples{
 if (interactive()) {
