@@ -9,7 +9,7 @@ ba_phenotypes_search(con = NULL, germplasmDbIds = "",
   programDbIds = "", seasonDbIds = "", observationLevel = "",
   observationTimeStampRangeStart = "",
   observationTimeStampRangeEnd = "", pageSize = 1000, page = 0,
-  rclass = "tibble")
+  rclass = c("tibble", "data.frame", "list", "json"))
 }
 \arguments{
 \item{con}{brapi list, connection object}

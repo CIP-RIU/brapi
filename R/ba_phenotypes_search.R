@@ -40,7 +40,7 @@ ba_phenotypes_search <- function(con = NULL,
                                  observationTimeStampRangeEnd = "",
                                  pageSize = 1000,
                                  page = 0,
-                                 rclass = "tibble") {
+                                 rclass = c("tibble", "data.frame", "list", "json")) {
   ba_check(con = con, verbose = FALSE, brapi_calls = "phenotypes-search")
   stopifnot(is.character(germplasmDbIds))
   stopifnot(is.character(observationVariableDbIds))
