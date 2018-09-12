@@ -2,25 +2,31 @@
 #'
 #' lists the breeding observationvariables
 #'
-#'
 #' @param con brapi list, connection object
 #' @param germplasmDbIds  vector of character; default: ''
 #' @param observationVariableDbIds  vector of character; default: ''
 #' @param studyDbIds  vector of character; default: ''
 #' @param locationDbIds  vector of character; default: ''
+#' @param trialDbIds vector of character; default: ''
 #' @param programDbIds  vector of character; default: ''
 #' @param seasonDbIds  vector of character; default: ''
-#' @param observationLevel  vector of character; default: ''
-#' @param pageSize integer default: 100
+#' @param observationLevel  character; default: ''
+#' @param observationTimeStampRangeStart character; default: ''
+#' @param observationTimeStampRangeEnd character; default: ''
+#' @param pageSize integer default: 1000
 #' @param page integer default: 0
 #' @param rclass character; default: tibble
 #'
-#' @import httr
-#' @author Reinhard Simon
 #' @return rclass
-#' @example inst/examples/ex-ba_phenotypes_search.R
-#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Phenotypes/PhenotypeSearch.md}{github}
+#'
+#' @author Reinhard Simon
+#' @references \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Phenotypes/PhenotypesSearch_GET.md}{github}
+#'
 #' @family brapicore
+#'
+#' @example inst/examples/ex-ba_phenotypes_search.R
+#'
+#' @import httr
 #' @export
 ba_phenotypes_search <- function(con = NULL,
                                  germplasmDbIds = "",
@@ -30,7 +36,9 @@ ba_phenotypes_search <- function(con = NULL,
                                  programDbIds = "",
                                  seasonDbIds = "",
                                  observationLevel = "",
-                                 pageSize = 100,
+                                 observationTimeStampRangeStart = "",
+                                 observationTimeStampRangeEnd = "",
+                                 pageSize = 1000,
                                  page = 0,
                                  rclass = "tibble") {
   ba_check(con = con, verbose = FALSE, brapi_calls = "phenotypes-search")
@@ -41,23 +49,34 @@ ba_phenotypes_search <- function(con = NULL,
   stopifnot(is.character(programDbIds))
   stopifnot(is.character(seasonDbIds))
   stopifnot(is.character(observationLevel))
+  stopifnot(is.character(observationTimeStampRangeStart))
+  stopifnot(is.character(observationTimeStampRangeEnd))
   check_paging(pageSize = pageSize, page = page)
-  check_rclass(rclass = rclass)
+  rclass <- match.arg(rclass)
+
   brp <- get_brapi(con = con)
-  pvariables <- paste0(brp, "phenotypes-search/")
+  callurl <- paste0(brp, "phenotypes-search")
 
 
   try({
-    body <- list(germplasmDbId = germplasmDbIds,
-                 observationVariableDbId = observationVariableDbIds,
-                 studyDbId = studyDbIds,
-                 locationDbId = locationDbIds,
-                 programDbId = programDbIds,
-                 seasonDbId = seasonDbIds,
-                 observationLevel = observationLevel,
-                 pageSize = pageSize,
-                 page = page)
-    res <- brapiPOST(url = pvariables, body = body, con = con)
+    body <- list(
+      germplasmDbIds = as.array(ifelse(germplasmDbIds != "", germplasmDbIds, "")),
+      observationVariableDbIds = as.array(ifelse(observationVariableDbIds != "",
+                                                 observationVariableDbIds,
+                                                 "")),
+      studyDbIds = as.array(ifelse(studyDbIds != "", studyDbIds, "")),
+      locationDbIds = as.array(ifelse(locationDbIds != "", locationDbIds, "")),
+      programDbIds = as.array(ifelse(programDbIds != "", programDbIds, "")),
+      seasonDbIds = as.array(ifelse(seasonDbIds != "", seasonDbIds, "")),
+      observationLevel = ifelse(observationLevel != "", observationLevel, ""),
+      observationTimeStampRangeStart = ifelse(observationTimeStampRangeStart != "",
+                                              observationTimeStampRangeStart, ""),
+      observationTimeStampRangeEnd = ifelse(observationTimeStampRangeEnd != "",
+                                              observationTimeStampRangeEnd, ""),
+      pageSize = ifelse(pageSize != "", pageSize %>% as.integer(), ""),
+      page = ifelse(page != "", page %>% as.integer(), "")
+    )
+    res <- brapiPOST(url = callurl, body = body, con = con)
     show_metadata(res)
 
     res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")

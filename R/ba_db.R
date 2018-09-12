@@ -46,6 +46,13 @@ ba_db <- function() {
                      multicrop = TRUE,
                      crop = "tomato",
                      bms = FALSE)
+  genesys <- as.ba_db(secure = TRUE,
+                     protocol = "https://",
+                     db = "www.genesys-pgr.org",
+                     apipath = "",
+                     multicrop = TRUE,
+                     crop = "pigeonpea",
+                     bms = FALSE)
   germinate <- as.ba_db(secure = TRUE,
                         protocol = "https://",
                         db = "ics.hutton.ac.uk",
@@ -157,6 +164,7 @@ ba_db <- function() {
               cassavabase = cassavabase,
               cropontology = cropontology,
               eu_sol = eu_sol,
+              genesys = genesys,
               germinate_test = germinate,
               icrisat_prod = icrisat_prod,
               mgis = mgis,

@@ -7,7 +7,9 @@
 ba_phenotypes_search(con = NULL, germplasmDbIds = "",
   observationVariableDbIds = "", studyDbIds = "", locationDbIds = "",
   programDbIds = "", seasonDbIds = "", observationLevel = "",
-  pageSize = 100, page = 0, rclass = "tibble")
+  observationTimeStampRangeStart = "",
+  observationTimeStampRangeEnd = "", pageSize = 1000, page = 0,
+  rclass = "tibble")
 }
 \arguments{
 \item{con}{brapi list, connection object}
@@ -24,13 +26,19 @@ ba_phenotypes_search(con = NULL, germplasmDbIds = "",
 
 \item{seasonDbIds}{vector of character; default: ''}
 
-\item{observationLevel}{vector of character; default: ''}
+\item{observationLevel}{character; default: ''}
 
-\item{pageSize}{integer default: 100}
+\item{observationTimeStampRangeStart}{character; default: ''}
+
+\item{observationTimeStampRangeEnd}{character; default: ''}
+
+\item{pageSize}{integer default: 1000}
 
 \item{page}{integer default: 0}
 
 \item{rclass}{character; default: tibble}
+
+\item{trialDbIds}{vector of character; default: ''}
 }
 \value{
 rclass
@@ -48,7 +56,7 @@ if (interactive()) {
 }
 }
 \references{
-\href{https://github.com/plantbreeding/API/blob/master/Specification/Phenotypes/PhenotypeSearch.md}{github}
+\href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Phenotypes/PhenotypesSearch_GET.md}{github}
 }
 \seealso{
 Other brapicore: \code{\link{ba_calls}},
