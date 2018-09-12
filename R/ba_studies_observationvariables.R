@@ -10,7 +10,7 @@
 #' @param pageSize integer, items per page to be returned; default: 1000
 #' @param page integer, the requested page to be returned; default: 0 (1st page)
 #' @param rclass character, class of the object to be returned;  default: "tibble"
-#'               , possible other values: "json"/"list"/"data.frame"
+#'               , possible other values: "data.frame"/"list"/"json"
 #'
 #' @details This call must have set a specific identifier. The default is an
 #'          empty string. If not changed to an identifier present in the
@@ -34,21 +34,22 @@ ba_studies_observationvariables <- function(con = NULL,
                                             studyDbId = "",
                                             pageSize = 1000,
                                             page = 0,
-                                            rclass = "tibble") {
+                                            rclass = c("tibble", "data.frame",
+                                                       "list", "json")) {
   ba_check(con = con, verbose = FALSE, brapi_calls =
              "studies/id/observationvariables")
-  stopifnot(is.character(studyDbId))
-  stopifnot(studyDbId != "")
-  check_rclass(rclass = rclass)
+  studyDbId <- match_req(studyDbId)
+  rclass <- match.arg(rclass)
+
   brp <- get_brapi(con = con)
   endpoint <- paste0(brp, "studies/", studyDbId, "/observationvariables?")
   ppages <- get_ppages(pageSize, page)
-  # modify brapi call url to include pagenation
   callurl <- sub(pattern = "[/?&]$",
                  replacement = "",
                  x = paste0(endpoint,
                             ppages$pageSize,
                             ppages$page))
+
   try({
     res <- brapiGET(url = callurl, con = con)
     res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")

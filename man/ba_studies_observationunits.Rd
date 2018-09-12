@@ -5,26 +5,50 @@
 \title{ba_studies_observationunits}
 \usage{
 ba_studies_observationunits(con = NULL, studyDbId = "",
-  observationLevel = "plot", rclass = "tibble")
+  observationLevel = c("any", "plot", "plant"), pageSize = 1000,
+  page = 0, rclass = c("tibble", "data.frame", "list", "json"))
 }
 \arguments{
 \item{con}{list, brapi connection object}
 
-\item{studyDbId}{character; default: ''}
+\item{studyDbId}{character, the internal database identifier for a study of
+which the observation units are to be retrieved e.g. "1001";
+\strong{REQUIRED ARGUMENT} with default: ""}
 
-\item{observationLevel}{character; default: plot; alternative: plant}
+\item{observationLevel}{character, specifying the granularity level of
+observation units, where either "plotNumber" or
+"plantNumber" fields will be relavant depending on
+whether granularity is specified as "plot" or "plant"
+respectively; default: "any", other possible value:
+"plot"/"plant"}
 
-\item{rclass}{character; default: tibble}
+\item{pageSize}{integer, items per page to be returned; default: 1000}
+
+\item{page}{integer, the requested page to be returned; default: 0 (1st page)}
+
+\item{rclass}{character, class of the object to be returned;  default: "tibble"
+, possible other values: "data.frame"/"list"/"json"}
 }
 \value{
-rclass as defined
+An object of class as defined by rclass containing the observation
+        units for a requested study.
 }
 \description{
-lists studies_observationunits available on a brapi server
+Retrieve all the observation units within a specific study.
+}
+\details{
+This call must have set a specific identifier. The default is an empty
+         string. If not changed to an identifier present in the database this
+         will result in an error.
 }
 \note{
-This call must have set a specific identifier. The default is an empty string.
-     If not changed to an identifier present in the database this will result in an error.
+Tested against: test-server, sweetpotatobase
+
+BrAPI Version: 1.0, 1.1, 1.2
+
+BrAPI Status: active
+
+R Brapi Status: incomplete response parsing
 }
 \examples{
 if (interactive()) {
@@ -36,7 +60,7 @@ if (interactive()) {
 }
 }
 \references{
-\href{https://github.com/plantbreeding/API/blob/master/Specification/Studies/ObservationUnitDetails.md}{github}
+\href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Studies/Studies_ObservationUnits_GET.md}{github}
 }
 \seealso{
 Other studies: \code{\link{ba_studies_details}},
