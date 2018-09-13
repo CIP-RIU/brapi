@@ -69,14 +69,14 @@ ba_studies_table <- function(con = NULL,
                           format = format)
   try({
     resp <- brapiGET(url = callurl, con = con)
-    res <- httr::content(x = resp, as = "text", encoding = "UTF-8")
+    cont <- httr::content(x = resp, as = "text", encoding = "UTF-8")
     out <- NULL
     if (rclass == "json") {
-        out <- dat2tbl(res = res, rclass = rclass)
+        out <- dat2tbl(res = cont, rclass = rclass)
     }
     if (rclass %in% c("data.frame", "tibble")) {
       if (format == "") {# means format = "json", see line 62
-        resList <- jsonlite::fromJSON(txt = res)$result
+        resList <- jsonlite::fromJSON(txt = cont)$result
         out <- as.data.frame(x = resList$data, stringsAsFactors = FALSE)
         if ((length(resList$headerRow) +
              length(resList$observationVariableNames)) != ncol(out)) {
@@ -86,20 +86,20 @@ ba_studies_table <- function(con = NULL,
       }
       if (format == "csv") {
         if (con$bms == TRUE) {
-          out <- read.csv(textConnection(res))
+          out <- read.csv(textConnection(cont))
           colnames(out) <- gsub("\\.", "|", colnames(out))
         } else {
-          url <- jsonlite::fromJSON(txt = res)$metadata$datafiles[1]
+          url <- jsonlite::fromJSON(txt = cont)$metadata$datafiles[1]
           out <- readr::read_csv(file = url, progress = TRUE)
           out <- as.data.frame(x = out, stringsAsFactors = FALSE)
         }
       }
       if (format == "tsv") {
         if (con$bms == TRUE) {
-          out <- read.delim(textConnection(res))
+          out <- read.delim(textConnection(cont))
           colnames(out) <- gsub("\\.", "|", colnames(out))
         } else {
-          url <- jsonlite::fromJSON(txt = res)$metadata$datafiles[1]
+          url <- jsonlite::fromJSON(txt = cont)$metadata$datafiles[1]
           out <- readr::read_tsv(file = url, progress = TRUE)
           out <- as.data.frame(x = out, stringsAsFactors = FALSE)
         }
