@@ -79,7 +79,7 @@ ba_studies_table <- function(con = NULL,
         resList <- jsonlite::fromJSON(txt = res)$result
         out <- resList$data
         if ((length(resList$headerRow) +
-             length(resList$observationVariableNames)) != length(colnames(out))) {
+             length(resList$observationVariableNames)) != ncol(out)) {
           stop('Header row length does not coincide with column count. Contact database provider.')
         }
         colnames(out) <- c(resList$headerRow, resList$observationVariableNames)
