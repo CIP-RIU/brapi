@@ -1,26 +1,28 @@
 #' ba_studies_studytypes
 #'
-#' lists studies_studytypes available on a brapi server
+#' Retrieve study types available on a BrAPI compliant database server.
 #'
 #' @param con list, brapi connection object
-#' @param page integer; default 0
-#' @param pageSize integer; default 1000
-#' @param rclass character; default: tibble
+#' @param pageSize integer, items per page to be returned; default: 1000
+#' @param page integer, the requested page to be returned; default: 0 (1st page)
+#' @param rclass character, class of the object to be returned; default:
+#'               "tibble", possible other values: "data.frame"/"list"/"json"
 #'
-#' @return rclass as defined
+#' @return An object of class as defined by rclass containing the study types on
+#'         the BrAPI compliant database server.
 #'
-#' @note Tested against: sweetpotatobase, testserver
+#' @note Tested against: test-server, sweetpotatobase
 #' @note BrAPI Version: 1.1, 1.2
 #' @note BrAPI Status: active
 #'
-#' @author Reinhard Simon
-#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Studies/ListStudyTypes.md}{github}
+#' @author Reinhard Simon, Maikel Verouden
+#' @references \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Studies/StudyTypes_GET.md}{github}
+#'
 #' @family studies
 #' @family phenotyping
 #'
 #' @example inst/examples/ex-ba_studies_studytypes.R
 #' @import tibble
-
 #' @export
 ba_studies_studytypes <- function(con = NULL,
                                   page = 0,

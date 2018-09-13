@@ -10,20 +10,22 @@ ba_studies_studytypes(con = NULL, page = 0, pageSize = 1000,
 \arguments{
 \item{con}{list, brapi connection object}
 
-\item{page}{integer; default 0}
+\item{page}{integer, the requested page to be returned; default: 0 (1st page)}
 
-\item{pageSize}{integer; default 1000}
+\item{pageSize}{integer, items per page to be returned; default: 1000}
 
-\item{rclass}{character; default: tibble}
+\item{rclass}{character, class of the object to be returned; default:
+"tibble", possible other values: "data.frame"/"list"/"json"}
 }
 \value{
-rclass as defined
+An object of class as defined by rclass containing the study types on
+        the BrAPI compliant database server.
 }
 \description{
-lists studies_studytypes available on a brapi server
+Retrieve study types available on a BrAPI compliant database server.
 }
 \note{
-Tested against: sweetpotatobase, testserver
+Tested against: test-server, sweetpotatobase
 
 BrAPI Version: 1.1, 1.2
 
@@ -39,7 +41,7 @@ if (interactive()) {
 }
 }
 \references{
-\href{https://github.com/plantbreeding/API/blob/master/Specification/Studies/ListStudyTypes.md}{github}
+\href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Studies/StudyTypes_GET.md}{github}
 }
 \seealso{
 Other studies: \code{\link{ba_studies_details}},
@@ -74,7 +76,7 @@ Other phenotyping: \code{\link{ba_samples_save}},
   \code{\link{ba_trials_details}}, \code{\link{ba_trials}}
 }
 \author{
-Reinhard Simon
+Reinhard Simon, Maikel Verouden
 }
 \concept{phenotyping}
 \concept{studies}
