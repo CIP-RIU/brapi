@@ -16,7 +16,7 @@
 #' @return rclass as defined
 #'
 #' @author Reinhard Simon, Maikel Verouden
-#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Samples/RetrieveSampleMetadata.md}{github}
+#' @references \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Samples/SampleSearch_GET.md}{github}
 #'
 #' @family phenotyping
 #'
@@ -25,41 +25,34 @@
 #' @import tibble
 #' @export
 ba_samples_search <- function(con = NULL,
-                       sampleDbId = "",
-                       observationUnitDbId = "",
-                       plateDbId = "",
-                       germplasmDbId = "",
-                       pageSize = 1000,
-                       page = 0,
-                       rclass = "tibble") {
-  ba_check(con = con, verbose = FALSE, brapi_calls = "samples")
-  stopifnot(is.character(sampleDbId))
-  stopifnot(sampleDbId != "")
-  check_rclass(rclass = rclass)
-  brp <- get_brapi(con = con)
-  call_samples <- sub("[/?&]$",
-                      "",
-                      paste0(brp, "samples/", sampleDbId, "/"))
+                              sampleDbId = "",
+                              observationUnitDbId = "",
+                              plateDbId = "",
+                              germplasmDbId = "",
+                              pageSize = 1000,
+                              page = 0,
+                              rclass = c("tibble", "data.frame",
+                                         "list", "json")) {
+  ba_check(con = con, verbose = FALSE)
+  check_character(sampleDbId, observationUnitDbId, plateDbId, germplasmDbId)
+  rclass <- match.arg(rclass)
+
+  brp <- get_brapi(con) %>% paste0("samples-search")
+  callurl <- get_endpoint(brp,
+                          sampleDbId = sampleDbId,
+                          observationUnitDbId = observationUnitDbId,
+                          plateDbId = plateDbId,
+                          germplasmDbId = germplasmDbId,
+                          pageSize = pageSize,
+                          page = page)
+
   tryCatch({
-    res <- brapiGET(url = call_samples, con = con)
-    res <- httr::content(x = res, as = "text", encoding = "UTF-8")
-    out <- NULL
-    if (rclass %in% c("json", "list")) {
-      out <- dat2tbl(res = res, rclass = rclass)
-    }
-    if (rclass %in% c("tibble", "data.frame")) {
-      out <- jsonlite::fromJSON(txt = res, simplifyDataFrame = TRUE)$result %>%
-             lapply(FUN = function(x) {x <- ifelse(is.null(x), "", x)}) %>%
-             tibble::as_tibble()
-      if (rclass == "data.frame") {
-        out <- as.data.frame(x = out)
-      }
-    }
-    if (!is.null(out)) {
-      class(out) <- c(class(out), "ba_samples")
-    }
+    resp <- brapiGET(url = callurl, con = con)
+    cont <- httr::content(x = resp, as = "text", encoding = "UTF-8")
+
+    out <- dat2tbl(res = cont, rclass = rclass)
+    class(out) <- c(class(out), "ba_samples_search")
+
     return(out)
-  }, error = function(e) {
-    stop(paste0(e, "\n\nMalformed sampleDbId."))
   })
 }
