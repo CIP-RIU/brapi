@@ -8,13 +8,17 @@
 #' @param includeSiblings logic; optional, default: TRUE
 #' @param rclass character; default: tibble
 #'
-#' @author Reinhard Simon
 #' @return list of pedigree data
-#' @example inst/examples/ex-ba_germplasm_pedigree.R
-#' @import httr
+#'
+#' @author Reinhard Simon
 #' @references \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Germplasm/Germplasm_Pedigree_GET.md}{github}
+#'
 #' @family germplasm
 #' @family brapicore
+#'
+#' @example inst/examples/ex-ba_germplasm_pedigree.R
+#'
+#' @import httr
 #' @export
 ba_germplasm_pedigree <- function(con = NULL,
                                   germplasmDbId = "",
@@ -27,7 +31,7 @@ ba_germplasm_pedigree <- function(con = NULL,
   check_req(germplasmDbId)
   rclass <- match_req(rclass)
 
-  brp <- get_brapi(con = con) %>% paste0("germplasm/", germplasmDbId)
+  brp <- get_brapi(con = con) %>% paste0("germplasm/", germplasmDbId, "/pedigree")
   callurl <- get_endpoint(brp, notation = notation, includeSiblings = includeSiblings)
 
   try({

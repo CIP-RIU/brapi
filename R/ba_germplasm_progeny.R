@@ -3,26 +3,33 @@
 #' Gets germplasm progenies given an id.
 #'
 #' @param con brapi connection object
-#' @param rclass character; tibble
-#' @param germplasmDbId string; default 0; an internal ID for a germplasm
-#' @import dplyr
+#' @param germplasmDbId character; \strong{REQUIRED ARGUMENT} with default ''
+#' @param rclass character; default: tibble
+#'
+#' @return character; default: tibble
+#'
 #' @author Reinhard Simon
-#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Germplasm/Germplasm_GermplasmDbId_Progeny_GET.yaml}{github}
-#' @return list
-#' @example inst/examples/ex-ba_germplasm_progeny.R
+#' @references \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Germplasm/Germplasm_Progeny_GET.md}{github}
+#'
 #' @family germplasm
 #' @family brapicore
+#'
+#' @example inst/examples/ex-ba_germplasm_progeny.R
+#'
+#' @import dplyr
 #' @export
 ba_germplasm_progeny <- function(con = NULL,
                                  germplasmDbId = "",
-                                 rclass = "tibble") {
+                                 rclass = c("tibble", "data.frame", "list", "json")) {
   ba_check(con = con, verbose = FALSE, brapi_calls = "germplasm/id/progeny")
-  stopifnot(is.character(germplasmDbId))
-  check_rclass(rclass = rclass)
-  # generate the brapi call url
-  germplasm <- paste0(get_brapi(con = con), "germplasm/", germplasmDbId, "/progeny")
+  check_character(germplasmDbId)
+  check_req(germplasmDbId)
+  rclass <- match_req(rclass)
+
+  callurl <- get_brapi(con = con) %>% paste0("germplasm/", germplasmDbId, "/progeny")
+
   try({
-    res <- brapiGET(url = germplasm, con = con)
+    res <- brapiGET(url = callurl, con = con)
     res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
     out <- NULL
     if (rclass %in% c("json", "list")) {

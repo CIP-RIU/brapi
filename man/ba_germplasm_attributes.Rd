@@ -43,7 +43,8 @@ if (interactive()) {
 \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/GermplasmAttributes/Germplasm_Attributes_GET.md}{github}
 }
 \seealso{
-Other germplasmattributes: \code{\link{ba_germplasmattributes_categories}},
+Other germplasmattributes: \code{\link{ba_germplasmattributes_attributes}},
+  \code{\link{ba_germplasmattributes_categories}},
   \code{\link{ba_germplasmattributes_details}},
   \code{\link{ba_germplasmattributes}}
 

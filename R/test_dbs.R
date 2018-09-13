@@ -1,6 +1,8 @@
 test_dbs <- function(resources = c("internet",
+                                   "testthat",
                                    "testserver",
-                                   "sweetpotatobase")) {
+                                   "sweetpotatobase",
+                                   "genesys")) {
   if ("internet" %in% resources) {
     testthat::test_dir("tests/internet")
   }

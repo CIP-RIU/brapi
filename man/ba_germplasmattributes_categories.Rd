@@ -37,6 +37,7 @@ if (interactive()) {
 }
 \seealso{
 Other germplasmattributes: \code{\link{ba_germplasm_attributes}},
+  \code{\link{ba_germplasmattributes_attributes}},
   \code{\link{ba_germplasmattributes_details}},
   \code{\link{ba_germplasmattributes}}
 

@@ -5,17 +5,17 @@
 \title{ba_germplasm_progeny}
 \usage{
 ba_germplasm_progeny(con = NULL, germplasmDbId = "",
-  rclass = "tibble")
+  rclass = c("tibble", "data.frame", "list", "json"))
 }
 \arguments{
 \item{con}{brapi connection object}
 
-\item{germplasmDbId}{string; default 0; an internal ID for a germplasm}
+\item{germplasmDbId}{character; \strong{REQUIRED ARGUMENT} with default ''}
 
-\item{rclass}{character; tibble}
+\item{rclass}{character; default: tibble}
 }
 \value{
-list
+character; default: tibble
 }
 \description{
 Gets germplasm progenies given an id.
@@ -31,7 +31,7 @@ if (interactive()) {
 }
 }
 \references{
-\href{https://github.com/plantbreeding/API/blob/master/Specification/Germplasm/Germplasm_GermplasmDbId_Progeny_GET.yaml}{github}
+\href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Germplasm/Germplasm_Progeny_GET.md}{github}
 }
 \seealso{
 Other germplasm: \code{\link{ba_germplasm_breedingmethods}},
@@ -48,6 +48,7 @@ Other brapicore: \code{\link{ba_calls}},
   \code{\link{ba_germplasm_details}},
   \code{\link{ba_germplasm_pedigree}},
   \code{\link{ba_germplasm_search}},
+  \code{\link{ba_germplasmattributes_attributes}},
   \code{\link{ba_observationvariables_datatypes}},
   \code{\link{ba_observationvariables_details}},
   \code{\link{ba_observationvariables_ontologies}},
