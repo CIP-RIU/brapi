@@ -3,14 +3,14 @@
 #' germplasm_attibutes call.
 #'
 #' @param con brapi connection object
-#' @param germplasmDbId character; default: ''.
+#' @param germplasmDbId character; \strong{REQUIRED ARGUMENT} with default: ''.
 #' @param attributeList character vector;  \strong{DEPRECATED ARGUMENT} with default: NULL.
 #' @param attributeDbIds character vector; default: ''
 #' @param pageSize integer; default: 1000.
 #' @param page integer; default: 0.
 #' @param rclass character; default: tibble; or else: json, list, data.frame.
 #'
-#' @return rclass as set by parameter.
+#' @return rclass as defined
 #'
 #' @author Reinhard Simon
 #' @references \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/GermplasmAttributes/Germplasm_Attributes_GET.md}{github}

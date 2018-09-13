@@ -5,17 +5,17 @@
 \title{ba_germplasm_markerprofiles}
 \usage{
 ba_germplasm_markerprofiles(con = NULL, germplasmDbId = "",
-  rclass = "tibble")
+  rclass = c("tibble", "data.frame", "list", "json"))
 }
 \arguments{
 \item{con}{brapi connection object}
 
-\item{germplasmDbId}{character}
+\item{germplasmDbId}{character, \strong{REQUIRED ARGUMENT} with default: ''}
 
-\item{rclass}{character, default: list; alternative: vector}
+\item{rclass}{default: tibble}
 }
 \value{
-list of marker profile ids
+rclass as defined
 }
 \description{
 Gets minimal marker profile data from database using database internal id
@@ -31,7 +31,7 @@ if (interactive()) {
 }
 }
 \references{
-\href{https://github.com/plantbreeding/API/blob/master/Specification/Germplasm/GermplasmMarkerprofiles.md}{github}
+\href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Germplasm/Germplasm_Markerprofiles_GET.md}{github}
 }
 \seealso{
 Other germplasm: \code{\link{ba_germplasm_breedingmethods}},

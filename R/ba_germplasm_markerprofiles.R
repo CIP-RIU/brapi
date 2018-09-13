@@ -3,28 +3,33 @@
 #' Gets minimal marker profile data from database using database internal id
 #'
 #' @param con brapi connection object
-#' @param germplasmDbId character
-#' @param rclass character, default: list; alternative: vector
+#' @param germplasmDbId character, \strong{REQUIRED ARGUMENT} with default: ''
+#' @param rclass default: tibble
+#'
+#' @return rclass as defined
+#'
 #' @author Reinhard Simon
-#' @return list of marker profile ids
+#' @references \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Germplasm/Germplasm_Markerprofiles_GET.md}{github}
+#'
+#' @family germplasm
+#' @family genotyping
+#'
 #' @example inst/examples/ex-ba_germplasm_markerprofiles.R
 #' @import httr
 #' @import dplyr
-#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Germplasm/GermplasmMarkerprofiles.md}{github}
-#' @family germplasm
-#' @family genotyping
 #' @export
 ba_germplasm_markerprofiles <- function(con = NULL,
                                         germplasmDbId = "",
-                                        rclass = "tibble") {
+                                        rclass = c("tibble", "data.frame", "list", "json")) {
   ba_check(con = con, verbose = FALSE)
-  stopifnot(is.character(germplasmDbId))
-  check_rclass(rclass = rclass)
-  # generate brapi call url
-  germplasm_markerprofiles <- paste0(get_brapi(con = con), "germplasm/",
-                                     germplasmDbId, "/markerprofiles/")
+  check_character(germplasmDbId)
+  check_req(germplasmDbId)
+  rclass <- match.arg(rclass)
+
+  callurl <- paste0(get_brapi(con = con), "germplasm/", germplasmDbId, "/markerprofiles")
+
   try({
-    res <- brapiGET(url = germplasm_markerprofiles, con = con)
+    res <- brapiGET(url = callurl, con = con)
     res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
     out <- NULL
     ms2tbl <- function(res) {

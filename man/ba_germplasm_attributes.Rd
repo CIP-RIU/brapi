@@ -11,7 +11,7 @@ ba_germplasm_attributes(con = NULL, germplasmDbId = "",
 \arguments{
 \item{con}{brapi connection object}
 
-\item{germplasmDbId}{character; default: ''.}
+\item{germplasmDbId}{character; \strong{REQUIRED ARGUMENT} with default: ''.}
 
 \item{attributeList}{character vector;  \strong{DEPRECATED ARGUMENT} with default: NULL.}
 
@@ -24,7 +24,7 @@ ba_germplasm_attributes(con = NULL, germplasmDbId = "",
 \item{rclass}{character; default: tibble; or else: json, list, data.frame.}
 }
 \value{
-rclass as set by parameter.
+rclass as defined
 }
 \description{
 germplasm_attibutes call.
