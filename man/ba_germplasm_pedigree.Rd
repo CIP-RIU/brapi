@@ -5,14 +5,17 @@
 \title{ba_germplasm_pedigree}
 \usage{
 ba_germplasm_pedigree(con = NULL, germplasmDbId = "", notation = "",
-  rclass = "tibble")
+  includeSiblings = TRUE, rclass = c("tibble", "data.frame", "list",
+  "json"))
 }
 \arguments{
 \item{con}{brapi connection object}
 
-\item{germplasmDbId}{character; default ''}
+\item{germplasmDbId}{character; \strong{REQUIRED ARGUMENT} with default ''}
 
 \item{notation}{character; optional, recommended value: purdue format. Default: ''}
+
+\item{includeSiblings}{logic; optional, default: TRUE}
 
 \item{rclass}{character; default: tibble}
 }
@@ -33,7 +36,7 @@ if (interactive()) {
 }
 }
 \references{
-\href{https://github.com/plantbreeding/API/blob/master/Specification/Germplasm/GermplasmPedigree.md}{github}
+\href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Germplasm/Germplasm_Pedigree_GET.md}{github}
 }
 \seealso{
 Other germplasm: \code{\link{ba_germplasm_breedingmethods}},

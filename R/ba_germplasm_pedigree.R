@@ -3,33 +3,35 @@
 #' Gets minimal pedigree data from database using database internal id
 #'
 #' @param con brapi connection object
-#' @param germplasmDbId character; default ''
+#' @param germplasmDbId character; \strong{REQUIRED ARGUMENT} with default ''
 #' @param notation character; optional, recommended value: purdue format. Default: ''
+#' @param includeSiblings logic; optional, default: TRUE
 #' @param rclass character; default: tibble
 #'
 #' @author Reinhard Simon
 #' @return list of pedigree data
 #' @example inst/examples/ex-ba_germplasm_pedigree.R
 #' @import httr
-#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Germplasm/GermplasmPedigree.md}{github}
+#' @references \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Germplasm/Germplasm_Pedigree_GET.md}{github}
 #' @family germplasm
 #' @family brapicore
 #' @export
 ba_germplasm_pedigree <- function(con = NULL,
                                   germplasmDbId = "",
                                   notation = "",
-                                  rclass = "tibble") {
+                                  includeSiblings = TRUE,
+                                  rclass = c("tibble", "data.frame", "list", "json")) {
   ba_check(con = con, verbose = FALSE)
-  stopifnot(is.character(germplasmDbId))
-  stopifnot(germplasmDbId != '')
+  check_character(germplasmDbId)
+  stopifnot(is.logical(includeSiblings))
+  check_req(germplasmDbId)
+  rclass <- match_req(rclass)
 
-  check_rclass(rclass = rclass)
-  # generate brapi call url
-  pnotation <- ifelse(notation != '', paste0("/pedigree/?notation=", notation), "/pedigree")
-  germplasm_pedigree <- paste0(get_brapi(con = con), "germplasm/",
-                        germplasmDbId, pnotation)
+  brp <- get_brapi(con = con) %>% paste0("germplasm/", germplasmDbId)
+  callurl <- get_endpoint(brp, notation = notation, includeSiblings = includeSiblings)
+
   try({
-    res <- brapiGET(url = germplasm_pedigree, con = con)
+    res <- brapiGET(url = callurl, con = con)
     res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
     out <- NULL
     ms2tbl <- function(res) {

@@ -11,8 +11,10 @@ get_endpoint <- function(pointbase, ...) {
   j <- 1
 
   for (i in seq_along(args)) {
+    if (is.logical(args[[i]])) args[[i]] <- tolower(args[[i]])
     if (!is.null(args[[i]]) && args[[i]] != "") {
       args[[i]] <- sub(forbidden, "", args[[i]])
+
       p[[j]] <- paste0(names(args)[[i]], "=", paste(args[[i]], collapse = ","))
       j <- j + 1
     }

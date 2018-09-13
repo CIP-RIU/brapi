@@ -3,7 +3,7 @@ check_req <- function(...) {
   args <- list(...)
   non_empty <- function(s) {nchar(s) > 0}
   if (!lapply(args, non_empty) %>% unlist %>% all()) {
-    stop("All parameters must have at least a length of one.")
+    stop("All required parameters must have at least a length of one.")
   }
 
 }
