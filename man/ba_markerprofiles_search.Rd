@@ -6,7 +6,8 @@
 \usage{
 ba_markerprofiles_search(con = NULL, germplasmDbId = "",
   studyDbId = "", sampleDbId = "", extractDbId = "",
-  methodDbId = "", page = 0, pageSize = 10000, rclass = "tibble")
+  methodDbId = "", page = 0, pageSize = 10000, rclass = c("tibble",
+  "data.frame", "list", "json"))
 }
 \arguments{
 \item{con}{brapi connection object}
@@ -19,7 +20,7 @@ ba_markerprofiles_search(con = NULL, germplasmDbId = "",
 
 \item{extractDbId}{character; default: ''}
 
-\item{methodDbId}{string; default: ''}
+\item{methodDbId}{character; default: ''}
 
 \item{page}{integer; default: 0}
 
@@ -28,7 +29,7 @@ ba_markerprofiles_search(con = NULL, germplasmDbId = "",
 \item{rclass}{character; default: tibble}
 }
 \value{
-data.frame
+rclass as requested
 }
 \description{
 Lists markers as result of a search.
@@ -45,7 +46,7 @@ if (interactive()) {
 }
 }
 \references{
-\href{https://github.com/plantbreeding/API/blob/master/Specification/MarkerProfiles/MarkerProfileSearch.md}{github}
+\href{https://github.com/plantbreeding/API/blob/V1.2/Specification/MarkerProfiles/MarkerProfiles_GET.md}{github}
 }
 \seealso{
 Other markerprofiles: \code{\link{ba_markerprofiles_allelematrices_details}},

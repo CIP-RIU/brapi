@@ -26,7 +26,7 @@
 #' @export
 ba_markerprofiles_allelematrices_details <- function(con = NULL,
                                                   studyDbId = "",
-                                                  pageSize = 1000,
+                                                  pageSize = 10000,
                                                   page = 0,
                                                   rclass = c("tibble", "data.frame",
                                                              "list", "json")) {

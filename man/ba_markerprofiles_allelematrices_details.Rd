@@ -5,7 +5,7 @@
 \title{ba_markerprofiles_allelematrices_details}
 \usage{
 ba_markerprofiles_allelematrices_details(con = NULL, studyDbId = "",
-  pageSize = 1000, page = 0, rclass = c("tibble", "data.frame",
+  pageSize = 10000, page = 0, rclass = c("tibble", "data.frame",
   "list", "json"))
 }
 \arguments{
