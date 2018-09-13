@@ -3,78 +3,77 @@
 #' Lists markers as result of a search.
 #'
 #' @param con brapi connection object
-#' @param markerprofilesDbId character; default 0
+#' @param markerprofileDbId character; default 0
 #' @param expandHomozygotes logical; default false
-#' @param unknownString chaaracter; default: '-'
-#' @param sepPhased character; default: '|'
-#' @param sepUnphased character; default: '/'
+#' @param unknownString chaaracter; default: ''
+#' @param sepPhased character; default: ''
+#' @param sepUnphased character; default: ''
 #' @param page integer; default: 0
 #' @param pageSize integer; default 1000
 #' @param rclass character; default: tibble
 #'
-#' @author Reinhard Simon
-#' @import httr
-#' @import progress
-#' @importFrom magrittr '%>%'
-#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/MarkerProfiles/}{github}
+#' @return rclass as requested
 #'
-#' @return data.frame
-#' @example inst/examples/ex-ba_markerprofiles_details.R
+#' @author Reinhard Simon
+#' @references \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/MarkerProfiles/MarkerProfiles_MarkerProfileDbId_GET.md}{github}
+#'
 #' @family markerprofiles
 #' @family genotyping
+#'
+#' @example inst/examples/ex-ba_markerprofiles_details.R
+#'
+#' @import httr
+#' @import progress
 #' @export
 ba_markerprofiles_details <- function(con = NULL,
-                                      markerprofilesDbId = "",
+                                      markerprofileDbId = "",
                                       expandHomozygotes = FALSE,
-                                      unknownString = "-",
-                                      sepPhased = "|",
-                                      sepUnphased = "/",
+                                      unknownString = "",
+                                      sepPhased = "",
+                                      sepUnphased = "",
                                       page = 0,
                                       pageSize = 10000,
-                                      rclass = "tibble") {
-  ba_check(con = con, verbose = FALSE, brapi_calls = "markerprofiles/id/")
-  stopifnot(is.character(markerprofilesDbId))
-  stopifnot(markerprofilesDbId != "")
+                                      rclass = c("tibble", "data.frame",
+                                                  "list", "json")) {
+  ba_check(con = con, verbose = FALSE)
+  check_character(markerprofileDbId, unknownString, sepPhased, sepUnphased)
   stopifnot(is.logical(expandHomozygotes))
-  stopifnot(is.character(sepPhased))
-  stopifnot(is.character(sepUnphased))
-  check_paging(pageSize = pageSize, page = page)
-  check_rclass(rclass = rclass)
-  brp <- get_brapi(con = con)
-  markerprofiles_alleles <- paste0(brp, "markerprofiles/",
-                                   markerprofilesDbId, "/?")
-  unknownString <- ifelse(unknownString != "-",
-                              paste0("unknownString=", unknownString,
-                                     "&"), "")
-  expandHomozygotes <- ifelse(expandHomozygotes == TRUE,
-                          paste0("expandHomozygotes=", expandHomozygotes,
-                                 "&"), "")
-  sepPhased <- ifelse(sepPhased != "|", paste0("sepPhased=",
-                                              sepPhased, "&"), "")
-  sepUnphased <- ifelse(sepUnphased != "/", paste0("sepUnphased=",
-                                                  sepUnphased, "&"), "")
-  page <- ifelse(is.numeric(page), paste0("page=", page, ""), "")
-  pageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize,
-                                                  "&"), "")
-  rclass <- ifelse(rclass %in% c("tibble", "data.frame", "json", "list"),
-                   rclass, "tibble")
-  markerprofiles_alleles <- paste0(markerprofiles_alleles,
-                                   expandHomozygotes,
-                                   sepPhased,
-                                   sepUnphased,
-                                   pageSize,
-                                   page)
+  check_req(markerprofileDbId = markerprofileDbId)
+  rclass <- match.arg(rclass)
+
+  brp <- get_brapi(con = con) %>% paste0("markerprofiles/", markerprofileDbId)
+  callurl <- get_endpoint(brp,
+                          expandHomozygotes = expandHomozygotes,
+                          unknownString = unknownString,
+                          sepPhased = sepPhased,
+                          sepUnphased = sepUnphased,
+                          pageSize = pageSize,
+                          page = page
+  )
+
   try({
-    res <- brapiGET(url = markerprofiles_alleles, con = con)
+    res <- brapiGET(url = callurl, con = con)
     res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
     out <- NULL
-    if (rclass %in% c("json", "list")) {
-      out <- dat2tbl(res = res2, rclass = rclass,
-                     brapi_class = "brapi_markerprofiles_alleles")
-    }
     if (rclass %in% c("data.frame", "tibble")) {
-      out <- mpa2tbl(res = res2, rclass = rclass)
+      out <- jsonlite::fromJSON(txt = res2, simplifyDataFrame = TRUE,
+                                flatten = TRUE)
+      meta <- out$metadata
+      out <- out$result$data
+      attr(out, "metadata") <- meta
+      if ("uniqueDisplayName" %in% names(out))
+        out$uniqueDisplayName <- sapply(X = out$uniqueDisplayName, FUN = paste, collapse = "; ")
+      if ("extractDbId" %in% names(out))
+        out$extractDbId <- sapply(X = out$extractDbId, FUN = paste, collapse = "; ")
+      if ("markerprofileDbId" %in% names(out))
+        out$markerprofileDbId <- sapply(X = out$markerprofileDbId, FUN = paste, collapse = "; ")
+      if ("analysisMethods" %in% names(out))
+        out$analysisMethods <- sapply(X = out$analysisMethods,
+                                    FUN = paste, collapse = "; ")
+    } else {
+      out <- dat2tbl(res = res2 , rclass = rclass)
     }
+
     class(out) <- c(class(out), "ba_markerprofiles_details")
     show_metadata(res)
     return(out)

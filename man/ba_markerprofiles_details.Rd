@@ -4,22 +4,23 @@
 \alias{ba_markerprofiles_details}
 \title{ba_markerprofiles_details}
 \usage{
-ba_markerprofiles_details(con = NULL, markerprofilesDbId = "",
-  expandHomozygotes = FALSE, unknownString = "-", sepPhased = "|",
-  sepUnphased = "/", page = 0, pageSize = 10000, rclass = "tibble")
+ba_markerprofiles_details(con = NULL, markerprofileDbId = "",
+  expandHomozygotes = FALSE, unknownString = "", sepPhased = "",
+  sepUnphased = "", page = 0, pageSize = 10000,
+  rclass = c("tibble", "data.frame", "list", "json"))
 }
 \arguments{
 \item{con}{brapi connection object}
 
-\item{markerprofilesDbId}{character; default 0}
+\item{markerprofileDbId}{character; default 0}
 
 \item{expandHomozygotes}{logical; default false}
 
-\item{unknownString}{chaaracter; default: '-'}
+\item{unknownString}{chaaracter; default: ''}
 
-\item{sepPhased}{character; default: '|'}
+\item{sepPhased}{character; default: ''}
 
-\item{sepUnphased}{character; default: '/'}
+\item{sepUnphased}{character; default: ''}
 
 \item{page}{integer; default: 0}
 
@@ -28,7 +29,7 @@ ba_markerprofiles_details(con = NULL, markerprofilesDbId = "",
 \item{rclass}{character; default: tibble}
 }
 \value{
-data.frame
+rclass as requested
 }
 \description{
 Lists markers as result of a search.
@@ -43,7 +44,7 @@ if (interactive()) {
 }
 }
 \references{
-\href{https://github.com/plantbreeding/API/blob/master/Specification/MarkerProfiles/}{github}
+\href{https://github.com/plantbreeding/API/blob/V1.2/Specification/MarkerProfiles/MarkerProfiles_MarkerProfileDbId_GET.md}{github}
 }
 \seealso{
 Other markerprofiles: \code{\link{ba_markerprofiles_allelematrices_details}},

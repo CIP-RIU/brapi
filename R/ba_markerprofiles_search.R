@@ -38,6 +38,7 @@ ba_markerprofiles_search <- function(con = NULL,
   ba_check(con = con, verbose = FALSE)
   check_character(germplasmDbId, studyDbId, sampleDbId, extractDbId,
                   methodDbId )
+  rclass <- match.arg(rclass)
   brp <- get_brapi(con = con) %>% paste0("markerprofiles")
   callurl <- get_endpoint(brp,
                           germplasmDbId = germplasmDbId,
