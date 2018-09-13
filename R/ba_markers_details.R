@@ -32,7 +32,8 @@ ba_markers_details <- function(con = NULL,
   try({
     res <- brapiGET(url = callurl, con = con)
     res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
-    out <- dat2tbl(res = res2 , rclass = rclass)
+    out <- dat2tbl(res = res2 , rclass = rclass, result_level = "result")
+
     class(out) <- c(class(out), "ba_markers_details")
     show_metadata(res)
     return(out)

@@ -13,8 +13,8 @@
 #' @param unknownString chaaracter; default: '-'
 #' @param sepPhased character; default: '|'
 #' @param sepUnphased character; default: '/'
-#' @param page integer; default: 0
 #' @param pageSize integer; default 1000
+#' @param page integer; default: 0
 #' @param rclass character; default: tibble
 #'
 #' @note The handling of long-running responses via asynch status messages is not yet implemented.
@@ -40,56 +40,76 @@ ba_markerprofiles_allelematrices_search <- function(con = NULL,
                                                   format = "json",
                                                   expandHomozygotes = FALSE,
                                                   unknownString = "-",
-                                                  sepPhased = "|",
-                                                  sepUnphased = "/",
+                                                  sepPhased = "",
+                                                  sepUnphased = "",
                                                   pageSize = 1000,
                                                   page = 0,
                                                   rclass = c("tibble", "data.frame",
                                                              "list", "json")) {
-  ba_check(con = con, verbose = FALSE, brapi_calls = "allelematrices-search")
-  stopifnot(is.character(markerprofileDbId))
-  stopifnot(is.character(markerDbId))
+  ba_check(con = con, verbose = FALSE)
+  check_character(markerprofileDbId, markerDbId, markerDbId, matrixDbId, format,
+                  unknownString, sepPhased, sepUnphased)
   stopifnot(is.logical(expandHomozygotes))
-  stopifnot(is.character(unknownString))
-  stopifnot(is.character(sepPhased))
-  stopifnot(is.character(sepUnphased))
-  stopifnot(format %in% c("json", "tsv", "csv"))
-  check_paging(pageSize = pageSize, page = page)
-  check_rclass(rclass = rclass)
+  check_req_any(markerprofileDbId = markerprofileDbId,
+                markerDbId = markerDbId,
+                matrixDbId = matrixDbId)
+  brp <- get_brapi(con = con) %>% paste0("allelematrices-search")
+  callurl <- get_endpoint(brp,
+                          markerprofileDbId = markerprofileDbId,
+                          markerDbId = markerDbId,
+                          matrixDbId = matrixDbId,
+                          format = format,
+                          expandHomozygotes = expandHomozygotes,
+                          unknownString = unknownString,
+                          sepPhased = sepPhased,
+                          sepUnphased = sepUnphased,
+                          pageSize = pageSize,
+                          page = page
+                          )
 
-  brp <- get_brapi(con = con)
-
-  pallelematrix_search <- paste0(brp, "allelematrices-search/?")
-  pmarkerprofileDbId <- ifelse(markerprofileDbId != "", paste0("markerprofileDbId=",
-                               markerprofileDbId, "&") %>% paste(collapse = ""), "")
-  pmarkerDbId <- ifelse(markerDbId != "", paste0("markerDbId=", markerDbId, "&") %>%
-    paste(collapse = ""), "")
-  pexpandHomozygotes <- ifelse(expandHomozygotes == TRUE,
-                               paste0("expandHomozygotes=",
-                                tolower(expandHomozygotes), "&"), "")
-  psepPhased <- ifelse(sepPhased != "|", paste0("sepPhased=",
-                                               sepPhased, "&"), "")
-  psepUnphased <- ifelse(sepUnphased != "/",
-                         paste0("sepUnphased=", sepUnphased, "&"), "")
-  ppage <- ifelse(is.numeric(page), paste0("page=", page, ""), "")
-  ppageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=",
-                                                   pageSize, "&"), "")
-  rclass <- ifelse(rclass %in%
-                     c("tibble", "data.frame", "json", "list"),
-                   rclass, "tibble")
-  pformat <- ifelse(!(format %in% c("json", "csv", "tsv")) ,
-                    paste0("format=", format, "&"), "")
-  pallelematrix_search <- paste0(pallelematrix_search,
-                                 pmarkerprofileDbId,
-                                 pmarkerDbId,
-                                 pexpandHomozygotes,
-                                 psepPhased,
-                                 psepUnphased,
-                                 pformat,
-                                 ppageSize,
-                                 ppage)
+  # stopifnot(is.character(markerprofileDbId))
+  # stopifnot(is.character(markerDbId))
+  # stopifnot(is.logical(expandHomozygotes))
+  # stopifnot(is.character(unknownString))
+  # stopifnot(is.character(sepPhased))
+  # stopifnot(is.character(sepUnphased))
+  # stopifnot(format %in% c("json", "tsv", "csv"))
+  # check_paging(pageSize = pageSize, page = page)
+  # check_rclass(rclass = rclass)
+  #
+  # brp <- get_brapi(con = con)
+  #
+  # pallelematrix_search <- paste0(brp, "allelematrices-search/?")
+  # pmarkerprofileDbId <- ifelse(markerprofileDbId != "", paste0("markerprofileDbId=",
+  #                              markerprofileDbId, "&") %>% paste(collapse = ""), "")
+  # pmarkerDbId <- ifelse(markerDbId != "", paste0("markerDbId=", markerDbId, "&") %>%
+  #   paste(collapse = ""), "")
+  # pexpandHomozygotes <- ifelse(expandHomozygotes == TRUE,
+  #                              paste0("expandHomozygotes=",
+  #                               tolower(expandHomozygotes), "&"), "")
+  # psepPhased <- ifelse(sepPhased != "|", paste0("sepPhased=",
+  #                                              sepPhased, "&"), "")
+  # psepUnphased <- ifelse(sepUnphased != "/",
+  #                        paste0("sepUnphased=", sepUnphased, "&"), "")
+  # ppage <- ifelse(is.numeric(page), paste0("page=", page, ""), "")
+  # ppageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=",
+  #                                                  pageSize, "&"), "")
+  # rclass <- ifelse(rclass %in%
+  #                    c("tibble", "data.frame", "json", "list"),
+  #                  rclass, "tibble")
+  # pformat <- ifelse(!(format %in% c("json", "csv", "tsv")) ,
+  #                   paste0("format=", format, "&"), "")
+  # pallelematrix_search <- paste0(pallelematrix_search,
+  #                                pmarkerprofileDbId,
+  #                                pmarkerDbId,
+  #                                pexpandHomozygotes,
+  #                                psepPhased,
+  #                                psepUnphased,
+  #                                pformat,
+  #                                ppageSize,
+  #                                ppage)
   out <- try({
-    res <- brapiGET(url = pallelematrix_search, con = con)
+    res <- brapiGET(url = callurl, con = con)
     ams2tbl(res = res, format = format, rclass = rclass)
   })
 

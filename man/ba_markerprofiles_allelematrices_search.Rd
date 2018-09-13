@@ -5,9 +5,10 @@
 \title{ba_markerprofiles_allelematrices_search}
 \usage{
 ba_markerprofiles_allelematrices_search(con = NULL,
-  markerprofileDbId = "", markerDbId = "", expandHomozygotes = FALSE,
-  unknownString = "-", sepPhased = "|", sepUnphased = "/",
-  format = "json", page = 0, pageSize = 10000, rclass = "tibble")
+  markerprofileDbId = "", markerDbId = "", matrixDbId = "",
+  format = "json", expandHomozygotes = FALSE, unknownString = "-",
+  sepPhased = "", sepUnphased = "", pageSize = 1000, page = 0,
+  rclass = c("tibble", "data.frame", "list", "json"))
 }
 \arguments{
 \item{con}{brapi connection object}
@@ -15,6 +16,10 @@ ba_markerprofiles_allelematrices_search(con = NULL,
 \item{markerprofileDbId}{character vector; default ''}
 
 \item{markerDbId}{character vector; default ''}
+
+\item{matrixDbId}{character vector; default ''}
+
+\item{format}{character; default: json; other: csv, tsv}
 
 \item{expandHomozygotes}{logical; default false}
 
@@ -24,16 +29,14 @@ ba_markerprofiles_allelematrices_search(con = NULL,
 
 \item{sepUnphased}{character; default: '/'}
 
-\item{format}{character; default: json; other: csv, tsv}
+\item{pageSize}{integer; default 1000}
 
 \item{page}{integer; default: 0}
-
-\item{pageSize}{integer; default 1000}
 
 \item{rclass}{character; default: tibble}
 }
 \value{
-data.frame
+rclass as requested
 }
 \description{
 Gets markers in matrix format. If the format parameter is set to either csv or tsv the returned object
@@ -53,7 +56,7 @@ if (interactive()) {
 }
 }
 \references{
-\href{https://github.com/plantbreeding/API/blob/master/Specification/MarkerProfiles/MarkerProfileAlleleMatrices.md}{github}
+\href{https://github.com/plantbreeding/API/blob/V1.2/Specification/MarkerProfiles/AlleleMatricesSearch_GET.md}{github}
 }
 \seealso{
 Other markerprofiles: \code{\link{ba_markerprofiles_allelematrix_search}},
