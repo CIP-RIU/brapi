@@ -4,24 +4,27 @@
 \alias{ba_genomemaps_data_range}
 \title{ba_genomemaps_data_range}
 \usage{
-ba_genomemaps_data_range(con = NULL, mapDbId = "1",
-  linkageGroupName = "1", min = "", max = "", page = 0,
-  pageSize = 30, rclass = "tibble")
+ba_genomemaps_data_range(con = NULL, mapDbId = "",
+  linkageGroupId = NULL, linkageGroupName = "", min = 0,
+  max = 2000, pageSize = 1000, page = 0, rclass = c("tibble",
+  "data.frame", "list", "json"))
 }
 \arguments{
 \item{con}{brapi connection object}
 
-\item{mapDbId}{character; default 0}
+\item{mapDbId}{character; default ''}
 
-\item{linkageGroupName}{character; default 1}
+\item{linkageGroupId}{character; default NULL}
+
+\item{linkageGroupName}{character; default ''}
 
 \item{min}{character; default ''}
 
 \item{max}{character; default ''}
 
-\item{page}{integer; default 0}
-
 \item{pageSize}{character; default 30}
+
+\item{page}{integer; default 0}
 
 \item{rclass}{character; default: tibble}
 }
