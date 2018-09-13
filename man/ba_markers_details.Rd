@@ -4,7 +4,8 @@
 \alias{ba_markers_details}
 \title{ba_markers_details}
 \usage{
-ba_markers_details(con = NULL, markerDbId = "", rclass = "tibble")
+ba_markers_details(con = NULL, markerDbId = "", rclass = c("tibble",
+  "data.frame", "list", "json"))
 }
 \arguments{
 \item{con}{brapi connection object}
@@ -29,7 +30,7 @@ if (interactive()) {
 }
 }
 \references{
-\href{https://github.com/plantbreeding/API/blob/master/Specification/Markers/MarkerDetailsByMarkerDbId.md}{github}
+\href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Markers/MarkerDetailsByMarkerDbId.md}{github}
 }
 \seealso{
 Other markers: \code{\link{ba_markers_search}}

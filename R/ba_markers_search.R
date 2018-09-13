@@ -37,7 +37,7 @@ ba_markers_search <- function(con = NULL,
                                          "list", "json")) {
   ba_check(con = con, verbose = FALSE)
   check_character(markerDbIds, name, matchMethod, type)
-  stopifnot(is.boolean(includeSynonyms))
+  stopifnot(is.logical(includeSynonyms))
   rclass <- match.arg(rclass)
 
   brp <- get_brapi(con = con) %>% paste0("markers-search")
