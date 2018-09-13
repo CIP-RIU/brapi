@@ -4,19 +4,22 @@
 \alias{ba_genomemaps_data}
 \title{ba_genomemaps_data}
 \usage{
-ba_genomemaps_data(con = NULL, mapDbId = "", linkageGroupName = "",
-  page = 0, pageSize = 30, rclass = "tibble")
+ba_genomemaps_data(con = NULL, mapDbId = "", linkageGroupId = NULL,
+  linkageGroupName = "", pageSize = 1000, page = 0,
+  rclass = c("tibble", "data.frame", "list", "json"))
 }
 \arguments{
 \item{con}{brapi connection object}
 
 \item{mapDbId}{character; default ''}
 
+\item{linkageGroupId}{character; default: NULL}
+
 \item{linkageGroupName}{character; default ''}
 
-\item{page}{integer; default 0}
+\item{pageSize}{integer; default 1000}
 
-\item{pageSize}{integer; default 30}
+\item{page}{integer; default 0}
 
 \item{rclass}{character; default: tibble}
 }

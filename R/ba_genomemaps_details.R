@@ -33,7 +33,7 @@ ba_genomemaps_details <- function(con = NULL,
   callurl <- get_endpoint(brp,
                           pageSize = pageSize,
                           page = page
-                          )
+  )
 
   try({
     res <- brapiGET(url = callurl, con = con)
