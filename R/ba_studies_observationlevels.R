@@ -1,15 +1,17 @@
 #' ba_studies_observationlevels
 #'
-#' Call to retrieve the list of supported observation levels.
+#' Retrieve the list of supported observation levels.
 #'
-#' @param con brapi connection object
+#' @param con list, brapi connection object
 #' @param pageSize integer, items per page to be returned; default: 1000
 #' @param page integer, the requested page to be returned; default: 0 (1st page)
-#' @param rclass character; default is 'tibble'
+#' @param rclass character, class of the object to be returned; default:
+#'               "tibble", possible other values: "data.frame"/"list"/"vector"/
+#'               "json"
 #'
-#' @details Observation levels indicate the granularity level at which the measurements
-#' are taken. The values are used to supply the observationLevel parameter in
-#' the observation unit details call.
+#' @details Observation levels indicate the granularity level at which the
+#'          measurements are taken. The values are used to supply the
+#'          observationLevel parameter in the observation unit details call.
 #'
 #' @return An object of class as defined by rclass containing the details of the
 #'         measured observation variables for a requested study.
@@ -21,8 +23,10 @@
 #' @author Reinhard Simon, Maikel Verouden
 #'
 #' @references \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Studies/ObservationLevels_GET.md}{github}
+#'
 #' @family studies
 #' @family phenotyping
+#'
 #' @example inst/examples/ex-ba_studies_observationlevels.R
 #' @export
 ba_studies_observationlevels <- function(con = NULL,
@@ -36,11 +40,14 @@ ba_studies_observationlevels <- function(con = NULL,
   callurl <- get_endpoint(pointbase = brp, pageSize = pageSize, page = page)
 
   try({
-    res <- brapiGET(url = callurl, con = con)
-    res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
-    out <- dat2tbl(res = res2, rclass = rclass)
+    resp <- brapiGET(url = callurl, con = con)
+    res <- httr::content(x = resp, as = "text", encoding = "UTF-8")
+    out <- dat2tbl(res = res, rclass = rclass)
+    if (rclass %in% c("tibble", "data.frame")) {
+      colnames(out) <- "observationLevel"
+    }
     class(out) <- c(class(out), "ba_studies_observationlevels")
-    show_metadata(res)
+    show_metadata(resp)
     return(out)
   })
 }
