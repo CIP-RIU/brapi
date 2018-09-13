@@ -5,7 +5,7 @@
 \title{ba_germplasm_details}
 \usage{
 ba_germplasm_details(con = NULL, germplasmDbId = "",
-  rclass = "tibble")
+  rclass = c("tibble", "data.frame", "list", "json"))
 }
 \arguments{
 \item{con}{brapi connection object}
@@ -37,7 +37,7 @@ if (interactive()) {
 }
 }
 \references{
-\href{https://github.com/plantbreeding/API/blob/master/Specification/Germplasm/GermplasmDetailsByGermplasmDbId.md}{github}
+\href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Germplasm/Germplasm_GET.md}{github}
 }
 \seealso{
 Other germplasm: \code{\link{ba_germplasm_breedingmethods}},

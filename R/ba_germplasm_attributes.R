@@ -3,48 +3,46 @@
 #' germplasm_attibutes call.
 #'
 #' @param con brapi connection object
-#' @param rclass character; default: tibble; or else: json, list, data.frame.
 #' @param germplasmDbId character; default: ''.
-#' @param attributeList character vector; default: ''.
+#' @param attributeList character vector;  \strong{DEPRECATED ARGUMENT} with default: NULL.
+#' @param attributeDbIds character vector; default: ''
+#' @param pageSize integer; default: 1000.
 #' @param page integer; default: 0.
-#' @param pageSize integer; default: 10.
+#' @param rclass character; default: tibble; or else: json, list, data.frame.
 #'
 #' @return rclass as set by parameter.
-#' @example inst/examples/ex-ba_germplasmattributes_details.R
-#' @import httr
+#'
 #' @author Reinhard Simon
-#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/GermplasmAttributes/GermplasmAttributeValuesByGermplasmDbId.md}{github}
+#' @references \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/GermplasmAttributes/Germplasm_Attributes_GET.md}{github}
+#'
 #' @family germplasmattributes
 #' @family genotyping
+#'
+#' @example inst/examples/ex-ba_germplasmattributes_details.R
+#'
+#' @import httr
 #' @export
 ba_germplasm_attributes <- function(con = NULL,
                                            germplasmDbId = "",
-                                           attributeList = "",
+                                           attributeList = NULL,
+                                           attributeDbIds = "",
+                                           pageSize = 1000,
                                            page = 0,
-                                           pageSize = 10,
-                                           rclass = "tibble") {
+                                           rclass = c("tibble", "data.frame", "list", "json")) {
   ba_check(con = con, verbose = FALSE)
-  stopifnot(is.character(germplasmDbId))
-  stopifnot(germplasmDbId != "")
-  stopifnot(is.character(attributeList))
-  check_paging(pageSize = pageSize, page = page)
-  check_rclass(rclass = rclass)
-  # fetch the url of the brapi implementation of the database
-  brp <- get_brapi(con = con)
-  # generate the specific brapi call url
-  pattributeList <- ifelse(attributeList != "", paste("attributeList=", attributeList, collapse = ",", sep=""), "")
-  germplasm_attributes_list <- paste0(brp,
-                                      "germplasm/",
-                                      germplasmDbId,
-                                      "/attributes/?",
-                                      pattributeList,
+  check_character(germplasmDbId, attributeDbIds)
+  check_req(germplasmDbId = germplasmDbId)
+  check_deprecated(attributeList, "attributeDbIds")
+  rclass <- match.arg(rclass)
 
-                                      "&page=",
-                                      page,
-                                      "&pageSize=",
-                                      pageSize)
+  brp <- get_brapi(con = con) %>% paste0("germplasm/", germplasmDbId, "/attributes")
+  callurl <- get_endpoint(brp,
+                          attributeDbIds = attributeDbIds,
+                          pageSize = pageSize,
+                          page = page)
+
   try({
-    res <- brapiGET(url = germplasm_attributes_list, con = con)
+    res <- brapiGET(url = callurl, con = con)
     res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
     ms2tbl <- function(res) {
       lst <- tryCatch(

@@ -5,18 +5,21 @@
 \title{ba_germplasm_attributes}
 \usage{
 ba_germplasm_attributes(con = NULL, germplasmDbId = "",
-  attributeList = "", page = 0, pageSize = 10, rclass = "tibble")
+  attributeList = NULL, attributeDbIds = "", pageSize = 1000,
+  page = 0, rclass = c("tibble", "data.frame", "list", "json"))
 }
 \arguments{
 \item{con}{brapi connection object}
 
 \item{germplasmDbId}{character; default: ''.}
 
-\item{attributeList}{character vector; default: ''.}
+\item{attributeList}{character vector;  \strong{DEPRECATED ARGUMENT} with default: NULL.}
+
+\item{attributeDbIds}{character vector; default: ''}
+
+\item{pageSize}{integer; default: 1000.}
 
 \item{page}{integer; default: 0.}
-
-\item{pageSize}{integer; default: 10.}
 
 \item{rclass}{character; default: tibble; or else: json, list, data.frame.}
 }
@@ -37,7 +40,7 @@ if (interactive()) {
 }
 }
 \references{
-\href{https://github.com/plantbreeding/API/blob/master/Specification/GermplasmAttributes/GermplasmAttributeValuesByGermplasmDbId.md}{github}
+\href{https://github.com/plantbreeding/API/blob/V1.2/Specification/GermplasmAttributes/Germplasm_Attributes_GET.md}{github}
 }
 \seealso{
 Other germplasmattributes: \code{\link{ba_germplasmattributes_categories}},

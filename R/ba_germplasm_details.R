@@ -13,7 +13,7 @@
 #' @note BrAPI Status: active
 #'
 #' @author Reinhard Simon
-#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Germplasm/GermplasmDetailsByGermplasmDbId.md}{github}
+#' @references \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Germplasm/Germplasm_GET.md}{github}
 
 #' @family germplasm
 #' @family brapicore
@@ -24,14 +24,16 @@
 #' @export
 ba_germplasm_details <- function(con = NULL,
                                  germplasmDbId = "",
-                                 rclass = "tibble") {
+                                 rclass = c("tibble", "data.frame", "list", "json")) {
   ba_check(con = con, verbose = FALSE, brapi_calls = "germplasm/id")
-  stopifnot(is.character(germplasmDbId))
-  check_rclass(rclass = rclass)
-  # generate the brapi call url
-  germplasm <- paste0(get_brapi(con = con), "germplasm/", germplasmDbId)
+  check_character(germplasmDbId)
+  check_req(germplasmDbId)
+  rclass <- match.arg(rclass)
+
+  callurl <- get_brapi(con = con) %>% paste0("germplasm/", germplasmDbId)
+
   try({
-    res <- brapiGET(url = germplasm, con = con)
+    res <- brapiGET(url = callurl, con = con)
     res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
     out <- NULL
     if (rclass %in% c("json", "list")) {
