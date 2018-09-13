@@ -41,8 +41,9 @@ ba_studies_observationlevels <- function(con = NULL,
 
   try({
     resp <- brapiGET(url = callurl, con = con)
-    res <- httr::content(x = resp, as = "text", encoding = "UTF-8")
-    out <- dat2tbl(res = res, rclass = rclass)
+    cont <- httr::content(x = resp, as = "text", encoding = "UTF-8")
+
+    out <- dat2tbl(res = cont, rclass = rclass)
     if (rclass %in% c("tibble", "data.frame")) {
       colnames(out) <- "observationLevel"
     }

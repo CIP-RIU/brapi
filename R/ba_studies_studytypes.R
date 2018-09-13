@@ -35,11 +35,12 @@ ba_studies_studytypes <- function(con = NULL,
   callurl <- get_endpoint(pointbase = brp, pageSize = pageSize, page = page)
 
   try({
-    res <- brapiGET(url = callurl, con = con)
-    res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
-    out <- dat2tbl(res = res2, rclass = rclass)
+    resp <- brapiGET(url = callurl, con = con)
+    cont <- httr::content(x = res, as = "text", encoding = "UTF-8")
+
+    out <- dat2tbl(res = cont, rclass = rclass)
     class(out) <- c(class(out), "ba_studies_studytypes")
-    show_metadata(res)
+    show_metadata(resp)
     return(out)
   })
 }
