@@ -31,7 +31,7 @@
 #' @return An object of class as defined by rclass containing the observation
 #'         units, including trait data, for a requested study.
 #'
-#' @note Tested against: BMS, sweetpotatobase
+#' @note Tested against: BMS, test-server, sweetpotatobase
 #' @note BrAPI Version: 1.0, 1.1, 1.2
 #' @note BrAPI Status: active
 #'
@@ -65,7 +65,7 @@ ba_studies_table <- function(con = NULL,
 
   brp <- get_brapi(con = con) %>% paste0("studies/", studyDbId, "/table")
   format <- ifelse(format == "json", "", format)
-  callurl <- get_endpoint(brp,
+  callurl <- get_endpoint(pointbase = brp,
                           format = format)
   try({
     resp <- brapiGET(url = callurl, con = con)

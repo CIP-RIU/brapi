@@ -46,7 +46,7 @@ Choosing format = "json" could give unexpected results, because
          for the specific study could have more than 1000 rows.
 }
 \note{
-Tested against: BMS, sweetpotatobase
+Tested against: BMS, test-server, sweetpotatobase
 
 BrAPI Version: 1.0, 1.1, 1.2
 
