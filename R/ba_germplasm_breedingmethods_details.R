@@ -24,17 +24,13 @@ ba_germplasm_breedingmethods_details <- function(con = NULL,
                          breedingMethodDbId = "",
                          rclass = c("tibble", "data.frame", "list", "json")) {
   ba_check(con = con, verbose = FALSE, brapi_calls = "breedingmethods/breedingMethodDbId")
+  check_req(breedingMethodDbId)
   rclass <- match.arg(rclass)
-  breedingMethodDbId <- match_req(breedingMethodDbId)
 
-  # fetch the url of the brapi implementation of the database
   brp <- get_brapi(con = con)
   # generate the brapi call specific url
   callurl <- paste0(brp, "breedingmethods/", breedingMethodDbId)
 
-  callurl <- sub("[/?&]$",
-                        "",
-                        paste0(callurl))
   try({
     res <- brapiGET(url = callurl, con = con)
     res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")

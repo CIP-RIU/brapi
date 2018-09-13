@@ -44,7 +44,7 @@ ba_studies_observationunits <- function(con = NULL,
                                         rclass = c("tibble", "data.frame", "list", "json")) {
   ba_check(con = con, verbose = FALSE, brapi_calls =
              "studies/id/observationunits")
-  studyDbId <- match_req(studyDbId)
+  check_req(studyDbId)
   observationLevel <- match.arg(observationLevel)
   rclass <- match.arg(rclass)
 

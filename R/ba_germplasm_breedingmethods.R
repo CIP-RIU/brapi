@@ -27,20 +27,12 @@ ba_germplasm_breedingmethods <- function(con = NULL,
                          page = 0,
                          rclass = c("tibble", "data.frame", "list", "json")) {
   ba_check(con = con, verbose = FALSE, brapi_calls = "breedingmethods")
-  check_paging(pageSize = pageSize, page = page)
   rclass <- match.arg(rclass)
 
   # fetch the url of the brapi implementation of the database
-  brp <- get_brapi(con = con)
-  # generate the brapi call specific url
-  callurl <- paste0(brp, "breedingmethods?")
-  ppages <- get_ppages(pageSize, page)
+  brp <- get_brapi(con = con) %>% paste0("breedingmethods")
+  callurl <- get_endpoint(brp, pageSize = pageSize, page = page)
 
-  callurl <- sub("[/?&]$",
-                        "",
-                        paste0(callurl,
-                               ppages$pageSize,
-                               ppages$page))
   try({
     res <- brapiGET(url = callurl, con = con)
     res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")

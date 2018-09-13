@@ -25,13 +25,12 @@ ba_observationvariables_details <- function(con = NULL,
                                     observationVariableDbId = "",
                                     rclass = c("tibble", "data.frame", "list", "json")) {
   ba_check(con = con, verbose = FALSE, brapi_calls = "variables/id")
-  observationVariableDbId <- match_req(observationVariableDbId)
+  check_req(observationVariableDbId)
   rclass <- match.arg(rclass)
 
   brp <- get_brapi(con = con)
-  callurl <- ifelse(observationVariableDbId != "",
-                                    paste0(brp, "variables/", observationVariableDbId),
-                                    paste0(brp, "variables"))
+  callurl <- paste0(brp, "variables/", observationVariableDbId)
+
   try({
     res <- brapiGET(url = callurl, con = con)
     res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")

@@ -37,39 +37,20 @@ ba_germplasm_search <- function(con = NULL,
                                 germplasmName = "",
                                 commonCropName = "",
                                 page = 0,
-                                pageSize = 10,
+                                pageSize = 1000,
                                 rclass = c("tibble", "data.frame", "list", "json")) {
   ba_check(con = con, verbose = FALSE, brapi_calls = "germplasm-search")
-  stopifnot(is.character(germplasmPUI))
-  stopifnot(is.character(germplasmDbId))
-  stopifnot(is.character(germplasmName))
-  stopifnot(is.character(commonCropName))
-
-  method <- "GET"
-
-  check_paging(pageSize = pageSize, page = page)
+  check_character(germplasmPUI, germplasmDbId, germplasmName, commonCropName)
   rclass <- match.arg(rclass)
-  # fetch the url of the brapi implementation of the database
-  brp <- get_brapi(con = con)
-  brp <- paste0(brp, "germplasm-search?")
 
-  ppages <- get_ppages(pageSize, page)
-
-  callurl <- sub("[/?&]$",
-                 "",
-                 paste0(brp,
-                        ifelse(germplasmPUI == "", "", paste0("germplasmPUI=", germplasmPUI, "&")),
-                        ifelse(germplasmDbId == "", "", paste0("germplasmDbId=", germplasmDbId, "&")),
-                        ifelse(germplasmName == "", "", paste0("germplasmName=", germplasmName, "&")),
-                        ifelse(commonCropName == "", "", paste0("commonCropName=", commonCropName, "&")),
-
-                        ppages$pageSize, "&",
-                        ppages$page))
-
-  # if (germplasmPUI != "none") {
-  #   germplasm_search <- paste0(brp, "germplasm-search/?germplasmPUI=",
-  #                              germplasmPUI)
-  # }
+  brp <- get_brapi(con = con) %>% paste0("germplasm-search")
+  callurl <- get_endpoint(brp,
+                          germplasmPUI = germplasmPUI,
+                          germplasmDbId = germplasmDbId,
+                          germplasmName = germplasmName,
+                          commonCropName = commonCropName,
+                          pageSize = pageSize,
+                          page = page)
 
   get_data <- function(res2, typ = '1' )  {
     out <- dat2tbl(res = res2, rclass = rclass)

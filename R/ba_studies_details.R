@@ -34,7 +34,7 @@ ba_studies_details <- function(con = NULL,
                                rclass = c("tibble", "data.frame",
                                           "list", "json")) {
   ba_check(con = con, verbose = FALSE, brapi_calls = "studies/id")
-  studyDbId <- match_req(studyDbId)
+  check_req(studyDbId)
   rclass <- match.arg(rclass)
 
   brp <- get_brapi(con = con)

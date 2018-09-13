@@ -5,7 +5,7 @@ con <- ba_db()$testserver
 test_that("Germplasm_search results are present", {
 
   res <- ba_germplasm_search(con = con)
-  expect_that(nrow(res) == 9, is_true())
+  expect_that(nrow(res) >= 9, is_true())
 
 })
 

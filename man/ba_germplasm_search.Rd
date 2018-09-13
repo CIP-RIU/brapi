@@ -6,8 +6,8 @@
 \usage{
 ba_germplasm_search(con = NULL, germplasmPUI = "",
   germplasmDbId = "", germplasmName = "", commonCropName = "",
-  page = 0, pageSize = 10, rclass = c("tibble", "data.frame", "list",
-  "json"))
+  page = 0, pageSize = 1000, rclass = c("tibble", "data.frame",
+  "list", "json"))
 }
 \arguments{
 \item{con}{brapi connection object}

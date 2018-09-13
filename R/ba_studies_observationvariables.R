@@ -38,17 +38,11 @@ ba_studies_observationvariables <- function(con = NULL,
                                                        "list", "json")) {
   ba_check(con = con, verbose = FALSE, brapi_calls =
              "studies/id/observationvariables")
-  studyDbId <- match_req(studyDbId)
+  check_req(studyDbId)
   rclass <- match.arg(rclass)
 
-  brp <- get_brapi(con = con)
-  endpoint <- paste0(brp, "studies/", studyDbId, "/observationvariables?")
-  ppages <- get_ppages(pageSize, page)
-  callurl <- sub(pattern = "[/?&]$",
-                 replacement = "",
-                 x = paste0(endpoint,
-                            ppages$pageSize,
-                            ppages$page))
+  brp <- get_brapi(con = con) %>% paste0("studies/", studyDbId, "/observationvariables")
+  callurl <- get_endpoint(brp, pageSize = pageSize, page = page)
 
   try({
     res <- brapiGET(url = callurl, con = con)
