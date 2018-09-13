@@ -23,6 +23,11 @@
 #'          Using format = "json" allows for specifying the rclass = "json",
 #'          "tibble, or "data.frame".
 #'
+#' @details Choosing format = "json" could give unexpected results, because
+#'          pagenation  (default: pageSize = 1000 and page = 0) is not
+#'          implemented correctly on all databases and additionally the table
+#'          for the specific study could have more than 1000 rows.
+#'
 #' @return An object of class as defined by rclass containing the observation
 #'         units, including trait data, for a requested study.
 #'
