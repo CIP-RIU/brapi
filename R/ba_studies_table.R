@@ -31,7 +31,7 @@
 #' @return An object of class as defined by rclass containing the observation
 #'         units, including trait data, for a requested study.
 #'
-#' @note Tested against: BMS, sweetpotatobase
+#' @note Tested against: BMS, test-server, sweetpotatobase
 #' @note BrAPI Version: 1.0, 1.1, 1.2
 #' @note BrAPI Status: active
 #'
