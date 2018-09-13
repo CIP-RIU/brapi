@@ -4,7 +4,8 @@
 \alias{ba_traits}
 \title{ba_traits}
 \usage{
-ba_traits(con = NULL, pageSize = 1000, page = 0, rclass = "tibble")
+ba_traits(con = NULL, pageSize = 1000, page = 0,
+  rclass = c("tibble", "data.frame", "list", "json"))
 }
 \arguments{
 \item{con}{list; brapi connection object}

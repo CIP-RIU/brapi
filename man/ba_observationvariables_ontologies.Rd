@@ -5,7 +5,7 @@
 \title{ba_observationvariables_ontologies}
 \usage{
 ba_observationvariables_ontologies(con = NULL, pageSize = 1000,
-  page = 0, rclass = "tibble")
+  page = 0, rclass = c("tibble", "data.frame", "list", "json"))
 }
 \arguments{
 \item{con}{list; brapi connection object; default = NULL}

@@ -24,6 +24,7 @@ ba_germplasm_breedingmethods_details <- function(con = NULL,
                          breedingMethodDbId = "",
                          rclass = c("tibble", "data.frame", "list", "json")) {
   ba_check(con = con, verbose = FALSE, brapi_calls = "breedingmethods/breedingMethodDbId")
+  check_character(breedingMethodDbId)
   check_req(breedingMethodDbId)
   rclass <- match.arg(rclass)
 

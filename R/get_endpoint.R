@@ -2,6 +2,11 @@ get_endpoint <- function(pointbase, ...) {
   forbidden <- "[/?&]$"
   pointbase <- sub(forbidden, "", pointbase)
   args <- list(...)
+
+  if (all(c("pageSize", "page") %in% names(args))) {
+    check_paging(args$pageSize, args$page)
+  }
+
   p <- list()
   j <- 1
 

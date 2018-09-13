@@ -2,11 +2,12 @@
 #'
 #' lists brapi_variables available on a brapi server
 #'
-#' @param rclass character; default: tibble
 #' @param con list; brapi connection object
-#' @param traitClass character; default ''
-#' @param page integer; default 0
-#' @param pageSize integer; defautlt 1000
+#' @param traitClass character; default: ''
+#' @param pageSize integer; default; 1000
+#' @param page integer; default: 0
+#' @param rclass character; default: tibble
+#'
 #' @return rclass as defined
 #'
 #' @note Tested against: sweetpotatobase, test-server
@@ -14,32 +15,29 @@
 #' @note BrAPI Status: active
 #'
 #' @author Reinhard Simon
-#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/ObservationVariables/VariableList.md}{github}
+#' @references \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/ObservationVariables/VariableList.md}{github}
+#'
 #' @family observationvariables
 #' @family brapicore
+#'
 #' @example inst/examples/ex-ba_observationvariables.R
+#'
 #' @import tibble
 #' @export
 ba_observationvariables <- function(con = NULL,
                                     traitClass = "",
-                                    page = 0,
                                     pageSize = 1000,
-                                    rclass = "tibble") {
+                                    page = 0,
+                                    rclass = c("tibble", "data.frame", "list", "json")) {
   ba_check(con = con, verbose = FALSE, brapi_calls = "variables")
-  stopifnot(is.character(traitClass))
-  check_paging(pageSize = pageSize, page = page)
-  check_rclass(rclass = rclass)
-  brp <- get_brapi(con = con)
-  brapi_variables <- paste0(brp, "variables/?")
-  ptraitClass <- ifelse(traitClass != '',    paste0("traitClass=", traitClass, "&"), '')
-  ppage <- paste0("page=", page, "")
-  ppageSize <- paste0("pageSize=", pageSize, "&")
-  brapi_variables <- paste0(brapi_variables, ptraitClass, ppageSize, ppage)
+  check_character(traitClass)
+  rclass <- match.arg(rclass)
 
-  # modify brapi call url to include pagenation
-  callurl <- sub(pattern = "[/?&]$",
-                 replacement = "",
-                 x = paste0(brapi_variables))
+  brp <- get_brapi(con = con) %>% paste0("variables")
+  callurl <- get_endpoint(pointbase = brp,
+                          traitClass = traitClass,
+                          pageSize = pageSize,
+                          page = page)
 
   try({
     res <- brapiGET(url = callurl, con = con)

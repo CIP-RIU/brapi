@@ -24,11 +24,7 @@ ba_observationvariables_datatypes <- function(con = NULL,
                                               rclass = c("tibble", "data.frame", "list", "json")) {
   ba_check(con = con, verbose = FALSE, brapi_calls = "variables/datatypes")
   rclass <- match.arg(rclass)
-  brp <- get_brapi(con = con)
-  endpoint <- paste0(brp, "variables/datatypes")
-  callurl <- sub(pattern = "[/?&]$",
-                 replacement = "",
-                 x = endpoint)
+  callurl <- get_brapi(con = con) %>% paste0("variables/datatypes")
 
   try({
     res <- brapiGET(url = callurl, con = con)

@@ -4,17 +4,17 @@
 \alias{ba_observationvariables}
 \title{ba_observationvariables}
 \usage{
-ba_observationvariables(con = NULL, traitClass = "", page = 0,
-  pageSize = 1000, rclass = "tibble")
+ba_observationvariables(con = NULL, traitClass = "", pageSize = 1000,
+  page = 0, rclass = c("tibble", "data.frame", "list", "json"))
 }
 \arguments{
 \item{con}{list; brapi connection object}
 
-\item{traitClass}{character; default ''}
+\item{traitClass}{character; default: ''}
 
-\item{page}{integer; default 0}
+\item{pageSize}{integer; default; 1000}
 
-\item{pageSize}{integer; defautlt 1000}
+\item{page}{integer; default: 0}
 
 \item{rclass}{character; default: tibble}
 }
@@ -41,7 +41,7 @@ if (interactive()) {
 }
 }
 \references{
-\href{https://github.com/plantbreeding/API/blob/master/Specification/ObservationVariables/VariableList.md}{github}
+\href{https://github.com/plantbreeding/API/blob/V1.2/Specification/ObservationVariables/VariableList.md}{github}
 }
 \seealso{
 Other observationvariables: \code{\link{ba_observationvariables_datatypes}},

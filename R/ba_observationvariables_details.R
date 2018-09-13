@@ -25,6 +25,7 @@ ba_observationvariables_details <- function(con = NULL,
                                     observationVariableDbId = "",
                                     rclass = c("tibble", "data.frame", "list", "json")) {
   ba_check(con = con, verbose = FALSE, brapi_calls = "variables/id")
+  check_character(observationVariableDbId)
   check_req(observationVariableDbId)
   rclass <- match.arg(rclass)
 

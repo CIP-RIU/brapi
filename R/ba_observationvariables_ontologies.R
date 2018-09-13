@@ -26,18 +26,12 @@
 ba_observationvariables_ontologies <- function(con = NULL,
                                                pageSize = 1000,
                                                page = 0,
-                                               rclass = "tibble") {
+                                               rclass = c("tibble", "data.frame", "list", "json")) {
   ba_check(con = con, verbose = FALSE, brapi_calls = "ontologies")
-  check_rclass(rclass = rclass)
-  brp <- get_brapi(con = con)
-  variables_ontologies <- paste0(brp, "ontologies/?")
-  ppages <- get_ppages(pageSize, page)
+  rclass <- match.arg(rclass)
 
-  callurl <- sub(pattern = "[/?&]$",
-                 replacement = "",
-                 x = paste0(variables_ontologies,
-                            ppages$pageSize,
-                            ppages$page))
+  brp <- get_brapi(con = con) %>% paste0("ontologies")
+  callurl <- get_endpoint(pointbase = brp, pageSize = pageSize, page = page)
 
   try({
     res <- brapiGET(url = callurl, con = con)

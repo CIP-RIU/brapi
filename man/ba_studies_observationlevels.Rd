@@ -5,7 +5,7 @@
 \title{ba_studies_observationlevels}
 \usage{
 ba_studies_observationlevels(con = NULL, pageSize = 1000, page = 0,
-  rclass = "tibble")
+  rclass = c("tibble", "data.frame", "list", "vector", "json"))
 }
 \arguments{
 \item{con}{brapi connection object}

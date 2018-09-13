@@ -25,18 +25,12 @@
 ba_studies_studytypes <- function(con = NULL,
                                   page = 0,
                                   pageSize = 1000,
-                                  rclass = "tibble") {
+                                  rclass = c("tibble", "data.frame", "list", "json")) {
   ba_check(con = con, verbose = FALSE, brapi_calls = "studytypes")
-  check_rclass(rclass = rclass)
-  brp <- get_brapi(con = con)
-  endpoint <- paste0(brp, "studytypes?")
-  ppage <- get_ppages(pageSize, page)
-  # modify brapi call url to include pagination
-  callurl <- sub(pattern = "[/?&]$",
-                 replacement = "",
-                 x = paste0(endpoint,
-                            ppage$pageSize,
-                            ppage$page))
+  rclass <- match.arg(rclass)
+
+  brp <- get_brapi(con = con) %>% paste0("studytypes")
+  callurl <- get_endpoint(pointbase = brp, pageSize = pageSize, page = page)
 
   try({
     res <- brapiGET(url = callurl, con = con)

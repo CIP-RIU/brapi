@@ -28,20 +28,12 @@
 ba_studies_observationlevels <- function(con = NULL,
                                          pageSize = 1000,
                                          page = 0,
-                                         rclass = "tibble") {
+                                         rclass = c("tibble", "data.frame", "list", "vector", "json")) {
   ba_check(con = con, verbose = FALSE, brapi_calls = "observationlevels")
-  check_rclass(rclass = rclass)
-  check_paging(pageSize = pageSize, page = page)
-  observationLevels_List <- paste0(get_brapi(con = con), "observationlevels?")
-  ppageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=",
-                                                   pageSize, "&"), "")
-  ppage <- ifelse(is.numeric(page), paste0("page=", page, "&"), "")
+  rclass <- match.arg(rclass)
 
-  callurl <- sub(pattern = "[/?&]$",
-                 replacement = "",
-                 x = paste0(observationLevels_List,
-                            ppageSize,
-                            ppage))
+  brp <- get_brapi(con = con) %>% paste0("observationlevels")
+  callurl <- get_endpoint(pointbase = brp, pageSize = pageSize, page = page)
 
   try({
     res <- brapiGET(url = callurl, con = con)

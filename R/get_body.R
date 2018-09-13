@@ -16,7 +16,3 @@ get_body <- function(...) {
 
   return( p)
 }
-#
-#
-# get_endpoint("demo?/&", x = "try?", y = 1, z = 1:5) %>% print
-# get_endpoint("demo") %>% print

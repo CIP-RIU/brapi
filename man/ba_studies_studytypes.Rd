@@ -5,7 +5,7 @@
 \title{ba_studies_studytypes}
 \usage{
 ba_studies_studytypes(con = NULL, page = 0, pageSize = 1000,
-  rclass = "tibble")
+  rclass = c("tibble", "data.frame", "list", "json"))
 }
 \arguments{
 \item{con}{list, brapi connection object}

@@ -23,15 +23,14 @@
 #' @export
 ba_traits_details <- function(con = NULL,
                               traitDbId = "",
-                              rclass = "tibble") {
+                              rclass = c("tibble", "data.frame", "list", "json")) {
   ba_check(con = con, verbose = FALSE, brapi_calls = "traits")
-  stopifnot(is.character(traitDbId) | traitDbId == "")
-  check_rclass(rclass = rclass)
+  check_character(traitDbId)
+  check_req(traitDbId)
+  rclass <- match.arg(rclass)
+
   brp <- get_brapi(con = con)
-  endpoint <- paste0(brp, "traits/", traitDbId)
-  callurl <- sub(pattern = "[/?&]$",
-                 replacement = "",
-                 x = endpoint)
+  callurl <- paste0(brp, "traits/", traitDbId)
 
   try({
     res <- brapiGET(url = callurl, con = con)

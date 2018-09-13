@@ -27,18 +27,13 @@
 ba_traits <- function(con = NULL,
                       pageSize = 1000,
                       page = 0,
-                      rclass = "tibble") {
+                      rclass = c("tibble", "data.frame", "list", "json")) {
   ba_check(con = con, verbose = FALSE, brapi_calls = "traits")
-  check_rclass(rclass = rclass)
-  brp <- get_brapi(con = con)
-  traits <- paste0(brp, "traits/?")
-  ppages <- get_ppages(pageSize, page)
+  rclass <- match.arg(rclass)
 
-  callurl <- sub(pattern = "[/?&]$",
-                 replacement = "",
-                 x = paste0(traits,
-                            ppages$pageSize,
-                            ppages$page))
+  brp <- get_brapi(con = con) %>% paste0("traits")
+  callurl <- get_endpoint(brp, pageSize = pageSize, page = page)
+
   try({
     res <- brapiGET(url = callurl, con = con)
     res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
