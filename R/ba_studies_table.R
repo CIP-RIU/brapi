@@ -65,7 +65,7 @@ ba_studies_table <- function(con = NULL,
 
   brp <- get_brapi(con = con) %>% paste0("studies/", studyDbId, "/table")
   format <- ifelse(format == "json", "", format)
-  callurl <- get_endpoint(brp,
+  callurl <- get_endpoint(pointbase = brp,
                           format = format)
   try({
     resp <- brapiGET(url = callurl, con = con)
