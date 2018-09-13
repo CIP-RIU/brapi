@@ -4,7 +4,7 @@ context("ts studies_table")
 con <- ba_db()$testserver
 
 test_that("Studies_table are present", {
-
+  skip("Not yet properly implemented.")
   expect_error({
     res <- ba_studies_table(con = con, studyDbId = "1001")
   })
