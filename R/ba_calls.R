@@ -4,7 +4,7 @@
 #'
 #' @param con list, brapi connection object
 #' @param datatype character, filter implemented brapi calls by supported data
-#'                 type, e.g. "csv", "tsv" or "xls"; default: "all"
+#'                 type, e.g. "csv", "tsv" or "xls"; default: "" for any
 #' @param pageSize integer, items per page to be returned; default: 1000
 #' @param page integer, the requested page to be returned; default: 0 (1st page)
 #' @param rclass character, class of the object to be returned;  default: "tibble"
@@ -24,39 +24,25 @@
 #' @import tibble
 #' @export
 ba_calls <- function(con = NULL,
-                     datatype = "all",
+                     datatype = c("", "csv", "tsv", "json", "xls", "xlsx"),
                      pageSize = 1000,
                      page = 0,
-                     rclass = "tibble") {
-  # argument checking
+                     rclass = c("tibble", "data.frame", "list", "json")) {
+
   ba_check(con = con, verbose = FALSE, brapi_calls = "calls")
-  check_paging(pageSize = pageSize, page = page)
-  check_rclass(rclass = rclass)
-  if (!is.character(datatype)) {
-    stop("The datatype argument should be of class 'character'.")
-  }
+  datatype <- match.arg(datatype)
+  rclass <- match.arg(rclass)
+
   # temporarily store the multicrop argument in omc (oldmulticrop)
   omc <- con$multicrop
   con$multicrop <- FALSE
-  # obtain the brapi url
-  brp <- get_brapi(con = con)
-  brapi_calls <- paste0(brp, "calls?")
-  pdatatype <- ifelse(datatype == "all", "",
-                      paste0("datatype=", datatype, "&"))
-  ppage <- ifelse(is.numeric(page), paste0("page=", page, "&"), "")
-  ppageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=",
-                                                   pageSize, "&"), "")
-  if (page == 0 & pageSize == 1000) {
-    ppage <- ""
-    ppageSize <- ""
-  }
-  # modify the call url with pagenation
-  callurl <- sub("[/?&]$",
-                      "",
-                      paste0(brapi_calls,
-                             pdatatype,
-                             ppageSize,
-                             ppage))
+
+  brp <- get_brapi(con = con) %>% paste0("calls")
+  callurl <- get_endpoint(brp,
+                          datatype = datatype,
+                          pageSize = pageSize,
+                          page = page)
+
   try({
     # make the brapi GET call with the generated call url
     res <- brapiGET(url = callurl, con = con)
