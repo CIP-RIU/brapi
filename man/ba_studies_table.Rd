@@ -34,11 +34,16 @@ specific study.
 This function must have set a specific study identifier. The default
          is an empty string. If not changed to an study identifier present in
          the database this will result in an error.
+
+When specifying the format argument, be aware that format = "csv" or
+         "tsv" can only be combined with rclass = "tibble" or "data.frame".
+         Using format = "json" allows for specifying the rclass = "json",
+         "tibble, or "data.frame".
 }
 \note{
-Tested against: BMS, testserver, sweetpotatobase
+Tested against: BMS, sweetpotatobase
 
-BrAPI Version: 1.1, 1.2
+BrAPI Version: 1.0, 1.1, 1.2
 
 BrAPI Status: active
 }

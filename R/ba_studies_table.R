@@ -18,11 +18,16 @@
 #'          is an empty string. If not changed to an study identifier present in
 #'          the database this will result in an error.
 #'
+#' @details When specifying the format argument, be aware that format = "csv" or
+#'          "tsv" can only be combined with rclass = "tibble" or "data.frame".
+#'          Using format = "json" allows for specifying the rclass = "json",
+#'          "tibble, or "data.frame".
+#'
 #' @return An object of class as defined by rclass containing the observation
 #'         units, including trait data, for a requested study.
 #'
-#' @note Tested against: BMS, testserver, sweetpotatobase
-#' @note BrAPI Version: 1.1, 1.2
+#' @note Tested against: BMS, sweetpotatobase
+#' @note BrAPI Version: 1.0, 1.1, 1.2
 #' @note BrAPI Status: active
 #'
 #' @author Reinhard Simon, Maikel Verouden
@@ -35,41 +40,44 @@
 #'
 #' @import tibble
 #' @import readr
+#' @importFrom utils read.csv read.delim
 #' @export
 ba_studies_table <- function(con = NULL,
                              studyDbId = "",
                              format = c("csv", "tsv", "json"),
                              rclass = c("tibble", "data.frame", "json")) {
   ba_check(con = con, verbose = FALSE, brapi_calls = "studies/id/table")
-  studyDbId <- match_req(studyDbId)
+  check_req(studyDbId = studyDbId)
   format <- match.arg(format)
   rclass <- match.arg(rclass)
 
-  brp <- get_brapi(con = con)
-  endpoint <- paste0(brp, "studies/", studyDbId, "/table?")
-  pformat <- switch(format,
-                    "csv"  = "format=csv&",
-                    "tsv"  = "format=tsv&",
-                    "json" = "")
-  callurl <- sub("[/?&]$",
-                       "",
-                       paste0(endpoint,
-                              pformat))
+  if (format == "csv" && rclass == "json") {
+    stop('Please read the details section in the function documentation\nabout specifying the "format" and "rclass" arguments.')
+  }
+  if (format == "tsv" && rclass == "json") {
+    stop('Please read the details section in the function documentation\nabout specifying the "format" and "rclass" arguments.')
+  }
+
+  brp <- get_brapi(con = con) %>% paste0("studies/", studyDbId, "/table")
+  format <- ifelse(format == "json", "", format)
+  callurl <- get_endpoint(brp,
+                          format = format)
   try({
-    res <- brapiGET(url = callurl, con = con)
-    res <- httr::content(x = res, as = "text", encoding = "UTF-8")
+    resp <- brapiGET(url = callurl, con = con)
+    res <- httr::content(x = resp, as = "text", encoding = "UTF-8")
     out <- NULL
     if (rclass == "json") {
         out <- dat2tbl(res = res, rclass = rclass)
     }
     if (rclass %in% c("data.frame", "tibble")) {
-      if (format == "json") {
-        res2 <- jsonlite::fromJSON(txt = res)$result
-        out <- res2$data
-        out <- tibble::as.tibble(out)
-        if (length(res2$headerRow) != length(colnames(out)))
+      if (format == "") {# means format = "json", see line 62
+        resList <- jsonlite::fromJSON(txt = res)$result
+        out <- resList$data
+        if ((length(resList$headerRow) +
+             length(resList$observationVariableNames)) != length(colnames(out))) {
           stop('Header row length does not coincide with column count. Contact database provider.')
-        colnames(out) <- res2$headerRow
+        }
+        colnames(out) <- c(resList$headerRow, resList$observationVariableNames)
       }
       if (format == "csv") {
         if (con$bms == TRUE) {
@@ -89,8 +97,8 @@ ba_studies_table <- function(con = NULL,
           out <- readr::read_tsv(file = url, progress = TRUE)
         }
       }
-      if (rclass == "data.frame") {
-        class(out) <- "data.frame"
+      if (rclass == "tibble") {
+        out <- tibble::as.tibble(out)
       }
     }
   })
