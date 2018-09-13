@@ -39,6 +39,11 @@ When specifying the format argument, be aware that format = "csv" or
          "tsv" can only be combined with rclass = "tibble" or "data.frame".
          Using format = "json" allows for specifying the rclass = "json",
          "tibble, or "data.frame".
+
+Choosing format = "json" could give unexpected results, because
+         pagenation  (default: pageSize = 1000 and page = 0) is not
+         implemented correctly on all databases and additionally the table
+         for the specific study could have more than 1000 rows.
 }
 \note{
 Tested against: BMS, sweetpotatobase
