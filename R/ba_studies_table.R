@@ -77,7 +77,7 @@ ba_studies_table <- function(con = NULL,
     if (rclass %in% c("data.frame", "tibble")) {
       if (format == "") {# means format = "json", see line 62
         resList <- jsonlite::fromJSON(txt = res)$result
-        out <- resList$data
+        out <- as.data.frame(x = resList$data, stringsAsFactors = FALSE)
         if ((length(resList$headerRow) +
              length(resList$observationVariableNames)) != ncol(out)) {
           stop('Header row length does not coincide with column count. Contact database provider.')
@@ -91,6 +91,7 @@ ba_studies_table <- function(con = NULL,
         } else {
           url <- jsonlite::fromJSON(txt = res)$metadata$datafiles[1]
           out <- readr::read_csv(file = url, progress = TRUE)
+          out <- as.data.frame(x = out, stringsAsFactors = FALSE)
         }
       }
       if (format == "tsv") {
@@ -100,6 +101,7 @@ ba_studies_table <- function(con = NULL,
         } else {
           url <- jsonlite::fromJSON(txt = res)$metadata$datafiles[1]
           out <- readr::read_tsv(file = url, progress = TRUE)
+          out <- as.data.frame(x = out, stringsAsFactors = FALSE)
         }
       }
       if (rclass == "tibble") {
