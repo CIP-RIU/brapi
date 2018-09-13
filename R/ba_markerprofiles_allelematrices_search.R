@@ -7,39 +7,45 @@
 #' @param con brapi connection object
 #' @param markerprofileDbId character vector; default ''
 #' @param markerDbId character vector; default ''
+#' @param matrixDbId character vector; default ''
+#' @param format character; default: json; other: csv, tsv
 #' @param expandHomozygotes logical; default false
 #' @param unknownString chaaracter; default: '-'
 #' @param sepPhased character; default: '|'
 #' @param sepUnphased character; default: '/'
-#' @param format character; default: json; other: csv, tsv
 #' @param page integer; default: 0
 #' @param pageSize integer; default 1000
-#' @note The handling of long-running responses via asynch status messages is not yet implemented.
-
 #' @param rclass character; default: tibble
 #'
+#' @note The handling of long-running responses via asynch status messages is not yet implemented.
+#'
+#' @return rclass as requested
+#'
 #' @author Reinhard Simon
+#' @references \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/MarkerProfiles/AlleleMatricesSearch_GET.md}{github}
+#'
+#' @family markerprofiles
+#' @family genotyping
+#'
 #' @example inst/examples/ex-ba_markerprofiles_allelematrices_search.R
+#'
 #' @import httr
 #' @import progress
 #' @importFrom magrittr '%>%'
-#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/MarkerProfiles/MarkerProfileAlleleMatrices.md}{github}
-#'
-#' @return data.frame
-#' @family markerprofiles
-#' @family genotyping
 #' @export
 ba_markerprofiles_allelematrices_search <- function(con = NULL,
                                                   markerprofileDbId = "",
                                                   markerDbId = "",
+                                                  matrixDbId = "",
+                                                  format = "json",
                                                   expandHomozygotes = FALSE,
                                                   unknownString = "-",
                                                   sepPhased = "|",
                                                   sepUnphased = "/",
-                                                  format = "json",
+                                                  pageSize = 1000,
                                                   page = 0,
-                                                  pageSize = 10000,
-                                                  rclass = "tibble") {
+                                                  rclass = c("tibble", "data.frame",
+                                                             "list", "json")) {
   ba_check(con = con, verbose = FALSE, brapi_calls = "allelematrices-search")
   stopifnot(is.character(markerprofileDbId))
   stopifnot(is.character(markerDbId))
