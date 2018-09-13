@@ -8,25 +8,27 @@ ba_studies_observationlevels(con = NULL, pageSize = 1000, page = 0,
   rclass = c("tibble", "data.frame", "list", "vector", "json"))
 }
 \arguments{
-\item{con}{brapi connection object}
+\item{con}{list, brapi connection object}
 
 \item{pageSize}{integer, items per page to be returned; default: 1000}
 
 \item{page}{integer, the requested page to be returned; default: 0 (1st page)}
 
-\item{rclass}{character; default is 'tibble'}
+\item{rclass}{character, class of the object to be returned; default:
+"tibble", possible other values: "data.frame"/"list"/"vector"/
+"json"}
 }
 \value{
 An object of class as defined by rclass containing the details of the
         measured observation variables for a requested study.
 }
 \description{
-Call to retrieve the list of supported observation levels.
+Retrieve the list of supported observation levels.
 }
 \details{
-Observation levels indicate the granularity level at which the measurements
-are taken. The values are used to supply the observationLevel parameter in
-the observation unit details call.
+Observation levels indicate the granularity level at which the
+         measurements are taken. The values are used to supply the
+         observationLevel parameter in the observation unit details call.
 }
 \note{
 Tested against: sweetpotatobase, test-server
