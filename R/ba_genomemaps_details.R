@@ -3,33 +3,42 @@
 #' lists genomemaps_details available on a brapi server
 #'
 #' @param con brapi connection object
+#' @param mapDbId character; default ''
+#' @param pageSize integer; default 1000
+#' @param page integer; default 0
 #' @param rclass character; default: tibble
-#' @param mapDbId character; default 1
+#'
+#' @return rclass as defined
 #'
 #' @author Reinhard Simon
 #' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/GenomeMaps/GenomeMapDetails.md}{github}
-#' @return rclass as defined
-#' @example inst/examples/ex-genomemaps_details.R
-#' @import tibble
 #' @family genomemaps
 #' @family genotyping
+#'
+#' @example inst/examples/ex-genomemaps_details.R
+#'
+#' @import tibble
 #' @export
 ba_genomemaps_details <- function(con = NULL,
-                                  mapDbId = "1",
-                                  rclass = "tibble") {
+                                  mapDbId = "",
+                                  page = 0,
+                                  pageSize = 1000,
+                                  rclass = c("tibble", "data.frame",
+                                             "list", "json")) {
   ba_check(con = con, verbose = FALSE, brapi_calls = "maps/id")
-  stopifnot(is.character(mapDbId))
-  check_rclass(rclass = rclass)
-  # fetch url of brapi implementation of the database
-  brp <- get_brapi(con = con)
-  # generate brapi call url
-  maps_list <- paste0(brp, "maps/", mapDbId, "/")
+  check_character(mapDbId)
+  check_req(mapDbId)
+  rclass <- match.arg(rclass)
+  brp <- get_brapi(con = con) %>% paste0("maps/", mapDbId)
+  callurl <- get_endpoint(brp,
+                          pageSize = pageSize,
+                          page = page
+                          )
+
   try({
-    res <- brapiGET(url = maps_list, con = con)
+    res <- brapiGET(url = callurl, con = con)
     res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
-    if (rclass == "vector") {
-      rclass <- "tibble"
-    }
+
     out <- NULL
     if (rclass %in% c("json", "list")) {
       out <- dat2tbl(res2, rclass)

@@ -48,7 +48,7 @@ ba_markerprofiles_search <- function(con = NULL,
                           methodDbId = methodDbId,
                           pageSize = pageSize,
                           page = page
-                          )
+  )
 
   out <- NULL
 

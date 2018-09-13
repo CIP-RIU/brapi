@@ -5,7 +5,7 @@
 \title{ba_genomemaps}
 \usage{
 ba_genomemaps(con = NULL, species = "", type = "", page = 0,
-  pageSize = 30, rclass = "tibble")
+  pageSize = 1000, rclass = c("tibble", "data.frame", "list", "json"))
 }
 \arguments{
 \item{con}{brapi connection object}
@@ -16,7 +16,7 @@ ba_genomemaps(con = NULL, species = "", type = "", page = 0,
 
 \item{page}{integer; default 0}
 
-\item{pageSize}{integer; default 30}
+\item{pageSize}{integer; default 1000}
 
 \item{rclass}{character; default: tibble}
 }

@@ -11,7 +11,7 @@ test_that("Genomemaps are present", {
 
 test_that("Vector output is transformed", {
 
-  res <- ba_genomemaps(con = con, rclass = "vector")
-  expect_that("tbl_df" %in%  class(res), is_true())
+  res <- ba_genomemaps(con = con, rclass = "data.frame")
+  expect_that("data.frame" %in%  class(res), is_true())
 
 })
