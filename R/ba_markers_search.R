@@ -3,32 +3,36 @@
 #' Lists markers as result of a search.
 #'
 #' @param con brapi connection object
-#' @param name character; marker name; default: *
+#' @param markerDbIds character, optional, default: ''
+#' @param name character; marker name; default: ''
+#' @param matchMethod character; default: ''; other: case_insensitive, exact, wildcard
+#' @param includeSynonyms logical, default: TRUE
 #' @param type character; default: all; other: SNP
-#' @param matchMethod character; default: wildcard; other: case_insensitive, exact
-#' @param include character; default: synonyms
 #' @param page integer; default: 0
 #' @param pageSize integer; default 1000
 #' @param rclass character; default: tibble
 #'
-#' @author Reinhard Simon
-#' @import httr
-#' @import progress
-#' @importFrom magrittr '%>%'
-#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Markers/MarkerSearch.md}{github}
+#' @return rclass as requested
 #'
-#' @return data.frame
-#' @example inst/examples/ex-ba_markers_search.R
+#' @author Reinhard Simon
+#' @references \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Markers/MarkerSearch_GET.md}{github}
+#'
 #' @family markers
 #' @family genotyping
+#'
+#' @example inst/examples/ex-ba_markers_search.R
+#'
+#' @import httr
+#' @import progress
 #' @export
 ba_markers_search <- function(con = NULL,
-                              name = "*",
-                              type = "all",
-                              matchMethod = "wildcard",
-                              include = "synonyms",
-                              page = 0,
+                              markerDbIds = '',
+                              name = "",
+                              matchMethod = "",
+                              includeSynonyms = TRUE,
+                              type = "",
                               pageSize = 1000,
+                              page = 0,
                               rclass = "tibble") {
   ba_check(con = con, verbose = FALSE, brapi_calls = "markers")
   stopifnot(is.character(name))

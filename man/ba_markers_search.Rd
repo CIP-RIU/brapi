@@ -4,29 +4,31 @@
 \alias{ba_markers_search}
 \title{ba_markers_search}
 \usage{
-ba_markers_search(con = NULL, name = "*", type = "all",
-  matchMethod = "wildcard", include = "synonyms", page = 0,
-  pageSize = 1000, rclass = "tibble")
+ba_markers_search(con = NULL, markerDbIds = "", name = "",
+  matchMethod = "", includeSynonyms = TRUE, type = "",
+  pageSize = 1000, page = 0, rclass = "tibble")
 }
 \arguments{
 \item{con}{brapi connection object}
 
-\item{name}{character; marker name; default: *}
+\item{markerDbIds}{character, optional, default: ''}
+
+\item{name}{character; marker name; default: ''}
+
+\item{matchMethod}{character; default: ''; other: case_insensitive, exact, wildcard}
+
+\item{includeSynonyms}{logical, default: TRUE}
 
 \item{type}{character; default: all; other: SNP}
 
-\item{matchMethod}{character; default: wildcard; other: case_insensitive, exact}
-
-\item{include}{character; default: synonyms}
+\item{pageSize}{integer; default 1000}
 
 \item{page}{integer; default: 0}
-
-\item{pageSize}{integer; default 1000}
 
 \item{rclass}{character; default: tibble}
 }
 \value{
-data.frame
+rclass as requested
 }
 \description{
 Lists markers as result of a search.
@@ -41,7 +43,7 @@ if (interactive()) {
 }
 }
 \references{
-\href{https://github.com/plantbreeding/API/blob/master/Specification/Markers/MarkerSearch.md}{github}
+\href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Markers/MarkerSearch_GET.md}{github}
 }
 \seealso{
 Other markers: \code{\link{ba_markers_details}}

@@ -4,15 +4,15 @@
 \alias{ba_germplasmattributes_categories}
 \title{ba_germplasmattributes_categories}
 \usage{
-ba_germplasmattributes_categories(con = NULL, page = 0,
-  pageSize = 10, rclass = "tibble")
+ba_germplasmattributes_categories(con = NULL, pageSize = 1000,
+  page = 0, rclass = c("tibble", "data.frame", "list", "json"))
 }
 \arguments{
 \item{con}{brapi connection object}
 
-\item{page}{integer; default 0}
-
 \item{pageSize}{integer; default 10}
+
+\item{page}{integer; default 0}
 
 \item{rclass}{character; default: tibble}
 }
@@ -33,7 +33,7 @@ if (interactive()) {
 }
 }
 \references{
-\href{https://github.com/plantbreeding/API/blob/master/Specification/GermplasmAttributes/ListAttributeCategories.md}{github}
+\href{https://github.com/plantbreeding/API/blob/V1.2/Specification/GermplasmAttributes/Attributes_Categories_GET.md}{github}
 }
 \seealso{
 Other germplasmattributes: \code{\link{ba_germplasm_attributes}},
