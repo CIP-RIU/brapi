@@ -4,7 +4,8 @@
 \alias{ba_commoncropnames}
 \title{ba_commoncropnames}
 \usage{
-ba_commoncropnames(con = NULL, rclass = "tibble")
+ba_commoncropnames(con = NULL, rclass = c("tibble", "data.frame",
+  "list", "json"))
 }
 \arguments{
 \item{con}{list, brapi connection object}

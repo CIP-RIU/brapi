@@ -4,7 +4,6 @@
 #'
 #' @param con brapi connection object
 #' @param germplasmDbId character; default ''
-#'
 #' @param notation character; optional, recommended value: purdue format. Default: ''
 #' @param rclass character; default: tibble
 #'

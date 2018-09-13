@@ -18,13 +18,15 @@
 #' @family brapicore
 #' @example inst/examples/ex-ba_commoncropnames.R
 #' @export
-ba_commoncropnames <- function(con = NULL, rclass = "tibble") {
-  stopifnot(is.ba_con(obj = con))
-  check_rclass(rclass = rclass)
+ba_commoncropnames <- function(con = NULL,
+                               rclass = c("tibble", "data.frame", "list", "json")) {
+  ba_check(con = con, verbose = FALSE, brapi_calls = "commoncropnames")
+  rclass <- match.arg(rclass)
+
   # temporarily store the multicrop argument in omc (oldmulticrop)
   omc <- con$multicrop
   con$multicrop <- FALSE
-  ba_check(con = con, verbose = FALSE, brapi_calls = "commoncropnames")
+
   brp <- get_brapi(con = con)
   callurl <- paste0(brp, "commoncropnames")
   # store original rclass, needed when equal to data.frame
