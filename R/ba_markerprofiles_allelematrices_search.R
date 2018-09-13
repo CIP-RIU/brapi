@@ -11,8 +11,8 @@
 #' @param format character; default: json; other: csv, tsv
 #' @param expandHomozygotes logical; default false
 #' @param unknownString chaaracter; default: '-'
-#' @param sepPhased character; default: '|'
-#' @param sepUnphased character; default: '/'
+#' @param sepPhased character; default: ''
+#' @param sepUnphased character; default: ''
 #' @param pageSize integer; default 1000
 #' @param page integer; default: 0
 #' @param rclass character; default: tibble

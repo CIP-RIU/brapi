@@ -3,7 +3,7 @@
 #' Lists markers as result of a search.
 #'
 #' @param con brapi connection object
-#' @param markerDbId character; marker id; default: ''
+#' @param markerDbId character; marker id; \strong{REQUIRED ARGUMENT} with default: ""
 #' @param rclass character; default: tibble
 #'
 #' @return data.frame

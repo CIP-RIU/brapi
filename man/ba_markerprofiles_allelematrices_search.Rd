@@ -25,9 +25,9 @@ ba_markerprofiles_allelematrices_search(con = NULL,
 
 \item{unknownString}{chaaracter; default: '-'}
 
-\item{sepPhased}{character; default: '|'}
+\item{sepPhased}{character; default: ''}
 
-\item{sepUnphased}{character; default: '/'}
+\item{sepUnphased}{character; default: ''}
 
 \item{pageSize}{integer; default 1000}
 
@@ -59,7 +59,8 @@ if (interactive()) {
 \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/MarkerProfiles/AlleleMatricesSearch_GET.md}{github}
 }
 \seealso{
-Other markerprofiles: \code{\link{ba_markerprofiles_allelematrix_search}},
+Other markerprofiles: \code{\link{ba_markerprofiles_allelematrices_details}},
+  \code{\link{ba_markerprofiles_allelematrix_search}},
   \code{\link{ba_markerprofiles_details}},
   \code{\link{ba_markerprofiles_search}}
 
@@ -73,6 +74,7 @@ Other genotyping: \code{\link{ba_genomemaps_data_range}},
   \code{\link{ba_germplasmattributes_attributes}},
   \code{\link{ba_germplasmattributes_categories}},
   \code{\link{ba_germplasmattributes_details}},
+  \code{\link{ba_markerprofiles_allelematrices_details}},
   \code{\link{ba_markerprofiles_allelematrix_search}},
   \code{\link{ba_markerprofiles_details}},
   \code{\link{ba_markerprofiles_search}},
