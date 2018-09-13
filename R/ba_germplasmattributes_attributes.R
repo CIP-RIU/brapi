@@ -17,8 +17,8 @@
 #'
 #' @author Reinhard Simon, Maikel Verouden
 #' @references \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/GermplasmAttributes/Attributes_GET.md}{github}
-#' @family brapicore
 #' @family germplasmattributes
+#' @family genotyping
 #' @example inst/examples/ex-ba_germplasmattributes_attributes.R
 #' @export
 ba_germplasmattributes_attributes <- function(con = NULL,
@@ -42,7 +42,8 @@ ba_germplasmattributes_attributes <- function(con = NULL,
     res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
     out <- dat2tbl(res = res2, rclass = rclass)
 
-    class(out) <- c(class(out), "ba_crops")
+    class(out) <- c(class(out), "ba_germplasmattributes_attributes")
+    show_metadata(res)
     out
   })
 

@@ -38,8 +38,7 @@ if (interactive()) {
 \seealso{
 Other germplasmattributes: \code{\link{ba_germplasm_attributes}},
   \code{\link{ba_germplasmattributes_attributes}},
-  \code{\link{ba_germplasmattributes_details}},
-  \code{\link{ba_germplasmattributes}}
+  \code{\link{ba_germplasmattributes_details}}
 
 Other genotyping: \code{\link{ba_genomemaps_data_range}},
   \code{\link{ba_genomemaps_data}},
@@ -48,8 +47,8 @@ Other genotyping: \code{\link{ba_genomemaps_data_range}},
   \code{\link{ba_germplasm_attributes}},
   \code{\link{ba_germplasm_markerprofiles}},
   \code{\link{ba_germplasm_search}},
+  \code{\link{ba_germplasmattributes_attributes}},
   \code{\link{ba_germplasmattributes_details}},
-  \code{\link{ba_germplasmattributes}},
   \code{\link{ba_markerprofiles_allelematrices_search}},
   \code{\link{ba_markerprofiles_allelematrix_search}},
   \code{\link{ba_markerprofiles_details}},

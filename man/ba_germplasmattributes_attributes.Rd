@@ -46,31 +46,28 @@ if (interactive()) {
 \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/GermplasmAttributes/Attributes_GET.md}{github}
 }
 \seealso{
-Other brapicore: \code{\link{ba_calls}},
-  \code{\link{ba_commoncropnames}}, \code{\link{ba_crops}},
-  \code{\link{ba_germplasm_details_study}},
-  \code{\link{ba_germplasm_details}},
-  \code{\link{ba_germplasm_pedigree}},
-  \code{\link{ba_germplasm_progeny}},
-  \code{\link{ba_germplasm_search}},
-  \code{\link{ba_observationvariables_datatypes}},
-  \code{\link{ba_observationvariables_details}},
-  \code{\link{ba_observationvariables_ontologies}},
-  \code{\link{ba_observationvariables_search}},
-  \code{\link{ba_observationvariables}},
-  \code{\link{ba_phenotypes_search}},
-  \code{\link{ba_programs_search}},
-  \code{\link{ba_programs}},
-  \code{\link{ba_studies_germplasm_details}},
-  \code{\link{ba_traits_details}}, \code{\link{ba_traits}}
-
 Other germplasmattributes: \code{\link{ba_germplasm_attributes}},
   \code{\link{ba_germplasmattributes_categories}},
+  \code{\link{ba_germplasmattributes_details}}
+
+Other genotyping: \code{\link{ba_genomemaps_data_range}},
+  \code{\link{ba_genomemaps_data}},
+  \code{\link{ba_genomemaps_details}},
+  \code{\link{ba_genomemaps}},
+  \code{\link{ba_germplasm_attributes}},
+  \code{\link{ba_germplasm_markerprofiles}},
+  \code{\link{ba_germplasm_search}},
+  \code{\link{ba_germplasmattributes_categories}},
   \code{\link{ba_germplasmattributes_details}},
-  \code{\link{ba_germplasmattributes}}
+  \code{\link{ba_markerprofiles_allelematrices_search}},
+  \code{\link{ba_markerprofiles_allelematrix_search}},
+  \code{\link{ba_markerprofiles_details}},
+  \code{\link{ba_markerprofiles_search}},
+  \code{\link{ba_markers_details}},
+  \code{\link{ba_markers_search}}
 }
 \author{
 Reinhard Simon, Maikel Verouden
 }
-\concept{brapicore}
+\concept{genotyping}
 \concept{germplasmattributes}
