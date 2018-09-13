@@ -1,26 +1,26 @@
-context("check_character")
+context("get_endpoint")
 
 
 test_that("Parameters work", {
 
-  expect_error({
-    brapi:::check_character(1)
+  expect_true({
+    brapi:::get_endpoint("base") ==  "base"
+  })
+
+  expect_true({
+    brapi:::get_endpoint("base", x = "x") ==  "base?x=x"
+  })
+
+  expect_true({
+    brapi:::get_endpoint("base", x = "x", y = TRUE) ==  "base?x=x&y=true"
+  })
+
+  expect_true({
+    brapi:::get_endpoint("base", x = "x", y = TRUE, z = 1:3) ==  "base?x=x&y=true&z=1,2,3"
   })
 
   expect_error({
-    brapi:::check_character(TRUE)
-  })
-
-  expect_error({
-    brapi:::check_character(" ", FALSE)
-  })
-
-  expect_error({
-    brapi:::check_character(1:10)
-  })
-
-  expect_silent({
-    brapi:::check_character("a", b = "b")
+    brapi:::get_endpoint("base", "1")
   })
 
 })
