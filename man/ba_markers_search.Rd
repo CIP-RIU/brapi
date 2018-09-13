@@ -6,7 +6,8 @@
 \usage{
 ba_markers_search(con = NULL, markerDbIds = "", name = "",
   matchMethod = "", includeSynonyms = TRUE, type = "",
-  pageSize = 1000, page = 0, rclass = "tibble")
+  pageSize = 1000, page = 0, rclass = c("tibble", "data.frame",
+  "list", "json"))
 }
 \arguments{
 \item{con}{brapi connection object}

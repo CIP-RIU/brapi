@@ -33,32 +33,26 @@ ba_markers_search <- function(con = NULL,
                               type = "",
                               pageSize = 1000,
                               page = 0,
-                              rclass = "tibble") {
-  ba_check(con = con, verbose = FALSE, brapi_calls = "markers")
-  stopifnot(is.character(name))
-  stopifnot(is.character(type))
-  stopifnot(matchMethod %in% c("wildcard", "case_insensitive", "exact"))
-  stopifnot(include == "synonyms")
-  check_paging(pageSize = pageSize, page = page)
-  check_rclass(rclass = rclass)
-  brp <- get_brapi(con = con)
-  marker_search <- paste0(brp, "markers/?")
-  page <- ifelse(is.numeric(page), paste0("page=", page, "&"), "")
-  pageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=",
-                                                  pageSize, "&"), "")
-  matchMethod <- ifelse(matchMethod %in%
-                      c("exact", "case_insensitive", "wildcard"),
-                      paste0("matchMethod=", matchMethod, "&"), "")
-  include <- ifelse(include %in% c("synonyms", "none"), paste0("include=",
-                                                        include, "&"), "")
-  name <- ifelse(name != "", paste0("name=", name, "&"), "")
-  type <- ifelse(type != "", paste0("type=", type, "&"), "")
-  rclass <- ifelse(rclass %in% c("tibble", "data.frame", "json", "list"),
-                   rclass, "tibble")
-  marker_search <- paste0(marker_search, name, type, matchMethod,
-                          include, pageSize, page)
+                              rclass = c("tibble", "data.frame",
+                                         "list", "json")) {
+  ba_check(con = con, verbose = FALSE)
+  check_character(markerDbIds, name, matchMethod, type)
+  stopifnot(is.boolean(includeSynonyms))
+  rclass <- match.arg(rclass)
+
+  brp <- get_brapi(con = con) %>% paste0("markers-search")
+  callurl <- get_endpoint(brp,
+                          markerDbIds = markerDbIds,
+                          name = name,
+                          matchMethod = matchMethod,
+                          includeSynonyms = includeSynonyms,
+                          type = type,
+                          pageSize = pageSize,
+                          page = page
+                          )
+
   try({
-    res <- brapiGET(url = marker_search, con = con)
+    res <- brapiGET(url = callurl, con = con)
     res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
     if (rclass %in% c("json", "list")) {
       out <- dat2tbl(res = res2, rclass = rclass)
