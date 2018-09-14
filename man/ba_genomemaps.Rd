@@ -64,6 +64,7 @@ Other genotyping: \code{\link{ba_genomemaps_data_range}},
   \code{\link{ba_markerprofiles_details}},
   \code{\link{ba_markerprofiles_search}},
   \code{\link{ba_markers_details}},
+  \code{\link{ba_markers_search_post}},
   \code{\link{ba_markers_search}}
 }
 \author{

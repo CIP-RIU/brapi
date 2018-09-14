@@ -47,7 +47,8 @@ if (interactive()) {
 \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Markers/MarkerSearch_GET.md}{github}
 }
 \seealso{
-Other markers: \code{\link{ba_markers_details}}
+Other markers: \code{\link{ba_markers_details}},
+  \code{\link{ba_markers_search_post}}
 
 Other genotyping: \code{\link{ba_genomemaps_data_range}},
   \code{\link{ba_genomemaps_data}},
@@ -65,7 +66,8 @@ Other genotyping: \code{\link{ba_genomemaps_data_range}},
   \code{\link{ba_markerprofiles_allelematrix_search}},
   \code{\link{ba_markerprofiles_details}},
   \code{\link{ba_markerprofiles_search}},
-  \code{\link{ba_markers_details}}
+  \code{\link{ba_markers_details}},
+  \code{\link{ba_markers_search_post}}
 }
 \author{
 Reinhard Simon
