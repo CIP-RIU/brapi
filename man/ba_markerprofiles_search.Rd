@@ -50,6 +50,7 @@ if (interactive()) {
 }
 \seealso{
 Other markerprofiles: \code{\link{ba_markerprofiles_allelematrices_details}},
+  \code{\link{ba_markerprofiles_allelematrices_search_post}},
   \code{\link{ba_markerprofiles_allelematrices_search}},
   \code{\link{ba_markerprofiles_allelematrix_search}},
   \code{\link{ba_markerprofiles_details}}
@@ -66,6 +67,7 @@ Other genotyping: \code{\link{ba_genomemaps_data_range}},
   \code{\link{ba_germplasmattributes_categories}},
   \code{\link{ba_germplasmattributes_details}},
   \code{\link{ba_markerprofiles_allelematrices_details}},
+  \code{\link{ba_markerprofiles_allelematrices_search_post}},
   \code{\link{ba_markerprofiles_allelematrices_search}},
   \code{\link{ba_markerprofiles_allelematrix_search}},
   \code{\link{ba_markerprofiles_details}},
