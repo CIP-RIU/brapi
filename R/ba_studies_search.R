@@ -51,25 +51,24 @@
 #' @family phenotyping
 #' @import tibble
 #' @export
-### to be put in front of @import #' @example inst/examples/ex-ba_studies_search_get.R
-ba_studies_search_get <- function(con = NULL,
-                                  studyDbId = "",
-                                  trialDbId = "",
-                                  programDbId = "",
-                                  commonCropName = "",
-                                  locationDbId = "",
-                                  seasonDbId = "",
-                                  studyType = "",
-                                  germplasmDbIds = "",
-                                  observationVariableDbIds = "",
-                                  active = TRUE,
-                                  sortBy = "",
-                                  sortOrder = "",
-                                  pageSize = 1000,
-                                  page = 0,
-                                  rclass = c("tibble", "data.frame",
-                                             "list", "json")) {
-  # .Deprecated("ba_studies_search")
+### to be put in front of @import #' @example inst/examples/ex-ba_studies_search.R
+ba_studies_search <- function(con = NULL,
+                              studyDbId = "",
+                              trialDbId = "",
+                              programDbId = "",
+                              commonCropName = "",
+                              locationDbId = "",
+                              seasonDbId = "",
+                              studyType = "",
+                              germplasmDbIds = "",
+                              observationVariableDbIds = "",
+                              active = TRUE,
+                              sortBy = "",
+                              sortOrder = "",
+                              pageSize = 1000,
+                              page = 0,
+                              rclass = c("tibble", "data.frame",
+                                         "list", "json")) {
   ba_check(con = con, verbose = FALSE, brapi_calls = "studies-search-get")
   ba_check(con = con, verbose = FALSE)
   check_character(studyDbId, trialDbId, programDbId, locationDbId, seasonDbId, studyType,
@@ -80,20 +79,19 @@ ba_studies_search_get <- function(con = NULL,
   brp <- get_brapi(con) %>% paste0("studies-search")
 
   callurl <- get_endpoint(brp,
-                   studyDbId = studyDbId,
-                   trialDbId = trialDbId,
-                   programDbId = programDbId,
-                   locationDbId = locationDbId,
-                   seasonDbId = seasonDbId,
-                   studyType = studyType,
-                   germplasmDbIds = germplasmDbIds,
-                   observationVariableDbIds = observationVariableDbIds,
-                   active = active,
-                   sortBy = sortBy,
-                   sortOrder = sortOrder,
-                   page = page,
-                   pageSize = pageSize)
-
+                          studyDbId = studyDbId,
+                          trialDbId = trialDbId,
+                          programDbId = programDbId,
+                          locationDbId = locationDbId,
+                          seasonDbId = seasonDbId,
+                          studyType = studyType,
+                          germplasmDbIds = germplasmDbIds,
+                          observationVariableDbIds = observationVariableDbIds,
+                          active = active,
+                          sortBy = sortBy,
+                          sortOrder = sortOrder,
+                          page = page,
+                          pageSize = pageSize)
 
   out <- NULL
 
