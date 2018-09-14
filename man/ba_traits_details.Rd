@@ -8,17 +8,21 @@ ba_traits_details(con = NULL, traitDbId = "", rclass = c("tibble",
   "data.frame", "list", "json"))
 }
 \arguments{
-\item{con}{list; brapi connection object}
+\item{con}{list, brapi connection object}
 
-\item{traitDbId}{character; \strong{REQUIRED ARGUMENT} with default ''}
+\item{traitDbId}{character, the internal database identifier for a trait of
+which the details and associated variables are to be retrieved
+e.g. "1"; \strong{REQUIRED ARGUMENT} with default: ""}
 
-\item{rclass}{character; default: tibble}
+\item{rclass}{character, class of the object to be returned;  default: "tibble"
+, possible other values: "data.frame"/"list"/"json"}
 }
 \value{
-rclass as defined
+An object of class as defined by rclass containing the details and
+        associated variables of the requested trait identifier.
 }
 \description{
-lists brapi_traits_details available on a brapi server
+Retrieve the details and associated variables of specific trait identifier.
 }
 \note{
 Tested against: sweetpotatobase, testserver
@@ -61,7 +65,7 @@ Other brapicore: \code{\link{ba_calls}},
   \code{\link{ba_traits}}
 }
 \author{
-Reinhard Simon
+Reinhard Simon, Maikel Verouden
 }
 \concept{brapicore}
 \concept{traits}

@@ -8,24 +8,27 @@ ba_observationvariables_ontologies(con = NULL, pageSize = 1000,
   page = 0, rclass = c("tibble", "data.frame", "list", "json"))
 }
 \arguments{
-\item{con}{list; brapi connection object; default = NULL}
+\item{con}{list, brapi connection object}
 
-\item{pageSize}{integer; defautlt 1000}
+\item{pageSize}{integer, items per page to be returned; default: 1000}
 
-\item{page}{integer; default 0}
+\item{page}{integer, the requested page to be returned; default: 0 (1st page)}
 
-\item{rclass}{character; default: tibble}
+\item{rclass}{character, class of the object to be returned; default:
+"tibble", possible other values: "data.frame"/"list"/"json"}
 }
 \value{
-rclass as defined
+An object of class as defined by rclass containing the observation
+        variable ontologies on the BrAPI compliant database server.
 }
 \description{
-lists variables_datatypes available on a brapi server
+Retrieve a list of observation variable ontologies available available on a
+BrAPI compliant database server.
 }
 \note{
 Tested against: sweetpotatobase, test-server
 
-BrAPI Version: 1.1, 1.2
+BrAPI Version: 1.0, 1.1, 1.2
 
 BrAPI Status: active
 }

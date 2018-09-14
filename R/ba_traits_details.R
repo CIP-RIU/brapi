@@ -1,19 +1,24 @@
 #' ba_traits_details
 #'
-#' lists brapi_traits_details available on a brapi server
+#' Retrieve the details and associated variables of specific trait identifier.
 #'
-#' @param rclass character; default: tibble
-#' @param traitDbId character; \strong{REQUIRED ARGUMENT} with default ''
-#' @param con list; brapi connection object
+#' @param con list, brapi connection object
+#' @param traitDbId character, the internal database identifier for a trait of
+#'                  which the details and associated variables are to be retrieved
+#'                  e.g. "1"; \strong{REQUIRED ARGUMENT} with default: ""
+#' @param rclass character, class of the object to be returned;  default: "tibble"
+#'               , possible other values: "data.frame"/"list"/"json"
 #'
-#' @return rclass as defined
+#' @return An object of class as defined by rclass containing the details and
+#'         associated variables of the requested trait identifier.
 #'
 #' @note Tested against: sweetpotatobase, testserver
 #' @note BrAPI Version: 1.1, 1.2
 #' @note BrAPI Status: active
 #'
-#' @author Reinhard Simon
+#' @author Reinhard Simon, Maikel Verouden
 #' @references \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Traits/TraitDetails.md}{github}
+#'
 #' @family traits
 #' @family brapicore
 #'
@@ -33,15 +38,15 @@ ba_traits_details <- function(con = NULL,
   callurl <- paste0(brp, "traits/", traitDbId)
 
   try({
-    res <- brapiGET(url = callurl, con = con)
-    res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
-    out <- dat2tbl(res = res2, rclass = rclass, result_level = "result")
+    resp <- brapiGET(url = callurl, con = con)
+    cont <- httr::content(x = resp, as = "text", encoding = "UTF-8")
+    out <- dat2tbl(res = cont, rclass = rclass, result_level = "result")
     if (rclass %in% c("data.frame", "tibble")) {
       out$observationVariables <- sapply(X = out$observationVariables,
                                          FUN = paste, collapse = "; ")
     }
     class(out) <- c(class(out), "ba_traits_details")
-    show_metadata(res)
+    show_metadata(resp)
     return(out)
   })
 }

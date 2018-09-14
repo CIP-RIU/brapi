@@ -8,24 +8,27 @@ ba_traits(con = NULL, pageSize = 1000, page = 0,
   rclass = c("tibble", "data.frame", "list", "json"))
 }
 \arguments{
-\item{con}{list; brapi connection object}
+\item{con}{list, brapi connection object}
 
-\item{pageSize}{integer; defautlt 1000}
+\item{pageSize}{integer, items per page to be returned; default: 1000}
 
-\item{page}{integer; default 0}
+\item{page}{integer, the requested page to be returned; default: 0 (1st page)}
 
-\item{rclass}{character; default: tibble}
+\item{rclass}{character, class of the object to be returned; default:
+"tibble", possible other values: "data.frame"/"list"/"json"}
 }
 \value{
-rclass as defined
+An object of class as defined by rclass containing the traits and
+        their associated variables on the BrAPI compliant database server.
 }
 \description{
-lists brapi_traits available on a brapi server
+Retrieve a list of traits available on a BrAPI compliant database server and
+their associated variables.
 }
 \note{
 Tested against: sweetpotatobase, test-server
 
-BrAPI Version: 1.1, 1.2
+BrAPI Version: 1.0, 1.1, 1.2
 
 BrAPI Status: active
 }

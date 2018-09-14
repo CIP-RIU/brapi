@@ -1,20 +1,24 @@
 #' ba_observationvariables
 #'
-#' lists brapi_variables available on a brapi server
+#' Retrieve a list of observation variables available on a BrAPI compliant
+#' database server.
 #'
-#' @param con list; brapi connection object
-#' @param traitClass character; default: ''
-#' @param pageSize integer; default; 1000
-#' @param page integer; default: 0
-#' @param rclass character; default: tibble
+#' @param con list, brapi connection object
+#' @param traitClass character, variable's trait class e.g. "phenological";
+#'                   default: ""
+#' @param pageSize integer, items per page to be returned; default: 1000
+#' @param page integer, the requested page to be returned; default: 0 (1st page)
+#' @param rclass character, class of the object to be returned; default:
+#'               "tibble", possible other values: "data.frame"/"list"/"json"
 #'
-#' @return rclass as defined
+#' @return An object of class as defined by rclass containing the observation
+#'         variables available on the BrAPI compliant database server.
 #'
 #' @note Tested against: sweetpotatobase, test-server
-#' @note BrAPI Version: 1.1, 1.2
+#' @note BrAPI Version: 1.0, 1.1, 1.2
 #' @note BrAPI Status: active
 #'
-#' @author Reinhard Simon
+#' @author Reinhard Simon, Maikel Verouden
 #' @references \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/ObservationVariables/VariableList.md}{github}
 #'
 #' @family observationvariables
@@ -40,17 +44,17 @@ ba_observationvariables <- function(con = NULL,
                           page = page)
 
   try({
-    res <- brapiGET(url = callurl, con = con)
-    res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
+    resp <- brapiGET(url = callurl, con = con)
+    cont <- httr::content(x = resp, as = "text", encoding = "UTF-8")
     out <- NULL
     if (rclass %in% c("json", "list")) {
-        out <- dat2tbl(res = res2, rclass = rclass)
+        out <- dat2tbl(res = cont, rclass = rclass)
     }
     if (rclass %in% c("tibble", "data.frame")) {
-        out <- sov2tbl(res = res2, rclass = rclass)
+        out <- sov2tbl(res = cont, rclass = rclass)
     }
     class(out) <- c(class(out), "ba_observationvariables")
-    show_metadata(res)
+    show_metadata(resp)
     return(out)
   })
 }
