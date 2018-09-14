@@ -7,7 +7,7 @@
 #'                  which the study details are to be retrieved e.g. "1001";
 #'                  \strong{REQUIRED ARGUMENT} with default: ""
 #' @param rclass character, class of the object to be returned;  default: "tibble"
-#'               , possible other values: "json"/"list"/"data.frame"
+#'               , possible other values: "data.frame"/"list"/"json"
 #'
 #' @details This function must have set a specific study identifier. The default
 #'          is an empty string. If not changed to an study identifier present in

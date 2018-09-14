@@ -1,18 +1,24 @@
 #' ba_observationvariables_details
 #'
-#' lists brapi_variables_details available on a brapi server
+#' Retrieve variable details on a BrAPI compliant database server.
 #'
-#' @param con list; brapi connection object
-#' @param observationVariableDbId character; \strong{REQUIRED ARGUMENT} with default ''.
-#' @param rclass character; default: tibble
+#' @param con list, brapi connection object
+#' @param observationVariableDbId character, the internal database identifier for
+#'                                an observation variable of which the details
+#'                                are to be retrieved e.g. "MO_123:100002";
+#'                                \strong{REQUIRED ARGUMENT} with default: ""
+#' @param rclass character, class of the object to be returned; default:
+#'               "tibble", possible other values: "data.frame"/"list"/"json"
 #'
-#' @return rclass as defined
+#' @return An object of class as defined by rclass containing the variable
+#'         details the requested observation variable identifier on the BrAPI
+#'         compliant database server.
 #'
 #' @note Tested against: sweetpotatobase, test-server
-#' @note BrAPI Version: 1.1, 1.2
+#' @note BrAPI Version: 1.0, 1.1, 1.2
 #' @note BrAPI Status: active
 #'
-#' @author Reinhard Simon
+#' @author Reinhard Simon, Maikel Verouden
 #' @references \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/ObservationVariables/VariableDetails.md}{github}
 #'
 #' @family observationvariables
@@ -22,8 +28,9 @@
 #' @import tibble
 #' @export
 ba_observationvariables_details <- function(con = NULL,
-                                    observationVariableDbId = "",
-                                    rclass = c("tibble", "data.frame", "list", "json")) {
+                                            observationVariableDbId = "",
+                                            rclass = c("tibble", "data.frame",
+                                                       "list", "json")) {
   ba_check(con = con, verbose = FALSE, brapi_calls = "variables/id")
   check_character(observationVariableDbId)
   check_req(observationVariableDbId)
@@ -33,17 +40,17 @@ ba_observationvariables_details <- function(con = NULL,
   callurl <- paste0(brp, "variables/", observationVariableDbId)
 
   try({
-    res <- brapiGET(url = callurl, con = con)
-    res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
+    resp <- brapiGET(url = callurl, con = con)
+    cont <- httr::content(x = resp, as = "text", encoding = "UTF-8")
     out <- NULL
     if (rclass %in% c("json", "list")) {
-      out <- dat2tbl(res = res2, rclass = rclass)
+      out <- dat2tbl(res = cont, rclass = rclass)
     }
     if (rclass %in% c("tibble", "data.frame")) {
-        out <- sov2tbl(res = res2, rclass =  rclass)
+        out <- sov2tbl(res = cont, rclass =  rclass)
     }
     class(out) <- c(class(out), "ba_observationvariables_details")
-    show_metadata(res)
+    show_metadata(resp)
     return(out)
   })
 }

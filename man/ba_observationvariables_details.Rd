@@ -9,22 +9,28 @@ ba_observationvariables_details(con = NULL,
   "list", "json"))
 }
 \arguments{
-\item{con}{list; brapi connection object}
+\item{con}{list, brapi connection object}
 
-\item{observationVariableDbId}{character; \strong{REQUIRED ARGUMENT} with default ''.}
+\item{observationVariableDbId}{character, the internal database identifier for
+an observation variable of which the details
+are to be retrieved e.g. "MO_123:100002";
+\strong{REQUIRED ARGUMENT} with default: ""}
 
-\item{rclass}{character; default: tibble}
+\item{rclass}{character, class of the object to be returned; default:
+"tibble", possible other values: "data.frame"/"list"/"json"}
 }
 \value{
-rclass as defined
+An object of class as defined by rclass containing the variable
+        details the requested observation variable identifier on the BrAPI
+        compliant database server.
 }
 \description{
-lists brapi_variables_details available on a brapi server
+Retrieve variable details on a BrAPI compliant database server.
 }
 \note{
 Tested against: sweetpotatobase, test-server
 
-BrAPI Version: 1.1, 1.2
+BrAPI Version: 1.0, 1.1, 1.2
 
 BrAPI Status: active
 }
@@ -65,7 +71,7 @@ Other brapicore: \code{\link{ba_calls}},
   \code{\link{ba_traits_details}}, \code{\link{ba_traits}}
 }
 \author{
-Reinhard Simon
+Reinhard Simon, Maikel Verouden
 }
 \concept{brapicore}
 \concept{observationvariables}

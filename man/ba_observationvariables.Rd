@@ -8,26 +8,30 @@ ba_observationvariables(con = NULL, traitClass = "", pageSize = 1000,
   page = 0, rclass = c("tibble", "data.frame", "list", "json"))
 }
 \arguments{
-\item{con}{list; brapi connection object}
+\item{con}{list, brapi connection object}
 
-\item{traitClass}{character; default: ''}
+\item{traitClass}{character, variable's trait class e.g. "phenological";
+default: ""}
 
-\item{pageSize}{integer; default; 1000}
+\item{pageSize}{integer, items per page to be returned; default: 1000}
 
-\item{page}{integer; default: 0}
+\item{page}{integer, the requested page to be returned; default: 0 (1st page)}
 
-\item{rclass}{character; default: tibble}
+\item{rclass}{character, class of the object to be returned; default:
+"tibble", possible other values: "data.frame"/"list"/"json"}
 }
 \value{
-rclass as defined
+An object of class as defined by rclass containing the observation
+        variables available on the BrAPI compliant database server.
 }
 \description{
-lists brapi_variables available on a brapi server
+Retrieve a list of observation variables available on a BrAPI compliant
+database server.
 }
 \note{
 Tested against: sweetpotatobase, test-server
 
-BrAPI Version: 1.1, 1.2
+BrAPI Version: 1.0, 1.1, 1.2
 
 BrAPI Status: active
 }
@@ -67,7 +71,7 @@ Other brapicore: \code{\link{ba_calls}},
   \code{\link{ba_traits_details}}, \code{\link{ba_traits}}
 }
 \author{
-Reinhard Simon
+Reinhard Simon, Maikel Verouden
 }
 \concept{brapicore}
 \concept{observationvariables}

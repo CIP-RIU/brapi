@@ -1,18 +1,20 @@
 #' ba_traits
 #'
-#' lists brapi_traits available on a brapi server
+#' Retrieve a list of traits available on a BrAPI compliant database server and
+#' their associated variables.
 #'
-#'
-#' @param con list; brapi connection object
-#' @param pageSize integer; defautlt 1000
-#' @param page integer; default 0
-#' @param rclass character; default: tibble
+#' @param con list, brapi connection object
+#' @param pageSize integer, items per page to be returned; default: 1000
+#' @param page integer, the requested page to be returned; default: 0 (1st page)
+#' @param rclass character, class of the object to be returned; default:
+#'               "tibble", possible other values: "data.frame"/"list"/"json"
 #'
 #' @note Tested against: sweetpotatobase, test-server
-#' @note BrAPI Version: 1.1, 1.2
+#' @note BrAPI Version: 1.0, 1.1, 1.2
 #' @note BrAPI Status: active
 #'
-#' @return rclass as defined
+#' @return An object of class as defined by rclass containing the traits and
+#'         their associated variables on the BrAPI compliant database server.
 #'
 #' @author Reinhard Simon, Maikel Verouden
 #' @references \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Traits/ListAllTraits.md}{github}
@@ -35,9 +37,9 @@ ba_traits <- function(con = NULL,
   callurl <- get_endpoint(brp, pageSize = pageSize, page = page)
 
   try({
-    res <- brapiGET(url = callurl, con = con)
-    res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
-    out <- dat2tbl(res = res2, rclass = rclass)
+    resp <- brapiGET(url = callurl, con = con)
+    cont <- httr::content(x = resp, as = "text", encoding = "UTF-8")
+    out <- dat2tbl(res = cont, rclass = rclass)
 
     if (rclass %in% c("data.frame", "tibble")) {
       if ("observationVariables" %in% colnames(out)) {
@@ -46,7 +48,7 @@ ba_traits <- function(con = NULL,
       }
     }
     class(out) <- c(class(out), "ba_traits")
-    show_metadata(res)
+    show_metadata(resp)
     return(out)
   })
 }
