@@ -33,11 +33,7 @@ ba_locations_details <- function(con = NULL,
   check_character(locationDbId)
   rclass <- match.arg(rclass)
 
-  brp <- get_brapi(con) %>% paste0("locations/", locationDbId)
-  callurl <- get_endpoint(brp,
-                          pageSize = pageSize,
-                          page = page
-  )
+  callurl <- get_brapi(con) %>% paste0("locations/", locationDbId)
 
   try({
     resp <- brapiGET(url = callurl, con = con)

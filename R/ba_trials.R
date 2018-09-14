@@ -7,7 +7,7 @@
 #'                    with given program database identifier; default: ""
 #' @param locationDbId character, location filter to only return trails associated
 #'                     with given location databas identifier; default: ""
-#' @param active logical; filter active status; default: "any", other possible
+#' @param active logical; filter active status; default: TRUE, other possible
 #'               values TRUE/FALSE
 #' @param sortBy character; name of the field to sort by; default: ""
 #' @param sortOrder character; sort order direction; default: "", possible values
@@ -33,64 +33,41 @@
 ba_trials <- function(con = NULL,
                       programDbId = "",
                       locationDbId = "",
-                      active = "any",
+                      active = TRUE,
                       sortBy = "",
                       sortOrder = "",
                       pageSize = 1000,
                       page = 0,
-                      rclass = "tibble") {
-  ba_check(con = con, verbose = FALSE, brapi_calls = "trials")
-  stopifnot(is.character(programDbId))
-  stopifnot(is.character(locationDbId))
-  stopifnot(is.logical(active) || active == "any")
-  stopifnot(is.character(sortBy))
-  stopifnot(is.character(sortOrder))
-  if (programDbId == "") {
-    ba_message('Consider specifying other parameters like "pogramDbId"!\n')
-  }
-  check_paging(pageSize = pageSize, page = page)
-  check_rclass(rclass = rclass)
-  brp <- get_brapi(con = con)
+                      rclass = c("tibble", "data.frame",
+                                 "list", "json")) {
+  ba_check(con = con, verbose = FALSE)
+  check_character(programDbId, locationDbId, sortBy, sortOrder)
+  stopifnot(is.logical(active))
+  rclass <- match.arg(rclass)
 
-  ptrials <- paste0(brp, "trials?")
-  pprogramDbId <- ifelse(programDbId != "",
-                    paste0("programDbId=", programDbId, "&"), "")
+  brp <- get_brapi(con) %>% paste0("trials")
+  callurl <- get_endpoint(brp,
+                          programDbId = programDbId,
+                          locationDbId = locationDbId,
+                          active = active,
+                          sortBy = sortBy,
+                          sortOrder = sortOrder,
+                          pageSize = pageSize,
+                          page = page
+                          )
 
-  plocationDbId <- ifelse(locationDbId != "",
-                    paste0("locationDbId=", locationDbId, "&"), "")
-
-  pactive <- ifelse(active != "any", paste0("active=", tolower(active), "&"), "")
-  psortBy <- ifelse(sortBy != "", paste0("sortBy=", sortBy, "&"), "")
-  psortOrder <- ifelse(sortOrder != "", paste0("sortOrder=", sortOrder, "&"), "")
-  ppage <- ifelse(is.numeric(page), paste0("page=", page, "", "&"), "")
-  ppageSize <- ifelse(is.numeric(pageSize),
-                      paste0("pageSize=", pageSize, "&"), "")
-  if (page == 0 & pageSize == 1000) {
-    ppage <- ""
-    ppageSize <- ""
-  }
-  callurl <- sub("[/?&]$",
-                 "",
-                 paste0(ptrials,
-                        pprogramDbId,
-                        plocationDbId,
-                        pactive,
-                        psortBy,
-                        psortOrder,
-                        ppageSize,
-                        ppage))
   try({
-    res <- brapiGET(url = callurl, con = con)
-    res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
+    resp <- brapiGET(url = callurl, con = con)
+    cont <- httr::content(x = resp, as = "text", encoding = "UTF-8")
     out <- NULL
     if (rclass %in% c("list", "json")) {
-      out <- dat2tbl(res = res2, rclass = rclass)
+      out <- dat2tbl(res = cont, rclass = rclass)
     }
     if (rclass %in% c("data.frame", "tibble")) {
-      out <- trl2tbl2(res = res2, rclass = rclass)
+      out <- trl2tbl2(res = cont, rclass = rclass)
     }
     class(out) <- c(class(out), "ba_trials")
-    show_metadata(res)
+    show_metadata(resp)
     return(out)
   })
 }
