@@ -84,7 +84,7 @@ ba_programs(sp_base, rclass = "data.frame")
 ### Which studies are there?
 
 ```{r}
-ba_studies_search_get(sp_base, programDbId = "140")
+ba_studies_search(sp_base, programDbId = "140")
 ```
 
 ### Get a study (or fieldbook)
