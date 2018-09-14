@@ -20,6 +20,10 @@ test_that("Parameters work", {
   })
 
   expect_true({
+    class(brapi:::get_body(x = NA)) ==  "list"
+  })
+
+  expect_true({
     all(brapi:::get_body(x = 1:3)$x == 1:3)
   })
 
