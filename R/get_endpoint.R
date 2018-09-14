@@ -13,6 +13,7 @@ get_endpoint <- function(pointbase, ...) {
   for (i in seq_along(args)) {
     if (nchar(names(args)[[i]]) == 0) stop("All parameters must have a name.")
     if (is.logical(args[[i]])) args[[i]] <- tolower(args[[i]])
+    if (is.na(args[[i]])) args[[i]] <- ""
     if (!is.null(args[[i]]) && args[[i]] != "") {
       args[[i]] <- sub(forbidden, "", args[[i]])
 
