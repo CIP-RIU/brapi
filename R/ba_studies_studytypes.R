@@ -36,7 +36,7 @@ ba_studies_studytypes <- function(con = NULL,
 
   try({
     resp <- brapiGET(url = callurl, con = con)
-    cont <- httr::content(x = res, as = "text", encoding = "UTF-8")
+    cont <- httr::content(x = resp, as = "text", encoding = "UTF-8")
 
     out <- dat2tbl(res = cont, rclass = rclass)
     class(out) <- c(class(out), "ba_studies_studytypes")

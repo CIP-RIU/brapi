@@ -4,7 +4,8 @@
 \alias{ba_samples}
 \title{ba_samples}
 \usage{
-ba_samples(con = NULL, sampleDbId = "", rclass = "tibble")
+ba_samples(con = NULL, sampleDbId = "", rclass = c("tibble",
+  "data.frame", "list", "json"))
 }
 \arguments{
 \item{con}{list, brapi connection object}
@@ -32,7 +33,7 @@ if (interactive()) {
 }
 }
 \references{
-\href{https://github.com/plantbreeding/API/blob/master/Specification/Samples/RetrieveSampleMetadata.md}{github}
+\href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Samples/Samples_GET.md}{github}
 }
 \seealso{
 Other phenotyping: \code{\link{ba_samples_save}},

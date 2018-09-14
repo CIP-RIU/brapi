@@ -8,40 +8,34 @@
 #' @param rclass character; default: "tibble" possible other values: "json"/"list"/"data.frame"
 #' @param sampleDbId character, mandatory argument
 #'
-#' @author Reinhard Simon, Maikel Verouden
-#' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/Samples/RetrieveSampleMetadata.md}{github}
-#' @example inst/examples/ex-ba_samples.R
 #' @return rclass as defined
-#' @import tibble
+#'
+#' @author Reinhard Simon, Maikel Verouden
+#' @references \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Samples/Samples_GET.md}{github}
+#'
 #' @family phenotyping
+#'
+#' @example inst/examples/ex-ba_samples.R
+#'
+#' @import tibble
 #' @export
 ba_samples <- function(con = NULL,
                        sampleDbId = "",
-                       rclass = "tibble") {
+                       rclass = c("tibble", "data.frame",
+                                  "list", "json")) {
   ba_check(con = con, verbose = FALSE, brapi_calls = "samples")
-  stopifnot(is.character(sampleDbId))
-  stopifnot(sampleDbId != "")
-  check_rclass(rclass = rclass)
-  brp <- get_brapi(con = con)
-  call_samples <- sub("[/?&]$",
-                      "",
-                      paste0(brp, "samples/", sampleDbId, "/"))
+  check_req(sampleDbId)
+  check_character(sampleDbId)
+  rclass <- match.arg(rclass)
+
+  callurl <- get_brapi(con) %>% paste0("samples/", sampleDbId)
+
   tryCatch({
-    res <- brapiGET(url = call_samples, con = con)
-    res <- httr::content(x = res, as = "text", encoding = "UTF-8")
-    out <- NULL
-    if (rclass %in% c("json", "list")) {
-      out <- dat2tbl(res = res, rclass = rclass)
-    }
-    if (rclass %in% c("tibble", "data.frame")) {
-      out <- jsonlite::fromJSON(txt = res, simplifyDataFrame = TRUE)$result %>%
-             lapply(FUN = function(x) {x <- ifelse(is.null(x), "", x)}) %>%
-             tibble::as_tibble()
-      if (rclass == "data.frame") {
-        out <- as.data.frame(x = out)
-      }
-    }
-    if (!is.null(out)) {
+    resp <- brapiGET(url = callurl, con = con)
+    cont <- httr::content(x = resp, as = "text", encoding = "UTF-8")
+
+    out <- dat2tbl(cont, rclass, result_level = "result")
+     if (!is.null(out)) {
       class(out) <- c(class(out), "ba_samples")
     }
     return(out)
