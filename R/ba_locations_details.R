@@ -26,27 +26,33 @@
 #' @export
 ba_locations_details <- function(con = NULL,
                                  locationDbId = "",
-                                 rclass = "tibble") {
-  ba_check(con = con, verbose = FALSE, brapi_calls = "locations/id")
-  stopifnot(is.character(locationDbId))
-  stopifnot(locationDbId != "")
-  check_rclass(rclass = rclass)
-  brp <- get_brapi(con = con)
-  callurl <- paste0(brp, "locations/", locationDbId)
+                                 rclass = c("tibble", "data.frame",
+                                            "list", "json")) {
+  ba_check(con = con, verbose = FALSE)
+  check_req(locationDbId)
+  check_character(locationDbId)
+  rclass <- match.arg(rclass)
+
+  brp <- get_brapi(con) %>% paste0("locations/", locationDbId)
+  callurl <- get_endpoint(brp,
+                          pageSize = pageSize,
+                          page = page
+  )
+
   try({
-    res <- brapiGET(url = callurl, con = con)
-    res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
+    resp <- brapiGET(url = callurl, con = con)
+    cont <- httr::content(x = resp, as = "text", encoding = "UTF-8")
     out <- NULL
     if (rclass %in% c("json", "list")) {
-      out <- dat2tbl(res = res2, rclass = rclass)
+      out <- dat2tbl(res = cont, rclass = rclass)
     }
     if (rclass %in% c("tibble", "data.frame")) {
-      out <- locd2tbl(res = res2, rclass = rclass, con = con)
+      out <- locd2tbl(res = cont, rclass = rclass, con = con)
     }
     if (!is.null(out)) {
       class(out) <- c(class(out), "ba_locations_details")
     }
-    show_metadata(res)
+    show_metadata(resp)
     return(out)
   })
 }

@@ -6,7 +6,8 @@
 \usage{
 ba_programs_search(con = NULL, abbreviation = "", leadPerson = "",
   name = "", objective = "", programDbId = "", commonCropName = "",
-  pageSize = 1000, page = 0, rclass = "tibble")
+  pageSize = 1000, page = 0, rclass = c("tibble", "data.frame",
+  "list", "json"))
 }
 \arguments{
 \item{con}{list, brapi connection object}

@@ -5,7 +5,7 @@
 \title{ba_locations_details}
 \usage{
 ba_locations_details(con = NULL, locationDbId = "",
-  rclass = "tibble")
+  rclass = c("tibble", "data.frame", "list", "json"))
 }
 \arguments{
 \item{con}{list, brapi connection object}

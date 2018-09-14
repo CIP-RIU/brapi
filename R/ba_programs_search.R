@@ -43,7 +43,8 @@ ba_programs_search <- function(con = NULL,
                                commonCropName = "",
                                pageSize = 1000,
                                page = 0,
-                               rclass = "tibble") {
+                               rclass = c("tibble", "data.frame",
+                                          "list", "json")) {
   ba_check(con = con, verbose = FALSE, brapi_calls = "programs-search")
   check_character(abbreviation, leadPerson, name, objective, programDbId, commonCropName)
   rclass <- match.arg(rclass)
@@ -61,11 +62,11 @@ ba_programs_search <- function(con = NULL,
                      pageSize = pageSize,
                      page = page)
 
-    res <- brapiPOST(url = callurl, body = body, con = con)
-    res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
-    out <- dat2tbl(res = res2, rclass = rclass)
+    resp <- brapiPOST(url = callurl, body = body, con = con)
+    cont <- httr::content(x = resp, as = "text", encoding = "UTF-8")
+    out <- dat2tbl(res = cont, rclass = rclass)
     class(out) <- c(class(out), "ba_programs_search")
-    show_metadata(res)
+    show_metadata(resp)
     return(out)
   })
 }

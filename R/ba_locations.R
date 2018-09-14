@@ -24,49 +24,36 @@
 #' @import tibble
 #' @export
 ba_locations <- function(con = NULL,
-                         locationType = "all",
+                         locationType = "",
                          pageSize = 1000,
                          page = 0,
-                         rclass = "tibble") {
-  ba_check(con = con, verbose = FALSE, brapi_calls = "locations")
-  stopifnot(is.character(locationType))
-  check_paging(pageSize = pageSize, page = page)
-  check_rclass(rclass = rclass)
-  # fetch the url of the brapi implementation of the database
-  brp <- get_brapi(con = con)
-  # generate the brapi call specific url
-  locations_list <- paste0(brp, "locations?")
-  plocationType <- ifelse(locationType != "all",
-                          paste0("locationType=",
-                                gsub(" ", "%20", locationType), "&"), "")
-  ppageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=", pageSize,
-                                                   "&"), "")
-  ppage <- ifelse(is.numeric(page), paste0("page=", page, "&"), "")
-  if (pageSize == 1000 & page == 0) {
-    ppageSize <- ""
-    ppage <- ""
-  }
-  # modify brapi call specific url to include locationType and pagenation
-  callurl <- sub("[/?&]$",
-                 "",
-                 paste0(locations_list,
-                        plocationType,
-                        ppageSize,
-                        ppage))
+                         rclass = c("tibble", "data.frame",
+                                    "list", "json")) {
+  ba_check(con = con, verbose = FALSE)
+  check_character(locationType)
+  rclass <- match.arg(rclass)
+
+  brp <- get_brapi(con) %>% paste0("locations")
+  callurl <- get_endpoint(brp,
+                          locationType = locationType,
+                          pageSize = pageSize,
+                          page = page
+                          )
+
   try({
-    res <- brapiGET(url = callurl, con = con)
-    res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
+    resp <- brapiGET(url = callurl, con = con)
+    cont <- httr::content(x = resp, as = "text", encoding = "UTF-8")
     out <- NULL
     if (rclass %in% c("json", "list")) {
-      out <- dat2tbl(res = res2, rclass = rclass)
+      out <- dat2tbl(res = cont, rclass = rclass)
     }
     if (rclass %in% c("tibble", "data.frame")) {
-      out <- loc2tbl(res = res2, rclass = rclass, con = con)
+      out <- loc2tbl(res = cont, rclass = rclass, con = con)
     }
     if (!is.null(out)) {
       class(out) <- c(class(out), "ba_locations")
     }
-    show_metadata(res)
+    show_metadata(resp)
     return(out)
   })
 }

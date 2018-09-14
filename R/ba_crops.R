@@ -18,7 +18,7 @@
 #' @example inst/examples/ex-ba_crops.R
 #' @export
 ba_crops <- function(con = NULL, rclass = c("tibble", "data.frame",
-                                            "list", "json")) {
+                                            "list", "json", "vector")) {
   .Deprecated(new = "ba_commoncropnames")
   stopifnot(is.ba_con(obj = con))
   rclass <- match.arg(rclass)

@@ -6,7 +6,7 @@
 \usage{
 ba_programs(con = NULL, programName = "", abbreviation = "",
   commonCropName = "", pageSize = 1000, page = 0,
-  rclass = "tibble")
+  rclass = c("tibble", "data.frame", "list", "json"))
 }
 \arguments{
 \item{con}{list, brapi connection object}

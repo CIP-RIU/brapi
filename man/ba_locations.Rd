@@ -4,8 +4,8 @@
 \alias{ba_locations}
 \title{ba_locations}
 \usage{
-ba_locations(con = NULL, locationType = "all", pageSize = 1000,
-  page = 0, rclass = "tibble")
+ba_locations(con = NULL, locationType = "", pageSize = 1000,
+  page = 0, rclass = c("tibble", "data.frame", "list", "json"))
 }
 \arguments{
 \item{con}{list, brapi connection object}

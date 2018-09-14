@@ -35,9 +35,12 @@ ba_programs <- function(con = NULL,
                         commonCropName = "",
                         pageSize = 1000,
                         page = 0,
-                        rclass = "tibble") {
+                        rclass = c("tibble", "data.frame",
+                                   "list", "json")) {
   ba_check(con = con, verbose = FALSE, brapi_calls = "programs")
   check_character(programName, abbreviation, commonCropName)
+  rclass <- match.arg(rclass)
+
   brp <- get_brapi(con = con) %>% paste0("programs")
   callurl <- get_endpoint(brp,
                           programName = programName,
@@ -49,9 +52,9 @@ ba_programs <- function(con = NULL,
    try({
     resp <- brapiGET(url = callurl, con = con)
     cont <- httr::content(x = resp, as = "text", encoding = "UTF-8")
-    out <- dat2tbl(res = res2, rclass = rclass)
+    out <- dat2tbl(res = cont, rclass = rclass)
     class(out) <- c(class(out), "ba_programs")
-    show_metadata(res)
+    show_metadata(resp)
     return(out)
   })
 }
