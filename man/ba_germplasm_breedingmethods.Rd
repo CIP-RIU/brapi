@@ -14,14 +14,15 @@ ba_germplasm_breedingmethods(con = NULL, pageSize = 1000, page = 0,
 
 \item{page}{integer, the requested page to be returned; default: 0 (1st page)}
 
-\item{rclass}{character, class of the object to be returned;  default: "tibble"
-, possible other values: "json"/"list"/"data.frame"}
+\item{rclass}{character, class of the object to be returned; default:
+"tibble", possible other values: "data.frame"/"list"/"json"}
 }
 \value{
-An object of class as defined by rclass containing breedingmethods.
+An object of class as defined by rclass containing breeding methods
+        on the BrAPI compliant database server.
 }
 \description{
-Lists breeding methods available on a brapi server.
+Retrieve breeding methods available on a BrAPI compliant database server.
 }
 \note{
 Tested against: test-server
