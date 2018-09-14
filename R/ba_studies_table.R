@@ -53,6 +53,7 @@ ba_studies_table <- function(con = NULL,
                              rclass = c("tibble", "data.frame", "json")) {
   ba_check(con = con, verbose = FALSE, brapi_calls = "studies/id/table")
   check_req(studyDbId = studyDbId)
+  check_character(studyDbId)
   format <- match.arg(format)
   rclass <- match.arg(rclass)
 

@@ -45,35 +45,29 @@ ba_studies_observationunits <- function(con = NULL,
   ba_check(con = con, verbose = FALSE, brapi_calls =
              "studies/id/observationunits")
   check_req(studyDbId)
+  check_character(studyDbId, observationLevel)
   observationLevel <- match.arg(observationLevel)
   rclass <- match.arg(rclass)
 
-  brp <- get_brapi(con = con)
-  endpoint <- paste0(brp, "studies/", studyDbId, "/observationunits?")
-  pobservationLevel <- switch(observationLevel,
-                              "any"   = "",
-                              "plot"  = "observationLevel=plot&",
-                              "plant" = "observationLevel=plant&")
-  ppages <- get_ppages(pageSize, page)
-  callurl <- sub(pattern = "[/?&]$",
-                 replacement = "",
-                 x = paste0(endpoint,
-                            pobservationLevel,
-                            ppages$pageSize,
-                            ppages$page))
+  brp <- get_brapi(con = con) %>% paste0("studies/", studyDbId, "/observationunits")
+  callurl <- get_endpoint(brp,
+                          observationLevel = observationLevel,
+                          pageSize = pageSize,
+                          page = page
+                          )
 
   try({
-    res <- brapiGET(url = callurl, con = con)
-    res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
+    resp <- brapiGET(url = callurl, con = con)
+    cont <- httr::content(x = resp, as = "text", encoding = "UTF-8")
     out <- NULL
     if (rclass %in% c("json", "list")) {
-      out <- dat2tbl(res = res2, rclass = rclass)
+      out <- dat2tbl(res = cont, rclass = rclass)
     }
     if (rclass %in% c("tibble", "data.frame")) {
-      out <- sou2tbl(res = res2, rclass = rclass)
+      out <- sou2tbl(res = cont, rclass = rclass)
     }
     class(out) <- c(class(out), "ba_studies_observationunits")
-    show_metadata(res)
+    show_metadata(resp)
     return(out)
   })
 }

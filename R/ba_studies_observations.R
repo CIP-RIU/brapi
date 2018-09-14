@@ -44,39 +44,28 @@ ba_studies_observations <- function(con = NULL,
                                     observationVariableDbIds = "",
                                     pageSize = 1000,
                                     page = 0,
-                                    rclass = "tibble") {
+                                    rclass = c("tibble", "data.frame",
+                                               "list", "json")) {
   ba_check(con = con, verbose = FALSE, brapi_calls = "studies/id/observations")
-  stopifnot(is.character(studyDbId))
-  stopifnot(studyDbId != "")
-  stopifnot(is.character(observationVariableDbIds))
-  check_rclass(rclass = rclass)
-  brp <- get_brapi(con = con)
-  endpoint <- paste0(brp, "studies/", studyDbId, "/observations?")
-  pobservationVariableDbIds <- ifelse(all(observationVariableDbIds == ""),
-                                      "",
-                                      paste0("observationVariableDbIds=",
-                                             sub(pattern = ",$",
-                                             replacement = "",
-                                             x = paste0(observationVariableDbIds,
-                                                        sep = ",",
-                                                        collapse = "")),
-                                             "&"))
-  ppages <- get_ppages(pageSize, page)
-  callurl <- sub(pattern = "[/?&]$",
-                 replacement = "",
-                 x = paste0(endpoint,
-                            pobservationVariableDbIds,
-                            ppages$pageSize,
-                            ppages$page))
+  check_req(studyDbId)
+  check_character(studyDbId, observationVariableDbIds)
+  rclass <- match.arg(rclass)
+
+  brp <- get_brapi(con) %>% paste0("studies/", studyDbId, "/observations")
+  callurl <- get_endpoint(brp,
+                          observationVariableDbIds = observationVariableDbIds,
+                          pageSize = pageSize,
+                          page = page
+  )
   try({
-    res <- brapiGET(url = callurl, con = con)
-    res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
+    resp <- brapiGET(url = callurl, con = con)
+    cont <- httr::content(x = resp, as = "text", encoding = "UTF-8")
     out <- NULL
     if (rclass %in% c("json", "list", "tibble", "data.frame")) {
-      out <- dat2tbl(res = res2, rclass = rclass)
+      out <- dat2tbl(res = cont, rclass = rclass)
     }
     class(out) <- c(class(out), "ba_studies_observations")
-    show_metadata(res)
+    show_metadata(resp)
     return(out)
   })
 }
