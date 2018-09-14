@@ -1,6 +1,6 @@
 #' ba_phenotypes_search
 #'
-#' Returns a list of observation units with the observed Phenotypes using a GET
+#' Retrieve a list of observation units with the observed Phenotypes using a GET
 #' method.
 #'
 #' @param con list, brapi connection object

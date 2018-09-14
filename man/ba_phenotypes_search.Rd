@@ -69,7 +69,7 @@ An object of class as defined by rclass containing the observation
         units with the observed Phenotypes.
 }
 \description{
-Returns a list of observation units with the observed Phenotypes using a GET
+Retrieve a list of observation units with the observed Phenotypes using a GET
 method.
 }
 \note{
