@@ -46,7 +46,7 @@ ba_programs_search <- function(con = NULL,
                                rclass = "tibble") {
   ba_check(con = con, verbose = FALSE, brapi_calls = "programs-search")
   check_character(abbreviation, leadPerson, name, objective, programDbId, commonCropName)
-  check_rclass(rclass)
+  rclass <- match.arg(rclass)
 
   brp <- get_brapi(con = con)
   callurl <- paste0(brp, "programs-search")

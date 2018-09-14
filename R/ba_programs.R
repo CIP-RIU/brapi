@@ -3,11 +3,11 @@
 #' Retrieve a list of the breeding programs.
 #'
 #' @param con list, brapi connection object
-#' @param programName character, filter programs by program name; default: "any"
+#' @param programName character, filter programs by program name; default: ""
 #' @param abbreviation character, filter programs by program abbreviation;
-#'                     default: "any"
+#'                     default: ""
 #' @param commonCropName character, filter programs by a common crop name;
-#'                       default: "any"
+#'                       default: ""
 #' @param pageSize integer, items per page to be returned; default: 1000
 #' @param page integer, the requested page to be returned; default: 0 (1st page)
 #' @param rclass character, class of the object to be returned;  default: "tibble"
@@ -30,46 +30,25 @@
 #' @import httr
 #' @export
 ba_programs <- function(con = NULL,
-                        programName = "any",
-                        abbreviation = "any",
-                        commonCropName = "any",
+                        programName = "",
+                        abbreviation = "",
+                        commonCropName = "",
                         pageSize = 1000,
                         page = 0,
                         rclass = "tibble") {
   ba_check(con = con, verbose = FALSE, brapi_calls = "programs")
-  stopifnot(is.character(programName))
-  stopifnot(is.character(abbreviation))
-  stopifnot(is.character(commonCropName))
-  check_paging(pageSize = pageSize, page = page)
-  check_rclass(rclass = rclass)
-  brp <- get_brapi(con = con)
-  pprograms <- paste0(brp, "programs?")
-  pprogramName <- ifelse(programName != "any", paste0("programName=",
-                                  gsub(" ", "%20", programName), "&"), "")
-  pabbreviation <- ifelse(abbreviation != "any", paste0("abbreviation=",
-                                  gsub(" ", "%20", abbreviation), "&"), "")
-  pcommonCropName <- ifelse(commonCropName != "any",
-                            paste0("commonCropName=",
-                                   gsub(" ", "%20", commonCropName), "&"),
-                            "")
-  ppage <- ifelse(is.numeric(page), paste0("page=", page, "&"), "")
-  ppageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=",
-                                                   pageSize, "&"), "")
-  if (page == 0 & pageSize == 1000) {
-    ppage <- ""
-    ppageSize <- ""
-  }
-  callurl <- sub("[/?&]$",
-                 "",
-                 paste0(pprograms,
-                        pprogramName,
-                        pabbreviation,
-                        pcommonCropName,
-                        ppageSize,
-                        ppage))
-  try({
-    res <- brapiGET(url = callurl, con = con)
-    res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
+  check_character(programName, abbreviation, commonCropName)
+  brp <- get_brapi(con = con) %>% paste0("programs")
+  callurl <- get_endpoint(brp,
+                          programName = programName,
+                          abbreviation = abbreviation,
+                          commonCropName = commonCropName,
+                          pageSize = pageSize,
+                          page = page
+                          )
+   try({
+    resp <- brapiGET(url = callurl, con = con)
+    cont <- httr::content(x = resp, as = "text", encoding = "UTF-8")
     out <- dat2tbl(res = res2, rclass = rclass)
     class(out) <- c(class(out), "ba_programs")
     show_metadata(res)

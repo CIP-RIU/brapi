@@ -4,7 +4,8 @@
 \alias{ba_crops}
 \title{ba_crops}
 \usage{
-ba_crops(con = NULL, rclass = "tibble")
+ba_crops(con = NULL, rclass = c("tibble", "data.frame", "list",
+  "json"))
 }
 \arguments{
 \item{con}{list, brapi connection object}

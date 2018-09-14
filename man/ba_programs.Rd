@@ -4,20 +4,20 @@
 \alias{ba_programs}
 \title{ba_programs}
 \usage{
-ba_programs(con = NULL, programName = "any", abbreviation = "any",
-  commonCropName = "any", pageSize = 1000, page = 0,
+ba_programs(con = NULL, programName = "", abbreviation = "",
+  commonCropName = "", pageSize = 1000, page = 0,
   rclass = "tibble")
 }
 \arguments{
 \item{con}{list, brapi connection object}
 
-\item{programName}{character, filter programs by program name; default: "any"}
+\item{programName}{character, filter programs by program name; default: ""}
 
 \item{abbreviation}{character, filter programs by program abbreviation;
-default: "any"}
+default: ""}
 
 \item{commonCropName}{character, filter programs by a common crop name;
-default: "any"}
+default: ""}
 
 \item{pageSize}{integer, items per page to be returned; default: 1000}
 

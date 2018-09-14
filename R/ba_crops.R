@@ -17,10 +17,11 @@
 #' @family brapicore
 #' @example inst/examples/ex-ba_crops.R
 #' @export
-ba_crops <- function(con = NULL, rclass = "tibble") {
+ba_crops <- function(con = NULL, rclass = c("tibble", "data.frame",
+                                            "list", "json")) {
   .Deprecated(new = "ba_commoncropnames")
   stopifnot(is.ba_con(obj = con))
-  check_rclass(rclass = rclass)
+  rclass <- match.arg(rclass)
   # temporarily store the multicrop argument in omc (oldmulticrop)
   omc <- con$multicrop
   con$multicrop <- FALSE
