@@ -8,7 +8,7 @@ ba_observationvariables_search(con = NULL, datatypes = "",
   methodDbIds = "", names = "", observationVariableDbIds = "",
   ontologyXrefs = "", ontologyDbIds = "", page = 0,
   pageSize = 1000, scaleDbIds = "", traitClasses = "",
-  rclass = "tibble")
+  rclass = c("tibble", "data.frame", "list", "json"))
 }
 \arguments{
 \item{con}{brapi list; connection object}

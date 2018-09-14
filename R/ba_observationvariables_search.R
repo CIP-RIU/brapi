@@ -35,82 +35,38 @@ ba_observationvariables_search <- function(con = NULL,
                                            pageSize = 1000,
                                            scaleDbIds = "",
                                            traitClasses = "",
-                                           rclass = "tibble") {
+                                           rclass = c("tibble", "data.frame",
+                                                     "list", "json")) {
     ba_check(con = con, verbose = FALSE, brapi_calls = "variables-search")
-    stopifnot(is.character(observationVariableDbIds))
-    stopifnot(is.character(ontologyXrefs))
-    stopifnot(is.character(ontologyDbIds))
-    stopifnot(is.character(methodDbIds))
-    stopifnot(is.character(scaleDbIds))
-    stopifnot(is.character(names))
-    stopifnot(is.character(datatypes))
-    stopifnot(is.character(traitClasses))
+  check_character(datatypes, methodDbIds, names, observationVariableDbIds, ontologyXrefs,
+                  ontologyDbIds, scaleDbIds, traitClasses)
+  rclass <- match.arg(rclass)
+  callurl <- get_brapi(con) %>% paste0("variables-search")
 
-    check_paging(pageSize, page)
-    check_rclass(rclass = rclass)
-    brp <- get_brapi(con = con)
-    pvariables <- paste0(brp, "variables-search/")
+  body <- get_body( datatypes = datatypes,
+                    methodDbIds = methodDbIds,
+                    names = names,
+                    observationVariableDbIds = observationVariableDbIds,
+                    ontologyXrefs = ontologyXrefs,
+                    ontologyDbIds = ontologyDbIds,
+                    page = page,
+                    pageSize = pageSize,
+                    scaleDbIds = scaleDbIds,
+                    traitClasses = traitClasses)
 
-    try({
-      #res <- brapiPOST(pvariables, body, con = con)
-      body <- list(observationVariableDbIds =
-                     ifelse(observationVariableDbIds != '',
-                     observationVariableDbIds %>%
-                     as.list(),
-                     ''),
-                   ontologyXrefs =
-                     ifelse(ontologyXrefs != '',
-                            ontologyXrefs %>%
-                              as.list(),
-                            ''),
-                   scaleDbIds =
-                     ifelse(scaleDbIds != '',
-                            scaleDbIds %>%
-                              as.list(),
-                            ''),
-                   names =
-                     ifelse(names != '',
-                            names %>%
-                              as.list(),
-                            ''),
-                   datatypes =
-                     ifelse(datatypes != '',
-                            datatypes %>%
-                              as.list(),
-                            ''),
-                   traitClasses =
-                     ifelse(traitClasses != '',
-                            traitClasses %>%
-                              as.list(),
-                            ''),
-                   pageSize =
-                     ifelse(pageSize != '',
-                            pageSize %>%
-                              as.integer(),
-                            ''),
-                   page =
-                     ifelse(page != '',
-                            page %>%
-                              as.integer(),
-                            '')
-      )
-      for (i in length(body):1) {
-        if(body[[i]] == '') {
-          body[[i]] <- NULL
-        }
-      }
 
-      res <- brapiPOST(url = pvariables, body = body, con = con)
-      res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
-      out <- NULL
-      if (rclass %in% c("json", "list")) {
-        out <- dat2tbl(res = res2, rclass = rclass)
-      }
-      if (rclass %in% c("tibble", "data.frame")) {
-        out <- sov2tbl(res = res2, rclass = rclass)
-      }
-      class(out) <- c(class(out), "ba_observationvariables_search")
-      show_metadata(res)
-      return(out)
-    })
+  try({
+    resp <- brapiPOST(url = callurl, body = body, con = con)
+    cont<- httr::content(x = resp, as = "text", encoding = "UTF-8")
+    out <- NULL
+    if (rclass %in% c("json", "list")) {
+      out <- dat2tbl(res = cont, rclass = rclass)
+    }
+    if (rclass %in% c("tibble", "data.frame")) {
+      out <- sov2tbl(res = cont, rclass = rclass)
+    }
+    class(out) <- c(class(out), "ba_observationvariables_search")
+    show_metadata(resp)
+    return(out)
+  })
 }
