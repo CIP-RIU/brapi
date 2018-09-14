@@ -27,33 +27,25 @@ ba_studies_seasons <- function(con = NULL,
                                year = 0,
                                pageSize = 1000,
                                page = 0,
-                               rclass = "tibble") {
-  ba_check(con = con, verbose = FALSE, brapi_calls = "seasons")
+                               rclass = c("tibble", "data.frame",
+                                          "list", "json")) {
+  ba_check(con = con, verbose = FALSE)
   stopifnot(is.numeric(year))
-  check_paging(pageSize = pageSize, page = page)
-  check_rclass(rclass = rclass)
-  brp <- get_brapi(con = con)
-  seasons_list <- paste0(brp, "seasons?")
-  pyear <- ifelse(year != 0, paste0("year=", year, "&"), "")
-  ppage <- ifelse(is.numeric(page), paste0("page=", page, "&"), "")
-  ppageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=",
-                                                   pageSize, "&"), "")
-  if (page == 0 & pageSize == 1000) {
-    ppage <- ""
-    ppageSize <- ""
-  }
-  callurl <- sub(pattern = "[/?&]$",
-                 replacement = "",
-                 x = paste0(seasons_list,
-                            pyear,
-                            ppageSize,
-                            ppage))
+  rclass <- match.arg(rclass)
+
+  brp <- get_brapi(con) %>% paste0("seasons")
+  callurl <- get_endpoint(brp,
+                          year = year,
+                          pageSize = pageSize,
+                          page = page
+                          )
+
   try({
-    res <- brapiGET(url = callurl, con = con)
-    res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
-    out <- dat2tbl(res = res2, rclass = rclass)
+    resp <- brapiGET(url = callurl, con = con)
+    cont <- httr::content(x = resp, as = "text", encoding = "UTF-8")
+    out <- dat2tbl(res = cont, rclass = rclass)
     class(out) <- c(class(out), "ba_studies_seasons")
-    show_metadata(res)
+    show_metadata(resp)
     return(out)
   })
 }

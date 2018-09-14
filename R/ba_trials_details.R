@@ -25,24 +25,26 @@
 #' @export
 ba_trials_details <- function(con = NULL,
                               trialDbId = "",
-                              rclass = "tibble") {
+                              rclass = c("tibble", "data.frame",
+                                         "list", "json")) {
   ba_check(con = con, verbose = FALSE, brapi_calls = "trials/id")
-  stopifnot(is.character(trialDbId))
-  check_rclass(rclass = rclass)
+  check_character(trialDbId)
+  rclass <- match.arg(rclass)
+
   brp <- get_brapi(con = con)
   callurl <- paste0(brp, "trials/", trialDbId)
   try({
-    res <- brapiGET(url = callurl, con = con)
-    res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
+    resp <- brapiGET(url = callurl, con = con)
+    cont <- httr::content(x = resp, as = "text", encoding = "UTF-8")
     out <- NULL
     if (rclass %in% c("list", "json")) {
-      out <- dat2tbl(res = res2, rclass = rclass)
+      out <- dat2tbl(res = cont, rclass = rclass)
     }
     if (rclass %in% c("data.frame", "tibble")) {
-      out <- trld2tbl2(res = res2, rclass = rclass)
+      out <- trld2tbl2(res = cont, rclass = rclass)
     }
     class(out) <- c(class(out), "ba_trials_details")
-    show_metadata(res)
+    show_metadata(resp)
     return(out)
   })
 }

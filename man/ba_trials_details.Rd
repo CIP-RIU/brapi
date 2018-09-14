@@ -4,7 +4,8 @@
 \alias{ba_trials_details}
 \title{ba_trials_details}
 \usage{
-ba_trials_details(con = NULL, trialDbId = "", rclass = "tibble")
+ba_trials_details(con = NULL, trialDbId = "", rclass = c("tibble",
+  "data.frame", "list", "json"))
 }
 \arguments{
 \item{con}{list, brapi connection object}

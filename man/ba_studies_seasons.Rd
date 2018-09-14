@@ -5,7 +5,7 @@
 \title{ba_studies_seasons}
 \usage{
 ba_studies_seasons(con = NULL, year = 0, pageSize = 1000, page = 0,
-  rclass = "tibble")
+  rclass = c("tibble", "data.frame", "list", "json"))
 }
 \arguments{
 \item{con}{list, brapi connection object}
