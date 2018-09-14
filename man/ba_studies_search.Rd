@@ -2,88 +2,63 @@
 % Please edit documentation in R/ba_studies_search.R
 \name{ba_studies_search}
 \alias{ba_studies_search}
-\title{ba_studies_search}
+\title{ba_studies_search_get}
 \usage{
-ba_studies_search(con = NULL, studyDbIds = "", trialDbIds = "",
-  programDbIds = "", locationDbIds = "", seasonDbId = "",
-  studyType = "", studyNames = "", studyLocations = "",
-  programNames = "", commonCropName = "", germplasmDbIds = "",
-  observationVariableDbIds = "", active = "any", sortBy = "",
-  sortOrder = "", page = 0, pageSize = 1000, rclass = "tibble")
+ba_studies_search(con = NULL, studyDbId = "", trialDbId = "",
+  programDbId = "", commonCropName = "", locationDbId = "",
+  seasonDbId = "", studyType = "", germplasmDbIds = "",
+  observationVariableDbIds = "", active = TRUE, sortBy = "",
+  sortOrder = "", pageSize = 1000, page = 0, rclass = c("tibble",
+  "data.frame", "list", "json"))
 }
 \arguments{
 \item{con}{list, brapi connection object}
 
-\item{studyDbIds}{character vector, search for study details of specified
-studies, supplied as a comma separated character vector of
-internal study database identifiers e.g. c("35", "345");
+\item{studyDbId}{character, search for study details by an internal study
+database identifier; default: ""}
+
+\item{trialDbId}{character, search for studies by an internal trial database
+identifier; default: ""}
+
+\item{programDbId}{character, search studies by an internal program database
+identifier; default: ""}
+
+\item{commonCropName}{character, search for studies by a common crop name;
 default: ""}
 
-\item{trialDbIds}{character vector, search for studies and  details of
-specified trials, supplied as a comma separated character
-vector of internal trial database identifiers e.g.
-c("7", "8"); default: ""}
+\item{locationDbId}{character, search for studies by an internal location
+database identifier; default: ""}
 
-\item{programDbIds}{character vector, search for studies and details of
-specified programs, supplied as a comma separated
-character vector of internal program database identifiers
-e.g. c("27", "58"); default: ""}
+\item{seasonDbId}{character, search for studies by an internal season
+database identifier; default: ""}
 
-\item{locationDbIds}{character vector, search for studies and details of
-specified locations, supplied as a comma separated
-character vector of internal location database
-identifiers e.g. c("23", "33"); default:""}
-
-\item{seasonDbId}{character vector, search for studies and details by
-specified seasons, supplied as a comma separated character
-vector of internal season database identifiers e.g.
-c("237", "238"); default: ""}
-
-\item{studyType}{character; search for studies and details based on a study
-type e.g. "Nursery", or "Yield Trial"; default: ""}
-
-\item{studyNames}{character vector, search for studies by study names,
-supplied as a comma separated character vector of study
-names e.g. c("Study A", "Study B"); default: ""}
-
-\item{studyLocations}{character vector; search for studies by study
-locations, supplied as a comma separated character
-vector of study locations e.g. c("Kenya", "Zimbabwe");
-default: ""}
-
-\item{programNames}{character vector; search for studies by program names,
- supplied as a comma separated character vector of program
- names e.g. c("Test Program", "Program2");
-default: ""}
-
-\item{commonCropName}{character, search for studies by a common crop name
-e.g. "wheat"; default: ""}
+\item{studyType}{character; search for studies based on a study type e.g.
+"Nursery", "Trial" or "Genotype"; default: ""}
 
 \item{germplasmDbIds}{character vector; search for studies where specified
 germplasms, supplied as a comma separated character
 vector of internal gerplasm database identifiers e.g.
-c("CML123", "CWL123"), have been used/tested; default:
+c("CML123","CWL123"), have been used/tested; default:
 ""}
 
 \item{observationVariableDbIds}{character vector; search for studies where
 specified observation variables, supplied as
 a comma separated character vector of
 internal observation variable database
-identifiers e.g. c("CO-PH-123", "Var-123"),
+identifiers e.g. c("CO-PH-123:,"Var-123"),
 have been measured; default: ""}
 
-\item{active}{logical; search studies by active status; default: "any",
+\item{active}{logical; search studies by active status; default: "TRUE",
 other possible values TRUE/FALSE}
 
-\item{sortBy}{character; name of the field to sort by e.g. "studyDbId";
-default: ""}
+\item{sortBy}{character; name of the field to sort by; default: ""}
 
 \item{sortOrder}{character; sort order direction; default: "", possible values
 "asc"/"desc"}
 
-\item{page}{integer, the requested page to be returned; default: 0 (1st page)}
-
 \item{pageSize}{integer, items per page to be returned; default: 1000}
+
+\item{page}{integer, the requested page to be returned; default: 0 (1st page)}
 
 \item{rclass}{character, class of the object to be returned;  default: "tibble"
 , possible other values: "json"/"list"/"data.frame"}
@@ -93,34 +68,17 @@ An object of class as defined by rclass containing the studies and
         details fulfilling the search criteria.
 }
 \description{
-Search studies on a brapi server via a GET or POST method.
+Search for study details on a brapi server via a GET method.
 }
 \note{
 Tested against: test-server
 
-BrAPI Version: 1.0, 1.1, 1.2, (1.3)
+BrAPI Version: 1.0, 1.1, 1.2
 
 BrAPI Status: active
-
-In version 1.3 only one call will replace the studies_search_get and
-      studies_search_post. Since its parameters are most similar to the _post
-      version, it is recommended to use the _post or this version.
-
-This call must have set a specific identifier. The default is an empty
-      string. If not changed to an identifier present in the database this
-      will result in an error.
-}
-\examples{
-if (interactive()) {
-  library(brapi)
-
-  con <- ba_db()$testserver
-
-  ba_studies_search(con)
-}
 }
 \references{
-\href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Studies/StudiesSearch_POST.md}{github}
+\href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Studies/StudiesSearch_GET.md}{github}
 }
 \seealso{
 Other studies: \code{\link{ba_studies_details}},
@@ -130,7 +88,6 @@ Other studies: \code{\link{ba_studies_details}},
   \code{\link{ba_studies_observations}},
   \code{\link{ba_studies_observationunits}},
   \code{\link{ba_studies_observationvariables}},
-  \code{\link{ba_studies_search_get}},
   \code{\link{ba_studies_search_post}},
   \code{\link{ba_studies_seasons}},
   \code{\link{ba_studies_studytypes}},
@@ -147,7 +104,6 @@ Other phenotyping: \code{\link{ba_samples_save}},
   \code{\link{ba_studies_observationunits_save}},
   \code{\link{ba_studies_observationunits}},
   \code{\link{ba_studies_observationvariables}},
-  \code{\link{ba_studies_search_get}},
   \code{\link{ba_studies_search_post}},
   \code{\link{ba_studies_seasons}},
   \code{\link{ba_studies_studytypes}},

@@ -71,6 +71,7 @@
 #' @references \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Studies/StudiesSearch_POST.md}{github}
 #' @family studies
 #' @family phenotyping
+#' @example inst/examples/ex-ba_studies_search_post.R
 #' @import tibble
 #' @export
 ### to be put in front of @import #' @example inst/examples/ex-ba_studies_search_post.R

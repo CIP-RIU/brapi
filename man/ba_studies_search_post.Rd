@@ -103,6 +103,15 @@ BrAPI Version: 1.0, 1.1, 1.2
 
 BrAPI Status: active
 }
+\examples{
+if (interactive()) {
+  library(brapi)
+
+  con <- ba_db()$testserver
+
+  ba_studies_search_post(con)
+}
+}
 \references{
 \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Studies/StudiesSearch_POST.md}{github}
 }
@@ -114,7 +123,6 @@ Other studies: \code{\link{ba_studies_details}},
   \code{\link{ba_studies_observations}},
   \code{\link{ba_studies_observationunits}},
   \code{\link{ba_studies_observationvariables}},
-  \code{\link{ba_studies_search_get}},
   \code{\link{ba_studies_search}},
   \code{\link{ba_studies_seasons}},
   \code{\link{ba_studies_studytypes}},
@@ -131,7 +139,6 @@ Other phenotyping: \code{\link{ba_samples_save}},
   \code{\link{ba_studies_observationunits_save}},
   \code{\link{ba_studies_observationunits}},
   \code{\link{ba_studies_observationvariables}},
-  \code{\link{ba_studies_search_get}},
   \code{\link{ba_studies_search}},
   \code{\link{ba_studies_seasons}},
   \code{\link{ba_studies_studytypes}},
