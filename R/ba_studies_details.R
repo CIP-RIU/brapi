@@ -33,27 +33,28 @@ ba_studies_details <- function(con = NULL,
                                studyDbId = "",
                                rclass = c("tibble", "data.frame",
                                           "list", "json")) {
-  ba_check(con = con, verbose = FALSE, brapi_calls = "studies/id")
+  ba_check(con = con, verbose = FALSE)
   check_req(studyDbId)
+  check_character(studyDbId)
   rclass <- match.arg(rclass)
 
   brp <- get_brapi(con = con)
   callurl <- paste0(brp, "studies/", studyDbId)
 
   try({
-    res <- brapiGET(url = callurl, con = con)
+    resp <- brapiGET(url = callurl, con = con)
     out <- NULL
-    if (is.ba_status_ok(resp = res)) {
-      res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
+    if (is.ba_status_ok(resp = resp)) {
+      cont <- httr::content(x = resp, as = "text", encoding = "UTF-8")
       if (rclass %in% c("json", "list")) {
-        out <- dat2tbl(res = res2, rclass = rclass)
+        out <- dat2tbl(res = cont, rclass = rclass)
       }
       if (rclass %in% c("data.frame", "tibble")) {
-        out <- stdd2tbl(res = res2, rclass = rclass)
+        out <- stdd2tbl(res = cont, rclass = rclass)
       }
       class(out) <- c(class(out), "ba_studies_details")
     }
-    show_metadata(res)
+    show_metadata(resp)
     return(out)
   })
 }

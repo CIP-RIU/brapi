@@ -5,7 +5,8 @@
 \title{ba_studies_germplasm_details}
 \usage{
 ba_studies_germplasm_details(con = NULL, studyDbId = "",
-  pageSize = 1000, page = 0, rclass = "tibble")
+  pageSize = 1000, page = 0, rclass = c("tibble", "data.frame",
+  "list", "json"))
 }
 \arguments{
 \item{con}{list, brapi connection object}

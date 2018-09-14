@@ -30,41 +30,31 @@ ba_studies_germplasm_details <- function(con = NULL,
                                          studyDbId = "",
                                          pageSize = 1000,
                                          page = 0,
-                                         rclass = "tibble") {
+                                         rclass = c("tibble", "data.frame",
+                                                    "list", "json")) {
   ba_check(con = con, verbose = FALSE, brapi_calls = "studies/id/germplasm")
-  stopifnot(is.character(studyDbId))
-  stopifnot(studyDbId != "")
-  check_paging(pageSize = pageSize, page = page)
-  check_rclass(rclass = rclass)
-  # fetch url of brapi implementation of the database
-  brp <- get_brapi(con = con)
-  # generate brapi call url
-  studies_germplasm_list <- paste0(brp, "studies/", studyDbId, "/germplasm?")
-  ppageSize <- ifelse(is.numeric(pageSize), paste0("pageSize=",
-                                                  pageSize, "&"), "")
-  ppage <- ifelse(is.numeric(page), paste0("page=", page, "&"), "")
-  if (page == 0 & pageSize == 1000) {
-    ppage <- ""
-    ppageSize <- ""
-  }
-  # modify brapi call url to include pagenation
-  callurl <- sub(pattern = "[/?&]$",
-                 replacement = "",
-                 x = paste0(studies_germplasm_list,
-                            ppageSize,
-                            ppage))
+  check_req(studyDbId)
+  check_character(studyDbId)
+  rclass <- match.arg(rclass)
+
+  brp <- get_brapi(con) %>% paste0("studies/", studyDbId, "/germplasm")
+  callurl <- get_endpoint(brp,
+                          pageSize = pageSize,
+                          page = page
+                          )
+
   try({
-    res <- brapiGET(url = callurl, con = con)
-    res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
+    resp <- brapiGET(url = callurl, con = con)
+    cont <- httr::content(x = resp, as = "text", encoding = "UTF-8")
     out <- NULL
     if (rclass %in% c("json", "list")) {
-      out <- dat2tbl(res = res2, rclass = rclass)
+      out <- dat2tbl(res = cont, rclass = rclass)
     }
     if (rclass %in% c("tibble", "data.frame")) {
-      out <- sgp2tbl(res = res2, rclass = rclass)
+      out <- sgp2tbl(res = cont, rclass = rclass)
     }
     class(out) <- c(class(out), "ba_studies_germplasm_details")
-    show_metadata(res)
+    show_metadata(resp)
     return(out)
   })
 }

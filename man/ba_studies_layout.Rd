@@ -5,7 +5,7 @@
 \title{ba_studies_layout}
 \usage{
 ba_studies_layout(con = NULL, studyDbId = "", pageSize = 1000,
-  page = 0, rclass = "tibble")
+  page = 0, rclass = c("tibble", "data.frame", "list", "json"))
 }
 \arguments{
 \item{con}{list, brapi connection object}
