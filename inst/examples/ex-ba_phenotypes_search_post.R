@@ -3,6 +3,5 @@ if (interactive()) {
 
   con <- ba_db()$testserver
 
-  ba_observationvariables_search(con)
-
+  ba_phenotypes_search_post(con)
 }
