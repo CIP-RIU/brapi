@@ -1,6 +1,6 @@
-context("ts studies_seasons")
+context("sp studies_seasons")
 
-con <- ba_db()$testserver
+con <- ba_db()$sweetpotatobase
 
 test_that("Studies_seasons are present", {
 

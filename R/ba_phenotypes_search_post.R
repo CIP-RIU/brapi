@@ -1,4 +1,4 @@
-#' ba_phenotypes_search
+#' ba_phenotypes_search_post
 #'
 #' lists the breeding observationvariables
 #'
@@ -24,11 +24,11 @@
 #'
 #' @family brapicore
 #'
-#' @example inst/examples/ex-ba_phenotypes_search.R
+#' @example inst/examples/ex-ba_phenotypes_search_post.R
 #'
 #' @import httr
 #' @export
-ba_phenotypes_search <- function(con = NULL,
+ba_phenotypes_search_post <- function(con = NULL,
                                  germplasmDbIds = "",
                                  observationVariableDbIds = "",
                                  studyDbIds = "",
@@ -79,7 +79,7 @@ ba_phenotypes_search <- function(con = NULL,
       out <- res2
     }
 
-    class(out) <- c(class(out), "ba_phenotypes_search")
+    class(out) <- c(class(out), "ba_phenotypes_search_post")
 
     return(out)
   })

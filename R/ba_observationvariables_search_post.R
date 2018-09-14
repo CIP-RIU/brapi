@@ -1,4 +1,4 @@
-#' ba_observationvariables_search
+#' ba_observationvariables_search_post
 #'
 #' lists the breeding observationvariables
 #'
@@ -20,11 +20,11 @@
 #' @importFrom utils str
 #' @author Reinhard Simon
 #' @return rclass
-#' @example inst/examples/ex-ba_observationvariables_search.R
+#' @example inst/examples/ex-ba_observationvariables_search_post.R
 #' @references \href{https://github.com/plantbreeding/API/blob/master/Specification/ObservationVariables/VariableSearch.md}{github}
 #' @family brapicore
 #' @export
-ba_observationvariables_search <- function(con = NULL,
+ba_observationvariables_search_post <- function(con = NULL,
                                            datatypes = "",
                                            methodDbIds = "",
                                            names = "",
@@ -65,7 +65,7 @@ ba_observationvariables_search <- function(con = NULL,
     if (rclass %in% c("tibble", "data.frame")) {
       out <- sov2tbl(res = cont, rclass = rclass)
     }
-    class(out) <- c(class(out), "ba_observationvariables_search")
+    class(out) <- c(class(out), "ba_observationvariables_search_post")
     show_metadata(resp)
     return(out)
   })
