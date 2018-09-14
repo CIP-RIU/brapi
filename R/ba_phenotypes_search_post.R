@@ -71,9 +71,10 @@ ba_phenotypes_search_post <- function(con = NULL,
                      observationTimeStampRangeEnd = observationTimeStampRangeEnd)
     resp <- brapiPOST(url = callurl, body = body, con = con)
     show_metadata(resp)
-
     cont <- httr::content(x = resp, as = "text", encoding = "UTF-8")
-    if(rclass != "json") {
+
+    out <- NULL
+    if (rclass != "json") {
       out <- baps2rclass(cont, rclass)
     } else {
       out <- cont

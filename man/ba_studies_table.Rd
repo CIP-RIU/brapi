@@ -65,7 +65,8 @@ if (interactive()) {
 \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Studies/Studies_Table_GET.md}{github}
 }
 \seealso{
-Other studies: \code{\link{ba_studies_details}},
+Other studies: \code{\link{ba_phenotypes_search}},
+  \code{\link{ba_studies_details}},
   \code{\link{ba_studies_germplasm_details}},
   \code{\link{ba_studies_layout}},
   \code{\link{ba_studies_observationlevels}},
@@ -78,7 +79,8 @@ Other studies: \code{\link{ba_studies_details}},
   \code{\link{ba_studies_studytypes}},
   \code{\link{ba_studies_table_save}}
 
-Other phenotyping: \code{\link{ba_samples_save}},
+Other phenotyping: \code{\link{ba_phenotypes_search}},
+  \code{\link{ba_samples_save}},
   \code{\link{ba_samples_search_post}},
   \code{\link{ba_samples_search}},
   \code{\link{ba_samples}},

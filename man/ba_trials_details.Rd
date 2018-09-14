@@ -46,7 +46,8 @@ if (interactive()) {
 \seealso{
 Other trials: \code{\link{ba_trials}}
 
-Other phenotyping: \code{\link{ba_samples_save}},
+Other phenotyping: \code{\link{ba_phenotypes_search}},
+  \code{\link{ba_samples_save}},
   \code{\link{ba_samples_search_post}},
   \code{\link{ba_samples_search}},
   \code{\link{ba_samples}},

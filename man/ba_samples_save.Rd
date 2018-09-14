@@ -33,7 +33,8 @@ if (interactive()) {
 \href{https://github.com/plantbreeding/API/blob/master/Specification/Samples/TakeASample.md}{github}
 }
 \seealso{
-Other phenotyping: \code{\link{ba_samples_search_post}},
+Other phenotyping: \code{\link{ba_phenotypes_search}},
+  \code{\link{ba_samples_search_post}},
   \code{\link{ba_samples_search}},
   \code{\link{ba_samples}},
   \code{\link{ba_studies_details}},

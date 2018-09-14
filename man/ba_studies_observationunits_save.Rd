@@ -41,7 +41,8 @@ if (interactive()) {
 \href{https://github.com/plantbreeding/API/blob/master/Specification/Studies/SaveOrUpdateObservationUnits.md}{github}
 }
 \seealso{
-Other phenotyping: \code{\link{ba_samples_save}},
+Other phenotyping: \code{\link{ba_phenotypes_search}},
+  \code{\link{ba_samples_save}},
   \code{\link{ba_samples_search_post}},
   \code{\link{ba_samples_search}},
   \code{\link{ba_samples}},

@@ -49,7 +49,8 @@ if (interactive()) {
 \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Studies/Studies_Germplasm_GET.md}{github}
 }
 \seealso{
-Other studies: \code{\link{ba_studies_details}},
+Other studies: \code{\link{ba_phenotypes_search}},
+  \code{\link{ba_studies_details}},
   \code{\link{ba_studies_layout}},
   \code{\link{ba_studies_observationlevels}},
   \code{\link{ba_studies_observations}},
