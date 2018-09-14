@@ -54,7 +54,7 @@ Other brapicore: \code{\link{ba_calls}},
   \code{\link{ba_observationvariables_search_post}},
   \code{\link{ba_observationvariables}},
   \code{\link{ba_phenotypes_search_post}},
-  \code{\link{ba_programs_search}},
+  \code{\link{ba_programs_search_post}},
   \code{\link{ba_programs}},
   \code{\link{ba_studies_germplasm_details}},
   \code{\link{ba_traits_details}}, \code{\link{ba_traits}}
