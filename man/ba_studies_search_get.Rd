@@ -7,8 +7,9 @@
 ba_studies_search_get(con = NULL, studyDbId = "", trialDbId = "",
   programDbId = "", commonCropName = "", locationDbId = "",
   seasonDbId = "", studyType = "", germplasmDbIds = "",
-  observationVariableDbIds = "", active = "any", sortBy = "",
-  sortOrder = "", pageSize = 1000, page = 0, rclass = "tibble")
+  observationVariableDbIds = "", active = TRUE, sortBy = "",
+  sortOrder = "", pageSize = 1000, page = 0, rclass = c("tibble",
+  "data.frame", "list", "json"))
 }
 \arguments{
 \item{con}{list, brapi connection object}
@@ -47,7 +48,7 @@ internal observation variable database
 identifiers e.g. c("CO-PH-123:,"Var-123"),
 have been measured; default: ""}
 
-\item{active}{logical; search studies by active status; default: "any",
+\item{active}{logical; search studies by active status; default: "TRUE",
 other possible values TRUE/FALSE}
 
 \item{sortBy}{character; name of the field to sort by; default: ""}

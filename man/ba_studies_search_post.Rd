@@ -8,8 +8,9 @@ ba_studies_search_post(con = NULL, studyDbIds = "", trialDbIds = "",
   programDbIds = "", locationDbIds = "", seasonDbId = "",
   studyType = "", studyNames = "", studyLocations = "",
   programNames = "", commonCropName = "", germplasmDbIds = "",
-  observationVariableDbIds = "", active = "any", sortBy = "",
-  sortOrder = "", page = 0, pageSize = 1000, rclass = "tibble")
+  observationVariableDbIds = "", active = TRUE, sortBy = "",
+  sortOrder = "", page = 0, pageSize = 1000, rclass = c("tibble",
+  "data.frame", "list", "json"))
 }
 \arguments{
 \item{con}{list, brapi connection object}
@@ -72,7 +73,7 @@ internal observation variable database
 identifiers e.g. c("CO-PH-123", "Var-123"),
 have been measured; default: ""}
 
-\item{active}{logical; search studies by active status; default: "any",
+\item{active}{logical; search studies by active status; default: "TRUE",
 other possible values TRUE/FALSE}
 
 \item{sortBy}{character; name of the field to sort by e.g. "studyDbId";

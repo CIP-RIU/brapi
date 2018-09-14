@@ -28,7 +28,7 @@
 #'                                 internal observation variable database
 #'                                 identifiers e.g. c("CO-PH-123:,"Var-123"),
 #'                                 have been measured; default: ""
-#' @param active  logical; search studies by active status; default: "any",
+#' @param active  logical; search studies by active status; default: "TRUE",
 #'                other possible values TRUE/FALSE
 #' @param sortBy character; name of the field to sort by; default: ""
 #' @param sortOrder character; sort order direction; default: "", possible values
@@ -62,116 +62,61 @@ ba_studies_search_get <- function(con = NULL,
                                   studyType = "",
                                   germplasmDbIds = "",
                                   observationVariableDbIds = "",
-                                  active = "any",
+                                  active = TRUE,
                                   sortBy = "",
                                   sortOrder = "",
                                   pageSize = 1000,
                                   page = 0,
-                                  rclass = "tibble") {
+                                  rclass = c("tibble", "data.frame",
+                                             "list", "json")) {
   # .Deprecated("ba_studies_search")
   ba_check(con = con, verbose = FALSE, brapi_calls = "studies-search-get")
-  stopifnot(is.character(studyDbId))
-  stopifnot(is.character(trialDbId))
-  stopifnot(is.character(programDbId))
-  stopifnot(is.character(commonCropName))
-  stopifnot(is.character(locationDbId))
-  stopifnot(is.character(seasonDbId))
-  stopifnot(is.character(studyType))
-  stopifnot(is.character(germplasmDbIds))
-  stopifnot(is.character(observationVariableDbIds))
-  stopifnot(is.logical(active) || active == "any")
-  stopifnot(is.character(sortBy))
-  stopifnot(is.character(sortOrder))
-  check_paging(pageSize = pageSize, page = page)
-  check_rclass(rclass = rclass)
-  brp <- get_brapi(con = con)
-  pstudies_search <- paste0(brp, "studies-search?")
-  pstudyDbId <- ifelse(studyDbId == "", "",
-                       paste0("studyDbId=", studyDbId, "&"))
-  ptrialDbId <- ifelse(trialDbId == "", "",
-                       paste0("trialDbId=", trialDbId, "&"))
-  pprogramDbId <- ifelse(programDbId == "", "",
-                         paste0("programDbId=", programDbId, "&"))
-  pcommonCropName <- ifelse(commonCropName == "", "",
-                            paste0("commonCropName=", commonCropName, "&"))
-  plocationDbId <- ifelse(locationDbId == "", "",
-                          paste0("locationDbId=", locationDbId, "&"))
-  pseasonDbId <- ifelse(seasonDbId == "", "",
-                        paste0("seasonDbId=", seasonDbId, "&"))
-  pstudyType <- ifelse(studyType == "", "",
-                       paste0("studyType=", gsub(" ", "%20", studyType), "&"))
-  pgermplasmDbIds <- ifelse(all(germplasmDbIds == ""),
-                            "",
-                            paste0("germplasmDbIds=",
-                                   sub(pattern = ",$",
-                                       replacement = "",
-                                       x = paste0(germplasmDbIds,
-                                                  sep = ",",
-                                                  collapse = "")),
-                                   "&"))
-  pobservationVariableDbIds <- ifelse(all(observationVariableDbIds == ""),
-                                      "",
-                                      paste0("observationVariableDbIds=",
-                                             sub(pattern = ",$",
-                                                 replacement = "",
-                                                 x = paste0(observationVariableDbIds,
-                                                            sep = ",",
-                                                            collapse = "")),
-                                             "&"))
-  pactive <- ifelse(active != "any", paste0("active=", tolower(active), "&"), "")
-  psortBy <- ifelse(sortBy == "", "", paste0("sortBy=", sortBy, "&"))
-  psortOrder <- ifelse(sortOrder == "", "",
-                       paste0("sortOrder=", sortOrder, "&"))
-  ppageSize <- ifelse(is.numeric(pageSize),
-                      paste0("pageSize=", pageSize, "&"), "")
-  ppage <- ifelse(is.numeric(page), paste0("page=", page, "&"), "")
-  if (page == 0 & pageSize == 1000) {
-    ppage <- ""
-    ppageSize <- ""
-  }
-  callurl <- sub(pattern = "[/?&]$",
-                 replacement = "",
-                 x = paste0(pstudies_search,
-                            pstudyDbId,
-                            ptrialDbId,
-                            pprogramDbId,
-                            pcommonCropName,
-                            plocationDbId,
-                            pseasonDbId,
-                            pstudyType,
-                            pgermplasmDbIds,
-                            pobservationVariableDbIds,
-                            pactive,
-                            psortBy,
-                            psortOrder,
-                            ppageSize,
-                            ppage))
-  nurl <- nchar(callurl)
+  ba_check(con = con, verbose = FALSE)
+  check_character(studyDbId, trialDbId, programDbId, locationDbId, seasonDbId, studyType,
+                  germplasmDbIds,
+                  observationVariableDbIds, sortBy, sortOrder)
+  stopifnot(is.logical(active))
+  rclass <- match.arg(rclass)
+  brp <- get_brapi(con) %>% paste0("studies-search")
+
+  callurl <- get_endpoint(brp,
+                   studyDbId = studyDbId,
+                   trialDbId = trialDbId,
+                   programDbId = programDbId,
+                   locationDbId = locationDbId,
+                   seasonDbId = seasonDbId,
+                   studyType = studyType,
+
+                   germplasmDbIds = germplasmDbIds,
+                   observationVariableDbIds = observationVariableDbIds,
+                   active = active,
+                   sortBy = sortBy,
+                   sortOrder = sortOrder,
+                   page = page,
+                   pageSize = pageSize)
+
+
   out <- NULL
-  if (nurl <= 2000) {
-    message("Using GET")
-    out <- try({
-      res <- brapiGET(url = callurl, con = con)
-      res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
-      out <- NULL
-      if (rclass %in% c("list", "json")) {
-        out <- dat2tbl(res = res2, rclass = rclass)
-      }
-      if (rclass %in% c("data.frame", "tibble")) {
-        out <- std2tbl(res = res2, rclass = rclass)
-      }
-      out
-    })
-  }
-  if (nurl > 2000) {
-    message("URL too long. Use ba_studies_search_post.")
-  }
+
+  out <- try({
+    resp <- brapiGET(url = callurl, con = con)
+    cont <- httr::content(x = resp, as = "text", encoding = "UTF-8")
+    out <- NULL
+    if (rclass %in% c("list", "json")) {
+      out <- dat2tbl(res = cont, rclass = rclass)
+    }
+    if (rclass %in% c("data.frame", "tibble")) {
+      out <- std2tbl(res = cont, rclass = rclass)
+    }
+    out
+  })
+
   if (!is.null(out)) {
     class(out) <- c(class(out), "ba_studies_search_get")
   } else {
     message("Server did not return a result!
             Check your query parameters or contact the server administrator.")
   }
-  show_metadata(res)
+  show_metadata(resp)
   return(out)
 }
