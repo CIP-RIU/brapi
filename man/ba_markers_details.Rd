@@ -33,7 +33,8 @@ if (interactive()) {
 \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Markers/MarkerDetailsByMarkerDbId.md}{github}
 }
 \seealso{
-Other markers: \code{\link{ba_markers_search}}
+Other markers: \code{\link{ba_markers_search_post}},
+  \code{\link{ba_markers_search}}
 
 Other genotyping: \code{\link{ba_genomemaps_data_range}},
   \code{\link{ba_genomemaps_data}},
@@ -41,15 +42,18 @@ Other genotyping: \code{\link{ba_genomemaps_data_range}},
   \code{\link{ba_genomemaps}},
   \code{\link{ba_germplasm_attributes}},
   \code{\link{ba_germplasm_markerprofiles}},
+  \code{\link{ba_germplasm_search_post}},
   \code{\link{ba_germplasm_search}},
   \code{\link{ba_germplasmattributes_attributes}},
   \code{\link{ba_germplasmattributes_categories}},
   \code{\link{ba_germplasmattributes_details}},
   \code{\link{ba_markerprofiles_allelematrices_details}},
+  \code{\link{ba_markerprofiles_allelematrices_search_post}},
   \code{\link{ba_markerprofiles_allelematrices_search}},
   \code{\link{ba_markerprofiles_allelematrix_search}},
   \code{\link{ba_markerprofiles_details}},
   \code{\link{ba_markerprofiles_search}},
+  \code{\link{ba_markers_search_post}},
   \code{\link{ba_markers_search}}
 }
 \author{

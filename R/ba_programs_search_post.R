@@ -1,4 +1,4 @@
-#' ba_programs_search
+#' ba_programs_search_post
 #'
 #' Search breeding programs via a POST method
 #'
@@ -31,10 +31,10 @@
 #' @author Reinhard Simon, Maikel Verouden
 #' @references \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Programs/ProgramSearch.md}{github}
 #' @family brapicore
-#' @example inst/examples/ex-ba_programs_search.R
+#' @example inst/examples/ex-ba_programs_search_post.R
 #' @import httr
 #' @export
-ba_programs_search <- function(con = NULL,
+ba_programs_search_post <- function(con = NULL,
                                abbreviation = "",
                                leadPerson = "",
                                name = "",
@@ -65,7 +65,7 @@ ba_programs_search <- function(con = NULL,
     resp <- brapiPOST(url = callurl, body = body, con = con)
     cont <- httr::content(x = resp, as = "text", encoding = "UTF-8")
     out <- dat2tbl(res = cont, rclass = rclass)
-    class(out) <- c(class(out), "ba_programs_search")
+    class(out) <- c(class(out), "ba_programs_search_post")
     show_metadata(resp)
     return(out)
   })

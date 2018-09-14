@@ -41,7 +41,7 @@ if (interactive()) {
 
   con <- ba_db()$testserver
 
-  ba_samples(con, sampleDbId = "sam1")
+  ba_samples_search(con)
 }
 }
 \references{
@@ -49,6 +49,7 @@ if (interactive()) {
 }
 \seealso{
 Other phenotyping: \code{\link{ba_samples_save}},
+  \code{\link{ba_samples_search_post}},
   \code{\link{ba_samples}},
   \code{\link{ba_studies_details}},
   \code{\link{ba_studies_layout}},

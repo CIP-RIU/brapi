@@ -20,7 +20,7 @@
 #'
 #' @family phenotyping
 #'
-#' @example inst/examples/ex-ba_samples.R
+#' @example inst/examples/ex-ba_samples_search.R
 
 #' @import tibble
 #' @export

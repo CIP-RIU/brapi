@@ -12,7 +12,7 @@
 
 <meta name="author" content="Reinhard Simon" />
 
-<meta name="date" content="2018-08-01" />
+<meta name="date" content="2018-09-14" />
 
 <title>Basic Tutorial</title>
 
@@ -280,7 +280,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 
 <h1 class="title toc-ignore">Basic Tutorial</h1>
 <h4 class="author"><em>Reinhard Simon</em></h4>
-<h4 class="date"><em>2018-08-01</em></h4>
+<h4 class="date"><em>2018-09-14</em></h4>
 
 
 
@@ -309,6 +309,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 ## cassavabase
 ## cropontology
 ## eu_sol
+## genesys
 ## germinate_test
 ## icrisat_prod
 ## mgis
@@ -325,7 +326,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <a class="sourceLine" id="cb3-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co"># print summary of sp_base object</span></a>
 <a class="sourceLine" id="cb3-4" data-line-number="4">sp_base</a></code></pre></div>
-<pre><code>## Crop = sweetpotato
+<pre><code>## Crop = SweetPotato
 ## 
 ## Addres:Port = sweetpotatobase.org:80
 ## User =</code></pre>
@@ -339,7 +340,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <h2>Listing available calls</h2>
 <p>The brapi community and standard allows currently a large degree of freedom on implementation of individual parts of the standard (or calls). One call lists the functionality supported by the server.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">ba_calls</span>(sp_base)</a></code></pre></div>
-<pre><code>## URL call was: https://sweetpotatobase.org/brapi/v1/calls</code></pre>
+<pre><code>## URL call was: https://sweetpotatobase.org/brapi/v1/calls?pageSize=1000&amp;page=0</code></pre>
 <pre><code>## Waiting for response from server: ...</code></pre>
 <pre><code>## Server status:  ok!</code></pre>
 <pre><code>## Status details from Server:</code></pre>
@@ -498,6 +499,12 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 ## 8     SweetPotato                  CNRA        1281             
 ## 9     SweetPotato                   RAB        1282             
 ## 10    SweetPotato                  BARS        1283             
+## 11    SweetPotato                 ISABU        1284             
+## 12    SweetPotato             FIFAMANOR        1285             
+## 13    SweetPotato                 INERA        1286             
+## 14    SweetPotato                   ARC        1287             
+## 15    SweetPotato                  AARC        1288             
+## 16    SweetPotato                 NRCRI        1289             
 ##                            objective
 ## 1  NCSU Sweetpotato Breeding Program
 ## 2                         Mozambique
@@ -508,35 +515,40 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 ## 7              Demo Breeding Program
 ## 8                             Bouake
 ## 9                             Rubona
-## 10                           Thyolo</code></pre>
+## 10                           Thyolo 
+## 11                            Gisozi
+## 12                         Antsirabe
+## 13                       Ouagadougou
+## 14                          Pretoria
+## 15                           Hawassa
+## 16                             Iresi</code></pre>
 </div>
 <div id="which-studies-are-there" class="section level3">
 <h3>Which studies are there?</h3>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1"><span class="kw">ba_studies_search_get</span>(sp_base, <span class="dt">programDbId =</span> <span class="st">&quot;140&quot;</span>)</a></code></pre></div>
-<pre><code>## Using GET</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1"><span class="kw">ba_studies_search</span>(sp_base, <span class="dt">programDbId =</span> <span class="st">&quot;140&quot;</span>)</a></code></pre></div>
 <pre><code>## No encoding supplied: defaulting to UTF-8.</code></pre>
-<pre><code>## # A tibble: 10 x 15
-##    seasons active programName name  locationDbId trialDbId endDate
-##  * &lt;chr&gt;   &lt;lgl&gt;  &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;     &lt;chr&gt;  
-##  1 2015    TRUE   Ghana       15FO~ 18           230       2015-J~
-##  2 2015    TRUE   Ghana       15FO~ 26           230       2015-J~
-##  3 2015    TRUE   Ghana       15HS~ 28           230       2015-J~
-##  4 2015    TRUE   Ghana       15HS~ 26           230       &lt;NA&gt;   
-##  5 2015    TRUE   Ghana       15ay~ 16           230       &lt;NA&gt;   
-##  6 2016    TRUE   Ghana       16CI~ 16           232       2016-A~
-##  7 2016    TRUE   Ghana       16CI~ 22           232       2016-M~
-##  8 2010    TRUE   Ghana       2010~ 38           284       2010-M~
-##  9 2010    TRUE   Ghana       2010~ 16           284       2010-A~
-## 10 2010    TRUE   Ghana       2010~ 39           284       2010-J~
-## # ... with 8 more variables: trialName &lt;chr&gt;, locationName &lt;chr&gt;,
-## #   programDbId &lt;chr&gt;, startDate &lt;chr&gt;, studyDbId &lt;chr&gt;, studyType &lt;chr&gt;,
-## #   design &lt;chr&gt;, description &lt;chr&gt;</code></pre>
+<pre><code>## # A tibble: 218 x 15
+##    seasons active programName name  locationDbId studyType trialDbId
+##  * &lt;chr&gt;   &lt;lgl&gt;  &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;     &lt;chr&gt;    
+##  1 2015    TRUE   Ghana       15ay~ 16           Advanced~ 230      
+##  2 2015    TRUE   Ghana       15FO~ 18           &lt;NA&gt;      230      
+##  3 2015    TRUE   Ghana       15FO~ 26           &lt;NA&gt;      230      
+##  4 2015    TRUE   Ghana       15HS~ 28           &lt;NA&gt;      230      
+##  5 2015    TRUE   Ghana       15HS~ 26           &lt;NA&gt;      230      
+##  6 2016    TRUE   Ghana       16CI~ 22           phenotyp~ 232      
+##  7 2016    TRUE   Ghana       16CI~ 16           phenotyp~ 232      
+##  8 2010    TRUE   Ghana       2010~ 38           Advanced~ 284      
+##  9 2010    TRUE   Ghana       2010~ 16           Advanced~ 284      
+## 10 2010    TRUE   Ghana       2010~ 39           Advanced~ 284      
+## # ... with 208 more rows, and 8 more variables: endDate &lt;chr&gt;,
+## #   trialName &lt;chr&gt;, locationName &lt;chr&gt;, programDbId &lt;chr&gt;,
+## #   startDate &lt;chr&gt;, studyDbId &lt;chr&gt;, design &lt;chr&gt;, description &lt;chr&gt;</code></pre>
 </div>
 <div id="get-a-study-or-fieldbook" class="section level3">
 <h3>Get a study (or fieldbook)</h3>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1"><span class="co"># Currently not working!!!</span></a>
-<a class="sourceLine" id="cb31-2" data-line-number="2"><span class="co">#dt = ba_studies_table(sp_base, </span></a>
-<a class="sourceLine" id="cb31-3" data-line-number="3"><span class="co">#                      studyDbId = &quot;151&quot;)</span></a></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1"><span class="co"># Currently not working!!!</span></a>
+<a class="sourceLine" id="cb30-2" data-line-number="2"><span class="co">#dt = ba_studies_table(sp_base, </span></a>
+<a class="sourceLine" id="cb30-3" data-line-number="3"><span class="co">#                      studyDbId = &quot;151&quot;)</span></a></code></pre></div>
 </div>
 </div>
 </div>
