@@ -64,19 +64,6 @@ ba_germplasm_search <- function(con = NULL,
   }
 
 
-  # if (method == "POST") {
-  #   body <- list(germplasmDbId = germplasmDbId,
-  #                germplasmName = germplasmName,
-  #                germplasmPUI = germplasmPUI,
-  #                page = page,
-  #                pageSize = pageSize)
-  #   out <- try({
-  #     germplasm_search <- paste0(brp, "germplasm-search/")
-  #     res <- brapiPOST(url = germplasm_search, body = body, con = con)
-  #     res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
-  #     get_data(res2, '2')
-  #   })
-  # } else {
     out <- try({
       res <- brapiGET(url = callurl, con = con)
       res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
