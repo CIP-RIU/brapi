@@ -1,4 +1,4 @@
-#' ba_studies_search_get
+#' ba_studies_search
 #'
 #' Search for study details on a brapi server via a GET method.
 #'
@@ -62,7 +62,7 @@ ba_studies_search <- function(con = NULL,
                               studyType = "",
                               germplasmDbIds = "",
                               observationVariableDbIds = "",
-                              active = TRUE,
+                              active = NA,
                               sortBy = "",
                               sortOrder = "",
                               pageSize = 1000,
@@ -70,14 +70,13 @@ ba_studies_search <- function(con = NULL,
                               rclass = c("tibble", "data.frame",
                                          "list", "json")) {
   ba_check(con = con, verbose = FALSE, brapi_calls = "studies-search-get")
-  ba_check(con = con, verbose = FALSE)
-  check_character(studyDbId, trialDbId, programDbId, locationDbId, seasonDbId, studyType,
-                  germplasmDbIds,
-                  observationVariableDbIds, sortBy, sortOrder)
+  check_character(studyDbId, trialDbId, programDbId, locationDbId, seasonDbId,
+                  studyType, germplasmDbIds, observationVariableDbIds, sortBy,
+                  sortOrder)
   stopifnot(is.logical(active))
   rclass <- match.arg(rclass)
-  brp <- get_brapi(con) %>% paste0("studies-search")
 
+  brp <- get_brapi(con) %>% paste0("studies-search")
   callurl <- get_endpoint(brp,
                           studyDbId = studyDbId,
                           trialDbId = trialDbId,

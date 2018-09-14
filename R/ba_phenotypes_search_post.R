@@ -69,14 +69,14 @@ ba_phenotypes_search_post <- function(con = NULL,
                      observationLevel = observationLevel,
                      observationTimeStampRangeStart = observationTimeStampRangeStart,
                      observationTimeStampRangeEnd = observationTimeStampRangeEnd)
-    res <- brapiPOST(url = callurl, body = body, con = con)
-    show_metadata(res)
+    resp <- brapiPOST(url = callurl, body = body, con = con)
+    show_metadata(resp)
 
-    res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
+    cont <- httr::content(x = resp, as = "text", encoding = "UTF-8")
     if(rclass != "json") {
-      out <- baps2rclass(res2, rclass)
+      out <- baps2rclass(cont, rclass)
     } else {
-      out <- res2
+      out <- cont
     }
 
     class(out) <- c(class(out), "ba_phenotypes_search_post")
