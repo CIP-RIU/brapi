@@ -3,5 +3,5 @@ if (interactive()) {
 
   con <- ba_db()$testserver
 
-  ba_studies_search(con)
+  ba_studies_search_post(con)
 }
