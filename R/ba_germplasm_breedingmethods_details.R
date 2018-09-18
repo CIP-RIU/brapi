@@ -1,13 +1,18 @@
 #' ba_germplasm_breedingmethods_details
 #'
-#' Lists breeding methods available on a brapi server.
+#' Retrieve details of a breeding method available on a BrAPI compliant database
+#' server.
 #'
 #' @param con list, brapi connection object
-#' @param breedingMethodDbId character, \strong{REQUIRED ARGUMENT} with default: ""
+#' @param breedingMethodDbId character, the internal database identifier for a
+#'                           breeding method of which the details are to be
+#'                          retrieved e.g. "bm1"; \strong{REQUIRED ARGUMENT} with
+#'                          default: ""
 #' @param rclass character, class of the object to be returned;  default: "tibble"
-#'               , possible other values: "json"/"list"/"data.frame"
+#'               , possible other values: "data.frame"/"list"/"json"
 #'
-#' @return An object of class as defined by rclass containing breedingmethods.
+#' @return An object of class as defined by rclass containing the details of the
+#'         requestedd breeding method.
 #'
 #' @note Tested against: test-server
 #' @note BrAPI Version: 1.2
@@ -21,31 +26,30 @@
 #' @import tibble
 #' @export
 ba_germplasm_breedingmethods_details <- function(con = NULL,
-                         breedingMethodDbId = "",
-                         rclass = c("tibble", "data.frame", "list", "json")) {
+                                        breedingMethodDbId = "",
+                                        rclass = c("tibble", "data.frame", "list", "json")) {
   ba_check(con = con, verbose = FALSE, brapi_calls = "breedingmethods/breedingMethodDbId")
   check_character(breedingMethodDbId)
   check_req(breedingMethodDbId)
   rclass <- match.arg(rclass)
 
   brp <- get_brapi(con = con)
-  # generate the brapi call specific url
   callurl <- paste0(brp, "breedingmethods/", breedingMethodDbId)
 
   try({
-    res <- brapiGET(url = callurl, con = con)
-    res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
+    resp <- brapiGET(url = callurl, con = con)
+    cont <- httr::content(x = resp, as = "text", encoding = "UTF-8")
     out <- NULL
     if (rclass %in% c("json", "list")) {
-      out <- dat2tbl(res = res2, rclass = rclass)
+      out <- dat2tbl(res = cont, rclass = rclass)
     }
     if (rclass %in% c("tibble", "data.frame")) {
-      out <- dat2tbl(res = res2, rclass = rclass, result_level = "result")
+      out <- dat2tbl(res = cont, rclass = rclass, result_level = "result")
     }
     if (!is.null(out)) {
       class(out) <- c(class(out), "ba_germplasm_breedingmethods_details")
     }
-    show_metadata(res)
+    show_metadata(resp)
     return(out)
   })
 }
