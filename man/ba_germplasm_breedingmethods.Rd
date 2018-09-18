@@ -22,7 +22,8 @@ An object of class as defined by rclass containing breeding methods
         on the BrAPI compliant database server.
 }
 \description{
-Retrieve breeding methods available on a BrAPI compliant database server.
+Retrieve germplasm breeding methods available on a BrAPI compliant database
+server.
 }
 \note{
 Tested against: test-server

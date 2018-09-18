@@ -1,6 +1,7 @@
 #' ba_germplasm_breedingmethods
 #'
-#' Retrieve breeding methods available on a BrAPI compliant database server.
+#' Retrieve germplasm breeding methods available on a BrAPI compliant database
+#' server.
 #'
 #' @param con list, brapi connection object
 #' @param pageSize integer, items per page to be returned; default: 1000
