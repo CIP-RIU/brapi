@@ -3,7 +3,7 @@ if (interactive()) {
 
   con <- ba_db()$testserver
 
-  ba_germplasm_search(con, "1")
+  ba_germplasm_search(con, germplasmDbId = "1")
 
 
 }
