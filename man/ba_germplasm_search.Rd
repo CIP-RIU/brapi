@@ -6,40 +6,44 @@
 \usage{
 ba_germplasm_search(con = NULL, germplasmPUI = "",
   germplasmDbId = "", germplasmName = "", commonCropName = "",
-  page = 0, pageSize = 1000, rclass = c("tibble", "data.frame",
+  pageSize = 1000, page = 0, rclass = c("tibble", "data.frame",
   "list", "json"))
 }
 \arguments{
 \item{con}{brapi connection object}
 
-\item{germplasmPUI}{character default: ''}
+\item{germplasmPUI}{character, search for germplasm information using a
+Permanent Unique Identifier (DOI, URI, etc.); default: ""}
 
-\item{germplasmDbId}{character default ''}
+\item{germplasmDbId}{character, search for germplasm information using an
+internal germplasm database identifier; default: ""}
 
-\item{germplasmName}{character default: ''}
+\item{germplasmName}{character, search for germplasm information using the
+name of the germplasm; default: ""}
 
-\item{commonCropName}{character default: ''}
+\item{commonCropName}{character, search for germplasm information using the
+common crop name related to the germplasm; default: ""}
 
-\item{page}{integer default: 10}
+\item{pageSize}{integer, items per page to be returned; default: 1000}
 
-\item{pageSize}{integer default: 0}
+\item{page}{integer, the requested page to be returned; default: 0 (1st page)}
 
-\item{rclass}{character; default: tibble}
+\item{rclass}{character, class of the object to be returned;  default: "tibble"
+, possible other values: "data.frame"/"list"/"json"}
 }
 \value{
-as defined by rclass
+An object of class as defined by rclass containing the germaplasm
+        information result of the search.
 }
 \description{
-Lists germplasmm as result of a search.
+Retrieve germplasm information as result of a GET search.
 }
 \note{
 Tested against: test-server
 
-BrAPI Version: 1,0. 1.1, 1.2
+BrAPI Version: 1.0, 1.1, 1.2
 
 BrAPI Status: active
-
-Incomplete: Only GET implemented
 }
 \examples{
 if (interactive()) {
@@ -104,7 +108,7 @@ Other germplasm: \code{\link{ba_germplasm_breedingmethods}},
   \code{\link{ba_studies_germplasm_details}}
 }
 \author{
-Reinhard Simon
+Reinhard Simon, Maikel Verouden
 }
 \concept{brapicore}
 \concept{genotyping}

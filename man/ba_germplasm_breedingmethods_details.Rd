@@ -12,20 +12,20 @@ ba_germplasm_breedingmethods_details(con = NULL,
 \item{con}{list, brapi connection object}
 
 \item{breedingMethodDbId}{character, the internal database identifier for a
- breeding method of which the details are to be
-retrieved e.g. "bm1"; \strong{REQUIRED ARGUMENT} with
-default: ""}
+germplasm breeding method of which the details are
+to be retrieved e.g. "bm1"; \strong{REQUIRED ARGUMENT}
+with default: ""}
 
 \item{rclass}{character, class of the object to be returned;  default: "tibble"
 , possible other values: "data.frame"/"list"/"json"}
 }
 \value{
 An object of class as defined by rclass containing the details of the
-        requestedd breeding method.
+        requested germplasm breeding method.
 }
 \description{
-Retrieve details of a breeding method available on a BrAPI compliant database
-server.
+Retrieve details of a germplasm breeding method available on a BrAPI compliant
+database server.
 }
 \note{
 Tested against: test-server

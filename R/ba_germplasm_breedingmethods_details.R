@@ -1,18 +1,18 @@
 #' ba_germplasm_breedingmethods_details
 #'
-#' Retrieve details of a breeding method available on a BrAPI compliant database
-#' server.
+#' Retrieve details of a germplasm breeding method available on a BrAPI compliant
+#' database server.
 #'
 #' @param con list, brapi connection object
 #' @param breedingMethodDbId character, the internal database identifier for a
-#'                           breeding method of which the details are to be
-#'                          retrieved e.g. "bm1"; \strong{REQUIRED ARGUMENT} with
-#'                          default: ""
+#'                           germplasm breeding method of which the details are
+#'                           to be retrieved e.g. "bm1"; \strong{REQUIRED ARGUMENT}
+#'                           with default: ""
 #' @param rclass character, class of the object to be returned;  default: "tibble"
 #'               , possible other values: "data.frame"/"list"/"json"
 #'
 #' @return An object of class as defined by rclass containing the details of the
-#'         requestedd breeding method.
+#'         requested germplasm breeding method.
 #'
 #' @note Tested against: test-server
 #' @note BrAPI Version: 1.2
