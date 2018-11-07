@@ -9,7 +9,7 @@ Authors@R: c(
   person("International Potato Center", role = c("cph"))
   )
 Maintainer: Omar Benites <o.benites@cgiar.org>
-Description: Implements the Breeding API version 1.1 (www.brapi.org) with the
+Description: Implements the Breeding API version 1.2 (www.brapi.org) with the
     exception of the polling mechanism as for the allelematrix call.
 Depends:
     R (>= 3.2.4)
