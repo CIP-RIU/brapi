@@ -56,7 +56,7 @@ ba_germplasm_search_post <- function(con = NULL,
                                      accessionNumbers = "",
                                      commonCropName = "",
                                      pageSize = 1000,
-                                     pageSize = 0,
+                                     page= 0,
                                      rclass = c("tibble", "data.frame",
                                                 "list", "json")) {
   ba_check(con = con, verbose = FALSE, brapi_calls = "germplasm-search")
