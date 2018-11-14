@@ -12,7 +12,7 @@
 
 <meta name="author" content="Reinhard Simon" />
 
-<meta name="date" content="2018-09-14" />
+<meta name="date" content="2018-11-14" />
 
 <title>Basic Tutorial</title>
 
@@ -22,7 +22,7 @@
 <style type="text/css">
 a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; position: absolute; }
+a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -35,13 +35,11 @@ code.sourceCode { white-space: pre-wrap; }
 a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
 pre.numberSource a.sourceLine
-  { position: relative; }
-pre.numberSource a.sourceLine:empty
-  { position: absolute; }
+  { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
   { content: attr(data-line-number);
-    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all;
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -280,7 +278,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 
 <h1 class="title toc-ignore">Basic Tutorial</h1>
 <h4 class="author"><em>Reinhard Simon</em></h4>
-<h4 class="date"><em>2018-09-14</em></h4>
+<h4 class="date"><em>2018-11-14</em></h4>
 
 
 
@@ -489,45 +487,45 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1"><span class="kw">ba_programs</span>(sp_base, <span class="dt">rclass =</span> <span class="st">&quot;data.frame&quot;</span>)</a></code></pre></div>
 <pre><code>## No encoding supplied: defaulting to UTF-8.</code></pre>
 <pre><code>##    commonCropName leadPerson       name programDbId abbreviation
-## 1     SweetPotato                  NCSU         132             
-## 2     SweetPotato            Mozambique         135             
-## 3     SweetPotato                Uganda         137             
-## 4     SweetPotato                 Ghana         140             
+## 1     SweetPotato            Mozambique         135             
+## 2     SweetPotato                Uganda         137             
+## 3     SweetPotato                 Ghana         140             
+## 4     SweetPotato                  NCSU         132             
 ## 5     SweetPotato                  Lima         167             
 ## 6     SweetPotato             GT4SP-CIP         293             
 ## 7     SweetPotato                 Kenya        1264             
-## 8     SweetPotato                  CNRA        1281             
-## 9     SweetPotato                   RAB        1282             
-## 10    SweetPotato                  BARS        1283             
-## 11    SweetPotato                 ISABU        1284             
-## 12    SweetPotato             FIFAMANOR        1285             
-## 13    SweetPotato                 INERA        1286             
-## 14    SweetPotato                   ARC        1287             
-## 15    SweetPotato                  AARC        1288             
+## 8     SweetPotato                   RAB        1282             
+## 9     SweetPotato                 INERA        1286             
+## 10    SweetPotato                  AARC        1288             
+## 11    SweetPotato                  CNRA        1281             
+## 12    SweetPotato                  BARS        1283             
+## 13    SweetPotato                 ISABU        1284             
+## 14    SweetPotato             FIFAMANOR        1285             
+## 15    SweetPotato                   ARC        1287             
 ## 16    SweetPotato                 NRCRI        1289             
 ##                            objective
-## 1  NCSU Sweetpotato Breeding Program
-## 2                         Mozambique
-## 3                             Uganda
-## 4                              Ghana
+## 1                         Mozambique
+## 2                             Uganda
+## 3                              Ghana
+## 4  NCSU Sweetpotato Breeding Program
 ## 5   Sweetpotato Breeding program CIP
 ## 6     Genomics Tools for Sweetpotato
 ## 7              Demo Breeding Program
-## 8                             Bouake
-## 9                             Rubona
-## 10                           Thyolo 
-## 11                            Gisozi
-## 12                         Antsirabe
-## 13                       Ouagadougou
-## 14                          Pretoria
-## 15                           Hawassa
+## 8                             Rubona
+## 9                        Ouagadougou
+## 10                           Hawassa
+## 11                            Bouake
+## 12                           Thyolo 
+## 13                            Gisozi
+## 14                         Antsirabe
+## 15                          Pretoria
 ## 16                             Iresi</code></pre>
 </div>
 <div id="which-studies-are-there" class="section level3">
 <h3>Which studies are there?</h3>
 <div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1"><span class="kw">ba_studies_search</span>(sp_base, <span class="dt">programDbId =</span> <span class="st">&quot;140&quot;</span>)</a></code></pre></div>
 <pre><code>## No encoding supplied: defaulting to UTF-8.</code></pre>
-<pre><code>## # A tibble: 218 x 15
+<pre><code>## # A tibble: 237 x 15
 ##    seasons active programName name  locationDbId studyType trialDbId
 ##  * &lt;chr&gt;   &lt;lgl&gt;  &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;     &lt;chr&gt;    
 ##  1 2015    TRUE   Ghana       15ay~ 16           Advanced~ 230      
@@ -540,7 +538,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 ##  8 2010    TRUE   Ghana       2010~ 38           Advanced~ 284      
 ##  9 2010    TRUE   Ghana       2010~ 16           Advanced~ 284      
 ## 10 2010    TRUE   Ghana       2010~ 39           Advanced~ 284      
-## # ... with 208 more rows, and 8 more variables: endDate &lt;chr&gt;,
+## # ... with 227 more rows, and 8 more variables: endDate &lt;chr&gt;,
 ## #   trialName &lt;chr&gt;, locationName &lt;chr&gt;, programDbId &lt;chr&gt;,
 ## #   startDate &lt;chr&gt;, studyDbId &lt;chr&gt;, design &lt;chr&gt;, description &lt;chr&gt;</code></pre>
 </div>

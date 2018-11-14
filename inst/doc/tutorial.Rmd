@@ -4,8 +4,9 @@ author: "Reinhard Simon"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{Basic Tutorial}
   %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
 --------------------------------------------------------------
@@ -35,19 +36,6 @@ sp_base <- ba_db()$sweetpotatobase
 
 # print summary of sp_base object
 sp_base
-
-```
-
-## Listing available crops
-
-This is interesting if you have multicrop databases. In the case of sweetpotatobase there is only one crop on that server.
-
-```{r}
-crops <- ba_crops(sp_base)
-
-# We only expect one crop here: sweetpotato
-
-crops
 
 ```
 
@@ -102,16 +90,17 @@ ba_studies_search(sp_base, programDbId = "140")
 ### Get a study (or fieldbook)
 
 ```{r, message=FALSE, warning=FALSE}
-dt = ba_studies_table(sp_base, 
-                      studyDbId = "162")
+# Currently not working!!!
+#dt = ba_studies_table(sp_base, 
+#                      studyDbId = "151")
 ```
 
 ```{r, echo=FALSE}
-library(DT)
-datatable(
-  dt,
-  options=list(pageLength = 5, scrollX = TRUE)
-  )
+#library(DT)
+#datatable(
+#  dt,
+#  options=list(pageLength = 5, scrollX = TRUE)
+#  )
 ```
 
 

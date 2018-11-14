@@ -1,3 +1,6 @@
+inst/doc
+Meta
+doc
 # Files to be ignored in the local and remote git repository
 # R specific files
 .Rproj
