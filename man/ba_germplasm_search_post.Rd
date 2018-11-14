@@ -7,37 +7,54 @@
 ba_germplasm_search_post(con = NULL, germplasmPUIs = "",
   germplasmDbIds = "", germplasmSpecies = "", germplasmGenus = "",
   germplasmNames = "", accessionNumbers = "", commonCropName = "",
-  page = 0, pageSize = 100, rclass = c("tibble", "data.frame",
+  pageSize = 1000, page = 0, rclass = c("tibble", "data.frame",
   "list", "json"))
 }
 \arguments{
 \item{con}{brapi connection object}
 
-\item{germplasmPUIs}{character default: ''}
+\item{germplasmPUIs}{character vector, search for germplasm information using
+multiple Permanent Unique Identifiers (DOI, URI, etc.)
+e.g. c("http://www.crop-diversity.org/mgis/accession/01BEL084609",
+"doi:10.15454/328757862534E12"); default: ""}
 
-\item{germplasmDbIds}{character default ''}
+\item{germplasmDbIds}{character vector, search for germplasm information using
+internal germplasm database identifiers e.g. c("986",
+"01BEL084609"); default: ""}
 
-\item{germplasmSpecies}{character default ''}
+\item{germplasmSpecies}{character vector, search for germplasm information
+using species names e.g. c("aestivum", "vinifera");
+default: ""}
 
-\item{germplasmGenus}{character default ''}
+\item{germplasmGenus}{character vector, search for germplasm information
+using genus names e.g. c("Solanum", "Triticum");
+default: ""}
 
-\item{germplasmNames}{character default: ''}
+\item{germplasmNames}{character vector, search for germplasm information
+using the names of germplasm e.g. c("XYZ1", "Pahang");
+default: ""}
 
-\item{accessionNumbers}{character defautl ''}
+\item{accessionNumbers}{character vector, search for germplasm information
+using accession numbers e.g. c("ITC0609", "ITC0685");
+default: ""}
 
-\item{commonCropName}{character default: ''}
+\item{commonCropName}{character, search for germplasm information using the
+common crop name related to the germplasm e.g. "wheat";
+default: ""}
 
-\item{page}{integer default: 0}
+\item{pageSize}{integer, items per page to be returned; default: 1000}
 
-\item{pageSize}{integer default: 100}
+\item{page}{integer, the requested page to be returned; default: 0 (1st page)}
 
-\item{rclass}{character; default: tibble}
+\item{rclass}{character, class of the object to be returned;  default: "tibble"
+, possible other values: "data.frame"/"list"/"json"}
 }
 \value{
-as defined by rclass
+An object of class as defined by rclass containing the germplasm
+        information fulfilling the search criteria.
 }
 \description{
-Lists germplasmm as result of a search.
+Retrieve germplasm information as result of a POST search.
 }
 \note{
 Tested against: test-server
@@ -109,7 +126,7 @@ Other germplasm: \code{\link{ba_germplasm_breedingmethods}},
   \code{\link{ba_studies_germplasm_details}}
 }
 \author{
-Reinhard Simon
+Reinhard Simon, Maikel Verouden
 }
 \concept{brapicore}
 \concept{genotyping}
