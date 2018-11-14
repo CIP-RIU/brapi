@@ -14,6 +14,9 @@ get_endpoint <- function(pointbase, ...) {
     if (nchar(names(args)[[i]]) == 0) stop("All parameters must have a name.")
     if (is.logical(args[[i]])) args[[i]] <- tolower(args[[i]])
     if (is.na(args[[i]])) args[[i]] <- ""
+
+    if (args[[i]] == "any") next()
+
     if (!is.null(args[[i]]) && args[[i]] != "") {
       args[[i]] <- sub(forbidden, "", args[[i]])
 
@@ -24,7 +27,3 @@ get_endpoint <- function(pointbase, ...) {
   url <- paste0(pointbase, "?", paste(p, collapse = "&"))
   return( sub("[/?&]$", "", url) )
 }
-#
-#
-# get_endpoint("demo?/&", x = "try?", y = 1, z = 1:5) %>% print
-# get_endpoint("demo") %>% print

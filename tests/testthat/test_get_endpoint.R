@@ -27,5 +27,9 @@ test_that("Parameters work", {
     brapi:::get_endpoint("base", "1")
   })
 
+  expect_true({
+    brapi:::get_endpoint("base", observationLevel = "any") == "base"
+  })
+
 })
 
