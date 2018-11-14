@@ -29,3 +29,12 @@ test_that("Parameters work", {
 
 })
 
+context("get_body usage")
+
+con <- ba_db()$testserver
+
+expect_true({
+  nrow(ba_germplasm_search_post(con, germplasmDbIds = c("1", "2"))) > 1
+})
+
+

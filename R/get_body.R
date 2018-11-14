@@ -7,7 +7,7 @@ get_body <- function(...) {
 
   for (i in seq_along(args)) {
     if (any(is.null(args[[i]]))) args[[i]] <- ""
-    if (is.na(args[[i]])) args[[i]] <- ""
+    if (any(is.na(args[[i]]))) args[[i]] <- ""
 
     if (all(args[[i]] != "")) {
       p[j] <- as.array(args[i])
