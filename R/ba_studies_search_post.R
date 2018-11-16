@@ -49,8 +49,9 @@
 #'                                 internal observation variable database
 #'                                 identifiers e.g. c("CO-PH-123", "Var-123"),
 #'                                 have been measured; default: ""
-#' @param active logical; search studies by active status; default: "TRUE",
-#'               other possible values TRUE/FALSE
+#' @param active logical; search studies by active status (by default both
+#'               active and inactive studies are shown); default: NA,other
+#'               possible values TRUE (show active)/FALSE (show inactive)
 #' @param sortBy character; name of the field to sort by e.g. "studyDbId";
 #'               default: ""
 #' @param sortOrder character; sort order direction; default: "", possible values
@@ -88,7 +89,7 @@ ba_studies_search_post <- function(con = NULL,
                                    commonCropName = "",
                                    germplasmDbIds = "",
                                    observationVariableDbIds = "",
-                                   active = TRUE,
+                                   active = NA,
                                    sortBy = "",
                                    sortOrder = "",
                                    page = 0,
