@@ -7,7 +7,7 @@
 #'                   studies, supplied as a comma separated character vector of
 #'                   internal study database identifiers e.g. c("35", "345");
 #'                   default: ""
-#' @param trialDbIds character vector, search for studies and  details of
+#' @param trialDbIds character vector, search for studies and details of
 #'                   specified trials, supplied as a comma separated character
 #'                   vector of internal trial database identifiers e.g.
 #'                   c("7", "8"); default: ""
@@ -92,8 +92,8 @@ ba_studies_search_post <- function(con = NULL,
                                    active = NA,
                                    sortBy = "",
                                    sortOrder = "",
-                                   page = 0,
                                    pageSize = 1000,
+                                   page = 0,
                                    rclass = c("tibble", "data.frame",
                                               "list", "json")) {
   ba_check(con = con, verbose = FALSE)
