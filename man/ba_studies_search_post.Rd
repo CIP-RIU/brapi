@@ -9,7 +9,7 @@ ba_studies_search_post(con = NULL, studyDbIds = "", trialDbIds = "",
   studyType = "", studyNames = "", studyLocations = "",
   programNames = "", commonCropName = "", germplasmDbIds = "",
   observationVariableDbIds = "", active = NA, sortBy = "",
-  sortOrder = "", page = 0, pageSize = 1000, rclass = c("tibble",
+  sortOrder = "", pageSize = 1000, page = 0, rclass = c("tibble",
   "data.frame", "list", "json"))
 }
 \arguments{
@@ -20,7 +20,7 @@ studies, supplied as a comma separated character vector of
 internal study database identifiers e.g. c("35", "345");
 default: ""}
 
-\item{trialDbIds}{character vector, search for studies and  details of
+\item{trialDbIds}{character vector, search for studies and details of
 specified trials, supplied as a comma separated character
 vector of internal trial database identifiers e.g.
 c("7", "8"); default: ""}
@@ -83,9 +83,9 @@ default: ""}
 \item{sortOrder}{character; sort order direction; default: "", possible values
 "asc"/"desc"}
 
-\item{page}{integer, the requested page to be returned; default: 0 (1st page)}
-
 \item{pageSize}{integer, items per page to be returned; default: 1000}
+
+\item{page}{integer, the requested page to be returned; default: 0 (1st page)}
 
 \item{rclass}{character, class of the object to be returned;  default: "tibble"
 , possible other values: "json"/"list"/"data.frame"}

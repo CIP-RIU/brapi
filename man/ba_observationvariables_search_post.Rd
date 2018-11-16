@@ -6,40 +6,73 @@
 \usage{
 ba_observationvariables_search_post(con = NULL, datatypes = "",
   methodDbIds = "", names = "", observationVariableDbIds = "",
-  ontologyXrefs = "", ontologyDbIds = "", page = 0,
-  pageSize = 1000, scaleDbIds = "", traitClasses = "",
+  ontologyXrefs = "", ontologyDbIds = "", scaleDbIds = "",
+  traitClasses = "", pageSize = 1000, page = 0,
   rclass = c("tibble", "data.frame", "list", "json"))
 }
 \arguments{
-\item{con}{brapi list; connection object}
+\item{con}{list, brapi connection object}
 
-\item{datatypes}{vector of character; default: ''}
+\item{datatypes}{character vector, filter the search results by a list of
+scale data types, supplied as a comma separated character
+vector e.g. c("numeric"); default: ""}
 
-\item{methodDbIds}{vector of character; default: ''}
+\item{methodDbIds}{character vector, filter the search results by a list of
+methods, supplied as a comma separated character vector
+of internal program database identifiers e.g.
+c("method-1", "method-2"); default: ""}
 
-\item{names}{vector of character; default: ''}
+\item{names}{character vector, search for observation variables by human
+readable observation variable names, supplied as a comma
+separated character vector e.g. c("caro_spectro"); default: ""}
 
-\item{observationVariableDbIds}{vector of character; default: ''}
+\item{observationVariableDbIds}{character vector, filter search results of
+observation variables by specified
+observation variable internal database
+identifiers, supplied as a comma separated
+character vector e.g. c("obs-variable-id1",
+"obs-variable-id1"); default: ""}
 
-\item{ontologyXrefs}{vector of character; default: ''}
+\item{ontologyXrefs}{character vector, filter search results of observation
+variables using ontology cross references, supplied as
+a comma separated character vector e.g. c("CO:123",
+"CO:456"); default: ""}
 
-\item{ontologyDbIds}{vector of character; default: ''}
+\item{ontologyDbIds}{character vector, filter search results of observation
+variables by ontology internal database identifiers,
+supplied as a comma separated character vector e.g. c("
+CO_334:0100632"); default: ""}
 
-\item{page}{integer; default: 0}
+\item{scaleDbIds}{chararcter vector, filter search results of observation
+variables by specified scale internal database identifiers
+, supplied as a comma separated character vector e.g. c("
+scale-1", "scale-2"); default: ""}
 
-\item{pageSize}{integer, default: 1000}
+\item{traitClasses}{character vector, filter search results of observation
+variables by trait classes, supplied as a comma separated
+character vector e.g. c("Phenological", "Physiological");
+default: ""}
 
-\item{scaleDbIds}{vector of character; default: ''}
+\item{pageSize}{integer, items per page to be returned; default: 1000}
 
-\item{traitClasses}{vector of character; default: ''}
+\item{page}{integer, the requested page to be returned; default: 0 (1st page)}
 
-\item{rclass}{character; default: tibble}
+\item{rclass}{character, class of the object to be returned;  default: "tibble"
+, possible other values: "json"/"list"/"data.frame"}
 }
 \value{
-rclass
+An object of class as defined by \code{rclass} containing the
+        observation variables fulfilling the search criteria.
 }
 \description{
-lists the breeding observationvariables
+Search for observation variables on a brapi server via a POST method.
+}
+\note{
+Tested against: test-server
+
+BrAPI Version: 1.0, 1.1, 1.2
+
+BrAPI Status: active
 }
 \examples{
 if (interactive()) {
@@ -52,28 +85,8 @@ if (interactive()) {
 }
 }
 \references{
-\href{https://github.com/plantbreeding/API/blob/master/Specification/ObservationVariables/VariableSearch.md}{github}
-}
-\seealso{
-Other brapicore: \code{\link{ba_calls}},
-  \code{\link{ba_commoncropnames}}, \code{\link{ba_crops}},
-  \code{\link{ba_germplasm_details_study}},
-  \code{\link{ba_germplasm_details}},
-  \code{\link{ba_germplasm_pedigree}},
-  \code{\link{ba_germplasm_progeny}},
-  \code{\link{ba_germplasm_search_post}},
-  \code{\link{ba_germplasm_search}},
-  \code{\link{ba_observationvariables_datatypes}},
-  \code{\link{ba_observationvariables_details}},
-  \code{\link{ba_observationvariables_ontologies}},
-  \code{\link{ba_observationvariables}},
-  \code{\link{ba_phenotypes_search_post}},
-  \code{\link{ba_programs_search_post}},
-  \code{\link{ba_programs}},
-  \code{\link{ba_studies_germplasm_details}},
-  \code{\link{ba_traits_details}}, \code{\link{ba_traits}}
+\href{https://github.com/plantbreeding/API/blob/V1.2/Specification/ObservationVariables/VariableSearch.md}{github}
 }
 \author{
-Reinhard Simon
+Reinhard Simon, Maikel Verouden
 }
-\concept{brapicore}
