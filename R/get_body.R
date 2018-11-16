@@ -1,5 +1,5 @@
 get_body <- function(...) {
-  forbidden <- "[/?&]$"
+  # forbidden <- "[/?&]$"
 
   args <- list(...)
   p <- list()
@@ -10,7 +10,11 @@ get_body <- function(...) {
     if (any(is.na(args[[i]]))) args[[i]] <- ""
 
     if (all(args[[i]] != "")) {
-      p[j] <- as.array(args[i])
+      if (class(args[[i]]) == "character") {
+        p[[j]] <- as.array(args[[i]])
+      } else {
+        p[[j]] <- args[[i]]
+      }
       names(p)[j] <- names(args)[i]
       j <- j + 1
     }
