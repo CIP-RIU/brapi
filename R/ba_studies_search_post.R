@@ -50,7 +50,7 @@
 #'                                 identifiers e.g. c("CO-PH-123", "Var-123"),
 #'                                 have been measured; default: ""
 #' @param active logical; search studies by active status (by default both
-#'               active and inactive studies are shown); default: NA,other
+#'               active and inactive studies are shown); default: NA, other
 #'               possible values TRUE (show active)/FALSE (show inactive)
 #' @param sortBy character; name of the field to sort by e.g. "studyDbId";
 #'               default: ""
