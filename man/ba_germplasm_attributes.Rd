@@ -11,23 +11,40 @@ ba_germplasm_attributes(con = NULL, germplasmDbId = "",
 \arguments{
 \item{con}{brapi connection object}
 
-\item{germplasmDbId}{character; \strong{REQUIRED ARGUMENT} with default: ''.}
+\item{germplasmDbId}{character, the internal database identifier for a
+germplasm of which the germplasm attribute values are to
+be retrieved e.g. "9932"; \strong{REQUIRED ARGUMENT}
+with default: ""}
 
-\item{attributeList}{character vector;  \strong{DEPRECATED ARGUMENT} with default: NULL.}
+\item{attributeList}{character vector; \strong{DEPRECATED ARGUMENT} with
+default: NULL}
 
-\item{attributeDbIds}{character vector; default: ''}
+\item{attributeDbIds}{character vector, restrict the response to only the
+listed internal attribute database identifiers, supplied
+as a character vector, e.g. c("123", "234", "345");
+default: ""}
 
-\item{pageSize}{integer; default: 1000.}
+\item{pageSize}{integer, items per page to be returned; default: 1000}
 
-\item{page}{integer; default: 0.}
+\item{page}{integer, the requested page to be returned; default: 0 (1st page)}
 
-\item{rclass}{character; default: tibble; or else: json, list, data.frame.}
+\item{rclass}{character, class of the object to be returned;  default: "tibble"
+, possible other values: "data.frame"/"list"/"json"}
 }
 \value{
-rclass as defined
+An object of class as defined by rclass containing the germplasm
+        attribute values.
 }
 \description{
-germplasm_attibutes call.
+Retrieve germplasm attibute values by a specified gerplasm database
+identifier.
+}
+\note{
+Tested against: test-server
+
+BrAPI Version: 1.1, 1.2
+
+BrAPI Status: active
 }
 \examples{
 if (interactive()) {
@@ -35,7 +52,7 @@ if (interactive()) {
 
   con <- ba_db()$testserver
 
-  ba_germplasmattributes_details(con, germplasmDbId = "1")
+  ba_germplasm_attributes(con, germplasmDbId = "1")
 
 }
 }
@@ -68,7 +85,7 @@ Other genotyping: \code{\link{ba_genomemaps_data_range}},
   \code{\link{ba_markers_search}}
 }
 \author{
-Reinhard Simon
+Reinhard Simon, Maikel Verouden
 }
 \concept{genotyping}
 \concept{germplasmattributes}

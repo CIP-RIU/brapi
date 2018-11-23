@@ -12,7 +12,7 @@ ba_germplasm_details(con = NULL, germplasmDbId = "",
 
 \item{germplasmDbId}{character, the internal database identifier for a
 germplasm of which the germplasm details are to be
-retrieved e.g. "382" ; \strong{REQUIRED ARGUMENT} with
+retrieved e.g. "382"; \strong{REQUIRED ARGUMENT} with
 default: ""}
 
 \item{rclass}{character, class of the object to be returned;  default: "tibble"
