@@ -10,15 +10,20 @@ ba_germplasm_details(con = NULL, germplasmDbId = "",
 \arguments{
 \item{con}{brapi connection object}
 
-\item{germplasmDbId}{string; \strong{REQUIRED ARGUMENT} with default ''}
+\item{germplasmDbId}{character, the internal database identifier for a
+germplasm of which the germplasm details are to be
+retrieved e.g. "382" ; \strong{REQUIRED ARGUMENT} with
+default: ""}
 
-\item{rclass}{character; tibble}
+\item{rclass}{character, class of the object to be returned;  default: "tibble"
+, possible other values: "data.frame"/"list"/"json"}
 }
 \value{
-rclass as defined
+An object of class as defined by rclass containing the germplasm
+        details.
 }
 \description{
-Gets germplasm details given an id.
+Gets germplasm details given an internal database identifier.
 }
 \note{
 Tested against: sweetpotatobase, test-server, genesys
@@ -33,7 +38,7 @@ if (interactive()) {
 
   con <- ba_db()$testserver
 
-  ba_germplasm_details(con, "1")
+  ba_germplasm_details(con, germplasmDbId = "1")
 }
 }
 \references{
@@ -67,7 +72,7 @@ Other brapicore: \code{\link{ba_calls}},
   \code{\link{ba_traits_details}}, \code{\link{ba_traits}}
 }
 \author{
-Reinhard Simon
+Reinhard Simon, Maikel Verouden
 }
 \concept{brapicore}
 \concept{germplasm}

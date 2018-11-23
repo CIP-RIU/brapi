@@ -3,5 +3,5 @@ if (interactive()) {
 
   con <- ba_db()$testserver
 
-  ba_germplasm_details(con, "1")
+  ba_germplasm_details(con, germplasmDbId = "1")
 }
