@@ -34,7 +34,7 @@ ba_studies_seasons <- function(con = NULL,
   rclass <- match.arg(rclass)
 
   brp <- get_brapi(con) %>% paste0("seasons")
-  callurl <- get_endpoint(brp,
+  callurl <- get_endpoint(pointbase = brp,
                           year = year,
                           pageSize = pageSize,
                           page = page
