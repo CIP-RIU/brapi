@@ -6,6 +6,12 @@ get_endpoint <- function(pointbase, ...) {
   if (all(c("pageSize", "page") %in% names(args))) {
     check_paging(args$pageSize, args$page)
   }
+  if ("pageSize" %in% names(args)) {
+    args$pageSize <- ifelse(args$pageSize == 1000, "", args$pageSize)
+  }
+  if ("page" %in% names(args)) {
+    args$page <- ifelse(args$page == 0, "", args$page)
+  }
 
   p <- list()
   j <- 1
@@ -16,6 +22,7 @@ get_endpoint <- function(pointbase, ...) {
     if (is.na(args[[i]])) args[[i]] <- ""
 
     if (args[[i]] == "any") next()
+    if (args[[i]] == 0) next()
 
     if (!is.null(args[[i]]) && args[[i]] != "") {
       args[[i]] <- sub(forbidden, "", args[[i]])
@@ -25,5 +32,5 @@ get_endpoint <- function(pointbase, ...) {
     }
   }
   url <- paste0(pointbase, "?", paste(p, collapse = "&"))
-  return( sub("[/?&]$", "", url) )
+  return(sub(forbidden, "", url))
 }
