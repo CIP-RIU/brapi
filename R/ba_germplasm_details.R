@@ -5,7 +5,7 @@
 #' @param con brapi connection object
 #' @param germplasmDbId character, the internal database identifier for a
 #'                      germplasm of which the germplasm details are to be
-#'                      retrieved e.g. "382" ; \strong{REQUIRED ARGUMENT} with
+#'                      retrieved e.g. "382"; \strong{REQUIRED ARGUMENT} with
 #'                      default: ""
 #' @param rclass character, class of the object to be returned;  default: "tibble"
 #'               , possible other values: "data.frame"/"list"/"json"
@@ -29,7 +29,8 @@
 #' @export
 ba_germplasm_details <- function(con = NULL,
                                  germplasmDbId = "",
-                                 rclass = c("tibble", "data.frame", "list", "json")) {
+                                 rclass = c("tibble", "data.frame",
+                                            "list", "json")) {
   ba_check(con = con, verbose = FALSE, brapi_calls = "germplasm/id")
   check_character(germplasmDbId)
   check_req(germplasmDbId)
