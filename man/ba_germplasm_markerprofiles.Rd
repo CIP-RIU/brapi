@@ -10,15 +10,28 @@ ba_germplasm_markerprofiles(con = NULL, germplasmDbId = "",
 \arguments{
 \item{con}{brapi connection object}
 
-\item{germplasmDbId}{character, \strong{REQUIRED ARGUMENT} with default: ''}
+\item{germplasmDbId}{character, the internal database identifier for a
+germplasm of which the internal markerprofile database
+identifiers are to be retrieved e.g. "9932";
+\strong{REQUIRED ARGUMENT} with default: ""}
 
-\item{rclass}{default: tibble}
+\item{rclass}{character, class of the object to be returned;  default: "tibble"
+, possible other values: "data.frame"/"list"/"json"}
 }
 \value{
-rclass as defined
+An object of class as defined by rclass containing the internal
+        markerprofile database identifiers.
 }
 \description{
-Gets minimal marker profile data from database using database internal id
+Retrieve the internal markerprofile database identifiers for a given internal
+germplasm database identifier
+}
+\note{
+Tested against: test-server
+
+BrAPI Version: 1.0, 1.1, 1.2
+
+BrAPI Status: active
 }
 \examples{
 if (interactive()) {
@@ -64,7 +77,7 @@ Other genotyping: \code{\link{ba_genomemaps_data_range}},
   \code{\link{ba_markers_search}}
 }
 \author{
-Reinhard Simon
+Reinhard Simon, Maikel Verouden
 }
 \concept{genotyping}
 \concept{germplasm}

@@ -1,16 +1,28 @@
 #' ba_germplasm_pedigree
 #'
-#' Gets minimal pedigree data from database using database internal id
+#' Retrieve germplasm pedigree by internal germplasm database identifier
 #'
 #' @param con brapi connection object
-#' @param germplasmDbId character; \strong{REQUIRED ARGUMENT} with default ''
-#' @param notation character; optional, recommended value: purdue format. Default: ''
-#' @param includeSiblings logic; optional, default: TRUE
-#' @param rclass character; default: tibble
+#' @param germplasmDbId character, the internal database identifier for a
+#'                      germplasm of which the germplasm pedigree is to be
+#'                      retrieved e.g. "9932"; \strong{REQUIRED ARGUMENT} with
+#'                      default: ""
+#' @param notation character, text representation of the pedigree e.g. "purdy";
+#'                 default: ""
+#' @param includeSiblings logical, indicating whether to include, specified as
+#'                        TRUE, a siblings array or not, specified as FALSE;
+#'                        default: NA
+#' @param rclass character, class of the object to be returned;  default: "tibble"
+#'               , possible other values: "data.frame"/"list"/"json"
 #'
-#' @return list of pedigree data
+#' @return An object of class as defined by rclass containing the germplasm
+#'         pedigree.
 #'
-#' @author Reinhard Simon
+#' @note Tested against: test-server
+#' @note BrAPI Version: 1.2
+#' @note BrAPI Status: active
+#'
+#' @author Reinhard Simon, Maikel Verouden
 #' @references \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Germplasm/Germplasm_Pedigree_GET.md}{github}
 #'
 #' @family germplasm
@@ -23,8 +35,9 @@
 ba_germplasm_pedigree <- function(con = NULL,
                                   germplasmDbId = "",
                                   notation = "",
-                                  includeSiblings = TRUE,
-                                  rclass = c("tibble", "data.frame", "list", "json")) {
+                                  includeSiblings = NA,
+                                  rclass = c("tibble", "data.frame",
+                                             "list", "json")) {
   ba_check(con = con, verbose = FALSE)
   check_character(germplasmDbId)
   stopifnot(is.logical(includeSiblings))
@@ -32,11 +45,13 @@ ba_germplasm_pedigree <- function(con = NULL,
   rclass <- match_req(rclass)
 
   brp <- get_brapi(con = con) %>% paste0("germplasm/", germplasmDbId, "/pedigree")
-  callurl <- get_endpoint(brp, notation = notation, includeSiblings = includeSiblings)
+  callurl <- get_endpoint(brp,
+                          notation = notation,
+                          includeSiblings = includeSiblings)
 
   try({
-    res <- brapiGET(url = callurl, con = con)
-    res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
+    resp <- brapiGET(url = callurl, con = con)
+    cont <- httr::content(x = resp, as = "text", encoding = "UTF-8")
     out <- NULL
     ms2tbl <- function(res) {
       lst <- jsonlite::fromJSON(txt = res)
@@ -61,17 +76,17 @@ ba_germplasm_pedigree <- function(con = NULL,
       return(res3)
     }
     if (rclass %in% c("json", "list")) {
-      out <- dat2tbl(res = res2, rclass = rclass)
+      out <- dat2tbl(res = cont, rclass = rclass)
     }
     if (rclass == "tibble")
-      out <- ms2tbl(res = res2) %>% tibble::as_tibble()
+      out <- ms2tbl(res = cont) %>% tibble::as_tibble()
     if (rclass == "data.frame") {
-      out <- ms2tbl(res = res2) %>%
+      out <- ms2tbl(res = cont) %>%
              tibble::as_tibble() %>%
              as.data.frame()
     }
     class(out) <- c(class(out), "ba_germplasm_pedigree")
-    show_metadata(res)
+    show_metadata(resp)
     return(out)
   })
 }

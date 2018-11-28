@@ -5,25 +5,40 @@
 \title{ba_germplasm_pedigree}
 \usage{
 ba_germplasm_pedigree(con = NULL, germplasmDbId = "", notation = "",
-  includeSiblings = TRUE, rclass = c("tibble", "data.frame", "list",
+  includeSiblings = NA, rclass = c("tibble", "data.frame", "list",
   "json"))
 }
 \arguments{
 \item{con}{brapi connection object}
 
-\item{germplasmDbId}{character; \strong{REQUIRED ARGUMENT} with default ''}
+\item{germplasmDbId}{character, the internal database identifier for a
+germplasm of which the germplasm pedigree is to be
+retrieved e.g. "9932"; \strong{REQUIRED ARGUMENT} with
+default: ""}
 
-\item{notation}{character; optional, recommended value: purdue format. Default: ''}
+\item{notation}{character, text representation of the pedigree e.g. "purdy";
+default: ""}
 
-\item{includeSiblings}{logic; optional, default: TRUE}
+\item{includeSiblings}{logical, indicating whether to include, specified as
+TRUE, a siblings array or not, specified as FALSE;
+default: NA}
 
-\item{rclass}{character; default: tibble}
+\item{rclass}{character, class of the object to be returned;  default: "tibble"
+, possible other values: "data.frame"/"list"/"json"}
 }
 \value{
-list of pedigree data
+An object of class as defined by rclass containing the germplasm
+        pedigree.
 }
 \description{
-Gets minimal pedigree data from database using database internal id
+Retrieve germplasm pedigree by internal germplasm database identifier
+}
+\note{
+Tested against: test-server
+
+BrAPI Version: 1.2
+
+BrAPI Status: active
 }
 \examples{
 if (interactive()) {
@@ -66,7 +81,7 @@ Other brapicore: \code{\link{ba_calls}},
   \code{\link{ba_traits_details}}, \code{\link{ba_traits}}
 }
 \author{
-Reinhard Simon
+Reinhard Simon, Maikel Verouden
 }
 \concept{brapicore}
 \concept{germplasm}

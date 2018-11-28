@@ -1,26 +1,38 @@
 #' ba_germplasm_markerprofiles
 #'
-#' Gets minimal marker profile data from database using database internal id
+#' Retrieve the internal markerprofile database identifiers for a given internal
+#' germplasm database identifier
 #'
 #' @param con brapi connection object
-#' @param germplasmDbId character, \strong{REQUIRED ARGUMENT} with default: ''
-#' @param rclass default: tibble
+#' @param germplasmDbId character, the internal database identifier for a
+#'                      germplasm of which the internal markerprofile database
+#'                      identifiers are to be retrieved e.g. "9932";
+#'                      \strong{REQUIRED ARGUMENT} with default: ""
+#' @param rclass character, class of the object to be returned;  default: "tibble"
+#'               , possible other values: "data.frame"/"list"/"json"
 #'
-#' @return rclass as defined
+#' @return An object of class as defined by rclass containing the internal
+#'         markerprofile database identifiers.
 #'
-#' @author Reinhard Simon
+#' @note Tested against: test-server
+#' @note BrAPI Version: 1.0, 1.1, 1.2
+#' @note BrAPI Status: active
+#'
+#' @author Reinhard Simon, Maikel Verouden
 #' @references \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Germplasm/Germplasm_Markerprofiles_GET.md}{github}
 #'
 #' @family germplasm
 #' @family genotyping
 #'
 #' @example inst/examples/ex-ba_germplasm_markerprofiles.R
+#'
 #' @import httr
 #' @import dplyr
 #' @export
 ba_germplasm_markerprofiles <- function(con = NULL,
                                         germplasmDbId = "",
-                                        rclass = c("tibble", "data.frame", "list", "json")) {
+                                        rclass = c("tibble", "data.frame",
+                                                   "list", "json")) {
   ba_check(con = con, verbose = FALSE)
   check_character(germplasmDbId)
   check_req(germplasmDbId)
@@ -29,8 +41,8 @@ ba_germplasm_markerprofiles <- function(con = NULL,
   callurl <- paste0(get_brapi(con = con), "germplasm/", germplasmDbId, "/markerprofiles")
 
   try({
-    res <- brapiGET(url = callurl, con = con)
-    res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
+    resp <- brapiGET(url = callurl, con = con)
+    cont <- httr::content(x = resp, as = "text", encoding = "UTF-8")
     out <- NULL
     ms2tbl <- function(res) {
       lst <- tryCatch(
@@ -42,10 +54,9 @@ ba_germplasm_markerprofiles <- function(con = NULL,
       dat <- jsonlite::toJSON(x = lst$result)
       df <- jsonlite::fromJSON(txt = dat, simplifyDataFrame = TRUE,
                                flatten = TRUE)
-      if(length(df$markerprofileDbIds) == 0) {
-        df$markerprofileDbIds <- ''
+      if (length(df$markerprofileDbIds) == 0) {
+        df$markerprofileDbIds <- ""
       }
-
       res3 <- tibble::as.tibble(df)
       # assertthat::assert_that(all(c("germplasmDbId",
       #                               "markerprofileDbIds") %in%
@@ -60,21 +71,22 @@ ba_germplasm_markerprofiles <- function(con = NULL,
       #                       stringsAsFactors = FALSE)
       return(res3)
     }
+
     if (rclass %in% c("json", "list")) {
-      out <- dat2tbl(res = res2, rclass = rclass)
+      out <- dat2tbl(res = cont, rclass = rclass)
     }
 
     if (rclass == "data.frame") {
-      out <- ms2tbl(res = res2)
+      out <- ms2tbl(res = cont)
     }
     if (rclass == "vector") {
-      out <- ms2tbl(res = res2)[, 2]
+      out <- ms2tbl(res = cont)[, 2]
     }
     if (rclass == "tibble") {
-      out <- ms2tbl(res = res2) %>% tibble::as_tibble()
+      out <- ms2tbl(res = cont) %>% tibble::as_tibble()
     }
     class(out) <- c(class(out), "ba_germplasm_markerprofiles")
-    show_metadata(res)
+    show_metadata(resp)
     return(out)
   })
 }
