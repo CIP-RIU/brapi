@@ -5,5 +5,5 @@ match_req <- function(...) {
   if (!lapply(args, non_empty) %>% unlist %>% all()) {
     stop("All parameters must have at least a length of one.")
   }
-  args[[1]]
+  args[[1]][1]
 }
