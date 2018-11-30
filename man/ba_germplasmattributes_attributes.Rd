@@ -9,9 +9,11 @@ ba_germplasmattributes_attributes(con = NULL,
   rclass = c("tibble", "data.frame", "list", "json"))
 }
 \arguments{
-\item{con}{list, brapi connection object}
+\item{con}{brapi connection object}
 
-\item{attributeCategoryDbId}{character, optional, default: ''}
+\item{attributeCategoryDbId}{character, filter for kind of attribute by
+supplying an internal attribute category database
+identifier e.g. "2"; default: ""}
 
 \item{pageSize}{integer, items per page to be returned; default: 1000}
 
@@ -21,15 +23,16 @@ ba_germplasmattributes_attributes(con = NULL,
 , possible other values: "json"/"list"/"vector"/"data.frame"}
 }
 \value{
-as defined by rclass
+An object of class as defined by rclass containing the available
+        attributes.
 }
 \description{
-List supported crops in a database.
+Retrieve available attributes.
 }
 \note{
 Tested against: test-server, sweetpotatobsse
 
-BrAPI Version: 1.2
+BrAPI Version: 1.0, 1.1, 1.2
 
 BrAPI Status: active
 }
@@ -39,7 +42,7 @@ if (interactive()) {
 
   con <- ba_db()$testserver
 
-  ba_germplasmattributes_attributes(con, "1")
+  ba_germplasmattributes_attributes(con, attributeCategoryDbId = "1")
 }
 }
 \references{

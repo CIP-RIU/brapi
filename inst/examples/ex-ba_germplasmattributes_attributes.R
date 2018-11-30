@@ -3,5 +3,5 @@ if (interactive()) {
 
   con <- ba_db()$testserver
 
-  ba_germplasmattributes_attributes(con, "1")
+  ba_germplasmattributes_attributes(con, attributeCategoryDbId = "1")
 }
