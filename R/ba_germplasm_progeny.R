@@ -1,14 +1,24 @@
 #' ba_germplasm_progeny
 #'
-#' Gets germplasm progenies given an id.
+#' Retrieve the internal germplasm database identifiers for all the progeny of
+#' a particular internal germplasm database identifier.
 #'
 #' @param con brapi connection object
-#' @param germplasmDbId character; \strong{REQUIRED ARGUMENT} with default ''
-#' @param rclass character; default: tibble
+#' @param germplasmDbId character, the internal database identifier for a
+#'                      germplasm of which the internal germaplasm database
+#'                      identifiers of all the progeny are to be retrieved e.g.
+#'                      "9932"; \strong{REQUIRED ARGUMENT} with default: ""
+#' @param rclass character, class of the object to be returned;  default: "tibble"
+#'               , possible other values: "data.frame"/"list"/"json"
 #'
-#' @return character; default: tibble
+#' @return An object of class as defined by rclass containing the internal
+#'         germplasm database identifiers for all the progeny.
 #'
-#' @author Reinhard Simon
+#' @note Tested against: test-server
+#' @note BrAPI Version: 1.2
+#' @note BrAPI Status: active
+#'
+#' @author Reinhard Simon, Maikel Verouden
 #' @references \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Germplasm/Germplasm_Progeny_GET.md}{github}
 #'
 #' @family germplasm
@@ -20,7 +30,8 @@
 #' @export
 ba_germplasm_progeny <- function(con = NULL,
                                  germplasmDbId = "",
-                                 rclass = c("tibble", "data.frame", "list", "json")) {
+                                 rclass = c("tibble", "data.frame",
+                                            "list", "json")) {
   ba_check(con = con, verbose = FALSE, brapi_calls = "germplasm/id/progeny")
   check_character(germplasmDbId)
   check_req(germplasmDbId)
@@ -29,21 +40,21 @@ ba_germplasm_progeny <- function(con = NULL,
   callurl <- get_brapi(con = con) %>% paste0("germplasm/", germplasmDbId, "/progeny")
 
   try({
-    res <- brapiGET(url = callurl, con = con)
-    res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")
+    resp <- brapiGET(url = callurl, con = con)
+    cont <- httr::content(x = resp, as = "text", encoding = "UTF-8")
     out <- NULL
     if (rclass %in% c("json", "list")) {
-      out <- dat2tbl(res = res2, rclass = rclass)
+      out <- dat2tbl(res = cont, rclass = rclass)
     }
     if (rclass == "data.frame") {
-      out <- dat2tbl(res = res2, rclass = rclass, result_level = "progeny")
+      out <- dat2tbl(res = cont, rclass = rclass, result_level = "progeny")
     }
     if (rclass == "tibble") {
-      out <- dat2tbl(res = res2, rclass = rclass, result_level = "progeny") %>% tibble::as_tibble(validate = FALSE)
+      out <- dat2tbl(res = cont, rclass = rclass, result_level = "progeny") %>% tibble::as_tibble(validate = FALSE)
     }
     class(out) <- c(class(out), "ba_germplasm_progeny")
 
-    show_metadata(res)
+    show_metadata(resp)
     return(out)
   })
 }

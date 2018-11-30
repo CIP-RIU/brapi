@@ -10,15 +10,28 @@ ba_germplasm_progeny(con = NULL, germplasmDbId = "",
 \arguments{
 \item{con}{brapi connection object}
 
-\item{germplasmDbId}{character; \strong{REQUIRED ARGUMENT} with default ''}
+\item{germplasmDbId}{character, the internal database identifier for a
+germplasm of which the internal germaplasm database
+identifiers of all the progeny are to be retrieved e.g.
+"9932"; \strong{REQUIRED ARGUMENT} with default: ""}
 
-\item{rclass}{character; default: tibble}
+\item{rclass}{character, class of the object to be returned;  default: "tibble"
+, possible other values: "data.frame"/"list"/"json"}
 }
 \value{
-character; default: tibble
+An object of class as defined by rclass containing the internal
+        germplasm database identifiers for all the progeny.
 }
 \description{
-Gets germplasm progenies given an id.
+Retrieve the internal germplasm database identifiers for all the progeny of
+a particular internal germplasm database identifier.
+}
+\note{
+Tested against: test-server
+
+BrAPI Version: 1.2
+
+BrAPI Status: active
 }
 \examples{
 if (interactive()) {
@@ -61,7 +74,7 @@ Other brapicore: \code{\link{ba_calls}},
   \code{\link{ba_traits_details}}, \code{\link{ba_traits}}
 }
 \author{
-Reinhard Simon
+Reinhard Simon, Maikel Verouden
 }
 \concept{brapicore}
 \concept{germplasm}
