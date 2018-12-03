@@ -6,8 +6,14 @@ test_that("Germplasm_progeny results are present", {
 
   res <- ba_germplasm_progeny(con = con, germplasmDbId = "1")
   expect_that(nrow(res) == 3, is_true())
-  expect_that(ncol(res) >= 3, is_true())
-
+  expect_that(ncol(res) >= 5, is_true())
+  expect_that(all(names(res) %in% c("germplasmDbId",
+                    "defaultDisplayName",
+                    "progeny.defaultDisplayName",
+                    "progeny.germplasmDbId",
+                    "progeny.parentType"
+                    )
+  ))
 })
 
 test_that("out formats work", {
