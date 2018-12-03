@@ -5,7 +5,7 @@
 #' to as in other functions.
 #'
 #' @param con brapi connection object
-#' @param markerprofileDbId character vector; default ''
+#' @param markerProfileDbId character vector; default ''
 #' @param markerDbId character vector; default ''
 #' @param matrixDbId character vector; default ''
 #' @param expandHomozygotes logical; default false
@@ -33,11 +33,11 @@
 #' @import progress
 #' @export
 ba_markerprofiles_allelematrices_search_post <- function(con = NULL,
-                                                  markerprofileDbId = "",
+                                                  markerProfileDbId = "",
                                                   markerDbId = "",
                                                   matrixDbId = "",
                                                   expandHomozygotes = FALSE,
-                                                  unknownString = "-",
+                                                  unknownString = "",
                                                   sepPhased = "",
                                                   sepUnphased = "",
                                                   format = "json",
@@ -46,17 +46,18 @@ ba_markerprofiles_allelematrices_search_post <- function(con = NULL,
                                                   rclass = c("tibble", "data.frame",
                                                              "list", "json")) {
   ba_check(con = con, verbose = FALSE)
-  check_character(markerprofileDbId, markerDbId, markerDbId, matrixDbId, format,
+  check_character(markerProfileDbId, markerDbId, markerDbId, matrixDbId, format,
                   unknownString, sepPhased, sepUnphased)
   stopifnot(is.logical(expandHomozygotes))
-  check_req_any(markerprofileDbId = markerprofileDbId,
+  check_req_any(markerProfileDbId = markerProfileDbId,
                 markerDbId = markerDbId,
                 matrixDbId = matrixDbId)
+  rclass <- match_req(rclass)
   callurl <- get_brapi(con = con) %>% paste0("allelematrices-search")
-  body <- get_body(markerprofileDbId = markerprofileDbId,
+  body <- get_body(markerProfileDbId = markerProfileDbId,
                   markerDbId = markerDbId,
                   matrixDbId = matrixDbId,
-                  format = format,
+                  # format = format,
                   expandHomozygotes = expandHomozygotes,
                   unknownString = unknownString,
                   sepPhased = sepPhased,
@@ -66,9 +67,11 @@ ba_markerprofiles_allelematrices_search_post <- function(con = NULL,
 )
 
   out <- try({
+    # body <- jsonlite::toJSON(body, auto_unbox = TRUE)
     resp <- brapiPOST(url = callurl, body = body, con = con)
-
+    # show_metadata(resp)
     ams2tbl(res = resp, format = format, rclass = rclass)
+
   })
 
   class(out) <- c(class(out), "ba_markerprofiles_allelematrices_search_post")

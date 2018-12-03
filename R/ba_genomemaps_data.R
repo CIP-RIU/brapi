@@ -35,6 +35,7 @@ ba_genomemaps_data <- function(con = NULL,
   check_deprecated(linkageGroupId, "linkageGroupName")
   check_character(mapDbId, linkageGroupName)
   check_req(linkageGroupId)
+  rclass <- match_req(rclass)
 
   brp <- get_brapi(con = con) %>% paste0("maps/", mapDbId, "/positions")
   callurl <- get_endpoint(brp,

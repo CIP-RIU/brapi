@@ -5,7 +5,7 @@
 #' to as in other functions.
 #'
 #' @param con brapi connection object
-#' @param markerprofileDbId character vector; default ''
+#' @param markerProfileDbId character vector; default ''
 #' @param markerDbId character vector; default ''
 #' @param matrixDbId character vector; default ''
 #' @param format character; default: json; other: csv, tsv
@@ -34,7 +34,7 @@
 #' @importFrom magrittr '%>%'
 #' @export
 ba_markerprofiles_allelematrices_search <- function(con = NULL,
-                                                  markerprofileDbId = "",
+                                                  markerProfileDbId = "",
                                                   markerDbId = "",
                                                   matrixDbId = "",
                                                   format = "json",
@@ -47,15 +47,16 @@ ba_markerprofiles_allelematrices_search <- function(con = NULL,
                                                   rclass = c("tibble", "data.frame",
                                                              "list", "json")) {
   ba_check(con = con, verbose = FALSE)
-  check_character(markerprofileDbId, markerDbId, markerDbId, matrixDbId, format,
+  check_character(markerProfileDbId, markerDbId, markerDbId, matrixDbId, format,
                   unknownString, sepPhased, sepUnphased)
   stopifnot(is.logical(expandHomozygotes))
-  check_req_any(markerprofileDbId = markerprofileDbId,
+  check_req_any(markerProfileDbId = markerProfileDbId,
                 markerDbId = markerDbId,
                 matrixDbId = matrixDbId)
+  rclass <- match_req(rclass)
   brp <- get_brapi(con = con) %>% paste0("allelematrices-search")
   callurl <- get_endpoint(brp,
-                          markerprofileDbId = markerprofileDbId,
+                          markerProfileDbId = markerProfileDbId,
                           markerDbId = markerDbId,
                           matrixDbId = matrixDbId,
                           format = format,

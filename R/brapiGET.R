@@ -9,7 +9,7 @@ brapiGET <- function(url, format = "json", con = NULL) {
 
   txt <- ifelse(res$status == 200, " ok!", " problem!")
   ba_message(msg = paste0("Server status: ", txt, "\n"))
-  out <- httr::content(res)
+  url <- httr::content(res)
   if (format == "json") show_server_status_messages(out)
   return(res)
 }

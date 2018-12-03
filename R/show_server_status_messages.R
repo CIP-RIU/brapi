@@ -11,12 +11,14 @@ show_server_status_messages <- function(out) {
 
   if(!getOption("brapi_info", default = FALSE)) return()
 
-  out <- out$metadata$status %>% unlist %>% as.list()
-  ba_message(crayon::yellow("Status details from Server:"))
-
-  show_message("info", "Infos", crayon::blue)
-  show_message("success", "Successes", crayon::green)
-  show_message("error", "Errors", crayon::red)
-
+  # if(!is.null(out$metadata)) {
+  #   out <- out$metadata$status %>% unlist %>% as.list()
+  #   ba_message(crayon::yellow("Status details from Server:"))
+  #
+  #   show_message("info", "Infos", crayon::blue)
+  #   show_message("success", "Successes", crayon::green)
+  #   show_message("error", "Errors", crayon::red)
+  #
+  # }
 
 }

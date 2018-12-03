@@ -4,8 +4,8 @@ con <- ba_db()$testserver
 
 test_that("Samples are present", {
 
-  res <- ba_samples(con = con, sampleDbId = "sam1")
-  expect_true( nrow(res) == 1 )
+  res <- ba_samples(con = con, sampleDbId = "sam01")
+  expect_true( nrow(res) >= 1 )
 
 })
 

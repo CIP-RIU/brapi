@@ -53,7 +53,7 @@ ba_phenotypes_search_post <- function(con = NULL,
                   observationLevel,
                   observationTimeStampRangeStart,
                   observationTimeStampRangeEnd)
-  rclass <- match.arg(rclass)
+  rclass <- match_req(rclass)
 
   brp <- get_brapi(con = con)
   callurl <- paste0(brp, "phenotypes-search")

@@ -5,7 +5,7 @@ con <- ba_db()$testserver
 test_that(" are present", {
 
   res <- ba_germplasm_attributes(con = con, germplasmDbId = '1')
-  expect_that(nrow(res) == 10, is_true())
+  expect_that(nrow(res) == 5, is_true())
 
 })
 

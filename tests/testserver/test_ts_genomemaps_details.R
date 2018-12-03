@@ -5,7 +5,7 @@ con <- ba_db()$testserver
 test_that("Calls are present", {
 
   res <- ba_genomemaps_details(con = con, mapDbId = "gm1")
-  expect_that(nrow(res) == 3, is_true())
+  expect_that(nrow(res) == 1, is_true())
 
 })
 

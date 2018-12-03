@@ -5,7 +5,7 @@ con <- ba_db()$testserver
 
 test_that(" are present", {
 
-  res <- ba_phenotypes_search_post(con = con )
+  res <- ba_phenotypes_search_post(con = con, pageSize = 10 )
   expect_true(nrow(res) >= 154)
 
 })
