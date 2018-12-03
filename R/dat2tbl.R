@@ -31,7 +31,8 @@ dat2tbl <- function(res, rclass = "tibble", brapi_class = "ba", result_level = "
                       simplifyDataFrame = TRUE) %>% as.data.frame
   }
   if (rclass == "tibble") {
-    res <- jsonlite::fromJSON(txt = dat, simplifyDataFrame = TRUE)
+    res <- jsonlite::fromJSON(txt = dat, simplifyDataFrame = TRUE,
+                              flatten = TRUE)
     res <- tibble::as_tibble(x = res)
   }
   if(result_level == "progeny") {
