@@ -2,7 +2,7 @@ context("sp commoncropnames")
 
 con <- ba_db()$sweetpotatobase
 
-test_that("common crop names", {
+test_that("commoncropnames", {
 
   skip("Not yet implemented by sweetpotatobase")
   ccn <- ba_commoncropnames(con = con)
