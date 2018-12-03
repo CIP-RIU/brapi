@@ -1,12 +1,12 @@
-context("ts studies_table")
+context("sp studies_table")
 
 # Brapi test server does not return correct header row, so using sweetpotatobase for the moment!
-con <- ba_db()$testserver
+con <- ba_db()$sweetpotato
 
 test_that("Studies_table are present", {
 
-  expect_error({
-    res <- ba_studies_table(con = con, studyDbId = "1001")
+  expect_true({
+    nrow(ba_studies_table(con = con, studyDbId = "1180", format = "csv")) == 390
   })
 
 })

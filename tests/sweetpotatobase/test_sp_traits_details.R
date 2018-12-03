@@ -1,11 +1,11 @@
-context("ts traits_details")
+context("sp traits_details")
 
-con <- ba_db()$testserver
+con <- ba_db()$sweetpotato
 
 test_that("Traits_details are present", {
 
   res <- ba_traits_details(con = con, traitDbId = "1")
-  expect_that(nrow(res) == 3, is_true())
+  expect_that(nrow(res) == 1, is_true())
 
 })
 

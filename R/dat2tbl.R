@@ -13,7 +13,7 @@ dat2tbl <- function(res, rclass = "tibble", brapi_class = "ba", result_level = "
     dat <- jsonlite::toJSON(x = lst$result$progeny)
     germplasmDbId <- lst$result$germplasmDbId
     defaultDisplayName <- lst$result$defaultDisplayName
-    np <- length(lst$result$progeny)
+    np <- max(length(lst$result$progeny), 1)
     dat1 <- as.data.frame(cbind(germplasmDbId = rep(germplasmDbId, np),
                           defaultDisplayName = rep(defaultDisplayName, np)))
 
@@ -36,8 +36,12 @@ dat2tbl <- function(res, rclass = "tibble", brapi_class = "ba", result_level = "
     res <- tibble::as_tibble(x = res)
   }
   if(result_level == "progeny") {
-    names(res) <- paste0("progeny.", names(res))
-    res <- cbind(dat1, res)
+    if(nrow(res) > 0) {
+      names(res) <- paste0("progeny.", names(res))
+      res <- cbind(dat1, res)
+    } else {
+      res <- dat1
+    }
   }
   attr(x = res, which = "metadata") <- lst$metadata
   class(res) <- c(class(res), brapi_class)

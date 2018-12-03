@@ -29,7 +29,7 @@ ba_germplasmattributes_categories <- function(con = NULL,
                           pageSize = pageSize,
                           page = page
                           )
-
+  rclass <- match_req(rclass)
   try({
     res <- brapiGET(url = callurl, con = con)
     res2 <- httr::content(x = res, as = "text", encoding = "UTF-8")

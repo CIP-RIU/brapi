@@ -1,11 +1,11 @@
-context("studies_observationunits_save")
+context("sp studies_observationunits_save")
 
-con <- ba_db()$testserver
+con <- ba_db()$sweetpotatobase
 
 test_that("  are present", {
 
   #expect_message({
-    res <- ba_studies_observationunits_save(con = con, studyDbId = "1011",
+    res <- ba_studies_observationunits_save(con = con, studyDbId = "11111",
                                             unitData = as.data.frame(cbind(
                                               observationUnitDbId = 1,
                                               observationDbId = 4,
