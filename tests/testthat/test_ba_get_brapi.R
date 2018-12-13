@@ -19,3 +19,13 @@ test_that("Parameters work", {
 })
 
 
+test_that("Path versioning works", {
+  con$version <- "v1.2"
+  res <- brapi:::get_brapi(con)
+  expect_true( "https://test-server.brapi.org/brapi/v1.2/" == res)
+
+  con$version <- NULL
+  res <- brapi:::get_brapi(con)
+  expect_true( "https://test-server.brapi.org/brapi/v1/" == res)
+})
+

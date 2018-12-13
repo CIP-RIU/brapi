@@ -5,15 +5,15 @@
 \title{ba_markerprofiles_allelematrices_search_post}
 \usage{
 ba_markerprofiles_allelematrices_search_post(con = NULL,
-  markerprofileDbId = "", markerDbId = "", matrixDbId = "",
-  expandHomozygotes = FALSE, unknownString = "-", sepPhased = "",
+  markerProfileDbId = "", markerDbId = "", matrixDbId = "",
+  expandHomozygotes = FALSE, unknownString = "", sepPhased = "",
   sepUnphased = "", format = "json", pageSize = 1000, page = 0,
   rclass = c("tibble", "data.frame", "list", "json"))
 }
 \arguments{
 \item{con}{brapi connection object}
 
-\item{markerprofileDbId}{character vector; default ''}
+\item{markerProfileDbId}{character vector; default ''}
 
 \item{markerDbId}{character vector; default ''}
 

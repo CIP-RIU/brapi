@@ -5,7 +5,7 @@
 \title{ba_markerprofiles_allelematrices_search}
 \usage{
 ba_markerprofiles_allelematrices_search(con = NULL,
-  markerprofileDbId = "", markerDbId = "", matrixDbId = "",
+  markerProfileDbId = "", markerDbId = "", matrixDbId = "",
   format = "json", expandHomozygotes = FALSE, unknownString = "-",
   sepPhased = "", sepUnphased = "", pageSize = 1000, page = 0,
   rclass = c("tibble", "data.frame", "list", "json"))
@@ -13,7 +13,7 @@ ba_markerprofiles_allelematrices_search(con = NULL,
 \arguments{
 \item{con}{brapi connection object}
 
-\item{markerprofileDbId}{character vector; default ''}
+\item{markerProfileDbId}{character vector; default ''}
 
 \item{markerDbId}{character vector; default ''}
 

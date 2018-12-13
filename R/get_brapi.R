@@ -8,12 +8,17 @@ get_brapi <- function(con = NULL) {
     con$protocol <- "https://"
   }
   port <- ifelse(con$port == 80, "", paste0(":", con$port))
+
+  version <- ifelse("version" %in% names(con), con$version, "v1")
+
+  brapi_version <- paste0("/brapi/", version, "/")
+
   if (con$multicrop) {
     url <- paste0(con$protocol, con$db, port, con$apipath, "/",
-                  con$crop, "/brapi/v1/")
+                  con$crop, brapi_version)
   } else {
     url <- paste0(con$protocol, con$db, port, con$apipath,
-                  "/brapi/v1/")
+                  brapi_version)
   }
   return(url)
 }
