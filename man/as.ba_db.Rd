@@ -7,7 +7,7 @@
 as.ba_db(secure = FALSE, protocol = "http://", db = "127.0.0.1",
   port = 80, apipath = NULL, multicrop = FALSE, crop = "",
   user = "", password = "", token = "", granttype = "password",
-  clientid = "rbrapi", bms = FALSE)
+  clientid = "rbrapi", bms = FALSE, version = "v1")
 }
 \arguments{
 \item{secure}{logical; default: false}
@@ -35,6 +35,8 @@ as.ba_db(secure = FALSE, protocol = "http://", db = "127.0.0.1",
 \item{clientid}{character; default: 'rbrapi'}
 
 \item{bms}{logical; default: false}
+
+\item{version}{character; default: 'v1'}
 }
 \value{
 ba_db class

@@ -30,7 +30,6 @@ Imports:
     utils,
     readr,
     tidyr,
-    crayon,
     assertthat
 Suggests:
     knitr,

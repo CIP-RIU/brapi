@@ -13,6 +13,7 @@
 #' @param granttype character; default: 'password'
 #' @param clientid character; default: 'rbrapi'
 #' @param bms logical; default: false
+#' @param version character; default: 'v1'
 #'
 #' @return ba_db class
 #' @author Reinhard Simon, Maikel Verouden
@@ -31,7 +32,8 @@ as.ba_db <- function(secure = FALSE,
                      token = "",
                      granttype = "password",
                      clientid = "rbrapi",
-                     bms = FALSE) {
+                     bms = FALSE,
+                     version = 'v1')  {
   check_ba(secure = secure,
            protocol = protocol,
            db = db,
@@ -44,7 +46,8 @@ as.ba_db <- function(secure = FALSE,
            token = token,
            granttype = granttype,
            clientid = clientid,
-           bms = bms)
+           bms = bms,
+           version = version)
   out <- list(secure = secure,
               protocol = protocol,
               db = db,
@@ -58,6 +61,7 @@ as.ba_db <- function(secure = FALSE,
               granttype = granttype,
               clientid = clientid,
               bms = bms,
+              version = version,
               crops = "",
               calls = "")
   class(out) <- c(class(out), "ba_db", "ba", "ba_con")

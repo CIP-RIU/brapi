@@ -10,7 +10,8 @@ check_ba <- function(secure = FALSE,
                      token = "",
                      granttype = "password",
                      clientid = "rbrapi",
-                     bms = FALSE) {
+                     bms = FALSE,
+                     version = 'v1') {
   # check function arguments
   if (!is.logical(secure)) {
     stop("The secure argument can only be a logical (TRUE or FALSE) value.")
@@ -51,6 +52,9 @@ check_ba <- function(secure = FALSE,
   if (!is.logical(bms)) {
     stop("The bms argument argument can only be a logical value
          (TRUE or FALSE).")
+  }
+  if (!is.character(version)) {
+    stop("The version argument can only be a character string.")
   }
   return(invisible(TRUE))
 }
