@@ -5,34 +5,52 @@
 \title{ba_markers_search}
 \usage{
 ba_markers_search(con = NULL, markerDbIds = "", name = "",
-  matchMethod = "", includeSynonyms = TRUE, type = "",
+  matchMethod = "exact", includeSynonyms = NA, type = "",
   pageSize = 1000, page = 0, rclass = c("tibble", "data.frame",
   "list", "json"))
 }
 \arguments{
-\item{con}{brapi connection object}
+\item{con}{list, brapi connection object}
 
-\item{markerDbIds}{character, optional, default: ''}
+\item{markerDbIds}{character vector, search for specific markers by internal
+database identifiers, supplied as a comma separated
+character vector of internal marker database identifiers
+e.g. c("1185","1186"); default: ""}
 
-\item{name}{character; marker name; default: ''}
+\item{name}{character, search for markers by a search pattern of a marker
+name or synonym e.g. "11_1002", "11_1%", "11_1*" or "11_10?02";
+default: ""}
 
-\item{matchMethod}{character; default: ''; other: case_insensitive, exact, wildcard}
+\item{matchMethod}{character, search for markers using a match method with as
+possible values "case_insensitive", "exact" (which is case
+sensitive), and "wildcard" (whis is case insensitive and
+uses both "*" and "%" for any number of characters adn "?"
+for one character matching); default: "exact"}
 
-\item{includeSynonyms}{logical, default: TRUE}
+\item{includeSynonyms}{logical, search for markers including synonyms,
+specified as TRUE, or without, specified as FALSE;
+default: NA}
 
-\item{type}{character; default: all; other: SNP}
+\item{type}{character, search for a specific type of marker, e.g. "SNP";
+default: ""}
 
-\item{pageSize}{integer; default 1000}
+\item{pageSize}{integer, items per page to be returned; default: 1000}
 
-\item{page}{integer; default: 0}
+\item{page}{integer, the requested page to be returned; default: 0 (1st page)}
 
-\item{rclass}{character; default: tibble}
+\item{rclass}{character, class of the object to be returned; default: "tibble"
+, possible other values: "json"/"list"/"vector"/"data.frame"}
+
+\item{active}{logical; search studies by active status (by default both
+active and inactive studies are shown); default: NA, other
+possible values TRUE (show active)/FALSE (show inactive)}
 }
 \value{
-rclass as requested
+An object of class as defined by rclass containing the markers
+        fulfilling the search criteria.
 }
 \description{
-Lists markers as result of a search.
+Search for markers on a brapi server via a GET method.
 }
 \examples{
 if (interactive()) {
@@ -71,7 +89,7 @@ Other genotyping: \code{\link{ba_genomemaps_data_range}},
   \code{\link{ba_markers_search_post}}
 }
 \author{
-Reinhard Simon
+Reinhard Simon, Maikel Verouden
 }
 \concept{genotyping}
 \concept{markers}
