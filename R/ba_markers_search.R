@@ -13,8 +13,9 @@
 #' @param matchMethod character, search for markers using a match method with as
 #'                    possible values "case_insensitive", "exact" (which is case
 #'                    sensitive), and "wildcard" (whis is case insensitive and
-#'                    uses both "*" and "%" for any number of characters adn "?"
-#'                    for one character matching); default: "exact"
+#'                    uses both "*" and "%" for any number of characters and "?"
+#'                    for one character matching); default: "", which results in
+#'                    "exact"
 #' @param active logical; search studies by active status (by default both
 #'               active and inactive studies are shown); default: NA, other
 #'               possible values TRUE (show active)/FALSE (show inactive)
@@ -45,7 +46,7 @@
 ba_markers_search <- function(con = NULL,
                               markerDbIds = "",
                               name = "",
-                              matchMethod = "exact",
+                              matchMethod = "",
                               includeSynonyms = NA,
                               type = "",
                               pageSize = 1000,

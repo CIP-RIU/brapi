@@ -5,7 +5,7 @@
 \title{ba_markers_search}
 \usage{
 ba_markers_search(con = NULL, markerDbIds = "", name = "",
-  matchMethod = "exact", includeSynonyms = NA, type = "",
+  matchMethod = "", includeSynonyms = NA, type = "",
   pageSize = 1000, page = 0, rclass = c("tibble", "data.frame",
   "list", "json"))
 }
@@ -24,8 +24,9 @@ default: ""}
 \item{matchMethod}{character, search for markers using a match method with as
 possible values "case_insensitive", "exact" (which is case
 sensitive), and "wildcard" (whis is case insensitive and
-uses both "*" and "%" for any number of characters adn "?"
-for one character matching); default: "exact"}
+uses both "*" and "%" for any number of characters and "?"
+for one character matching); default: "", which results in
+"exact"}
 
 \item{includeSynonyms}{logical, search for markers including synonyms,
 specified as TRUE, or without, specified as FALSE;
