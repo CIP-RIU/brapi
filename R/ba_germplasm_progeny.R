@@ -3,7 +3,7 @@
 #' Retrieve the internal germplasm database identifiers for all the progeny of
 #' a particular internal germplasm database identifier.
 #'
-#' @param con brapi connection object
+#' @param con list, brapi connection object
 #' @param germplasmDbId character, the internal database identifier for a
 #'                      germplasm of which the internal germaplasm database
 #'                      identifiers of all the progeny are to be retrieved e.g.

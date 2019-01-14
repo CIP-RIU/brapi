@@ -10,7 +10,7 @@ ba_germplasm_search(con = NULL, germplasmPUI = "",
   "list", "json"))
 }
 \arguments{
-\item{con}{brapi connection object}
+\item{con}{list, brapi connection object}
 
 \item{germplasmPUI}{character, search for germplasm information using a
 Permanent Unique Identifier (DOI, URI, etc.); default: ""}

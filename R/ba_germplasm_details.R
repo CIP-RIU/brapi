@@ -2,7 +2,7 @@
 #'
 #' Gets germplasm details given an internal database identifier.
 #'
-#' @param con brapi connection object
+#' @param con list, brapi connection object
 #' @param germplasmDbId character, the internal database identifier for a
 #'                      germplasm of which the germplasm details are to be
 #'                      retrieved e.g. "382"; \strong{REQUIRED ARGUMENT} with

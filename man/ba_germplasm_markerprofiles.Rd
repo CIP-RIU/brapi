@@ -8,7 +8,7 @@ ba_germplasm_markerprofiles(con = NULL, germplasmDbId = "",
   rclass = c("tibble", "data.frame", "list", "json"))
 }
 \arguments{
-\item{con}{brapi connection object}
+\item{con}{list, brapi connection object}
 
 \item{germplasmDbId}{character, the internal database identifier for a
 germplasm of which the internal markerprofile database

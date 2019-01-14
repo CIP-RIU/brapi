@@ -2,7 +2,7 @@
 #'
 #' Retrieve available attributes.
 #'
-#' @param con brapi connection object
+#' @param con list, brapi connection object
 #' @param attributeCategoryDbId character, filter for kind of attribute by
 #'                              supplying an internal attribute category database
 #'                              identifier e.g. "2"; default: ""
