@@ -38,11 +38,10 @@ ba_germplasmattributes_attributes <- function(con = NULL,
   rclass <- match.arg(rclass)
 
   brp <- get_brapi(con = con) %>% paste0("/attributes")
-  callurl <- get_endpoint(brp,
+  callurl <- get_endpoint(pointbase = brp,
                           attributeCategoryDbId = attributeCategoryDbId,
                           pageSize = pageSize,
-                          page = page
-                          )
+                          page = page)
 
   out <- try({
     resp <- brapiGET(url = callurl, con = con)
