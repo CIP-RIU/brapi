@@ -49,6 +49,13 @@ An object of class as defined by rclass containing the markers
 \description{
 Search for markers on a brapi server via a GET method.
 }
+\note{
+Tested against: test-server
+
+BrAPI Version: 1.1, 1.2
+
+BrAPI Status: active
+}
 \examples{
 if (interactive()) {
   library(brapi)

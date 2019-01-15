@@ -29,6 +29,10 @@
 #' @return An object of class as defined by rclass containing the markers
 #'         fulfilling the search criteria.
 #'
+#' @note Tested against: test-server
+#' @note BrAPI Version: 1.1, 1.2
+#' @note BrAPI Status: active
+#'
 #' @author Reinhard Simon, Maikel Verouden
 #' @references \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Markers/MarkerSearch_GET.md}{github}
 #'
