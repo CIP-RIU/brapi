@@ -30,7 +30,7 @@ for one character matching); default: "", which results in
 
 \item{includeSynonyms}{logical, search for markers including synonyms,
 specified as TRUE, or without, specified as FALSE;
-default: NA}
+default: NA, possible other values: TRUE/FALSE}
 
 \item{type}{character, search for a specific type of marker, e.g. "SNP";
 default: ""}
@@ -41,10 +41,6 @@ default: ""}
 
 \item{rclass}{character, class of the object to be returned; default: "tibble"
 , possible other values: "json"/"list"/"vector"/"data.frame"}
-
-\item{active}{logical; search studies by active status (by default both
-active and inactive studies are shown); default: NA, other
-possible values TRUE (show active)/FALSE (show inactive)}
 }
 \value{
 An object of class as defined by rclass containing the markers

@@ -16,12 +16,9 @@
 #'                    uses both "*" and "%" for any number of characters and "?"
 #'                    for one character matching); default: "", which results in
 #'                    "exact"
-#' @param active logical; search studies by active status (by default both
-#'               active and inactive studies are shown); default: NA, other
-#'               possible values TRUE (show active)/FALSE (show inactive)
 #' @param includeSynonyms logical, search for markers including synonyms,
 #'                        specified as TRUE, or without, specified as FALSE;
-#'                        default: NA
+#'                        default: NA, possible other values: TRUE/FALSE
 #' @param type character, search for a specific type of marker, e.g. "SNP";
 #'             default: ""
 #' @param pageSize integer, items per page to be returned; default: 1000
