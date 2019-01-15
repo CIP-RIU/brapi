@@ -12,7 +12,7 @@
 #'             default: ""
 #' @param matchMethod character, search for markers using a match method with as
 #'                    possible values "case_insensitive", "exact" (which is case
-#'                    sensitive), and "wildcard" (whis is case insensitive and
+#'                    sensitive), and "wildcard" (which is case insensitive and
 #'                    uses both "*" and "%" for any number of characters and "?"
 #'                    for one character matching); default: "", which results in
 #'                    "exact"
