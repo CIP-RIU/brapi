@@ -8,17 +8,27 @@ ba_markers_details(con = NULL, markerDbId = "", rclass = c("tibble",
   "data.frame", "list", "json"))
 }
 \arguments{
-\item{con}{brapi connection object}
+\item{con}{list, brapi connection object}
 
-\item{markerDbId}{character; marker id; \strong{REQUIRED ARGUMENT} with default: ""}
+\item{markerDbId}{character, the internal database identifier for a marker of
+which the marker details are to be retrieved e.g. "1185";
+\strong{REQUIRED ARGUMENT} with default: ""}
 
-\item{rclass}{character; default: tibble}
+\item{rclass}{character, class of the object to be returned;  default: "tibble"
+, possible other values: "data.frame"/"list"/"json"}
 }
 \value{
-data.frame
+An object of class as defined by rclass containing the marker details.
 }
 \description{
-Lists markers as result of a search.
+Retrieve marker details.
+}
+\note{
+Tested against: test-server
+
+BrAPI Version: 1.0, 1.1, 1.2
+
+BrAPI Status: active
 }
 \examples{
 if (interactive()) {
@@ -57,7 +67,7 @@ Other genotyping: \code{\link{ba_genomemaps_data_range}},
   \code{\link{ba_markers_search}}
 }
 \author{
-Reinhard Simon
+Reinhard Simon, Maikel
 }
 \concept{genotyping}
 \concept{markers}
