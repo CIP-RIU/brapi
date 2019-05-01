@@ -3,7 +3,7 @@
 #' Retrieve the internal markerprofile database identifiers for a given internal
 #' germplasm database identifier
 #'
-#' @param con brapi connection object
+#' @param con list, brapi connection object
 #' @param germplasmDbId character, the internal database identifier for a
 #'                      germplasm of which the internal markerprofile database
 #'                      identifiers are to be retrieved e.g. "9932";

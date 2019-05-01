@@ -10,7 +10,7 @@ get_body <- function(...) {
     if (any(is.na(args[[i]]))) args[[i]] <- ""
 
     if (all(args[[i]] != "")) {
-      if (class(args[[i]]) == "character") {
+      if (class(args[[i]]) == "character" && length(args[[i]]) > 1) {
         p[[j]] <- as.array(args[[i]])
       } else {
         p[[j]] <- args[[i]]

@@ -1,20 +1,39 @@
 #' ba_markers_search_post
 #'
-#' Lists markers as result of a search.
+#' Search for markers on a brapi server via a POST method.
 #'
-#' @param con brapi connection object
-#' @param markerDbIds character, optional, default: ''
-#' @param name character; marker name; default: ''
-#' @param matchMethod character; default: ''; other: case_insensitive, exact, wildcard
-#' @param includeSynonyms logical, default: TRUE
-#' @param type character; default: all; other: SNP
-#' @param pageSize integer; default 1000
-#' @param page integer; default: 0
-#' @param rclass character; default: tibble
+#' @param con list, brapi connection object
+#' @param markerDbIds character vector, search for specific markers by internal
+#'                    database identifiers, supplied as a comma separated
+#'                    character vector of internal marker database identifiers
+#'                    e.g. c("1185","1186"); default: ""
+#' @param name character, search for markers by a search pattern of a marker
+#'             name or synonym e.g. "11_1002", "11_1%", "11_1*" or "11_10?02";
+#'             default: ""
+#' @param matchMethod character, search for markers using a match method with as
+#'                    possible values "case_insensitive", "exact" (which is case
+#'                    sensitive), and "wildcard" (which is case insensitive and
+#'                    uses both "*" and "%" for any number of characters and "?"
+#'                    for one character matching); default: "", which results in
+#'                    "exact"
+#' @param includeSynonyms logical, search for markers including synonyms,
+#'                        specified as TRUE, or without, specified as FALSE;
+#'                        default: NA, possible other values: TRUE/FALSE
+#' @param type character, search for a specific type of marker, e.g. "SNP";
+#'             default: ""
+#' @param pageSize integer, items per page to be returned; default: 1000
+#' @param page integer, the requested page to be returned; default: 0 (1st page)
+#' @param rclass character, class of the object to be returned; default: "tibble"
+#'               , possible other values: "json"/"list"/"vector"/"data.frame"
 #'
-#' @return rclass as requested
+#' @return An object of class as defined by rclass containing the markers
+#'         fulfilling the search criteria.
 #'
-#' @author Reinhard Simon
+#' @note Tested against: test-server
+#' @note BrAPI Version: 1.1, 1.2
+#' @note BrAPI Status: active
+#'
+#' @author Reinhard Simon, Maikel Verouden
 #' @references \href{https://github.com/plantbreeding/API/blob/V1.2/Specification/Markers/MarkerSearch_POST.md}{github}
 #'
 #' @family markers
@@ -26,15 +45,15 @@
 #' @import progress
 #' @export
 ba_markers_search_post <- function(con = NULL,
-                              markerDbIds = '',
-                              name = "",
-                              matchMethod = "",
-                              includeSynonyms = TRUE,
-                              type = "",
-                              pageSize = 1000,
-                              page = 0,
-                              rclass = c("tibble", "data.frame",
-                                         "list", "json")) {
+                                   markerDbIds = "",
+                                   name = "",
+                                   matchMethod = "",
+                                   includeSynonyms = NA,
+                                   type = "",
+                                   pageSize = 1000,
+                                   page = 0,
+                                   rclass = c("tibble", "data.frame",
+                                              "list", "json")) {
   ba_check(con = con, verbose = FALSE)
   check_character(markerDbIds, name, matchMethod, type)
   stopifnot(is.logical(includeSynonyms))
@@ -42,13 +61,12 @@ ba_markers_search_post <- function(con = NULL,
 
   callurl <- get_brapi(con = con) %>% paste0("markers-search")
   body <- get_body(markerDbIds = markerDbIds,
-                  name = name,
-                  matchMethod = matchMethod,
-                  includeSynonyms = includeSynonyms,
-                  type = type,
-                  pageSize = pageSize,
-                  page = page
-                  )
+                   name = name,
+                   matchMethod = matchMethod,
+                   includeSynonyms = includeSynonyms,
+                   type = type,
+                   pageSize = pageSize,
+                   page = page)
 
   try({
     resp <- brapiPOST(url = callurl, body = body, con = con)

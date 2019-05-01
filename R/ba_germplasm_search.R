@@ -2,7 +2,7 @@
 #'
 #' Retrieve germplasm information as result of a GET search.
 #'
-#' @param con brapi connection object
+#' @param con list, brapi connection object
 #' @param germplasmPUI character, search for germplasm information using a
 #'                     Permanent Unique Identifier (DOI, URI, etc.); default: ""
 #' @param germplasmDbId character, search for germplasm information using an

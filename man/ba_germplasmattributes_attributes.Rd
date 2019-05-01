@@ -9,7 +9,7 @@ ba_germplasmattributes_attributes(con = NULL,
   rclass = c("tibble", "data.frame", "list", "json"))
 }
 \arguments{
-\item{con}{brapi connection object}
+\item{con}{list, brapi connection object}
 
 \item{attributeCategoryDbId}{character, filter for kind of attribute by
 supplying an internal attribute category database

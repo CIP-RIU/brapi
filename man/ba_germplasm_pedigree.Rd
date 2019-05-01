@@ -9,7 +9,7 @@ ba_germplasm_pedigree(con = NULL, germplasmDbId = "", notation = "",
   "json"))
 }
 \arguments{
-\item{con}{brapi connection object}
+\item{con}{list, brapi connection object}
 
 \item{germplasmDbId}{character, the internal database identifier for a
 germplasm of which the germplasm pedigree is to be

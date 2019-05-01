@@ -2,7 +2,7 @@
 #'
 #' Retrieve germplasm pedigree by internal germplasm database identifier
 #'
-#' @param con brapi connection object
+#' @param con list, brapi connection object
 #' @param germplasmDbId character, the internal database identifier for a
 #'                      germplasm of which the germplasm pedigree is to be
 #'                      retrieved e.g. "9932"; \strong{REQUIRED ARGUMENT} with

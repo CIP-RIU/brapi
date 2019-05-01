@@ -2,7 +2,7 @@
 #'
 #' Retrieve available attributes.
 #'
-#' @param con brapi connection object
+#' @param con list, brapi connection object
 #' @param attributeCategoryDbId character, filter for kind of attribute by
 #'                              supplying an internal attribute category database
 #'                              identifier e.g. "2"; default: ""
@@ -38,11 +38,10 @@ ba_germplasmattributes_attributes <- function(con = NULL,
   rclass <- match.arg(rclass)
 
   brp <- get_brapi(con = con) %>% paste0("/attributes")
-  callurl <- get_endpoint(brp,
+  callurl <- get_endpoint(pointbase = brp,
                           attributeCategoryDbId = attributeCategoryDbId,
                           pageSize = pageSize,
-                          page = page
-                          )
+                          page = page)
 
   out <- try({
     resp <- brapiGET(url = callurl, con = con)

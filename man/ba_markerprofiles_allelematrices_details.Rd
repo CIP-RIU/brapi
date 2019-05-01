@@ -9,24 +9,36 @@ ba_markerprofiles_allelematrices_details(con = NULL, studyDbId = "",
   "list", "json"))
 }
 \arguments{
-\item{con}{brapi connection object}
+\item{con}{list, brapi connection object}
 
-\item{studyDbId}{character, \strong{REQUIRED ARGUMENT} with default: ""}
+\item{studyDbId}{character, the internal database identifier for a study of
+which the available allelematrices details are to be
+retrieved e.g. "1001"; \strong{REQUIRED ARGUMENT} with
+default: ""}
 
-\item{pageSize}{integer; default 1000}
+\item{pageSize}{integer, items per page to be returned; default: 1000}
 
-\item{page}{integer; default: 0}
+\item{page}{integer, the requested page to be returned; default: 0 (1st page)}
 
-\item{rclass}{character; default: tibble}
+\item{rclass}{character, class of the object to be returned;  default: "tibble"
+, possible other values: "data.frame"/"list"/"json"}
 }
 \value{
-rclass as requested
+An object of class as defined by rclass containing the allelematrices
+        details of the requested study internal database indentifier.
 }
 \description{
-This resource is used for reading and writing genomic matrices
+Retrieve available allelematrices details for a specific study.
 }
 \note{
-The handling of long-running responses via asynch status messages is not yet implemented.
+The handling of long-running responses via asynch status messages
+      not yet implemented.
+
+Tested against: test-server
+
+BrAPI Version: 1.0, 1.1, 1.2
+
+BrAPI Status: active
 }
 \examples{
 if (interactive()) {
@@ -34,7 +46,7 @@ if (interactive()) {
 
   con <- ba_db()$testserver
 
-  ba_markerprofiles_allelematrices_details(con, studyDbId = "1001")
+  ba_markerprofiles_allelematrices_details(con = con, studyDbId = "1001")
 }
 }
 \references{
@@ -68,7 +80,7 @@ Other genotyping: \code{\link{ba_genomemaps_data_range}},
   \code{\link{ba_markers_search}}
 }
 \author{
-Reinhard Simon
+Reinhard Simon, Maikel Verouden
 }
 \concept{genotyping}
 \concept{markerprofiles}

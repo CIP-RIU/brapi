@@ -10,17 +10,26 @@ ba_germplasmattributes_categories(con = NULL, pageSize = 1000,
 \arguments{
 \item{con}{brapi connection object}
 
-\item{pageSize}{integer; default 10}
+\item{pageSize}{integer, items per page to be returned; default: 1000}
 
-\item{page}{integer; default 0}
+\item{page}{integer, the requested page to be returned; default: 0 (1st page)}
 
-\item{rclass}{character; default: tibble}
+\item{rclass}{character, class of the object to be returned;  default: "tibble"
+, possible other values: "json"/"list"/"vector"/"data.frame"}
 }
 \value{
-rclass as set by parameter
+An object of class as defined by rclass containing the available
+        germplasm attribute categories.
 }
 \description{
-attibutes call.
+Retrieve available germplasm attribute categories.
+}
+\note{
+Tested against: test-server, sweetpotatobsse
+
+BrAPI Version: 1.0, 1.1, 1.2
+
+BrAPI Status: active
 }
 \examples{
 if (interactive()) {
@@ -61,7 +70,7 @@ Other genotyping: \code{\link{ba_genomemaps_data_range}},
   \code{\link{ba_markers_search}}
 }
 \author{
-Reinhard Simon
+Reinhard Simon, Maikel Verouden
 }
 \concept{genotyping}
 \concept{germplasmattributes}
