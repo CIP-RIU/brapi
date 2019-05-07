@@ -19,7 +19,8 @@
 #' @example inst/examples/ex-ba_commoncropnames.R
 #' @export
 ba_commoncropnames <- function(con = NULL,
-                               rclass = c("tibble", "data.frame", "list", "json")) {
+                               rclass = c("tibble", "data.frame",
+                                          "list", "json", "vector")) {
   ba_check(con = con, verbose = FALSE, brapi_calls = "commoncropnames")
   rclass <- match.arg(rclass)
 
