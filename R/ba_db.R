@@ -117,7 +117,7 @@ ba_db <- function() {
                               bms = FALSE)
   terraref <- as.ba_db(secure = TRUE,
                        protocol = "https://",
-                       db = "brapi.workbench.terraref.org",
+                       db = "terraref.org",
                        port = 80,
                        multicrop = TRUE,
                        crop = c("sorghum", "wheat"),
