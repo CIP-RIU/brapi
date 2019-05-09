@@ -115,6 +115,13 @@ ba_db <- function() {
                               multicrop = FALSE,
                               crop = "SweetPotato",
                               bms = FALSE)
+  terraref <- as.ba_db(secure = TRUE,
+                         protocol = "https://",
+                         db = "brapi.workbench.terraref.org",
+                         port = 80,
+                         multicrop = TRUE,
+                         crop = c("wheat", "sorghum"),
+                         bms = FALSE)
   testserver <- as.ba_db(secure = TRUE,
                       protocol = "https://",
                       db = "test-server.brapi.org",
@@ -173,6 +180,7 @@ ba_db <- function() {
               ricebase = ricebase,
               snpseek = snpseek,
               sweetpotatobase = sweetpotatobase,
+              terraref = terraref,
               testserver = testserver,
               t3s = t3s,
               tto = tto,
