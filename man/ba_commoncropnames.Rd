@@ -5,7 +5,7 @@
 \title{ba_commoncropnames}
 \usage{
 ba_commoncropnames(con = NULL, rclass = c("tibble", "data.frame",
-  "list", "json"))
+  "list", "json", "vector"))
 }
 \arguments{
 \item{con}{list, brapi connection object}

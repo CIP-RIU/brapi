@@ -33,6 +33,10 @@ get_endpoint <- function(pointbase, ...) {
       j <- j + 1
     }
   }
-  url <- paste0(pointbase, "?", paste(p, collapse = "&"))
-  return(sub(forbidden, "", url))
+  url <- gsub(pattern = " ",
+              replacement = "%20",
+              x = paste0(pointbase, "?", paste(p, collapse = "&")))
+  return(sub(pattern = forbidden,
+             replacement = "",
+             x = url))
 }

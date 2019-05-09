@@ -39,9 +39,10 @@ ba_markerprofiles_allelematrices_search(con = NULL,
 rclass as requested
 }
 \description{
-Gets markers in matrix format. If the format parameter is set to either csv or tsv the returned object
-is always a tibble object. If the format parameter is 'json' (default) the rclass parameter can be used
-to as in other functions.
+Retrieves marker scores in matrix format. If the format parameter is set to
+either csv or tsv the returned object is always a tibble object. If the
+format parameter is 'json' (default) the rclass parameter can be used too as
+in other functions.
 }
 \note{
 The handling of long-running responses via asynch status messages is not yet implemented.

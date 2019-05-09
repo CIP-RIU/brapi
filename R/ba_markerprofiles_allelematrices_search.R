@@ -1,8 +1,9 @@
 #' ba_markerprofiles_allelematrices_search
 #'
-#' Gets markers in matrix format. If the format parameter is set to either csv or tsv the returned object
-#' is always a tibble object. If the format parameter is 'json' (default) the rclass parameter can be used
-#' to as in other functions.
+#' Retrieves marker scores in matrix format. If the format parameter is set to
+#' either csv or tsv the returned object is always a tibble object. If the
+#' format parameter is 'json' (default) the rclass parameter can be used too as
+#' in other functions.
 #'
 #' @param con brapi connection object
 #' @param markerProfileDbId character vector; default ''
@@ -34,18 +35,18 @@
 #' @importFrom magrittr '%>%'
 #' @export
 ba_markerprofiles_allelematrices_search <- function(con = NULL,
-                                                  markerProfileDbId = "",
-                                                  markerDbId = "",
-                                                  matrixDbId = "",
-                                                  format = "json",
-                                                  expandHomozygotes = FALSE,
-                                                  unknownString = "-",
-                                                  sepPhased = "",
-                                                  sepUnphased = "",
-                                                  pageSize = 1000,
-                                                  page = 0,
-                                                  rclass = c("tibble", "data.frame",
-                                                             "list", "json")) {
+                                                    markerProfileDbId = "",
+                                                    markerDbId = "",
+                                                    matrixDbId = "",
+                                                    format = "json",
+                                                    expandHomozygotes = FALSE,
+                                                    unknownString = "-",
+                                                    sepPhased = "",
+                                                    sepUnphased = "",
+                                                    pageSize = 1000,
+                                                    page = 0,
+                                                    rclass = c("tibble", "data.frame",
+                                                               "list", "json")) {
   ba_check(con = con, verbose = FALSE)
   check_character(markerProfileDbId, markerDbId, markerDbId, matrixDbId, format,
                   unknownString, sepPhased, sepUnphased)
