@@ -8,7 +8,7 @@
 #' @return boolean
 #' @export
 skip_if_local <- function() {
-  if (as.integer(Sys.getenv("NUMBER_OF_PROCESSORS") < 13 )) {
+  if ((Sys.getenv("NOT_CRAN"))) {
     return(invisible(TRUE))
   }
   testthat::skip("if on local computer")
