@@ -39,8 +39,8 @@ See the [documentation](https://cip-riu.github.io/brapi/) for details.
 It can be installed using:
 
 ``` r
-install.packages("devtools")
-devtools::install_github("CIP-RIU/brapi")
+install.packages("remotes")
+remotes::install_github("CIP-RIU/brapi")
 ```
 
 ## How to use the package
