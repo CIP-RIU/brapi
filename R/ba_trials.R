@@ -7,8 +7,9 @@
 #'                    with given program database identifier; default: ""
 #' @param locationDbId character, location filter to only return trails associated
 #'                     with given location databas identifier; default: ""
-#' @param active logical; filter active status; default: TRUE, other possible
-#'               values TRUE/FALSE
+#' @param active logical; filter active status; default: NA (shows both active
+#'               and inactive), other possible values TRUE (show active)/FALSE
+#'               (show inactive)
 #' @param sortBy character; name of the field to sort by; default: ""
 #' @param sortOrder character; sort order direction; default: "", possible values
 #'                  "asc"/"desc"
@@ -33,7 +34,7 @@
 ba_trials <- function(con = NULL,
                       programDbId = "",
                       locationDbId = "",
-                      active = TRUE,
+                      active = NA,
                       sortBy = "",
                       sortOrder = "",
                       pageSize = 1000,

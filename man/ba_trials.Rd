@@ -5,7 +5,7 @@
 \title{ba_trials}
 \usage{
 ba_trials(con = NULL, programDbId = "", locationDbId = "",
-  active = TRUE, sortBy = "", sortOrder = "", pageSize = 1000,
+  active = NA, sortBy = "", sortOrder = "", pageSize = 1000,
   page = 0, rclass = c("tibble", "data.frame", "list", "json"))
 }
 \arguments{
@@ -17,8 +17,9 @@ with given program database identifier; default: ""}
 \item{locationDbId}{character, location filter to only return trails associated
 with given location databas identifier; default: ""}
 
-\item{active}{logical; filter active status; default: TRUE, other possible
-values TRUE/FALSE}
+\item{active}{logical; filter active status; default: NA (shows both active
+and inactive), other possible values TRUE (show active)/FALSE
+(show inactive)}
 
 \item{sortBy}{character; name of the field to sort by; default: ""}
 
