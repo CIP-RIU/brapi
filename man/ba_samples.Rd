@@ -29,7 +29,7 @@ if (interactive()) {
 
   con <- ba_db()$testserver
 
-  ba_samples(con, sampleDbId = "sam1")
+  ba_samples(con, sampleDbId = "sam01")
 }
 }
 \references{

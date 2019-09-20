@@ -19,7 +19,7 @@
 #' @return An object of class as defined by rclass containing the germaplasm
 #'         information result of the search.
 #'
-#' @note Tested against: test-server
+#' @note Tested against: test-server, BMS
 #' @note BrAPI Version: 1.0, 1.1, 1.2
 #' @note BrAPI Status: active
 #'

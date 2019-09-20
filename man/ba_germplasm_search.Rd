@@ -39,7 +39,7 @@ An object of class as defined by rclass containing the germaplasm
 Retrieve germplasm information as result of a GET search.
 }
 \note{
-Tested against: test-server
+Tested against: test-server, BMS
 
 BrAPI Version: 1.0, 1.1, 1.2
 
