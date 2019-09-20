@@ -11,7 +11,7 @@ test_that("Samples are present", {
 
 test_that("Samples output formats work", {
 
-  res <- ba_samples(con = con, sampleDbId = "sam1", rclass = "json")
+  res <- ba_samples(con = con, sampleDbId = "sam01", rclass = "json")
   expect_that("json" %in% class(res), is_true())
 
 })
