@@ -10,7 +10,7 @@
 print.ba_con <- function(x, ...) {
   # Print in console
   txt <- paste0("Crop = ", x$crop, "\n\n")
-  txt <- paste0(txt, "Addres:Port = ", x$db, ":", x$port, "\n")
+  txt <- paste0(txt, "Address:Port = ", x$db, ":", x$port, "\n")
   cat(paste0(txt, "User = ", x$user, "\n"))
   return(invisible())
 }
